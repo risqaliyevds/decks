@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Banklarda jarayonlarni AI orqali avtomatlashtirish</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+<main class="deck" data-current="0">
+
+  <!-- ────────────────────────────────────────────────────────────────────
+       SLIDE 1 — TITLE
+       ──────────────────────────────────────────────────────────────────── -->
+  <section class="slide is-active" data-bg="dark" data-slide="title">
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <div class="slide-corner top-left">
+      <span class="brand">crea<span class="seven">7</span>iveai</span>
+    </div>
+
+    <div class="title-content">
+      <span class="eyebrow">AI Avtomatlashtirish · Bank Sektori</span>
+      <h1 class="title">
+        Banklarda jarayonlarni<br>
+        <span class="title-accent">AI orqali</span> avtomatlashtirish
+      </h1>
+      <p class="subtitle">
+        Bank xodimlari uchun kundalik vazifalarni soddalashtiradigan va
+        tezlashtiradigan amaliy AI yechimlar.
+      </p>
+    </div>
+
+    <div class="slide-corner bottom-right">
+      <div class="speaker-chip">
+        <div class="speaker-avatar">R</div>
+        <div class="speaker-meta">
+          <div class="speaker-name">Riskaliev Murad</div>
+          <div class="speaker-role">NLP Engineer · Mohirdev</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────────────────────────────────────────────────
+       SLIDE 2 — AGENDA
+       ──────────────────────────────────────────────────────────────────── -->
+  <section class="slide" data-bg="dark" data-slide="content">
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <div class="slide-corner top-left">
+      <span class="brand">crea<span class="seven">7</span>iveai</span>
+    </div>
+
+    <div class="slide-corner top-right">
+      <span class="page-chip">02<span class="muted">/ —</span></span>
+    </div>
+
+    <div class="agenda-block">
+      <header class="agenda-header">
+        <span class="eyebrow" data-animate>Bugungi suhbat</span>
+        <h2 class="section-title" data-animate>Bugun nimalarni ko'rib chiqamiz</h2>
+      </header>
+
+      <ol class="agenda">
+        <li data-animate>
+          <span class="agenda-num">01</span>
+          <div class="agenda-text">
+            <h3 class="agenda-title">Avtomatlashtirish — bu nima?</h3>
+            <p class="agenda-desc">Bankomat'dan AI'gacha — qisqacha tarix.</p>
+          </div>
+        </li>
+        <li data-animate>
+          <span class="agenda-num">02</span>
+          <div class="agenda-text">
+            <h3 class="agenda-title">Dasturni kim yaratadi?</h3>
+            <p class="agenda-desc">Code, low-code, no-code va vibe code o'rtasidagi farq.</p>
+          </div>
+        </li>
+        <li data-animate>
+          <span class="agenda-num">03</span>
+          <div class="agenda-text">
+            <h3 class="agenda-title">Bank ishida AI</h3>
+            <p class="agenda-desc">Hujjatlar, mijozlar so'rovlari va xavfsizlik.</p>
+          </div>
+        </li>
+        <li data-animate>
+          <span class="agenda-num">04</span>
+          <div class="agenda-text">
+            <h3 class="agenda-title">Qayerdan boshlash kerak?</h3>
+            <p class="agenda-desc">Bugun qila oladigan birinchi qadam.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="slide-corner bottom-right">
+      <div class="speaker-chip">
+        <div class="speaker-avatar">R</div>
+        <div class="speaker-meta">
+          <div class="speaker-name">Riskaliev Murad</div>
+          <div class="speaker-role">NLP Engineer · Mohirdev</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────────────────────────────────────────────────
+       SLIDE 3 — AVTOMATLASHTIRISH — BU NIMA?  (split-screen)
+       ──────────────────────────────────────────────────────────────────── -->
+  <section class="slide" data-bg="dark" data-slide="content">
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <div class="slide-corner top-left">
+      <span class="brand">crea<span class="seven">7</span>iveai</span>
+    </div>
+    <div class="slide-corner top-right">
+      <span class="page-chip">03<span class="muted">/ —</span></span>
+    </div>
+
+    <div class="split-block">
+      <header>
+        <span class="eyebrow" data-animate>01 — Tarix</span>
+        <h2 class="section-title" data-animate>Avtomatlashtirish — bu nima?</h2>
+        <p class="lead" data-animate>
+          Avval bankomat odam kassirning ishini bajardi.
+          Endi AI bank xodimi qiladigan boshqa ishlarni ham bajaradi.
+        </p>
+      </header>
+
+      <div class="split">
+        <div class="split-half split-past" data-animate>
+          <div class="split-content">
+            <span class="split-tag">Avval</span>
+            <span class="split-years">1990 – 2010 yillar</span>
+            <ul class="split-list">
+              <li><span class="dot"></span>Excel jadvali, qo'l bilan kiritilgan ma'lumotlar</li>
+              <li><span class="dot"></span>Qog'oz hujjatlar va arxiv papkalari</li>
+              <li><span class="dot"></span>Tayyor formulalar va makroslar</li>
+              <li><span class="dot"></span>Har vazifa uchun alohida dastur</li>
+            </ul>
+            <p class="split-pain">Sekin · xato ko'p · IT yordamisiz qiyin</p>
+          </div>
+        </div>
+
+        <div class="split-half split-now" data-animate>
+          <div class="split-content">
+            <span class="split-tag">Hozir</span>
+            <span class="split-years">2020 yildan</span>
+            <ul class="split-list">
+              <li><span class="dot"></span>AI suhbatdoshlar — savolga javob, hujjat tahlili</li>
+              <li><span class="dot"></span>Ovoz buyrug'i bilan ishlaydigan tizimlar</li>
+              <li><span class="dot"></span>Tasvir va matnni tushunadigan dasturlar</li>
+              <li><span class="dot"></span>Bir vosita — minglab vazifalar uchun</li>
+            </ul>
+            <p class="split-pain">Tezkor · aniq · har xodim mustaqil ishlatadi</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-corner bottom-right">
+      <div class="speaker-chip">
+        <div class="speaker-avatar">R</div>
+        <div class="speaker-meta">
+          <div class="speaker-name">Riskaliev Murad</div>
+          <div class="speaker-role">NLP Engineer · Mohirdev</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────────────────────────────────────────────────
+       SLIDE 4 — DASTURNI QANDAY YARATISH MUMKIN?  (spectrum)
+       ──────────────────────────────────────────────────────────────────── -->
+  <section class="slide" data-bg="dark" data-slide="content">
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <div class="slide-corner top-left">
+      <span class="brand">crea<span class="seven">7</span>iveai</span>
+    </div>
+    <div class="slide-corner top-right">
+      <span class="page-chip">04<span class="muted">/ —</span></span>
+    </div>
+
+    <div class="spectrum-block">
+      <header>
+        <span class="eyebrow" data-animate>02 — Vositalar</span>
+        <h2 class="section-title" data-animate>Dasturni qanday yaratish mumkin?</h2>
+        <p class="lead" data-animate>
+          Bir necha yil oldin faqat dasturchilar dastur yarata olardi. Endi — hamma.
+        </p>
+      </header>
+
+      <div class="spectrum">
+        <article class="spectrum-card" data-animate>
+          <span class="spectrum-num">01</span>
+          <h3 class="spectrum-name">Code</h3>
+          <p class="spectrum-analogy">Bo'sh varaqdan har bir harfni qo'lda yozish kabi.</p>
+          <dl class="spectrum-meta">
+            <div><dt>Kim</dt><dd>Tajribali dasturchilar</dd></div>
+            <div><dt>Vaqt</dt><dd>Oylar – yillar</dd></div>
+            <div><dt>Narx</dt><dd>Eng qimmat</dd></div>
+          </dl>
+        </article>
+
+        <article class="spectrum-card" data-animate>
+          <span class="spectrum-num">02</span>
+          <h3 class="spectrum-name">Low-code</h3>
+          <p class="spectrum-analogy">LEGO bo'laklaridan yig'ish kabi.</p>
+          <dl class="spectrum-meta">
+            <div><dt>Kim</dt><dd>Dasturchi + biznes xodimi</dd></div>
+            <div><dt>Vaqt</dt><dd>Haftalar – oylar</dd></div>
+            <div><dt>Narx</dt><dd>O'rtacha</dd></div>
+          </dl>
+        </article>
+
+        <article class="spectrum-card" data-animate>
+          <span class="spectrum-num">03</span>
+          <h3 class="spectrum-name">No-code</h3>
+          <p class="spectrum-analogy">Tayyor blanka to'ldirish kabi.</p>
+          <dl class="spectrum-meta">
+            <div><dt>Kim</dt><dd>Bank xodimi mustaqil</dd></div>
+            <div><dt>Vaqt</dt><dd>Soatlar – kunlar</dd></div>
+            <div><dt>Narx</dt><dd>Arzon</dd></div>
+          </dl>
+        </article>
+
+        <article class="spectrum-card spectrum-card--accent" data-animate>
+          <span class="spectrum-num">04</span>
+          <h3 class="spectrum-name"><span class="title-accent">Vibe code</span></h3>
+          <p class="spectrum-analogy">Oddiy tilda aytasiz, AI dasturni yozadi.</p>
+          <dl class="spectrum-meta">
+            <div><dt>Kim</dt><dd>Hamma — texnik bilim shart emas</dd></div>
+            <div><dt>Vaqt</dt><dd>Daqiqalar – soatlar</dd></div>
+            <div><dt>Narx</dt><dd>Eng arzon, eng tez</dd></div>
+          </dl>
+        </article>
+      </div>
+
+      <div class="spectrum-axis" data-animate>
+        <div class="axis-bar">
+          <span class="marker"></span>
+          <span class="marker"></span>
+          <span class="marker"></span>
+          <span class="marker marker--accent"></span>
+        </div>
+        <div class="axis-labels">
+          <span>Qiyin · Sekin · Qimmat</span>
+          <span>Oson · Tez · Arzon</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-corner bottom-right">
+      <div class="speaker-chip">
+        <div class="speaker-avatar">R</div>
+        <div class="speaker-meta">
+          <div class="speaker-name">Riskaliev Murad</div>
+          <div class="speaker-role">NLP Engineer · Mohirdev</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────────────────────────────────────────────────
+       SLIDE 5 — BANK ISHIDA AI  (customer journey)
+       ──────────────────────────────────────────────────────────────────── -->
+  <section class="slide" data-bg="dark" data-slide="content">
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <div class="slide-corner top-left">
+      <span class="brand">crea<span class="seven">7</span>iveai</span>
+    </div>
+    <div class="slide-corner top-right">
+      <span class="page-chip">05<span class="muted">/ —</span></span>
+    </div>
+
+    <div class="journey-block">
+      <header>
+        <span class="eyebrow" data-animate>03 — Amaliyot</span>
+        <h2 class="section-title" data-animate>Bank ishida AI</h2>
+        <p class="lead" data-animate>
+          Mijoz bank eshigidan kirgan paytdan boshlab — AI har bir bosqichda yordam beradi.
+        </p>
+      </header>
+
+      <div class="journey">
+        <div class="journey-step journey-step--plain" data-animate>
+          <div class="step-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" />
+            </svg>
+          </div>
+          <h3 class="step-name">Mijoz keladi</h3>
+          <span class="step-time">09:00</span>
+        </div>
+
+        <div class="journey-step journey-step--ai" data-animate>
+          <div class="step-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="9" y1="13" x2="15" y2="13" />
+              <line x1="9" y1="17" x2="13" y2="17" />
+            </svg>
+          </div>
+          <h3 class="step-name">Hujjat tekshiruvi</h3>
+          <div class="step-ai">
+            <span class="ai-tag">AI yordami</span>
+            <ul class="step-ai-list">
+              <li>Pasport va ID kartadan KYC formani to'ldirish</li>
+              <li>Shartnomalardan asosiy bandlarni ajratish</li>
+              <li>Uzun hujjatlardan qisqa xulosa tayyorlash</li>
+              <li>Imzo va muhrlarni tekshirish</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="journey-step journey-step--ai" data-animate>
+          <div class="step-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+          </div>
+          <h3 class="step-name">Savol beradi</h3>
+          <div class="step-ai">
+            <span class="ai-tag">AI yordami</span>
+            <ul class="step-ai-list">
+              <li>Chat va telefonda 24/7 avtomatik javob</li>
+              <li>Xabarlarni mavzu bo'yicha tasniflash</li>
+              <li>Tel suhbatlarni matnga aylantirish va xulosalash</li>
+              <li>Murakkab so'rovni to'g'ri xodimga uzatish</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="journey-step journey-step--ai" data-animate>
+          <div class="step-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <h3 class="step-name">Xavfsizlik</h3>
+          <div class="step-ai">
+            <span class="ai-tag">AI yordami</span>
+            <ul class="step-ai-list">
+              <li>Shubhali tranzaksiya va kartlarni darhol bloklash</li>
+              <li>Mijozni ovoz yoki yuzi orqali tasdiqlash</li>
+              <li>G'ayritabiiy login urinishlarini to'xtatish</li>
+              <li>Aldov sxemalarini real vaqtda aniqlash</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="journey-step journey-step--plain" data-animate>
+          <div class="step-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </div>
+          <h3 class="step-name">Mijoz ketadi</h3>
+          <span class="step-time">09:15</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-corner bottom-right">
+      <div class="speaker-chip">
+        <div class="speaker-avatar">R</div>
+        <div class="speaker-meta">
+          <div class="speaker-name">Riskaliev Murad</div>
+          <div class="speaker-role">NLP Engineer · Mohirdev</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────────────────────────────────────────────────
+       SLIDE 6 — DUNYO RASMI  (hero stat + bar chart)
+       ──────────────────────────────────────────────────────────────────── -->
+  <section class="slide" data-bg="dark" data-slide="content">
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <div class="slide-corner top-left">
+      <span class="brand">crea<span class="seven">7</span>iveai</span>
+    </div>
+    <div class="slide-corner top-right">
+      <span class="page-chip">06<span class="muted">/ —</span></span>
+    </div>
+
+    <div class="stats-block">
+      <header>
+        <span class="eyebrow" data-animate>04 — Dunyo rasmi</span>
+        <h2 class="section-title" data-animate>Dunyoda banklar AI'ni qaerda ishlatmoqda?</h2>
+        <p class="lead" data-animate>
+          Bank sektori — AI'ni eng ko'p va eng tez qo'llayotgan tarmoqlardan biri.
+        </p>
+      </header>
+
+      <div class="stats-hero" data-animate>
+        <div class="hero-num">85<span class="hero-pct">%</span></div>
+        <div class="hero-text">
+          <div class="hero-label">Yirik dunyo banklari AI'ni ishlab chiqarishda qo'llaydi</div>
+          <div class="hero-detail">Bank sektori — sun'iy intellektni eng ko'p qo'llayotgan tarmoqlardan biri.</div>
+          <div class="hero-sub">Xalqaro tadqiqotlar · 2023 – 2025</div>
+        </div>
+      </div>
+
+      <div class="ranking-block" data-animate>
+        <div class="ranking-title">Eng ko'p avtomatlashayotgan yo'nalishlar</div>
+        <ol class="ranking">
+          <li style="--w: 72%">
+            <span class="rank-num">01</span>
+            <span class="rank-name">Aldov tekshiruvi (Fraud detection)</span>
+            <span class="rank-pct">~72%</span>
+            <div class="rank-track"><div class="rank-fill"></div></div>
+          </li>
+          <li style="--w: 64%">
+            <span class="rank-num">02</span>
+            <span class="rank-name">Mijoz xizmati va chatbotlar</span>
+            <span class="rank-pct">~64%</span>
+            <div class="rank-track"><div class="rank-fill"></div></div>
+          </li>
+          <li style="--w: 56%">
+            <span class="rank-num">03</span>
+            <span class="rank-name">Hujjat tekshiruvi va KYC / AML</span>
+            <span class="rank-pct">~56%</span>
+            <div class="rank-track"><div class="rank-fill"></div></div>
+          </li>
+          <li style="--w: 48%">
+            <span class="rank-num">04</span>
+            <span class="rank-name">Kredit reytingi va arizalar</span>
+            <span class="rank-pct">~48%</span>
+            <div class="rank-track"><div class="rank-fill"></div></div>
+          </li>
+          <li style="--w: 40%">
+            <span class="rank-num">05</span>
+            <span class="rank-name">Marketing va personalizatsiya</span>
+            <span class="rank-pct">~40%</span>
+            <div class="rank-track"><div class="rank-fill"></div></div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="stats-source" data-animate>
+        Manba: bank sektoridagi yirik xalqaro tadqiqotlar (McKinsey, Deloitte, EY · 2023–2025) bo'yicha o'rtacha qiymatlar.
+      </div>
+    </div>
+
+    <div class="slide-corner bottom-right">
+      <div class="speaker-chip">
+        <div class="speaker-avatar">R</div>
+        <div class="speaker-meta">
+          <div class="speaker-name">Riskaliev Murad</div>
+          <div class="speaker-role">NLP Engineer · Mohirdev</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────────────────────────────────────────────────────────────────
+       SLIDE 7 — QAYERDAN BOSHLASH KERAK?  (closing + contact)
+       ──────────────────────────────────────────────────────────────────── -->
+  <section class="slide" data-bg="dark" data-slide="closing">
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <div class="slide-corner top-left">
+      <span class="brand">crea<span class="seven">7</span>iveai</span>
+    </div>
+    <div class="slide-corner top-right">
+      <span class="page-chip">07<span class="muted">/ —</span></span>
+    </div>
+
+    <div class="closing-block">
+      <header>
+        <span class="eyebrow" data-animate>04 — Keyingi qadam</span>
+        <h2 class="section-title" data-animate>Bugundan boshlang</h2>
+        <p class="lead" data-animate>
+          Bir kichik vazifa, bir oddiy vosita, bir hafta — keyin esa har kun.
+        </p>
+      </header>
+
+      <div class="next-steps">
+        <div class="next-step" data-i="1" data-animate>
+          <span class="next-step-time">Bugun · 5 daqiqa</span>
+          <span class="next-step-num">01</span>
+          <span class="next-step-verb">Tanlang</span>
+          <p class="next-step-action">
+            Haftangizdagi eng zerikarli, eng ko'p qaytariladigan vazifangizni yozing.
+          </p>
+          <div class="next-step-tip">
+            <strong>Misol</strong>
+            KYC formalari, hisobotlar, mijoz xatlari, shartnoma tahlili
+          </div>
+        </div>
+
+        <div class="next-step-arrow" aria-hidden="true" data-animate>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </div>
+
+        <div class="next-step" data-i="2" data-animate>
+          <span class="next-step-time">Bu hafta · 1 soat</span>
+          <span class="next-step-num">02</span>
+          <span class="next-step-verb">Sinang</span>
+          <p class="next-step-action">
+            Shu vazifani AI'ga topshiring va natijani qo'l bilan bajarilgan bilan solishtiring.
+          </p>
+          <div class="next-step-tip">
+            <strong>Vositalar</strong>
+            ChatGPT, Claude, Gemini, Mohirdev AI
+          </div>
+        </div>
+
+        <div class="next-step-arrow" aria-hidden="true" data-animate>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </div>
+
+        <div class="next-step" data-i="3" data-animate>
+          <span class="next-step-time">Bu oy · 15 daqiqa</span>
+          <span class="next-step-num">03</span>
+          <span class="next-step-verb">Ulashing</span>
+          <p class="next-step-action">
+            Tejagan soatlaringizni hisoblang va jamoaga 5 daqiqalik demonstratsiya qiling.
+          </p>
+          <div class="next-step-tip">
+            <strong>Maqsad</strong>
+            Birinchi g'alaba — jamoaviy odatga aylanishi uchun
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-block" data-animate>
+        <h3 class="cta-headline">Savollar yoki hamkorlik?</h3>
+        <div class="cta-contact">
+          <a href="mailto:murad@mohir.dev">murad@mohir.dev</a>
+          <span class="cta-sep">·</span>
+          <span class="cta-brand">crea<span class="seven">7</span>iveai</span>
+          <span class="cta-sep">·</span>
+          <span>Riskaliev Murad — NLP Engineer · Mohirdev</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="hud">
+  <span class="counter"></span>
+  <progress class="bar" value="0" max="1"></progress>
+  <span class="hint">← →</span>
+</footer>
+
+<script src="./deck.js" defer></script>
+</body>
+</html>

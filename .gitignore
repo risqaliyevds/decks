@@ -1,0 +1,22 @@
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# QA artifacts — regenerate from screenshot.mjs
+decks/**/screenshots/
+
+# Slidev build output
+decks/**/dist/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Secrets — never commit
+.env
+.env.*
+*.key
+*.pem
