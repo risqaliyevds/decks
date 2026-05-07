@@ -15,6 +15,9 @@ decks/**/dist/
 .idea/
 *.swp
 
+# Scratch / one-off scripts written during work
+.scratch-*
+
 # Secrets — never commit
 .env
 .env.*

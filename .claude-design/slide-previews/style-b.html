@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Style B · Electric Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;overflow:hidden;font-family:'Manrope',sans-serif}
+
+  :root{
+    --bg-dark:#0a0a0a; --bg-white:#ffffff;
+    --accent:#4361ee;
+    --slide-padding: clamp(1.5rem,4vw,4.5rem);
+    --title-size: clamp(2rem, 5.5vw, 5.25rem);
+    --body-size: clamp(0.85rem,1.2vw,1.15rem);
+    --small-size: clamp(0.7rem,0.9vw,0.85rem);
+  }
+
+  .slide{
+    width:100vw;height:100vh;height:100dvh;overflow:hidden;position:relative;
+    display:grid;grid-template-rows: 35% 65%;
+  }
+
+  /* TOP — white panel */
+  .top{
+    background:var(--bg-white);color:var(--bg-dark);
+    padding: var(--slide-padding);
+    display:flex;justify-content:space-between;align-items:flex-start;
+    position:relative;
+  }
+  .top::after{
+    content:"";position:absolute;left:var(--slide-padding);right:var(--slide-padding);bottom:0;
+    height:4px;background:var(--accent);
+    transform:scaleX(0);transform-origin:left;
+    animation: bar 0.9s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  @keyframes bar{to{transform:scaleX(1)}}
+
+  .brandmark{font-weight:800;font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:-0.02em}
+  .brandmark .dot{display:inline-block;width:0.5em;height:0.5em;border-radius:50%;background:var(--accent);margin-right:0.4em;vertical-align:middle}
+  .brandmark .seven{color:var(--accent);font-weight:800}
+
+  .meta{
+    text-align:right;font-size:var(--small-size);letter-spacing:0.15em;text-transform:uppercase;
+    line-height:1.6;color:#666;
+  }
+  .meta .num{font-weight:800;color:var(--bg-dark);font-size:clamp(0.9rem,1.3vw,1.1rem);letter-spacing:0.1em;display:block}
+
+  .institutions{
+    position:absolute;left:var(--slide-padding);bottom:clamp(1rem,2vw,1.75rem);
+    font-size:var(--small-size);color:#999;letter-spacing:0.12em;text-transform:uppercase;
+    display:flex;gap:1.5rem;align-items:center;
+  }
+  .institutions .pill{
+    border:1px solid #e5e5e5;border-radius:99px;padding:0.4rem 0.85rem;
+    background:#fafafa;color:#444;font-weight:500;
+  }
+
+  /* BOTTOM — blue panel */
+  .bottom{
+    background:var(--accent);color:var(--bg-white);
+    padding: var(--slide-padding);
+    display:flex;flex-direction:column;justify-content:center;
+    position:relative;overflow:hidden;
+  }
+  .bottom::before{
+    content:"";position:absolute;right:-10%;top:-30%;
+    width:60%;height:160%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.1), transparent 60%);
+    pointer-events:none;
+  }
+
+  .hero{
+    font-weight:800;
+    font-size:var(--title-size);
+    line-height:1.0;letter-spacing:-0.035em;
+    max-width:90%;
+    position:relative;z-index:1;
+  }
+  .hero em{font-style:normal;background: linear-gradient(transparent 65%, rgba(255,255,255,0.25) 65%);padding:0 0.1em}
+
+  .sub{
+    margin-top:clamp(1.25rem,2vw,2rem);
+    font-size:var(--body-size);font-weight:400;
+    max-width:55ch;color:rgba(255,255,255,0.85);line-height:1.5;
+    position:relative;z-index:1;
+  }
+
+  .speaker-row{
+    margin-top:clamp(1.5rem,2.5vw,2.5rem);
+    display:flex;align-items:center;justify-content:space-between;gap:2rem;
+    position:relative;z-index:1;font-size:var(--small-size);
+  }
+  .speaker{display:flex;align-items:center;gap:0.85rem}
+  .avatar{
+    width:clamp(2.4rem,3.2vw,2.85rem);height:clamp(2.4rem,3.2vw,2.85rem);
+    border-radius:50%;background:var(--bg-white);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:clamp(0.95rem,1.4vw,1.2rem);
+  }
+  .speaker .who{display:flex;flex-direction:column}
+  .speaker strong{font-weight:700;font-size:clamp(0.85rem,1.1vw,1rem);letter-spacing:0}
+  .speaker span{opacity:0.8;letter-spacing:0.05em;text-transform:uppercase;margin-top:0.1rem}
+
+  .schedule{text-align:right;letter-spacing:0.15em;text-transform:uppercase;opacity:0.85}
+
+  .reveal{opacity:0;transform:translateY(20px);animation: up 0.8s cubic-bezier(0.16,1,0.3,1) forwards}
+  .reveal.d1{animation-delay:0.2s}
+  .reveal.d2{animation-delay:0.45s}
+  .reveal.d3{animation-delay:0.7s}
+  .reveal.d4{animation-delay:0.9s}
+  @keyframes up{to{opacity:1;transform:translateY(0)}}
+
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+
+<section class="slide">
+
+  <div class="top">
+    <div class="brandmark reveal d1">crea<span class="seven">7</span>iveai</div>
+    <div class="meta reveal d1">
+      <span class="num">01 / 15</span>
+      Markaziy Bank · 2-kunlik seminar<br>
+      Kun 1 · 9:15–10:15
+    </div>
+
+    <div class="institutions reveal d2">
+      <span class="pill">Raqamli Texnologiyalar Vazirligi</span>
+      <span class="pill">Raqamli Ta'limni Rivojlantirish Markazi</span>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <h1 class="hero reveal d2">
+      Bank sektori uchun<br>
+      <em>sun'iy intellekt</em> asoslari.
+    </h1>
+
+    <p class="sub reveal d3">
+      Sun'iy intellekt, katta til modellari va generativ SI tushunchalari —
+      oddiy bank jarayonlarida qanday qo'llaniladi.
+    </p>
+
+    <div class="speaker-row reveal d4">
+      <div class="speaker">
+        <div class="avatar">R</div>
+        <div class="who">
+          <strong>Riskaliev Murad</strong>
+          <span>NLP Engineer · Mohirdev</span>
+        </div>
+      </div>
+      <div class="schedule">1-modul · Ma'ruza + muhokama</div>
+    </div>
+  </div>
+
+</section>
+
+</body>
+</html>

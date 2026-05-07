@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Style C · Dark Botanical</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;overflow:hidden;background:#0f0f0f;color:#e8e4df;font-family:'IBM Plex Sans',sans-serif}
+
+  :root{
+    --bg:#0f0f0f;
+    --text:#e8e4df;
+    --text-muted:#9a9590;
+    --warm:#d4a574;
+    --pink:#e8b4b8;
+    --gold:#c9b896;
+    --slide-padding: clamp(2rem,5vw,5rem);
+    --title-size: clamp(2.5rem, 6.5vw, 6rem);
+    --body-size: clamp(0.85rem,1.2vw,1.15rem);
+    --small-size: clamp(0.7rem,0.9vw,0.85rem);
+  }
+
+  .slide{
+    width:100vw;height:100vh;height:100dvh;overflow:hidden;position:relative;
+    padding: var(--slide-padding);
+    display:grid;
+    grid-template-rows: auto 1fr auto;
+    background: var(--bg);
+  }
+
+  /* Soft abstract gradient orbs */
+  .orb{
+    position:absolute;border-radius:50%;filter: blur(90px);opacity:0.55;pointer-events:none;
+    animation: float 14s ease-in-out infinite alternate;
+  }
+  .orb.o1{width:38vw;height:38vw;left:-8vw;bottom:-12vw;background:radial-gradient(circle,#d4a574,transparent 70%)}
+  .orb.o2{width:30vw;height:30vw;right:-6vw;top:-8vw;background:radial-gradient(circle,#e8b4b8,transparent 70%);animation-delay:-5s}
+  .orb.o3{width:22vw;height:22vw;left:42%;top:30%;background:radial-gradient(circle,#c9b896,transparent 70%);opacity:0.3;animation-delay:-9s}
+  @keyframes float{from{transform:translate(0,0) scale(1)}to{transform:translate(3%,-2%) scale(1.08)}}
+
+  /* Thin vertical accent line */
+  .axis{
+    position:absolute;left:calc(var(--slide-padding) - 1px);top:var(--slide-padding);bottom:var(--slide-padding);
+    width:1px;background: linear-gradient(to bottom, transparent, var(--warm) 20%, var(--warm) 80%, transparent);
+    opacity:0.4;
+    transform: scaleY(0);transform-origin:top;
+    animation: axis 1s 0.2s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  @keyframes axis{to{transform:scaleY(1)}}
+
+  /* HEADER */
+  header{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    position:relative;z-index:1;
+  }
+  .brand{
+    font-family:'Cormorant',serif;font-style:italic;font-weight:500;
+    font-size:clamp(1.1rem,1.6vw,1.5rem);color:var(--text);letter-spacing:0.02em;
+  }
+  .brand .seven{color:var(--warm);font-weight:600}
+  .meta{
+    text-align:right;font-size:var(--small-size);
+    letter-spacing:0.25em;text-transform:uppercase;color:var(--text-muted);
+    line-height:1.8;
+  }
+  .meta .num{color:var(--warm)}
+
+  /* MAIN */
+  main{
+    align-self:center;justify-self:start;
+    max-width:min(90vw,1100px);
+    padding-left: clamp(1rem,2.5vw,2.5rem);
+    position:relative;z-index:1;
+  }
+  .eyebrow{
+    font-size:var(--small-size);
+    letter-spacing:0.32em;text-transform:uppercase;
+    color:var(--warm);font-weight:500;
+    margin-bottom: clamp(1rem,2vw,1.75rem);
+    display:inline-flex;align-items:center;gap:0.75rem;
+  }
+  .eyebrow::before{content:"";display:inline-block;width:clamp(1.5rem,3vw,2.5rem);height:1px;background:var(--warm)}
+
+  h1{
+    font-family:'Cormorant',serif;
+    font-weight:500;
+    font-size:var(--title-size);
+    line-height:1.02;letter-spacing:-0.01em;
+    color:var(--text);
+    max-width: 18ch;
+  }
+  h1 em{font-style:italic;font-weight:400;color:var(--pink);position:relative}
+  h1 em::after{
+    content:"";position:absolute;left:0;right:0;bottom:0.05em;
+    height:1px;background:var(--pink);
+    transform:scaleX(0);transform-origin:left;
+    animation: underline 1.1s 0.95s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  @keyframes underline{to{transform:scaleX(1)}}
+
+  .lead{
+    margin-top: clamp(1.5rem,2.5vw,2.25rem);
+    font-size:var(--body-size);
+    line-height:1.65;color:var(--text-muted);
+    max-width:54ch;font-weight:300;
+  }
+  .lead .accent{color:var(--text);font-style:italic;font-family:'Cormorant',serif;font-weight:500;font-size:1.1em}
+
+  /* FOOTER */
+  footer{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    position:relative;z-index:1;gap:2rem;flex-wrap:wrap;
+  }
+  .speaker{display:flex;align-items:center;gap:1rem}
+  .avatar{
+    width:clamp(2.5rem,3.5vw,3.2rem);height:clamp(2.5rem,3.5vw,3.2rem);
+    border-radius:50%;
+    background: linear-gradient(135deg,var(--warm),var(--pink));
+    color:var(--bg);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant',serif;font-style:italic;font-weight:600;
+    font-size:clamp(1rem,1.5vw,1.3rem);
+  }
+  .who{display:flex;flex-direction:column;line-height:1.4}
+  .who strong{font-family:'Cormorant',serif;font-style:italic;font-weight:500;font-size:clamp(1rem,1.4vw,1.2rem);color:var(--text);letter-spacing:0.02em}
+  .who span{font-size:var(--small-size);color:var(--text-muted);letter-spacing:0.18em;text-transform:uppercase;margin-top:0.15rem}
+
+  .institutions{
+    text-align:right;font-size:var(--small-size);
+    color:var(--text-muted);letter-spacing:0.18em;text-transform:uppercase;line-height:1.7;
+  }
+  .institutions .label{color:var(--gold);display:block;margin-bottom:0.3rem;letter-spacing:0.3em}
+
+  .reveal{opacity:0;transform:translateY(20px);animation: up 1s cubic-bezier(0.16,1,0.3,1) forwards}
+  .d1{animation-delay:0.15s}
+  .d2{animation-delay:0.4s}
+  .d3{animation-delay:0.65s}
+  .d4{animation-delay:0.85s}
+  .d5{animation-delay:1.1s}
+  @keyframes up{to{opacity:1;transform:translateY(0)}}
+
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+
+<section class="slide">
+
+  <div class="orb o1"></div>
+  <div class="orb o2"></div>
+  <div class="orb o3"></div>
+  <div class="axis"></div>
+
+  <header>
+    <div class="brand reveal d1">crea<span class="seven">7</span>iveai</div>
+    <div class="meta reveal d1">
+      <span class="num">№ 01 / 15</span>
+      Markaziy Bank seminar · Kun 1<br>
+      9:15 — 10:15
+    </div>
+  </header>
+
+  <main>
+    <div class="eyebrow reveal d2">1-modul · Ma'ruza + muhokama</div>
+    <h1 class="reveal d3">
+      Bank sektori uchun<br>
+      <em>sun'iy intellekt</em><br>
+      asoslari.
+    </h1>
+    <p class="lead reveal d4">
+      Sun'iy intellekt, katta til modellari va generativ SI tushunchalari —
+      <span class="accent">oddiy bank jarayonlarida</span> qanday qo'llaniladi.
+    </p>
+  </main>
+
+  <footer>
+    <div class="speaker reveal d5">
+      <div class="avatar">R</div>
+      <div class="who">
+        <strong>Riskaliev Murad</strong>
+        <span>NLP Engineer · Mohirdev</span>
+      </div>
+    </div>
+    <div class="institutions reveal d5">
+      <span class="label">— Hamkorlikda</span>
+      Raqamli Texnologiyalar Vazirligi · Raqamli Ta'limni Rivojlantirish Markazi
+    </div>
+  </footer>
+
+</section>
+
+</body>
+</html>

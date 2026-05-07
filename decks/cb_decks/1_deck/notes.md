@@ -4,24 +4,55 @@
 **Format:** Ma'ruza + muhokama
 **Audience:** Markaziy Bank xodimlari (non-technical)
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev
-**Framework:** Custom HTML (matches Aileaders.uz template look)
+**Framework:** Custom HTML (frontend-slides skill)
+**Slaydlar soni:** 13 ta · har biriga ~4–5 daq
+**To'liq kontent:** [`content.md`](./content.md)
 
-## Design lock-in (series-wide)
+## Outline (one bullet = one slide)
 
-- **Palette:** deep navy radial gradient `#020A24 → #06173B → #0B2D79` (lower-center brighter) · cyan accent `#19B2F0` · bright cyan glow `#1FF2F9` · white `#FFFFFF`
-- **Type:** Inter (300/400/500/700/800/900) — supports Uzbek diacritics
-- **Motif:** cyan accent on key terms; institutional logos top corners; Aileaders.uz mascot bottom-right on title/section dividers; rounded-card panels for content blocks
+1. **Title** — "Bank sektori uchun sun'iy intellekt asoslari: Nazariyadan amaliyotga"
+2. **Hook** — QR-kod orqali demo botni jonli sinab ko'rish
+3. **SI o'zi nima?** — bankir tilida, "super-aqlli stajyor" analogiyasi
+4. **Afsona va Haqiqat** — 2 ta mif vs haqiqat jadvali, qo'rquvni yo'qotish
+5. **Nima uchun aynan hozir?** — 3 ta foyda (vaqt · xatolar · mijoz)
+6. **Jahon banklari tajribasi** — JPMorgan COIN, Morgan Stanley
+7. **Bizning vositalar** — Claude (Miya) · n8n (Lego) · MCP (ko'prik)
+8. **Kodsiz bot qanday ishlaydi?** — 4-bosqichli oqim sxemasi
+9. **Yo'l xaritasi** — 3 ta bot: FAQ → Hujjat tahlilchisi → Kredit maslahatchisi
+10. **Ma'lumotlar xavfsizligi** — yopiq kontur · maxfiylik · anonimlashtirish
+11. **Aqliy hujum** — flipchart bilan jonli brainstorm
+12. **Yakun** — 3 xulosa + 2-modulga ko'prik
+13. **Q&A** — ochiq savol-javob
 
-## Slides
+## Asosiy g'oya
 
-1. **Title** — "Bank sektori uchun [sun'iy intellekt] asoslari" (cyan accent on "sun'iy intellekt") — IN PROGRESS
+Kursning oxirida har bir ishtirokchi o'z bo'limi uchun (kredit, komplaens, mijozlarga xizmat) **ishlaydigan Telegram bot** yasab ketadi — kod yozmasdan.
 
-## Content plan (TBD slides 2+)
+## Vaqt rejimi
 
-Per syllabus:
-- Sun'iy intellekt (SI), LLM va generativ SI tushunchalari (oddiy misollar bilan, masalan, ChatGPT)
-- Bank sektorida SI qanday ishlaydi (real arxitektura: O'zbekiston banklaridagi misollar)
-- SI imkoniyatlari: matn tahlili, hujjatlar bilan ishlash, qarorlarni qo'llab-quvvatlash
-- Cheklovlar: noto'g'ri javoblar, kontekst yetishmasligi
-- SI vs avtomatlashtirish farqi
-- Oddiy bank jarayonini (masalan, mijoz so'rovi) SI yordamida tushuntirish
+| Bloklar | Slaydlar | Vaqt |
+|---|---|---|
+| Kirish + hook | 1–2 | ~8 daq |
+| Tushuncha | 3–4 | ~8 daq |
+| Foyda + dunyo tajribasi | 5–6 | ~9 daq |
+| Texnik blok | 7–8 | ~9 daq |
+| Yo'l xaritasi + xavfsizlik | 9–10 | ~9 daq |
+| Interaktiv | 11 | ~7 daq |
+| Yopilish + Q&A | 12–13 | ~10 daq |
+
+## Design lock-in (series-wide — pickdan keyin to'ldiriladi)
+
+Style preset (frontend-slides Phase 2 dan) — *hali tanlanmagan, A/B/C dan biri (`/.claude-design/slide-previews/`).*
+
+Tanlangach quyidagilar yozib qo'yiladi:
+- **Palette:** *(TBD)*
+- **Type pairing:** *(TBD)*
+- **Motif:** *(TBD)*
+
+## Tayyorgarlik (deck'dan tashqari)
+
+- Demo Telegram bot oldindan ishlab qo'yilgan (n8n + Claude) — slide 2
+- QR kod 2-slaydga va 13-slaydga eksport qilingan
+- Flipchart + markerlar 11-slayd uchun
+- JPMorgan / Morgan Stanley press iqtiboslari yoki logotiplari — slide 6
+- Slide 8 sxemasi (4-bosqichli flow) — chizma yoki animatsiya sifatida tayyorlangan

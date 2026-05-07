@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Style A · Bold Signal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;overflow:hidden;background:#1a1a1a;color:#fff;font-family:'Space Grotesk',sans-serif}
+
+  :root{
+    --slide-padding: clamp(1.5rem, 4vw, 4rem);
+    --title-size: clamp(2rem, 5.5vw, 5rem);
+    --body-size: clamp(0.85rem, 1.2vw, 1.1rem);
+    --small-size: clamp(0.7rem, 0.9vw, 0.85rem);
+  }
+
+  .slide{
+    width:100vw;height:100vh;height:100dvh;overflow:hidden;position:relative;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 20%, rgba(255,87,34,0.08), transparent 60%),
+      linear-gradient(135deg,#1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    padding: var(--slide-padding);
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: clamp(1rem,2vw,2rem);
+  }
+
+  /* grid lines */
+  .slide::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);
+    background-size:60px 60px;
+    pointer-events:none;
+  }
+
+  .num{
+    grid-column:1;grid-row:1;
+    font-family:'Archivo Black',sans-serif;
+    font-size:clamp(2.5rem,5vw,4.5rem);
+    line-height:0.9;letter-spacing:-0.04em;color:#FF5722;
+    z-index:1;
+  }
+  .num small{display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;
+    font-size:var(--small-size);letter-spacing:0.18em;text-transform:uppercase;color:#888;margin-top:0.5rem}
+
+  .nav{
+    grid-column:2;grid-row:1;justify-self:end;
+    display:flex;gap:clamp(0.75rem,1.5vw,1.5rem);align-items:center;
+    font-size:var(--small-size);letter-spacing:0.15em;text-transform:uppercase;z-index:1;
+  }
+  .nav span{opacity:0.35}
+  .nav span.active{opacity:1;color:#FF5722}
+
+  .card{
+    grid-column:1 / -1;grid-row:2;
+    align-self:center;justify-self:start;
+    background:#FF5722;color:#1a1a1a;
+    padding: clamp(1.5rem,3.5vw,3.5rem);
+    border-radius: clamp(0.75rem,1.5vw,1.5rem);
+    max-width:min(85vw,950px);
+    box-shadow: 0 30px 80px -20px rgba(255,87,34,0.4);
+    transform: translateY(20px);opacity:0;
+    animation: cardIn 0.9s 0.2s cubic-bezier(0.16,1,0.3,1) forwards;
+    z-index:1;
+  }
+  .card .chip{
+    display:inline-block;
+    background:#1a1a1a;color:#FF5722;
+    font-family:'Archivo Black',sans-serif;
+    font-size:var(--small-size);letter-spacing:0.15em;text-transform:uppercase;
+    padding:0.4rem 0.9rem;border-radius:99px;margin-bottom:clamp(1rem,2vw,1.75rem);
+  }
+  .card h1{
+    font-family:'Archivo Black',sans-serif;font-weight:900;
+    font-size:var(--title-size);line-height:0.95;letter-spacing:-0.03em;
+    text-transform:uppercase;
+  }
+  .card h1 .light{font-family:'Space Grotesk',sans-serif;font-weight:500;text-transform:none;letter-spacing:-0.01em;font-style:italic;font-size:0.7em;display:block;margin-top:0.4em;color:#1a1a1a}
+  .card p{margin-top:clamp(1rem,1.8vw,1.5rem);font-size:var(--body-size);line-height:1.5;max-width:60ch;color:#1a1a1a;opacity:0.85}
+
+  .footer{
+    grid-column:1 / -1;grid-row:3;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:var(--small-size);color:#888;letter-spacing:0.12em;text-transform:uppercase;z-index:1;
+  }
+  .speaker{display:flex;align-items:center;gap:0.75rem;color:#fff}
+  .speaker .dot{width:0.6rem;height:0.6rem;border-radius:50%;background:#FF5722}
+  .speaker strong{font-family:'Archivo Black',sans-serif;letter-spacing:0.1em}
+
+  @keyframes cardIn{to{transform:translateY(0);opacity:1}}
+
+  .reveal{opacity:0;transform:translateY(15px);animation:up 0.7s cubic-bezier(0.16,1,0.3,1) forwards}
+  .num{animation-delay:0s}
+  .nav{animation-delay:0.1s;opacity:0;transform:translateY(15px);animation:up 0.7s cubic-bezier(0.16,1,0.3,1) 0.1s forwards}
+  .footer{animation-delay:0.7s;opacity:0;transform:translateY(15px);animation:up 0.7s cubic-bezier(0.16,1,0.3,1) 0.7s forwards}
+  @keyframes up{to{opacity:1;transform:translateY(0)}}
+
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+
+<section class="slide">
+
+  <div class="num">
+    01
+    <small>1-MODUL</small>
+  </div>
+
+  <div class="nav">
+    <span class="active">1-modul</span>
+    <span>2-modul</span>
+    <span>3-modul</span>
+    <span>···</span>
+    <span>15-modul</span>
+  </div>
+
+  <div class="card">
+    <span class="chip">Kun 1 · 9:15–10:15</span>
+    <h1>
+      Bank sektori<br>
+      uchun sun'iy<br>
+      intellekt asoslari
+      <span class="light">Ma'ruza + muhokama · Markaziy Bank xodimlari uchun</span>
+    </h1>
+    <p>Sun'iy intellekt, katta til modellari va generativ SI tushunchalari — oddiy bank jarayonlarida qanday qo'llaniladi.</p>
+  </div>
+
+  <div class="footer">
+    <div class="speaker"><span class="dot"></span><strong>Riskaliev Murad</strong> · NLP Engineer · Mohirdev</div>
+    <div>crea<span style="color:#FF5722">7</span>iveai · 2-kunlik seminar</div>
+  </div>
+
+</section>
+
+</body>
+</html>
