@@ -1,95 +1,120 @@
-# 11-deck — Bank uchun sun'iy intellekt agenti dizayni (voice memo)
+# 11-deck — Bank uchun sun'iy intellekt agenti dizayni (RAG chatbot showcase)
 
 **Module:** 11-modul · Kun 2 · 14:00–15:00 (60 daqiqa)
-**Format:** Dizayn seminar (design workshop)
+**Format:** Showcase + dizayn seminar (instructor demos · students DESIGN, do not build)
 **Audience:** Markaziy Bank xodimlari (non-technical)
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev
 **Framework:** Custom HTML (single-file, `index.html`)
-**Stack:** Telegram + Gemini audio + n8n + Google Sheets/Drive
-**Paired bot:** [`bots/02_voice_memo/`](../bots/02_voice_memo/) — voice memo → CRM
+**Stack:** Telegram + Gemini + Google Sheets + Drive + In-Memory Vector Store
+**Paired bot:** [`bots/02_rag_chatbot/`](../bots/02_rag_chatbot/) — 77 node, 14 marshrut, production
+**Live workflow:** `kLcPx1CZX9RwH1z8` · risqaliyevds.app.n8n.cloud
 **Slaydlar soni:** 18 ta · 4 ta faza
-**Atamalar (≥2/modul talab):** **Speech-to-Text (STT)**, **Function Calling / Schema** — slide 5 da kiritiladi, slide 17 da recap
+**Atamalar (≥2/modul talab):** **RAG**, **Embedding** — slide 5 da kiritiladi, slide 17 da recap
 **To'liq kontent:** [`content.md`](./content.md)
 
 ## Outline (one bullet = one slide)
 
-1. **Title** — "Bank uchun AI agenti dizayni" + Kun 2 chip
-2. **Agenda** — 4 faza (Voice bot · STT · Schema · Birga loyihalash)
-3. **Hook** — Jonli voice memo demo: bankir 15 sek gapiradi → CRM rowi paydo bo'ladi
-4. **Voice memo muammosi** — Avval (15 daq qog'oz) vs Hozir (15 sek ovoz) compare
-5. **Lug'at** — STT + Function Calling/Schema (`.dict.dict-2`)
-6. **STT modellari** — Whisper / Gemini Flash / ElevenLabs (`.sec` 3-card)
-7. **Voice bot arxitekturasi** — Telegram → STT → ekstrakt → schema → CRM (`.flow` 5-step)
-8. **Schema dizayn** — JSON shabloni (`.template-box`)
-9. **Schema 4 qoidasi** — Nom · Tip · Required · Misol (`.road.road-4`)
-10. **Banking misoli** — Kredit uchrashuv 8-maydonli schema, real Uzbek audio
-11. **Schema validatsiya** — Schema'siz vs Schema bilan (`.compare`)
-12. **STT xato turlari** — To'g'ri ishlaydi vs Xato qiladi (`.cando`)
-13. **Privacy** — Ovoz qayerda, qancha vaqt, kim eshitadi (`.sec` 3-card)
-14. **Tayyor template** — `bots/02_voice_memo` ko'rsatish (`.s-hook` style schematic)
-15. **Dizayn mashqi** — 3 ta savol stol uchun (`.s-brain`)
-16. **Schema canvas** — 4 katakli worksheet (`.canvas-grid`)
-17. **Closing** — 3 xulosa + lug'at recap (STT / Schema)
+1. **Title** — "Bank uchun AI agenti dizayni · RAG chatbot" + Kun 2 chip
+2. **Agenda** — 4 faza (RAG nima · arxitektura · Production bot · Sizning RAG)
+3. **Hook** — Live RAG bot demo: t.me/bankragbot QR + chat preview ("Avtokredit foizi qancha?" → manba bilan javob)
+4. **Pure LLM muammosi** — uydirma vs manba (compare-rich 2-col)
+5. **Lug'at** — RAG + Embedding (`.dict.dict-2`)
+6. **RAG arxitekturasi** — 4 bosqich (Indexing → Chunking → Embedding → Retrieval+Generation)
+7. **Production RAG bot** — 77 node · 14 marshrut · 2 eshik · Top-K=5 (stat-grid)
+8. **Bank PDF qo'llanma** — Drive folder + Sheets indeks (4 tab)
+9. **Chunk size + overlap** — 800 / 120, visualisation + 3 spec rows
+10. **Banking misol** — "Avtokredit foizi qancha?" → kredit_siyosati.pdf 4.2-band
+11. **Manba tekshiruvi** — har javob audit izi (4 audit row: systemPrompt, a-source, UsageLog, Documents)
+12. **RAG qachon yaxshi/yomon** — `.cando` 2-col
+13. **Privacy** — bank PDF qayerda + korporativ shartnoma + audit log (3 sec)
+14. **Tayyor template** — `bots/02_rag_chatbot/` folder pointer + live workflow ID
+15. **Dizayn mashqi** — 3 ta savol (3 ta hujjat · foydalanuvchi + savol · "topilmadi" qachon)
+16. **RAG pilot canvas** — 5 qator (use case · manba · test · xavf · qaror)
+17. **Closing** — 3 xulosa + lug'at recap (RAG / Embedding)
 18. **Q&A** — murod@mohir.dev
 
 ## Asosiy g'oya
 
-Bankir uchrashuvdan qaytayotgan paytda 15 soniyalik ovoz qoldiradi — bot uni transkript qiladi, mantiqni ajratadi va CRM'ga aniq formatda yozadi. Bugun **dizayn fazasi**: pipelinening har bo'g'inini auditoriya bilan birga loyihalaymiz, schema'ni o'z bo'limiga moslab to'ldiramiz. Kod yozilmaydi — diagramma, JSON shabloni, kanavasi.
+Showcase modul. 9-modulda klassifikator (7 node) qurildi; 11-modul — uning chuqur, manba bilan ishlaydigan versiyasi (77 node, 14 marshrut). Studentslar **qurmaydi** — instructor demosini kuzatadi, RAG'ning architectural daraja tushuniladi, va pilot canvas bilan chiqadi. Tone: "eshitiladigan, ko'riladigan", "qo'l bilan qiladigan" emas.
 
 ## Vaqt rejimi (60 daq)
 
 | Faza | Slaydlar | Vaqt |
 |---|---|---|
 | Title + Agenda | 1–2 | ~3 daq |
-| 01 · Voice bot · "nega kerak" | 3–4 | ~9 daq |
-| 02 · STT · "qanday eshitadi" | 5–6 | ~10 daq |
-| 03 · Schema · "qanday yozadi" | 7–11 | ~17 daq |
-| 04 · Sifat va privacy | 12–13 | ~6 daq |
-| 05 · Birga loyihalash | 14–18 | ~15 daq |
+| 01 · RAG nima · live demo + atamalar | 3–5 | ~10 daq |
+| 02 · RAG arxitekturasi · 4 bosqich + chunking | 6, 9 | ~9 daq |
+| 03 · Production bot · BankRAGBoti shape | 7, 8, 10–13 | ~22 daq |
+| 04 · Sizning RAG · canvas mashqi | 14–17 | ~14 daq |
+| Q&A | 18 | ~2 daq |
 
 ## Atama lug'ati (slide 5 da kiritiladi)
 
 | Atama | Bankir tilida | Misol |
 |---|---|---|
-| **Speech-to-Text (STT)** | Ovozni matnga aylantirish | Telegramdagi 15 sekund ovoz → 2 jumla yozuv |
-| **Function Calling / Schema** | AI'ga aniq formatdagi JSON yozishga majburlash | "customer_name", "decision", "follow_up" maydonlari |
+| **RAG** (Retrieval-Augmented Generation) | AI internetdan emas, faqat sizning bank PDF'idan o'qib javob beradi | "Avtokredit foizi qancha?" → kredit_siyosati.pdf 4.2-band |
+| **Embedding** (vektor ko'rinishi) | Matnni raqamli vakilga aylantirish — yaqin ma'no yaqin topiladi | "avtokredit foizi" ≈ "mashina krediti stavkasi" (cos sim 0.94) |
 
-Closing slide (17) — jamoa bilan birga: "STT — bu nima edi? Schema — bu nima edi?"
+Closing slide (17) — jamoa bilan birga: "RAG = avval manbani top, keyin javob yoz. Embedding = matnni ma'no bo'yicha qidirish."
+
+## Cross-references
+
+- Slide 3 hook QR — bir xil `t.me/bankragbot` 1-modul slide 5 + 9-modul slide 3 bilan
+- Slide 4 (Pure LLM vs RAG) — 3-modul Hallucination atamasi
+- Slide 7 — 9-modul klassifikator (7 node) bilan farqi: 11x katta
+- Slide 11 — UsageLog auditi · 13-modul real production keysga ko'prik
+- Slide 13 — 3-modul Data Masking + Vertex AI Workspace
+- Slide 17 — 9-modul "graduation path" pattern
+
+## Atamalar uniqueness
+
+- **RAG va Embedding** — faqat 11-deck'da rasmiy ravishda dict-card va recap-term sifatida kiritiladi
+- 1-deck slide 5 — `Demo botning ishlash printsipi sifatida` cross-reference (ta'rifsiz)
+- Boshqa decklarda RAG faqat kontekst sifatida tilga olinadi (qayta ta'riflanmaydi)
 
 ## Yangi qo'shilgan minimal CSS
 
 `<style>` blokining oxiriga (locked tokenlarga tegmasdan):
 
-- `.dict.dict-2` — 2-card variant
-- `.road.road-4` — 4-step roadmap
-- `.benefits-4` — 4-card benefits
-- `.sec.sec-4` — 4-card sec
-- `.canvas-grid` + `.canvas-cell` — worksheet 2x2
-- `.template-box` (+ `.tpl-wrap`, `.tpl-meta`, `.ph`, `.role`, `.label`, `.com`) — JSON snippet
-- `.cando` — to'g'ri/xato 2-column
+- `.qr-stack`, `.qr-url`, `.qr-box.has-img` — QR + URL stacked (1-modul slide 5 pattern)
+- `.chat`, `.bubble.user`, `.bubble.ai` — chat bubble preview
+- `.compare-rich` — 2-col Pure LLM vs RAG
+- `.dict.dict-2` — 2-card dict
+- `.flow` (4-step) — RAG architecture
+- `.stat-grid`, `.stat-cell`, `.prod-strip` — production stats panel
+- `.corpus` — Drive + Sheets layout
+- `.chunk-vis`, `.chunk-doc`, `.chunk-spec` — chunking visualisation
+- `.bank-ex`, `.bank-q`, `.bank-a` — banking Q&A example
+- `.audit-list`, `.audit-row` — audit izi
+- `.cando` — RAG good/bad
+- `.sec` — privacy 3-card
+- `.tpl-wrap`, `.template-box` — bot folder template
+- `.pilot-canvas`, `.pilot-row` — RAG pilot canvas (5 rows)
+- `.close-list`, `.recap` — closing + recap
 
 Hech bir `:root` token o'zgartirilmadi.
 
 ## Design lock-in
 
-- **Style:** Bold Signal (style-a) — Archivo Black + Space Grotesk
+- **Style:** Bold Signal — Archivo Black + Space Grotesk + letter-spacing 0.018em
 - **Palette:** to'q ko'k (#020A24 / #06173B) + accent blue (#2563eb / #60a5fa)
 - **Motif:** subtle grid background, blue-gradient highlights, blur-on-transition
-- **Series consistency:** 1–10 deck bilan bir xil tokenlar
-- **r3 / r4 qoidasi:** Screenshot bug oldini olish uchun har slaydda main content `r2` yoki `r3` da; r4 faqat tail accent (footer eslatma) uchun.
+- **Series consistency:** 1–10, 12+ deck bilan bir xil tokenlar (STANDARDS.md)
+- **r3 / r4 qoidasi:** Screenshot bug oldini olish uchun har slaydda main content `r2` yoki `r3` da
 
 ## Tayyorgarlik (deck'dan tashqari)
 
-- Telegram voice memo demo bot ishlab turibdi (n8n + Gemini audio + Sheets) — slide 3
-- Demo voice memo tayyor: Aliyev Vali · avtokredit 200 mln · 12 oy · garov kvartira
-- Backup: agar audio ishlamasa, transkriptni ekrandan o'qib bering
-- Stol uchun bo'sh canvas worksheet (4 katakli A4) — slide 16
-- `bots/02_voice_memo/design/data-schema.md` slide 10 uchun yodda
+- BankRAGBoti ishlab turibdi (Telegram + Gemini + Sheets + Drive + In-Memory vector store)
+- Demo savol tayyor: "Avtokredit foizi qancha?" → kredit_siyosati.pdf · 4.2-band, manba bilan javob
+- Backup: agar bot to'xtab qolsa, screen-recording (15 sek) yoki ekrandan transcript
+- `bots/02_rag_chatbot/design/workflow-graph.md` ochiq tab — slide 7 va 14 uchun
+- n8n cloud ochiq tab — workflow `kLcPx1CZX9RwH1z8` ko'rsatish uchun
 - Vazirlik logotiplari `_shared/` da turibdi
 
 ## Series-wide bog'lanish
 
 - **Avvalgi modul:** [`10_deck/`](../10_deck/) — Agentlar tushunchasi (Tool Use)
-- **Keyingi modul:** [`12_deck/`](../12_deck/) — Murakkab pipeline'lar (shu bot debugging)
-- **Muvofiqlik chuqur:** [`3_deck/`](../3_deck/) — slide 13 (privacy) shu erga ishora qiladi
-- **RAG bilan farqi:** [`9_deck/`](../9_deck/) — RAG matn ustida, voice bot ovoz ustida
+- **9-modul klassifikator bot:** [`9_deck/`](../9_deck/) — bugungi RAG bot uning chuqur versiyasi
+- **Keyingi modul:** [`12_deck/`](../12_deck/) — Murakkab pipeline'lar (RAG bot multi-chain analysis uchun)
+- **Muvofiqlik chuqur:** [`3_deck/`](../3_deck/) — slide 4 (Hallucination), slide 13 (privacy/Data Masking)
+- **Promt engineering:** [`5_deck/`](../5_deck/) — system prompt, few-shot

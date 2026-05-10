@@ -5,12 +5,12 @@
 **Audience:** Markaziy Bank xodimlari (non-technical)
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev
 **Brand:** crea7iveai
-**Stack:** Gemini (LLM) + Embedding + Vector DB + n8n
+**Stack:** Telegram + Gemini + Google Sheets + n8n
 **Slaydlar soni:** 19 ta · 4 ta faza
-**Atamalar (≥2/modul talabi):** **RAG**, **Embedding** — slayd 5 da kiritiladi, slayd 18 da recap
-**Paired bot:** [`bots/01_rag_basics/`](../bots/01_rag_basics/)
+**Atamalar (≥2/modul talabi):** **Classification (Tasniflash)**, **Schema (Sxema)** — slayd 5 da kiritiladi, slayd 18 da recap
+**Paired bot:** [`bots/01_classifier_bot/`](../bots/01_classifier_bot/) — BankYordamchi (7 node, no code)
 
-> Asosiy g'oya: 1-modulda QR bilan ishlagan RAG bot — bugun shu botning ichini ochamiz va har bir ishtirokchi o'z bo'limi uchun o'xshashini quradi.
+> Asosiy g'oya: kechagi RAG bot kuchli edi, lekin murakkab. Bugun har bir ishtirokchi 7 ta node bilan o'z birinchi botini quradi — mijoz xatlarini avtomatik tasniflaydi va to'g'ri operatorga uzatadi.
 
 ---
 
@@ -26,7 +26,7 @@ Kun 2 · 9:00 — 10:00
 Birinchi to'liq SI ish tizimini bosqichma-bosqich quramiz.
 
 **Speaker notes:**
-Auditoriyaga "ikkinchi kun, qo'l ostiga olamiz" tonini bering. Birinchi kun konseptual edi — bugun amaliyot. 1-modulda ko'rgan bot — bugun siz quryapsiz. Modul oxirida har stolda **ishlaydigan** Telegram bot bo'ladi. Slaydda "bosqichma-bosqich" so'ziga urg'u bering — qo'rquv pasayadi.
+Auditoriyaga "ikkinchi kun, qo'l ostiga olamiz" tonini bering. Birinchi kun konseptual edi — bugun amaliyot. Modul oxirida har stolda **ishlaydigan** Telegram bot bo'ladi. Slaydda "bosqichma-bosqich" so'ziga urg'u bering — qo'rquv pasayadi.
 
 ---
 
@@ -35,357 +35,358 @@ Auditoriyaga "ikkinchi kun, qo'l ostiga olamiz" tonini bering. Birinchi kun kons
 **Sarlavha:**
 Mavzuning **yo'l xaritasi**.
 
-**Eyebrow:** Agenda
+**Eyebrow:** Agenda · 9-modul
 
 **4 faza (2×2 grid, klikable card):**
 
-1. **01 — Anatomiya** · ~14 daq
-   RAG nima uchun kerak, qanday ishlaydi. Pure LLM bilan farqi. Modulning kontseptual asosi.
-   *(slaydlar 3–7)*
+1. **01 — Tushuncha** · ~12 daq
+   Bot nima qiladi: erkin javob emas — sof JSON. Tasniflash va Schema atamalari bankir tilida.
+   *(slaydlar 3–6)*
 
-2. **02 — Atamalar** · ichkarida
-   **RAG** va **Embedding** — kunning ikki kalit so'zi. Vektor matematikasi shart emas, ma'noni tushunamiz.
-   *(slaydlar 5–6)*
+2. **02 — 7 ta node** · ~18 daq
+   Telegram → Gemini → Sheets. Har node nima qiladi — alohida ochib ko'ramiz.
+   *(slaydlar 7–13)*
 
-3. **03 — Bosqichli qurish** · ~22 daq
-   Hujjat yig'ish → chunking → embedding → retrieval → generation. Har bosqichni alohida ochib, n8n'da yig'amiz.
-   *(slaydlar 8–13)*
+3. **03 — Live build** · ~20 daq
+   Har stol n8n'da o'z BankYordamchi'ni yig'adi — 15–30 daqiqa, kod yozmasdan.
+   *(slaydlar 14–15)*
 
-4. **04 — Test** · ~21 daq
-   Sifat tekshiruvi, live build (har stol o'z botini quradi), xato tuzog'i, yakun.
-   *(slaydlar 14–19)*
+4. **04 — Yakun** · ~10 daq
+   Sifat: qachon ishlaydi/qachon yo'q, 4 ta xato, mini-recap, lug'at va Q&A.
+   *(slaydlar 16–19)*
 
 **Speaker notes:**
-60 daqiqani 4 fazaga bo'lib ko'rsating. "Anatomiya"ni qisqa, "Bosqichli qurish"ni eng katta blok qilib aniqlang — bu bugungi seminarning yuragi.
+60 daqiqani 4 fazaga bo'lib ko'rsating. "Tushuncha"ni qisqa, "7 ta node"ni eng katta texnik blok, "Live build"ni amaliy yurak qilib aniqlang.
 
 ---
 
-## Slide 3 — Hook · "1-modul demo botini eslang"
+## Slide 3 — Hook · "Kechagi RAG → bugungi classifier"
 
-**Chip:** Live recall · Modul 1
+**Chip:** Live recall · kechagi demo
 
 **Sarlavha:**
-1-modulda ishlatgan bot — **bugun siz quryapsiz**.
+Kechagi RAG bot — kuchli, lekin **murakkab**.
 
 **Vizual elementlar:**
-- Chap tomonda QR-kod katakchasi (1-moduldagi demo botga qaytaradi).
-- O'ng tomonda — eslatma matn va shablonli savol.
+- Chap tomonda QR-kod katakchasi (1-modul demosi · t.me/bankragbot · hali tirik).
+- O'ng tomonda — chat bubble: kechagi RAG (77 node, 2 soat) → bugungi classifier (7 node, 15–30 daq).
 
 **Demo savol (italik):**
-> "Ikkilamchi bozordan avtomobil olish uchun boshlang'ich to'lov qancha va qanday hujjatlar kerak?"
+> "Avtokredit foizi qancha?"
 
 **Tagline:**
-→ Kechagi sehr — bugungi qoida. Ichki sxema ochilyapti.
+→ Kechagi RAG bot — qancha kuchli bo'lsa, shuncha murakkab. Bugun siz oddiyroq, ammo amaliy botni quryapsiz: 15–30 daqiqada.
 
 **Speaker notes:**
-Auditoriyaga 1-modul demosini eslating. Bot bank PDFiga qarab javob bergan edi — hech kim "bu qanday qilingan" deb so'ramadi, jadval qiziq edi. Bugun shu sxemaning ichini ochamiz. 60 soniya, telefonlar bilan QR'ni qaytarib skanerlashlarini ayting (eski demo bot hali tirik). Ammo asosiy fokus — "bugun siz **quryapsiz**". Stolingizdagi noutbukda n8n ochilyapti, bot tokenlar tarqatiladi.
+Auditoriyaga 1-modul demosini eslating. Bot bank PDFiga qarab javob bergan edi — lekin u 77 node, vector store, 2 soatlik qurish edi. Ko'pchiligimiz bunday bilan boshlay olmaymiz. Bugun **birinchi qadam** — 7 node, kod yo'q, 15 daqiqada ishlaydi. Mijoz xatlarini avtomatik tasniflash va to'g'ri operatorga uzatish — bank uchun konkret ish.
 
 ---
 
-## Slide 4 — Pure LLM vs RAG
+## Slide 4 — Erkin javob vs Strukturali javob
 
 **Sarlavha:**
-Oddiy LLM — internet bilimi.
-**RAG** — bizning hujjat.
+Erkin javob — odamga.
+**Strukturali javob** — tizimga.
 
 **Lead:**
-Oddiy LLM umumiy bilimga tayanadi va manbasiz javob berishi mumkin. RAG javobdan oldin bank hujjatidan tegishli bo'lakni topadi va javobni shu manbaga bog'laydi — xato xavfini kamaytiradi, lekin manba sifati va test natijasi bilan tekshirilishi shart.
+Bugungi botning siri shunda: AI ixtiyoriy matn yozmaydi. U faqat aniq maydonlarni to'ldiradi — toifa, mavzu, batafsil, shoshilinchlik. Shu sof JSONni Sheets to'g'ridan-to'g'ri saqlaydi va operatorni topadi.
 
 **Compare bloki:**
-| Pure LLM (internet bilimi) | → | RAG (bizning hujjat) |
+| Erkin javob (odam o'qiydi) | → | Strukturali javob (tizim o'qiydi) |
 |---|---|---|
-| "Avtokredit foizi taxminan 22% atrofida" | | "Tarif №3, b.4: yillik 18%" |
-| Manba yo'q · Eski ma'lumot | | Manba bor · Joriy hujjat · Test + manba havolasi bilan qabul qilinadi |
+| "Avtokredit borasida sizga yordam beraman, foiz stavkasi turlicha bo'lishi mumkin..." | | `{"category":"kredit","subject":"Avtokredit so'rovi","urgency":"medium"}` |
+| Chiroyli matn, lekin tizim o'qiy olmaydi | | Aniq maydonlar · Sheets'ga to'g'ri yoziladi · operator filter avtomatik ishlaydi |
 
 **Speaker notes:**
-3-moduldagi **gallyutsinatsiya** atamasini eslating. Pure LLM — gallyutsinatsiya uchun eshik ochiq. Bot ishonch bilan noto'g'ri foizni aytishi mumkin, bu muvofiqlikda halokat. RAG — bu gallyutsinatsiya muammosining **inzhenerlik yechimi**. Ko'rsating: Bank uchun "balki" javobi noto'g'ri javobdan ham xavfli — chunki mijoz uni ishonchli deb qabul qiladi. Shuning uchun bizga RAG kerak. Ikki ustun orasidagi qarama-qarshilikni ovozda ham bering: "balki" → "Tarif №3, b.4".
+Bu — bugungi ish tizimining yuragi. Mijoz xohlagancha yozadi (har xil so'zlar, har xil grammatika), AI esa **bir xil shaklda** javob beradi. Shu bir xillik tufayli Sheets'ga avtomatik joylanadi va operator topiladi. "Erkin matn — chiroyli; strukturali matn — foydali" g'oyasini ovozda kuchaytiring.
 
 ---
 
-## Slide 5 — Atama lug'ati · RAG + Embedding
+## Slide 5 — Atama lug'ati · Classification + Schema
 
 **Chip:** Bugungi 2 ta atama
 
 **Sarlavha:**
-Kunning ikki kalit so'zi — **RAG** va **Embedding**.
+Kunning ikki kalit so'zi — **Classification** va **Schema**.
 
 **Lead:**
-RAG — usulning umumiy nomi. Embedding — uning ichidagi mexanizm. Vektor matematikasiga kirmaymiz, ma'nosini tushunamiz.
+Classification — bot nima qiladi. Schema — bot qanday formatda javob beradi. Ikkalasi birga — birinchi ish tizimingizning poydevori.
 
 **2 ta dict-card:**
 
-- **RAG** — *Retrieval-Augmented Generation*
-  Bankir tilida: "**avval manbani top, keyin javob yoz**". Bot javob berishdan oldin tasdiqlangan ichki hujjatdan tegishli bo'laklarni topadi, keyin javobni faqat shu bo'laklarga tayangan holda tuzadi.
+- **Classification** — *Tasniflash · so'rovni toifaga ajratish*
+  Bankir tilida: "**kelgan xatni 5 turdan biriga yo'naltirish**". 1000 ta mijoz xati keldi — bot har birini avtomatik kredit / karta / depozit / shikoyat / info dan biriga ajratadi. Operator faqat o'zining toifasini ko'radi.
 
-- **Embedding** — *Matnning ma'no izi*
-  Matn raqamli vektorga aylantiriladi — "avtokredit foizi" va "mashina krediti stavkasi" kabi yaqin ma'noli iboralar bir-biriga yaqin topiladi. Raqamlar modelga bog'liq; slayddagi qiymatlar — soddalashtirilgan misol.
+- **Schema** — *Sxema · qat'iy tuzilgan javob*
+  Bankir tilida: "**AI faqat aniq maydonlarni to'ldiradi**". Erkin matn yozmaydi — har javobda aynan shu 4 ta katak: `category, subject, details, urgency`. Sheets'ning ustun nomlari shu, mos kelishi avtomatik.
 
 **Speaker notes:**
-2 atama, 2 daqiqa. RAG nomini birinchi marta eshitadigan auditoriya bor — har bir harf nimani anglatishini sodda tilda ayting:
-- **R** (Retrieval) — qidiruv. PDFdan kerakli xatboshini topish.
-- **A** (Augmented) — to'ldirilgan. Topilgan xatboshi LLMga qo'shib beriladi.
-- **G** (Generation) — javob yozish. LLM topilgan ma'lumotga qarab javob tuzadi.
-
-Embedding — bu "AIning ma'no kompasi". Keyingi slaydda misol bilan ko'ramiz. 18-slaydda jamoa bilan birga takrorlaymiz.
+2 atama, 2 daqiqa. **Classification** — eski biznes atamasi. Bank ham allaqachon shikoyatlarni "kredit / karta / boshqa" deb ajratadi — qo'lda. Bot shu ishni avtomatik qiladi. **Schema** — yangi atama. AIga "ixtiyoriy javob berma — aynan shu maydonlarni to'ldir" deyishning rasmiy nomi. n8n'da Output Parser qatlami nazorat qiladi — sxemaga mos kelmasa, AI qayta so'raydi. 18-slaydda jamoa bilan birga takrorlaymiz.
 
 ---
 
-## Slide 6 — Embedding mashq · matn → vektor
+## Slide 6 — Schema misoli · matn → JSON
 
 **Sarlavha:**
-**Embedding** — matnni raqamlar tilida ifodalash.
+**Schema** misoli — mijoz xati JSONga aylanadi.
 
 **Lead:**
-Har bir matnga AI 768 yoki 1536 ta raqam beradi. Yaqin ma'noli matnlar — yaqin koordinatalarda. Misol qarang.
+Mijoz qanday yozsa — bot bir xil 4 ta maydonni to'ldiradi. Erkin matn yo'q · faqat tuzilgan ma'lumot.
 
-**3 ta misol kartochka (matn → vektor [soddalashtirilgan]):**
+**3 ta misol qator:**
 
-| Matn | Vektor (qisqartirilgan) | Yaqinlik |
+| Mijoz xati | JSON (Schema bo'yicha) | Toifa |
 |---|---|---|
-| "Avtokredit foizi" | [0.21, 0.84, 0.13, …] | (asos) |
-| "Mashina kreditining stavkasi" | [0.23, 0.81, 0.15, …] | **0.94** ✓ yaqin |
-| "Yangi yil ta'tili" | [-0.40, 0.05, 0.92, …] | 0.12 ✗ uzoq |
+| "Avtokredit olmoqchiman, 50 mln so'mga, 5 yilga" | `{category:"kredit", subject:"Avtokredit so'rovi", urgency:"medium"}` | kredit ✓ aniq |
+| "Kartam yo'qoldi tezda blokirovka qiling!!!" | `{category:"karta", subject:"Yo'qolgan karta", urgency:"high"}` | karta ✓ shoshilinch |
+| "Omonat foizi qancha?" | `{category:"depozit", subject:"Omonat foizi", urgency:"low"}` | depozit ✓ ma'lumot |
 
 **Tagline:**
-→ Savol kelganda: savolni ham vektor qiladi → eng yaqin matnlarni topadi → LLMga uzatadi.
+→ Sheets'ning ustun nomlari shu kalitlarga to'liq mos: category · subject · details · urgency. Saqlash avtomatik.
 
 **Speaker notes:**
-"Mashina krediti stavkasi" va "Avtokredit foizi" — har xil so'zlar, lekin **bir ma'no**. Embedding shu o'xshashlikni raqamlarda ko'rsatadi: 0.94 yaqinlik. "Yangi yil ta'tili" — boshqa ma'no — 0.12 yaqinlik (uzoq). Bu retrievalning poydevori: foydalanuvchi qanday so'z ishlatishidan qat'i nazar, bot hujjatdagi to'g'ri qismni topadi. Vektor matematikasiga kirmang — "yaqin ma'no — yaqin koordinata" — yetadi.
+3 ta haqiqiy misol. Diqqat: har xat har xil tarzda yozilgan (formal, shoshilinch, qisqa savol), lekin chiqish — bir xil shaklda. Bu — Schema'ning kuchi: AI nima qilsa ham, format barqaror. **Urgency** maydoni alohida muhim — `high` shoshilinch keysni darhol ajratadi (yo'qolgan karta), `low` faqat ma'lumot so'rovi (foiz). Shu bilan operator avval shoshilinchni ko'radi.
 
 ---
 
-## Slide 7 — RAG arxitekturasi · 4 bosqich
+## Slide 7 — Classifier arxitekturasi · 7 node
 
 **Sarlavha:**
-RAG — to'rtta **bosqichdan** iborat.
+BankYordamchi — **7 ta node**, bitta yo'nalish.
 
 **Lead:**
-Markazda bitta aniq vendor emas, LLM xizmati turadi. Mashqda Gemini ishlatamiz; bank muhitida model va infratuzilma axborot xavfsizligi, ma'lumot joylashuvi, audit talabi va xarajat bo'yicha tanlanadi.
+Telegram → AI tasniflaydi → Sheets'dan operator topadi → ariza saqlanadi → mijozga javob. Markazda Gemini turadi; har node n8n'da 1–2 daqiqada sozlanadi, kod yo'q.
 
-**Flow (4 step, o'rtadagisi blue gradient brain):**
+**Flow (4 ta blokda 7 node):**
 
-1. 📚 **Indexing** — hujjatlarni yig'ish va tayyorlash
-2. → ✂️ **Chunking + Embedding** — bo'lib, vektorga aylantirish
-3. → 🧠 **Retrieval (Gemini)** — savolga eng yaqin chunklarni topish
-4. → 💬 **Generation** — javob yozish
+1. 💬 **1 · Telegram** — mijoz xatini qabul qiladi
+2. → 🧠 **2 · Gemini** — xatni tasniflaydi · JSON chiqaradi (markazda · brain)
+3. → 📋 **3–4 · Operator** — Sheets'dan filter · birinchisini oladi
+4. → 📤 **5–7 · Saqla + javob** — ariza yoziladi · operator nomi bilan javob mijozga
 
 **Speaker notes:**
-1-modul slayd 8 (RAG flow) — eslang. U yerda 4 bosqichni qisqacha ko'rganmiz. Bugun har biriga alohida slayd bag'ishlaymiz (8–11). Bosh fikr: RAG — bu **bitta sehrgarlik emas**, balki **4 ta bog'langan ish**. Hujjat yig'ish va indekslash — botingiz ishlay boshlashidan **oldin** qiladigan ish. Retrieval va generation — har bir savolda qaytariladigan ish. Tayyorgarlik bir marta, ishlatish million marta.
+Bu slayd butun botning xaritasi. Keyingi 4 slaydda har blokni alohida ochamiz. Asosiy fikr: **bitta yo'nalish, hech qanday shartli o'tish yo'q**. Mijoz xat yozadi → 7 node ketma-ket ishlaydi → mijozga javob qaytadi. Bu — eng oddiy AI workflow shakli, "linear pipeline".
 
 ---
 
-## Slide 8 — Bosqich 1 · Hujjat yig'ish (Indexing)
+## Slide 8 — Bosqich 1 · Telegram trigger
+
+**Chip:** Bosqich 1 / 4 · Telegram trigger
 
 **Sarlavha:**
-**Bosqich 1** — qaysi hujjatlarni AI ko'radi?
+Mijoz xati **qaerdan** keladi?
 
 **Lead:**
-Botingizning bilim doirasi — siz yuklagan hujjatlardan iborat. Boshlash uchun 3 ta manba turi yetadi.
+Eng birinchi node — Telegram trigger. Mijoz botga xabar yozsa, n8n shu joyda "uyg'onadi" va keyingi qadamlarni ishga tushiradi. Sozlash bir martalik.
 
 **3 ta benefit kartochka:**
 
-- 📄 **PDF**
-  Tarif jadvali, shartnomalar, ichki nizomlar. Bank uchun eng tabiiy format.
-  Misol: avtokredit nizomi, ichki tartiblar, AML qoidalari.
+- 🤖 **BotFather token**
+  Telegramda @BotFather ga "/newbot" yozasiz · bot nomi va token oladingiz · n8n credentialiga kiritasiz. 2 daqiqalik ish.
+  Misol: BankYordamchiBot · token: 78034:AA...XYZ
 
-- 📊 **Google Sheets**
-  FAQ ro'yxati, kichik faktlar bazasi. Tezkor o'zgartirish kerak bo'lganda — eng oson manba.
-  Misol: kunlik kurs, filiallar ro'yxati.
+- 🔔 **updates: ["message"]**
+  Trigger faqat oddiy xabarlarga uyg'onadi — komanda, tugma yoki callback emas.
+  Misol: mijoz "Avtokredit kerak" deb yozsa — workflow boshlanadi
 
-- 📝 **Notion / Confluence**
-  Bo'lim ichidagi yo'riqnomalar, jarayon tavsiflari. Allaqachon yozilgan bilim.
-  Misol: yangi xodim onboarding hujjati.
+- 📨 **Chiquvchi ma'lumot**
+  Trigger keyingi node'larga taqdim etadi: chat_id, first_name, message.text.
+  Misol: chat_id: 123456789 · text: "Kartam yo'qoldi"
 
 **Speaker notes:**
-"Garbage in — garbage out". Hujjatlar sifati — botingiz sifatining 70%. Eski tahriridagi PDF, xato bilan to'lgan FAQ — botingiz ham xato javob beradi. Ko'rsating: avval hujjatlarni "tozalash" — kerakli, joriy versiyasini ajratish. Bugun har stol o'z bo'limidan **bitta** PDF tanlaydi (10–15 bet). Mukammallik kerak emas — boshlanish kerak.
+Eng tabiiy savol: "bot tokenini qaerdan olamiz?". @BotFather Telegramning rasmiy bot yaratuvchisi — "/newbot" ni yozsangiz, ikki savol so'raydi (nom va username), keyin token beradi. n8n'da "Telegram Trigger" node'ga shu tokenni kiritasiz. Ishga tushgandan keyin har xat avtomatik n8n'ga uchadi. Production uchun Telegram token — maxfiy, bank ichki sertifikatlash bilan saqlanadi.
 
 ---
 
-## Slide 9 — Bosqich 2 · Chunking
+## Slide 9 — Bosqich 2 · LLM Chain · Gemini tasniflaydi
+
+**Chip:** Bosqich 2 / 4 · LLM Chain · Gemini
 
 **Sarlavha:**
-**Bosqich 2** — hujjatni **bo'laklarga** ajratish.
+Botning **miyasi** — Gemini xatni tasniflaydi.
 
 **Lead:**
-Butun PDFni SIga bera olmaymiz — kontekst oynasi to'lib ketadi. Boshlang'ich sozlama: ~500–800 belgilik **bo'laklar (chunk)**, kichik overlap bilan. Yakuniy sozlama — **test orqali** tanlanadi.
+Basic LLM Chain node ichida Gemini turadi. System prompt unga 5 ta toifani aytadi va sof JSON chiqarishini buyuradi. Output Parser javobni schema bo'yicha tekshiradi — boshqa format chiqsa, qayta so'raydi.
 
 **Compare bloki:**
 
-| Butun PDF (xom) | → | Bo'laklarga (chunk) ajratilgan |
-|---|---|---|
-| Katta hujjat · 1 ta blok | | Boshlang'ich: ~500–800 belgi · kichik overlap bilan |
-| AI hammasini o'qiydi | | AI faqat tegishli bo'laklarni o'qiydi |
-| Sekin · qimmat · sifatni o'lchab bo'lmaydi | | Tanlov tekshiruvi: 20–30 real savolda manba va javob to'g'riligi o'lchanadi |
+✗ **Erkin javob · ishonchsiz:**
+- "Kelgan xatga qarab kredit yoki karta bo'limi bilan bog'lanish kerakdek..."
+- Sheets'ga to'g'ri yozib bo'lmaydi · har xat har xil format
+- Tizim qarshi tomondan o'qiy olmaydi · operatorni avtomatik topib bo'lmaydi
+
+✓ **Schema bo'yicha JSON:**
+- `{"category":"kredit","subject":"...","details":"...","urgency":"medium"}`
+- 5 toifa: kredit · karta · depozit · shikoyat · info
+- temperature: 0.2 — kam ijodkorlik · barqaror tasniflash · har xat bir xil tarzda
 
 **Speaker notes:**
-Bu — RAGning eng underrated qismi. Yomon chunking → yomon RAG. **800 belgi** — odatda yaxshi standart (LangChain RecursiveCharacterTextSplitter). 120 belgilik **overlap** bilan: chunklar bir-biriga ozgina kirib turadi, kontekst yo'qolmaydi. Bu 16-slaydda "tez-tez uchraydigan xato" sifatida qaytib chiqadi. Bot 01 ham aynan 800/120 sozlamada quriladi.
+Bu — botning yuragi. **Basic LLM Chain** — n8n'ning oddiy LLM node'i. Unga uchta narsa biriktiramiz: (1) Gemini Chat Model — javobni kim yozadi, (2) System prompt — qanday qoidalar bilan, (3) Output Parser — JSON sxemasi. **Temperature: 0.2** — past ijodkorlik. Yuqori bo'lsa AI har xil javob beradi, biz bir xillik xohlaymiz. System prompt to'liq matni paired bot folder'ida (`prompts/system-prompt.md`).
 
 ---
 
-## Slide 10 — Bosqich 3 · Embedding va saqlash
+## Slide 10 — Bosqich 3 · Operator topish · Sheets'dan o'qish
+
+**Chip:** Bosqich 3 / 4 · Operatorni topish
 
 **Sarlavha:**
-**Bosqich 3** — har chunkni vektorga aylantirib, **vector DB**ga saqlash.
+Toifaga mos **operatorni** Sheets'dan olamiz.
 
 **Lead:**
-Bu — bir martalik tayyorgarlik bosqichi. Hujjat o'zgarmaguncha qayta-qayta qilmaymiz.
+Gemini "kredit" deb ajratdi — endi Operators jadvalidan kredit toifasidagi faol operatorni topish kerak. Filter ikki shart bilan ishlaydi: kategoriya + active=TRUE.
 
 **Flow (3 step):**
 
-1. ✂️ **Chunk** — "Avtokredit foizi yillik 18%..."
-2. → 🔢 **Embedding modeli** — matn → vektor (raqamli "ma'no izi")
-3. → 🗄️ **Vector DB** — pgvector / Pinecone / Chroma — har chunk va vektori saqlanadi
+1. 📋 **Read Operators** — Sheets node · Operators jadvalini o'qiydi
+2. → 🔍 **Filter** — `category={{$json.category}} VA active=TRUE` (markazda · brain)
+3. → 👤 **Pick Operator** — Code node · birinchi qatorni oladi · bo'sh bo'lsa "Tayinlanmagan"
 
 **Tagline:**
-→ **Muhim qoida:** hujjatni saqlashda ham, savolni qidirishda ham bir xil embedding modeli ishlatiladi. Indekslash bir marta — qidirish million marta.
+→ Operators jadvalini siz to'ldirasiz — bo'limga yangi xodim qo'shilsa satr qo'shasiz, ketsa active=FALSE qilasiz. Bot sizning sozlamangizni quvib boradi.
 
 **Speaker notes:**
-Embedding modeli muhim — ishlatishda **bir xil model** ikkala tomonda turishi kerak (saqlashda va savol qidirishda). Aks holda vektorlar bir-biriga mos kelmaydi va retrieval xato qiladi. Bot 01 da `gemini-embedding-001` ishlatamiz, hammasida bir xil. Vector DB esa — saqlovchi joy. Keyingi slaydda 3 ta variant.
+Bu — botning eng "amaliy" qismi. **Operators jadvali — siz boshqaradigan ma'lumot**. Hech qanday kod, hech qanday cron, hech qanday admin paneli kerak emas: Google Sheets ochilgan, satrni tahrirlaysiz, bot keyingi xatdayoq yangi qatorni ishlatadi. Code node'da fallback: agar sheet bo'sh bo'lsa yoki active=FALSE bo'lsa, "Tayinlanmagan" yoziladi va admin keyin qo'lda biriktiradi.
 
 ---
 
-## Slide 11 — Bosqich 4 · Savol kelganda
+## Slide 11 — Bosqich 4 · Saqlash + javob yuborish
+
+**Chip:** Bosqich 4 / 4 · Saqlash + javob
 
 **Sarlavha:**
-**Bosqich 4** — savol kelganda **4 ta** harakat.
+Ariza **saqlanadi**, mijozga javob qaytadi.
 
 **Lead:**
-Foydalanuvchi savol berdi. Ichida nima bo'ladi:
+Operator topildi — endi 3 ta yakuniy node. Applications jadvaliga to'liq satr qo'shamiz, javob matnini tuzamiz va Telegram orqali mijozga jo'natamiz.
 
-**Flow (4 step):**
+**Flow (3 step):**
 
-1. 💬 **Savol** — "Avtokredit foizi qancha?"
-2. → 🔢 **Embedding** — savolni vektorga aylantirish
-3. → 🔍 **Yaqin bo'laklar** — vektor DB'dan eng yaqin chunklar topiladi
-4. → 🧠 **Generation** — topilgan bo'laklarga tayanib javob + manba
+1. 📥 **Append Application** — Sheets'ga to'liq satr: vaqt, mijoz, toifa, mavzu, operator
+2. → ✍️ **Format Reply** — Set node · Uzbek matn shabloni: "Salom! Operatoringiz: ..."
+3. → 📤 **Telegram Send** — mijozga javob jo'natiladi · operator nomi va kontakti bilan (markazda · brain)
 
 **Tagline:**
-→ Tezlik deploymentga bog'liq (model, tarmoq, DB). Bank uchun asosiy metrika — **javob va manba to'g'riligi**, sekundlar emas.
+→ Sheets ustun nomlari JSON kalitlariga to'liq mos · autoMapInputData avtomatik joylaydi · Code node yozish shart emas.
 
 **Speaker notes:**
-Bu — har savol uchun qaytariladigan oqim. Top-3 — odatiy boshlang'ich, top-5 ham ishlaydi. Top-1 — kam, top-10 — shovqin (xato javob xavfi). Generation bosqichida Gemini'ga "**faqat berilgan chunklar asosida**" deb aniq aytamiz (system prompt). Topilmasa — "topilmadi" deydi, taxmin qilmaydi. Bu — gallyutsinatsiyaga qarshi himoya devori.
+Yakuniy 3 node — eng oddiy. **Append Application** Sheets'ning ustun nomlarini JSON kalitlariga avtomatik moslashtiradi — qo'lda bog'lanish yo'q. **Format Reply** — oddiy matn shabloni: `"Salom, {{user_name}}! Sizning operator: {{operator_name}}, kontakt: {{operator_contact}}. 24 soat ichida bog'lanamiz."`. **Telegram Send** — chatId Trigger'dan olinadi, text — Format Reply'dan. Ish tugadi.
 
 ---
 
-## Slide 12 — Vector DB tanlash
+## Slide 12 — Google Sheets schema · Operators + Applications
 
 **Sarlavha:**
-Vector DB — 3 ta nomzod, 4 mezon bilan tanlanadi.
+Botning butun "xotirasi" — **2 ta varaq**.
 
 **Lead:**
-"Eng yaxshi" bitta javobi yo'q. Qaror 4 mezon bilan olinadi: **ma'lumot qayerda saqlanadi** · **audit log bormi** · **jamoa qaysi texnologiyani qo'llab-quvvatlay oladi** · **yuklama va xarajat**.
+Bitta Google Sheets fayli, ikki tab. Birinchisini siz to'ldirasiz (operatorlar bo'limga ko'ra), ikkinchisini bot to'ldiradi (har mijoz xati). Database yo'q · Drive yo'q · ortiqcha integratsiya yo'q.
 
 **3 ta sec kartochka:**
 
-- 🐘 **Supabase pgvector**
-  PostgreSQL ekotizimi bor jamoalar uchun nomzod. O'zingizning serveringizda turadi.
-  Tavsiya: Postgres ekotizimi bor jamoa.
+- 👥 **Operators (siz to'ldirasiz)**
+  Har toifaga kim mas'ul · 6 ustun: operator_id, name, category, contact, active, notes.
+  Misol: Aziza Karimova · kredit · +998 90 ... · TRUE
 
-- 🌲 **Pinecone**
-  Boshqariladigan servis kerak bo'lsa nomzod. Ma'lumot bulutda — muvofiqlik tekshiruvidan keyin.
-  Tavsiya: muvofiqlik tasdig'idan keyin.
+- 📥 **Applications (bot to'ldiradi)**
+  Har mijoz xati — bir satr · 11 ustun: timestamp, chat_id, user_name, category, subject, details, urgency, status, operator_name, operator_contact.
+  Misol: demo paytida varaqni o'zgartirmang — bot yozyapti
 
-- 🧪 **Chroma / In-Memory**
-  O'quv mashqi va prototip uchun. n8n ichida tayyor turadi — bugungi mashqda shu tanlov.
-  Tavsiya: mashq · prototip · production qarori emas.
+- ⚙️ **Avtomatik bog'lanish**
+  Sheets ustun nomlari JSON kalitlariga aynan mos · n8n autoMapInputData rejimida ishlaydi.
+  Misol: yangi toifa qo'shsangiz — Operators'ga satr qo'shing, system prompt'ga bandni qo'shing — kod tegmaydi.
 
 **Speaker notes:**
-Bugungi mashqda **In-Memory** vector store ishlatamiz (n8n tomonidan beriladi, bot 01 shu sxemada qurilgan). Sabab: hech qanday qo'shimcha sozlash kerak emas, n8n workflow ichida turadi. Production uchun Supabase pgvector — bank uchun sertifikatlangan, mahalliy serverda turadi. Pinecone — tezroq, lekin ma'lumot bulutda. Tanlovni muvofiqlik bo'limi bilan kelishish kerak (3-modulga ko'prik).
+Bank uchun bu eng muhim slayd: **bot ma'lumotlari qaerda**. Javob — bitta Google Sheets fayl. Maxfiylikka mos: bank o'z hisobida, kirish huquqi bo'limning admin xodimida. Mijoz ma'lumoti tashqi serverga chiqmaydi (faqat Gemini API'ga xatning matni jo'natiladi — uni production'da PII strip bilan tozalash mumkin). Operators jadvalini to'ldirish — administrator ishi, kod o'zgartirish kerak emas.
 
 ---
 
-## Slide 13 — Production arxitektura · BankRAGBoti
+## Slide 13 — Bot xatni qanday qayta ishlaydi · 4 qadam
 
-**Chip:** BankRAGBoti · production · n8n
+**Chip:** BankYordamchi · mijoz yo'li · 4 qadam
 
 **Sarlavha:**
-Real bot — **9 node Q&A oqimi** + 4 ta AI subkomponenti.
+Bot xatni **qanday qayta ishlaydi**?
 
 **Lead:**
-Stoldagi 5 node — boshlanish. Production bot Telegramdan kirish, ruxsatni tekshirish, marshrut, RAG va admin oqimini bitta workflow'da boshqaradi.
+Mijoz Telegramga xat yozadi. Bot to'rt qadam — AI tasniflaydi · operator topiladi · ariza saqlanadi · javob qaytadi. Hech qaysi qadamda kod yozilmaydi.
 
-**3 tier — production architecture:**
+**4 qadam (journey pattern):**
 
-```
-INGRESS (5 node)
-Telegram Trigger → Parse Input → Lookup Admin → Compute Route → Route Switch (14)
-                                                                         ↓ Q&A (1/14)
+1. 💬 **Mijoz yozadi**
+   Telegram orqali bo'sh matn — har xil tarzda.
+   *"Kartam yo'qoldi tezda blokirovka qiling!!!"*
 
-Q&A CORE — RAG ishlaydigan joy (LangChain agent + 4 subkomponent)
-┌──────────────────┐   ┌──────────────────────┐
-│   Q&A AI Agent   │ ← │ Gemini Chat Model    │ (LLM)
-│  (LangChain)     │ ← │ Bank PDF Search      │ (RAG tool)
-│                  │   │  ↳ Vector Store      │ (in-memory)
-│                  │   │  ↳ Gemini Embeddings │ (768-d)
-└──────────────────┘   └──────────────────────┘
+2. → 🧠 **AI tasniflaydi** *(brand-step · ko'k)*
+   Gemini xatni o'qiydi va schema bo'yicha JSON chiqaradi.
+   → category: karta · urgency: high
 
-EGRESS (2 node)
-QA Format Reply → Send Reply → Foydalanuvchi
-```
+3. → 👤 **Operator topiladi** *(brand-step · ko'k)*
+   Sheets'dan toifaga mos faol operator olinadi.
+   → Bekzod Rahimov · +998 91 234 56 78
 
-**Meta chiplari:**
-- 77 node · butun workflow
-- 14 marshrut · Q&A · admin oqimi (Add / Delete / Reindex / Stats)
-- Stol mashqi: `../bots/01_rag_basics` · workflow: BankRAGBoti
+4. → 📤 **Javob yuboriladi**
+   Ariza saqlanadi, mijozga operator nomi bilan javob qaytadi.
+   *"Sizning operator: Bekzod Rahimov · 24 soat ichida bog'lanadi"*
+
+**Atama tags:**
+- **Classification** = 2-qadam · xatni 5 toifadan biriga ajratish
+- **Schema** = JSON shakli · category, subject, details, urgency
+
+**Production line:**
+Bu — birinchi ish tizimingiz. 7 ta node, kod yo'q, 15–30 daqiqada qurasiz. Stol mashqi: `../bots/01_classifier_bot`.
 
 **Speaker notes:**
-Bu slayd — qoidaning kuchini ko'rsatadi: Q&A oqimida 9 ta node bor, lekin yarmi RAG bilan emas, **ruxsat boshqaruvi** bilan band (Lookup Admin, Compute Route, Route Switch). Production bot — bu hech qachon "5 node" emas: u hujjatni kim qo'sha oladi, kim ko'ra oladi, kim o'chira oladi degan savollarga javob bergan tizim.
-
-Q&A CORE qismi — markaz. Bir narsa diqqat bilan: AI Agent **o'zi qaror qabul qilmaydi** — u tooliga (Bank PDF Search) "manba top" deb buyuradi, manba topilsa, javobni faqat shu manbaga tayanib yozadi. Embedding va Vector Store — Bank PDF Search'ning ichki mexanizmi: matn qanday topiladi.
-
-Stollarga: `../bots/01_rag_basics/` — bu workflow'ning soddalashtirilgan o'quv versiyasi. Production workflow ID: `kLcPx1CZX9RwH1z8` (BankRAGBoti). Stol bot'ini muvaffaqiyatli yig'gandan keyin, production'ga o'tish — Lookup Admin, Route Switch va admin oqimini qo'shish demakdir.
-
-Vaqt: 5-6 daqiqa. Ko'rsating, savollarga javob bering, keyin slide 14 (Quality / CANDO).
+Slayd 7 node arxitekturasini "bankir tilida" yana bir bor takrorlaydi. Endi auditoriya texnik tafsilotlardan emas, **mijoz tajribasidan** qaraydi. Yo'qolgan karta misolida "high" urgency'ning mantiqini ko'rsating: shoshilinch shikoyat → operator ro'yxatining boshida ko'radi. Atama tag'lar — ko'rinib turgan ko'prik (5-slayd lug'ati shu yerda amalda).
 
 ---
 
-## Slide 14 — Sifat tekshiruvi · RAG qachon ishlaydi?
+## Slide 14 — Sifat tekshiruvi · Classifier qachon yaxshi / qachon yomon
 
 **Sarlavha:**
-RAG qachon ishlaydi — qachon **ishlamaydi**.
+Classifier **qachon ishlaydi** — qachon ishlamaydi.
 
 **Lead:**
-Hech bir vosita universal emas. RAG'ning kuchli va zaif tomonini bilsak — kutishlarni to'g'ri belgilaymiz.
+Tasniflagich — bitta aniq vazifaga mo'ljallangan vosita. Kuchli va zaif tomonni bilsak — qaysi xatlar uchun ishlatib, qaysilarini insonga uzatishni to'g'ri belgilaymiz.
 
 **2 ta cando ustun (5+5):**
 
 ✓ **Yaxshi ishlaydi:**
-- Hujjatda aniq yozilgan faktlar (foiz, summa, sana)
-- "Qayerda yozilgan?" tipidagi savollar
-- Shartnoma bandlari, qoidalar, tariflar
-- FAQ tipidagi takrorlanuvchi savollar
-- Bir mavzu ichidagi 5–10 betlik hujjatlar
+- Toifalar aniq va kam (5–7 ta)
+- Bitta xatda — bitta niyat (kredit yoki karta)
+- Strukturali ma'lumot kerak (Sheets, CRM ga yozish)
+- Triage / yo'naltirish — operatorga uzatish
+- Takrorlanadigan, oddiy mijoz xatlari
 
 ✗ **Yomon ishlaydi:**
-- Bir nechta hujjatlarni taqqoslash ("qaysi tarif foydaliroq?")
-- Hisob-kitob talab qiladigan savollar
-- Muddati o'tgan hujjat (RAG bilmaydi)
-- Real-time ma'lumot (bugungi kurs)
-- Mantiqiy zanjir bo'yicha xulosa chiqarish
+- Bir xatda 2–3 niyat ("kredit + karta + shikoyat")
+- Toifalar chegarasi noaniq (kredit/lizing farqi)
+- Mijozga aniq javob kerak — manba bilan (RAG kerak)
+- Hisob-kitob, taqqoslash, ko'p qadamli savol
+- 50+ toifa · "agent" yondashuvi to'g'riroq (10-modul)
 
 **Speaker notes:**
-Bu — 1-modul slayd 7 (Can/Cannot) ning RAG-ga moslashtirilgan versiyasi. Auditoriyaga ishonch beradi: "men botga nima ishonib topshira olaman?". Birinchi ustun — RAG **kuchli** joyi. Ikkinchi ustun — agent yoki pipeline kerak (10–12 modullarga ko'prik). Misol bilan tasdiqlang: "Qaysi tarif foydaliroq?" — bu **hisob-kitob va taqqoslash**, RAG yetmaydi. 10-modulda agent qo'shamiz, **Tool Use** bilan kalkulyator chaqiramiz.
+Bu — bot xaritasini to'g'ri belgilash uchun slayd. **Classifier — triage vositasi**, javob mashinasi emas. Mijoz "kreditim haqida" deb yozsa — bot kredit operatoriga uzatadi, ammo o'zi javob bermaydi. Agar mijoz aniq javob istasa (foiz, shartlar) — RAG kerak (11-modul). Agar mijoz bir nechta savol bersa — agent kerak (10-modul). Bu modul — eng oddiy holat: **bitta xat → bitta toifa → bitta operator**. Bank xizmati uchun bu hali ham juda foydali — chunki 80% xatlar shu shaklda.
 
 ---
 
 ## Slide 15 — Live build · stol mashqi
 
-**Chip:** Interaktiv · Stollar bo'yicha
+**Chip:** Live build · Stollar bo'yicha · 15–30 daq
 
 **Sarlavha:**
-Endi navbat **sizga** — har stol o'z botini quradi.
+Endi navbat **sizga** — har stol o'z BankYordamchi'sini yig'adi.
 
 **3 ta savol (s-brain pattern):**
 
-- **01** — Sizning bo'limingizdan **qaysi PDFni** botga yuklaysiz? (Bitta, 10–15 bet.)
-- **02** — Test uchun **3 ta savol** o'ylab ko'ring. Botning natijasini real bilim bilan solishtirasiz.
-- **03** — Ishlamasa — qaysi bosqich xato qildi? Chunking? Retrieval? Prompt?
+- **01** — n8n'da **7 ta node** ulang: Telegram trigger → LLM Chain → Sheets read → Code → Sheets append → Set → Telegram send.
+- **02** — Operators sheet'iga **5 ta operatorni** kiriting — har toifaga bittadan (kredit, karta, depozit, shikoyat, info).
+- **03** — Telegram'dan **3 ta xat** yuboring (kredit · karta yo'qoldi · omonat). Sheets'ga to'g'ri toifa va to'g'ri operator yozilishini tekshiring.
 
 **Tagline:**
-→ 10 daq qurish · 5 daq test · 3 daq stollararo hisobot.
+→ 15 daq qurish · 10 daq test va sozlash · 5 daq stollararo hisobot.
 
 **Speaker notes:**
-Modulning amaliy yuragi. 30 daqiqa, har stolda 4–5 kishi. Vazifa: USER pathni n8n'da yig'ish (bot 01 shabloni klonlangan), o'z PDFlarini /add_doc orqali yuklash, 3 ta test savol berish. Yordamga 1–2 ta yordamchi bilan yuring (orchestrator). Hisobot bosqichida har stol qisqacha aytadi: PDF nima edi, qaysi savol yaxshi ishladi, qaysi savol — yo'q. Bu auditoriyada o'z-o'zidan paydo bo'lgan retrospektiv. Eng kerakli bilim shu yerdan keladi, slaydlardan emas.
+Modulning amaliy yuragi. 30 daqiqa, har stolda 4–5 kishi. Vazifa: bot 01 shabloni klonlangan n8n'da 7 node'ni ulash, Operators sheet'ini to'ldirish, 3 ta test xat yuborish. Yordamchilar (1–2 nafar) stol bo'yicha yuradi. Hisobot bosqichida har stol qisqacha aytadi: qaysi xat eng yaxshi tasniflandi, qaysi xat — chalkashlik kelirdi.
 
 ---
 
@@ -394,47 +395,47 @@ Modulning amaliy yuragi. 30 daqiqa, har stolda 4–5 kishi. Vazifa: USER pathni 
 **Sarlavha:**
 4 ta xato — **oldindan** bilsak, oldini olamiz.
 
-**4 ta myth qator (afsona ↔ tuzatish):**
+**4 ta myth qator (xato ↔ tuzatish):**
 
-- ✗ **Xato:** Chunk hajmi juda katta — "10 betlik bo'lak, kontekst yetadi"
-  ✓ **Tuzatish:** ~500–800 belgilik bo'lak + kichik overlap. Katta chunk → noaniq retrieval, sekin generation.
+- ✗ **Xato:** Gemini JSON o'rniga erkin matn qaytaradi · markdown bilan ```json o'raydi
+  ✓ **Tuzatish:** System prompt'ga aniq: "faqat sof JSON, markdown belgilari yo'q". Output Parser'ni yoqing — sxemaga mos kelmasa qayta so'raydi.
 
-- ✗ **Xato:** Saqlash va qidirishda **har xil** embedding modeli
-  ✓ **Tuzatish:** Bir xil model ikkala tomonda. Aks holda vektorlar mos kelmaydi.
+- ✗ **Xato:** Toifa Sheets'dagidan boshqa nom bilan chiqadi — "Kredit" yoki "credit" (Operators'da kredit)
+  ✓ **Tuzatish:** 5 ta toifa nomini tek shaklda yozing — kichik harf, lotin: kredit/karta/depozit/shikoyat/info. Sheets ham xuddi shu format.
 
-- ✗ **Xato:** Top-K ni "ko'r-ko'rona" qo'yish — sinov yo'q
-  ✓ **Tuzatish:** Top-3 dan boshlang, keyin **test qiling**. Manba o'tkazib yuborilsa → Top-K yoki chunk hajmini oshiring; ortiqcha shovqin → Top-K ni kamaytiring.
+- ✗ **Xato:** Toifaga mos operator yo'q — Operators sheet bo'sh yoki active=FALSE
+  ✓ **Tuzatish:** Code node'da fallback: bo'sh bo'lsa "Tayinlanmagan" yoziladi. Har toifaga kamida 1 ta faol operator. Ariza baribir saqlanadi — admin qo'lda biriktiradi.
 
-- ✗ **Xato:** "Topilmadi" javobiga ruxsat bermaslik
-  ✓ **Tuzatish:** System prompt'ga: "manbada yo'q bo'lsa — 'topilmadi' deb ayt". Gallyutsinatsiyaning oldini oladi.
+- ✗ **Xato:** Sheets ustun nomlari JSON kalitlariga mos kelmaydi · qatorlar bo'sh tushadi
+  ✓ **Tuzatish:** Ustun nomlari aynan: category, subject, details, urgency, operator_name... · autoMapInputData rejimi avtomatik joylaydi.
 
 **Speaker notes:**
-Bu — orchestrator sifatida o'zim eng ko'p ko'rgan 4 xato. Birinchi va to'rtinchi — eng halokatli. "10 betlik chunk" — bot sekin va xato. "Topilmadi" javobiga ruxsat bermaslik — bot **o'ylab topishni boshlaydi** (gallyutsinatsiya, 3-modul). System prompt'da aniq band yozish — bot 01 prompts/system-prompt.md da namuna bor.
+Bu — orchestrator sifatida o'zim eng ko'p ko'rgan 4 xato. Birinchi (markdown bilan o'rash) — eng halokatli, butun pipeline buziladi. To'rtinchi (ustun nomlari) — eng noaniq, satr saqlanadi lekin bo'sh keladi. Har xatga aniq tuzatish bering — "shu yerda to'xtang" emas, "shu kombinatsiyani yoqing".
 
 ---
 
 ## Slide 17 — Mini-recap · bugun → keyin
 
 **Sarlavha:**
-Bugun siz quryapsiz —
-ertaga **agent**ga aylanadi.
+Bugun classifier —
+keyin **agent va RAG**.
 
 **Lead:**
-Bugungi RAG bot — siz qurgan birinchi to'liq AI ish tizimi. Hozir oddiy, ammo tez kengayadi.
+Bugungi BankYordamchi — siz qurgan birinchi to'liq SI ish tizimi. 7 ta node · sof JSON · operator triage. Tez ishlaydi va tez kengayadi.
 
-**3 ta benefit kartochka:**
+**3 ta recap-mini kartochka:**
 
-- 🟢 **Bugun**
-  RAG bot · 5 node · USER + ADMIN path · ichki PDF bilim manbai.
+- 🟢 **Bugun · 9-modul · BankYordamchi classifier**
+  7 node · Telegram + Gemini + Sheets · 5 toifaga ajratadi · operator topadi · ariza saqlaydi · javob qaytaradi.
 
-- 🔵 **Bo'lim uchun**
-  Bo'limdagi takrorlanuvchi savollarning qaysi qismi RAGga mos kelishini **test savollari orqali o'lchaysiz** — keyin pilotga.
+- 🔵 **Bo'lim uchun · Triage avtomatlashtiriladi**
+  Mijoz xatlarining katta qismi takrorlanadi — bot ularni avtomatik toifaga ajratadi va to'g'ri operatorga uzatadi. Inson faqat murakkab keyslar bilan ishlaydi.
 
-- 🟡 **10-modul · keyingi qadam**
-  Bugungi botga **fikrlash qatlami** (agent) qo'shamiz: kerakli asbobni tanlash, ko'p qadamli rejalashtirish — **Tool Use**.
+- 🟡 **10–11-modul · keyin · Agent + RAG**
+  Bugungi botga fikrlash qatlami (10-modul · Agent · Tool Use) va hujjatdan javob (11-modul · RAG · Embedding) qo'shamiz.
 
 **Speaker notes:**
-Bu — 10-modulga ko'prik. Bugungi bot **statik** — savol kelsa, RAG ishlaydi, javob qaytaradi. Agent — **dinamik**: bot fikrlaydi, kerakli asbobni tanlaydi (Tool Use), bir nechta qadam qo'yadi. Lekin barcha agentlarning ostida shu RAG turadi. Bugungi qurganingiz — keyingi 5 modulning **fundamenti**. Auditoriyaga ko'prik tashlang: "10-modulda biz shu botga 'fikrlash qatlamini' qo'shamiz".
+Bu — keyingi 2 modulga ko'prik. Bugungi bot **statik, oddiy va to'g'ri** — har xat → toifa → operator. 10-modulda agent qo'shamiz (Tool Use bilan kalkulyator yoki ma'lumot bazasini chaqirish), 11-modulda RAG qo'shamiz (hujjatdan aniq javob). Lekin barcha kengayishlar shu birinchi ish tizimi ustiga quriladi. **Bugun siz qo'shilgan birinchi ehtimollik: AI bilan ishlaydigan ish jarayoni qurish.**
 
 ---
 
@@ -445,24 +446,24 @@ Bugungi mashg'ulotdan **3 ta asosiy** xulosa.
 
 **3 ta xulosa (close-row, blue accent border-left):**
 
-- 💡 **RAG = avval manbani top, keyin javob yoz.** Gallyutsinatsiya xavfini kamaytiradi, lekin **nolga tushirmaydi** — har bot test savollari + manba havolasi bilan qabul qilinadi.
-- 💡 **4 bosqich:** indexing → chunking + embedding → retrieval → generation. Hammasi n8n'da, 5 ta node bilan.
-- 💡 **Bugungi yakun — ishlagan bot emas, qaror varaqasi.** Har stol topshiradi: hujjat, 5 ta test, javob/manba natijasi, xavflar, keyingi qaror.
+- 💡 **Classification + Schema = birinchi ish tizimingiz.** Mijoz erkin yozadi · AI sof JSON chiqaradi · tizim avtomatik triage qiladi.
+- 💡 **7 ta node, kod yo'q.** Telegram + Gemini + Sheets · 15–30 daqiqada quriladi · har bo'lim o'z toifa va operator ro'yxatini kiritadi.
+- 💡 **Bugungi yakun — ishlagan bot va qaror varaqasi.** Har stol topshiradi: bo'lim, toifalar, test xatlari natijasi, xavflar, keyingi qaror.
 
-**RAG pilot qaror varaqasi (5 mezon, har stol):**
-1. **Use case** — qaysi bo'lim, qaysi savollar?
-2. **Manba** — hujjat nomi, versiya sanasi, egasi.
-3. **Test** — nechta savoldan nechtasi to'g'ri manbani topdi?
-4. **Xavf** — maxfiylik, xato javob, eskirgan hujjat.
+**Classifier pilot qaror varaqasi (5 mezon, har stol):**
+1. **Bo'lim** — qaysi bo'lim · mijoz oqimi qancha?
+2. **Toifalar** — 5 ta toifa yetadimi · qaysilarini qo'shish kerak?
+3. **Test** — 10 ta xatdan nechtasi to'g'ri toifaga tushdi?
+4. **Xavf** — noto'g'ri toifa · operator topilmasa · maxfiylik.
 5. **Qaror** — pilotga ruxsat / qayta ishlash / rad etish.
 
 **Lug'at recap (interaktiv, 30–60 sek):**
 Auditoriyaga so'rang: "Eslay olasizmi?"
-- **RAG** = … (jamoa: "avval manbani top, keyin shu manbaga tayangan javob yoz")
-- **Embedding** = … (jamoa: "matnni ma'nosi bo'yicha qidirish uchun raqamli vektorga aylantirish")
+- **Classification** = … (jamoa: "kelgan xatni 5 toifadan biriga avtomatik ajratish")
+- **Schema** = … (jamoa: "AI faqat aniq maydonlarni to'ldiradi · erkin matn yozmaydi")
 
 **Speaker notes:**
-3 xulosa — qisqa, takror aytsa bo'ladi. Har biriga 10–15 soniya. Lug'at recap — series-wide qoida. RAG va Embedding — 9-modulning bank glossary'siga qo'shilishi. Auditoriya birgalikda aytadi: "RAG — bu qidir va javob bil". Tovushda kuchaytirib aytish — yodda qolish kafolati. 15-modulda yakuniy glossary review da bu 2 atama qaytib chiqadi.
+3 xulosa — qisqa, takror aytsa bo'ladi. Har biriga 10–15 soniya. Lug'at recap — series-wide qoida. Classification va Schema — 9-modulning bank glossary'siga qo'shilishi. Auditoriya birgalikda aytadi: "Classification — toifaga ajratish; Schema — qat'iy shakl". Tovushda kuchaytirib aytish — yodda qolish kafolati. 15-modulda yakuniy glossary review da bu 2 atama qaytib chiqadi.
 
 ---
 
@@ -475,44 +476,42 @@ Markaziy katta **"?"** belgisi (blue accent), ostida sarlavha va kontakt.
 Sizning **savollaringiz**.
 
 **Tagline:**
-RAG, n8n, vector DB tanlovi, muvofiqlik — marhamat.
+Toifalar, n8n, Sheets, Gemini, muvofiqlik — marhamat.
 
 **Kontakt:**
 murod@mohir.dev
 
 **Speaker notes:**
-5–10 daqiqa, 60 daqiqalik normaning yakuni. Texnik savollar ko'p kelishi mumkin (bu kunning eng texnik moduli). Ko'p uchraydigan savollar:
-- "Vector DB qaysisini tanlash kerak?" → 12-slaydga qaytaring.
-- "PDF qaerda saqlanadi?" → muvofiqlik, 3-modulga ko'prik.
-- "Bot xato javob bersa nima qilamiz?" → 16-slaydga (4 xato).
-- "Agentdan farqi nima?" → 10-modulga ko'prik (ertaga).
-
-Agar savol kelmasa — siz so'rang:
-- "Qaysi bo'limingiz uchun bot eng tez foyda keltiradi?"
-- "Qaysi PDFni botga ishonib topshira olasiz?"
+5–10 daqiqa, 60 daqiqalik normaning yakuni. Ko'p uchraydigan savollar:
+- "Bot Telegramdan boshqa kanalda ishlaydimi?" → ha, WhatsApp/web/email — Trigger node almashtiriladi.
+- "Mijoz ma'lumoti qaerga boradi?" → bank Sheets'i (siz boshqarasiz) + Gemini API (so'rov uchun, saqlamaydi). 3-modul muvofiqligiga ko'prik.
+- "Toifa qo'shish kerak bo'lsa?" → Operators'ga satr + system prompt'ga band. Kod tegmaydi.
+- "Botni qanday yangilash mumkin?" → har xato test bilan: 10 xat → 8 to'g'ri → prompt tuzatamiz → 10 xat → 9 to'g'ri.
+- "Agentdan farqi nima?" → 10-modulga ko'prik.
 
 ---
 
 ## Series-wide bog'lanish
 
 - **Avvalgi modullar:**
-  - 1-modul slayd 8 — RAG flow ilk ko'rilgan. Bugun chuqur ochildi.
-  - 3-modul — Gallyutsinatsiya. RAG aynan shu muammoning yechimi.
+  - 1-modul slayd 8 — chatbot oqim ilk ko'rilgan. Bugun chuqur ochildi.
+  - 5-modul (Promt muhandisligi) — bugungi system prompt shu modul asosida quriladi.
   - 8-modul — n8n + Webhook. Bugun shu node'lar ishlatildi.
 - **Keyingi modullar:**
-  - [`10_deck/`](../10_deck/) — Agent kontseptsiyasi (ertaga RAG → Agent).
-  - [`12_deck/`](../12_deck/) — Pipeline (multi-step). Bugungi bot multi-stepga aylanadi.
+  - [`10_deck/`](../10_deck/) — Agent kontseptsiyasi (RAG + Tool Use bilan kengaytirish).
+  - [`11_deck/`](../11_deck/) — RAG agent dizayni · paired bot 02_rag_chatbot.
+  - [`12_deck/`](../12_deck/) — Pipeline. Bugungi classifier multi-step pipeline'ga aylanadi.
 
 ## Atamalar — kursning glossary'siga hissa
 
-- **RAG** (Retrieval-Augmented Generation) — slayd 5 da kiritildi, slayd 18 da recap.
-- **Embedding** (vektor ko'rinishi) — slayd 5 va 6 da kiritildi, slayd 18 da recap.
+- **Classification (Tasniflash)** — slayd 5 da kiritildi, slayd 18 da recap.
+- **Schema (Sxema)** — slayd 5 va 6 da kiritildi, slayd 18 da recap.
 
 ## Tayyorgarlik checklist
 
-- [ ] Bot 01 (`bots/01_rag_basics/`) instructorda ishlayapti.
-- [ ] Har stolda 1 ta test PDFi tayyor (10–15 bet).
-- [ ] n8n cloud akkaunt har stolda ochiq, BankRAGBoti shabloni klonlangan.
+- [ ] Bot 01 (`bots/01_classifier_bot/`) instructorda ishlayapti.
+- [ ] Har stolga Operators jadvali shabloni tayyor (5 toifa + bo'sh ustunlar).
+- [ ] n8n cloud akkaunt har stolda ochiq, BankYordamchi shabloni klonlangan.
 - [ ] Telegram bot tokeni har stolga 1 dona (BotFather).
 - [ ] Backup: agar Telegram'da muammo bo'lsa — n8n test pin data orqali demo.
 
@@ -521,19 +520,16 @@ Agar savol kelmasa — siz so'rang:
 | Faza | Slaydlar | Vaqt |
 |---|---|---|
 | Title + Agenda | 1–2 | ~3 daq |
-| 01 · Anatomiya (Hook → vs RAG → Lug'at → Embedding → Arxitektura) | 3–7 | ~14 daq |
-| 03 · Bosqichli qurish (Indexing → Chunking → Embedding → Retrieval → DB → n8n) | 8–13 | ~22 daq |
-| 04 · Test (Sifat → Live build → Xato → Recap → Closing → Q&A) | 14–19 | ~21 daq |
+| 01 · Tushuncha (Hook → vs JSON → Lug'at → Schema misol) | 3–6 | ~12 daq |
+| 02 · 7 ta node (Arxitektura → 4 bosqich → Sheets → user journey) | 7–13 | ~18 daq |
+| 03 · Live build (sifat tekshiruvi → stol mashqi) | 14–15 | ~20 daq |
+| 04 · Yakun (xato → recap → closing → Q&A) | 16–19 | ~10 daq |
 | **Jami** | **19** | **~60 daq** |
 
 ---
 
 ## Restructure tarixi
 
-**v1 (2026-05-08):**
-- Stub'dagi 1–2 slaydlardan boshlandi (Kun 2 chip, agenda 4 faza).
-- 19 slaydli to'liq versiya — series-brief 9_deck spetsifikatsiyasiga to'liq mos.
-- RAG arxitekturasi 1-modul slayd 8 dagi 4 step flow'dan kelib chiqdi va to'rt alohida slaydga (8–11) chuqurlashtirildi.
-- Atamalar (RAG, Embedding) — slayd 5 ga `.dict.dict-2` pattern'i bilan kiritildi (3-deck pattern reuse).
-- Live build (slayd 15) — `s-brain` + screenshot mockup; bot 01 README-ga ishtirokchilar yo'naltiriladi.
-- Closing — `.s-close` + `.recap` row, RAG va Embedding jamoa bilan birga aytiladi.
+**v2 (2026-05-10):** RAG bot complexity reset. Module 9 was "Build the BankRAGBoti" (77 nodes) — replaced with classifier bot (BankYordamchi, 7 nodes). RAG content relocates to deck 11. Atamalar swap: RAG/Embedding → Classification/Schema. Slides 4–17 rewritten; slides 1, 3, 19 keep shells (slide 3 reframed: "yesterday RAG, today classifier"). Paired bot path: `bots/01_classifier_bot/` (was `bots/01_rag_basics/`).
+
+**v1 (2026-05-08):** initial RAG-focused version (now archived in git history).

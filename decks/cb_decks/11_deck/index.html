@@ -138,59 +138,47 @@ body,p,li,.lead{letter-spacing:0.018em}
   background:var(--accent-2);margin-right:0.85rem;vertical-align:middle;
 }
 
-/* SLIDE 2 — HOOK */
+/* SLIDE 3 — HOOK · QR + chat preview (centered, deck-1 slide-5 pattern) */
 .s-hook .main{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(1rem,2.5vw,3rem);align-items:center}
-.qr-box{background:#fff;border-radius:var(--r);aspect-ratio:1;max-width:min(30vw,360px);width:100%;display:flex;align-items:center;justify-content:center;color:var(--ink);font-family:var(--display);font-size:clamp(0.7rem,1vw,0.95rem);text-align:center;padding:1rem;letter-spacing:0.15em;text-transform:uppercase;
+.qr-stack{display:flex;flex-direction:column;align-items:center;gap:clamp(0.55rem,1vw,0.9rem)}
+.qr-box{background:#fff;border-radius:var(--r);aspect-ratio:1;width:clamp(180px,22vw,320px);display:flex;align-items:center;justify-content:center;color:var(--ink);font-family:var(--display);font-size:clamp(0.7rem,1vw,0.95rem);text-align:center;padding:1rem;letter-spacing:0.15em;text-transform:uppercase;
   background-image:linear-gradient(45deg,#000 25%,transparent 25%),linear-gradient(-45deg,#000 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#000 75%),linear-gradient(-45deg,transparent 75%,#000 75%);
-  background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0;
+  background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0;position:relative;
 }
-.qr-box span{background:#fff;padding:0.5rem 0.75rem;border-radius:0.5rem}
-.demo-msg{margin-top:clamp(1rem,2vw,1.5rem);font-style:italic;color:rgba(255,255,255,0.8);font-size:var(--body);border-left:3px solid var(--accent);padding-left:clamp(0.75rem,1.5vw,1.25rem)}
+.qr-box::after{content:"";position:absolute;inset:-8px;border-radius:calc(var(--r) + 8px);background:linear-gradient(135deg,var(--accent),var(--accent-glow));z-index:-1;opacity:0.35;filter:blur(20px)}
+.qr-box.has-img{padding:0;background-image:none;background:#fff}
+.qr-box.has-img img{width:100%;height:100%;object-fit:contain;display:block;border-radius:var(--r)}
+.qr-url{font-family:var(--display);font-size:clamp(0.85rem,1.3vw,1.05rem);letter-spacing:0.06em;color:#fff;text-decoration:none;background:rgba(255,255,255,0.06);border:1px solid rgba(96,165,250,0.32);padding:0.55rem 0.95rem;border-radius:0.5rem;text-transform:none;transition:background 0.2s,border-color 0.2s}
+.qr-url:hover{background:rgba(37,99,235,0.18);border-color:var(--accent)}
+.chat{display:flex;flex-direction:column;gap:clamp(0.5rem,0.9vw,0.75rem);margin-top:clamp(0.85rem,1.6vw,1.4rem)}
+.bubble{max-width:82%;padding:clamp(0.6rem,1.1vw,0.9rem) clamp(0.75rem,1.3vw,1.1rem);border-radius:0.85rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);font-size:var(--body);line-height:1.45;color:#fff}
+.bubble.user{align-self:flex-start;margin-left:40%;background:linear-gradient(135deg,var(--accent),#1d4ed8);border-color:transparent}
+.bubble.ai{align-self:flex-start}
 
-/* SLIDE 3 — DEFINITION */
-.compare{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(1rem,2.5vw,2.5rem);align-items:center;margin-top:clamp(1rem,2vw,2rem)}
-.compare .col{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1rem,2vw,1.75rem);text-align:center}
-.compare .col h4{font-family:var(--display);text-transform:uppercase;letter-spacing:0.1em;font-size:var(--small);color:var(--mute);margin-bottom:0.75rem}
-.compare .col p{font-family:var(--display);font-size:clamp(1.5rem,2.8vw,2.25rem);line-height:1;letter-spacing:-0.02em;color:#fff}
-.compare .col.win{background:linear-gradient(135deg,var(--accent),#1d4ed8);color:#fff;border-color:var(--accent)}
-.compare .col.win h4,.compare .col.win p{color:#fff}
-.compare .vs{font-family:var(--display);font-size:clamp(1.2rem,2vw,1.75rem);color:var(--accent);letter-spacing:0.1em}
+/* SLIDE 4 — VS / compare-rich (Pure LLM vs RAG) */
+.compare-rich{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.compare-rich .col{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.4vw,2rem);display:flex;flex-direction:column;gap:clamp(0.55rem,1vw,0.85rem);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s}
+.compare-rich .col h4{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;font-size:clamp(0.95rem,1.3vw,1.15rem);color:var(--accent-2)}
+.compare-rich .col.win h4{color:#fff}
+.compare-rich .col.win{background:linear-gradient(135deg,rgba(37,99,235,0.32),rgba(11,45,121,0.55));border-color:rgba(96,165,250,0.45)}
+.compare-rich .col .row{font-size:var(--body);line-height:1.5;color:#fff;font-weight:400}
+.compare-rich .col .row.muted{font-size:clamp(0.78rem,1.05vw,0.95rem);color:rgba(255,255,255,0.6);font-style:italic}
+.compare-rich .col .row strong{color:var(--accent-2);font-family:var(--display);font-weight:400;letter-spacing:0.01em}
+.compare-rich .col.win .row strong{color:#fff}
+.compare-rich .col:hover{transform:translateY(-3px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.5)}
 
-/* SLIDE 4 — MYTH/REALITY */
-.myth{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
-.myth .row{background:rgba(255,255,255,0.04);border-radius:var(--r);padding:clamp(1rem,2vw,1.75rem);border-left:4px solid #ff4040}
-.myth .row.real{border-left-color:var(--accent);background:rgba(37,99,235,0.1)}
-.myth .row .tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:#ff6060;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.4rem}
-.myth .row.real .tag{color:var(--accent)}
-.myth .row p{font-size:var(--body);line-height:1.5;color:#fff;font-weight:400}
-.myth .row p strong{font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:0.02em}
+/* SLIDE 5 — DICTIONARY */
+.dict{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.dict.dict-2{grid-template-columns:1fr 1fr}
+.dict-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
+.dict-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.dict-card .dict-tag{display:inline-block;font-family:var(--display);font-size:clamp(1.4rem,2.8vw,2.4rem);letter-spacing:0.02em;color:var(--accent-2);text-transform:uppercase;line-height:1;margin-bottom:0.75rem}
+.dict-card h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:0.6rem}
+.dict-card p{font-size:var(--body);line-height:1.55;color:rgba(255,255,255,0.78)}
+.dict-card p strong{color:var(--accent-2);font-weight:500}
+.dict-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
 
-/* SLIDE 5 — BENEFITS */
-.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
-.benefit{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem)}
-.benefit .stat{font-family:var(--display);font-size:clamp(2rem,5vw,4rem);line-height:1;color:var(--accent);letter-spacing:-0.04em}
-.benefit h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;margin-top:0.5rem;color:#fff}
-.benefit p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.7);margin-top:0.5rem}
-
-/* SLIDE 6 — CASE STUDY */
-.cases{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
-.case{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);position:relative;overflow:hidden}
-.case::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
-.case h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:0.5rem}
-.case .num-big{font-family:var(--display);font-size:clamp(1.75rem,4vw,3rem);line-height:1;color:var(--accent);letter-spacing:-0.03em;margin-top:0.5rem}
-.case p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.75);margin-top:0.75rem}
-
-/* SLIDE 7 — STACK */
-.stack{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
-.stack .pillar{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);text-align:center}
-.stack .pillar.featured{background:linear-gradient(160deg,var(--accent),#1d4ed8);color:#fff;border-color:var(--accent)}
-.stack .pillar.featured h3,.stack .pillar.featured p,.stack .pillar.featured .tag{color:#fff}
-.stack .icon{font-size:clamp(2rem,4vw,3rem);margin-bottom:0.75rem}
-.stack .tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.2em;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:0.25rem}
-.stack h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff}
-.stack p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.75);margin-top:0.75rem}
-
-/* SLIDE 8 — FLOW */
+/* SLIDE 6 — FLOW (4-step RAG architecture) */
 .flow{display:flex;align-items:center;justify-content:center;gap:clamp(0.5rem,1vw,1rem);flex-wrap:nowrap;margin-top:clamp(1rem,2vw,2rem);overflow:hidden}
 .flow .step{flex:1;background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(0.85rem,1.6vw,1.4rem);text-align:center;min-width:0}
 .flow .step.brain{background:linear-gradient(135deg,var(--accent),#1d4ed8);color:#fff;border-color:var(--accent)}
@@ -200,37 +188,140 @@ body,p,li,.lead{letter-spacing:0.018em}
 .flow .step p{font-size:clamp(0.7rem,1vw,0.9rem);line-height:1.4;color:rgba(255,255,255,0.7);margin-top:0.4rem}
 .flow .arrow{color:var(--accent);font-family:var(--display);font-size:clamp(1.2rem,2.4vw,1.8rem);flex-shrink:0}
 
-/* SLIDE 9 — ROADMAP */
-.road{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
-.road .step{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);position:relative}
-.road .step .n{font-family:var(--display);font-size:clamp(1.75rem,3.5vw,2.75rem);color:var(--accent);line-height:1;letter-spacing:-0.04em}
-.road .step h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;margin-top:0.5rem;color:#fff}
-.road .step p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.7);margin-top:0.5rem}
+/* SLIDE 7 — production stats panel */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(0.85rem,1.6vw,1.5rem);margin-top:clamp(1rem,2vw,1.6rem)}
+.stat-cell{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1rem,2vw,1.6rem);text-align:left}
+.stat-cell .stat-num{font-family:var(--display);font-size:clamp(1.8rem,3.6vw,3rem);line-height:0.95;color:var(--accent-2);letter-spacing:-0.04em}
+.stat-cell .stat-lbl{font-family:var(--display);font-size:var(--small);letter-spacing:0.16em;text-transform:uppercase;color:#fff;margin-top:0.45rem}
+.stat-cell .stat-sub{font-size:clamp(0.78rem,1.05vw,0.95rem);color:rgba(255,255,255,0.65);margin-top:0.3rem;line-height:1.4}
+.prod-strip{background:rgba(37,99,235,0.08);border:1px solid rgba(96,165,250,0.25);border-radius:var(--r);padding:clamp(0.7rem,1.3vw,1.1rem) clamp(1rem,2vw,1.6rem);margin-top:clamp(0.75rem,1.4vw,1.2rem);display:flex;align-items:center;gap:clamp(0.6rem,1.2vw,1rem);flex-wrap:wrap}
+.prod-strip .prod-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2)}
+.prod-strip .prod-id{font-family:'JetBrains Mono','Consolas',monospace;font-size:clamp(0.78rem,1.05vw,0.95rem);color:#fff;background:var(--ink);padding:0.3rem 0.65rem;border-radius:0.4rem;border:1px solid rgba(96,165,250,0.25)}
+.prod-strip .prod-note{font-size:clamp(0.78rem,1.05vw,0.95rem);color:rgba(255,255,255,0.7);font-style:italic}
 
-/* SLIDE 10 — SECURITY */
+/* SLIDE 8 — corpus layout (Drive + Sheets) */
+.corpus{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,1.8rem);margin-top:clamp(1rem,2vw,1.6rem)}
+.corpus .col{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.1rem,2.1vw,1.7rem)}
+.corpus .col h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:0.4rem;display:flex;align-items:center;gap:0.55rem}
+.corpus .col h3 .ico{font-size:clamp(1.2rem,1.8vw,1.55rem)}
+.corpus .col p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.75);margin-top:0.35rem}
+.corpus .col .lbl{font-family:var(--display);font-size:var(--small);letter-spacing:0.16em;text-transform:uppercase;color:var(--accent-2);margin-top:0.7rem;margin-bottom:0.35rem}
+.corpus .col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.35rem}
+.corpus .col li{font-family:'JetBrains Mono','Consolas',monospace;font-size:clamp(0.78rem,1.05vw,0.95rem);color:#fff;background:var(--ink);border:1px solid rgba(255,255,255,0.06);border-left:3px solid var(--accent);padding:0.45rem 0.7rem;border-radius:0.35rem}
+.corpus .col li .com{color:var(--mute);font-style:italic;margin-left:0.5em;font-family:'Space Grotesk',sans-serif;letter-spacing:0.01em}
+
+/* SLIDE 9 — chunk visualisation */
+.chunk-vis{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(1rem,2vw,1.8rem);margin-top:clamp(1rem,2vw,1.5rem)}
+.chunk-doc{background:#fff;border-radius:var(--r);padding:clamp(0.85rem,1.6vw,1.35rem);color:var(--ink);font-family:'JetBrains Mono','Consolas',monospace;font-size:clamp(0.7rem,0.95vw,0.85rem);line-height:1.55;position:relative;overflow:hidden}
+.chunk-doc h4{font-family:var(--display);font-size:clamp(0.78rem,1.05vw,0.95rem);letter-spacing:0.16em;text-transform:uppercase;color:#0a0f1f;margin-bottom:0.6rem;font-weight:900}
+.chunk-doc .chunk{padding:0.4rem 0.55rem;border-radius:0.3rem;margin-bottom:0.35rem;border-left:3px solid var(--accent-2)}
+.chunk-doc .chunk.c1{background:rgba(37,99,235,0.16)}
+.chunk-doc .chunk.c2{background:rgba(96,165,250,0.18)}
+.chunk-doc .chunk.c3{background:rgba(31,242,249,0.16)}
+.chunk-doc .chunk.overlap{background:rgba(255,200,80,0.22);font-style:italic}
+.chunk-spec{display:flex;flex-direction:column;gap:clamp(0.5rem,1vw,0.85rem)}
+.chunk-spec .spec-row{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(0.85rem,1.5vw,1.3rem)}
+.chunk-spec .spec-row .lbl{font-family:var(--display);font-size:var(--small);letter-spacing:0.16em;text-transform:uppercase;color:var(--accent-2)}
+.chunk-spec .spec-row .val{font-family:var(--display);font-size:clamp(1.2rem,2vw,1.65rem);color:#fff;line-height:1;letter-spacing:-0.02em;margin-top:0.25rem}
+.chunk-spec .spec-row .why{font-size:clamp(0.78rem,1.05vw,0.95rem);color:rgba(255,255,255,0.7);margin-top:0.45rem;line-height:1.45}
+
+/* SLIDE 10 — banking PDF Q&A example */
+.bank-ex{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,1.8rem);margin-top:clamp(1rem,2vw,1.5rem);align-items:stretch}
+.bank-q{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-left:4px solid var(--accent);border-radius:var(--r);padding:clamp(1rem,2vw,1.6rem);display:flex;flex-direction:column;gap:clamp(0.5rem,1vw,0.85rem)}
+.bank-q .q-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2)}
+.bank-q .q-text{font-size:clamp(1rem,1.5vw,1.3rem);font-family:var(--display);color:#fff;letter-spacing:-0.01em;line-height:1.2}
+.bank-a{background:linear-gradient(135deg,rgba(37,99,235,0.22),rgba(11,45,121,0.5));border:1px solid rgba(96,165,250,0.4);border-radius:var(--r);padding:clamp(1rem,2vw,1.6rem);display:flex;flex-direction:column;gap:clamp(0.5rem,1vw,0.85rem)}
+.bank-a .a-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:#fff}
+.bank-a .a-text{font-size:var(--body);line-height:1.55;color:#fff}
+.bank-a .a-source{font-family:'JetBrains Mono','Consolas',monospace;font-size:clamp(0.78rem,1.05vw,0.95rem);color:#fff;background:rgba(2,10,36,0.5);border:1px solid rgba(96,165,250,0.35);padding:0.45rem 0.7rem;border-radius:0.4rem;margin-top:0.3rem}
+.bank-a .a-source strong{color:var(--accent-glow);font-weight:500;letter-spacing:0.05em}
+
+/* SLIDE 11 — audit list (manba tekshiruvi) */
+.audit-list{display:flex;flex-direction:column;gap:clamp(0.7rem,1.3vw,1.1rem);margin-top:clamp(1rem,2vw,1.4rem)}
+.audit-row{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(0.85rem,1.6vw,1.4rem);align-items:center;background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(0.85rem,1.5vw,1.3rem)}
+.audit-row .num{font-family:var(--display);font-size:clamp(1.3rem,2.2vw,1.85rem);color:var(--accent-2);letter-spacing:-0.03em;line-height:1;text-align:center;min-width:2.5rem}
+.audit-row .body h4{font-family:var(--display);font-size:clamp(0.95rem,1.35vw,1.2rem);text-transform:uppercase;letter-spacing:0.02em;color:#fff;line-height:1.1}
+.audit-row .body p{font-size:clamp(0.82rem,1.1vw,1rem);line-height:1.5;color:rgba(255,255,255,0.72);margin-top:0.3rem}
+.audit-row .tag{font-family:'JetBrains Mono','Consolas',monospace;font-size:clamp(0.72rem,0.95vw,0.85rem);color:var(--accent-glow);background:var(--ink);border:1px solid rgba(31,242,249,0.3);padding:0.35rem 0.6rem;border-radius:0.35rem;white-space:nowrap}
+
+/* SLIDE 12 — CANDO (RAG good vs bad) */
+.cando{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.cando-col{background:rgba(255,255,255,0.04);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2rem);border-left:4px solid var(--accent);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,background 0.3s}
+.cando-col.cant{border-left-color:#ff4040;background:rgba(255,64,64,0.06)}
+.cando-col .cando-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.85rem}
+.cando-col.cant .cando-tag{color:#ff6060}
+.cando-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:clamp(0.55rem,1vw,0.85rem)}
+.cando-col li{font-size:var(--body);line-height:1.5;color:#fff;padding-left:1.25rem;position:relative}
+.cando-col li::before{content:"·";position:absolute;left:0.4rem;color:var(--accent);font-weight:700;font-size:1.4em;line-height:1}
+.cando-col.cant li::before{color:#ff6060}
+.cando-col:hover{transform:translateY(-3px);box-shadow:0 12px 28px -12px rgba(37,99,235,0.3)}
+.cando-col.cant:hover{box-shadow:0 12px 28px -12px rgba(255,64,64,0.3)}
+
+/* SLIDE 13 — privacy 3-card (.sec) */
 .sec{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
-.sec .item{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem)}
+.sec .item{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
 .sec .item .ico{font-size:clamp(1.75rem,3.5vw,2.5rem);color:var(--accent);margin-bottom:0.75rem}
 .sec .item h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff}
 .sec .item p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.75);margin-top:0.5rem}
+.sec .item:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
 
-/* SLIDE 11 — BRAINSTORM */
+/* SLIDE 14 — bot folder template */
+.tpl-wrap{display:grid;grid-template-columns:1fr;gap:clamp(0.7rem,1.2vw,1rem);margin-top:clamp(0.75rem,1.4vw,1.1rem);min-height:0}
+.tpl-meta{display:flex;align-items:center;gap:clamp(0.5rem,1vw,0.85rem);flex-wrap:wrap}
+.tpl-meta .tpl-cat{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2)}
+.tpl-meta .tpl-id{font-family:var(--display);font-size:var(--small);letter-spacing:0.1em;color:var(--mute)}
+.template-box{
+  background:var(--ink);
+  color:rgba(255,255,255,0.86);
+  border:1px solid var(--soft);
+  border-left:3px solid var(--accent);
+  border-radius:var(--r);
+  padding:clamp(0.85rem,1.6vw,1.35rem) clamp(1rem,1.8vw,1.6rem);
+  font-family:'JetBrains Mono','Consolas',monospace;
+  font-size:clamp(0.72rem,0.98vw,0.92rem);
+  line-height:1.55;
+  white-space:pre-wrap;
+  overflow:auto;
+  position:relative;
+  box-shadow:0 18px 40px -20px rgba(2,10,36,0.8) inset;
+  max-height:100%;
+}
+.template-box .ph{color:var(--accent-2);background:rgba(96,165,250,0.1);border:1px solid rgba(96,165,250,0.25);padding:0.05em 0.35em;border-radius:0.3em;font-weight:500}
+.template-box .key{color:var(--accent-glow);font-weight:500}
+.template-box .str{color:var(--accent-2)}
+.template-box .com{color:var(--mute);font-style:italic}
+.tpl-hint{font-size:var(--small);color:var(--mute);font-style:italic;margin-top:clamp(0.4rem,0.8vw,0.65rem);letter-spacing:0.02em}
+
+/* SLIDE 15 — brainstorm */
 .s-brain .questions{display:flex;flex-direction:column;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,1.5rem)}
 .q{font-family:var(--display);font-size:clamp(1.2rem,2.6vw,2.25rem);line-height:1.15;letter-spacing:-0.01em;color:#fff;display:flex;gap:clamp(0.75rem,1.5vw,1.5rem);align-items:flex-start}
 .q .n{color:var(--accent);flex-shrink:0}
 
-/* SLIDE 12 — CLOSING */
+/* SLIDE 16 — RAG pilot canvas (5 rows) */
+.pilot-canvas{display:flex;flex-direction:column;gap:clamp(0.5rem,1vw,0.85rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)}
+.pilot-row{display:grid;grid-template-columns:auto 1fr;gap:clamp(0.85rem,1.6vw,1.5rem);align-items:center;background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(255,255,255,0.03));border:2px dashed rgba(96,165,250,0.55);border-radius:clamp(0.5rem,0.9vw,0.85rem);padding:clamp(0.7rem,1.3vw,1.1rem) clamp(0.95rem,1.7vw,1.4rem)}
+.pilot-row .pilot-tag{display:flex;align-items:center;gap:0.5rem;font-family:var(--display);font-size:clamp(0.85rem,1.2vw,1.05rem);letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-2);min-width:clamp(8rem,16vw,14rem)}
+.pilot-row .pilot-tag .ico{font-size:clamp(1.05rem,1.5vw,1.35rem)}
+.pilot-row p{font-size:clamp(0.85rem,1.15vw,1.05rem);line-height:1.5;color:rgba(255,255,255,0.85);font-style:italic}
+
+/* SLIDE 17 — closing */
 .close-list{display:flex;flex-direction:column;gap:clamp(0.85rem,1.6vw,1.4rem);margin-top:clamp(1rem,2vw,1.5rem)}
 .close-row{display:flex;gap:clamp(0.75rem,1.5vw,1.25rem);align-items:flex-start;padding:clamp(0.85rem,1.6vw,1.4rem);background:rgba(255,255,255,0.04);border-left:4px solid var(--accent);border-radius:0 var(--r) var(--r) 0}
 .close-row .arrow{color:var(--accent);font-family:var(--display);font-size:clamp(1.2rem,2vw,1.5rem)}
 .close-row p{font-size:var(--body);line-height:1.55;color:#fff;font-weight:400}
 .close-row p strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.02em}
+.s-close .recap{margin-top:clamp(1rem,2vw,1.4rem);padding-top:clamp(0.85rem,1.5vw,1.25rem);border-top:1px solid var(--soft);display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.5rem);flex-wrap:wrap}
+.s-close .recap-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);flex-shrink:0}
+.s-close .recap-terms{display:flex;gap:clamp(1rem,2vw,2rem);flex-wrap:wrap;flex:1}
+.s-close .recap-term{font-size:var(--body);color:rgba(255,255,255,0.7);line-height:1.4}
+.s-close .recap-term strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-right:0.5em;font-weight:400}
+.s-close .recap-term .ans{color:var(--accent-2)}
 
-/* SLIDE 13 — Q&A */
+/* SLIDE 18 — Q&A */
 .s-qa .main{align-items:center;text-align:center}
 .qmark{font-family:var(--display);font-size:clamp(8rem,18vw,16rem);line-height:0.9;color:var(--accent);letter-spacing:-0.05em}
 
-/* HUD — clickable dot navigation */
+/* HUD */
 .hud{
   position:fixed;left:var(--pad);right:var(--pad);
   bottom:clamp(0.6rem,1vw,1rem);
@@ -278,8 +369,6 @@ body,p,li,.lead{letter-spacing:0.018em}
   letter-spacing:0.18em;font-size:var(--small);
   flex-shrink:0;
 }
-
-/* HUD speaker (right side) */
 .hud .speaker{
   display:flex;align-items:center;gap:0.5rem;
   font-size:var(--small);
@@ -294,7 +383,7 @@ body,p,li,.lead{letter-spacing:0.018em}
 }
 .hud .speaker strong{font-family:var(--display);letter-spacing:0.1em;color:#fff;font-weight:400}
 
-/* AGENDA SLIDE — 4 phase cards in 2x2 grid */
+/* AGENDA SLIDE */
 .s-agenda .main{align-self:stretch;justify-content:flex-start;padding-bottom:0;display:flex;flex-direction:column}
 .s-agenda .head .eyebrow{
   display:flex;align-items:center;gap:clamp(0.6rem,1vw,0.85rem);
@@ -318,7 +407,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   min-height:0;
 }
 
-/* Fragments — start hidden, reveal sequentially via Next/Right */
+/* Fragments */
 .fragment{
   opacity:0;
   transform:translateY(24px) scale(0.97);
@@ -409,129 +498,11 @@ body,p,li,.lead{letter-spacing:0.018em}
 .phase-count{color:rgba(255,255,255,0.5)}
 .phase-time{color:var(--accent-2)}
 
-/* CARD HOVER STATES — interactive lift across content cards */
-.benefit,.case,.stack .pillar,.road .step,.sec .item,.myth .row,.flow .step,.compare .col{
-  transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s;
-}
-.benefit:hover,.case:hover,.stack .pillar:hover,.road .step:hover,.sec .item:hover,.myth .row:hover,.flow .step:hover{
-  transform:translateY(-4px);
-  box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);
-  border-color:rgba(96,165,250,0.4);
-}
-.compare .col:hover{
-  transform:translateY(-3px);
-  box-shadow:0 12px 28px -12px rgba(37,99,235,0.3);
-}
-
-/* === 11-deck additions (no locked-token edits) === */
-
-/* DICT — atama dictionary (2-card variant for paired atama) */
-.dict{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
-.dict.dict-2{grid-template-columns:1fr 1fr}
-.dict-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
-.dict-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
-.dict-card .dict-tag{display:inline-block;font-family:var(--display);font-size:clamp(1.4rem,2.8vw,2.4rem);letter-spacing:0.02em;color:var(--accent-2);text-transform:uppercase;line-height:1;margin-bottom:0.75rem}
-.dict-card h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:0.6rem}
-.dict-card p{font-size:var(--body);line-height:1.55;color:rgba(255,255,255,0.78)}
-.dict-card p strong{color:var(--accent-2);font-weight:500}
-.dict-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
-
-/* CANDO — STT to'g'ri/xato 2-column */
-.cando{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
-.cando-col{background:rgba(255,255,255,0.04);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2rem);border-left:4px solid var(--accent);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,background 0.3s}
-.cando-col.cant{border-left-color:#ff4040;background:rgba(255,64,64,0.06)}
-.cando-col .cando-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.85rem}
-.cando-col.cant .cando-tag{color:#ff6060}
-.cando-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:clamp(0.55rem,1vw,0.85rem)}
-.cando-col li{font-size:var(--body);line-height:1.5;color:#fff;padding-left:1.25rem;position:relative}
-.cando-col li::before{content:"·";position:absolute;left:0.4rem;color:var(--accent);font-weight:700;font-size:1.4em;line-height:1}
-.cando-col.cant li::before{color:#ff6060}
-.cando-col:hover{transform:translateY(-3px);box-shadow:0 12px 28px -12px rgba(37,99,235,0.3)}
-.cando-col.cant:hover{box-shadow:0 12px 28px -12px rgba(255,64,64,0.3)}
-
-/* ROAD — 4-step variant for schema rules */
-.road.road-4{grid-template-columns:repeat(4,1fr)}
-
-/* BENEFITS — 4-col variant for 8-cell schema example */
-.benefits.benefits-4{grid-template-columns:repeat(4,1fr)}
-.benefits.benefits-4 .benefit{padding:clamp(0.9rem,1.7vw,1.45rem)}
-.benefits.benefits-4 .benefit .stat{font-size:clamp(1.1rem,1.8vw,1.55rem);font-family:'JetBrains Mono','Consolas',monospace;letter-spacing:0;color:var(--accent-2)}
-.benefits.benefits-4 .benefit h3{font-size:clamp(0.78rem,1.1vw,0.95rem);margin-top:0.3rem;color:#fff}
-.benefits.benefits-4 .benefit p{font-size:clamp(0.7rem,0.9vw,0.85rem);margin-top:0.35rem;line-height:1.4}
-
-/* TEMPLATE BOX — JSON / monospace card */
-.tpl-wrap{display:grid;grid-template-columns:1fr;gap:clamp(0.7rem,1.2vw,1rem);margin-top:clamp(0.75rem,1.4vw,1.1rem);min-height:0}
-.tpl-meta{display:flex;align-items:center;gap:clamp(0.5rem,1vw,0.85rem);flex-wrap:wrap}
-.tpl-meta .tpl-cat{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2)}
-.tpl-meta .tpl-id{font-family:var(--display);font-size:var(--small);letter-spacing:0.1em;color:var(--mute)}
-.template-box{
-  background:var(--ink);
-  color:rgba(255,255,255,0.86);
-  border:1px solid var(--soft);
-  border-left:3px solid var(--accent);
-  border-radius:var(--r);
-  padding:clamp(0.85rem,1.6vw,1.35rem) clamp(1rem,1.8vw,1.6rem);
-  font-family:'JetBrains Mono','Consolas',monospace;
-  font-size:clamp(0.72rem,0.98vw,0.92rem);
-  line-height:1.55;
-  white-space:pre-wrap;
-  overflow:auto;
-  position:relative;
-  box-shadow:0 18px 40px -20px rgba(2,10,36,0.8) inset;
-  max-height:100%;
-}
-.template-box .ph{color:var(--accent-2);background:rgba(96,165,250,0.1);border:1px solid rgba(96,165,250,0.25);padding:0.05em 0.35em;border-radius:0.3em;font-weight:500}
-.template-box .key{color:var(--accent-glow);font-weight:500}
-.template-box .str{color:var(--accent-2)}
-.template-box .com{color:var(--mute);font-style:italic}
-.tpl-hint{font-size:var(--small);color:var(--mute);font-style:italic;margin-top:clamp(0.4rem,0.8vw,0.65rem);letter-spacing:0.02em}
-
-/* CANVAS GRID — 2x2 worksheet preview */
-.canvas-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:clamp(0.7rem,1.3vw,1.15rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)}
-.canvas-cell{background:linear-gradient(135deg,rgba(37,99,235,0.12),rgba(255,255,255,0.04));border:2px dashed rgba(96,165,250,0.7);border-radius:clamp(0.5rem,0.9vw,0.85rem);padding:clamp(0.95rem,1.7vw,1.4rem);min-height:0;box-shadow:0 8px 24px -10px rgba(37,99,235,0.25)}
-.canvas-cell .canvas-tag{display:flex;align-items:center;gap:0.5rem;font-family:var(--display);font-size:clamp(0.95rem,1.35vw,1.2rem);letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-2);margin-bottom:0.55rem}
-.canvas-cell .canvas-tag .ico{font-size:clamp(1.1rem,1.7vw,1.5rem)}
-.canvas-cell p{font-size:clamp(0.9rem,1.2vw,1.1rem);line-height:1.5;color:rgba(255,255,255,0.85);font-style:italic}
-
-/* BRAINSTORM questions */
-.s-brain .questions{display:flex;flex-direction:column;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,1.5rem)}
-.q{font-family:var(--display);font-size:clamp(1.2rem,2.6vw,2.25rem);line-height:1.15;letter-spacing:-0.01em;color:#fff;display:flex;gap:clamp(0.75rem,1.5vw,1.5rem);align-items:flex-start}
-.q .n{color:var(--accent);flex-shrink:0}
-
-/* CLOSING — recap row */
-.s-close .recap{margin-top:clamp(1rem,2vw,1.4rem);padding-top:clamp(0.85rem,1.5vw,1.25rem);border-top:1px solid var(--soft);display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.5rem);flex-wrap:wrap}
-.s-close .recap-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);flex-shrink:0}
-.s-close .recap-terms{display:flex;gap:clamp(1rem,2vw,2rem);flex-wrap:wrap;flex:1}
-.s-close .recap-term{font-size:var(--body);color:rgba(255,255,255,0.7);line-height:1.4}
-.s-close .recap-term strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-right:0.5em;font-weight:400}
-.s-close .recap-term .ans{color:var(--accent-2)}
-
-/* HOOK 11 — voice waveform mockup */
-.voice-wave{background:#fff;border-radius:var(--r);width:100%;aspect-ratio:1.25;display:flex;align-items:center;justify-content:center;gap:clamp(0.18rem,0.4vw,0.32rem);padding:clamp(1rem,2vw,1.5rem);position:relative;box-shadow:0 30px 70px -20px rgba(37,99,235,0.5),0 0 0 1px rgba(96,165,250,0.25),0 0 60px -10px rgba(37,99,235,0.35)}
-.voice-wave::after{content:"";position:absolute;inset:-8px;border-radius:calc(var(--r) + 8px);background:linear-gradient(135deg,var(--accent),var(--accent-glow));z-index:-1;opacity:0.35;filter:blur(20px)}
-.voice-wave .bar{display:inline-block;width:clamp(0.25rem,0.55vw,0.45rem);background:linear-gradient(180deg,var(--accent),#1d4ed8);border-radius:99px;animation:wavep 1.4s ease-in-out infinite}
-.voice-wave .bar:nth-child(1){height:18%;animation-delay:0s}
-.voice-wave .bar:nth-child(2){height:38%;animation-delay:0.06s}
-.voice-wave .bar:nth-child(3){height:62%;animation-delay:0.12s}
-.voice-wave .bar:nth-child(4){height:84%;animation-delay:0.18s}
-.voice-wave .bar:nth-child(5){height:54%;animation-delay:0.24s}
-.voice-wave .bar:nth-child(6){height:72%;animation-delay:0.3s}
-.voice-wave .bar:nth-child(7){height:44%;animation-delay:0.36s}
-.voice-wave .bar:nth-child(8){height:88%;animation-delay:0.42s}
-.voice-wave .bar:nth-child(9){height:60%;animation-delay:0.48s}
-.voice-wave .bar:nth-child(10){height:36%;animation-delay:0.54s}
-.voice-wave .bar:nth-child(11){height:52%;animation-delay:0.6s}
-.voice-wave .bar:nth-child(12){height:24%;animation-delay:0.66s}
-.voice-wave .bar:nth-child(13){height:70%;animation-delay:0.72s}
-.voice-wave .bar:nth-child(14){height:46%;animation-delay:0.78s}
-.voice-wave .bar:nth-child(15){height:30%;animation-delay:0.84s}
-@keyframes wavep{0%,100%{transform:scaleY(0.6)}50%{transform:scaleY(1.05)}}
-.voice-meta{position:absolute;bottom:clamp(0.5rem,1vw,0.85rem);left:50%;transform:translateX(-50%);font-family:var(--display);font-size:clamp(0.65rem,0.9vw,0.85rem);letter-spacing:0.18em;text-transform:uppercase;color:var(--ink);background:rgba(255,255,255,0.85);padding:0.25rem 0.6rem;border-radius:99px}
-
-/* Banking 8-cell example layout */
-.audio-quote{background:rgba(255,255,255,0.04);border-left:3px solid var(--accent);border-radius:var(--r);padding:clamp(0.85rem,1.6vw,1.35rem) clamp(1rem,1.8vw,1.6rem);font-style:italic;color:rgba(255,255,255,0.85);font-size:clamp(0.85rem,1.15vw,1.05rem);line-height:1.55;margin-top:clamp(0.75rem,1.4vw,1.1rem)}
-.audio-quote strong{color:var(--accent-2);font-style:normal;font-weight:500}
-.audio-quote .ico{margin-right:0.4rem}
+/* CARD HOVER STATES */
+.flow .step{transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
+.flow .step:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+.stat-cell,.audit-row{transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s}
+.stat-cell:hover,.audit-row:hover{transform:translateY(-3px);box-shadow:0 12px 28px -12px rgba(37,99,235,0.3);border-color:rgba(96,165,250,0.45)}
 
 /* Animations */
 @media (prefers-reduced-motion:no-preference){
@@ -557,8 +528,7 @@ body,p,li,.lead{letter-spacing:0.018em}
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
     <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
   </div>
-  <div class="head">
-  </div>
+  <div class="head"></div>
   <div class="main">
     <div class="title-block reveal r2">
       <span class="chip">Kun 2 · 14:00 — 15:00</span>
@@ -566,7 +536,7 @@ body,p,li,.lead{letter-spacing:0.018em}
         Bank uchun<br>
         <span class="hl">AI agenti dizayni.</span>
       </h1>
-      <p class="tagline"><span class="accent-bar"></span>Voice memo → CRM. Bankir gapiradi — bot to'ldirib qo'yadi.</p>
+      <p class="tagline"><span class="accent-bar"></span>RAG chatbot · ichki PDF'dan javob, manba ko'rsatib. Showcase modul.</p>
     </div>
   </div>
 </section>
@@ -589,21 +559,8 @@ body,p,li,.lead{letter-spacing:0.018em}
           <span class="phase-num">01</span>
         </div>
         <div>
-          <h3 class="phase-title">Voice bot</h3>
-          <p class="phase-desc">Nima uchun voice memo? Live demo, qog'oz forma vs ovoz farqini ko'ramiz.</p>
-        </div>
-        <div class="phase-foot">
-          <span class="phase-time">~9 daq</span>
-        </div>
-      </button>
-
-      <button class="phase-card fragment">
-        <div class="phase-top">
-          <span class="phase-num">02</span>
-        </div>
-        <div>
-          <h3 class="phase-title">STT</h3>
-          <p class="phase-desc">Ovoz qanday matnga aylanadi? Whisper, Gemini, ElevenLabs — tanlov mezonlari.</p>
+          <h3 class="phase-title">RAG nima</h3>
+          <p class="phase-desc">Live demo + Pure LLM vs RAG. Nega "manbasiz javob" bankka yaramaydi?</p>
         </div>
         <div class="phase-foot">
           <span class="phase-time">~10 daq</span>
@@ -612,14 +569,27 @@ body,p,li,.lead{letter-spacing:0.018em}
 
       <button class="phase-card fragment">
         <div class="phase-top">
+          <span class="phase-num">02</span>
+        </div>
+        <div>
+          <h3 class="phase-title">RAG arxitekturasi</h3>
+          <p class="phase-desc">4 bosqich: Indexing → Chunking → Embedding → Retrieval+Generation.</p>
+        </div>
+        <div class="phase-foot">
+          <span class="phase-time">~14 daq</span>
+        </div>
+      </button>
+
+      <button class="phase-card fragment">
+        <div class="phase-top">
           <span class="phase-num">03</span>
         </div>
         <div>
-          <h3 class="phase-title">Schema</h3>
-          <p class="phase-desc">AI'ga aniq formatdagi JSON yozishga majburlash. 4 qoida, real bank misoli.</p>
+          <h3 class="phase-title">Production bot</h3>
+          <p class="phase-desc">BankRAGBoti · 77 node, 14 marshrut. Chunking, manba, audit, privacy.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~17 daq</span>
+          <span class="phase-time">~22 daq</span>
         </div>
       </button>
 
@@ -628,11 +598,11 @@ body,p,li,.lead{letter-spacing:0.018em}
           <span class="phase-num">04</span>
         </div>
         <div>
-          <h3 class="phase-title">Birga loyihalash</h3>
-          <p class="phase-desc">Sifat, privacy va stol bo'yicha o'z bo'limingiz uchun schema canvas.</p>
+          <h3 class="phase-title">Sizning RAG</h3>
+          <p class="phase-desc">Stol bo'yicha pilot canvas: use case + manba + test + xavf + qaror.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~24 daq</span>
+          <span class="phase-time">~14 daq</span>
         </div>
       </button>
 
@@ -640,7 +610,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
 </section>
 
-<!-- SLIDE 3 — HOOK · Live voice memo demo -->
+<!-- SLIDE 3 — HOOK · Live RAG bot demo -->
 <section class="slide s-hook">
   <div class="brand-strip">
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
@@ -648,40 +618,50 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main">
-    <div class="voice-wave reveal r2">
-      <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
-      <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
-      <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
-      <span class="voice-meta">0:15 · Telegram voice</span>
+    <div class="qr-stack reveal r2">
+      <div class="qr-box has-img"><img src="images/https_t_me_bankragbot.png" alt="QR · t.me/bankragbot"></div>
+      <a class="qr-url" href="https://t.me/bankragbot">t.me/bankragbot</a>
     </div>
     <div class="reveal r3">
-      <span class="chip-out" style="background:transparent">Live demo · 15 sek</span>
-      <h2 class="h2" style="margin-top:clamp(0.6rem,1.2vw,1rem)">Bankir gapiradi — <span class="hl">bot eslab qoladi</span>.</h2>
-      <div class="demo-msg">"Aliyev Vali bilan uchrashdim. Avtokredit so'ramoqda — 200 mln so'm, 12 oy. Garov: kvartira. Hujjatlarni ertaga olib keladi."</div>
-      <p style="margin-top:clamp(0.7rem,1.4vw,1.15rem);font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2)">→ 15 sek keyin: Sheets'da yangi qator paydo bo'ladi</p>
+      <span class="chip-out" style="background:transparent">Live demo · BankRAGBoti</span>
+      <h2 class="h2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">1-modulda ishlatilgan bot — <span class="hl">bugun ichini ochamiz</span>.</h2>
+      <div class="chat">
+        <div class="bubble user">Avtokredit foizi qancha?</div>
+        <div class="bubble ai fragment is-visible">Ichki PDF'dan qidirilmoqda — vector_store_search...</div>
+        <div class="bubble ai fragment is-visible">Tarif №3, 4-band: <strong>yillik 18%</strong>. Manba: <strong>kredit_siyosati.pdf</strong>. Yakuniy qaror — bankir hamkasbim bilan kelishilgan holda bo'ladi.</div>
+      </div>
+      <p class="lead no-bar" style="margin-top:clamp(0.85rem,1.6vw,1.4rem)">Showcase modul. Bugun siz qurmaysiz — ichini ko'rasiz. <strong>9-modulda</strong> 7 nodeli oddiy klassifikator qurdingiz; bu — uning <strong>chuqur, manba bilan ishlaydigan</strong> versiyasi.</p>
+      <p class="lead no-bar" style="margin-top:clamp(0.5rem,0.9vw,0.8rem);font-size:var(--small);color:rgba(255,255,255,0.55)">Stack: Telegram + Gemini + Google Sheets + Drive · 77 node · kod yo'q.</p>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 4 — Voice memo muammosi -->
-<section class="slide s-compare">
+<!-- SLIDE 4 — Pure LLM vs RAG -->
+<section class="slide s-vs">
   <div class="brand-strip">
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
     <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
   </div>
   <div class="head"></div>
   <div class="main">
-    <h2 class="h2 reveal r2">Avval <span class="hl">15 daqiqa</span>.<br>Hozir 15 sekund.</h2>
-    <p class="lead reveal r2">Ko'pchilik bankir uchrashuvdan qaytib formani xotirasidan tiklab yozadi. Yo'lda kelgan tafsilotlar yo'qoladi yoki tartibsiz tushadi. Voice memo bu tirqishni yopadi.</p>
-    <div class="compare reveal r3">
-      <div class="col"><h4>Avval · qog'oz forma</h4><p>📋 Stolda 15 daq<br>esdan chiqqan tafsilot<br>1 hafta kechikib kiritish</p></div>
-      <div class="vs">→</div>
-      <div class="col win"><h4>Hozir · voice memo</h4><p>🎙 Yo'lda 15 sek<br>real vaqtda yodga keladi<br>shu daqiqada CRM'da</p></div>
+    <h2 class="h2 reveal r2">Pure LLM — <span class="hl">uydirma</span>.<br>RAG — manbaga tayangan.</h2>
+    <p class="lead reveal r2">Oddiy LLM umumiy bilimga tayanadi va manbasiz javob berishi mumkin — bankka yaramaydi. RAG javobdan oldin <strong>tasdiqlangan ichki PDF'dan</strong> tegishli bandni topadi va javobni shu manbaga bog'laydi: gallyutsinatsiya xavfi keskin tushadi, har javob ortida audit izi qoladi.</p>
+    <div class="compare-rich reveal r3">
+      <div class="col">
+        <h4>Pure LLM &middot; "balki" javobi</h4>
+        <div class="row">"Avtokredit foizi taxminan <strong>22% atrofida</strong> bo'lishi mumkin..."</div>
+        <div class="row muted">Manba yo'q · Eski training bilim · Gallyutsinatsiya xavfi yuqori · Bankir tasdiqlay olmaydi</div>
+      </div>
+      <div class="col win">
+        <h4>RAG &middot; "manbadan" javobi</h4>
+        <div class="row">"Tarif №3, 4-band: <strong>yillik 18%</strong>. (avtokredit_nizomi.pdf · 12-bet)"</div>
+        <div class="row muted">Manba bor · Joriy hujjat · Audit izi · "Topilmadi" — degan to'g'ri javob ham mumkin</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 5 — Lug'at · STT + Schema (.dict.dict-2) -->
+<!-- SLIDE 5 — DICTIONARY · RAG + Embedding -->
 <section class="slide s-dict">
   <div class="brand-strip">
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
@@ -690,55 +670,24 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <span class="chip-out reveal r1">Bankir uchun AI lug'ati · 11-modul</span>
-    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Ikki so'z — agentning <span class="hl">eshituv va xotirasi</span>.</h2>
-    <p class="lead reveal r2">Bu modulda yangi 2 atama. Voice bot ularsiz qurilmaydi. Hozir bir marta tushunsak — keyingi 13 slayd silliq o'tadi.</p>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Ikki so'z — RAG botning <span class="hl">poydevori</span>.</h2>
+    <p class="lead reveal r2">RAG — usulning umumiy nomi. Embedding — uning ichidagi mexanizm. Vektor matematikasiga kirmaymiz, ma'nosini bankir tilida tushunamiz.</p>
     <div class="dict dict-2 reveal r3">
       <div class="dict-card fragment">
-        <span class="dict-tag">STT</span>
-        <h3>Speech-to-Text · Ovoz → Matn</h3>
-        <p>Telegramdagi 15 sekundlik ovozni 2 jumla <strong>matnga</strong> aylantiradigan AI modeli. Misol: <strong>Whisper</strong> (OpenAI), <strong>Gemini Flash</strong> (Google).</p>
+        <span class="dict-tag">RAG</span>
+        <h3>Retrieval-Augmented Generation</h3>
+        <p>Bankir tilida: "<strong>AI internetdan emas, faqat sizning bank PDF'idan o'qib javob beradi</strong>". Avval qidiradi, keyin shu manbaga tayanib javob yozadi. Manbasiz — javob yo'q.</p>
       </div>
       <div class="dict-card fragment">
-        <span class="dict-tag">Schema · FC</span>
-        <h3>Schema + Function Calling</h3>
-        <p><strong>Schema</strong> — CRM uchun maydonlar ro'yxati va qoidasi. <strong>Function Calling</strong> — model shu qoidaga mos JSON qaytarishi uchun ishlatiladigan texnik usul. Validatsiya bo'sh yoki noto'g'ri maydonni aniqlaydi.</p>
+        <span class="dict-tag">Embedding</span>
+        <h3>Matnning vektor ko'rinishi</h3>
+        <p>Matnni raqamli vakilga aylantirish — shunda <strong>"avtokredit foizi"</strong> va <strong>"mashina krediti stavkasi"</strong> bir-biriga yaqin topiladi (ma'no jihatidan). Foydalanuvchi qaysi so'zni ishlatishidan qat'i nazar — bot to'g'ri bandni topadi.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 6 — STT modellari (.sec 3-card) -->
-<section class="slide s-sec">
-  <div class="brand-strip">
-    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
-    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
-  </div>
-  <div class="head"></div>
-  <div class="main">
-    <h2 class="h2 reveal r2">Qaysi <span class="hl">quloqni</span> tanlaymiz?</h2>
-    <p class="lead reveal r2" style="margin-top:0.5rem">3 ta yetakchi STT modeli. Har birining kuchli tomoni va narxi bor. Bank uchun aniq tavsiya — pastda.</p>
-    <div class="sec reveal r3">
-      <div class="item fragment">
-        <div class="ico">🎙</div>
-        <h3>Whisper · OpenAI</h3>
-        <p>Ochiq kodli, eng keng tarqalgan. O'zbek tilini o'rta darajada tushunadi. Self-host mumkin — yopiq konturda saqlanadi.</p>
-      </div>
-      <div class="item fragment" style="border-color:rgba(96,165,250,0.45);background:rgba(37,99,235,0.08)">
-        <div class="ico">✨</div>
-        <h3>Gemini Flash · Google</h3>
-        <p>Audio formatni to'g'ridan-to'g'ri tushunadi. Bugungi seminar demosi shu model ustida ko'rsatiladi. n8n bilan tabiiy bog'lanadi.</p>
-      </div>
-      <div class="item fragment">
-        <div class="ico">🎯</div>
-        <h3>ElevenLabs Scribe</h3>
-        <p>Premium yo'l. Speaker diarization (kim gapirganini ajratish) imkoniyati. Murakkab uchrashuvlar uchun.</p>
-      </div>
-    </div>
-    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.7rem,1.3vw,1rem);font-style:italic;color:var(--mute)">→ Bank tanlovi 4 mezon bilan: o'zbek nutq sifati, ma'lumot qayerda qayta ishlanadi, treningga kirmaslik bandi, ichki tizimga ulash qulayligi.</p>
-  </div>
-</section>
-
-<!-- SLIDE 7 — Voice bot arxitekturasi (.flow 5-step) -->
+<!-- SLIDE 6 — RAG arxitekturasi · 4 bosqich -->
 <section class="slide s-flow">
   <div class="brand-strip">
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
@@ -746,110 +695,213 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main">
-    <h2 class="h2 reveal r2"><span class="hl">5 bosqich</span> — Telegramdan CRM'gacha.</h2>
-    <p class="lead reveal r2" style="margin-top:0.5rem">Foydalanuvchi 1 ta tugmacha bosadi. Pastda — 5 ta avtomatik bosqich. Hech qaysi tashlab ketilmaydi.</p>
+    <h2 class="h2 reveal r2">RAG — to'rtta <span class="hl">bosqichdan</span> iborat.</h2>
+    <p class="lead reveal r2">Birinchi 3 bosqich — bir martalik tayyorgarlik (hujjat o'zgargandagina takrorlanadi). 4-bosqich — har savolda ishlaydi. Mashqda Gemini va in-memory vector store; bank muhitida model va infratuzilma muvofiqlik talabiga qarab tanlanadi.</p>
     <div class="flow reveal r3">
-      <div class="step"><div class="ico">📱</div><h4>Telegram</h4><p>Bankir ovozli xabar yuboradi</p></div>
+      <div class="step"><div class="ico">📚</div><h4>1 · Indexing</h4><p>Drive folderidagi PDF yig'iladi va tayyorlanadi</p></div>
       <div class="arrow">→</div>
-      <div class="step"><div class="ico">🎙</div><h4>STT</h4><p>Gemini ovozni o'zbekcha matnga aylantiradi</p></div>
+      <div class="step"><div class="ico">✂️</div><h4>2 · Chunking</h4><p>800 belgili bo'laklarga, 120 overlap bilan</p></div>
       <div class="arrow">→</div>
-      <div class="step brain"><div class="ico">🧠</div><h4>Ma'lumot ajratish</h4><p>Schema asosida JSON ajratib oladi</p></div>
+      <div class="step"><div class="ico">🧬</div><h4>3 · Embedding</h4><p>Bo'laklar Gemini bilan vektorga aylantiriladi</p></div>
       <div class="arrow">→</div>
-      <div class="step"><div class="ico">✓</div><h4>Validatsiya</h4><p>Ma'lumot turi va majburiyligi tekshiriladi</p></div>
-      <div class="arrow">→</div>
-      <div class="step"><div class="ico">📊</div><h4>CRM</h4><p>Sheets'ga yoziladi, bankirga tasdiq keladi</p></div>
+      <div class="step brain"><div class="ico">🧠</div><h4>4 · Retrieval + Generation</h4><p>Savol kelganda — Top-5 yaqin bandni top, tayanib javob ber</p></div>
     </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem);font-style:italic;color:var(--mute)">→ Tayyorgarlik bir marta · Ishlatish million marta. Pipeline arxitekturasi 12-modulda chuqur.</p>
   </div>
 </section>
 
-<!-- SLIDE 8 — Schema dizayn · JSON shabloni (.template-box) -->
-<section class="slide s-tpl">
+<!-- SLIDE 7 — Production RAG bot · BankRAGBoti shape -->
+<section class="slide s-prod">
   <div class="brand-strip">
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
     <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
   </div>
   <div class="head"></div>
   <div class="main">
-    <h2 class="h2 reveal r2">Schema — AI uchun <span class="hl">forma chizig'i</span>.</h2>
-    <p class="lead reveal r2" style="margin-top:0.5rem">8 ta maydon — kredit bo'limining uchrashuv hisoboti. AI har birini majburiy to'ldiradi yoki <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-2)">null</code> qaytaradi.</p>
-    <div class="tpl-wrap reveal r3">
-      <div class="tpl-meta"><span class="tpl-cat">Function calling schema</span><span class="tpl-id">bots/02_voice_memo · 8 maydon</span></div>
-      <pre class="template-box">{
-  <span class="key">"customer_name"</span>:        <span class="ph">F.I.SH yoki kompaniya</span>,
-  <span class="key">"customer_id_hint"</span>:     <span class="ph">STIR / pasport / telefon yoki null</span>,
-  <span class="key">"decision"</span>:             <span class="ph">1 jumla — uchrashuv natijasi</span>,
-  <span class="key">"follow_up"</span>:            <span class="ph">1 jumla — keyingi harakat</span>,
-  <span class="key">"next_step_date"</span>:       <span class="ph">ertaga | kelasi hafta | YYYY-MM-DD | null</span>,
-  <span class="key">"sentiment"</span>:            <span class="ph">positive | neutral | negative</span>,
-  <span class="key">"tags"</span>:                 [<span class="str">"kredit"</span>, <span class="str">"avtokredit"</span>, <span class="str">"garov-kvartira"</span>],
-  <span class="key">"notes_extra"</span>:          <span class="ph">1-2 jumla qo'shimcha eslatma</span>
-}</pre>
-      <p class="tpl-hint">→ Har maydon majburiy yoki null. AI hech qachon "tushunmadim" deb gapni qoldirib keta olmaydi.</p>
+    <span class="chip-out reveal r1">Production grade · BankRAGBoti</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Real bot — <span class="hl">77 node, 14 marshrut</span>, ikki eshik.</h2>
+    <p class="lead reveal r2">Ipak Yo'li Bank uchun yozilgan. Kursning 1-modul demo botidir — bugun siz uning ichini ochasiz. Telegram + Gemini + Sheets + Drive + In-Memory vector store.</p>
+    <div class="stat-grid reveal r3">
+      <div class="stat-cell fragment">
+        <div class="stat-num">77</div>
+        <div class="stat-lbl">Node</div>
+        <div class="stat-sub">9-modul klassifikator: 7 node. Bu — 11x katta.</div>
+      </div>
+      <div class="stat-cell fragment">
+        <div class="stat-num">14</div>
+        <div class="stat-lbl">Marshrut</div>
+        <div class="stat-sub">Q&amp;A + 7 admin: /help /list_docs /add_doc /delete_doc /reindex /stats /cancel</div>
+      </div>
+      <div class="stat-cell fragment">
+        <div class="stat-num">2</div>
+        <div class="stat-lbl">Eshik</div>
+        <div class="stat-sub">Mijoz uchun: Telegram (savol). Admin uchun: Manual Trigger (korpusni yangilash).</div>
+      </div>
+      <div class="stat-cell fragment">
+        <div class="stat-num">5</div>
+        <div class="stat-lbl">Top-K</div>
+        <div class="stat-sub">Har savolga 5 ta eng yaqin chunk. 800 belgi, 120 overlap.</div>
+      </div>
+    </div>
+    <div class="prod-strip reveal r3">
+      <span class="prod-tag">Live workflow</span>
+      <span class="prod-id">kLcPx1CZX9RwH1z8</span>
+      <span class="prod-note">→ risqaliyevds.app.n8n.cloud — siz qurmaysiz, ichini ko'rasiz.</span>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 9 — Schema 4 qoidasi (.road.road-4) -->
-<section class="slide s-road">
+<!-- SLIDE 8 — Bank PDF qo'llanma · Drive + Sheets indeks -->
+<section class="slide s-corpus">
   <div class="brand-strip">
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
     <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
   </div>
   <div class="head"></div>
   <div class="main">
-    <h2 class="h2 reveal r2">Schema yozishning <span class="hl">4 qoidasi</span>.</h2>
-    <p class="lead reveal r2" style="margin-top:0.5rem">Yaxshi schema — yaxshi bot. 4 qadamni izchil bajaring, AI hech qayerga sirg'alib chiqmaydi.</p>
-    <div class="road road-4 reveal r3">
-      <div class="step"><div class="n">01</div><h3>Nomlash</h3><p><code style="font-family:'JetBrains Mono',monospace;color:var(--accent-2)">snake_case</code>, inglizcha, qisqa, aniq. <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-2)">customerName</code> emas — <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-2)">customer_name</code>.</p></div>
-      <div class="step"><div class="n">02</div><h3>Tip</h3><p>string · int · enum · array · date. Har maydon faqat <strong style="color:var(--accent-2);font-weight:500">bitta</strong> tipga ega bo'ladi. Aralashtirilmaydi.</p></div>
-      <div class="step"><div class="n">03</div><h3>Required</h3><p>Yo majburiy, yo nullable. "Balki" yo'q. Eng ko'p xato shu yerda bo'ladi.</p></div>
-      <div class="step"><div class="n">04</div><h3>Misol</h3><p>Promt'da 2–3 to'liq JSON misoli — model shu shablonni asos qilib, mos qaytaradi.</p></div>
+    <h2 class="h2 reveal r2">Bank PDF qo'llanma — <span class="hl">Drive + Sheets</span>.</h2>
+    <p class="lead reveal r2">Hujjat — bir joyda. Indeks — ikkinchi joyda. Vektor — uchinchi joyda. Audit shu uchligi ustiga qurildi.</p>
+    <div class="corpus reveal r3">
+      <div class="col">
+        <h3><span class="ico">📁</span>Drive folder</h3>
+        <p>Hujjatlarning original nusxasi. PDF, MD, TXT — Gemini hammasini o'qiy oladi.</p>
+        <div class="lbl">Misol fayllar</div>
+        <ul>
+          <li>kredit_siyosati.pdf <span class="com">— 22 bet, asosiy hujjat</span></li>
+          <li>avtokredit_nizomi.pdf <span class="com">— 12 bet, tarif</span></li>
+          <li>depozit_shartlari_q2.pdf <span class="com">— mavsumiy</span></li>
+          <li>komplayens_qoidalari.pdf <span class="com">— ichki tartib</span></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3><span class="ico">📊</span>Sheets indeks</h3>
+        <p>Qaysi PDF indekslangan, qachon, kim qo'shgan, faolmi. <strong>Audit jurnali</strong> — har savol/javob shu yerda.</p>
+        <div class="lbl">Tab'lar</div>
+        <ul>
+          <li>Documents <span class="com">— doc_id, file_name, drive_id, is_active</span></li>
+          <li>Admins <span class="com">— chat_id allow-list</span></li>
+          <li>AdminStates <span class="com">— pending operatsiya, 1 soatlik TTL</span></li>
+          <li>UsageLog <span class="com">— savol, javob, "topilmadi", manba</span></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 10 — Banking misol · audio quote → 8 fields -->
-<section class="slide s-example">
+<!-- SLIDE 9 — Chunking · 800 / 120 -->
+<section class="slide s-chunk">
   <div class="brand-strip">
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
     <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
   </div>
   <div class="head"></div>
   <div class="main">
-    <h2 class="h2 reveal r2">Real misol — <span class="hl">kredit uchrashuvi</span>.</h2>
-    <div class="audio-quote reveal r2"><span class="ico">🎙</span>"<strong>Aliyev Vali</strong> bilan uchrashdim. <strong>Avtokredit</strong> so'ramoqda, <strong>200 mln so'm, 12 oy</strong>. Garov sifatida <strong>kvartirasini</strong> taklif qildi. Hujjatlarni <strong>ertaga</strong> olib keladi. Mijoz <strong>xushmuomala, qiziqishi yuqori</strong>."</div>
-    <div class="benefits benefits-4 reveal r3">
-      <div class="benefit fragment"><div class="stat">customer_name</div><h3>Aliyev Vali</h3><p>F.I.SH ovozdan to'g'ridan-to'g'ri.</p></div>
-      <div class="benefit fragment"><div class="stat">decision</div><h3>avtokredit · 200M / 12 oy</h3><p>Asosiy qaror, 1 jumla.</p></div>
-      <div class="benefit fragment"><div class="stat">follow_up</div><h3>hujjatlarni qabul</h3><p>Keyingi bankir harakati.</p></div>
-      <div class="benefit fragment"><div class="stat">next_step_date</div><h3>2026-05-09</h3><p>"Ertaga" → tizim aniq sanani hisoblaydi.</p></div>
-      <div class="benefit fragment"><div class="stat">sentiment</div><h3>positive</h3><p>Enum 3 qiymatdan biri.</p></div>
-      <div class="benefit fragment"><div class="stat">tags</div><h3>[kredit, avtokredit, garov]</h3><p>Indekslash uchun.</p></div>
-      <div class="benefit fragment"><div class="stat">customer_id_hint</div><h3>null</h3><p>Aytilmagan — o'ylab topmaydi.</p></div>
-      <div class="benefit fragment"><div class="stat">notes_extra</div><h3>qiziqish yuqori</h3><p>Operator uchun kontekst.</p></div>
+    <h2 class="h2 reveal r2">Chunk — <span class="hl">800 belgi · 120 overlap</span>.</h2>
+    <p class="lead reveal r2">Butun PDF'ni AI'ga bera olmaymiz — kontekst oynasi to'lib ketadi. PDF'ni bo'laklarga ajratamiz, har biriga vektor; har savolga eng yaqin 5 ta bo'lak topiladi.</p>
+    <div class="chunk-vis reveal r3">
+      <div class="chunk-doc">
+        <h4>kredit_siyosati.pdf · 4-bo'lim</h4>
+        <div class="chunk c1">[chunk 1 · 800 belgi] 4.1-band. Avtokredit yangi avtomobil uchun yillik 18%, ikkilamchi bozor uchun yillik 21% qilib belgilanadi. Boshlang'ich to'lov…</div>
+        <div class="chunk overlap">…boshlang'ich to'lov 30% dan kam bo'lmasligi kerak. [overlap · 120 belgi]</div>
+        <div class="chunk c2">[chunk 2 · 800 belgi] 4.2-band. Ikkilamchi bozordan avtomobil olish uchun boshlang'ich to'lov 30%, avtomobil 5 yildan eski bo'lsa…</div>
+        <div class="chunk overlap">…50% gacha ko'tariladi. Garov sifatida [overlap · 120 belgi]</div>
+        <div class="chunk c3">[chunk 3 · 800 belgi] 4.3-band. Garov sifatida olinadigan kvartira yoki uy-joy bozor narxining 70% dan ortmasligi kerak…</div>
+      </div>
+      <div class="chunk-spec">
+        <div class="spec-row">
+          <div class="lbl">Chunk size</div>
+          <div class="val">800 belgi</div>
+          <div class="why">~150 so'z, 1 bandga teng. Katta bo'lsa — kontekst tarqaydi. Kichik bo'lsa — fikr buziladi.</div>
+        </div>
+        <div class="spec-row">
+          <div class="lbl">Overlap</div>
+          <div class="val">120 belgi</div>
+          <div class="why">Bandning bog'lovchi qismi keyingi chunkda ham bor — chegarada qolgan ma'lumot yo'qolmaydi.</div>
+        </div>
+        <div class="spec-row">
+          <div class="lbl">Yakuniy qoida</div>
+          <div class="val">Test orqali</div>
+          <div class="why">800/120 — yaxshi boshlang'ich. 20–30 ta real savol bilan o'lchaymiz, keyin tuzatamiz.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 11 — Schema validatsiya (.compare) -->
-<section class="slide s-compare">
+<!-- SLIDE 10 — Banking misol · ichki PDF Q&A -->
+<section class="slide s-bank-ex">
   <div class="brand-strip">
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
     <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
   </div>
   <div class="head"></div>
   <div class="main">
-    <h2 class="h2 reveal r2">Schema'siz — <span class="hl">chala ma'lumot</span>.<br>Schema bilan — toza CRM.</h2>
-    <p class="lead reveal r2">Validatsiya — bot va CRM o'rtasidagi qattiq filtr. Schema'ga tushmagan ma'lumot CRM'ga yetib bormaydi.</p>
-    <div class="compare reveal r3">
-      <div class="col"><h4>Schema'siz · xato yo'l</h4><p>AI erkin matn qaytaradi<br>"Mijoz: ehtimol Aliyev"<br>qo'lda tozalash ko'p</p></div>
-      <div class="vs">→</div>
-      <div class="col win"><h4>Schema bilan · to'g'ri yo'l</h4><p>AI qat'iy JSON qaytaradi<br>customer_name: "Aliyev Vali"<br>shubhali — inson tasdig'iga</p></div>
+    <h2 class="h2 reveal r2">Real misol — <span class="hl">ichki PDF</span> Q&amp;A.</h2>
+    <p class="lead reveal r2">Mijoz savol beradi. Bot 4 qadamda javob qaytaradi: savolni embedding'ga aylantirish · Top-5 chunk topish · javob tuzish · manba qo'yish.</p>
+    <div class="bank-ex reveal r3">
+      <div class="bank-q">
+        <span class="q-tag">💬 Mijoz savoli · Telegram</span>
+        <p class="q-text">"Avtokredit foizi qancha?"</p>
+        <p style="font-size:clamp(0.78rem,1.05vw,0.95rem);color:rgba(255,255,255,0.6);font-style:italic">→ Embedding: vektor [0.21, 0.84, 0.13, ...]<br>→ Top-K=5 chunk topiladi (kredit_siyosati.pdf 4-bo'lim)<br>→ AI Agent shu 5 chunk'ga tayanib javob tuzadi</p>
+      </div>
+      <div class="bank-a">
+        <span class="a-tag">✓ Bot javobi</span>
+        <p class="a-text">"<strong>Avtokredit nizomi 4-bandiga ko'ra:</strong><br>· Yangi avto — yillik <strong>18%</strong><br>· Ikkilamchi bozor — yillik <strong>21%</strong><br>· Boshlang'ich to'lov 30% dan kam emas; 5 yildan eski avto uchun 50%."</p>
+        <div class="a-source"><strong>Manba:</strong> kredit_siyosati.pdf · 4.1-band, 4.2-band</div>
+        <p style="font-size:clamp(0.78rem,1.05vw,0.95rem);color:rgba(255,255,255,0.7);font-style:italic">Yakuniy qaror — bankir hamkasbim bilan kelishilgan holda bo'ladi.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 12 — STT xato turlari (.cando) -->
+<!-- SLIDE 11 — Manba tekshiruvi · audit izi -->
+<section class="slide s-audit">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Har javob — <span class="hl">manba bilan</span>. Har manba — audit izi.</h2>
+    <p class="lead reveal r2">RAG botning bank uchun asosiy ustunligi — har javobni orqasidan tekshirib bo'ladi. Kim, qachon, qaysi PDF'dan, qaysi banddan — hammasi yozilgan.</p>
+    <div class="audit-list reveal r3">
+      <div class="audit-row fragment">
+        <span class="num">01</span>
+        <div class="body">
+          <h4>Manba majburiyati</h4>
+          <p>System prompt: "Faqat topilgan parchalardan javob ber. Topilmasa — 'Ushbu hujjatda ma'lumot topilmadi' deb yoz." Internetdan, taxmindan — taqiqlangan.</p>
+        </div>
+        <span class="tag">system-prompt.md</span>
+      </div>
+      <div class="audit-row fragment">
+        <span class="num">02</span>
+        <div class="body">
+          <h4>Iqtibos har javobda</h4>
+          <p>Javob oxirida: "Manba: &lt;hujjat nomi&gt;, &lt;bo'lim&gt;". Bankir bir klikda PDF'ga o'tib bandni qayta o'qishi mumkin.</p>
+        </div>
+        <span class="tag">a-source</span>
+      </div>
+      <div class="audit-row fragment">
+        <span class="num">03</span>
+        <div class="body">
+          <h4>UsageLog jurnali</h4>
+          <p>Sheets · UsageLog tab: chat_id, savol, topilgan chunk_id'lar, javob, "topilmadi" bayrog'i, javob berish vaqti (latency). <strong>/stats</strong> buyrug'i 7-kunlik ko'rsatkichni qaytaradi.</p>
+        </div>
+        <span class="tag">UsageLog</span>
+      </div>
+      <div class="audit-row fragment">
+        <span class="num">04</span>
+        <div class="body">
+          <h4>Hujjat versiyasi</h4>
+          <p>Documents tab: doc_id, added_by, added_at, is_active. Eski versiyani <strong>/delete_doc</strong> arxivga oladi (soft-delete); <strong>/reindex</strong> butun korpusni qayta quradi.</p>
+        </div>
+        <span class="tag">Documents</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12 — RAG qachon yaxshi · qachon yomon -->
 <section class="slide s-cando">
   <div class="brand-strip">
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
@@ -857,34 +909,35 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main">
-    <h2 class="h2 reveal r2">STT qachon to'g'ri,<br>qachon <span class="hl">adashadi</span>?</h2>
-    <p class="lead reveal r2">Avtomat tizim sehrli emas. Kuchli tomonini va chegarasini bilmasak — ishonch buziladi. Aniq kutishlar = qulay foydalanish.</p>
+    <h2 class="h2 reveal r2">RAG <span class="hl">qachon</span> ishlaydi — qachon ishlamaydi.</h2>
+    <p class="lead reveal r2">Hech bir vosita universal emas. Kuchli va zaif tomonni bilsak — kutishlarni to'g'ri belgilaymiz, manba sifatini avval tekshiramiz.</p>
     <div class="cando reveal r3">
       <div class="cando-col fragment">
-        <div class="cando-tag">✓ To'g'ri eshitadi</div>
+        <div class="cando-tag">✓ Yaxshi ishlaydi</div>
         <ul>
-          <li>Tinch xona, 5–60 sek aniq nutq</li>
-          <li>Adabiy o'zbek tili (rasmiy uchrashuv)</li>
-          <li>Bank terminlari (kredit, foiz, garov)</li>
-          <li>Ko'p ishlatiladigan ism-familiyalar</li>
-          <li>Pauzali, tartibli gap</li>
+          <li>Hujjatda aniq yozilgan faktlar (foiz, summa, sana)</li>
+          <li>"Qayerda yozilgan?" tipidagi savollar</li>
+          <li>Shartnoma bandlari, qoidalar, tariflar</li>
+          <li>FAQ tipidagi takrorlanuvchi savollar</li>
+          <li>5–50 betlik bir mavzu hujjatlari</li>
         </ul>
       </div>
       <div class="cando-col cant fragment">
-        <div class="cando-tag">✗ Xato qiladi</div>
+        <div class="cando-tag">✗ Yomon ishlaydi</div>
         <ul>
-          <li>Shovqinli muhit (ko'cha, mashina ichi)</li>
-          <li>Ikki kishi bir paytda gapirganda</li>
-          <li>Pasport seriyasi yoki hisob raqami harf-harf aytilganda</li>
-          <li>Lahja yoki sheva — qishloq nutqi</li>
-          <li>60 sekunddan uzun nutq, mavzu tarqoq bo'lganda</li>
+          <li>Bir nechta hujjatlarni taqqoslash ("qaysi tarif foydaliroq?")</li>
+          <li>Hisob-kitob talab qiladigan savollar</li>
+          <li>Muddati o'tgan hujjat (RAG bilmaydi — qayta indekslamaguncha)</li>
+          <li>Real-time ma'lumot (bugungi kurs)</li>
+          <li>Chunk chegarasiga tushgan band — topa olmaslik (retrieval miss)</li>
         </ul>
       </div>
     </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem);font-style:italic;color:var(--mute)">→ RAG yetmasa — <strong>agent / pipeline</strong> yoki <strong>qoida dvigateli</strong> kerak (12-modul · murakkab pipeline arxitekturasi).</p>
   </div>
 </section>
 
-<!-- SLIDE 13 — Privacy & compliance (.sec) -->
+<!-- SLIDE 13 — Privacy · bank PDF qayerda -->
 <section class="slide s-sec">
   <div class="brand-strip">
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
@@ -892,26 +945,26 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main">
-    <h2 class="h2 reveal r2">Mijoz ovozi — <span class="hl">bank siri</span>.</h2>
-    <p class="lead reveal r2" style="margin-top:0.5rem">Voice memoda mijoz nomi, ehtimol pasport raqami, foiz miqdori bor. Qayerda saqlanadi, qancha vaqt, kim eshita oladi — har savolga aniq javob.</p>
+    <h2 class="h2 reveal r2">Bank PDF — <span class="hl">bank ichida</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Korpusda mijoz nomi, foiz miqdori, ichki nizom bandlari bor. Qayerda saqlanadi, kim qo'sha oladi, kim eshita oladi — har savolga aniq javob.</p>
     <div class="sec reveal r3">
       <div class="item fragment">
         <div class="ico">🔒</div>
         <h3>Saqlash konturi</h3>
-        <p>Audio va transkript bankning tasdiqlangan bulut konturida saqlanadi. Tashqi API ishlatilsa — DPA, ma'lumot qayerda saqlanishi (data residency) va ruxsatli rollar alohida hujjat bilan tasdiqlanadi.</p>
+        <p>Drive folder bank tasdiqlangan bulut konturida. Embedding va LLM chaqiruvi — Gemini API orqali (Vertex AI Workspace, korporativ shartnoma + AI modelini o'qitishni taqiqlash bandi).</p>
       </div>
       <div class="item fragment">
-        <div class="ico">⏱</div>
-        <h3>Saqlash muddati</h3>
-        <p>Audio, transkript va CRM qatori uchun retention muddati bank siyosatida belgilanadi. Avtomat o'chirish — alohida jarayon.</p>
+        <div class="ico">📜</div>
+        <h3>Korporativ shartnoma</h3>
+        <p>DPA hujjati, ma'lumot qayerda saqlanishi (data residency), zero-training bandi, audit huquqi — alohida hujjat bilan tasdiqlanadi. 3-modul Data Masking shu yerda qaytadi.</p>
       </div>
       <div class="item fragment">
-        <div class="ico">👤</div>
-        <h3>Kim eshitadi</h3>
-        <p>Faqat ruxsatli rollar. Inson eshitishi audit so'rovi orqali, har bir kirish log'ga yoziladi. Modelni o'qitish (trening) uchun yuborilmaydi (opt-out).</p>
+        <div class="ico">📒</div>
+        <h3>Audit log</h3>
+        <p>Sheets · UsageLog'da har savol, javob, manba va "topilmadi" hodisasi yoziladi. Adminlar — Admins sheet'idagi allow-list. Telegram_ID kiritilmagan — admin emas.</p>
       </div>
     </div>
-    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.7rem,1.3vw,1rem);font-style:italic;color:var(--mute)">→ Tasdiqsiz real mijoz ovozi demo yoki pilotga kiritilmaydi. 3-modulda Data Masking — shu qoida voice memo'ga ham tushadi.</p>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.7rem,1.3vw,1rem);font-style:italic;color:var(--mute)">→ Tasdiqsiz haqiqiy bank PDF demoga kiritilmaydi. Pilot — sintetik yoki ochiq nizomlardan boshlanadi.</p>
   </div>
 </section>
 
@@ -923,24 +976,29 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main">
-    <h2 class="h2 reveal r2"><span class="hl">Tayyor pipeline</span> — tayyor loyiha papkasi.</h2>
-    <p class="lead reveal r2" style="margin-top:0.5rem">Bu botning to'liq dizayni allaqachon yozilgan: workflow grafi, schema, prompt, conversation flow. Kursning <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-2)">bots/</code> papkasida — siz ko'rib, keyin moslab olasiz.</p>
+    <h2 class="h2 reveal r2"><span class="hl">Tayyor pipeline</span> — to'liq dizayn papkasi.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Bu botning to'liq dizayni va prompt'lari <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-2)">bots/02_rag_chatbot/</code> da. Workflow grafi, system prompt, admin command sxemasi — hammasi bor. Showcase: ko'ramiz, n8n'da ochib, ichidan o'rganamiz.</p>
     <div class="tpl-wrap reveal r3">
-      <div class="tpl-meta"><span class="tpl-cat">Bot folder</span><span class="tpl-id">decks/cb_decks/bots/02_voice_memo/</span></div>
-      <pre class="template-box">bots/02_voice_memo/
-  ├─ <span class="key">README.md</span>                  <span class="com">← bu bot nima qiladi</span>
+      <div class="tpl-meta"><span class="tpl-cat">Bot folder</span><span class="tpl-id">decks/cb_decks/bots/02_rag_chatbot/</span></div>
+      <pre class="template-box">bots/02_rag_chatbot/
+  ├─ <span class="key">README.md</span>                            <span class="com">← bot nima qiladi · 2 eshik mental model</span>
   ├─ <span class="key">design/</span>
-  │   ├─ conversation-flow.md   <span class="com">← user → bot dialog</span>
-  │   ├─ workflow-graph.md      <span class="com">← n8n 11 node graph</span>
-  │   └─ data-schema.md         <span class="com">← Sheets layout, JSON</span>
+  │   ├─ workflow-graph.md              <span class="com">← 77 node, 14 marshrut, ASCII grafi</span>
+  │   ├─ conversation-flow.md           <span class="com">← Q&amp;A oqimi + admin buyruqlari</span>
+  │   └─ data-schema.md                 <span class="com">← Sheets tab'lar, Drive layout, chunk strategy</span>
+  ├─ <span class="key">prompt/</span>
+  │   ├─ 00-MASTER-PROMPT.md            <span class="com">← bitta paste — bot tikladi</span>
+  │   ├─ 01-overview-and-mental-model.md
+  │   ├─ 04-chain-qa-rag.md             <span class="com">← asosiy savol-javob oqimi</span>
+  │   └─ … (10 ta chain fayli)
   └─ <span class="key">prompts/</span>
-      └─ extraction-prompt.md   <span class="com">← Gemini system prompt</span></pre>
-      <p class="tpl-hint">→ 12-modulda biz shu folder'ni ochib, n8n'da node-by-node quramiz.</p>
+      └─ system-prompt.md               <span class="com">← AI Agent persona, RAG-only qoidalar</span></pre>
+      <p class="tpl-hint">→ Live workflow: <strong>kLcPx1CZX9RwH1z8</strong> — risqaliyevds.app.n8n.cloud. Pipeline arxitekturasi 12-modulda chuqur.</p>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 15 — Dizayn mashqi · 3 ta savol (.s-brain) -->
+<!-- SLIDE 15 — Dizayn mashqi · 3 ta savol -->
 <section class="slide s-brain">
   <div class="brand-strip">
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
@@ -948,19 +1006,19 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main">
-    <span class="chip-out reveal r2">Dizayn mashqi · stol bo'yicha · 12 daq</span>
-    <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)">Sizning bo'limingiz uchun <span class="hl">voice bot</span>.</h2>
+    <span class="chip-out reveal r2">Dizayn mashqi · stol bo'yicha · 10 daq</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)">Sizning bo'limingiz uchun <span class="hl">RAG pilot</span>.</h2>
     <div class="questions reveal r3">
-      <div class="q fragment"><span class="n">01</span><span>Sizning bo'limingizda <span style="color:var(--accent-2)">qanday voice memo</span> ko'p uchraydi? Kim, qachon, qaysi vaziyatda gapiradi?</span></div>
-      <div class="q fragment"><span class="n">02</span><span>Schema'da <span style="color:var(--accent-2)">qaysi 5 ta maydon</span> majburiy? (kredit / depozit / HR / muvofiqlikka moslab)</span></div>
-      <div class="q fragment"><span class="n">03</span><span>Ma'lumot qachon to'g'ridan-to'g'ri <span style="color:var(--accent-2)">CRM'ga</span>, qachon avval <span style="color:var(--accent-2)">menejerga</span> tushadi? Validatsiya yoki eskalatsiya qoidasi.</span></div>
+      <div class="q fragment"><span class="n">01</span><span>Sizning bo'limingizda <span style="color:var(--accent-2)">qaysi 3 ta hujjat</span> RAG'ning birinchi pilot manbasi bo'la oladi? (nizom, qoida, tarif — aniq fayl nomi)</span></div>
+      <div class="q fragment"><span class="n">02</span><span>Foydalanuvchi <span style="color:var(--accent-2)">kim</span> — mijoz, ichki bankir, yoki audit? Va u <span style="color:var(--accent-2)">qanday savol</span> beradi? (3 ta tipik misol)</span></div>
+      <div class="q fragment"><span class="n">03</span><span>"<span style="color:var(--accent-2)">Topilmadi</span>" javobi qachon to'g'ri, qachon xato? Qaysi savolga RAG umuman <span style="color:var(--accent-2)">javob bermasligi</span> kerak?</span></div>
     </div>
-    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.7rem,1.3vw,1rem);font-style:italic;color:var(--mute)">→ 12 daqiqa stol ichida muhokama. Keyingi slaydda canvas to'ldiramiz.</p>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.7rem,1.3vw,1rem);font-style:italic;color:var(--mute)">→ 10 daqiqa stol ichida muhokama. Keyingi slaydda 5 qatorli pilot canvas'ni to'ldiramiz.</p>
   </div>
 </section>
 
-<!-- SLIDE 16 — Schema canvas worksheet (.canvas-grid) -->
-<section class="slide s-brain">
+<!-- SLIDE 16 — RAG pilot canvas (5 rows) -->
+<section class="slide s-pilot">
   <div class="brand-strip">
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
     <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
@@ -968,14 +1026,30 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <span class="chip-out reveal r1">Stol bo'yicha · 8 daq · canvas to'ldirish</span>
-    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)"><span class="hl">Schema canvas</span> — 4 katak, 2 jumla.</h2>
-    <div class="canvas-grid reveal r3">
-      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">🎙</span>Use case</div><p>Sizning bo'limda qaysi voice memo? (1 jumla)</p></div>
-      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">📋</span>5 maydon</div><p>Kerakli 5 ta JSON maydoni — har biri bitta so'z.</p></div>
-      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">⚙️</span>Validatsiya</div><p>Qaysi maydon majburiy, qaysi nullable?</p></div>
-      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">🚨</span>Eskalatsiya</div><p>Qachon to'g'ridan-to'g'ri menejerga jo'natiladi?</p></div>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)"><span class="hl">RAG pilot canvas</span> — 5 qator, qaror.</h2>
+    <div class="pilot-canvas reveal r3">
+      <div class="pilot-row">
+        <span class="pilot-tag"><span class="ico">🎯</span>Use case</span>
+        <p>Bo'limning qaysi savol oqimi RAG bilan yopiladi? (1 jumla)</p>
+      </div>
+      <div class="pilot-row">
+        <span class="pilot-tag"><span class="ico">📚</span>Manba</span>
+        <p>Qaysi 3 ta PDF korpusga tushadi? Kim qo'sha oladi (admin allow-list)?</p>
+      </div>
+      <div class="pilot-row">
+        <span class="pilot-tag"><span class="ico">✅</span>Test savollar</span>
+        <p>20 ta real savol — bot to'g'ri javob va to'g'ri manba bermasa, pilot rad qilinadi.</p>
+      </div>
+      <div class="pilot-row">
+        <span class="pilot-tag"><span class="ico">⚠️</span>Xavf</span>
+        <p>"Topilmadi" mumkinmi? Eski hujjat ishlatilsa nima bo'ladi? Eskalatsiya qoidasi.</p>
+      </div>
+      <div class="pilot-row">
+        <span class="pilot-tag"><span class="ico">🚦</span>Qaror</span>
+        <p>"Bormaymiz / sintetik PDF bilan boshlaymiz / haqiqiy korpus bilan boshlaymiz". Yakuniy.</p>
+      </div>
     </div>
-    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.6rem,1.1vw,0.95rem);font-style:italic;color:var(--mute)">→ 8 daqiqadan so'ng 2 ta stol o'z canvas'ini auditoriyaga taqdim etadi.</p>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.5rem,1vw,0.8rem);font-style:italic;color:var(--mute)">→ 8 daqiqadan so'ng 2 ta stol o'z qarorini auditoriyaga taqdim etadi.</p>
   </div>
 </section>
 
@@ -989,15 +1063,15 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="main">
     <h2 class="h2 reveal r2">O'zimiz bilan <span class="hl">olib ketadigan</span> 3 xulosa.</h2>
     <div class="close-list reveal r3">
-      <div class="close-row"><span class="arrow">💡</span><p><strong>Voice memo — bu pipeline</strong>, bitta promt emas. Telegram → STT → ekstraksiya → schema → CRM. Har bir bo'g'in — dizayn qarori.</p></div>
-      <div class="close-row"><span class="arrow">💡</span><p><strong>Schema — agentning ruhi</strong>. Yaxshi schema CRM yozuvini bir xil formatda saqlaydi; shubhali holat inson tasdig'iga ketadi.</p></div>
-      <div class="close-row"><span class="arrow">💡</span><p><strong>Pilot qarori bilan chiqamiz</strong> — har stol 1 betlik hujjat: use case, 5 maydon, retention, menejer tasdig'i. Tayyor template <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-2)">bots/02_voice_memo</code> papkasida.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>RAG — manbasiz emas, manbaga tayangan AI</strong>. Bank uchun yagona to'g'ri javob: ichki PDF + iqtibos. "Topilmadi" — javob, "balki" emas.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Showcase — keyingi darajaga o'sish</strong>. 9-modulda 7 nodeli klassifikator qurdingiz; bu — uning chuqur, manba bilan ishlaydigan versiyasi (77 node). Shu yo'ldan o'tish mumkin.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Pilot qarori bilan chiqamiz</strong> — har stol 5 qatorli canvas: use case + manba + test + xavf + qaror. Tayyor template <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-2)">bots/02_rag_chatbot</code> papkasida.</p></div>
     </div>
     <div class="recap reveal r3">
       <div class="recap-tag">Lug'at recap · birga aytamiz</div>
       <div class="recap-terms">
-        <div class="recap-term"><strong>STT</strong> <span class="ans">ovozni matnga aylantirish</span></div>
-        <div class="recap-term"><strong>Schema / Function Calling</strong> <span class="ans">model JSON formatdagi maydonlarni qoidaga mos qaytarishi</span></div>
+        <div class="recap-term"><strong>RAG</strong> <span class="ans">avval bank PDF'idan top, keyin shu manbaga tayangan javob yoz</span></div>
+        <div class="recap-term"><strong>Embedding</strong> <span class="ans">matnni ma'no bo'yicha qidirish uchun raqamli vektorga aylantirish</span></div>
       </div>
     </div>
   </div>
@@ -1027,22 +1101,22 @@ body,p,li,.lead{letter-spacing:0.018em}
 
 <script>
 const TITLES = [
-  'Title · 11-modul',
+  'Title · 11-modul · RAG chatbot',
   "Yo'l xaritasi · Agenda",
-  'Live voice memo demo',
-  "Voice memo muammosi · 15 daq vs 15 sek",
-  "Lug'at · STT + Schema",
-  'STT modellari · Whisper / Gemini / ElevenLabs',
-  'Voice bot arxitekturasi · 5 bosqich',
-  'Schema dizayn · JSON shabloni',
-  'Schema yozish · 4 qoida',
-  'Banking misol · kredit uchrashuvi',
-  "Schema validatsiya · chala vs toza",
-  'STT xato turlari · to\'g\'ri / xato',
-  'Privacy · ovoz qayerda saqlanadi',
-  'Tayyor template · bot folder',
+  'Live RAG bot demo · BankRAGBoti',
+  "Pure LLM muammosi · uydirma vs manba",
+  "Lug'at · RAG + Embedding",
+  'RAG arxitekturasi · 4 bosqich',
+  'Production RAG bot · 77 node · 14 marshrut',
+  "Bank PDF qo'llanma · Drive + Sheets",
+  'Chunk size + overlap · 800 / 120',
+  "Banking misol · ichki PDF Q&A",
+  "Manba tekshiruvi · har javob = audit izi",
+  'RAG qachon yaxshi · qachon yomon',
+  'Privacy · bank PDF qayerda saqlanadi',
+  'Tayyor template · bots/02_rag_chatbot',
   "Dizayn mashqi · 3 ta savol",
-  'Schema canvas · worksheet',
+  'RAG pilot canvas · 5 qator',
   "Yakun · 3 xulosa + lug'at recap",
   'Savol-Javob · Q&A'
 ];

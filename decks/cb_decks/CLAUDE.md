@@ -63,27 +63,27 @@ Auditoriya texnik bo'lmagan bank xodimlari, lekin kurs davomida "LLM", "promt", 
 | 6 | Prompt library | **System Prompt** | **Template Prompt** | — | ✅ slide 5 dict-card · closing recap-term |
 | 7 | AI platforms | **Token** | **Context Window** (kontekst oynasi) | **+ Rules · Skills · MCP** (slide 14 · ikkinchi qism); Agent — cross-ref to deck 10 | ✅ slide 5 dict-card (Token + Context) · slide 14 dict-card (Rules + Skills + MCP) + Agent cross-ref-card · slide 18 closing recap (5 atamalar) |
 | 8 | No-code | **Trigger** | **Webhook** | — | ✅ slide 5 dict-card · closing recap-term |
-| 9 | First AI workflow | **RAG** (Retrieval-Augmented Generation) | **Embedding** (vektor ko'rinishi) | — | ✅ slide 5 dict-card · slide 18 recap-term · paired with [`bots/01_rag_basics/`](bots/01_rag_basics/) |
+| 9 | First AI workflow | **Classification** (Tasniflash) | **Schema** (sxema-bo'yicha javob · structured output) | — | ✅ slide 5 dict-card · closing recap-term · paired with [`bots/01_classifier_bot/`](bots/01_classifier_bot/) — **demo bot** (simplest, 7 nodes, classifier + operator match) |
 | 10 | Agents intro | **Agent** | **Tool Use** (asbobdan foydalanish) | — | ✅ slide 5 dict-card · closing recap-term |
-| 11 | Agent design (voice bot) | **Speech-to-Text** (STT) | **Function Calling / Schema** | — | ✅ slide 5 dict-card · closing recap-term · paired with [`bots/02_voice_memo/`](bots/02_voice_memo/) |
-| 12 | Complex workflows | **Pipeline** (multi-step LLM) | **Idempotent design** | — | ✅ slide 5 dict-card · closing recap-term · paired with [`bots/02_voice_memo/`](bots/02_voice_memo/) |
+| 11 | Agent design (RAG chatbot) | **RAG** (Retrieval-Augmented Generation) | **Embedding** (vektor ko'rinishi) | — | ✅ slide 5 dict-card · closing recap-term · paired with [`bots/02_rag_chatbot/`](bots/02_rag_chatbot/) — **production-grade** RAG with admin commands |
+| 12 | Complex workflows | **Pipeline** (multi-step LLM) | **Idempotent design** | — | ✅ slide 5 dict-card · closing recap-term · uses the **classifier bot** (deck 9's build) as the pipeline analysis target — students reason about "how do I take MY bot to production?" |
 | 13 | Real cases | **AI Adoption** | **Production-grade** | — | ✅ slide 5 dict-card · closing recap-term |
 | 14 | Solution development | **MVP** (Minimum Mahsulot) | **Iteration** (takrorlash) | — | ✅ slide 5 dict-card · closing recap-term · paired with [`bots/03_complex_agent/`](bots/03_complex_agent/) |
-| 15 | Yakuniy | **Glossary review** — barcha 28 atama (LLM/Promt/API … MVP/Iteration) | Q&A | — | ✅ slide 5 to'liq glossary jadvali |
+| 15 | Yakuniy | **Glossary review** — barcha asosiy atamalar (LLM/Promt/API … RAG/Embedding … MVP/Iteration) | Q&A | — | ✅ slide 5 to'liq glossary jadvali — **note:** atamalar list was updated 2026-05-10 (STT/Function Calling removed; Classification/Schema added for new deck 9 classifier bot) |
 
 ### Atamalar uniqueness rule (qat'iy)
 
 Har bir atama **faqat bitta deck'da rasmiy ravishda kiritiladi** (`<span class="dict-tag">{atama}</span>` dict-card yoki `<strong>{atama}</strong>` recap-pill orqali). Boshqa decklarda u faqat **kontekst sifatida tilga olinishi mumkin** — lekin qayta ta'riflanmasligi kerak.
 
 - ✅ **OK (cross-reference):** deck 10 ning Agent ta'rifi: *"ruxsatli yordamchi tizim — **LLM** + xotira + asboblar"*. LLM tilga olindi, lekin qayta ta'riflanmadi (LLM — deck 1 ning atamasi).
-- ❌ **DRIFT (duplicate):** deck 1 ning slayd 5 da RAG atamasini "O'z hujjatingdan javob" deb ta'riflab, dict-card ko'rsatish. RAG — deck 9 ning atamasi; deck 1 da faqat demo botning ishlash printsipi sifatida tilga olinishi mumkin (ta'rifsiz).
+- ❌ **DRIFT (duplicate):** deck 1 ning slayd 5 da RAG atamasini "O'z hujjatingdan javob" deb ta'riflab, dict-card ko'rsatish. RAG — deck 11 ning atamasi; deck 1 da faqat demo botning ishlash printsipi sifatida tilga olinishi mumkin (ta'rifsiz).
 
 **Drift'ni topish (PowerShell):**
 
 ```powershell
 # Har bir atama uchun: necha deck dict-tag yoki recap-strong qiladi?
 # Natijada har atama uchun [DECK 15 + bitta sub-deck] ko'rinishi kerak.
-$terms = "LLM","Promt","API","Use Case","Pilot Loyiha","Hallucination","Data Masking","Workflow","Task Decomposition","Few-shot","Chain-of-Thought","System Prompt","Template Prompt","Token","Context Window","Trigger","Webhook","RAG","Embedding","Agent","Tool Use","STT","Function Calling","Pipeline","Idempotent","AI Adoption","Production-grade","MVP","Iteration"
+$terms = "LLM","Promt","API","Use Case","Pilot Loyiha","Hallucination","Data Masking","Workflow","Task Decomposition","Few-shot","Chain-of-Thought","System Prompt","Template Prompt","Token","Context Window","Trigger","Webhook","Classification","Schema","Agent","Tool Use","RAG","Embedding","Pipeline","Idempotent","AI Adoption","Production-grade","MVP","Iteration"
 foreach ($t in $terms) {
   $hits = @()
   foreach ($n in 1..15) {

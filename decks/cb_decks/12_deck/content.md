@@ -7,9 +7,9 @@
 **Brand:** crea7iveai
 **Slaydlar soni:** 18 ta · 4 ta faza
 **Atamalar:** **Pipeline**, **Idempotent design** — slayd 5 da kiritiladi, slayd 17 da recap
-**Paired bot:** [`bots/02_voice_memo/`](../bots/02_voice_memo/)
+**Paired bot:** [`bots/01_classifier_bot/`](../bots/01_classifier_bot/) — 9-modulda qurilgan klassifikator bot
 
-> Asosiy g'oya: 11-modulda biz voice memo botning dizaynini chizdik. 12-modul bu dizaynni **ish jarayoni sifatida** ko'rib chiqadi — bitta promtga emas, ko'p bosqichli pipeline'ga aylantiramiz; har bosqichni log qiladigan, qayta ishga tushirilsa ham xato qilmaydigan tizim yaratamiz.
+> Asosiy g'oya: 9-modulda biz klassifikator botni qurdik (Telegram + Gemini + Sheets, 7 ta node). 12-modul shu botni **production darajasiga ko'tarish** uchun nima kerakligini ko'rsatadi — bitta promtga emas, ko'p bosqichli pipeline'ga aylantiramiz; har bosqichni log qiladigan, qayta ishga tushirilsa ham xato qilmaydigan tizim yaratamiz.
 
 ---
 
@@ -23,12 +23,12 @@
 | 4 | Nima uchun pipeline — uch sabab | benefits 3-card | ~3 daq | 01 Pipeline |
 | 5 | **YANGI:** Pipeline + Idempotent design | dict.dict-2 | ~3 daq | 01 Pipeline |
 | 6 | "2 marta xat" muammosi | compare-rich | ~3 daq | 01 Pipeline |
-| 7 | Voice bot — 6 bosqichli pipeline | flow flow-6 | ~5 daq | 02 Voice tahlili |
-| 8 | Har bosqich — o'zining xato turi | benefits-4 | ~4 daq | 02 Voice tahlili |
+| 7 | Klassifikator bot — 7 bosqichli pipeline | flow flow-6 (7 step) | ~5 daq | 02 Klassifikator tahlili |
+| 8 | Har bosqich — o'zining xato turi | benefits-4 | ~4 daq | 02 Klassifikator tahlili |
 | 9 | Logging — qora qutini oydinlashtirish | template-box log | ~4 daq | 03 Debugging |
 | 10 | Replay — to'xtagan joydan davom | compare | ~3 daq | 03 Debugging |
 | 11 | Pipeline + narx — uch qoida | benefits 3-card | ~3 daq | 03 Debugging |
-| 12 | Branching — VIP vs oddiy | branch diagram | ~4 daq | 03 Debugging |
+| 12 | Branching — shoshilinch vs oddiy | branch diagram | ~4 daq | 03 Debugging |
 | 13 | Eng tipik xatolar | myth 4-row | ~4 daq | 03 Debugging |
 | 14 | Bug-hunt mashq — log topamiz | s-brain + log | ~6 daq | 04 Amaliyot |
 | 15 | Debug checklist · 6 ta savol | canvas-grid 2x3 | ~3 daq | 04 Amaliyot |
@@ -49,7 +49,7 @@ Murakkab **AI jarayonlari** — pipeline va debug.
 Bitta promtdan ko'p bosqichli, qayta ishga tushirsa ham xato qilmaydigan tizimga.
 
 **Speaker notes:**
-Salomlashing va auditoriyani 11-modul bilan bog'lang. "Avval biz voice memo bot dizaynini chizgan edik — endi shu dizaynni 'ish jarayoni' deb ko'rib chiqamiz." 12-modulning o'ziga xosligi: birinchi modul bo'lib, biz **xato qilishni va xatoni topishni** maxsus o'rganamiz. Bu modul "tayyor mahsulot" ko'rsatish uchun emas, "buzilgan tizim" tushunchasi uchun. Bankirlar uchun bu juda muhim — chunki real ish jarayonida xato yuz beradi, va biz uni topib, tuzata olishimiz kerak. Pauza: "60 daqiqa pipeline ham, debug ham — tayyormisiz?"
+Salomlashing va auditoriyani 9-modul bilan bog'lang. "9-modulda biz klassifikator botni o'z qo'limiz bilan qurdik — Telegram, Gemini, Sheets. Endi savol: bu botni qanday qilib 'doim ishlaydigan' tizimga aylantirish mumkin?" 12-modulning o'ziga xosligi: birinchi modul bo'lib, biz **xato qilishni va xatoni topishni** maxsus o'rganamiz. Bu modul "tayyor mahsulot" ko'rsatish uchun emas, "buzilgan tizim" tushunchasi uchun. Bankirlar uchun bu juda muhim — chunki real ish jarayonida xato yuz beradi, va biz uni topib, tuzata olishimiz kerak. Pauza: "60 daqiqa pipeline ham, debug ham — tayyormisiz?"
 
 ---
 
@@ -61,8 +61,8 @@ Salomlashing va auditoriyani 11-modul bilan bog'lang. "Avval biz voice memo bot 
 
 1. **01 — Pipeline** · ~13 daq
    Nima uchun bitta promt yetmaydi. Bosqichlarga bo'lish — aniqlik, tekshiruv va idempotent dizayn manbai. (slaydlar 3–6)
-2. **02 — Voice bot tahlili** · ~9 daq
-   11-modulda chizgan voice memo bot — endi 6 ta bosqichni bittama-bitta ochamiz va har birida nimani kutishni belgilaymiz. (slaydlar 7–8)
+2. **02 — Klassifikator bot tahlili** · ~9 daq
+   9-modulda qurgan klassifikator botni endi production'ga olib chiqamiz — 7 ta bosqichni bittama-bitta ochib, har birida nimani kutishni belgilaymiz. (slaydlar 7–8)
 3. **03 — Debugging** · ~18 daq
    Logging, replay, idempotency, narx optimizatsiyasi va branching. Pipeline buzilsa qanday topish va qayta ishga tushirish. (slaydlar 9–13)
 4. **04 — Amaliyot** · ~17 daq
@@ -77,23 +77,23 @@ Salomlashing va auditoriyani 11-modul bilan bog'lang. "Avval biz voice memo bot 
 
 **Sarlavha:** Bitta promt yetmaydi — chunki **bir nechta ish** qiladi.
 
-**Chip:** Hook · 11-moduldan davom
+**Chip:** Hook · 9-moduldan davom
 
 **Lead:**
-Voice memo botiga "audio'ni eshit, ekstrakt qil, CRM'ga yoz" deb bitta promt yozsangiz — debug qilolmaysiz, xato qayerda ekanini bilmaysiz, qayta ishga tushirsangiz mijozga 2 ta xat yuboradi.
+Klassifikator botingizga "matnni o'qi, tasnifla, operator tanla, Sheets'ga yoz, mijozga javob ber" deb bitta promt yozsangiz — debug qilolmaysiz, xato qayerda ekanini bilmaysiz, qayta ishga tushirsangiz mijozga 2 ta xat yuboradi.
 
 **Compare-rich (2 ustun):**
 
 - ✗ **Bitta promtli bot** · "Hammasi bir oynada"
-  Audio kirdi → Gemini "eshit, tushun, ekstrakt qil, CRM'ga yoz, foydalanuvchiga javob ber" — bitta uzun promt. Xato yuz berdi. Qaysi bosqichda? Bilmaymiz. Qayta yuborsak, takrorlanadi.
+  Xabar kirdi → Gemini "tushun, tasnifla, operator top, yozuv qil, mijozga javob ber" — bitta uzun promt. Xato yuz berdi. Qaysi bosqichda? Bilmaymiz. Qayta yuborsak, takrorlanadi.
   → Qora quti · debug imkonsiz
 
-- ✓ **6-bosqichli pipeline** · "Har bosqich — alohida"
-  Audio → STT → bo'lish → ekstrakt → schema validatsiya → CRM. Har bosqich log qoldiradi, alohida qayta ishga tushadi. Xato 4-bosqichda — uchinchi va to'rtinchini qaytadan ishlatamiz, qolgani saqlanib qoladi.
+- ✓ **7-bosqichli pipeline** · "Har bosqich — alohida"
+  Xabar → tasniflash → operator o'qish → operator tanlash → ariza yozish → javob shakllantirish → yuborish. Har bosqich log qoldiradi, alohida qayta ishga tushadi. Xato 5-bosqichda — faqat shu bosqichdan qaytadan ishlatamiz, oldingi natijalar saqlanib qoladi.
   → Tekshiruvchan · idempotent
 
 **Speaker notes:**
-Bu — modulning hisli boshlanishi. Bankirlarga aniq aytish: "Birinchi yondashuv ko'p texnologik kompaniyalarning xatosi — bizda xatosi qimmat. Mijozga 2 ta tasdiq xati ketishi — muvofiqlik muammosi, ishonch yo'qoladi." 11-modulda dizaynda bizda 5–6 bosqich bor edi — endi tushuntiramiz, **nima uchun shunday qildik**. Auditoriyaga qarang: kim "men ham bitta promtda yozardim" der ekan, kim "yo'q, bo'laklash kerak" der ekan? Reaksiyani tekshirib turing.
+Bu — modulning hisli boshlanishi. Bankirlarga aniq aytish: "Birinchi yondashuv ko'p texnologik kompaniyalarning xatosi — bizda xatosi qimmat. Mijozga 2 ta tasdiq xati ketishi — muvofiqlik muammosi, ishonch yo'qoladi." 9-modulda biz qurgan bot allaqachon 7 ta nodedan iborat — bu tasodif emas. Endi tushuntiramiz, **nima uchun shunday qildik**. Auditoriyaga qarang: kim "men ham bitta promtda yozardim" der ekan, kim "yo'q, bo'laklash kerak" der ekan? Reaksiyani tekshirib turing.
 
 ---
 
@@ -102,13 +102,13 @@ Bu — modulning hisli boshlanishi. Bankirlarga aniq aytish: "Birinchi yondashuv
 **Sarlavha:** Nima uchun pipeline — uch **amaliy sabab**.
 
 **Lead:**
-Pipeline — bu modaning emas, mas'uliyatning yechimi. Bank uchun har bosqich nima uchun keraklini aniq tushunish shart.
+Pipeline — bu shunchaki moda emas, mas'uliyatli yechim. Bank uchun har bosqich nima uchun kerakligini aniq tushunish shart.
 
 **3 ta benefit:**
 
-1. **Aniqroq** — har bosqich bitta vazifa qiladi. STT faqat eshitadi, ekstrakt faqat ajratadi. Promtlar qisqaroq, sifat ortadi. *Misol:* STT'da xato bo'lsa — tark qilamiz, ekstrakt'da xato bo'lsa — qayta urinib ko'ramiz.
-2. **Tekshiruvchan** — har bosqichdan keyin natija saqlanadi. Buzilgan joyni log'dan topib bo'ladi. Audit uchun zarur. *Misol:* muvofiqlik auditori "qaysi qadamda mijoz nomi paydo bo'ldi?" — 5 sekundda javob.
-3. **Idempotent** — bir voice memo'ni 2 marta yuborsa ham — bitta yozuv. Qayta ishga tushirilganda mijozga ortiqcha xat yo'q. *Misol:* request_id orqali tekshiruv.
+1. **Aniqroq** — har bosqich bitta vazifa qiladi. LLM faqat tasniflaydi, Code faqat operator tanlaydi. Promtlar qisqaroq, sifat ortadi. *Misol:* LLM'da xato bo'lsa — to'xtatamiz, Sheets'da xato bo'lsa — qayta urinib ko'ramiz.
+2. **Tekshiruvchan** — har bosqichdan keyin natija saqlanadi. Buzilgan joyni logdan topib bo'ladi. Audit uchun zarur. *Misol:* muvofiqlik auditori "qaysi qadamda toifa aniqlandi?" — 5 sekundda javob.
+3. **Idempotent** — bir mijoz xabarini 2 marta yuborsa ham — Applications'da bitta yozuv. Qayta ishga tushirilganda mijozga ortiqcha xat yo'q. *Misol:* message_id orqali tekshiruv.
 
 **Speaker notes:**
 Har sababga 1 daqiqa. Aniqroq — promt qisqaroq bo'lganda LLM yaxshiroq javob beradi (5-modul, prompt engineering). Tekshiruvchan — bu so'z bankirlar uchun magic word. Muvofiqlik, audit, "kim nima qildi" savollari ish jarayonining ajralmas qismi. Idempotent — yangi atama, hozirgi slaydda atalmaydi, slayd 5 da kiriladi. "Idempotent" deganingda auditoriya allaqachon savol bermoqchi bo'lsa, ayting: "Keyingi slaydda lug'at, sabr qiling."
@@ -128,11 +128,11 @@ Bu atamalar 12-modulda kiritiladi va keyingi modullarda qayta-qayta uchraydi. Bi
 
 - **Pipeline** — *Ko'p bosqichli AI zanjiri*
   Bir vazifani **bir nechta ketma-ket bosqich**ga bo'lish. Har bosqich alohida promt yoki dastur, har bosqich log qoldiradi.
-  *Bank misol:* Voice memo: audio → STT → ekstrakt → schema → CRM (5 bosqich)
+  *Bank misol:* Klassifikator: Telegram → LLM → Sheets read → operator tanlash → ariza yozish → javob (7 bosqich)
 
 - **Idempotent design** — *Qayta ishlatilsa ham xatosiz*
-  Bir xil kirish — **bir xil chiqish**. Bir voice memo'ni 10 marta yuborsangiz, CRM'da bitta yozuv hosil bo'ladi. Mijozga bitta xat ketadi.
-  *Mexanizm:* har so'rovga unique request_id beriladi, ishlangan ID'lar saqlanadi.
+  Bir xil kirish — **bir xil chiqish**. Bir mijoz xabarini 10 marta yuborsangiz, Applications'da bitta ariza yoziladi. Mijozga bitta xat ketadi.
+  *Mexanizm:* har xabarga unique message_id beriladi, ishlangan ID'lar saqlanadi.
 
 **Speaker notes:**
 Bu modulning markazi. 30 sekund bilan har birini sodda ayting:
@@ -149,55 +149,56 @@ Closing slaydda (slayd 17) bu 2 atamani recap qilamiz. Hozirdan auditoriyani ogo
 **Sarlavha:** Idempotency real misolda — **"2 marta xat"** muammosi.
 
 **Lead:**
-Bankir voice memo yubordi, internet uzildi. Tizim "kelmadi" deb o'yladi va qayta yubordi. Endi tasavvur qiling: nima bo'ladi?
+Mijoz Telegram'ga "Avtokredit kerak" deb yubordi, network uzildi. Telegram "kelmadi" deb o'yladi va qayta yubordi. Endi tasavvur qiling: nima bo'ladi?
 
 **Compare-rich (2 ustun):**
 
 - ✗ **Idempotent emas** · Hech qanday tekshiruv yo'q
-  - 14:02 · Memo #1 keldi → CRM yangi yozuv #M-001 → mijozga "saqlandi" xati
-  - 14:02 · Memo #1 yana keldi (retry) → CRM yangi yozuv #M-002 → mijozga yana "saqlandi" xati
-  → 2 ta yozuv · 2 ta xat · ishonch yo'qolishi
+  - 14:02 · Xabar #1 keldi → Applications #A-001 + operatorga bildirishnoma → mijozga "qabul qilindi" xati
+  - 14:02 · Xabar #1 yana keldi (retry) → Applications #A-002 + ikkinchi operatorga bildirishnoma → mijozga yana "qabul qilindi" xati
+  → 2 ta ariza · 2 ta xat · ishonch yo'qolishi
 
-- ✓ **Idempotent dizayn** · request_id bilan tekshiruv
-  - 14:02 · Memo #1 keldi (id=A4F2) → tekshirildi: yangi → CRM #M-001 → xat ketdi
+- ✓ **Idempotent dizayn** · chat_id + message_id bilan tekshiruv
+  - 14:02 · Xabar id=A4F2 keldi → tekshirildi: yangi → Applications #A-001 → xat ketdi
   - 14:02 · id=A4F2 yana keldi → tekshirildi: *allaqachon ishlangan* → eski natija qaytariladi
-  → 1 ta yozuv · 1 ta xat · ishonch saqlandi
+  → 1 ta ariza · 1 ta xat · ishonch saqlandi
 
 **Speaker notes:**
-Hozir qisqa hikoya — "Tasavvur qiling, mijoz operatsiya qilmoqchi, internet shovqinli. Tugmani 3 marta bosgan, chunki ishlamayapti deb o'yladi. Idempotency yo'q bo'lsa — hisobidan 3 marta pul yechiladi." Bankirlar shu yerda darhol tushunishadi. Idempotent design — bu **mas'uliyatli yechim**, "ishlasa bo'ldi" emas. Ko'pchilik developer'lar buni keyinroq qo'shaman deb o'ylashadi — keyin esa muammo paydo bo'lganda kech bo'ladi. Birinchi kundan idempotent.
+Hozir qisqa hikoya — "Tasavvur qiling, mijoz 'avtokredit' deb yozdi, internet shovqinli. Telegram klienti tugmani 3 marta yubordi, chunki 'kelmadi' deb o'yladi. Idempotency yo'q bo'lsa — Applications'da 3 ta ariza yoziladi, 3 ta operator habardor qilinadi, mijozga 3 ta xat ketadi." Bankirlar shu yerda darhol tushunishadi. Idempotent design — bu **mas'uliyatli yechim**, "ishlasa bo'ldi" emas. Ko'pchilik developer'lar buni keyinroq qo'shaman deb o'ylashadi — keyin esa muammo paydo bo'lganda kech bo'ladi. Birinchi kundan idempotent.
 
-Vaqt: 3 daqiqa. Ko'p turib qolmang — keyingi slaydda voice bot pipelineining real bosqichlari.
+Vaqt: 3 daqiqa. Ko'p turib qolmang — keyingi slaydda klassifikator bot pipelineining real bosqichlari.
 
 ---
 
-## Slide 7 — Voice bot pipeline · 6-step flow
+## Slide 7 — Klassifikator bot pipeline · 7-step flow
 
-**Chip:** 11-moduldan davom · bots/02_voice_memo
+**Chip:** 9-moduldan davom · bots/01_classifier_bot
 
-**Sarlavha:** Voice memo bot — **6 bosqichli** pipeline.
+**Sarlavha:** Klassifikator bot — **7 bosqichli** pipeline.
 
 **Lead:**
-Bankir 15 sekund gapirdi. Foydalanuvchi uchun bitta amal — ichida 6 bosqich. Har biri alohida log qoldiradi, alohida qayta ishga tushadi.
+Mijoz Telegram'ga xabar yozdi. Foydalanuvchi uchun bitta amal — ichida 7 bosqich. Har biri alohida log qoldiradi, alohida qayta ishga tushadi.
 
-**6 bosqichli flow (02 va 04 — brain step):**
+**7 bosqichli flow (02 va 04 — qaror chiqaruvchi step):**
 
-1. **Audio kelishi** 🎙️ — Telegram'dan ovoz fayli
-2. **STT** 📝 — Gemini audio → o'zbek matni *(LLM chaqiruv)*
-3. **Bo'lish** ✂️ — Mijoz, qaror, izoh — qism
-4. **Ekstrakt** 🎯 — Gemini → JSON maydonlar *(LLM chaqiruv)*
-5. **Schema** ✅ — Tip va majburiy maydon tekshiruvi
-6. **CRM** 📊 — Sheets'ga yozuv + tasdiq
+1. **Telegram** 📨 — Xabar trigger'ga keldi
+2. **LLM Chain** 🧠 — Gemini → toifa + JSON *(Gemini chaqiruv · xarajat)*
+3. **Sheets Read** 📋 — Operators · faol filtr
+4. **Pick Operator** 🎯 — Code · birinchi mos *(qaror)*
+5. **Sheets Append** 📊 — Applications · ariza
+6. **Format** ✍️ — Set · o'zbek matni
+7. **Send** 📤 — Telegram javobi
 
 **Yakuniy qator:**
-→ 02 va 04 — Gemini chaqiruvi (xarajat). 03, 05, 06 — kodli logika (tezkor).
+→ 02 va 04 — qaror chiqaruvchi bosqichlar (02 Gemini xarajat, 04 Code logika). 01, 03, 05, 06, 07 — integratsiya va tezkor logika.
 
 **Speaker notes:**
-Bu modulning markaziy diagrammasi. Ekrandagi 6 ta blokni bittama-bitta ko'rsating. Ayniqsa "brain" deb belgilangan 02 va 04 — ya'ni LLM chaqiriladigan bosqichlar. Qolgan 4 ta bosqich — sodda kod yoki shartlar. Bu muhim, chunki:
+Bu modulning markaziy diagrammasi. Ekrandagi 7 ta blokni bittama-bitta ko'rsating. Ayniqsa "brain" deb belgilangan 02 (Gemini) va 04 (Code) — qaror chiqaruvchi bosqichlar. Qolgan 5 ta bosqich — integratsiya yoki sodda kod. Bu muhim, chunki:
 
-- LLM chaqiruv = pul + vaqt
-- Kod = arzon + tezkor
+- 02 (Gemini) chaqiruv = pul + vaqt
+- Boshqalar = arzon + tezkor
 
-"Ekstrakt" bosqichini 11-modulda chizdik — mana shu yerda Function Calling / Schema atamasi qaytib chiqadi. Bog'lang: "11-modulda Schema atamani kiritgan edik. Mana bu yerda — schema validatsiya 5-bosqich. Schema bo'lmasa, validatsiya qila olmaymiz."
+"9-modulda siz aynan shu botni qurgansiz — biroq ehtimol 'bitta promt'ga yaqin yondashuv bilan. Bu yerda biz har bosqichni alohida ko'rib, har birida xato turini va yechimni belgilaymiz."
 
 Vaqt: 5 daqiqa. Ehtiyot bo'ling — bu slayd ko'p ma'lumot beradi, sekinroq gapiring.
 
@@ -212,15 +213,15 @@ Pipeline'ning qadri shu — biz xatoning *turini* aniq biladigan bo'lamiz. Har t
 
 **4 ta benefit (benefits-4):**
 
-1. **Audio sifati** 🎙️ — Shovqin baland, ovoz qisqa, shu jumladan tinch yozuv. *Yechim:* 3 sek'dan qisqa bo'lsa rad et, foydalanuvchidan qayta so'ra.
-2. **STT xatosi** 📝 — Lahja, maxsus terminlar, aralash til (o'zbek + rus). *Yechim:* prompt'ga "bank atamalari uchraydi" eslatma · pastki ishonch — auditga.
-3. **Ekstrakt xatosi** 🎯 — "Ertaga" — qaysi sana? Mijoz ismi noto'g'ri yozildi. *Yechim:* few-shot misollar · sana hisoblash uchun aniq qoida.
-4. **Validatsiya** ✅ — Majburiy maydon yo'q, tip noto'g'ri, qiymat ro'yxatdan tashqari. *Yechim:* schema xato → bankirga "qaysi maydonni qo'shish" so'rovi.
+1. **LLM xatosi** 🧠 — Gemini noto'g'ri toifa berdi yoki JSON sxemadan tashqari javob qaytardi. *Yechim:* Output Parser sxemani qattiq tekshiradi · qayta urinish + temperature 0.2.
+2. **Sheets mavjud emas** 📋 — Google Sheets API kechikdi yoki rate-limit'ga tushdi (5xx). *Yechim:* 3 marta retry exponential backoff · oxirida fallback "operator keyinroq".
+3. **Mos operator yo'q** 🎯 — Toifa uchun faol operator topilmadi (active=FALSE yoki qator yo'q). *Yechim:* Code'da "Tayinlanmagan" fallback · administratorga avtomatik xabar.
+4. **Telegram timeout** 📤 — Mijozga javob yuborishda tarmoq xatosi (network · 503 · 429). *Yechim:* ariza saqlangan · javob retry navbatga qo'yiladi · idempotent send.
 
 **Speaker notes:**
 Bu slayd auditoriyani "AI mukammal" tushunchasidan qutqaradi. Ayting: "AI xato qilmaydi degan eshikni yopamiz — AI xato qiladi, va biz xatoga tayyormiz." Har xato turi — alohida yechim. Bu pedagogik jihatdan muhim: ishtirokchilar "xato yuz berdi → mahsulot ishlamaydi" emas, "xato yuz berdi → tegishli yechim" deb o'ylashlari kerak.
 
-11-modul'dan eslatma: STT atamasi — bu yerda 2-bosqich. Few-shot — 5-modulda kiritilgan, ekstrakt bosqichida ishlatamiz. Bog'lanishlarni ko'rsating.
+9-modul'dan eslatma: Schema atamasi — bu yerda 1-xato turi ("LLM noto'g'ri JSON"). Output Parser — sxemani qattiq tekshiradi. Few-shot — 5-modulda kiritilgan, klassifikator promt'iga qo'shilishi mumkin.
 
 Vaqt: 4 daqiqa.
 
@@ -237,24 +238,24 @@ Har bosqich uchun 3 narsani yozib qo'yish: kirish, oraliq natija, xato konteksti
 
 **Template-box (log misoli):**
 ```
-[2026-05-08 14:02:11] request_id=A4F2  user=bankir_aliyev
-step=01  audio_received       size=247KB  duration=18.3s
-step=02  stt_complete         ok     model=gemini-1.5-flash  tokens_in=audio  tokens_out=142
-                                  text="Aliyev Vali bilan uchrashdim. Avtokredit so'ramoqda..."
-step=03  split_sections       ok     sections=4  (mijoz, qaror, izoh, sana)
-step=04  extract_fields       ok     model=gemini-1.5-pro  tokens_out=89
-                                  fields={customer:"Aliyev V.", amount:200000000, term:12, ...}
-step=05  schema_validate      warn   missing=next_step_date · "ertaga" → ?
-step=06  crm_write            FAIL  reason="next_step_date majburiy"
-                                  // → bankirga qayta so'rov: "Ertaga = 2026-05-09 deb tushunsam, to'g'rimi?"
+[2026-05-08 14:02:11] message_id=A4F2  chat_id=123456789  user=Murad
+step=01  telegram_received    text="Avtokredit olmoqchiman, 50 mln, 5 yilga"
+step=02  llm_classify         ok     model=gemini-1.5-flash  temp=0.2  tokens_in=64  tokens_out=58
+                                  json={category:"kredit", subject:"Avtokredit so'rovi", urgency:"medium"}
+step=03  sheets_read_ops      ok     filter=category=kredit,active=TRUE  rows=2
+step=04  pick_operator        ok     chosen="Aziza Karimova"  contact="+998 90 ..."
+step=05  sheets_append_app    warn   row=#A-318 yozildi  duration=2.4s (sekin)
+step=06  format_reply         ok     reply_len=187
+step=07  telegram_send        FAIL  http=429 rate_limit  retry_after=30s
+                                  // → ariza saqlangan, javob 30 sek'da yuboriladi (idempotent retry)
 ```
 
-**Tagline:** → Auditor 2 daqiqa ichida topadi: xato 5-bosqichda · sabab — sana noaniq · oldingi bosqichlar saqlanib qoldi.
+**Tagline:** → Auditor 2 daqiqa ichida topadi: xato 7-bosqichda · sabab — Telegram rate-limit · ariza 5-bosqichda saqlanib qoldi.
 
 **Speaker notes:**
-Real log misol bilan ko'rsating. Auditoriyaga: "Logni o'qish bankirlar uchun ham qiyin emas — har qator bitta narsani aytadi." Bo'rttirib ko'rsating: 1) **request_id** — har so'rov uchun unique, debug uchun zarur; 2) **step** — har bosqich aniq raqam bilan; 3) **status** — ok / warn / FAIL — rangli; 4) **token va xarajat** — auditga.
+Real log misol bilan ko'rsating. Auditoriyaga: "Logni o'qish bankirlar uchun ham qiyin emas — har qator bitta narsani aytadi." Bo'rttirib ko'rsating: 1) **message_id + chat_id** — har xabar uchun unique, debug uchun zarur; 2) **step** — har bosqich aniq raqam bilan; 3) **status** — ok / warn / FAIL — rangli; 4) **token va xarajat** — auditga.
 
-11-modulda atamalarni eslating: "step=02 — STT bosqichi, 11-modulda kiritgan edik. Step=04 — schema bilan ekstrakt." Bog'lash retentsiyaga foyda.
+9-modulda atamalarni eslating: "step=02 — Classification bosqichi, 9-modulda kiritgan edik. step=05 — Schema bo'yicha autoMapInputData." Bog'lash retentsiyaga foyda.
 
 Vaqt: 4 daqiqa.
 
@@ -269,16 +270,22 @@ Vaqt: 4 daqiqa.
 **Lead:**
 Pipeline 5-bosqichda buzildi. Boshidan boshlash kerakmi? Yo'q — agar har bosqich natijani saqlasak va idempotent bo'lsa, biz to'xtagan joydan davom etamiz.
 
-**Compare:**
-- **Replay strategiyasi yo'q:** Crash → 1-bosqichdan qayta. Audio yana yuklanadi · STT yana chaqiriladi · narx 2 marta · sekin.
-- **Idempotent + replay:** Crash → 5-bosqichdan davom. Oldingi natijalar bazadan o'qiladi · faqat 5 va 6 ishlatiladi · arzon · tezkor.
+**Compare-rich (2 ustun):**
 
-**Yakuniy qator:** → Texnik amaliyot: har bosqich (input_hash, output) juftligini Sheets/DB'ga yozadi. Replay shu hash bo'yicha tekshiradi.
+- ✗ **Replay strategiyasi yo'q** · Boshidan qayta boshlash
+  Xatolik yuz berganda barcha bosqichlar 1-dan boshlanadi. Telegram qayta o'qiladi, LLM qayta chaqiriladi.
+  → Gemini narxi 2 marta · sekin
+
+- ✓ **Idempotent + replay** · To'xtagan joydan davom
+  5-bosqichdan davom etamiz. message_id bo'yicha eski tasniflash o'qiladi, LLM qayta chaqirilmaydi.
+  → Arzon · tezkor · qaytarilmas
+
+**Yakuniy qator:** → Texnik amaliyot: message_id bo'yicha (kirish, chiqish) juftligi Sheets'ga yoziladi. Replay shu ID bo'yicha eski natijani topadi — LLM chaqiruvi takrorlanmaydi.
 
 **Speaker notes:**
 Bu slayd idempotency va logging kombinatsiyasi. Sodda hayotiy misol bering: "Liftga kirdingiz, 12 ta tugma bosdingiz, oxirgisi yopilmadi. Liftdan tushib, yana 12 marta bosish kerakmi? Yo'q — 12-tugmani bossangiz yetarli." Pipeline ham shunday — to'xtagan joydan davom.
 
-Texnik amaliyot — "input_hash" so'zini ehtiyot bilan ishlating, ortiqcha jargon bermang. Ayting: "Har bosqich kirishini bir xil kalitga aylantiramiz. Agar shu kalit oldin ko'rilgan bo'lsa, eski natijani ishlatamiz."
+LLM chaqiruvi narx jihatidan eng qimmat — agar replay yo'q bo'lsa, har crash'da Gemini'ga 2-marta to'laymiz. Idempotent + replay = bitta to'lov.
 
 Vaqt: 3 daqiqa.
 
@@ -293,14 +300,14 @@ Bitta promtli botda har so'rov bir xil narx. Pipeline — narxni 5–10 baravar 
 
 **3 ta benefit:**
 
-1. **Kichik model birinchi** — Sodda bosqichlarni Gemini Flash bajaradi (10× arzon). Faqat ekstrakt va murakkab fikrlash uchun Pro. *Misol:* STT va bo'lish — Flash · ekstrakt — Pro.
-2. **Cache uy** — Bir xil hujjat 100 mijoz uchun ishlatilsa — bir marta embed qilamiz, qolgani cache'dan. Narx ~95% kam. *Misol:* tarif PDF, qoidalar bazasi · request_hash bilan.
-3. **Fallback to small** — Agar Pro ishlamasa yoki sekin javob bersa — Flash'ga avtomatik o'tish. Qulaylik kafolatlangan. *Misol:* n8n'da "if timeout > 5s → use flash" sharti.
+1. **Kichik model birinchi** — 5 toifaga tasniflash uchun Gemini Flash kifoya (10× arzon). Pro faqat noaniq holat yoki sentiment kerak bo'lsa. *Misol:* klassifikator default — Flash · "shikoyat" toifasida sentiment uchun Pro.
+2. **Jadvalni xotirada saqlash** — Operators jadvali har xabarda qayta o'qilmasin — n8n'da 5 daqiqaga keshlanadi. 100 xabar/min'da Sheets API chaqiruvi 95% kam. *Misol:* Sheets Read · kesh=5 daq · operator yangilanishi 5 daq kechikadi (qabul qilinishi mumkin).
+3. **Zaxira modelga o'tish** — Agar Pro javob bermasa yoki kechiksa — Flash'ga avtomatik o'tish. Klassifikatsiya doim ishlaydi. *Misol:* n8n'da "agar 5 sek'da javob yo'q → Flash" sharti · mijoz farqini sezmaydi.
 
 **Speaker notes:**
-Narx — bankirlar uchun muhim. Aniq raqam: "Gemini Pro 1 ta voice memo uchun ~$0.02; Flash — ~$0.002. Kuniga 1000 ta memo bo'lsa, oyiga $600 vs $60. Pipeline pul tejaydi."
+Narx — bankirlar uchun muhim. Aniq raqam: "Gemini Pro 1 ta klassifikatsiya uchun ~$0.005; Flash — ~$0.0005. Kuniga 1000 ta xabar bo'lsa, oyiga $150 vs $15. Pipeline pul tejaydi."
 
-Cache uy — 9-modulda RAG kontekstida ko'rgan edik. Bog'lang: "RAG'da hujjatni embed qilganmiz — natija saqlandi. Pipeline'da ham xuddi shunday — natija ishlatilgan bo'lsa, qaytadan hisoblamaymiz."
+Sheet cache — 9-modulda biz Sheets'ni har xabarda o'qib turardik. Production'da cache zarur. Tushuntirish: "Operators jadval kunda 1-2 marta o'zgaradi — har xabarda o'qish behuda."
 
 Fallback — production reliability. "Bizning vazifa — bot doim ishlasin. Pro'dan kechikdi → Flash'ga o'tdi → mijoz farqini sezmaydi."
 
@@ -308,26 +315,26 @@ Vaqt: 3 daqiqa.
 
 ---
 
-## Slide 12 — Pipeline branching · VIP vs oddiy
+## Slide 12 — Pipeline branching · shoshilinch vs oddiy
 
-**Sarlavha:** Branching — **premium** vs oddiy mijoz.
+**Sarlavha:** Branching — **shoshilinch** vs oddiy ariza.
 
 **Lead:**
-Pipeline har doim bir xil yo'l bilan ketmaydi. Mijoz turi bo'yicha biz qimmat modelni faqat kerakli holatlarda ishlatamiz.
+Pipeline har doim bir xil yo'l bilan ketmaydi. Klassifikator muhimlik darajasini (urgency) allaqachon aniqlaydi — biz shu bo'yicha yo'l ajratamiz.
 
 **Branch diagrammasi:**
-- **01 · Audio** → **02 · STT (Flash · arzon)** → **agar mijoz VIP bo'lsa?**
-  - Ha · VIP → **03–05 · Pro** · Murakkab ekstrakt · sentiment · Risk Officer'ga eskartma
-  - Yo'q · Oddiy → **03–05 · Flash** · Standart ekstrakt · CRM'ga to'g'ridan-to'g'ri
+- **01 · Telegram** → **02 · LLM Chain (Flash · toifa + urgency)** → **agar urgency = high bo'lsa?**
+  - Ha · high → **03–07 · Tez yo'l** · Birinchi faol operator · darhol bildirishnoma · 5 daqiqada javob
+  - Yo'q · low/medium → **03–07 · Standart** · Toifa bo'yicha operator · email · 24 soat ichida
 
-**Yakuniy qator:** → Misol: mijoz balansi > 1 mlrd so'm yoki yopiq shartnoma summasi katta bo'lsa — Pro yo'naltiriladi.
+**Yakuniy qator:** → Misol: "kartam yo'qoldi" → urgency=high → Risk Officer'ga darhol SMS. "filial soat nechagacha?" → urgency=low → standart yo'l.
 
 **Speaker notes:**
-Branching — pipeline murakkabligi. Ayting: "Bu — biznes mantig'i. Premier mijoz uchun ko'proq diqqat, oddiy mijoz uchun standart yo'l. AI o'zi qaror qilmaydi — biz qoida yozamiz, AI bajaraydi."
+Branching — pipeline murakkabligi. Ayting: "Bu — biznes mantig'i. Klassifikator urgency'ni LLM bosqichida allaqachon aniqlaydi (low/medium/high). Biz uni 'kartam yo'qoldi → high → tez yo'l' shaklida ishlatamiz. AI o'zi qaror qilmaydi — biz qoida yozamiz, AI bajaraydi."
 
-Misol berish: "Aytaylik, '1 mlrd so'm balans' yoki 'top 100 mijoz ichida' — bu VIP signali. Bunday memo'da Pro modelga o'tamiz. Sentiment tahlili (mijoz norozimi?) qilinadi va Risk Officer'ga avtomatik xabar boradi. Oddiy mijozda — standart yo'l."
+Misol berish: "'Kartam o'g'irlangan' — high urgency, 'omonat foizi qancha?' — low urgency. Bunday tafovut klassifikator bosqichidayoq aniq bo'ladi. Pipeline keyin shu bo'yicha branch qiladi."
 
-n8n'da "If" node'ini eslatish: 8-modulda kiritilgan. "Trigger — Webhook — If — branch1 / branch2." Tanish struktura.
+n8n'da "If" node'ini eslatish: 8-modulda kiritilgan. "Trigger — LLM — If — branch1 / branch2." Tanish struktura.
 
 Vaqt: 4 daqiqa.
 
@@ -346,7 +353,7 @@ Vaqt: 4 daqiqa.
 | ✗ Afsona | "**Logging sekinlatadi**, production'da o'chirib qo'yamiz." |
 | ✓ Haqiqat | **Logging — asosiy sarmoya.** Bankda o'chiq log = audit yo'q = muvofiqlik muammosi. |
 | ✗ Afsona | "**Idempotency keyinroq** qo'shamiz, hozir ishlasa bo'ldi." |
-| ✓ Haqiqat | **Birinchi kun'dan kerak.** Mijozga 2 ta xat ketishi sotsial xato — ishonchni qaytarib bo'lmaydi. |
+| ✓ Haqiqat | **Birinchi kundan kerak.** Mijozga 2 ta xat ketishi sotsial xato — ishonchni qaytarib bo'lmaydi. |
 | ✗ Afsona | "**Pro modelni** har joyda ishlatamiz — sifat muhim." |
 | ✓ Haqiqat | **10× ortiq narx** — ko'p bosqich Flash'da ham ishlaydi. Pro — faqat fikrlash kerak bo'lganda. |
 
@@ -367,21 +374,21 @@ Vaqt: 4 daqiqa.
 
 **Template-box (mashq uchun log):**
 ```
-[14:47:02] request_id=B7C9
-step=01 audio_received  size=412KB  duration=24.1s
-step=02 stt_complete    ok   text="Karimov Sherzod bilan gaplashdim, depozit ochishni xohladi, 50 million..."
-step=03 split_sections  ok   sections=3
-step=04 extract_fields  ok   {customer:"Karimov Sh.", product:"depozit", amount:50000000, term:null, ...}
-step=05 schema_validate ok
-step=06 crm_write       FAIL http=500  retry=1
-step=06 crm_write       FAIL http=500  retry=2
-step=06 crm_write       ok   row=#M-3318
-step=07 notify_user     ok   sent_count=3 ←  !
+[14:47:02] message_id=B7C9  chat_id=987654321  user=Sherzod
+step=01 telegram_received  text="Depozit ochmoqchiman, 50 mln so'm, 2 yilga"
+step=02 llm_classify       ok   model=flash  json={category:"depozit", subject:"Depozit ochish", urgency:"medium"}
+step=03 sheets_read_ops    ok   filter=category=depozit,active=TRUE  rows=1
+step=04 pick_operator      ok   chosen="Dilfuza Nazarova"
+step=05 sheets_append_app  FAIL http=500  retry=1
+step=05 sheets_append_app  FAIL http=500  retry=2
+step=05 sheets_append_app  ok   row=#A-3318
+step=06 format_reply       ok   reply_len=192
+step=07 telegram_send      ok   sent_count=3 ←  !
 ```
 
 **2 ta savol:**
 1. Xato qaysi bosqichda ko'rinadi va **asl sabab** qaysi?
-2. Bankir 3 ta tasdiq xati oldi. **Idempotency** qaysi bosqichga kerak edi?
+2. Mijoz 3 ta tasdiq xati oldi. **Idempotency** qaysi bosqichga kerak edi?
 
 **Speaker notes:**
 Bu — modulning eng interaktiv qismi. 6 daqiqa, 3 stol bilan ishlash:
@@ -390,8 +397,8 @@ Bu — modulning eng interaktiv qismi. 6 daqiqa, 3 stol bilan ishlash:
 - Stol 3 — ikkala savolga qaytib, yechim taklif qiladi
 
 **Kutilgan javoblar:**
-- 1-savol: Xato 6-bosqichda (CRM yozish), lekin asl sabab — 1) tarmoq xatosi (http=500), 2) retry qildi va oxirida muvaffaqiyat. Ammo step=07 da `sent_count=3` — bu asl muammo: notify_user idempotent emas, har retry'da xat ketgan.
-- 2-savol: Idempotency 7-bosqichga (notify_user) kerak edi. CRM yozish idempotent qilingan — `row=#M-3318` (1 ta yozuv). Lekin notify_user har chaqiruvda xat yuborgan.
+- 1-savol: Xato 5-bosqichda (Sheets append), lekin asl sabab — 1) Sheets API 5xx (vaqtinchalik), 2) retry qildi va oxirida muvaffaqiyat. Ammo step=07 da `sent_count=3` — bu asl muammo: telegram_send idempotent emas, har retry'da xat ketgan.
+- 2-savol: Idempotency 5-bosqichga (sheets_append_app) — message_id bo'yicha dedup. Va 7-bosqichga (telegram_send) — bir xil reply har retry'da takror yuborilmasligi uchun.
 
 Auditoriya bilan birga olib kelinglar: "Real production'da shu xato — eng tipik. Endi siz tahlil qilolasiz."
 
@@ -408,10 +415,10 @@ Pipeline buzilganda boshqa savol bermang. Aynan shu 6 ta — tartib bilan. Birin
 
 **6 ta savol (canvas-grid 2x3):**
 1. **Qaysi bosqich?** Avval log'ni o'qing. Step raqami bilan FAIL qatorini toping. Boshqa bosqichlarda muammo izlamang.
-2. **Kirish to'g'rimi?** Oldingi bosqichning chiqishi shu bosqichga to'g'ri keldimi? Format, tip, tilning kelishuvi.
+2. **Kirish to'g'rimi?** Oldingi bosqichning chiqishi shu bosqichga to'g'ri keldimi? Format, tip, tillar mosligi.
 3. **Birinchi marta xatomi?** Retry tarixi. Ikkinchi urinishda o'tdimi? Vaqtinchalik (network) yoki doimiy xato.
-4. **Idempotent bo'ldimi?** Mijozga ortiqcha xat ketdimi? CRM'da takror yozuv bormi? request_id tekshiruvi to'g'rimi.
-5. **Promt o'zgardi?** Yaqinda yangilash bo'ldimi? Schema yangilandimi? Few-shot misollar to'g'rimi. Versiyani solishtirish.
+4. **Idempotent bo'ldimi?** Mijozga ortiqcha xat ketdimi? Applications'da takror yozuv bormi? message_id tekshiruvi to'g'rimi?
+5. **Promt o'zgardi?** Yaqinda yangilash bo'ldimi? Schema yangilandimi? Few-shot misollar to'g'rimi? Versiyani solishtirish.
 6. **Replay imkonimi?** Eski natijalarni yangidan ishlatib bo'ladimi? Yo'q bo'lsa — keyingi pipeline'da bu imkonni qo'ying.
 
 **Speaker notes:**
@@ -428,27 +435,28 @@ Vaqt: 3 daqiqa.
 **Sarlavha:** Production'ga tayyor — yoki **tayyor emas**.
 
 **Lead:**
-Bu ro'yxatni 11–12-modullarda qurilgan har qanday botga tatbiq eting. 5 ta "Ha" bo'lmasa — pilot rejimida qoldiring.
+Bu ro'yxatni 9-modulda qurgan klassifikator botga (yoki har qanday boshqa botga) tatbiq eting. 5 ta "Ha" bo'lmasa — pilot rejimida qoldiring.
 
 **Cando (2 ustun):**
 
 ✓ **Tayyor — qo'yib yuborsa bo'ladi:**
-- Har bosqich alohida log qoldiradi (request_id bilan)
-- request_id orqali idempotency tekshiruvi bor
-- Schema validatsiyasi va majburiy maydonlar tekshiruvi
-- Fallback model (Pro → Flash) sozlangan
-- Bankir uchun "qaysi bosqichda nima bo'ldi" hisobot oson topiladi
+- Har bosqich alohida log qoldiradi (message_id + chat_id bilan)
+- message_id orqali idempotency tekshiruvi bor (Sheets'da dublikatlarni tozalash)
+- Output Parser sxema validatsiyasi · 5 ta toifa bo'yicha qat'iy tekshiruv
+- Fallback model (Pro → Flash) va Sheets retry sozlangan
+- Bankir uchun "qaysi bosqichda nima bo'ldi" hisoboti oson topiladi
 
 ✗ **Tayyor emas — pilotda qoling:**
 - Bitta uzun promt — bosqichlar yo'q
 - Log faqat error'da yoziladi, oraliq natija yo'q
 - Retry yo'q yoki idempotency'siz retry — mijozga takror xat
-- Har so'rov Pro modelda — narx 5–10× shart emas
-- Schema yo'q — "har xil maydonlar" CRM'ga tushadi
+- Har so'rov Pro modelda — 5–10× ortiqcha xarajat shart emas
+- Schema yo'q — "har xil maydonlar" Applications'ga tushadi
 
 **Speaker notes:**
 Bu — modulning yakuniy aksent. Bankirlar bu slayd bilan ish boshlovchilar bilan suhbatlashishi mumkin: "Loyihangiz pilotmi, productionmi?" 5 nuqta — aniq ro'yxat. Ko'pchilik bot pilotda turishi normal — production talabi qattiq.
 
+9-modulda qurgan klassifikator bot demo darajada — production'ga ko'tarish uchun yuqoridagi 5 ta nuqta kerak. 14-modulda guruh loyihangizda shu ro'yxatni qo'llaysiz.
 
 Vaqt: 3 daqiqa.
 
@@ -459,9 +467,9 @@ Vaqt: 3 daqiqa.
 **Sarlavha:** Bugundan **qaytib ketadigan** 3 xulosa.
 
 **3 ta xulosa:**
-- 💡 **Bitta promt — qora quti.** Pipeline — aniq bosqichlar, har biri log qoldiradi va alohida qayta ishga tushadi.
-- 💡 **Idempotency — birinchi kun'dan.** request_id orqali tekshiruv. Mijozga 2 ta xat ketishi — qaytarib bo'lmaydigan ishonch zarari.
-- 💡 **Keyingi modul:** 13-modulda biz JPMorgan, Morgan Stanley, DBS va O'zbekiston banklarining real production keyslarini tahlil qilamiz.
+- 💡 **9-modulda qurdingiz — endi production'ga.** Klassifikator botingiz "ishlaydi" dan "doim ishlaydi" ga o'tishi uchun pipeline + log + idempotency kerak.
+- 💡 **Idempotency — birinchi kundan.** message_id orqali tekshiruv. Mijozga 2 ta xat ketishi — qaytarib bo'lmaydigan ishonch zarari.
+- 💡 **Keyingi modullar:** 13-modulda real bank keyslari (JPMorgan, DBS, O'zbekiston banklari), 14-modulda esa siz o'z guruh loyihangizni qurasiz.
 
 **Lug'at recap (interaktiv, 30–60 sek):**
 Auditoriyaga so'rang: "Eslay olasizmi?"
@@ -469,7 +477,7 @@ Auditoriyaga so'rang: "Eslay olasizmi?"
 - **Idempotent design** = … (jamoa: "Qayta ishga tushsa ham bitta natija")
 
 **Speaker notes:**
-Bu yakuniy aksent — 3 xulosa qisqa, takror aytsa bo'ladi. Har biriga 15 soniya. Auditoriya bittasini ham bo'lsa eslab qolishi kerak — eng muhimi: **idempotency birinchi kun'dan**.
+Bu yakuniy aksent — 3 xulosa qisqa, takror aytsa bo'ladi. Har biriga 15 soniya. Auditoriya bittasini ham bo'lsa eslab qolishi kerak — eng muhimi: **idempotency birinchi kundan**.
 
 Lug'at recap — 30–60 sek. Birga aytamiz, jamoa ovozi bilan. Bu retentsiyani sezilarli oshiradi. 15-modulda yakuniy glossary review da Pipeline va Idempotent design qaytib chiqadi.
 
@@ -489,8 +497,8 @@ Vaqt: 2 daqiqa.
 
 **Speaker notes:**
 5 daqiqa. Ko'p kelishi mumkin bo'lgan savollar:
-- "Pipeline qancha bosqichdan iborat bo'lishi kerak?" — javobing: "Eng kam — vazifa talab qiladigan miqdor. Voice bot — 6. RAG bot — 4. Lekin har bosqich bitta vazifa qilishi kerak."
-- "Idempotency bizning 1C tizimida qanday ishlaydi?" — bog'lang: "1C — backend, biz n8n orqali ulansak, request_id'ni n8n yozadi. 1C tomonida ham unique constraint qo'shish kerak."
+- "Pipeline qancha bosqichdan iborat bo'lishi kerak?" — javobing: "Eng kam — vazifa talab qiladigan miqdor. Klassifikator — 7. RAG bot — 4–5. Lekin har bosqich bitta vazifa qilishi kerak."
+- "Idempotency bizning 1C tizimida qanday ishlaydi?" — bog'lang: "1C — backend, biz n8n orqali ulansak, message_id'ni n8n yozadi. 1C tomonida ham unique constraint qo'shish kerak."
 - "Bu hammasi qancha vaqt oladi?" — javob: "Birinchi pilot — 2 hafta. Production-ga 4–6 hafta, agar siz 5 ta 'Ha' ni qo'lga kiritsangiz."
 
 Muvofiqlik savoli kelsa — 3-modulga ko'prik. Production savoli — 13-modulga.
@@ -499,14 +507,14 @@ Muvofiqlik savoli kelsa — 3-modulga ko'prik. Production savoli — 13-modulga.
 
 ## Series-wide bog'lanish
 
-- **Avvalgi modul:** [`11_deck/`](../11_deck/) — Voice memo bot dizayni · STT, Function Calling
+- **Avvalgi modul:** [`11_deck/`](../11_deck/) — Agent design (RAG chatbot)
 - **Keyingi modul:** [`13_deck/`](../13_deck/) — Bank amaliyotidagi real keyslar
 - **Atamalar bog'liqligi:**
-  - 11-modul'dan: STT (slayd 7, step 02), Function Calling/Schema (slayd 7, step 04–05)
-  - 9-modul'dan: RAG, Embedding (slayd 11 — cache uy)
+  - 9-modul'dan: Classification (slayd 7, step 02), Schema (slayd 8 — LLM xato yechimi · Output Parser)
+  - 11-modul'dan: RAG, Embedding (slayd 11 — sheet cache analogiyasi)
   - 8-modul'dan: Trigger, Webhook (slayd 12 — n8n branching)
-  - 5-modul'dan: Few-shot (slayd 8 — ekstrakt yechimi)
-- **Bog'liq:** [`bots/02_voice_memo/`](../bots/02_voice_memo/) — bu modulda biz uni tahlil qilamiz va debug qilamiz
+  - 5-modul'dan: Few-shot (slayd 8 — LLM xato yechimi)
+- **Bog'liq:** [`bots/01_classifier_bot/`](../bots/01_classifier_bot/) — 9-modulda qurilgan, 12-modulda production tahlil
 
 ## Series-wide terminologiya talab
 
@@ -514,7 +522,7 @@ Muvofiqlik savoli kelsa — 3-modulga ko'prik. Production savoli — 13-modulga.
 
 ## Tayyorgarlik checklist (deck'dan tashqari)
 
-- [ ] 11-modul voice bot dizayni yodda — auditoriya 11-modul'dan keladi
+- [ ] 9-modul klassifikator bot yodda — auditoriya 9-modul'dan keladi (uzoq bo'lsa, qisqa eslatma kerak)
 - [ ] Bug-hunt slaydidagi log namunasi — auditoriya o'qib tushuna oladigan
 - [ ] Branching slaydidagi if/else — n8n misol bilan tayyorlangan
 - [ ] Idempotency atamasi uchun "lift tugmasi" yoki "qayta to'lov" misoli yodda
@@ -526,7 +534,7 @@ Muvofiqlik savoli kelsa — 3-modulga ko'prik. Production savoli — 13-modulga.
 |---|---|---|
 | Title + Agenda | 1–2 | ~3 daq |
 | 01 · Pipeline tushunchasi | 3–6 | ~13 daq |
-| 02 · Voice bot pipeline tahlili | 7–8 | ~9 daq |
+| 02 · Klassifikator bot pipeline tahlili | 7–8 | ~9 daq |
 | 03 · Debugging | 9–13 | ~18 daq |
 | 04 · Amaliyot (Bug-hunt → Closing → Q&A) | 14–18 | ~17 daq |
 | **Jami** | **18** | **~60 daq** |
