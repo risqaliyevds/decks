@@ -2,50 +2,1274 @@
 <html lang="uz">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>1-modul · Bank sektori uchun sun'iy intellekt asoslari</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Style A · Bold Signal · 1-modul</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./style.css" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:'Space Grotesk',sans-serif}
+
+:root{
+  --bg:#020A24;--bg-2:#06173B;--bg-3:#0B2D79;
+  --accent:#2563eb;--accent-2:#60a5fa;--accent-glow:#1FF2F9;
+  --ink:#0a0f1f;--mute:#7a8aa3;--soft:rgba(255,255,255,0.08);
+  --pad:clamp(1.5rem,4vw,4rem);
+  --title:clamp(2rem,5.5vw,5rem);
+  --h2:clamp(1.5rem,3.2vw,2.75rem);
+  --h3:clamp(1.1rem,2vw,1.6rem);
+  --body:clamp(0.85rem,1.2vw,1.15rem);
+  --small:clamp(0.7rem,0.9vw,0.85rem);
+  --gap:clamp(1rem,2vw,2rem);
+  --r:clamp(0.75rem,1.5vw,1.5rem);
+  --display:'Archivo Black',sans-serif;
+}
+
+.deck{position:relative;width:100vw;height:100vh;height:100dvh;overflow:hidden}
+
+.slide{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 80%, rgba(11,45,121,0.55), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 15%, rgba(37,99,235,0.18), transparent 60%),
+    linear-gradient(180deg,#020A24 0%, #06173B 100%);
+  padding:clamp(0.85rem,1.8vw,1.5rem) var(--pad) var(--pad) var(--pad);
+  display:grid;grid-template-rows:auto auto 1fr auto;gap:clamp(0.75rem,1.5vw,1.25rem);
+  opacity:0;pointer-events:none;
+  transform:scale(0.965);filter:blur(2px);
+  transition:opacity 0.5s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1),filter 0.4s ease-out;
+  overflow:hidden;
+}
+.slide.is-active{opacity:1;pointer-events:auto;transform:scale(1);filter:blur(0)}
+
+.slide::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+}
+
+/* HEADER */
+.head{display:flex;justify-content:flex-end;align-items:flex-start;position:relative;z-index:1;gap:1rem}
+.num{font-family:var(--display);font-size:clamp(2rem,4vw,3.2rem);line-height:0.9;letter-spacing:-0.04em;color:var(--accent-2);text-align:right}
+.num small{display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--mute);margin-top:0.4rem}
+
+.crumbs{display:none}
+
+/* MAIN */
+.main{position:relative;z-index:1;align-self:center;display:flex;flex-direction:column;justify-content:center;min-height:0}
+
+/* FOOTER */
+.foot{display:flex;justify-content:flex-end;align-items:center;font-size:var(--small);color:var(--mute);letter-spacing:0.1em;text-transform:uppercase;position:relative;z-index:1;gap:1rem;flex-wrap:wrap}
+.foot .speaker{display:flex;align-items:center;gap:0.6rem;color:#fff}
+.foot .dot{width:0.55rem;height:0.55rem;border-radius:50%;background:var(--accent)}
+.foot .speaker strong{font-family:var(--display);letter-spacing:0.08em;font-size:var(--small)}
+.foot .brand .seven{color:var(--accent)}
+
+/* CARD primitives */
+.card{background:linear-gradient(135deg,var(--accent),#1d4ed8);color:#fff;padding:clamp(1.25rem,2.8vw,2.5rem);border-radius:var(--r);box-shadow:0 30px 80px -20px rgba(37,99,235,0.5),0 0 0 1px rgba(255,255,255,0.05) inset}
+.card-dark{background:var(--ink);color:#fff;padding:clamp(1.25rem,2.8vw,2.5rem);border-radius:var(--r);border:1px solid var(--soft)}
+
+/* BRAND STRIP — institutional logos, top of every slide */
+.brand-strip{
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  position:relative;z-index:1;
+  padding-bottom:clamp(0.5rem,1vw,0.85rem);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.brand-strip .logo{
+  height:clamp(3rem,4.5vw,4.5rem);width:auto;
+  filter:brightness(0) invert(1);
+  opacity:0.9;
+}
+
+/* TITLE typography */
+.title-display{font-family:var(--display);font-weight:900;font-size:var(--title);line-height:0.95;letter-spacing:-0.03em;text-transform:uppercase}
+.title-display .light{font-family:'Space Grotesk',sans-serif;font-weight:500;text-transform:none;letter-spacing:-0.01em;font-style:italic;font-size:0.55em;display:block;margin-top:0.5em;opacity:0.9}
+
+.h2{font-family:var(--display);font-size:clamp(1.75rem,3.6vw,3rem);line-height:1.05;letter-spacing:-0.025em;text-transform:uppercase;color:#fff}
+.h2 .accent,.h2 .ink,.h2 .hl,.lead .hl,.big .hl{
+  background:linear-gradient(135deg,var(--accent),#1d4ed8);
+  color:#fff;padding:0.04em 0.22em;display:inline-block;
+  box-shadow:0 14px 38px -12px rgba(37,99,235,0.45),0 0 0 1px rgba(255,255,255,0.06) inset;
+  border-radius:clamp(0.2rem,0.35vw,0.35rem);
+}
+
+.lead{font-size:var(--body);line-height:1.55;color:rgba(255,255,255,0.78);max-width:60ch;margin-top:clamp(0.85rem,1.5vw,1.25rem);font-weight:400}
+.lead::before{
+  content:"";display:inline-block;
+  width:clamp(1.5rem,2.5vw,2rem);height:2px;
+  background:var(--accent-2);margin-right:0.7rem;vertical-align:middle;
+}
+.lead.no-bar::before{display:none}
+
+.chip{display:inline-block;background:var(--ink);color:var(--accent);font-family:var(--display);font-size:var(--small);letter-spacing:0.15em;text-transform:uppercase;padding:0.4rem 0.9rem;border-radius:99px}
+.chip-out{display:inline-block;border:1px solid var(--accent);color:var(--accent);font-family:var(--display);font-size:var(--small);letter-spacing:0.15em;text-transform:uppercase;padding:0.4rem 0.9rem;border-radius:99px}
+
+/* SLIDE 1 — TITLE */
+.s-title .main{align-items:flex-start;justify-content:center}
+.s-title .title-block{max-width:min(96vw,1750px)}
+.s-title .title-hero{
+  font-family:var(--display);font-weight:900;
+  font-size:clamp(2rem,6vw,5.75rem);
+  line-height:0.92;letter-spacing:-0.04em;
+  text-transform:uppercase;color:#fff;
+  margin-top:clamp(1rem,2vw,1.5rem);
+}
+.s-title .title-hero .hl{
+  background:linear-gradient(135deg,var(--accent),#1d4ed8);
+  color:#fff;padding:0.04em 0.22em;display:inline-block;
+  box-shadow:0 18px 50px -12px rgba(37,99,235,0.55),0 0 0 1px rgba(255,255,255,0.06) inset;
+  border-radius:clamp(0.25rem,0.4vw,0.4rem);white-space:nowrap;
+}
+.s-title .tagline{
+  margin-top:clamp(1.5rem,3vw,2.5rem);
+  font-family:'Space Grotesk',sans-serif;font-weight:500;
+  font-size:clamp(1.1rem,1.9vw,1.75rem);
+  color:rgba(255,255,255,0.78);letter-spacing:-0.005em;
+  max-width:42ch;line-height:1.45;
+}
+.s-title .tagline .accent-bar{
+  display:inline-block;width:clamp(2rem,4vw,3rem);height:2px;
+  background:var(--accent-2);margin-right:0.85rem;vertical-align:middle;
+}
+
+/* SLIDE 2 — HOOK */
+.s-hook .main{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.5rem,3vw,3rem);align-items:center}
+.qr-box{background:#fff;border-radius:var(--r);aspect-ratio:1;width:clamp(180px,22vw,320px);display:flex;align-items:center;justify-content:center;color:var(--ink);font-family:var(--display);font-size:clamp(0.7rem,1vw,0.95rem);text-align:center;padding:1rem;letter-spacing:0.15em;text-transform:uppercase;
+  background-image:linear-gradient(45deg,#000 25%,transparent 25%),linear-gradient(-45deg,#000 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#000 75%),linear-gradient(-45deg,transparent 75%,#000 75%);
+  background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0;
+  box-shadow:0 30px 70px -20px rgba(37,99,235,0.5),0 0 0 1px rgba(96,165,250,0.25),0 0 60px -10px rgba(37,99,235,0.35);
+  position:relative;
+}
+.qr-box::after{content:"";position:absolute;inset:-8px;border-radius:calc(var(--r) + 8px);background:linear-gradient(135deg,var(--accent),var(--accent-glow));z-index:-1;opacity:0.35;filter:blur(20px)}
+.qr-box span{background:#fff;padding:0.5rem 0.75rem;border-radius:0.5rem}
+.qr-box.has-img{padding:0;background-image:none;background:#fff}
+.qr-box.has-img img{width:100%;height:100%;object-fit:contain;display:block;border-radius:var(--r)}
+.qr-stack{display:flex;flex-direction:column;align-items:center;gap:clamp(0.55rem,1vw,0.9rem)}
+.qr-url{font-family:var(--display);font-size:clamp(0.85rem,1.3vw,1.05rem);letter-spacing:0.06em;color:#fff;text-decoration:none;background:rgba(255,255,255,0.06);border:1px solid rgba(96,165,250,0.32);padding:0.55rem 0.95rem;border-radius:0.5rem;text-transform:none;transition:background 0.2s,border-color 0.2s}
+.qr-url:hover{background:rgba(37,99,235,0.18);border-color:var(--accent)}
+.chat{display:flex;flex-direction:column;gap:clamp(0.5rem,0.9vw,0.75rem);margin-top:clamp(0.85rem,1.6vw,1.4rem)}
+.bubble{max-width:82%;padding:clamp(0.6rem,1.1vw,0.9rem) clamp(0.75rem,1.3vw,1.1rem);border-radius:0.85rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);font-size:var(--body);line-height:1.45;color:#fff}
+.bubble.user{align-self:flex-start;margin-left:40%;background:linear-gradient(135deg,var(--accent),#1d4ed8);border-color:transparent}
+.bubble.ai{align-self:flex-start}
+.demo-msg{margin-top:clamp(1rem,2vw,1.5rem);font-style:italic;color:rgba(255,255,255,0.8);font-size:var(--body);border-left:3px solid var(--accent);padding-left:clamp(0.75rem,1.5vw,1.25rem)}
+
+/* WOW HOOK slides (image + video before the live demo) */
+.s-wow .main{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.5rem,3vw,3rem);align-items:center}
+.wow-frame{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:0 30px 70px -20px rgba(37,99,235,0.5),0 0 0 1px rgba(96,165,250,0.25),0 0 60px -10px rgba(37,99,235,0.35);background:#000}
+.wow-frame::after{content:"";position:absolute;inset:-10px;border-radius:calc(var(--r) + 10px);background:linear-gradient(135deg,var(--accent),var(--accent-glow));z-index:-1;opacity:0.35;filter:blur(22px)}
+.wow-frame.is-image{width:clamp(300px,46vw,640px);aspect-ratio:2/1}
+.wow-frame.is-half{width:clamp(240px,28vw,440px);aspect-ratio:1/1}
+.wow-frame.is-video{width:clamp(220px,26vw,380px);aspect-ratio:9/16}
+.wow-duo{display:flex;gap:clamp(0.7rem,1.4vw,1.4rem);align-items:center;justify-content:center}
+.wow-frame img,.wow-frame video{width:100%;height:100%;object-fit:cover;display:block}
+.wow-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.5rem;font-family:var(--display);font-size:clamp(0.85rem,1.3vw,1.1rem);line-height:1.5;color:rgba(255,255,255,0.85);background:linear-gradient(160deg,#0a0f1f,#0e1736);letter-spacing:0.04em}
+.wow-fallback strong{display:block;color:var(--accent-2);text-transform:uppercase;letter-spacing:0.18em;font-size:clamp(0.65rem,1vw,0.8rem);margin-bottom:0.5rem}
+
+/* SLIDE 6 — DEFINITION (stajyor metafora — ported from index_codex.html slide 4) */
+.kicker{font-family:var(--display);font-size:var(--small);letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-2)}
+.big{font-family:var(--display);font-size:var(--h2);line-height:0.94;letter-spacing:0.005em;text-transform:uppercase;max-width:14ch;color:#fff;margin-top:clamp(0.5rem,1vw,0.85rem);font-feature-settings:"ss01"}
+/* Disambiguate capital I from lowercase l in Space Grotesk (no slabbed-I alternate exists). */
+/* Body text uses a clearer geometric sans (Inter via Google Fonts) loaded above; if not loaded, */
+/* aggressive letter-spacing at least separates the glyphs enough to be readable on a projector. */
+body,p,li,.lead{letter-spacing:0.018em}
+.tok{letter-spacing:0.08em;font-weight:600}
+.employee{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,1.6rem);margin-top:clamp(1rem,2vw,2rem)}
+.person{min-height:clamp(220px,34vh,380px);display:flex;flex-direction:column;justify-content:space-between}
+.panel{background:linear-gradient(135deg,rgba(255,255,255,0.055),rgba(255,255,255,0.025));border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1rem,2vw,1.8rem);box-shadow:0 20px 60px -36px rgba(37,99,235,0.55);position:relative;overflow:hidden}
+.panel::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at top right,rgba(37,99,235,0.18),transparent 60%);pointer-events:none}
+.panel > *{position:relative}
+.panel h3{font-family:var(--display);font-size:clamp(1.05rem,1.8vw,1.55rem);line-height:1.05;text-transform:uppercase;letter-spacing:-0.01em;color:#fff}
+.panel p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.72);margin-top:0.65rem}
+.avatar{font-family:var(--display);font-size:clamp(3rem,7vw,6rem);line-height:1;color:var(--accent-2)}
+.window-stack{display:grid;gap:0.5rem;margin-top:1rem}
+.mini-window{height:2rem;border-radius:0.35rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.08)}
+.mini-window:nth-child(2){width:86%}
+.mini-window:nth-child(3){width:72%}
+.flowline{display:flex;align-items:center;gap:0.7rem;flex-wrap:wrap;margin-top:clamp(1rem,2vw,1.6rem)}
+.pill{border:1px solid rgba(96,165,250,0.32);background:rgba(255,255,255,0.05);border-radius:999px;padding:0.55rem 0.85rem;font-size:var(--small);letter-spacing:0.05em;text-transform:uppercase;color:rgba(255,255,255,0.78)}
+
+/* SLIDE 3 — DEFINITION (legacy compare table — kept for backward compat, may be removed) */
+.compare{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(1rem,2.5vw,2.5rem);align-items:center;margin-top:clamp(1rem,2vw,2rem)}
+.compare .col{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1rem,2vw,1.75rem);text-align:center}
+.compare .col h4{font-family:var(--display);text-transform:uppercase;letter-spacing:0.1em;font-size:var(--small);color:var(--mute);margin-bottom:0.75rem}
+.compare .col p{font-family:var(--display);font-size:clamp(1.5rem,2.8vw,2.25rem);line-height:1;letter-spacing:-0.02em;color:#fff}
+.compare .col.win{background:linear-gradient(135deg,var(--accent),#1d4ed8);color:#fff;border-color:var(--accent)}
+.compare .col.win h4,.compare .col.win p{color:#fff}
+.compare .vs{font-family:var(--display);font-size:clamp(1.2rem,2vw,1.75rem);color:var(--accent);letter-spacing:0.1em}
+
+/* SLIDE 4 — MYTH/REALITY */
+.myth{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.myth .row{background:rgba(255,255,255,0.04);border-radius:var(--r);padding:clamp(1rem,2vw,1.75rem);border-left:4px solid #ff4040}
+.myth .row.real{border-left-color:var(--accent);background:rgba(37,99,235,0.1)}
+.myth .row .tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:#ff6060;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.4rem}
+.myth .row.real .tag{color:var(--accent)}
+.myth .row p{font-size:var(--body);line-height:1.5;color:#fff;font-weight:400}
+.myth .row p strong{font-family:var(--display);font-weight:900;text-transform:uppercase;letter-spacing:0.02em}
+
+/* SLIDE 5 — BENEFITS */
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.benefit{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem)}
+.benefit .stat{font-family:var(--display);font-size:clamp(2rem,5vw,4rem);line-height:1;color:var(--accent);letter-spacing:-0.04em}
+.benefit h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;margin-top:0.5rem;color:#fff}
+.benefit p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.7);margin-top:0.5rem}
+
+/* SLIDE 6 — CASE STUDY */
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.case{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);position:relative;overflow:hidden}
+.case::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.case h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:0.5rem}
+.case .num-big{font-family:var(--display);font-size:clamp(1.75rem,4vw,3rem);line-height:1;color:var(--accent);letter-spacing:-0.03em;margin-top:0.5rem}
+.case p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.75);margin-top:0.75rem}
+
+/* SLIDE 7 — STACK */
+.stack{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.stack .pillar{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);text-align:center}
+.stack .pillar.featured{background:linear-gradient(160deg,var(--accent),#1d4ed8);color:#fff;border-color:var(--accent)}
+.stack .pillar.featured h3,.stack .pillar.featured p,.stack .pillar.featured .tag{color:#fff}
+.stack .icon{font-size:clamp(2rem,4vw,3rem);margin-bottom:0.75rem}
+.stack .tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.2em;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:0.25rem}
+.stack h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff}
+.stack p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.75);margin-top:0.75rem}
+
+/* SLIDE 8 — FLOW */
+.flow{display:flex;align-items:center;justify-content:center;gap:clamp(0.5rem,1vw,1rem);flex-wrap:nowrap;margin-top:clamp(1rem,2vw,2rem);overflow:hidden}
+.flow .step{flex:1;background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(0.85rem,1.6vw,1.4rem);text-align:center;min-width:0}
+.flow .step.brain{background:linear-gradient(135deg,var(--accent),#1d4ed8);color:#fff;border-color:var(--accent)}
+.flow .step.brain .ico,.flow .step.brain h4,.flow .step.brain p{color:#fff}
+.flow .step .ico{font-size:clamp(1.5rem,3vw,2.2rem)}
+.flow .step h4{font-family:var(--display);font-size:clamp(0.85rem,1.4vw,1.15rem);text-transform:uppercase;letter-spacing:0.05em;margin-top:0.4rem;color:#fff}
+.flow .step p{font-size:clamp(0.7rem,1vw,0.9rem);line-height:1.4;color:rgba(255,255,255,0.7);margin-top:0.4rem}
+.flow .arrow{color:var(--accent);font-family:var(--display);font-size:clamp(1.2rem,2.4vw,1.8rem);flex-shrink:0}
+
+/* SLIDE 9 — ROADMAP */
+.road{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.road .step{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);position:relative}
+.road .step .n{font-family:var(--display);font-size:clamp(1.75rem,3.5vw,2.75rem);color:var(--accent);line-height:1;letter-spacing:-0.04em}
+.road .step h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;margin-top:0.5rem;color:#fff}
+.road .step p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.7);margin-top:0.5rem}
+
+/* SLIDE 10 — SECURITY */
+.sec{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.sec .item{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem)}
+.sec .item .ico{font-size:clamp(1.75rem,3.5vw,2.5rem);color:var(--accent);margin-bottom:0.75rem}
+.sec .item h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff}
+.sec .item p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.75);margin-top:0.5rem}
+
+/* SLIDE 11 — BRAINSTORM */
+.s-brain .questions{display:flex;flex-direction:column;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,1.5rem)}
+.q{font-family:var(--display);font-size:clamp(1.2rem,2.6vw,2.25rem);line-height:1.15;letter-spacing:-0.01em;color:#fff;display:flex;gap:clamp(0.75rem,1.5vw,1.5rem);align-items:flex-start}
+.q .n{color:var(--accent);flex-shrink:0}
+
+/* SLIDE 12 — CLOSING */
+.close-list{display:flex;flex-direction:column;gap:clamp(0.85rem,1.6vw,1.4rem);margin-top:clamp(1rem,2vw,1.5rem)}
+.close-row{display:flex;gap:clamp(0.75rem,1.5vw,1.25rem);align-items:flex-start;padding:clamp(0.85rem,1.6vw,1.4rem);background:rgba(255,255,255,0.04);border-left:4px solid var(--accent);border-radius:0 var(--r) var(--r) 0}
+.close-row .arrow{color:var(--accent);font-family:var(--display);font-size:clamp(1.2rem,2vw,1.5rem)}
+.close-row p{font-size:var(--body);line-height:1.55;color:#fff;font-weight:400}
+.close-row p strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.02em}
+
+/* SLIDE 13 — Q&A */
+.s-qa .main{align-items:center;text-align:center}
+.qmark{font-family:var(--display);font-size:clamp(8rem,18vw,16rem);line-height:0.9;color:var(--accent);letter-spacing:-0.05em}
+
+/* HUD — clickable dot navigation */
+.hud{
+  position:fixed;left:var(--pad);right:var(--pad);
+  bottom:clamp(0.6rem,1vw,1rem);
+  display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.4rem);
+  z-index:100;
+}
+.hud .counter{
+  font-family:var(--display);
+  color:rgba(255,255,255,0.55);
+  letter-spacing:0.18em;font-size:var(--small);
+  flex-shrink:0;
+}
+.dots{display:flex;gap:clamp(0.3rem,0.5vw,0.5rem);align-items:center;flex:1}
+.nav-dot{
+  width:clamp(0.4rem,0.55vw,0.55rem);height:clamp(0.4rem,0.55vw,0.55rem);
+  border-radius:50%;border:none;
+  background:rgba(255,255,255,0.18);cursor:pointer;
+  padding:0;position:relative;
+  transition:background 0.3s,width 0.4s cubic-bezier(0.16,1,0.3,1),transform 0.2s,box-shadow 0.3s;
+}
+.nav-dot:hover{background:rgba(255,255,255,0.55);transform:scale(1.4)}
+.nav-dot.is-current{
+  background:var(--accent);
+  width:clamp(1.5rem,2.4vw,2rem);
+  border-radius:99px;
+  box-shadow:0 0 14px rgba(37,99,235,0.6);
+}
+.nav-dot::before{
+  content:attr(data-title);
+  position:absolute;bottom:200%;left:50%;
+  transform:translateX(-50%) translateY(4px);
+  background:#0a0f1f;color:#fff;
+  font-size:0.72rem;letter-spacing:0.04em;text-transform:none;
+  padding:0.45rem 0.75rem;border-radius:0.35rem;
+  white-space:nowrap;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.2s,transform 0.2s;
+  border:1px solid rgba(255,255,255,0.12);
+  font-family:'Space Grotesk',sans-serif;font-weight:500;
+}
+.nav-dot:hover::before{opacity:1;transform:translateX(-50%) translateY(0)}
+.brand-mini{
+  font-family:var(--display);
+  color:rgba(255,255,255,0.5);
+  letter-spacing:0.18em;font-size:var(--small);
+  flex-shrink:0;
+}
+
+/* HUD speaker (right side) */
+.hud .speaker{
+  display:flex;align-items:center;gap:0.5rem;
+  font-size:var(--small);
+  color:rgba(255,255,255,0.7);
+  letter-spacing:0.08em;text-transform:uppercase;
+  flex-shrink:0;font-family:'Space Grotesk',sans-serif;
+}
+.hud .speaker .dot{
+  width:0.45rem;height:0.45rem;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 8px rgba(37,99,235,0.6);
+}
+.hud .speaker strong{font-family:var(--display);letter-spacing:0.1em;color:#fff;font-weight:400}
+
+/* AGENDA SLIDE — 4 phase cards in 2x2 grid */
+.s-agenda .main{align-self:stretch;justify-content:flex-start;padding-bottom:0;display:flex;flex-direction:column}
+.s-agenda .head .eyebrow{
+  display:flex;align-items:center;gap:clamp(0.6rem,1vw,0.85rem);
+  font-family:var(--display);
+  font-size:clamp(0.85rem,1.2vw,1.05rem);
+  letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--accent-2);
+}
+.s-agenda .head .eyebrow::before{
+  content:"";display:inline-block;
+  width:clamp(1.5rem,2.5vw,2rem);height:2px;
+  background:var(--accent-2);
+}
+.phase-grid{
+  flex:1;display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  gap:clamp(0.7rem,1.4vw,1.25rem);
+  margin-top:clamp(0.85rem,1.5vw,1.25rem);
+  width:100%;
+  min-height:0;
+}
+
+/* Fragments — start hidden, reveal sequentially via Next/Right */
+.fragment{
+  opacity:0;
+  transform:translateY(24px) scale(0.97);
+  transition:opacity 0.55s cubic-bezier(0.16,1,0.3,1),transform 0.55s cubic-bezier(0.16,1,0.3,1);
+  pointer-events:none;
+}
+.fragment.is-visible{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  pointer-events:auto;
+}
+.phase-card{
+  display:flex;flex-direction:column;justify-content:space-between;
+  background:linear-gradient(135deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02));
+  border:1px solid var(--soft);
+  border-radius:clamp(0.6rem,1.1vw,1.1rem);
+  padding:clamp(0.7rem,1.6vmin,1.5rem) clamp(0.95rem,2vmin,1.9rem);
+  color:#fff;cursor:pointer;text-align:left;
+  font-family:'Space Grotesk',sans-serif;
+  position:relative;overflow:hidden;min-height:0;
+  transition:background 0.4s cubic-bezier(0.16,1,0.3,1),border-color 0.3s,transform 0.45s cubic-bezier(0.16,1,0.3,1),box-shadow 0.4s;
+}
+.phase-card::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at top right,rgba(37,99,235,0.22),transparent 60%);
+  opacity:0;transition:opacity 0.5s ease;pointer-events:none;
+}
+.phase-card::after{
+  content:"";position:absolute;left:0;top:0;height:100%;width:3px;
+  background:linear-gradient(to bottom,var(--accent),var(--accent-2));
+  transform:scaleY(0);transform-origin:top;
+  transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.phase-card:hover::before{opacity:1}
+.phase-card:hover::after{transform:scaleY(1)}
+.phase-card:hover{
+  background:linear-gradient(135deg,rgba(37,99,235,0.12),rgba(37,99,235,0.04));
+  border-color:var(--accent);
+  transform:translateY(-6px);
+  box-shadow:0 22px 50px -18px rgba(37,99,235,0.5);
+}
+.phase-card:active{transform:translateY(-2px) scale(0.99)}
+.phase-top{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  position:relative;z-index:1;
+}
+.phase-num{
+  font-family:var(--display);
+  font-size:clamp(1.5rem,4.4vmin,3.85rem);
+  line-height:0.9;letter-spacing:-0.05em;
+  color:var(--accent-2);
+}
+.phase-arrow{
+  font-family:var(--display);
+  font-size:clamp(1.25rem,2.2vw,2rem);
+  color:rgba(255,255,255,0.25);
+  transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),color 0.3s;
+  margin-top:clamp(0.45rem,0.9vw,0.85rem);
+}
+.phase-card:hover .phase-arrow{transform:translateX(6px);color:var(--accent-2)}
+.phase-title{
+  font-family:var(--display);
+  font-size:clamp(1rem,2.6vmin,2.1rem);
+  text-transform:uppercase;
+  letter-spacing:-0.02em;
+  line-height:1;
+  margin-top:clamp(0.45rem,1.1vmin,1.1rem);
+  position:relative;z-index:1;
+}
+.phase-desc{
+  font-size:clamp(0.68rem,1.3vmin,0.95rem);
+  line-height:1.4;
+  color:rgba(255,255,255,0.68);
+  margin-top:clamp(0.3rem,0.7vmin,0.7rem);
+  max-width:46ch;
+  position:relative;z-index:1;
+}
+.phase-foot{
+  display:flex;justify-content:flex-end;align-items:center;
+  margin-top:clamp(0.5rem,1.1vmin,1.1rem);
+  padding-top:clamp(0.4rem,0.85vmin,0.85rem);
+  border-top:1px solid rgba(255,255,255,0.08);
+  font-family:var(--display);
+  font-size:clamp(0.58rem,0.95vmin,0.75rem);
+  letter-spacing:0.2em;text-transform:uppercase;
+  position:relative;z-index:1;
+}
+.phase-count{color:rgba(255,255,255,0.5)}
+.phase-time{color:var(--accent-2)}
+
+/* SLIDE — DICTIONARY (LLM / Promt / API) */
+.dict{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.dict-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
+.dict-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.dict-card .dict-tag{display:inline-block;font-family:var(--display);font-size:clamp(1.4rem,2.8vw,2.4rem);letter-spacing:0.02em;color:var(--accent-2);text-transform:uppercase;line-height:1;margin-bottom:0.75rem}
+.dict-card h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:0.6rem}
+.dict-card p{font-size:var(--body);line-height:1.55;color:rgba(255,255,255,0.78)}
+.dict-card p strong{color:var(--accent-2);font-weight:500}
+.dict-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+
+/* SLIDE — STAMP "Yo'q" (myth answer — ported from index_codex.html slide 6) */
+.slide.center .main{align-items:center;text-align:center}
+.slide.center .big{margin-left:auto;margin-right:auto}
+.stamp{display:inline-block;font-family:var(--display);font-size:clamp(2.5rem,8vw,7rem);line-height:0.9;color:#ff5555;border:0.08em solid currentColor;padding:0.05em 0.18em;border-radius:0.35rem;transform:rotate(-5deg);text-transform:uppercase;margin-top:clamp(0.85rem,1.6vw,1.4rem);align-self:center}
+
+/* SLIDES — STATS (3 slides replacing old "Wall Street" pitch · data: Spherical Insights 2024) */
+.stat-source{font-family:var(--display);font-size:clamp(0.65rem,0.9vw,0.78rem);letter-spacing:0.18em;text-transform:uppercase;color:var(--mute);margin-top:clamp(1rem,2vw,1.5rem);text-align:center}
+/* Stat A — market leap (two big numbers + arrow) */
+.stat-leap{display:flex;align-items:center;justify-content:center;gap:clamp(1.5rem,3.5vw,3.5rem);margin-top:clamp(1.25rem,2.4vw,2.4rem)}
+.stat-block{text-align:center;display:flex;flex-direction:column;align-items:center;gap:0.4rem}
+.stat-year{font-family:var(--display);font-size:clamp(0.85rem,1.4vw,1.15rem);letter-spacing:0.18em;text-transform:uppercase;color:var(--mute)}
+.stat-num{font-family:var(--display);font-size:clamp(2.5rem,7vw,5.8rem);line-height:0.9;letter-spacing:-0.04em;color:#fff}
+.stat-block.stat-from .stat-num{color:rgba(255,255,255,0.42)}
+.stat-block.stat-to .stat-num{color:var(--accent-2);text-shadow:0 0 50px rgba(96,165,250,0.55)}
+.stat-arrow{font-family:var(--display);font-size:clamp(2.4rem,5vw,4.4rem);color:var(--accent);line-height:1}
+/* Stat B — regional bars */
+.region-grid{display:flex;flex-direction:column;gap:clamp(0.6rem,1.1vw,1rem);margin-top:clamp(1rem,2vw,1.8rem)}
+.region-row{display:grid;grid-template-columns:clamp(190px,24vw,330px) 1fr;gap:clamp(1rem,1.8vw,1.6rem);align-items:center;padding:clamp(0.85rem,1.5vw,1.25rem) clamp(1rem,1.8vw,1.4rem);background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);border-left:3px solid var(--soft)}
+.region-row.region-hot{background:linear-gradient(135deg,rgba(37,99,235,0.22),rgba(37,99,235,0.04));border-left-color:var(--accent);box-shadow:0 18px 48px -20px rgba(37,99,235,0.5)}
+.region-label{display:flex;flex-direction:column;gap:0.25rem;min-width:0}
+.region-name{font-family:var(--display);font-size:clamp(1rem,1.55vw,1.3rem);text-transform:uppercase;letter-spacing:-0.005em;color:#fff;line-height:1.05}
+.region-tag{font-family:var(--display);font-size:clamp(0.65rem,0.95vw,0.82rem);letter-spacing:0.16em;text-transform:uppercase;color:var(--mute)}
+.region-row.region-hot .region-tag{color:var(--accent-2)}
+.region-bar{height:clamp(0.55rem,1vw,0.85rem);background:rgba(255,255,255,0.05);border-radius:99px;overflow:hidden}
+.region-bar-fill{height:100%;background:linear-gradient(90deg,rgba(255,255,255,0.18),rgba(255,255,255,0.32));border-radius:99px}
+.region-row.region-hot .region-bar-fill{background:linear-gradient(90deg,var(--accent),var(--accent-2));box-shadow:0 0 18px rgba(37,99,235,0.55)}
+/* Stat C — sweet spot cards */
+.sweet-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,1.8rem);margin-top:clamp(1rem,2vw,1.8rem)}
+.sweet-card{background:linear-gradient(135deg,rgba(37,99,235,0.18),rgba(255,255,255,0.04));border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.1rem,2.2vw,2rem);position:relative;overflow:hidden;border-left:3px solid var(--accent);min-height:clamp(180px,28vh,300px);display:flex;flex-direction:column;justify-content:space-between}
+.sweet-card::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at top right,rgba(96,165,250,0.18),transparent 65%);pointer-events:none}
+.sweet-card > *{position:relative}
+.sweet-tag{font-family:var(--display);font-size:clamp(0.65rem,0.95vw,0.82rem);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);margin-bottom:0.4rem}
+.sweet-name{font-family:var(--display);font-size:clamp(2rem,4vw,3.4rem);line-height:1;letter-spacing:-0.025em;color:#fff;text-transform:uppercase;margin-bottom:0.85rem}
+.sweet-desc{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.78)}
+
+/* SLIDE — APPS BY SEGMENT (2x2 application breakdown) */
+.apps-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(0.85rem,1.6vw,1.4rem);margin-top:clamp(1rem,2vw,1.8rem)}
+.app-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(0.95rem,1.8vw,1.5rem) clamp(1rem,2vw,1.6rem);position:relative;overflow:hidden;border-left:3px solid var(--soft);min-height:clamp(140px,22vh,210px);display:flex;flex-direction:column;justify-content:flex-start}
+.app-card.app-hot{background:linear-gradient(135deg,rgba(37,99,235,0.2),rgba(37,99,235,0.04));border-left-color:var(--accent);box-shadow:0 18px 48px -20px rgba(37,99,235,0.5)}
+.app-card.app-hot::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at top right,rgba(96,165,250,0.18),transparent 65%);pointer-events:none}
+.app-card > *{position:relative}
+.app-tag{font-family:var(--display);font-size:clamp(0.62rem,0.85vw,0.75rem);letter-spacing:0.18em;text-transform:uppercase;color:var(--mute);margin-bottom:0.4rem}
+.app-card.app-hot .app-tag{color:var(--accent-2)}
+.app-name{font-family:var(--display);font-size:clamp(1.4rem,2.6vw,2.2rem);line-height:1.05;letter-spacing:-0.02em;color:#fff;text-transform:uppercase;margin-bottom:0.65rem}
+.app-desc{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.78)}
+
+/* SLIDE — WORDCLOUD (ported from index_codex.html slide 12) */
+.wordcloud{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0.85rem clamp(1rem,2vw,1.6rem);padding:clamp(1.5rem,2.6vw,2.4rem)}
+.wordcloud span{font-family:var(--display);color:#fff;line-height:1}
+.w1{font-size:clamp(1.8rem,4.4vw,4.2rem)}
+.w2{font-size:clamp(1.2rem,2.6vw,2.3rem);color:rgba(255,255,255,0.92)}
+.w3{font-size:clamp(0.95rem,1.7vw,1.45rem);color:var(--accent-2) !important}
+
+/* SLIDES — 3 ROLES + RAG ANIMATION (ported from index_codex.html slides 9 & 10) */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);align-items:stretch;margin-top:clamp(1rem,2vw,2rem)}
+.panel .num{font-family:var(--display);font-size:clamp(2.4rem,6vw,5.3rem);line-height:0.9;color:var(--accent-2);letter-spacing:-0.045em;text-align:left;margin-bottom:0.4rem}
+.flowline .arrow{font-family:var(--display);color:var(--accent-2);font-size:clamp(1.1rem,1.8vw,1.5rem);flex-shrink:0}
+.terminal{background:#050914;border:1px solid rgba(96,165,250,0.28);border-radius:var(--r);padding:clamp(1rem,2vw,1.6rem);box-shadow:0 0 0 1px rgba(255,255,255,0.03) inset,0 28px 90px -35px rgba(31,242,249,0.45)}
+.terminal .tabs{display:flex;gap:0.45rem;margin-bottom:1rem}
+.terminal .tabs span{width:0.7rem;height:0.7rem;border-radius:50%;background:rgba(255,255,255,0.22)}
+.term-line{font-family:'Space Grotesk',sans-serif;font-size:clamp(0.85rem,1.2vw,1.1rem);line-height:1.6;color:rgba(255,255,255,0.95)}
+.term-line + .term-line{margin-top:0.25rem}
+.term-line b{color:var(--accent-2);font-weight:500}
+
+/* SLIDE — AI CAN / CANNOT */
+.cando{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.cando-col{background:rgba(255,255,255,0.04);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2rem);border-left:4px solid var(--accent);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,background 0.3s}
+.cando-col.cant{border-left-color:#ff4040;background:rgba(255,64,64,0.06)}
+.cando-col .cando-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.85rem}
+.cando-col.cant .cando-tag{color:#ff6060}
+.cando-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:clamp(0.55rem,1vw,0.85rem)}
+.cando-col li{font-size:clamp(0.78rem,1.02vw,1rem);line-height:1.45;color:#fff;padding-left:1.25rem;position:relative}
+.cando-col li strong{font-family:var(--display);font-weight:400;letter-spacing:0.03em;color:var(--accent-2)}
+.cando-col.cant li strong{color:#ff8a8a}
+.cando-col li::before{content:"·";position:absolute;left:0.4rem;color:var(--accent);font-weight:700;font-size:1.4em;line-height:1}
+.cando-col.cant li::before{color:#ff6060}
+.cando-col:hover{transform:translateY(-3px);box-shadow:0 12px 28px -12px rgba(37,99,235,0.3)}
+.cando-col.cant:hover{box-shadow:0 12px 28px -12px rgba(255,64,64,0.3)}
+.s-cando .big{max-width:22ch;font-size:clamp(1.7rem,3.5vw,3.2rem)}
+
+/* COMBINED BENEFITS+CASES — proof block inside .benefit */
+.benefit .proof{margin-top:clamp(0.75rem,1.4vw,1.15rem);padding-top:clamp(0.55rem,1vw,0.85rem);border-top:1px solid rgba(255,255,255,0.1);font-size:clamp(0.7rem,0.9vw,0.85rem);line-height:1.45;color:rgba(255,255,255,0.7)}
+.benefit .proof strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-2);font-weight:400}
+.benefit .proof.muted{color:rgba(255,255,255,0.45);font-style:italic}
+
+/* CLOSING — lug'at recap row */
+.s-close .recap{margin-top:clamp(1rem,2vw,1.75rem);padding-top:clamp(0.85rem,1.5vw,1.25rem);border-top:1px solid var(--soft);display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.5rem);flex-wrap:wrap}
+.s-close .recap-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);flex-shrink:0}
+.s-close .recap-terms{display:flex;gap:clamp(1rem,2vw,2rem);flex-wrap:wrap;flex:1}
+.s-close .recap-term{font-size:var(--body);color:rgba(255,255,255,0.7);line-height:1.4}
+.s-close .recap-term strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-right:0.5em;font-weight:400}
+.s-close .recap-term .ans{color:var(--accent-2)}
+
+/* CARD HOVER STATES — interactive lift across content cards */
+.benefit,.case,.stack .pillar,.road .step,.sec .item,.myth .row,.flow .step,.compare .col{
+  transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s;
+}
+.benefit:hover,.case:hover,.stack .pillar:hover,.road .step:hover,.sec .item:hover,.myth .row:hover,.flow .step:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);
+  border-color:rgba(96,165,250,0.4);
+}
+.compare .col:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 28px -12px rgba(37,99,235,0.3);
+}
+
+/* Animations */
+@media (prefers-reduced-motion:no-preference){
+  .slide.is-active .reveal{animation:up 0.7s cubic-bezier(0.16,1,0.3,1) both}
+  .slide.is-active .r1{animation-delay:0.05s}
+  .slide.is-active .r2{animation-delay:0.2s}
+  .slide.is-active .r3{animation-delay:0.35s}
+  .slide.is-active .r4{animation-delay:0.5s}
+  @keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+}
+.reveal{opacity:0}
+.slide:not(.is-active) .reveal{opacity:0}
+.slide.is-active .reveal{opacity:1}
+</style>
 </head>
 <body>
 
-<main class="deck" data-current="0">
+<main class="deck">
 
-  <!-- ────────────────────────────────────────────────────────────────────
-       SLIDE 1 — TITLE
-       ──────────────────────────────────────────────────────────────────── -->
-  <section class="slide slide--title is-active">
-
-    <header class="header-bar">
-      <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" />
-      <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" />
-    </header>
-
-    <div class="title-content">
-      <span class="module-chip"><strong>1-MODUL</strong> · KUN 1</span>
-      <h1 class="title">
+<!-- SLIDE 1 — TITLE -->
+<section class="slide s-title is-active">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head">
+</div>
+  <div class="main">
+    <div class="title-block reveal r2">
+      <span class="chip">Kun 1 · 9:15 — 10:15</span>
+      <h1 class="title-hero">
         Bank sektori uchun<br>
-        <span class="accent">sun'iy intellekt</span> asoslari
+        <span class="hl">sun'iy intellekt</span><br>
+        asoslari.
       </h1>
-      <p class="subtitle">
-        Sun'iy intellekt, katta til modellari va generativ SI tushunchalari —
-        oddiy bank jarayonlarida qanday qo'llaniladi.
-      </p>
+      <p class="tagline"><span class="accent-bar"></span>Kodsiz AI yechim — bank xodimlari uchun.</p>
     </div>
+  </div>
+</section>
 
-    <div class="speaker-chip">
-      <div class="speaker-avatar">R</div>
-      <div class="speaker-meta">
-        <div class="speaker-name">Riskaliev Murad</div>
-        <div class="speaker-role">NLP Engineer · Mohirdev</div>
+<!-- SLIDE 2 — AGENDA -->
+<section class="slide s-agenda">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head">
+    <div class="eyebrow reveal r1">Reja</div>
+  </div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Mavzuning <span class="hl">yo'l xaritasi</span>.</h2>
+    <div class="phase-grid reveal r3">
+
+      <button class="phase-card fragment">
+        <div class="phase-top">
+          <span class="phase-num">01</span>
+</div>
+        <div>
+          <h3 class="phase-title">AI aslida nima</h3>
+          <p class="phase-desc">Sehr emas. Juda tez o'rganadigan ishchi.</p>
+        </div>
+        <div class="phase-foot">
+<span class="phase-time">~22 daq</span>
+        </div>
+      </button>
+
+      <button class="phase-card fragment">
+        <div class="phase-top">
+          <span class="phase-num">02</span>
+</div>
+        <div>
+          <h3 class="phase-title">Raqamlar nima deyapti</h3>
+          <p class="phase-desc">Bozor 15× kattalashadi. Markazi — biz qurayotgan bot.</p>
+        </div>
+        <div class="phase-foot">
+<span class="phase-time">~5 daq</span>
+        </div>
+      </button>
+
+      <button class="phase-card fragment">
+        <div class="phase-top">
+          <span class="phase-num">03</span>
+</div>
+        <div>
+          <h3 class="phase-title">Bot ichida nima bor</h3>
+          <p class="phase-desc">Gemini, RAG, n8n. Hamda xavfsizlik chizig'i.</p>
+        </div>
+        <div class="phase-foot">
+<span class="phase-time">~14 daq</span>
+        </div>
+      </button>
+
+      <button class="phase-card fragment">
+        <div class="phase-top">
+          <span class="phase-num">04</span>
+</div>
+        <div>
+          <h3 class="phase-title">Sizning bankingizda nimalar qilsak bo'ladi</h3>
+          <p class="phase-desc">Eng zerikarli ishni AI vazifasiga aylantiramiz.</p>
+        </div>
+        <div class="phase-foot">
+<span class="phase-time">~17 daq</span>
+        </div>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3 — WOW (image edit as a grounded AI example) -->
+<section class="slide s-wow">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head">
+</div>
+  <div class="main">
+    <div class="reveal r2">
+      <div class="wow-duo">
+        <div class="wow-frame is-half">
+          <img src="images/avval.png" alt="AVVAL — AI dan oldin (kal)">
+        </div>
+        <div class="wow-frame is-half fragment" data-frag-group="keyin">
+          <img src="images/keyin.png" alt="KEYIN — AI dan keyin (sochli)">
+        </div>
       </div>
     </div>
+    <div class="reveal r3">
+      <span class="chip-out" style="background:transparent">Savol</span>
+      <h2 class="h2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Odamlar AI'dan hozir <span class="hl">qanday</span> foydalanyapti?</h2>
+      <div class="fragment" data-frag-group="keyin">
+        <p class="lead no-bar" style="color:rgba(255,255,255,0.62)">Bu qiziq. Lekin bu AI'ning eng past qiymatli ishlatilishi.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  </section>
+<!-- SLIDE 4 — WOW (video as a practical AI draft example) -->
+<section class="slide s-wow">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head">
+</div>
+  <div class="main">
+    <div class="reveal r2">
+      <div class="wow-frame is-video">
+        <video src="videos/hook-FEukcVbEO1o.mp4" autoplay muted loop playsinline preload="auto"></video>
+      </div>
+    </div>
+    <div class="reveal r3">
+      <span class="chip-out" style="background:transparent">Hozirgi real holat</span>
+      <h2 class="h2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">AI ko'pincha <span class="hl">kontent o'yinchog'i</span> bo'lib qolyapti.</h2>
+      <p class="lead no-bar">Rasm, video, mem, trend. Odamlar AI'ni ko'rinadigan, kulgili narsalarga sarflayapti.</p>
+      <p class="lead no-bar" style="margin-top:clamp(0.65rem,1.2vw,1rem);color:rgba(255,255,255,0.62)">Biz esa uni real ishga buramiz: hujjat, javob, tekshiruv, qaror tayyorlash.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 — HOOK -->
+<section class="slide s-hook">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head">
+</div>
+  <div class="main">
+    <div class="qr-stack reveal r2">
+      <div class="qr-box has-img"><img src="images/https_t_me_bankragbot.png" alt="QR · t.me/bankragbot"></div>
+      <a class="qr-url" href="https://t.me/bankragbot">t.me/bankragbot</a>
+    </div>
+    <div class="reveal r3">
+      <span class="chip-out" style="background:transparent">Live demo</span>
+      <h2 class="h2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Keling, kelajakni <span class="hl">hozir</span> sinab ko'ramiz.</h2>
+      <div class="chat">
+        <div class="bubble user">Avtokredit uchun boshlang'ich to'lov?</div>
+        <div class="bubble ai fragment is-visible">AI tahlil qilmoqda... ichki PDF qidirilmoqda</div>
+        <div class="bubble ai fragment is-visible">Javob <strong>kredit_siyosati.pdf, 4.2-band</strong> asosida tuzildi. Yakuniy qaror — mas'ul xodimda.</div>
+      </div>
+      <p class="lead no-bar" style="margin-top:clamp(0.85rem,1.6vw,1.4rem)">Bu Google emas. Bu sizning bankingizdagi ichki bilim.</p>
+      <p class="lead no-bar" style="margin-top:clamp(0.5rem,0.9vw,0.8rem);font-size:var(--small);color:rgba(255,255,255,0.55)">Demo qoidasi: faqat oldindan yuklangan test PDF korpusidan javob beradi · real mijoz ma'lumoti yo'q · javob topilmasa "ma'lumot topilmadi" deydi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — DEFINITION (stajyor metafora — ported from index_codex.html slide 4) -->
+<section class="slide s-def">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head">
+</div>
+  <div class="main">
+    <div class="kicker reveal r1">Metafora</div>
+    <h2 class="big reveal r2">AI = super-aqlli ishchi</h2>
+    <div class="employee reveal r3">
+      <div class="panel fragment person">
+        <div>
+          <div class="avatar">17</div>
+          <h3>tab ochilgan</h3>
+          <p>Charchagan xodim, qog'ozlar, takroriy savollar, vaqt bosimi.</p>
+        </div>
+        <div class="window-stack"><div class="mini-window"></div><div class="mini-window"></div><div class="mini-window"></div></div>
+      </div>
+      <div class="panel fragment person">
+        <div>
+          <div class="avatar">AI</div>
+          <h3>tartiblangan ish oqimi</h3>
+          <p>Hujjatni o'qiydi, xulosa qiladi, javobni tayyorlaydi.</p>
+        </div>
+        <div class="flowline"><span class="pill">xulosa</span><span class="pill">risk</span><span class="pill">javob</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 — DICTIONARY (NEW: bankir uchun AI lug'ati) -->
+<section class="slide s-dict">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Bankir uchun AI lug'ati</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Uchta so'z — kursning <span class="hl">poydevori</span>.</h2>
+    <p class="lead reveal r2">Keyingi 15 modulda bu uchta atama qaytib-qaytib chiqadi. Hozir bir marta tushunsak — dars ancha silliq kechadi.</p>
+    <div class="dict reveal r3">
+      <div class="dict-card fragment">
+        <span class="dict-tag">LLM</span>
+        <h3>Katta Til Modeli</h3>
+        <p>Inson tilini tushunuvchi va gapira oladigan "Miya". Masalan: <strong>Gemini</strong>, ChatGPT.</p>
+      </div>
+      <div class="dict-card fragment">
+        <span class="dict-tag">Promt</span>
+        <h3>To'g'ri Buyruq</h3>
+        <p>AI'dan biror narsa so'rash uchun yoziladigan aniq <strong>savol</strong> yoki <strong>topshiriq</strong>.</p>
+      </div>
+      <div class="dict-card fragment">
+        <span class="dict-tag">API</span>
+        <h3>AI'ni avtomat ulash</h3>
+        <p>Brauzerdan AI'ga yozish — qo'lda ish. <strong>API</strong> orqali AI <strong>ichki tizim bilan</strong> avtomat suhbat quradi: CRM, Telegram bot, sayt — bir marta sozlanadi, har xat o'zi ishlanadi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8 — STAMP "Yo'q" (myth answer — ported from index_codex.html slide 6) -->
+<section class="slide center">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head">
+</div>
+  <div class="main center">
+    <div class="kicker reveal r1">Afsona va haqiqat</div>
+    <h2 class="big reveal r2">AI ishimni olib qo'yadimi?</h2>
+    <div class="stamp reveal r3">Yo'q</div>
+    <p class="lead no-bar reveal r4" style="text-align:center;margin-left:auto;margin-right:auto">AI ishlatadigan odam ishlatmaydigan odamni almashtiradi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 9 — MYTH/REALITY -->
+<section class="slide s-myth">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head">
+</div>
+  <div class="main">
+    <h2 class="h2 reveal r2"><span class="hl">Afsonalarga</span> qarshi zarba.</h2>
+    <div class="myth reveal r3">
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>AI barcha <strong>ish o'rinlarini</strong> yo'q qiladi.</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p>AI o'z-o'zidan bankir bo'lib qolmaydi. <strong>AI'dan foydalana oladigan bankirlar</strong> foydalana olmaydiganlarning o'rnini egallaydi.</p></div>
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>AI'ni boshqarish uchun <strong>5 yil dasturlashni</strong> o'rganish kerak.</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p><strong>"No-code" inqilobi</strong> keldi. Mantiqiy fikrlash kod yozishdan muhimroq.</p></div>
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>AI <strong>hamma narsani</strong> biladi.</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p>AI faqat o'qitilgan ma'lumotni biladi. <strong>RAG</strong> bilan o'z PDF hujjatingizdan javob beradi — internetdan emas.</p></div>
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p><strong>AI = ChatGPT.</strong></p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p>ChatGPT — bitta brend. AI tushunchasi ostida 100+ vositalar: <strong>Gemini, Claude, n8n agentlari</strong>. Biz Gemini'ni ishlatamiz.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10 — AI REAL USE / RISK BOUNDARIES -->
+<section class="slide s-cando">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="big reveal r2">AI — bu vosita. Sehr emas.</h2>
+    <div class="cando reveal r3">
+      <div class="cando-col fragment">
+        <div class="cando-tag">✓ Real bank misollari</div>
+        <ul>
+          <li><strong>Morgan Stanley:</strong> maslahatchilar yuz minglab tahliliy hujjatlar ichidan javobni tez topadi.</li>
+          <li><strong>Uchrashuv xulosasi:</strong> mijoz bilan suhbat yozuvi → qisqacha xulosa, keyingi vazifalar, email qoralamasi.</li>
+          <li><strong>JPMorgan COIN:</strong> kredit va yuridik shartnomalardan muhim bandlar va risklarni ajratish.</li>
+          <li><strong>Bank yordam boti:</strong> tarif, kredit sharti, hujjat ro'yxati bo'yicha ichki bazaga tayangan javob.</li>
+        </ul>
+      </div>
+      <div class="cando-col cant fragment">
+        <div class="cando-tag">✗ AI'ga yolg'iz topshirilmaydi</div>
+        <ul>
+          <li><strong>Kreditni tasdiqlash/rad etish:</strong> yakuniy qaror skoring, siyosat va mas'ul xodim nazoratida qoladi.</li>
+          <li><strong>AML / muvofiqlik xulosasi:</strong> AI signal beradi, lekin regulyatorga yuboriladigan qarorni inson qabul qiladi.</li>
+          <li><strong>Pasport va karta ma'lumotlari:</strong> oddiy ommaviy chatbotga yuborilmaydi; ma'lumotni yashirish va yopiq kontur kerak.</li>
+          <li><strong>Foiz, kurs, balans:</strong> ichki bank tizimi yoki rasmiy ulanish bo'lmasa, AI taxmin qilib yuborishi mumkin.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT A — global market leap ($20.87B → $310.79B) -->
+<section class="slide center">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head">
+</div>
+  <div class="main center">
+    <div class="kicker reveal r1">AI banking · global bozor</div>
+    <h2 class="big reveal r2">10 yilda <span class="hl">15× o'sish</span></h2>
+    <div class="stat-leap reveal r3">
+      <div class="stat-block stat-from fragment is-visible">
+        <div class="stat-year">2023</div>
+        <div class="stat-num">$20.87B</div>
+      </div>
+      <div class="stat-arrow fragment">→</div>
+      <div class="stat-block stat-to fragment">
+        <div class="stat-year">2033</div>
+        <div class="stat-num">$310.79B</div>
+      </div>
+    </div>
+    <p class="lead no-bar reveal r4" style="text-align:center;margin-left:auto;margin-right:auto;max-width:64ch">
+      <strong>31% CAGR</strong> — har 2.5 yilda hajmi ikki barobar bo'ladi.
+    </p>
+    <div class="stat-source reveal r4">Manba: Spherical Insights · AI in Banking Market Report 2024</div>
+  </div>
+</section>
+
+<!-- STAT B — Asia-Pacific leadership (regional growth bars) -->
+<section class="slide">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head">
+</div>
+  <div class="main">
+    <div class="kicker reveal r1">Mintaqaviy o'sish · 2024–2033</div>
+    <h2 class="big reveal r2" style="max-width:32ch"><span class="hl">Osiyo-Tinch okeani</span> — eng tez o'sadigan mintaqa</h2>
+    <div class="region-grid reveal r3">
+      <div class="region-row fragment">
+        <div class="region-label">
+          <span class="region-name">Shimoliy Amerika</span>
+          <span class="region-tag">eng katta bozor</span>
+        </div>
+        <div class="region-bar"><div class="region-bar-fill" style="width:78%"></div></div>
+      </div>
+      <div class="region-row region-hot fragment">
+        <div class="region-label">
+          <span class="region-name">Osiyo-Tinch okeani</span>
+          <span class="region-tag">eng yuqori yillik o'sish</span>
+        </div>
+        <div class="region-bar"><div class="region-bar-fill" style="width:100%"></div></div>
+      </div>
+      <div class="region-row fragment">
+        <div class="region-label">
+          <span class="region-name">Yevropa</span>
+          <span class="region-tag">barqaror</span>
+        </div>
+        <div class="region-bar"><div class="region-bar-fill" style="width:60%"></div></div>
+      </div>
+      <div class="region-row fragment">
+        <div class="region-label">
+          <span class="region-name">Boshqa mintaqalar</span>
+          <span class="region-tag">o'sish bosqichida</span>
+        </div>
+        <div class="region-bar"><div class="region-bar-fill" style="width:38%"></div></div>
+      </div>
+    </div>
+    <p class="lead no-bar reveal r4">
+      O'zbekiston aynan shu mintaqada. <strong>Bugungi qadam — ertangi ustunlik.</strong>
+    </p>
+    <div class="stat-source reveal r4">Manba: Spherical Insights · AI in Banking Market Report 2024 (illyustrativ qiymatlar)</div>
+  </div>
+</section>
+
+<!-- STAT C — Global AI in Banking, By Application (4 segments, Customer Service highlighted) -->
+<section class="slide">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head">
+</div>
+  <div class="main">
+    <div class="kicker reveal r1">Bankda AI · qo'llash sohalari</div>
+    <h2 class="big reveal r2" style="max-width:30ch">Banklar AI'ni <span class="hl">qayerda</span> ishlatadi?</h2>
+    <div class="apps-grid reveal r3">
+      <div class="app-card fragment">
+        <div class="app-tag">Risk · skoring · firibgarlik</div>
+        <div class="app-name">Risk menejmenti</div>
+        <p class="app-desc">Hujjatlardan risk signallari, kredit skoring, firibgarlik va AML belgilari.</p>
+      </div>
+      <div class="app-card app-hot fragment">
+        <div class="app-tag">Eng tez o'sadigan segment</div>
+        <div class="app-name">Mijozlarga xizmat</div>
+        <p class="app-desc">24/7 mijoz savollariga javob, FAQ, ariza qabuli. <strong>Bizning RAG bot — aynan shu segmentda.</strong></p>
+      </div>
+      <div class="app-card fragment">
+        <div class="app-tag">Bankir uchun yordamchi</div>
+        <div class="app-name">Virtual yordamchi</div>
+        <p class="app-desc">Bankir ishini tezlashtiradi: uchrashuv xulosasi, hujjat qoralamasi, ichki ma'lumotni qidirish.</p>
+      </div>
+      <div class="app-card fragment">
+        <div class="app-tag">Investitsiya · portfel</div>
+        <div class="app-name">Moliyaviy maslahat</div>
+        <p class="app-desc">Mijozga investitsiya va portfel tavsiyasi. Misol: Morgan Stanley maslahatchilari.</p>
+      </div>
+    </div>
+    <div class="stat-source reveal r4">Manba: Spherical Insights · AI in Banking Market Report 2024 — segmentation by application</div>
+  </div>
+</section>
+
+<!-- SLIDE 14 — 3 ROLES (ported from index_codex.html slide 9 · Character system) -->
+<section class="slide">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head">
+</div>
+  <div class="main">
+    <div class="kicker reveal r1">Tizim rollari</div>
+    <h2 class="big reveal r2" style="max-width:32ch">Botni 3 rol bilan eslab qolamiz</h2>
+    <div class="grid-3 reveal r3">
+      <div class="panel fragment"><div class="num">Miya</div><h3>Gemini</h3><p>Matnni tushunadi, xulosa qiladi, javob yozadi.</p></div>
+      <div class="panel fragment"><div class="num">Xotira</div><h3>RAG</h3><p>Bankning tasdiqlangan hujjatlari va qoidalari.</p></div>
+      <div class="panel fragment"><div class="num">Ishchi</div><h3 style="text-transform:none">n8n</h3><p>Telegram, PDF va Gemini orasidagi jarayonni boshqaradi.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 15 — RAG ANIMATION (ported from index_codex.html slide 10) -->
+<section class="slide">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head">
+</div>
+  <div class="main">
+    <div class="kicker reveal r1">Demo bot ish oqimi · 9-modulda chuqur</div>
+    <h2 class="big reveal r2" style="max-width:32ch">Savol javobga qanday aylanadi?</h2>
+    <div class="flowline reveal r3" style="font-size:var(--body)">
+      <span class="pill fragment">Savol</span><span class="arrow">→</span>
+      <span class="pill fragment">Qidiruv</span><span class="arrow">→</span>
+      <span class="pill fragment">Hujjatdan topish</span><span class="arrow">→</span>
+      <span class="pill fragment">Tahlil</span><span class="arrow">→</span>
+      <span class="pill fragment">Javob</span>
+    </div>
+    <div class="terminal reveal r3" style="margin-top:clamp(1rem,2vw,2rem)">
+      <div class="tabs"><span></span><span></span><span></span></div>
+      <div class="term-line"><b>Savol:</b> "Avtokredit uchun boshlang'ich to'lov qancha?"</div>
+      <div class="term-line"><b>Qidiruv:</b> kredit_siyosati.pdf / 4.2-band</div>
+      <div class="term-line"><b>Javob:</b> faqat topilgan qoidaga tayangan holda</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11 — SECURITY -->
+<section class="slide s-sec">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head">
+</div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Bank siri va ma'lumotlar — <span class="hl">qizil chiziq</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">AI yechim bankda faqat quyidagi nazoratlar to'liq joriy bo'lganda ishlatiladi.</p>
+    <div class="sec reveal r3">
+      <div class="item fragment"><div class="ico">🔒</div><h3>Yopiq Kontur</h3><p>Barcha ma'lumot almashinuvi to'g'ridan-to'g'ri himoyalangan API kanallari orqali bo'ladi.</p></div>
+      <div class="item fragment"><div class="ico">🛡️</div><h3>O'qitilmaydi</h3><p>Korporativ shartnoma orqali yuborilgan ma'lumot AI'ni kelajakda o'qitish uchun ishlatilmaydi.</p></div>
+      <div class="item fragment"><div class="ico">🎭</div><h3>Ma'lumot yashirish</h3><p>Ism, familiya, hisob raqami AI'ga uzatishdan oldin avtomatik yashiriladi. Texnik nomi — 3-modulda.</p></div>
+    </div>
+    <p class="lead no-bar reveal r4" style="margin-top:clamp(0.75rem,1.5vw,1.25rem);font-style:italic;color:var(--mute)">→ Muvofiqlik chuqur ko'rib chiqiladi — 3-modulda.</p>
+  </div>
+</section>
+
+<!-- SLIDE 17 — WORDCLOUD (ported from index_codex.html slide 12 · muvofiqlik → shikoyatlar) -->
+<section class="slide">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head">
+</div>
+  <div class="main">
+    <div class="kicker reveal r1">Interaktiv so'rovnoma · use-case tanlovi</div>
+    <h2 class="big reveal r2" style="max-width:32ch">Eng zerikarli ish qaysi?</h2>
+    <div class="panel wordcloud reveal r3" style="margin-top:clamp(0.85rem,1.6vw,1.5rem)">
+      <span class="w1">hisobot</span>
+      <span class="w2">hujjat tekshirish</span>
+      <span class="w3">mijoz savollari</span>
+      <span class="w2">shikoyatlar</span>
+      <span class="w3">Excel</span>
+      <span class="w1">takroriy javob</span>
+    </div>
+    <div class="reveal r3" style="margin-top:clamp(0.85rem,1.6vw,1.4rem);display:flex;justify-content:center;gap:clamp(0.5rem,1vw,0.9rem);flex-wrap:wrap">
+      <span class="pill">✓ takrorlanadi</span>
+      <span class="pill">✓ hujjatga tayanadi</span>
+      <span class="pill">✓ xavfi past</span>
+      <span class="pill">✓ inson tasdig'i saqlanadi</span>
+    </div>
+    <p class="lead no-bar reveal r3" style="text-align:center;margin-left:auto;margin-right:auto;max-width:64ch;margin-top:clamp(0.6rem,1.2vw,1rem)">Shu 4 mezonga to'g'ri keladigan ishni AI'ga topshiramiz.</p>
+  </div>
+</section>
+
+<!-- SLIDE 18 — CLOSING (ported from index_codex.html slide 13 · API pill → RAG) -->
+<section class="slide center">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head">
+</div>
+  <div class="main center">
+    <div class="kicker reveal r1">Xulosa</div>
+    <h2 class="big reveal r2">2 kundan keyin:</h2>
+    <p class="lead no-bar reveal r3" style="font-size:clamp(1.4rem,2.8vw,2.6rem);max-width:34ch;color:#fff;text-align:center;margin-left:auto;margin-right:auto">siz <span class="tok">AI</span> haqida eshitgan odam emas, <span class="hl"><span class="tok">AI</span> bilan ishlaydigan bankirga</span> aylanasiz.</p>
+    <div class="reveal r3" style="display:flex;flex-direction:column;align-items:center;gap:clamp(0.6rem,1.1vw,0.9rem);margin-top:clamp(1rem,2vw,1.6rem)">
+      <span class="kicker" style="color:rgba(255,255,255,0.85)">Lug'at recap · birga aytamiz</span>
+      <div class="flowline" style="justify-content:center;margin-top:0">
+        <span class="pill"><strong>LLM</strong><span class="fragment is-visible"> = miya</span></span>
+        <span class="pill"><strong>Promt</strong><span class="fragment is-visible"> = buyruq</span></span>
+        <span class="pill"><strong>API</strong><span class="fragment is-visible"> = avtomat ulash</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13 — Q&A -->
+<section class="slide s-qa">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head">
+</div>
+  <div class="main">
+    <div class="qmark reveal r2">?</div>
+    <h2 class="h2 reveal r3" style="text-align:center">Sizning <span class="hl">savollaringiz</span>.</h2>
+    <p class="reveal r3" style="text-align:center;margin-top:clamp(1.5rem,3vw,2.5rem);font-family:var(--display);font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:0.1em;color:var(--accent-2)">murod@mohir.dev</p>
+  </div>
+</section>
 
 </main>
 
+<div class="hud">
+  <span class="counter">01 / 19</span>
+  <div class="dots"></div>
+  <div class="speaker"><span class="dot"></span><strong>Riskaliev Murad</strong> · NLP Engineer · Mohirdev</div>
+</div>
+
+<script>
+const TITLES = [
+  'Title · 1-modul',
+  "Yo'l xaritasi · Agenda",
+  "AI noto'g'ri fokusda · rasm",
+  "AI noto'g'ri fokusda · kontent",
+  'Live demo · bank botiga savol',
+  "AI = super-aqlli ishchi · metafora",
+  "Bankir uchun AI lug'ati · LLM / Promt / API",
+  "AI ishimni olib qo'yadimi? · Yo'q",
+  'Miflarga qarshi zarba',
+  "AI nima qila oladi va nima qila olmaydi",
+  'AI banking bozori · 15× o\'sish',
+  "Osiyo-Tinch okeani · eng tez mintaqa",
+  "Banklar AI'ni qayerda ishlatadi · 4 segment",
+  "Botni 3 rol bilan eslab qolamiz",
+  "Savol javobga qanday aylanadi? · demo bot oqimi",
+  "Xavfsizlik · 3 ta nazorat",
+  "Eng zerikarli ish qaysi · wordcloud",
+  "Closing · 2 kundan keyin",
+  'Savol-Javob · Q&A'
+];
+
+const slides = [...document.querySelectorAll('.slide')];
+const counter = document.querySelector('.counter');
+const dotsContainer = document.querySelector('.dots');
+let cur = 0;
+
+(function buildDots(){
+  dotsContainer.innerHTML = '';
+  slides.forEach((slide, i) => {
+    const d = document.createElement('button');
+    d.className = 'nav-dot';
+    d.dataset.title = TITLES[i] || ('Slide ' + (i + 1));
+    d.setAttribute('aria-label', 'Go to slide ' + (i + 1) + ': ' + (TITLES[i] || ''));
+    d.addEventListener('click', e => { e.stopPropagation(); go(i); });
+    dotsContainer.appendChild(d);
+  });
+})();
+
+function apply() {
+  slides.forEach((s, n) => s.classList.toggle('is-active', n === cur));
+  counter.textContent = String(cur + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+  dotsContainer.querySelectorAll('.nav-dot').forEach((d, n) => d.classList.toggle('is-current', n === cur));
+  history.replaceState(null, '', '#' + (cur + 1));
+}
+
+function setFragments(slide, mode) {
+  const frags = slide.querySelectorAll('.fragment');
+  frags.forEach(f => mode === 'all' ? f.classList.add('is-visible') : f.classList.remove('is-visible'));
+}
+
+function go(i) {
+  cur = Math.max(0, Math.min(slides.length - 1, i));
+  const transition = () => { apply(); setFragments(slides[cur], 'all'); };
+  if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.startViewTransition(transition);
+  } else {
+    transition();
+  }
+}
+
+function toggleFrag(slide, frag, on) {
+  frag.classList.toggle('is-visible', on);
+  const group = frag.dataset.fragGroup;
+  if (group) {
+    slide.querySelectorAll(`.fragment[data-frag-group="${group}"]`)
+      .forEach(f => f.classList.toggle('is-visible', on));
+  }
+}
+
+function next() {
+  const slide = slides[cur];
+  const frags = [...slide.querySelectorAll('.fragment')];
+  const hidden = frags.find(f => !f.classList.contains('is-visible'));
+  if (hidden) { toggleFrag(slide, hidden, true); return; }
+  if (cur < slides.length - 1) {
+    cur += 1;
+    apply();
+    setFragments(slides[cur], 'none');
+  }
+}
+
+function prev() {
+  const slide = slides[cur];
+  const visible = [...slide.querySelectorAll('.fragment.is-visible')];
+  if (visible.length > 0) {
+    toggleFrag(slide, visible[visible.length - 1], false);
+    return;
+  }
+  if (cur > 0) {
+    cur -= 1;
+    apply();
+    setFragments(slides[cur], 'all');
+  }
+}
+
+addEventListener('keydown', e => {
+  if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); next(); }
+  if (['ArrowLeft', 'PageUp'].includes(e.key))         { e.preventDefault(); prev(); }
+  if (e.key === 'Home') go(0);
+  if (e.key === 'End') go(slides.length - 1);
+  if (e.key === 'a' || e.key === 'A') go(1);
+});
+
+addEventListener('click', e => {
+  if (e.target.closest('a, button, input, [data-no-advance], .hud')) return;
+  if (e.clientX > innerWidth / 2) next(); else prev();
+});
+
+// Phase cards: clicking advances (reveals next fragment, or moves on)
+document.querySelectorAll('.phase-card').forEach(c => {
+  c.addEventListener('click', e => { e.stopPropagation(); next(); });
+});
+
+addEventListener('hashchange', () => {
+  const n = parseInt(location.hash.slice(1), 10);
+  if (Number.isFinite(n)) go(n - 1);
+});
+
+const init = parseInt(location.hash.slice(1), 10);
+go(Number.isFinite(init) ? init - 1 : 0);
+</script>
 </body>
 </html>

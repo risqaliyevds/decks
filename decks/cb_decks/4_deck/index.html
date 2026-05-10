@@ -10,6 +10,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:'Space Grotesk',sans-serif}
+body,p,li,.lead{letter-spacing:0.018em}
 
 :root{
   --bg:#020A24;--bg-2:#06173B;--bg-3:#0B2D79;
@@ -408,6 +409,85 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
 .phase-count{color:rgba(255,255,255,0.5)}
 .phase-time{color:var(--accent-2)}
 
+/* DICTIONARY (2-card wider variant for ≥2 atama) */
+.dict{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.dict-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
+.dict-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.dict-card .dict-tag{display:inline-block;font-family:var(--display);font-size:clamp(1.4rem,2.8vw,2.4rem);letter-spacing:0.02em;color:var(--accent-2);text-transform:uppercase;line-height:1;margin-bottom:0.75rem}
+.dict-card h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:0.6rem}
+.dict-card p{font-size:var(--body);line-height:1.55;color:rgba(255,255,255,0.78)}
+.dict-card p strong{color:var(--accent-2);font-weight:500}
+.dict-card .ex{margin-top:0.75rem;padding-top:0.6rem;border-top:1px solid rgba(255,255,255,0.08);font-size:clamp(0.75rem,0.95vw,0.9rem);color:rgba(255,255,255,0.62);font-style:italic}
+.dict-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+
+/* CAN/CANNOT */
+.cando{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.cando-col{background:rgba(255,255,255,0.04);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2rem);border-left:4px solid var(--accent);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,background 0.3s}
+.cando-col.cant{border-left-color:#ff4040;background:rgba(255,64,64,0.06)}
+.cando-col .cando-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.85rem}
+.cando-col.cant .cando-tag{color:#ff6060}
+.cando-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:clamp(0.5rem,0.9vw,0.75rem)}
+.cando-col li{font-size:var(--body);line-height:1.45;color:#fff;padding-left:1.25rem;position:relative}
+.cando-col li::before{content:"·";position:absolute;left:0.4rem;color:var(--accent);font-weight:700;font-size:1.4em;line-height:1}
+.cando-col.cant li::before{color:#ff6060}
+.cando-col:hover{transform:translateY(-3px);box-shadow:0 12px 28px -12px rgba(37,99,235,0.3)}
+.cando-col.cant:hover{box-shadow:0 12px 28px -12px rgba(255,64,64,0.3)}
+
+/* BENEFIT proof footer */
+.benefit .proof{margin-top:clamp(0.75rem,1.4vw,1.15rem);padding-top:clamp(0.55rem,1vw,0.85rem);border-top:1px solid rgba(255,255,255,0.1);font-size:clamp(0.7rem,0.9vw,0.85rem);line-height:1.45;color:rgba(255,255,255,0.7)}
+.benefit .proof strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-2);font-weight:400}
+
+/* CLOSE rows + recap */
+.s-close .recap{margin-top:clamp(1rem,2vw,1.75rem);padding-top:clamp(0.85rem,1.5vw,1.25rem);border-top:1px solid var(--soft);display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.5rem);flex-wrap:wrap}
+.s-close .recap-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);flex-shrink:0}
+.s-close .recap-terms{display:flex;gap:clamp(1rem,2vw,2rem);flex-wrap:wrap;flex:1}
+.s-close .recap-term{font-size:var(--body);color:rgba(255,255,255,0.7);line-height:1.4}
+.s-close .recap-term strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-right:0.5em;font-weight:400}
+.s-close .recap-term .ans{color:var(--accent-2)}
+
+/* FLOW chip badge inline (for AI marker on banking example) */
+.flow .step .chip{display:inline-block;background:#fff;color:var(--accent);font-family:var(--display);font-size:clamp(0.55rem,0.7vw,0.7rem);letter-spacing:0.18em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:99px;margin-top:0.4rem;line-height:1}
+.flow .step.brain .chip{background:#fff;color:var(--accent)}
+
+/* NEW MOTIF — Task Decomposition fan: 1 big task → 3 sub-tasks */
+.fan{display:grid;grid-template-rows:auto clamp(2.2rem,4.5vw,4rem) auto;justify-items:center;gap:0;margin-top:clamp(1rem,2vw,1.75rem);position:relative}
+.fan-top{display:flex;justify-content:center;width:100%}
+.fan-pill{
+  background:linear-gradient(135deg,var(--accent),#1d4ed8);
+  color:#fff;border-radius:99px;
+  padding:clamp(0.75rem,1.5vw,1.2rem) clamp(1.5rem,3vw,2.5rem);
+  font-family:var(--display);text-transform:uppercase;
+  font-size:clamp(1rem,2vw,1.65rem);letter-spacing:-0.01em;
+  box-shadow:0 18px 40px -14px rgba(37,99,235,0.55),0 0 0 1px rgba(255,255,255,0.06) inset;
+  text-align:center;line-height:1.05;
+}
+.fan-pill small{display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;text-transform:none;letter-spacing:0.04em;font-size:0.5em;opacity:0.85;margin-top:0.25em}
+.fan-lines{position:relative;width:100%;height:100%;pointer-events:none}
+.fan-lines::before,.fan-lines::after,.fan-lines span{
+  content:"";position:absolute;left:50%;top:0;
+  width:3px;height:100%;
+  background:linear-gradient(to bottom,var(--accent-2) 0%,var(--accent-2) 60%,rgba(96,165,250,0.5) 100%);
+  transform-origin:top center;
+  box-shadow:0 0 8px rgba(96,165,250,0.45);
+  border-radius:2px;
+}
+.fan-lines::before{transform:translateX(-50%) rotate(-32deg)}
+.fan-lines::after{transform:translateX(-50%) rotate(32deg)}
+.fan-lines span{transform:translateX(-50%)}
+.fan-bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(0.85rem,1.6vw,1.5rem);width:100%}
+.fan-sub{
+  background:rgba(255,255,255,0.07);
+  border:1.5px solid rgba(96,165,250,0.28);
+  border-radius:var(--r);
+  padding:clamp(1rem,1.9vw,1.6rem);
+  text-align:center;
+  transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s;
+}
+.fan-sub .fan-tag{font-family:var(--display);font-size:clamp(0.78rem,1.05vw,0.98rem);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);margin-bottom:0.5rem;display:block}
+.fan-sub h4{font-family:var(--display);font-size:clamp(1.1rem,1.7vw,1.4rem);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;line-height:1.05}
+.fan-sub p{font-size:clamp(0.85rem,1.15vw,1.05rem);line-height:1.5;color:rgba(255,255,255,0.85);margin-top:0.5rem}
+.fan-sub:hover{transform:translateY(-4px);border-color:rgba(96,165,250,0.4);box-shadow:0 14px 32px -12px rgba(37,99,235,0.35)}
+
 /* CARD HOVER STATES — interactive lift across content cards */
 .benefit,.case,.stack .pillar,.road .step,.sec .item,.myth .row,.flow .step,.compare .col{
   transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s;
@@ -450,12 +530,12 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   </div>
   <div class="main">
     <div class="title-block reveal r2">
-      <span class="chip">Kun 1 · 13:30 — 14:30</span>
+      <span class="chip">Kun 1 · 14:00 — 15:00 · Amaliy mashq</span>
       <h1 class="title-hero">
         SI uchun jarayonlarni<br>
         <span class="hl">strukturalashtirish.</span>
       </h1>
-      <p class="tagline"><span class="accent-bar"></span>AI samarali ishlashi uchun jarayon va ma’lumotni qanday tayyorlash kerak.</p>
+      <p class="tagline"><span class="accent-bar"></span>SI vazifani aniq bajarishi uchun, jarayonni to'g'ri bo'laklarga bo'lish kerak — qadam, ma'lumot, qaror.</p>
     </div>
   </div>
 </section>
@@ -467,7 +547,7 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
     <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
   </div>
   <div class="head">
-    <div class="eyebrow reveal r1">Agenda</div>
+    <div class="eyebrow reveal r1">Reja</div>
   </div>
   <div class="main">
     <h2 class="h2 reveal r2">Mavzuning <span class="hl">yo'l xaritasi</span>.</h2>
@@ -478,11 +558,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">01</span>
         </div>
         <div>
-          <h3 class="phase-title">Tahlil</h3>
-          <p class="phase-desc">Mavjud jarayonni qadam-qadam ochib chiqamiz.</p>
+          <h3 class="phase-title">Nima uchun</h3>
+          <p class="phase-desc">Tartibsizlik qayerdan keladi? Tartibsiz ish va strukturalangan zanjir farqini tushunamiz.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~13 daq</span>
+          <span class="phase-time">~10 daq</span>
         </div>
       </button>
 
@@ -491,11 +571,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">02</span>
         </div>
         <div>
-          <h3 class="phase-title">Tuzilma</h3>
-          <p class="phase-desc">Ma'lumot va qarorlar oqimi qanday strukturalanadi.</p>
+          <h3 class="phase-title">Workflow</h3>
+          <p class="phase-desc">Jarayon zanjirining 5 ta qadami. Bankdagi istalgan ishni qanday qilib shu qadamlarga joylashni ko'ramiz.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~13 daq</span>
+          <span class="phase-time">~12 daq</span>
         </div>
       </button>
 
@@ -504,11 +584,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">03</span>
         </div>
         <div>
-          <h3 class="phase-title">Hujjatlash</h3>
-          <p class="phase-desc">AI tushunadigan formatda yozish texnikalari.</p>
+          <h3 class="phase-title">Vazifani bo'lish</h3>
+          <p class="phase-desc">Task Decomposition — bitta katta vazifani SI tushunadigan 3 ta kichik bo'lakka ajratishni o'rganamiz.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~15 daq</span>
+          <span class="phase-time">~13 daq</span>
         </div>
       </button>
 
@@ -517,11 +597,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">04</span>
         </div>
         <div>
-          <h3 class="phase-title">Mashq</h3>
-          <p class="phase-desc">O'zingizning jarayoningiz ustida amaliy ish.</p>
+          <h3 class="phase-title">Amaliy mashq</h3>
+          <p class="phase-desc">Stollarda ishlaymiz. O'z bo'limingizdagi bitta ishni qog'ozga tushirib, SI uchun tayyorlaysiz.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~15 daq</span>
+          <span class="phase-time">~25 daq</span>
         </div>
       </button>
 
@@ -529,18 +609,314 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   </div>
 </section>
 
+<!-- SLIDE 3 — HOOK: chaos vs structured chain -->
+<section class="slide s-hook-cmp">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Tartibsiz ish — yoki <span class="hl">strukturalangan zanjir</span>.</h2>
+    <p class="lead reveal r2">SI sizga yordam beradimi yoki chalg'itadimi — buni siz bergan jarayon hal qiladi. Tartibsiz topshiriq → tartibsiz javob. Aniq qadam → aniq javob.</p>
+    <div class="compare reveal r3">
+      <div class="col">
+        <h4>Avval · Tartibsiz</h4>
+        <p>
+          <img src="images/auto/slide-03-icon-left-card-inbox.svg" alt="inbox" style="width:1.4em;height:1.4em;vertical-align:middle;filter:invert(1) opacity(0.75)">
+          <img src="images/auto/slide-03-icon-left-card-phone.svg" alt="phone" style="width:1.4em;height:1.4em;vertical-align:middle;filter:invert(1) opacity(0.75)">
+          <img src="images/auto/slide-03-icon-left-card-bar-chart-3.svg" alt="bar-chart-3" style="width:1.4em;height:1.4em;vertical-align:middle;filter:invert(1) opacity(0.75)">
+          <img src="images/auto/slide-03-icon-left-card-mail.svg" alt="mail" style="width:1.4em;height:1.4em;vertical-align:middle;filter:invert(1) opacity(0.75)">
+          <br><span style="font-family:'Space Grotesk',sans-serif;font-size:0.6em;font-weight:400;color:rgba(255,255,255,0.6);text-transform:none;letter-spacing:0;display:block;margin-top:0.5em">"Hammasini birdaniga qil"</span>
+        </p>
+      </div>
+      <div class="vs">→</div>
+      <div class="col win">
+        <h4>Hozir · Strukturalangan</h4>
+        <p>Kirish → Tekshiruv → Tahlil → Xulosa → Yetkazib berish<br><span style="font-family:'Space Grotesk',sans-serif;font-size:0.6em;font-weight:400;color:rgba(255,255,255,0.85);text-transform:none;letter-spacing:0;display:block;margin-top:0.5em">Aniq qadamlar zanjiri</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 — WHY STRUCTURE: 3 benefits with proof -->
+<section class="slide s-why">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Nima uchun <span class="hl">strukturalash</span> kerak.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Bir promtga "kredit memo yoz" deb yozsangiz — har safar boshqa natija. Bir marta zanjir tuzilsa — har safar bir xil sifat.</p>
+    <div class="benefits reveal r3">
+      <div class="benefit fragment">
+        <div class="stat">01</div>
+        <h3>Kamroq qayta ishlash</h3>
+        <p>Vazifa kichik bo'lsa, xatoni topish va tuzatish oson.</p>
+        <div class="proof"><strong>Sabab:</strong> SI har bir qadamda kichik vazifani bajaradi.</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">02</div>
+        <h3>Tekshirish oson</h3>
+        <p>Har qadamda kirish, natija va mas'ul shaxs ko'rinadi.</p>
+        <div class="proof"><strong>Sabab:</strong> "Qora quti" emas — auditga moslashgan zanjir.</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">03</div>
+        <h3>Qayta ishlatish</h3>
+        <p>Bir xil hisobot yoki murojaat uchun bir xil zanjir.</p>
+        <div class="proof"><strong>Sabab:</strong> Bir marta qurasiz, ertasi kuni faqat yangi hujjat kiritasiz.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 — DICTIONARY: Workflow + Task Decomposition -->
+<section class="slide s-dict">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Bankir uchun SI lug'ati</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Ikki atama — bugungi <span class="hl">poydevor</span>.</h2>
+    <p class="lead reveal r2">Bu modulning hammasi shu ikki so'z atrofida aylanadi. Hozir bir marta tushunsak — keyingi 8 slayd silliq o'tadi.</p>
+    <div class="dict reveal r3">
+      <div class="dict-card fragment">
+        <span class="dict-tag">Workflow</span>
+        <h3>Jarayon Zanjiri</h3>
+        <p>Boshidan oxirigacha bo'lgan qadamma-qadam yo'l. Har bir qadam <strong>bir aniq vazifa</strong>: kirish → tekshiruv → tahlil → xulosa → yetkazish.</p>
+        <div class="ex">Misol: Ariza kirdi, tekshirildi, xulosa yozildi, imzo qo'yildi.</div>
+      </div>
+      <div class="dict-card fragment">
+        <span class="dict-tag">Task Decomposition</span>
+        <h3>Vazifani Bo'lish</h3>
+        <p>Katta, mavhum vazifani olib, uni <strong>3 ta kichik, oddiy vazifaga</strong> bo'lish. SIga kichik, aniq luqmalar berish kerak.</p>
+        <div class="ex">Misol: "Memo yoz" o'rniga — 1. Faktni yig', 2. Riskni top, 3. Yakun yoz.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — WORKFLOW ANATOMY (5-step flow, AI-handled step branded) -->
+<section class="slide s-flow">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2"><span class="hl">Workflow</span> anatomiyasi · 5 qadam.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Har bir bank ishi — ariza, shikoyat, hisobot — shu 5 qadamga sig'adi. SI 3-qadamga (Tahlil) eng yaxshi tushadi.</p>
+    <div class="flow reveal r3">
+      <div class="step"><div class="ico"><img src="images/auto/slide-06-icon-step-1-inbox.svg" alt="inbox" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1) opacity(0.7)"></div><h4>Kirish</h4><p>Hujjat keldi.</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico"><img src="images/auto/slide-06-icon-step-2-check-circle.svg" alt="check-circle" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1) opacity(0.7)"></div><h4>Tekshiruv</h4><p>Maydonlar joyidami?</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><div class="ico"><img src="images/auto/slide-06-icon-step-3-brain.svg" alt="brain" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1)"></div><h4>Tahlil</h4><p>Mantiqni qidiramiz, raqamlarni solishtiramiz.</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico"><img src="images/auto/slide-06-icon-step-4-file-text.svg" alt="file-text" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1) opacity(0.7)"></div><h4>Xulosa</h4><p>Ha yoki yo'q deymiz.</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico"><img src="images/auto/slide-06-icon-step-5-send.svg" alt="send" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1) opacity(0.7)"></div><h4>Yetkazish</h4><p>Javob xatini jo'natamiz.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7 — TASK DECOMPOSITION FAN (NEW MOTIF: 1 → 3) -->
+<section class="slide s-fan">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Bitta katta vazifa — <span class="hl">uchta aniq qadam</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">"Kredit memo yozish" — SI uchun juda katta vazifa. Uni 3 ta kichik vazifaga bo'lsak, har biri 1 ta aniq natijani beradi.</p>
+    <div class="fan reveal r3">
+      <div class="fan-top">
+        <div class="fan-pill">Kredit memo<small>"Mijoz uchun memo yoz"</small></div>
+      </div>
+      <div class="fan-lines"><span></span></div>
+      <div class="fan-bottom">
+        <div class="fan-sub fragment">
+          <span class="fan-tag">01 · Yig'</span>
+          <h4>Faktlar</h4>
+          <p>Daromadi qancha, qarzi qancha? Boshqa narsa qo'shma.</p>
+        </div>
+        <div class="fan-sub fragment">
+          <span class="fan-tag">02 · Top</span>
+          <h4>Risklar</h4>
+          <p>Qayerda muammo bor? 3 ta asosiy risk.</p>
+        </div>
+        <div class="fan-sub fragment">
+          <span class="fan-tag">03 · Yoz</span>
+          <h4>Yakun</h4>
+          <p>Fakt va risklarga qarab, 5 jumlalik qaror loyihasini yoz.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8 — BANKING EXAMPLE (showcase): kredit arizasi 5-step, AI badges on 2 steps -->
+<section class="slide s-flow s-bank">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Bank misoli · Tijorat banki hisoboti</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Boshidan oxirigacha · 5 qadam, <span class="hl">2 tasini SI bajaradi</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Bu — shu bugungi modulning aniq xulosasi. Inson hamma joyda emas, SI hamma joyda emas. Har biri o'z qadamida.</p>
+    <div class="flow reveal r3">
+      <div class="step"><div class="ico"><img src="images/auto/slide-08-icon-step-1-inbox.svg" alt="inbox" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1) opacity(0.7)"></div><h4>Hisobot qabul</h4><p>Tijorat bankidan hisobot keldi.</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><div class="ico"><img src="images/auto/slide-08-icon-step-2-search.svg" alt="search" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1)"></div><h4>Raqam va jadval ajratish</h4><p>Hisobotdan kerakli ma'lumotlarni yig'ib olish.</p><span class="chip">SI</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico"><img src="images/auto/slide-08-icon-step-3-scale.svg" alt="scale" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1) opacity(0.7)"></div><h4>Normativ tekshiruv</h4><p>Normativ talqinga moslikni tekshirish — inson ko'zi.</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><div class="ico"><img src="images/auto/slide-08-icon-step-4-file-text.svg" alt="file-text" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1)"></div><h4>Risk va savollar qoralamasi</h4><p>Ehtimoliy muammolar bo'yicha ro'yxat tayyorlash.</p><span class="chip">SI</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico"><img src="images/auto/slide-08-icon-step-5-check-circle.svg" alt="check-circle" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1) opacity(0.7)"></div><h4>Yakuniy xulosa</h4><p>Yakuniy xulosa va rasmiy javob — mas'ul xodim imzosi.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9 — HAND-OFF POINTS (cando: AI vs Inson) -->
+<section class="slide s-cando">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Topshirish nuqtalari · <span class="hl">kim nimani qiladi</span>.</h2>
+    <p class="lead reveal r2">Workflow tuzilganda eng birinchi savol — har qadamda kim ishlaydi. Mas'uliyat hech qachon yo'qolmasin.</p>
+    <div class="cando reveal r3">
+      <div class="cando-col fragment">
+        <div class="cando-tag">✓ SI qiladi</div>
+        <ul>
+          <li>Matndan fakt ajratadi</li>
+          <li>Jadvalni solishtiradi</li>
+          <li>Savollar ro'yxatini tuzadi</li>
+          <li>Xat va memo qoralamasini beradi</li>
+        </ul>
+      </div>
+      <div class="cando-col cant fragment">
+        <div class="cando-tag">→ Inson qiladi</div>
+        <ul>
+          <li>SIga <strong>bermaydi</strong>: shaxsiy ma'lumot, bank siri, ichki qaror loyihasi, tekshiruv strategiyasi</li>
+          <li>Normativ talqinni tekshiradi</li>
+          <li>Istisno holatni baholaydi</li>
+          <li>Yakuniy xulosa va imzoni beradi</li>
+          <li>Audit uchun izoh qoldiradi</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10 — LIVE EXERCISE (.s-brain) -->
+<section class="slide s-brain">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r2">Amaliy mashq · 12 daq · stollarda</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">O'z ishingizni <span class="hl">5–7 qadamga</span> bo'ling.</h2>
+    <div class="questions reveal r3">
+      <div class="q fragment"><span class="n">01</span><span>Pilot uchun 4 shartdan o'tgan ishni tanlang: <span style="color:var(--accent-2)">tez-tez takrorlanadi · vaqt oladi · natijasi tekshiriladi · yakuniy qaror insonda</span>. Uni 5–7 ta qadamga yozing.</span></div>
+      <div class="q fragment"><span class="n">02</span><span>Har qadamga mas'ul belgisini qo'ying: <span style="color:var(--accent-2)">xodim · rahbar · SI yordamchi</span>.</span></div>
+      <div class="q fragment"><span class="n">03</span><span>SI bajara oladigan 1–2 qadamni belgilang va <span style="color:var(--accent-2)">muvaffaqiyat mezonini</span> yozing: vaqt qisqarishi, qayta ishlash kamayishi yoki xato ulushi.</span></div>
+    </div>
+    <p class="lead no-bar reveal r4" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">→ 12 daq ish · 1 stol · 1 pilot xaritasi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 11 — COMMON MISTAKES (myth pattern, 2 rows) -->
+<section class="slide s-myth">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Tez-tez uchraydigan <span class="hl">xatolar</span> · va to'g'ri yechimlar.</h2>
+    <div class="myth reveal r3">
+      <div class="row fragment"><div class="tag">✗ Xato</div><p><strong>«Bir promtda hammasini qil»</strong> — Excel'da 2000 satrni SIga berib, «menga hammasini qilib ber» deyish. SI adashadi.</p></div>
+      <div class="row real fragment"><div class="tag">✓ To'g'ri</div><p><strong>«Aniq vazifa, aniq qadam»</strong> — Bitta promt — bitta natija. Katta vazifani qadamlarga bo'lib so'rash kerak.</p></div>
+      <div class="row fragment"><div class="tag">✗ Xato</div><p><strong>«SI aytdi, demak to'g'ri»</strong> — SI javobini to'g'ridan-to'g'ri hujjatga aylantirib qo'yish.</p></div>
+      <div class="row real fragment"><div class="tag">✓ To'g'ri</div><p><strong>«SI javobi — qoralama»</strong> — Qaror uchun manba, norma va mas'ul xodim tekshiruvi shart. Imzo — sizniki.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12 — CLOSING (3 takeaways + recap) -->
+<section class="slide s-close">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Bugungi mashg'ulotdan <span class="hl">3 ta asosiy</span> xulosa.</h2>
+    <div class="close-list reveal r3">
+      <div class="close-row"><span class="arrow"><img src="images/auto/slide-12-icon-row-1-lightbulb.svg" alt="lightbulb" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1) opacity(0.7)"></span><p><strong>Strukturalanmagan jarayonni SI tuzatmaydi</strong> — u faqat tartibsiz natijani tezroq beradi.</p></div>
+      <div class="close-row"><span class="arrow"><img src="images/auto/slide-12-icon-row-2-lightbulb.svg" alt="lightbulb" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1) opacity(0.7)"></span><p><strong>5 ta qadam · 2 tasini SI bajaradi</strong> — bank jarayoni shunchalik sodda. SI qoralama beradi, xodim tekshiradi, tashkilot javobgar bo'ladi.</p></div>
+      <div class="close-row"><span class="arrow"><img src="images/auto/slide-12-icon-row-3-lightbulb.svg" alt="lightbulb" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1) opacity(0.7)"></span><p><strong>Katta vazifa = 3 ta kichik</strong>. Bo'laklash bo'lmasa — sifat har safar boshqa.</p></div>
+    </div>
+    <div class="recap reveal r3">
+      <div class="recap-tag">Lug'at recap · birga aytamiz</div>
+      <div class="recap-terms">
+        <div class="recap-term"><strong>Workflow</strong> <span class="ans">jarayon zanjiri · 5 ta qadam</span></div>
+        <div class="recap-term"><strong>Task Decomposition</strong> <span class="ans">katta vazifani 3 ga bo'lish</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13 — Q&A -->
+<section class="slide s-qa">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="qmark reveal r2">?</div>
+    <h2 class="h2 reveal r3" style="text-align:center">Sizning <span class="hl">savollaringiz</span>.</h2>
+    <p class="reveal r3" style="text-align:center;margin-top:clamp(1.5rem,3vw,2.5rem);font-family:var(--display);font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:0.1em;color:var(--accent-2)">murod@mohir.dev</p>
+  </div>
+</section>
+
 </main>
 
 <div class="hud">
-  <span class="counter">01 / 02</span>
+  <span class="counter">01 / 13</span>
   <div class="dots"></div>
   <div class="speaker"><span class="dot"></span><strong>Riskaliev Murad</strong> · NLP Engineer · Mohirdev</div>
 </div>
 
 <script>
 const TITLES = [
-  'Title · 4-modul',
-  "Yo'l xaritasi · Agenda"
+  'SI uchun jarayonlarni strukturalashtirish',
+  "Mavzuning yo'l xaritasi",
+  'Tartibsiz ish — yoki strukturalangan zanjir',
+  "Nima uchun strukturalash kerak",
+  "Ikki atama — bugungi poydevor",
+  'Workflow anatomiyasi · 5 qadam',
+  "Bitta katta vazifa — uchta aniq qadam",
+  'Boshidan oxirigacha · 5 qadam, 2 tasini SI bajaradi',
+  "Topshirish nuqtalari · kim nimani qiladi",
+  "O'z ishingizni 5–7 qadamga bo'ling",
+  "Tez-tez uchraydigan xatolar · va to'g'ri yechimlar",
+  "Bugungi mashg'ulotdan 3 ta asosiy xulosa",
+  'Sizning savollaringiz'
 ];
 
 const slides = [...document.querySelectorAll('.slide')];

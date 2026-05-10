@@ -1,6 +1,31 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 # slides — project rules
 
 This repo holds slide decks for meetups, project pitches, and talks. **All decks are interactive HTML.** PowerPoint output is never produced from this project.
+
+There is no build, lint, or test pipeline — the repo is a collection of self-contained decks plus the QA tooling under `.claude/skills/html-slides/`. Don't go looking for `package.json` scripts; the only npm dependency is `playwright` (used by the screenshot script).
+
+## Repo layout
+
+```
+decks/
+  bank-demo/             single-deck pitch — Custom HTML (index.html, style.css, deck.js)
+  cb_decks/              15-module Central Bank seminar series — see decks/cb_decks/CLAUDE.md
+    1_deck/ … 15_deck/   one folder per module; same html-slides layout each
+    _shared/             logos + assets referenced from every N_deck via ../_shared/
+    bots/                three n8n bot blueprints paired with seminar modules 1, 9, 11, 12, 14
+.claude/
+  skills/html-slides/    framework guides (reveal.md, slidev.md, custom.md), design.md,
+                         qa.md, interactivity.md, scripts/screenshot.mjs
+  agents/slide-reviewer.md   subagent definition for visual QA
+```
+
+When working under `decks/cb_decks/`, **read `decks/cb_decks/CLAUDE.md` first** — it adds audience, language (Uzbek), terminology, and series-consistency rules on top of this file. The 15 decks must share one palette + type pairing + motif so they read as a single course.
+
+The `frontend-slides` skill referenced below is **not** in this repo; it lives at `C:\Users\User\.claude\skills\frontend-slides\` (user-level skill).
 
 ## Hard rules
 
@@ -34,10 +59,36 @@ This repo holds slide decks for meetups, project pitches, and talks. **All decks
 
 ## Tools
 
-- Screenshot script: `node .\.claude\skills\html-slides\scripts\screenshot.mjs decks\<deck>`
-- Reviewer subagent: invoke the `slide-reviewer` agent with the deck path
-- Local serve (custom decks): `npx http-server decks\<deck>` or just open the file URL
-- `frontend-slides` skill location: `C:\Users\User\.claude\skills\frontend-slides\` (cloned manually; `/plugin marketplace add zarazhangrui/frontend-slides` will replace this with the marketplace-managed copy).
+**One-time setup** (not pinned in `package.json`):
+
+```powershell
+npm install                          # gets playwright (already a dep)
+npx playwright install chromium      # browser for the screenshot script
+npm install -g @slidev/cli           # only if a deck uses Slidev
+```
+
+**QA loop commands:**
+
+```powershell
+# Screenshot every slide → decks\<deck>\screenshots\slide-NN.png at 1920×1080
+node .\.claude\skills\html-slides\scripts\screenshot.mjs decks\<deck>
+
+# After a fix, re-render only the slides you touched
+node .\.claude\skills\html-slides\scripts\screenshot.mjs decks\<deck> --only 3,7,12
+
+# Override viewport (defaults: 1920 × 1080)
+node .\.claude\skills\html-slides\scripts\screenshot.mjs decks\<deck> --width 1280 --height 720
+```
+
+The script auto-detects framework: `slides.md` → spawns `npx slidev`; `index.html` → opens directly and navigates by hash.
+
+**Reviewer subagent:** invoke `slide-reviewer` with the deck path. It reads from `<deck>/screenshots/` only — it will refuse to run if screenshots don't exist yet, so always screenshot first. It returns a per-slide issue list and a prioritized fix list; it does not approve decks and does not re-render.
+
+**Local serve (custom decks):** `npx http-server decks\<deck>` or open `index.html` directly.
+
+**Secrets:** `.env` at repo root (gitignored) for bot dev under `decks/cb_decks/bots/` — never commit real bank PDFs, API keys, or Telegram tokens. Synthetic / public-domain documents only.
+
+**`frontend-slides` skill location:** `C:\Users\User\.claude\skills\frontend-slides\` (cloned manually; `/plugin marketplace add zarazhangrui/frontend-slides` will replace this with the marketplace-managed copy).
 
 ## Voice & tone for slide content
 

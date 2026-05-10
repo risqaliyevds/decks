@@ -10,6 +10,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:'Space Grotesk',sans-serif}
+body,p,li,.lead{letter-spacing:0.018em}
 
 :root{
   --bg:#020A24;--bg-2:#06173B;--bg-3:#0B2D79;
@@ -434,6 +435,87 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
 .reveal{opacity:0}
 .slide:not(.is-active) .reveal{opacity:0}
 .slide.is-active .reveal{opacity:1}
+
+/* MODULE 10 — additions on top of locked tokens (no token edits) */
+
+/* DICT — atama dictionary (2-card variant) */
+.dict{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.dict.dict-2{grid-template-columns:1fr 1fr}
+.dict-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
+.dict-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.dict-card .dict-tag{display:inline-block;font-family:var(--display);font-size:clamp(1.4rem,2.8vw,2.4rem);letter-spacing:0.02em;color:var(--accent-2);text-transform:uppercase;line-height:1;margin-bottom:0.75rem}
+.dict-card h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:0.6rem}
+.dict-card p{font-size:var(--body);line-height:1.55;color:rgba(255,255,255,0.78)}
+.dict-card p strong{color:var(--accent-2);font-weight:500}
+.dict-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+
+/* CANDO — capability boundaries */
+.cando{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.cando-col{background:rgba(255,255,255,0.04);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2rem);border-left:4px solid var(--accent);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,background 0.3s}
+.cando-col.cant{border-left-color:#ff4040;background:rgba(255,64,64,0.06)}
+.cando-col .cando-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.85rem}
+.cando-col.cant .cando-tag{color:#ff6060}
+.cando-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:clamp(0.5rem,0.9vw,0.75rem)}
+.cando-col li{font-size:var(--body);line-height:1.45;color:#fff;padding-left:1.25rem;position:relative}
+.cando-col li::before{content:"·";position:absolute;left:0.4rem;color:var(--accent);font-weight:700;font-size:1.4em;line-height:1}
+.cando-col.cant li::before{color:#ff6060}
+.cando-col:hover{transform:translateY(-3px);box-shadow:0 12px 28px -12px rgba(37,99,235,0.3)}
+.cando-col.cant:hover{box-shadow:0 12px 28px -12px rgba(255,64,64,0.3)}
+
+/* BENEFITS-5 — five-card grid for tool taxonomy */
+.benefits.benefits-5{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(0.8rem,1.5vw,1.4rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)}
+.benefits-5 .benefit{padding:clamp(0.95rem,1.8vw,1.5rem)}
+.benefits-5 .benefit:nth-child(1){grid-column:span 3}
+.benefits-5 .benefit:nth-child(2){grid-column:span 3}
+.benefits-5 .benefit:nth-child(3){grid-column:span 2}
+.benefits-5 .benefit:nth-child(4){grid-column:span 2}
+.benefits-5 .benefit:nth-child(5){grid-column:span 2}
+.benefits-5 .benefit .stat{font-size:clamp(1.6rem,3.2vw,2.5rem)}
+.benefits-5 .benefit h3{font-size:clamp(0.95rem,1.5vw,1.25rem);margin-top:0.35rem}
+.benefits-5 .benefit p{font-size:clamp(0.75rem,1vw,0.95rem);margin-top:0.4rem;line-height:1.45}
+.benefits-5 .benefit .ex{margin-top:clamp(0.55rem,1vw,0.85rem);padding-top:clamp(0.4rem,0.8vw,0.65rem);border-top:1px solid rgba(255,255,255,0.1);font-size:clamp(0.7rem,0.92vw,0.85rem);line-height:1.45;color:rgba(255,255,255,0.65);font-style:italic}
+.benefits-5 .benefit .ex strong{font-family:var(--display);font-style:normal;text-transform:uppercase;letter-spacing:0.04em;color:var(--accent-2);font-weight:400;margin-right:0.35em}
+
+/* COMPARE — let single-col compare wrap inside one cell when needed */
+.compare .col p.note{font-family:'Space Grotesk',sans-serif;font-size:clamp(0.78rem,1.05vw,0.98rem);line-height:1.5;letter-spacing:0;color:rgba(255,255,255,0.85);text-transform:none;font-weight:400;margin-top:0.65rem}
+.compare .col.win p.note{color:rgba(255,255,255,0.95)}
+
+/* FLOW chip — small "AI" badge inside a brain step */
+.flow .step .chip{display:inline-block;background:#fff;color:var(--accent);font-family:var(--display);font-size:clamp(0.55rem,0.7vw,0.7rem);letter-spacing:0.18em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:99px;margin-top:0.4rem;line-height:1}
+.flow .step.brain .chip{background:#fff;color:var(--accent)}
+
+/* COMBINED BENEFITS+CASES — proof block inside .benefit */
+.benefit .proof{margin-top:clamp(0.75rem,1.4vw,1.15rem);padding-top:clamp(0.55rem,1vw,0.85rem);border-top:1px solid rgba(255,255,255,0.1);font-size:clamp(0.7rem,0.9vw,0.85rem);line-height:1.45;color:rgba(255,255,255,0.7)}
+.benefit .proof strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-2);font-weight:400}
+.benefit .proof.muted{color:rgba(255,255,255,0.45);font-style:italic}
+
+/* BRAINSTORM */
+.s-brain .questions{display:flex;flex-direction:column;gap:clamp(0.85rem,1.6vw,1.4rem);margin-top:clamp(1rem,2vw,1.5rem)}
+.q{font-family:var(--display);font-size:clamp(1rem,2.1vw,1.85rem);line-height:1.15;letter-spacing:-0.01em;color:#fff;display:flex;gap:clamp(0.75rem,1.5vw,1.5rem);align-items:flex-start}
+.q .n{color:var(--accent);flex-shrink:0}
+.q span.hint{color:var(--accent-2)}
+
+/* CLOSING — lug'at recap row */
+.s-close .recap{margin-top:clamp(1rem,2vw,1.75rem);padding-top:clamp(0.85rem,1.5vw,1.25rem);border-top:1px solid var(--soft);display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.5rem);flex-wrap:wrap}
+.s-close .recap-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);flex-shrink:0}
+.s-close .recap-terms{display:flex;gap:clamp(1rem,2vw,2rem);flex-wrap:wrap;flex:1}
+.s-close .recap-term{font-size:var(--body);color:rgba(255,255,255,0.7);line-height:1.4}
+.s-close .recap-term strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-right:0.5em;font-weight:400}
+.s-close .recap-term .ans{color:var(--accent-2)}
+
+/* DICT card hover added to common hover map */
+.dict-card{transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
+
+/* DECISION ARTIFACT — 8-row pilot checklist */
+.s-artifact .main{justify-content:flex-start}
+.artifact{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(0.55rem,1vw,0.9rem);margin-top:clamp(0.85rem,1.5vw,1.2rem)}
+.artifact .row{display:flex;gap:clamp(0.6rem,1.1vw,0.95rem);align-items:flex-start;background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:clamp(0.45rem,0.85vw,0.75rem);padding:clamp(0.7rem,1.2vw,1rem) clamp(0.85rem,1.4vw,1.15rem);border-left:3px solid var(--accent-2)}
+.artifact .row .n{font-family:var(--display);font-size:clamp(1.1rem,1.8vw,1.5rem);color:var(--accent-2);line-height:1;flex-shrink:0;letter-spacing:-0.03em;min-width:1.6em}
+.artifact .row .body{display:flex;flex-direction:column;gap:0.15rem;min-width:0}
+.artifact .row .label{font-family:var(--display);font-size:clamp(0.78rem,1.05vw,0.95rem);text-transform:uppercase;letter-spacing:0.04em;color:#fff;line-height:1.1}
+.artifact .row .desc{font-size:clamp(0.7rem,0.92vw,0.85rem);line-height:1.4;color:rgba(255,255,255,0.72)}
+.s-artifact .artifact-foot{margin-top:clamp(0.85rem,1.4vw,1.15rem);padding:clamp(0.65rem,1.1vw,0.9rem) clamp(0.85rem,1.5vw,1.2rem);background:linear-gradient(135deg,rgba(37,99,235,0.18),rgba(37,99,235,0.06));border-left:3px solid var(--accent);border-radius:clamp(0.4rem,0.7vw,0.65rem);font-size:clamp(0.78rem,1.05vw,0.98rem);line-height:1.5;color:rgba(255,255,255,0.92)}
+.s-artifact .artifact-foot strong{color:#fff;font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:0.04em;margin-right:0.4em}
 </style>
 </head>
 <body>
@@ -452,7 +534,7 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
     <div class="title-block reveal r2">
       <span class="chip">Kun 2 · 10:00 — 11:00</span>
       <h1 class="title-hero">
-        Sun’iy intellekt<br>
+        Sun'iy intellekt<br>
         <span class="hl">agentlari</span><br>
         tushunchasi.
       </h1>
@@ -479,11 +561,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">01</span>
         </div>
         <div>
-          <h3 class="phase-title">Ta'rif</h3>
-          <p class="phase-desc">Agent nima va u botdan qanday farq qiladi.</p>
+          <h3 class="phase-title">Bot vs Agent</h3>
+          <p class="phase-desc">Bot bilan agent o'rtasidagi haqiqiy farq, evolyutsiya zinapoyasi va bugungi atamalar — Agent va Tool Use.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~13 daq</span>
+          <span class="phase-time">~12 daq</span>
         </div>
       </button>
 
@@ -492,11 +574,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">02</span>
         </div>
         <div>
-          <h3 class="phase-title">Komponentlar</h3>
-          <p class="phase-desc">Tool calling, memory, planning.</p>
+          <h3 class="phase-title">Anatomiya</h3>
+          <p class="phase-desc">Agent ichida nima bor: Miya · Xotira · Asboblar. Tool Use sikli (ReAct) va 5 turdagi tool.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~15 daq</span>
+          <span class="phase-time">~16 daq</span>
         </div>
       </button>
 
@@ -506,10 +588,10 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
         </div>
         <div>
           <h3 class="phase-title">Misollar</h3>
-          <p class="phase-desc">Real agentlar — qanday ishlaydi va qachon foydalidir.</p>
+          <p class="phase-desc">Operator yordamchi va muvofiqlik preview — bank ichidagi 2 ta real agent. Cheklov va xavf nuqtalari.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~15 daq</span>
+          <span class="phase-time">~17 daq</span>
         </div>
       </button>
 
@@ -518,11 +600,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">04</span>
         </div>
         <div>
-          <h3 class="phase-title">Cheklovlar</h3>
-          <p class="phase-desc">Hozirgi agentlar nima qila olmaydi.</p>
+          <h3 class="phase-title">Muhokama</h3>
+          <p class="phase-desc">Sizning bo'limingizda qanday agent kerak? Birga muhokama, lug'at recap va savol-javob.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~17 daq</span>
+          <span class="phase-time">~12 daq</span>
         </div>
       </button>
 
@@ -530,10 +612,437 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   </div>
 </section>
 
+<!-- SLIDE 3 — HOOK · Bot vs Agent compare -->
+<section class="slide s-compare">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">"Hisobimda nechta pul?" —<br>bot va agent <span class="hl">bir xil emas</span>.</h2>
+    <p class="lead reveal r2">Bittagina mijoz savoli — ikki xil javob. Farq matnda emas, ish bajarishda.</p>
+    <div class="compare reveal r3">
+      <div class="col">
+        <h4>Oddiy bot</h4>
+        <p>Yo'naltiradi</p>
+        <p class="note">"Iltimos, mobile-bank ilovasiga kiring va u yerda balansingizni ko'ring."</p>
+      </div>
+      <div class="vs">→</div>
+      <div class="col win">
+        <h4>Agent</h4>
+        <p>Ish bajaradi</p>
+        <p class="note">[fikrlaydi] → ruxsat tekshiradi → balance_check (read tool) → "Demo hisob qoldig'i topildi."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 — EVOLUTION FLOW · Static FAQ → RAG → Tool-bot → Agent -->
+<section class="slide s-flow">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Botdan agentga — <span class="hl">4 bosqichli</span> evolyutsiya.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Bu zinapoya. Bizning kurs ham xuddi shu yo'lda — 1-modul, 9-modul, bugun, ertaga.</p>
+    <div class="flow reveal r3">
+      <div class="step"><div class="ico">📋</div><h4>Static FAQ</h4><p>Tayyor savol-javob ro'yxati. Yangi savol kelsa — javob yo'q.</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">📚</div><h4>RAG bot</h4><p>Hujjatdan qidiradi, javob yozadi. O'qiy oladi — ish bajara olmaydi.</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">🔧</div><h4>Tool-using bot</h4><p>1 ta toolni chaqira oladi (balance_check). Mantiq oddiy.</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><div class="ico">🧠</div><h4>Agent</h4><p>Bir nechta toolni ketma-ket — natijaga qarab keyingisini tanlaydi.</p><span class="chip">Bugun</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 — DICTIONARY (Agent + Tool Use) -->
+<section class="slide s-dict">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Bankir uchun AI lug'ati · 10-modul</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Ikki so'z — modulning <span class="hl">poydevori</span>.</h2>
+    <p class="lead reveal r2">Bu ikki atama 11, 12, 14-modullarda qaytadi. Hozir bir marta tushunsak — qolgan kun engil o'tadi.</p>
+    <div class="dict dict-2 reveal r3">
+      <div class="dict-card fragment">
+        <span class="dict-tag">Agent</span>
+        <h3>Fikrlovchi yordamchi tizim</h3>
+        <p>LLM + xotira + ruxsat berilgan asboblar bir tizimda. Vazifani tushunadi, mosini tanlaydi, natijani izohlaydi va <strong>belgilangan chegaradan chiqsa</strong> — inson xodimiga uzatadi. Mustaqil qaror egasi emas: huquq, limit va javobgarlik <strong>bank siyosati</strong> bilan belgilanadi.</p>
+      </div>
+      <div class="dict-card fragment">
+        <span class="dict-tag">Tool Use</span>
+        <h3>Asbobdan foydalanish</h3>
+        <p>AI ruxsatli asbobni chaqiradi. Bankda ikki guruh: <strong>read tool (o'qish)</strong> — balans, hujjat, kursni oladi; <strong>write tool (yozish)</strong> — tizimga ta'sir qiladi (xat, hisob, fayl) va odatda <strong>inson tasdig'i, limit va audit</strong>ni talab qiladi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — AGENT ANATOMY · stack 3-card -->
+<section class="slide s-stack">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Agentning <span class="hl">3 ta bloki</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Agent — qora quti emas. Ichi shaffof: Miya, Xotira, Asboblar.</p>
+    <div class="stack reveal r3">
+      <div class="pillar featured fragment">
+        <div class="icon">🧠</div>
+        <span class="tag">Miya</span>
+        <h3>LLM</h3>
+        <p>Vazifani tushunadi, keyingi qadamni tanlashga yordam beradi. Vendor keyin tanlanadi: ma'lumot joylashuvi, audit, narx va integratsiya shartlariga qarab.</p>
+      </div>
+      <div class="pillar fragment">
+        <div class="icon">📚</div>
+        <span class="tag">Xotira</span>
+        <h3>State + RAG</h3>
+        <p>Qisqa muddat — joriy suhbat. Uzoq muddat — kompaniya hujjatlari (9-modul). Xotirasiz har savol "boshidan".</p>
+      </div>
+      <div class="pillar fragment">
+        <div class="icon">🔧</div>
+        <span class="tag">Asboblar</span>
+        <h3>Tool list</h3>
+        <p>Aniq belgilangan funksiyalar: balance_check, tariff_get, email_send. Har birining "imzosi" bor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7 — TOOL USE CYCLE · ReAct flow 4-step -->
+<section class="slide s-flow">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Tool Use — <span class="hl">4 bosqichli</span> sikl.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Texnik tilda — ReAct: Reason + Act + Observe. Real misol bilan ko'ramiz.</p>
+    <div class="flow reveal r3">
+      <div class="step"><div class="ico">📱</div><h4>Mijoz savoli</h4><p>"Mening hisobimda pul bormi?"</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><div class="ico">🧠</div><h4>Agent fikrlaydi</h4><p>"Real raqam kerak — balance_check toolini ishlataman."</p><span class="chip">Reason</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">🔧</div><h4>Tool chaqiriladi</h4><p>balance_check(account_id="demo_user") → DEMO_BALANCE</p><span class="chip">Act</span></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><div class="ico">📲</div><h4>Javob</h4><p>"Demo hisob bo'yicha qoldiq topildi" (real tizimda — autentifikatsiya + audit log).</p><span class="chip">Observe</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8 — 5 TOOL TYPES · benefits-5 -->
+<section class="slide s-tools">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Sizning agentingizga <span class="hl">qaysi 5 ta tool</span>?</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Bank ichida ko'pchilik agent shu 5 turdagi tool atrofida quriladi.</p>
+    <div class="benefits benefits-5 reveal r3">
+      <div class="benefit fragment">
+        <div class="stat">01</div>
+        <h3>API call · tashqi so'rov</h3>
+        <p>Tashqi xizmatdan ma'lumot olish — kurs, sanksiyalar bazasi (read tool).</p>
+        <div class="ex"><strong>Misol</strong>USD/UZS kursi · sanctions_list_check</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">02</div>
+        <h3>DB query · baza so'rovi</h3>
+        <p>Bank ichki bazaga so'rov. Faqat o'qish huquqi bilan (read tool).</p>
+        <div class="ex"><strong>Misol</strong>balance_check · last_5_transactions</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">03</div>
+        <h3>File read · fayl o'qish</h3>
+        <p>PDF / Excel / Word fayldan kerakli xatboshini topish (read tool, RAG bilan).</p>
+        <div class="ex"><strong>Misol</strong>contract_pdf_get · tariff_xlsx</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">04</div>
+        <h3>Email / Telegram · xabar</h3>
+        <p>Xabar yuborish — <strong>write tool</strong>. Limit, tasdiq va audit shart.</p>
+        <div class="ex"><strong>Misol</strong>customer_notify · manager_alert</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">05</div>
+        <h3>Calculation · hisob-kitob</h3>
+        <p>LLM matematikada zaif. Calculator toolini berish kerak (read tool).</p>
+        <div class="ex"><strong>Misol</strong>credit_emi · currency_convert</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9 — ReAct PATTERN · LLM vs Agent compare -->
+<section class="slide s-compare">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Oddiy LLM vs <span class="hl">ReAct agent</span> — javob bir xil emas.</h2>
+    <p class="lead reveal r2">"Hisobimda qancha qoldi?" — bittagina savol, ikki dunyo natijasi.</p>
+    <div class="compare reveal r3">
+      <div class="col">
+        <h4>Oddiy LLM · YO'Q</h4>
+        <p>Taxmin</p>
+        <p class="note">"Hisobingizda taxminan 50,000 so'm bor — aniq raqamni mobile-bankdan ko'ring." → Manba yo'q. Gallyutsinatsiya.</p>
+      </div>
+      <div class="vs">→</div>
+      <div class="col win">
+        <h4>ReAct Agent · HA</h4>
+        <p>Reason → Act → Observe</p>
+        <p class="note">"balance_check kerak" → ruxsat va autentifikatsiya tekshiriladi → tool ishlaydi → demo qoldiq qaytdi → "Demo hisob qoldig'i topildi." Aniq, manbaga asoslangan, audit log'da.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10 — BANK EXAMPLE #1 · Operator yordamchi agent -->
+<section class="slide s-flow">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Bank misoli #1 — <span class="hl">operator yordamchi</span> agent.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Takrorlanadigan so'rov → 24/7 xizmat. 3 ta read tool yetarli; ta'sir pilotda o'lchanadi.</p>
+    <div class="flow reveal r3">
+      <div class="step"><div class="ico">📱</div><h4>Mijoz</h4><p>"Mening kredit to'lovim qachon?"</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><div class="ico">🧠</div><h4>Fikr</h4><p>Mijoz ID + autentifikatsiya kerak, keyin kredit jadvali.</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">🗂️</div><h4>customer_lookup</h4><p>read tool — demo mijoz topildi.</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><div class="ico">📅</div><h4>credit_schedule</h4><p>read tool — keyingi to'lov sanasi va summasi.</p><span class="chip">Tool</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">📲</div><h4>Javob</h4><p>Sana + summa. Eslatma — write tool, inson tasdig'i bilan.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11 — BANK EXAMPLE #2 · Muvofiqlik agent -->
+<section class="slide s-flow">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Bank misoli #2 — <span class="hl">muvofiqlik</span> agent.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Yuqori riskli. Har qadam audit log'da. Oxirgi qaror — muvofiqlik xodimida.</p>
+    <div class="flow reveal r3">
+      <div class="step"><div class="ico">🪪</div><h4>KYC signal</h4><p>Yangi mijoz — F.I.O. + pasport.</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">📜</div><h4>rules_db</h4><p>Qaysi ro'yxatlar — FATF, OFAC, MB.</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><div class="ico">🛡️</div><h4>sanctions_check</h4><p>Nom topilmadi — toza.</p><span class="chip">Tool</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">📂</div><h4>customer_history</h4><p>Bizning bazada yo'q — yangi mijoz.</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><div class="ico">📝</div><h4>audit_log</h4><p>Xulosa + log. Tasdiq — muvofiqlik xodimida.</p><span class="chip">Audit</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12 — MULTI-AGENT CANDO · ha vs yo'q -->
+<section class="slide s-cando">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Bitta agent — qachon <span class="hl">yetarli</span>, qachon multi-agent kerak.</h2>
+    <p class="lead reveal r2">Internet "100 ta agent birga ishlaydi" deb yozadi. Bankda — bittasi, sodda, aniq agent yaxshiroq.</p>
+    <div class="cando reveal r3">
+      <div class="cando-col fragment">
+        <div class="cando-tag">✓ Bitta agent — yaxshi</div>
+        <ul>
+          <li>Vazifa aniq, bir o'qda — savol → tool → javob</li>
+          <li>Mas'uliyat 1 bo'limga tushadi (operator, KYC)</li>
+          <li>Tool soni 3–6 ga kiradi</li>
+          <li>Sikl natijasi tekshiriladigan</li>
+          <li>Audit log bitta joyda yig'iladi</li>
+        </ul>
+      </div>
+      <div class="cando-col cant fragment">
+        <div class="cando-tag">✗ Bitta agent — yomon</div>
+        <ul>
+          <li>Vazifa 5+ bo'limga tarqalgan (kredit + muvofiqlik + xazina)</li>
+          <li>Har bo'limning o'z qoidasi — bitta agent bilolmaydi</li>
+          <li>Tool soni 15+ — agent yo'qolib qoladi</li>
+          <li>Ikki tomonlama qaror (mijoz + bank manfaati)</li>
+          <li>Birinchi xato butun jarayonni to'xtatadi</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13 — RISKS · sec 3-card -->
+<section class="slide s-sec">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Agentlarning <span class="hl">3 ta xavf nuqtasi</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Kuchli vosita — kuchli xavflar. Har birini avval bilib oling.</p>
+    <div class="sec reveal r3">
+      <div class="item fragment">
+        <div class="ico">👻</div>
+        <h3>Mavjud bo'lmagan asbobni chaqirish</h3>
+        <p>Agent yo'q toolni "ishlatdim" deb yozadi yoki parametrni xato beradi. Yechim: <strong>schema validatsiya</strong> (11-modul).</p>
+      </div>
+      <div class="item fragment">
+        <div class="ico">♾️</div>
+        <h3>Cheksiz sikl</h3>
+        <p>Agent natijasini yoqtirmaydi, qayta-qayta chaqiradi. Qimmat va xavfli. Yechim: <strong>qadam cheklovi</strong> (max_steps = 5–8).</p>
+      </div>
+      <div class="item fragment">
+        <div class="ico">🚧</div>
+        <h3>Xavfsizlik chegarasi</h3>
+        <p>Agent o'z-o'zi xat yuboradi, hisob o'zgartiradi, fayl o'chiradi. Yechim: <strong>write tool</strong>'larga inson tasdig'i, limit, audit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 14 — MINI-RECAP · 3 darajada AI yordami -->
+<section class="slide s-ben">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Mini-recap: <span class="hl">3 darajada</span> AI yordami.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Hammasiga agent kerak emas. Bo'limingiz vazifasi qaysi darajaga to'g'ri kelishini aniqlang.</p>
+    <div class="benefits reveal r3">
+      <div class="benefit fragment">
+        <div class="stat">01</div>
+        <h3>Chatbot</h3>
+        <p>Tayyor savol → tayyor javob. Bilim cheklangan, yangiligi yo'q.</p>
+        <div class="proof"><strong>Foyda</strong> · FAQ, eng oddiy yo'naltirish.</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">02</div>
+        <h3>RAG bot</h3>
+        <p>Hujjatdan qidiradi → aniq, manbaga asoslangan javob. 9-modulda qurganimiz.</p>
+        <div class="proof"><strong>Foyda</strong> · Policy reference, qoida tushuntirish.</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">03</div>
+        <h3>Agent</h3>
+        <p>Fikrlaydi + ish bajaradi. Tool ishlatadi, sikl quradi, ko'p qadamli.</p>
+        <div class="proof"><strong>Foyda</strong> · Operator yordamchi, muvofiqlik preview.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 15 — DISCUSSION · s-brain 3 questions -->
+<section class="slide s-brain">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r2">Interaktiv · 3 savol · Flipchart</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Sizning bo'limingizda <span class="hl">qanday agent</span> kerak?</h2>
+    <div class="questions reveal r3">
+      <div class="q fragment"><span class="n">01</span><span>Qaysi <span class="hint">takrorlanadigan vazifa</span> uchun agent kerak — kuniga 10+ marta?</span></div>
+      <div class="q fragment"><span class="n">02</span><span>Agentga <span class="hint">qaysi 3 ta tool</span> berasiz? (DB · API · file · email · hisob)</span></div>
+      <div class="q fragment"><span class="n">03</span><span>Qayerda <span class="hint">xavf</span> bor? Tool xato chaqirsa — nima yo'qotamiz?</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 16 — CLOSING · 3 takeaways + recap -->
+<section class="slide s-close">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Bugun <span class="hl">o'zingiz bilan olib ketadigan</span> 3 xulosa.</h2>
+    <div class="close-list reveal r3">
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Agent ≠ bot</strong> — agent ruxsat berilgan tool'lardan foydalanib bosqich tanlaydi. Tool Use bu farqning markazi.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Aniq, tor doirada qiling</strong> — birinchi agent: 1 vazifa + 3 tool + 1 bo'lim. Multi-agent — keyinroq.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Xavf chegaralari aniq</strong> — schema validatsiya, qadam cheklovi (max_steps), write tool'larga inson tasdig'i, audit log.</p></div>
+    </div>
+    <div class="recap reveal r3">
+      <div class="recap-tag">Lug'at recap · birga aytamiz</div>
+      <div class="recap-terms">
+        <div class="recap-term"><strong>Agent</strong> <span class="ans">ruxsatli yordamchi tizim: LLM + xotira + asboblar; chegaradan chiqsa — insonga uzatadi</span></div>
+        <div class="recap-term"><strong>Tool Use</strong> <span class="ans">read tool — o'qiydi · write tool — tasdiq, limit, audit talab qiladi</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 17 — DECISION ARTIFACT · Agent pilot qaror varaqasi -->
+<section class="slide s-artifact">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Bank qaror artefakti · 1 sahifa</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)">Agent <span class="hl">pilot qaror varaqasi</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Har bir stol bitta agent nomzodini shu 8 maydonga joylaydi.</p>
+    <div class="artifact reveal r3">
+      <div class="row"><span class="n">01</span><div class="body"><span class="label">Vazifa</span><span class="desc">Qaysi takrorlanadigan ish agentga beriladi?</span></div></div>
+      <div class="row"><span class="n">02</span><div class="body"><span class="label">Owner</span><span class="desc">Qaysi bo'lim javobgar va tasdiqni beradi?</span></div></div>
+      <div class="row"><span class="n">03</span><div class="body"><span class="label">Tool'lar</span><span class="desc">Qaysilari read tool, qaysilari write tool?</span></div></div>
+      <div class="row"><span class="n">04</span><div class="body"><span class="label">Chegara</span><span class="desc">Agent nimalarni qila olmaydi (qaysi limit)?</span></div></div>
+      <div class="row"><span class="n">05</span><div class="body"><span class="label">Tasdiq</span><span class="desc">Qaysi qadamda inson tasdig'i shart?</span></div></div>
+      <div class="row"><span class="n">06</span><div class="body"><span class="label">Audit</span><span class="desc">Qaysi loglar saqlanadi va kim ko'radi?</span></div></div>
+      <div class="row"><span class="n">07</span><div class="body"><span class="label">Pilot metrikasi</span><span class="desc">Vaqt, xato, eskalatsiya, kutish vaqti — qanday o'lchanadi?</span></div></div>
+      <div class="row"><span class="n">08</span><div class="body"><span class="label">Qaror</span><span class="desc">RAG yetarlimi, agent pilotga tayyormi yoki jarayon avval tartibga keltiriladimi?</span></div></div>
+    </div>
+    <div class="artifact-foot reveal r3"><strong>Yakuniy mezon</strong>Agar owner, tool, tasdiq va audit aniq bo'lmasa — bu agent pilotga tayyor emas.</div>
+  </div>
+</section>
+
+<!-- SLIDE 18 — Q&A -->
+<section class="slide s-qa">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="qmark reveal r2">?</div>
+    <h2 class="h2 reveal r3" style="text-align:center">Sizning <span class="hl">savollaringiz</span>.</h2>
+    <p class="reveal r3" style="text-align:center;margin-top:clamp(1.5rem,3vw,2.5rem);font-family:var(--display);font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:0.1em;color:var(--accent-2)">murod@mohir.dev</p>
+  </div>
+</section>
+
 </main>
 
 <div class="hud">
-  <span class="counter">01 / 02</span>
+  <span class="counter">01 / 17</span>
   <div class="dots"></div>
   <div class="speaker"><span class="dot"></span><strong>Riskaliev Murad</strong> · NLP Engineer · Mohirdev</div>
 </div>
@@ -541,7 +1050,23 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
 <script>
 const TITLES = [
   'Title · 10-modul',
-  "Yo'l xaritasi · Agenda"
+  "Yo'l xaritasi · Agenda",
+  "Bot vs Agent · bittagina misol",
+  "Botdan agentga · 4 bosqichli evolyutsiya",
+  "Lug'at · Agent + Tool Use",
+  "Agent anatomiyasi · Miya · Xotira · Asboblar",
+  "Tool Use sikli · ReAct 4 bosqich",
+  "5 turdagi tool · sizning agentingizga",
+  "Oddiy LLM vs ReAct agent",
+  "Bank misoli #1 · Operator yordamchi",
+  "Bank misoli #2 · Muvofiqlik agent",
+  "Multi-agent · qachon HA, qachon YO'Q",
+  "Xavf nuqtalari · 3 ta cheklov",
+  "Mini-recap · 3 darajada AI yordami",
+  "Muhokama · sizning bo'limingizda qanday agent",
+  "Yakun · 3 xulosa + lug'at recap",
+  "Bank qaror artefakti · pilot varaqasi",
+  "Savol-Javob · Q&A"
 ];
 
 const slides = [...document.querySelectorAll('.slide')];

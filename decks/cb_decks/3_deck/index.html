@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>3-modul · Markaziy Bank seminar</title>
+<title>Style A · Bold Signal · 3-modul · AI xavflari va muvofiqlik</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:'Space Grotesk',sans-serif}
+body,p,li,.lead{letter-spacing:0.018em}
 
 :root{
   --bg:#020A24;--bg-2:#06173B;--bg-3:#0B2D79;
@@ -434,6 +435,74 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
 .reveal{opacity:0}
 .slide:not(.is-active) .reveal{opacity:0}
 .slide.is-active .reveal{opacity:1}
+
+/* MODULE 3 — additions on top of locked tokens (no token edits) */
+
+/* DICT — 2-card wider variant for atama dictionary */
+.dict{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.dict.dict-2{grid-template-columns:1fr 1fr}
+.dict-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
+.dict-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.dict-card .dict-tag{display:inline-block;font-family:var(--display);font-size:clamp(1.4rem,2.8vw,2.4rem);letter-spacing:0.02em;color:var(--accent-2);text-transform:uppercase;line-height:1;margin-bottom:0.75rem}
+.dict-card h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:0.6rem}
+.dict-card p{font-size:var(--body);line-height:1.55;color:rgba(255,255,255,0.78)}
+.dict-card p strong{color:var(--accent-2);font-weight:500}
+.dict-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+
+/* SEC — 4-card grid variant for risk taxonomy / governance */
+.sec.sec-4{grid-template-columns:repeat(4,1fr)}
+.sec .item.danger{border-color:rgba(255,80,80,0.35);background:rgba(255,64,64,0.05)}
+.sec .item.danger .ico{color:#ff6060}
+.sec .item .role{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);margin-bottom:0.4rem;display:block}
+
+/* MASKING before/after — block layout for slide 7 */
+.mask-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(1rem,2.5vw,2.5rem);align-items:stretch;margin-top:clamp(0.85rem,1.6vw,1.4rem)}
+.mask-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1rem,2vw,1.75rem);display:flex;flex-direction:column;gap:clamp(0.5rem,1vw,0.85rem);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s}
+.mask-card.before{border-left:4px solid #ff5050}
+.mask-card.after{border-left:4px solid var(--accent)}
+.mask-card h4{font-family:var(--display);text-transform:uppercase;letter-spacing:0.1em;font-size:var(--small);color:var(--mute)}
+.mask-card.before h4{color:#ff7070}
+.mask-card.after h4{color:var(--accent-2)}
+.mask-msg{font-family:'Space Grotesk',sans-serif;font-size:clamp(0.85rem,1.15vw,1.05rem);line-height:1.55;color:#fff;background:rgba(0,0,0,0.25);border-radius:clamp(0.4rem,0.8vw,0.7rem);padding:clamp(0.75rem,1.4vw,1.2rem)}
+.mask-msg .pii{background:rgba(255,80,80,0.2);color:#ffb0b0;padding:0.05em 0.3em;border-radius:0.2em;font-weight:500}
+.mask-msg .tok{background:rgba(37,99,235,0.25);color:var(--accent-2);font-family:var(--display);letter-spacing:0.05em;padding:0.05em 0.35em;border-radius:0.25em;font-size:0.92em}
+.mask-arrow{align-self:center;font-family:var(--display);font-size:clamp(1.5rem,2.6vw,2.2rem);color:var(--accent);letter-spacing:0.1em}
+.mask-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px -12px rgba(37,99,235,0.3)}
+.mask-card.before:hover{box-shadow:0 12px 28px -12px rgba(255,80,80,0.3)}
+
+/* DEMO MSG — extended for hook hallucination */
+.demo-msg.invented{background:rgba(255,64,64,0.06);border-radius:0 var(--r) var(--r) 0;padding:clamp(0.75rem,1.5vw,1.25rem);border-left:3px solid #ff5050;font-style:normal;color:rgba(255,255,255,0.92)}
+.demo-msg.invented .quote-tag{display:block;font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:#ff7070;margin-bottom:0.4rem;font-style:normal}
+.fact-check{margin-top:clamp(0.85rem,1.5vw,1.25rem);padding:clamp(0.85rem,1.5vw,1.25rem);background:linear-gradient(135deg,rgba(255,80,80,0.18),rgba(255,80,80,0.08));border-radius:var(--r);border:1px solid rgba(255,80,80,0.35);font-family:var(--display);font-size:clamp(0.95rem,1.6vw,1.4rem);text-transform:uppercase;letter-spacing:0.04em;color:#ffb0b0;text-align:center}
+.fact-check .x{color:#ff5050;margin-right:0.5em}
+
+/* RISK-RATING senario cards (slide 11) */
+.scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.75rem);margin-top:clamp(0.85rem,1.5vw,1.4rem)}
+.scen{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1rem,2vw,1.6rem);display:flex;flex-direction:column;gap:clamp(0.55rem,1vw,0.85rem);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s}
+.scen .scen-num{font-family:var(--display);font-size:clamp(1.1rem,1.8vw,1.5rem);color:var(--accent-2);letter-spacing:0.05em}
+.scen .scen-text{font-size:var(--body);line-height:1.5;color:#fff;flex:1}
+.scen .vote{display:flex;gap:clamp(0.4rem,0.8vw,0.6rem);margin-top:auto;flex-wrap:wrap}
+.scen .vote .pill{font-family:var(--display);font-size:clamp(0.7rem,0.95vw,0.85rem);letter-spacing:0.12em;text-transform:uppercase;padding:0.35rem 0.75rem;border-radius:99px;border:1px solid currentColor}
+.scen .vote .pill.l{color:#7be38f;background:rgba(123,227,143,0.08)}
+.scen .vote .pill.m{color:#ffd166;background:rgba(255,209,102,0.08)}
+.scen .vote .pill.h{color:#ff6060;background:rgba(255,96,96,0.08)}
+.scen:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+
+/* CLOSING — lug'at recap row (mirror 1-deck) */
+.s-close .recap{margin-top:clamp(1rem,2vw,1.75rem);padding-top:clamp(0.85rem,1.5vw,1.25rem);border-top:1px solid var(--soft);display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.5rem);flex-wrap:wrap}
+.s-close .recap-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);flex-shrink:0}
+.s-close .recap-terms{display:flex;flex-direction:column;gap:clamp(0.5rem,1vw,0.85rem);flex:1}
+.s-close .recap-term{font-size:var(--body);color:rgba(255,255,255,0.7);line-height:1.4}
+.s-close .recap-term strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-right:0.5em;font-weight:400}
+.s-close .recap-term .ans{color:var(--accent-2)}
+
+/* CANDO inherited classes (defensive) — same as 1-deck */
+.cando{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.cando-col{background:rgba(255,255,255,0.04);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2rem);border-left:4px solid var(--accent);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,background 0.3s}
+.cando-col.cant{border-left-color:#ff4040;background:rgba(255,64,64,0.06)}
+
+/* COMBINED BENEFITS — proof block (defensive) */
+.benefit .proof{margin-top:clamp(0.75rem,1.4vw,1.15rem);padding-top:clamp(0.55rem,1vw,0.85rem);border-top:1px solid rgba(255,255,255,0.1);font-size:clamp(0.7rem,0.9vw,0.85rem);line-height:1.45;color:rgba(255,255,255,0.7)}
 </style>
 </head>
 <body>
@@ -450,13 +519,13 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   </div>
   <div class="main">
     <div class="title-block reveal r2">
-      <span class="chip">Kun 1 · 11:30 — 12:30</span>
+      <span class="chip">Kun 1 · 11:45 — 12:45</span>
       <h1 class="title-hero">
-        SI<br>
-        <span class="hl">xavflari va komplaens</span><br>
-        — bankda.
+        AI <span class="hl">xavflari</span>,<br>
+        muvofiqlik va<br>
+        boshqaruv.
       </h1>
-      <p class="tagline"><span class="accent-bar"></span>Xavfsizlik va regulyativ talablar kontekstida — nima va qanday.</p>
+      <p class="tagline"><span class="accent-bar"></span>Qizil chiziqdan xavfsiz koridorgacha — bankir tilida.</p>
     </div>
   </div>
 </section>
@@ -479,11 +548,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">01</span>
         </div>
         <div>
-          <h3 class="phase-title">Xavflar</h3>
-          <p class="phase-desc">AI bilan bog'liq biznes va texnik xavflar xaritasi.</p>
+          <h3 class="phase-title">Xavflar xaritasi</h3>
+          <p class="phase-desc">Sun'iy intellekt qanday qilib yolg'on gapirishini jonli ko'ramiz. Keyin 4 ta asosiy xavfni — ma'lumot oqishi, gallyutsinatsiya, bias, muvofiqlik xavfini ajratamiz.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~12 daq</span>
+          <span class="phase-time">~10 daq</span>
         </div>
       </button>
 
@@ -492,11 +561,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">02</span>
         </div>
         <div>
-          <h3 class="phase-title">Komplaens</h3>
-          <p class="phase-desc">Markaziy Bank va xalqaro talablar — AI uchun.</p>
+          <h3 class="phase-title">Gallyutsinatsiya</h3>
+          <p class="phase-desc">"Hallucination" nima va u nega bankda qizil chiziq hisoblanadi. RAG yordamida gallyutsinatsiya xavfini qanday kamaytirishni o'rganamiz.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~14 daq</span>
+          <span class="phase-time">~10 daq</span>
         </div>
       </button>
 
@@ -505,8 +574,8 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">03</span>
         </div>
         <div>
-          <h3 class="phase-title">Boshqaruv</h3>
-          <p class="phase-desc">Ichki nazorat va audit jarayonlari.</p>
+          <h3 class="phase-title">Ma'lumot himoyasi</h3>
+          <p class="phase-desc">Data Masking orqali mijoz ma'lumotlarini AI'dan yashiramiz. Muvofiqlikning 3 qatlami va yopiq kontur arxitekturasi bilan tanishamiz.</p>
         </div>
         <div class="phase-foot">
           <span class="phase-time">~16 daq</span>
@@ -518,8 +587,8 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">04</span>
         </div>
         <div>
-          <h3 class="phase-title">Real keyslar</h3>
-          <p class="phase-desc">Banklarda yuz bergan xatolar va saboqlar.</p>
+          <h3 class="phase-title">Boshqaruv</h3>
+          <p class="phase-desc">Bunga kim javob beradi? 4 ta aniq rol bilan nuqta qo'yamiz. Real senariylarda zal o'zi xavfni baholaydi va xatolardan saqlanishni o'rganadi.</p>
         </div>
         <div class="phase-foot">
           <span class="phase-time">~13 daq</span>
@@ -530,10 +599,330 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   </div>
 </section>
 
+<!-- SLIDE 3 — HOOK · Live hallucination demo -->
+<section class="slide s-hook">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="reveal r2">
+      <span class="chip-out" style="background:transparent">Live demo · Gallyutsinatsiya</span>
+      <h2 class="h2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">AI ishonch bilan <span class="hl">yolg'on gapiradi</span>.</h2>
+      <p class="lead">Savol: <em>"Markaziy Bank №427-sonli qarorida yuridik shaxslar uchun yangi zaxira koeffitsiyenti necha foiz?"</em></p>
+      <div class="demo-msg invented">
+        <span class="quote-tag">AI javobi · ishonch bilan</span>
+        "Markaziy Bank №427-sonli qarori (15.03.2025) bo'yicha yuridik shaxslar uchun majburiy zaxira koeffitsiyenti <strong>14,5%</strong> ga oshirildi. Qaror 1-iyundan kuchga kiradi va barcha tijorat banklariga taalluqlidir."
+      </div>
+      <div class="fact-check fragment"><span class="x">✗</span>Bunday qaror umuman <u>mavjud emas</u>. AI o'ylab topdi.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 — RISK TAXONOMY (4-grid) -->
+<section class="slide s-risk">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Bankda AI <span class="hl">4 ta xavf</span> tug'diradi.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Ko'rinmaydigan xavf — boshqarib bo'lmaydigan xavf. Avval ularni nomlay olish kerak.</p>
+    <div class="sec sec-4 reveal r3">
+      <div class="item danger fragment">
+        <div class="ico"><img src="images/auto/slide-04-icon-card-1-droplet.svg" alt="" style="width:1.6em;height:1.6em;vertical-align:middle;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div>
+        <h3>Ma'lumot oqishi</h3>
+        <p>Mijozning shaxsiy ma'lumotlari (ism, karta) noto'g'ri kanaldan AI'ga tushadi va saqlanib qoladi.</p>
+      </div>
+      <div class="item danger fragment">
+        <div class="ico"><img src="images/auto/slide-04-icon-card-2-brain-circuit.svg" alt="" style="width:1.6em;height:1.6em;vertical-align:middle;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div>
+        <h3>Gallyutsinatsiya</h3>
+        <p>AI mavjud bo'lmagan qoida, raqam yoki sud qarorini "ishonch bilan" o'ylab topadi.</p>
+      </div>
+      <div class="item danger fragment">
+        <div class="ico"><img src="images/auto/slide-04-icon-card-3-scale.svg" alt="" style="width:1.6em;height:1.6em;vertical-align:middle;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div>
+        <h3>Bias (noxolislik)</h3>
+        <p>Skoring modeli ayrim guruhlarni tizimli ravishda kam baholaydi — ko'rinmas diskriminatsiya.</p>
+      </div>
+      <div class="item danger fragment">
+        <div class="ico"><img src="images/auto/slide-04-icon-card-4-scroll-text.svg" alt="" style="width:1.6em;height:1.6em;vertical-align:middle;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div>
+        <h3>Muvofiqlik xavfi</h3>
+        <p>Audit izi yo'q — MB inspektoriga qaror qanday qabul qilinganini tushuntirib bo'lmaydi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 — DICTIONARY (Hallucination + Data Masking) -->
+<section class="slide s-dict">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Bankir uchun AI lug'ati · 3-modul</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Ikki so'z — muvofiqlikning <span class="hl">poydevori</span>.</h2>
+    <p class="lead reveal r2">Bu ikki atama keyingi slaydlarda qayta-qayta uchraydi. Bir marta tushunsak — yengil bo'ladi.</p>
+    <div class="dict dict-2 reveal r3">
+      <div class="dict-card fragment">
+        <span class="dict-tag">Hallucination</span>
+        <h3>Gallyutsinatsiya</h3>
+        <p>AI <strong>ishonch bilan</strong> aytgan, lekin <strong>haqiqatda mavjud bo'lmagan</strong> javob. Manba yo'q, fakt yo'q — sof to'qima. Bankda — bu eng qimmat xato turi.</p>
+      </div>
+      <div class="dict-card fragment">
+        <span class="dict-tag">Data Masking</span>
+        <h3>Ma'lumotni yashirish</h3>
+        <p>Ism, karta raqami, hisob, telefon — AI'ga uzatishdan oldin <strong>avtomatik</strong> tokenlarga ([ISM], [KARTA]) almashtiriladi. AI hech qachon haqiqiy shaxsiy ma'lumotlarni ko'rmaydi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — HALLUCINATION ANATOMY (compare: Internet bilimi vs RAG) -->
+<section class="slide s-halan">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Gallyutsinatsiyani <span class="hl">RAG</span> sezilarli kamaytiradi.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">AI javobi tasdiqlangan manbalarga bog'lanadi. Manba topilmasa — tizim "bilmayman" deydi yoki inson tekshiruviga yuboradi. RAG nazoratni almashtirmaydi.</p>
+    <div class="compare reveal r3">
+      <div class="col">
+        <h4>Internet bilimi</h4>
+        <p>AI <span style="color:#ff7070">eslab qolgan</span><br>(yoki o'ylab topgan)<br>umumiy bilim.<br><span style="font-size:0.7em;color:var(--mute);font-family:'Space Grotesk',sans-serif;font-weight:400;text-transform:none;letter-spacing:0">→ MB qarorlari uchun mos emas.</span></p>
+      </div>
+      <div class="vs">→ RAG →</div>
+      <div class="col win">
+        <h4>RAG bilan cheklangan</h4>
+        <p>Faqat <span style="color:var(--accent-glow)">tasdiqlangan PDF</span><br>ichidan ko'chiradi.<br>Manba bo'lmasa —<br>"bilmayman" deydi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7 — DATA MASKING DEEP-DIVE (before/after) -->
+<section class="slide s-mask">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Data Masking — AI <span class="hl">shaxsiy ma'lumotlarni ko'rmaydi</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Mijoz xabari → himoya darvozasi (masking gateway) → AI. Tokenlar javobda yana to'ldiriladi. AI'da hech qanday haqiqiy ma'lumot qolmaydi.</p>
+    <div class="mask-grid reveal r3">
+      <div class="mask-card before">
+        <h4>✗ Mijoz xabari · xom</h4>
+        <div class="mask-msg">
+          Salom, men <span class="pii">Akmal Karimov</span>, <span class="pii">8600 1234 5678 9012</span> raqamli kartam ushlanib qoldi. Telefonim <span class="pii">+998 90 123-45-67</span>, INN <span class="pii">301234567</span>. Yordam bering.
+        </div>
+      </div>
+      <div class="mask-arrow">→</div>
+      <div class="mask-card after fragment">
+        <h4>✓ AI'ga uzatilgan · maskalangan</h4>
+        <div class="mask-msg">
+          Salom, men <span class="tok">[ISM]</span>, <span class="tok">[KARTA]</span> raqamli kartam ushlanib qoldi. Telefonim <span class="tok">[TEL]</span>, INN <span class="tok">[INN]</span>. Yordam bering.
+        </div>
+      </div>
+    </div>
+    <p class="lead no-bar reveal r4" style="margin-top:clamp(0.75rem,1.4vw,1.1rem);font-style:italic;color:var(--mute)">→ AI matn mantiqini tushunadi, lekin hech qachon haqiqiy mijoz nomini bilmaydi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 8 — COMPLIANCE QATLAMLARI (.stack) -->
+<section class="slide s-comp">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Muvofiqlikning <span class="hl">3 qatlami</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Bank AI yechimi har 3 qatlamga bir vaqtda javob berishi shart. Bitta talab bajarilmasa — proyekt to'xtaydi.</p>
+    <div class="stack reveal r3">
+      <div class="pillar featured fragment">
+        <div class="icon"><img src="images/auto/slide-08-icon-card-1-landmark.svg" alt="" style="width:1.6em;height:1.6em;vertical-align:middle;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div>
+        <span class="tag">1-qatlam</span>
+        <h3>Markaziy Bank</h3>
+        <p>Bank siri to'g'risidagi qonun, mijoz ma'lumotlarini himoya qilish qoidalari, axborot xavfsizligi talablari.</p>
+      </div>
+      <div class="pillar fragment">
+        <div class="icon"><img src="images/auto/slide-08-icon-card-2-clipboard-list.svg" alt="" style="width:1.6em;height:1.6em;vertical-align:middle;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div>
+        <span class="tag">2-qatlam</span>
+        <h3>Ichki siyosat</h3>
+        <p>Ichki audit, AI siyosati, model risklarini boshqarish, javobgarlik taqsimoti — bank kengashi tasdiqlaydi.</p>
+      </div>
+      <div class="pillar fragment">
+        <div class="icon"><img src="images/auto/slide-08-icon-card-3-globe.svg" alt="" style="width:1.6em;height:1.6em;vertical-align:middle;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div>
+        <span class="tag">3-qatlam</span>
+        <h3>Xalqaro standartlar</h3>
+        <p>Xalqaro amaliyot va hamkor talablar: shaxsiy ma'lumotlar himoyasi (GDPR andozasi), axborot xavfsizligi (ISO 27001), model riskini boshqarish va yuqori xavfli AI uchun izohlanuvchanlik (EU AI Act).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9 — YOPIQ KONTUR ARXITEKTURASI (.flow) -->
+<section class="slide s-flow">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2"><span class="hl">Yopiq kontur</span> arxitekturasi.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Foydalanuvchi xabari to'g'ridan-to'g'ri AI'ga tushmaydi. O'rtada — masking gateway, oxirida — audit log.</p>
+    <div class="flow reveal r3">
+      <div class="step"><div class="ico"><img src="images/auto/slide-09-icon-step-1-user.svg" alt="" style="width:1.6em;height:1.6em;vertical-align:middle;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div><h4>Foydalanuvchi</h4><p>Mijoz yoki bank xodimi xom matn yuboradi</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><div class="ico"><img src="images/auto/slide-09-icon-step-2-venetian-mask.svg" alt="" style="width:1.6em;height:1.6em;vertical-align:middle;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div><h4>Masking gateway <span style="opacity:0.7;font-weight:400">(himoya darvozasi)</span></h4><p>Shaxsiy ma'lumotlar tokenlarga almashinadi: [ISM], [KARTA]</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico"><img src="images/auto/slide-09-icon-step-3-brain.svg" alt="" style="width:1.6em;height:1.6em;vertical-align:middle;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div><h4>AI</h4><p>Faqat maskalangan matn ustida ishlaydi</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico"><img src="images/auto/slide-09-icon-step-4-notebook.svg" alt="" style="width:1.6em;height:1.6em;vertical-align:middle;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div><h4>Audit log</h4><p>Kim · qachon · qanday so'rov · qanday javob</p></div>
+    </div>
+    <p class="lead no-bar reveal r4" style="margin-top:clamp(0.75rem,1.4vw,1.1rem);font-style:italic;color:var(--mute)">→ Inspektor kelganda — har bir qaror manbasini ko'rsatib bera olamiz.</p>
+  </div>
+</section>
+
+<!-- SLIDE 10 — GOVERNANCE (RACI-lite, 4 rol .sec sec-4) -->
+<section class="slide s-gov">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Boshqaruv — kim <span class="hl">javob beradi</span>?</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">"Hammamiz" degani — hech kim degani. Har AI vositasiga 4 ta aniq rol biriktiriladi.</p>
+    <div class="sec sec-4 reveal r3">
+      <div class="item fragment">
+        <div class="ico"><img src="images/auto/slide-10-icon-card-1-crown.svg" alt="" style="width:1.6em;height:1.6em;vertical-align:middle;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div>
+        <span class="role">Egasi</span>
+        <h3>Biznes egasi</h3>
+        <p>Kredit, muvofiqlik nazorati yoki mijozlarga xizmat ko'rsatish yo'nalishi rahbari. Foyda va xavfni o'lchaydi, byudjet ajratadi.</p>
+      </div>
+      <div class="item fragment">
+        <div class="ico"><img src="images/auto/slide-10-icon-card-2-shield-check.svg" alt="" style="width:1.6em;height:1.6em;vertical-align:middle;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div>
+        <span class="role">Tasdiqlovchi</span>
+        <h3>Risk qo'mitasi</h3>
+        <p>Axborot xavfsizligi, muvofiqlik nazorati va yuridik xizmat vakillari. Yangi vositani ishga tushirishdan oldin tasdiqlaydi.</p>
+      </div>
+      <div class="item fragment">
+        <div class="ico"><img src="images/auto/slide-10-icon-card-3-wrench.svg" alt="" style="width:1.6em;height:1.6em;vertical-align:middle;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div>
+        <span class="role">Ishlovchi</span>
+        <h3>Mahsulot jamoasi</h3>
+        <p>Promt, RAG, masking qoidalarini yozadi. Sifatni har kuni nazorat qiladi.</p>
+      </div>
+      <div class="item fragment">
+        <div class="ico"><img src="images/auto/slide-10-icon-card-4-search.svg" alt="" style="width:1.6em;height:1.6em;vertical-align:middle;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div>
+        <span class="role">Auditor</span>
+        <h3>Ichki audit</h3>
+        <p>Audit loglarini davriy tekshiradi, MB so'rovlariga javob tayyorlaydi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11 — RISK-RATING MASHQ (.s-brain) -->
+<section class="slide s-brain">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Interaktiv mashq · Zal ovoz beradi</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Xavfni <span class="hl">birga baholaymiz</span> — Past · O'rta · Yuqori?</h2>
+    <p class="lead reveal r2">Har senariyga zal qo'l bilan ovoz beradi: yashil — past xavf, sariq — o'rta, qizil — yuqori.</p>
+    <div class="scenarios reveal r3">
+      <div class="scen fragment">
+        <span class="scen-num">Senariy 01</span>
+        <p class="scen-text">Operator chat-botdan yangi kredit mahsuloti shartlari haqida so'raydi. Bot ichki PDF qoidalari asosida javob beradi, mijoz ismi maskalangan.</p>
+        <div class="vote"><span class="pill l">Past</span><span class="pill m">O'rta</span><span class="pill h">Yuqori</span></div>
+      </div>
+      <div class="scen fragment">
+        <span class="scen-num">Senariy 02</span>
+        <p class="scen-text">Skoring modeli kredit so'rovini "rad" deb belgiladi. Mijoz sababini so'raganda — model "tushuntirish" bera olmaydi (qora quti).</p>
+        <div class="vote"><span class="pill l">Past</span><span class="pill m">O'rta</span><span class="pill h">Yuqori</span></div>
+      </div>
+      <div class="scen fragment">
+        <span class="scen-num">Senariy 03</span>
+        <p class="scen-text">Marketing bo'limi mijozlar bazasini ChatGPT'ga yuklab, "qaysi mijozga qaysi mahsulot" segmentatsiyasini so'raydi. Maskalashsiz, audit logsiz.</p>
+        <div class="vote"><span class="pill l">Past</span><span class="pill m">O'rta</span><span class="pill h">Yuqori</span></div>
+      </div>
+    </div>
+    <p class="lead no-bar reveal r4" style="margin-top:clamp(0.6rem,1vw,0.9rem)">→ 3 ta senariy — 3 xil baho. Saboq: xavf "AI" sifatida emas, <em>holatda</em> tug'iladi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 12 — COMMON PITFALLS (.myth, 3 rows) -->
+<section class="slide s-myth">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Eng ko'p uchraydigan <span class="hl">tuzoqlar</span>.</h2>
+    <div class="myth reveal r3">
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>"AI <strong>hech qachon yolg'on gapirmaydi</strong> — u kompyuter."</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p>RAGsiz AI <strong>har kuni yolg'on gapiradi</strong>. Yechim — manba bilan cheklash.</p></div>
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>"Mijoz ma'lumotlarini AI'ga yuborsak ham mayli — bu <strong>ichki ishimiz</strong>."</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p>Maskingsiz shaxsiy ma'lumotlarni uzatish — <strong>bank siri qonunini buzish</strong>. Masking — majburiy.</p></div>
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>"Bot ishlayapti — muvofiqlik masalasiga keyin <strong>qaytamiz</strong>."</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p>Audit log <strong>1-kundan</strong> bo'lishi shart. Aks holda inspektorga gapiradigan narsa qolmaydi.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13 — CLOSING + RECAP -->
+<section class="slide s-close">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Muvofiqlik — <span class="hl">qizil chiziq emas</span>, xavfsiz koridor.</h2>
+    <div class="close-list reveal r3">
+      <div class="close-row"><span class="arrow"><img src="images/auto/slide-13-icon-row-1-lightbulb.svg" alt="" style="width:1.6em;height:1.6em;vertical-align:middle;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></span><p><strong>Gallyutsinatsiya yechimi — RAG.</strong> AI'ga "manbadan ko'chir" deyiladi; manba bo'lmasa "bilmayman" deb javob beradi.</p></div>
+      <div class="close-row"><span class="arrow"><img src="images/auto/slide-13-icon-row-2-lightbulb.svg" alt="" style="width:1.6em;height:1.6em;vertical-align:middle;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></span><p><strong>Shaxsiy ma'lumotlar himoyasi — Data Masking.</strong> AI hech qachon haqiqiy mijoz nomini, kartasini, INNni ko'rmaydi.</p></div>
+      <div class="close-row"><span class="arrow"><img src="images/auto/slide-13-icon-row-3-lightbulb.svg" alt="" style="width:1.6em;height:1.6em;vertical-align:middle;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></span><p><strong>Boshqaruv — 4 rol + audit log.</strong> Egasi · Tasdiqlovchi · Ishlovchi · Auditor. Har qaror manbasi loglanadi.</p></div>
+    </div>
+    <div class="recap reveal r3">
+      <div class="recap-tag">Lug'at recap · birga aytamiz</div>
+      <div class="recap-terms">
+        <div class="recap-term"><strong>Hallucination</strong> <span class="ans fragment">AI ishonch bilan o'ylab topgan, mavjud bo'lmagan javob</span></div>
+        <div class="recap-term"><strong>Data Masking</strong> <span class="ans fragment">Shaxsiy ma'lumotlarni AI'ga uzatishdan oldin tokenlarga almashtirish</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 14 — Q&A -->
+<section class="slide s-qa">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="qmark reveal r2">?</div>
+    <h2 class="h2 reveal r3" style="text-align:center">Sizning <span class="hl">savollaringiz</span>.</h2>
+    <p class="reveal r3" style="text-align:center;margin-top:clamp(1.5rem,3vw,2.5rem);font-family:var(--display);font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:0.1em;color:var(--accent-2)">Savollar va hamkorlik uchun · murod@mohir.dev</p>
+  </div>
+</section>
+
 </main>
 
 <div class="hud">
-  <span class="counter">01 / 02</span>
+  <span class="counter">01 / 14</span>
   <div class="dots"></div>
   <div class="speaker"><span class="dot"></span><strong>Riskaliev Murad</strong> · NLP Engineer · Mohirdev</div>
 </div>
@@ -541,7 +930,19 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
 <script>
 const TITLES = [
   'Title · 3-modul',
-  "Yo'l xaritasi · Agenda"
+  "Yo'l xaritasi · Agenda",
+  'Live hallucination demo · ishonch bilan yolg\'on',
+  'Xavflar xaritasi · 4 ta tahdid',
+  "Lug'at · Hallucination + Data Masking",
+  'Gallyutsinatsiya anatomiyasi · RAG yechim',
+  'Data Masking · shaxsiy ma\'lumotlar himoyasi',
+  'Muvofiqlik · 3 qatlam',
+  'Yopiq kontur arxitekturasi',
+  'Boshqaruv · 4 rol (RACI-lite)',
+  'Risk-rating mashq · L/M/H',
+  'Tuzoqlar · 3 afsona vs haqiqat',
+  "Yakun · 3 xulosa + lug'at recap",
+  'Savol-Javob · Q&A'
 ];
 
 const slides = [...document.querySelectorAll('.slide')];

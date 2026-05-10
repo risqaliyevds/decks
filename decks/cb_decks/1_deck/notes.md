@@ -1,58 +1,83 @@
 # 1-deck — Bank sektori uchun sun'iy intellekt asoslari
 
 **Module:** 1-modul · Kun 1 · 9:15–10:15 (60 daqiqa)
-**Format:** Ma'ruza + muhokama
-**Audience:** Markaziy Bank xodimlari (non-technical)
+**Format:** Ma'ruza + jonli demo + interaktiv brainstorm
+**Audience:** Markaziy Bank xodimlari (texnik bo'lmagan — operatsion / muvofiqlik / boshqaruv)
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev
-**Framework:** Custom HTML (frontend-slides skill)
-**Slaydlar soni:** 13 ta · har biriga ~4–5 daq
+**Brand:** crea7iveai
+**Framework:** Custom HTML (single-file `index.html`)
+**Stack o'rgatiladi:** Gemini (LLM) + RAG (xotira) + n8n (orkestratsiya) — kodsiz
+**Slaydlar soni:** 19 ta · 4 ta faza
+**Atamalar (≥2/modul talabi):** LLM, Promt, RAG — slayd 7 da kiritiladi, slayd 18 da interaktiv recap (auditoriya bilan birga aytamiz)
 **To'liq kontent:** [`content.md`](./content.md)
 
 ## Outline (one bullet = one slide)
 
-1. **Title** — "Bank sektori uchun sun'iy intellekt asoslari: Nazariyadan amaliyotga"
-2. **Hook** — QR-kod orqali demo botni jonli sinab ko'rish
-3. **SI o'zi nima?** — bankir tilida, "super-aqlli stajyor" analogiyasi
-4. **Afsona va Haqiqat** — 2 ta mif vs haqiqat jadvali, qo'rquvni yo'qotish
-5. **Nima uchun aynan hozir?** — 3 ta foyda (vaqt · xatolar · mijoz)
-6. **Jahon banklari tajribasi** — JPMorgan COIN, Morgan Stanley
-7. **Bizning vositalar** — Claude (Miya) · n8n (Lego) · MCP (ko'prik)
-8. **Kodsiz bot qanday ishlaydi?** — 4-bosqichli oqim sxemasi
-9. **Yo'l xaritasi** — 3 ta bot: FAQ → Hujjat tahlilchisi → Kredit maslahatchisi
-10. **Ma'lumotlar xavfsizligi** — yopiq kontur · maxfiylik · anonimlashtirish
-11. **Aqliy hujum** — flipchart bilan jonli brainstorm
-12. **Yakun** — 3 xulosa + 2-modulga ko'prik
-13. **Q&A** — ochiq savol-javob
+1. **Title** — Bank sektori uchun sun'iy intellekt asoslari · "Kodsiz AI yechim"
+2. **Agenda** — 4 faza: AI aslida nima · Raqamlar nima deyapti · Bot ichida nima bor · Sizning bankingizda nimalar qilsak bo'ladi
+3. **WOW hook · suratda** — kal odamga AI sochi qo'shgan ("avval / keyin"), pattern interrupt
+4. **WOW hook · videoda** — kuchuk videosi, "bu — o'yin, endi — ish" tranzisi
+5. **Live RAG demo** — QR + chat bubble, audience telefonida bot bilan muloqot
+6. **Stajyor metafora** — 17 tab ochilgan vs AI'ning tartiblangan ish oqimi (Gemini panel)
+7. **Bankir uchun AI lug'ati** — LLM · Promt · RAG (3 ta dict-card)
+8. **AI ishimni olib qo'yadimi?** — qizil "YO'Q" stamp, dramatic answer
+9. **Miflarga qarshi zarba** — 4 ta afsona ↔ haqiqat juftligi (jobs · programming · know-it-all · ChatGPT=AI)
+10. **AI — bu vosita. Sehr emas** — Can/Cannot ikki ustun: real bank misollari ↔ AI'ga yolg'iz topshirilmaydigan ishlar
+11. **AI banking · global bozor** — $20.87B → $310.79B, 10 yilda 15× o'sish (Spherical Insights 2024)
+12. **Mintaqaviy o'sish** — Osiyo-Tinch okeani eng tez o'sadigan mintaqa (4 ta region bar)
+13. **Bankda AI · qo'llash sohalari** — 4 ta segment: Risk menejmenti · Mijozlarga xizmat · Virtual yordamchi · Moliyaviy maslahat
+14. **Tizim rollari** — Botni 3 rol bilan eslab qolamiz: Miya (Gemini) · Xotira (RAG) · Ishchi (n8n)
+15. **RAG jarayoni** — Savol → Qidiruv → PDF'dan topish → Tahlil → Javob (5 ta pill + terminal)
+16. **Xavfsizlik** — Yopiq Kontur · Zero-Training · Data Masking (3 ta item)
+17. **Wordcloud — eng zerikarli ish** — interaktiv brainstorm (Mentimeter / Slido)
+18. **Closing · 2 kundan keyin** — "AI bilan ishlaydigan bankirga aylanasiz" + lug'at recap (LLM = miya · Promt = buyruq · RAG = ichki bilim — fragment animation bilan auditoriya birga aytadi)
+19. **Q&A** — katta `?` belgisi · `murod@mohir.dev`
 
-## Asosiy g'oya
+## Asosiy g'oya (thesis)
 
-Kursning oxirida har bir ishtirokchi o'z bo'limi uchun (kredit, komplaens, mijozlarga xizmat) **ishlaydigan Telegram bot** yasab ketadi — kod yozmasdan.
+AI sehr yoki dushman emas. Bu sizning **super-aqlli stajyoringiz** — kod yozmasdan, ichki PDF'lardan javob beradigan, charchamaydigan, faqat sizning nazoratingizda ishlaydigan vosita. Markaziy Bank uchun aynan bu xavfsiz va amaliy yondashuv.
 
-## Vaqt rejimi
+## Vaqt rejimi (60 daqiqa)
 
-| Bloklar | Slaydlar | Vaqt |
+| Faza | Slaydlar | Vaqt |
 |---|---|---|
-| Kirish + hook | 1–2 | ~8 daq |
-| Tushuncha | 3–4 | ~8 daq |
-| Foyda + dunyo tajribasi | 5–6 | ~9 daq |
-| Texnik blok | 7–8 | ~9 daq |
-| Yo'l xaritasi + xavfsizlik | 9–10 | ~9 daq |
-| Interaktiv | 11 | ~7 daq |
-| Yopilish + Q&A | 12–13 | ~10 daq |
+| Title + Agenda | 1–2 | ~2 daq |
+| 01 · AI aslida nima | 3–10 | ~22 daq |
+| 02 · Raqamlar nima deyapti | 11–13 | ~5 daq |
+| 03 · Bot ichida nima bor | 14–16 | ~14 daq |
+| 04 · Sizning bankingizda nimalar qilsak bo'ladi | 17–19 | ~17 daq |
+| **Jami** | **19** | **~60 daq** |
 
-## Design lock-in (series-wide — pickdan keyin to'ldiriladi)
+## Design lock-in (cb_decks series-wide)
 
-Style preset (frontend-slides Phase 2 dan) — *hali tanlanmagan, A/B/C dan biri (`/.claude-design/slide-previews/`).*
+- **Style:** Bold Signal (style-a) — Archivo Black + Space Grotesk
+- **Palette:** to'q ko'k (#020A24 / #06173B) + accent blue (#2563eb / #60a5fa) + accent-2 cyan + occasional red stamp (#ff5555)
+- **Motif:** subtle grid background, blue-gradient highlights (`.hl`), blur-on-transition, fragment reveals
+- **Series consistency:** qolgan 14 deck ham shu palette + type pairing'da bo'lishi kerak
 
-Tanlangach quyidagilar yozib qo'yiladi:
-- **Palette:** *(TBD)*
-- **Type pairing:** *(TBD)*
-- **Motif:** *(TBD)*
+## Tayyorgarlik checklist
 
-## Tayyorgarlik (deck'dan tashqari)
+- [ ] Demo Telegram bot ishlayapti (`bots/01_rag_basics/` — n8n + Gemini + Ipakyuli Bank PDF korpus) — slide 5
+- [ ] QR `images/https_t_me_bankragbot.png` ekranda yaqqol ko'rinadi — slide 5
+- [ ] Backup: agar tarmoq tushsa, screen-recording reza
+- [ ] WOW image (`images/avval.png` + `images/keyin.png`) yuklangan — slide 3
+- [ ] WOW video (`videos/hook-FEukcVbEO1o.mp4`, autoplay muted loop) ishlamoqda — slide 4
+- [ ] Spherical Insights raqamlari ($20.87B → $310.79B, 31% CAGR) yodda — slides 11-13
+- [ ] JPMorgan COIN va Morgan Stanley misollari yodda — slide 10 (agar savol kelsa chuqur)
+- [ ] Vazirlik logotiplari `_shared/` da
+- [ ] QA: `.\.qa\review.ps1 decks\cb_decks\1_deck` (Gemini-powered review)
+- [ ] Slide 18 lug'at recap fragmentlari ishlashi tasdiqlangan (ArrowRight bilan birma-bir ochiladi)
 
-- Demo Telegram bot oldindan ishlab qo'yilgan (n8n + Claude) — slide 2
-- QR kod 2-slaydga va 13-slaydga eksport qilingan
-- Flipchart + markerlar 11-slayd uchun
-- JPMorgan / Morgan Stanley press iqtiboslari yoki logotiplari — slide 6
-- Slide 8 sxemasi (4-bosqichli flow) — chizma yoki animatsiya sifatida tayyorlangan
+## Series-wide bog'lanish
+
+- **Keyingi modul:** [`2_deck/`](../2_deck/) — Bank jarayonlarida SI qo'llash imkoniyatlarini aniqlash
+- **Muvofiqlik chuqur:** [`3_deck/`](../3_deck/)
+- **Promt chuqur:** [`5_deck/`](../5_deck/)
+- **RAG chuqur (student build):** [`9_deck/`](../9_deck/) — bu modulda kiritilgan RAG atamasining chuqur darsi
+- **Yakuniy glossary review:** [`15_deck/`](../15_deck/) — barcha 30+ atama interaktiv quizda
+
+## Restructure tarixi
+
+- **v4 (2026-05-10):** 14 → 19 slayd. Wow hook ikkilik (image + video), Spherical Insights stat trio, stamp "YO'Q", interaktiv lug'at recap, kicker'lar to'liq o'zbekchaga, content.md / notes.md sinxronlandi.
+- **v3 (2026-05-07):** Lug'at slayd qo'shildi (LLM/Promt/API → keyinchalik RAG'ga), Can/Cannot kiritildi, Wall Street + Benefits birlashtirildi.
+- **v2:** Stack: Claude + MCP → Gemini + RAG + n8n.

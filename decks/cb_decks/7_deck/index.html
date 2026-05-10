@@ -10,6 +10,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:'Space Grotesk',sans-serif}
+body,p,li,.lead{letter-spacing:0.018em}
 
 :root{
   --bg:#020A24;--bg-2:#06173B;--bg-3:#0B2D79;
@@ -422,6 +423,140 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   box-shadow:0 12px 28px -12px rgba(37,99,235,0.3);
 }
 
+/* === 7-DECK SPECIFIC ADDITIONS (do not edit locked tokens) === */
+
+/* DICTIONARY — base + dict-2 variant (Token + Context Window) */
+.dict{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)}
+.dict.dict-2{grid-template-columns:1fr 1fr}
+.dict-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
+.dict-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.dict-card .dict-tag{display:inline-block;font-family:var(--display);font-size:clamp(1.4rem,2.8vw,2.4rem);letter-spacing:0.02em;color:var(--accent-2);text-transform:uppercase;line-height:1;margin-bottom:0.75rem}
+.dict-card h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:0.6rem}
+.dict-card p{font-size:var(--body);line-height:1.55;color:rgba(255,255,255,0.78)}
+.dict-card p strong{color:var(--accent-2);font-weight:500}
+.dict-card .ex{margin-top:clamp(0.6rem,1.2vw,1rem);padding-top:clamp(0.5rem,0.9vw,0.8rem);border-top:1px solid rgba(255,255,255,0.1);font-size:clamp(0.78rem,1vw,0.95rem);line-height:1.5;color:rgba(255,255,255,0.7);font-style:italic}
+.dict-card .ex strong{font-family:var(--display);font-style:normal;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-2);font-weight:400;margin-right:0.5em}
+.dict-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+
+/* SLIDE 14 — MODERN PLATFORM XUSUSIYATLARI · 2x2 stack */
+.modern-stack{display:grid;grid-template-columns:1fr 1fr;gap:clamp(0.55rem,1.1vw,0.95rem);margin-top:clamp(0.4rem,0.8vw,0.7rem)}
+.modern-stack .dict-card{padding:clamp(0.85rem,1.7vw,1.4rem) clamp(0.95rem,1.9vw,1.55rem)}
+.modern-stack .dict-card .dict-tag{font-size:clamp(1.05rem,2vw,1.7rem);margin-bottom:0.4rem}
+.modern-stack .dict-card h3{font-size:clamp(0.85rem,1.25vw,1.1rem);margin-bottom:0.4rem}
+.modern-stack .dict-card p{font-size:clamp(0.74rem,0.95vw,0.86rem);line-height:1.45}
+.modern-stack .dict-card .ex{margin-top:clamp(0.45rem,0.85vw,0.65rem);padding-top:clamp(0.35rem,0.7vw,0.5rem);font-size:clamp(0.7rem,0.88vw,0.8rem);line-height:1.4}
+.cross-ref-card{background:rgba(96,165,250,0.05);border:1px dashed rgba(96,165,250,0.45);border-radius:var(--r);padding:clamp(0.85rem,1.7vw,1.4rem) clamp(0.95rem,1.9vw,1.55rem);position:relative}
+.cross-ref-label{display:block;font-family:var(--display);font-size:clamp(0.6rem,0.78vw,0.72rem);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);margin-bottom:0.45rem}
+.cross-ref-label::before{content:"↗ ";color:var(--accent-2)}
+.cross-ref-card h3{font-family:var(--display);font-size:clamp(0.85rem,1.25vw,1.1rem);text-transform:uppercase;color:#fff;letter-spacing:-0.01em;margin-bottom:0.4rem}
+.cross-ref-card p{font-size:clamp(0.74rem,0.95vw,0.86rem);line-height:1.45;color:rgba(255,255,255,0.78)}
+
+/* SLIDE 3 — HOOK 3-COLUMN COMPARE (3 platforma + bir savol) */
+.compare-rich-3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(0.7rem,1.4vw,1.25rem);align-items:stretch;margin-top:clamp(0.7rem,1.3vw,1.1rem)}
+.compare-rich-3 .col{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(0.85rem,1.5vw,1.3rem);display:flex;flex-direction:column;gap:clamp(0.4rem,0.8vw,0.7rem);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s}
+.compare-rich-3 .col:hover{transform:translateY(-3px);box-shadow:0 12px 28px -12px rgba(37,99,235,0.35);border-color:rgba(96,165,250,0.4)}
+.compare-rich-3 .col h4{font-family:var(--display);text-transform:uppercase;letter-spacing:0.08em;font-size:clamp(0.95rem,1.4vw,1.2rem);color:var(--accent-2);line-height:1}
+.compare-rich-3 .col .out-label{font-family:var(--display);font-size:clamp(0.6rem,0.78vw,0.72rem);letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:0.2rem}
+.compare-rich-3 .col .out{font-style:italic;font-size:clamp(0.78rem,1.05vw,0.98rem);line-height:1.5;color:rgba(255,255,255,0.85);padding:clamp(0.55rem,0.95vw,0.85rem) clamp(0.65rem,1.1vw,0.95rem);background:rgba(2,10,36,0.45);border-left:3px solid var(--accent-2);border-radius:0 0.5rem 0.5rem 0}
+.compare-rich-3 .col .verdict{margin-top:auto;font-family:var(--display);text-transform:uppercase;letter-spacing:0.1em;font-size:clamp(0.7rem,0.9vw,0.82rem);color:var(--accent-2)}
+.compare-rich-3 .col.win{background:linear-gradient(150deg,rgba(37,99,235,0.22),rgba(11,45,121,0.18));border-color:rgba(96,165,250,0.45)}
+
+/* SLIDE 4 — 5-CARD MARKET MAP (2+3 layout) */
+.benefits-5{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(0.7rem,1.3vw,1.15rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)}
+.benefits-5 .benefit{padding:clamp(0.85rem,1.6vw,1.4rem);display:flex;flex-direction:column;gap:0.35rem}
+.benefits-5 .benefit:nth-child(1){grid-column:span 3}
+.benefits-5 .benefit:nth-child(2){grid-column:span 3}
+.benefits-5 .benefit:nth-child(3){grid-column:span 2}
+.benefits-5 .benefit:nth-child(4){grid-column:span 2}
+.benefits-5 .benefit:nth-child(5){grid-column:span 2}
+.benefits-5 .benefit .stat{font-size:clamp(1.05rem,1.6vw,1.4rem);color:var(--accent-2);letter-spacing:0.02em;line-height:1}
+.benefits-5 .benefit h3{font-size:clamp(0.95rem,1.45vw,1.2rem);margin-top:0.2rem}
+.benefits-5 .benefit p{font-size:clamp(0.74rem,0.98vw,0.92rem);margin-top:0.3rem;line-height:1.45;color:rgba(255,255,255,0.72)}
+.benefits-5 .benefit .price{margin-top:auto;padding-top:0.5rem;border-top:1px solid rgba(255,255,255,0.08);font-family:var(--display);font-size:clamp(0.7rem,0.92vw,0.85rem);letter-spacing:0.08em;color:var(--accent-2)}
+
+/* SLIDE 7 — VERTICAL BAR CHART (Context Window taqqoslash) */
+.bars{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(0.85rem,1.6vw,1.4rem);margin-top:clamp(0.85rem,1.5vw,1.25rem);flex:1;min-height:0;align-items:stretch}
+.bar-col{display:grid;grid-template-rows:auto auto auto 1fr;align-items:stretch;gap:clamp(0.25rem,0.5vw,0.45rem);min-height:0;text-align:center;padding-bottom:clamp(0.5rem,0.9vw,0.8rem)}
+.bar-col .bar-label{font-family:var(--display);font-size:clamp(0.78rem,1.05vw,0.98rem);text-transform:uppercase;letter-spacing:0.06em;color:#fff;line-height:1.1}
+.bar-col .bar-num{font-family:var(--display);font-size:clamp(1.05rem,1.6vw,1.4rem);color:var(--accent-2);letter-spacing:-0.01em;line-height:1}
+.bar-col .bar-pages{font-size:clamp(0.7rem,0.9vw,0.82rem);color:rgba(255,255,255,0.6);font-style:italic;line-height:1.3}
+.bar-col .bar-track{display:flex;align-items:flex-end;justify-content:center;min-height:0;padding-top:clamp(0.4rem,0.7vw,0.6rem)}
+.bar-col .bar{background:linear-gradient(180deg,var(--accent),#1d4ed8);border-radius:clamp(0.4rem,0.7vw,0.6rem) clamp(0.4rem,0.7vw,0.6rem) 0 0;box-shadow:0 14px 32px -12px rgba(37,99,235,0.55),0 0 0 1px rgba(96,165,250,0.25) inset;position:relative}
+.bar-col.tiny .bar{background:rgba(255,255,255,0.18);box-shadow:none;border:1px dashed rgba(96,165,250,0.4)}
+.bar-col.tiny .bar-num{color:var(--mute)}
+.bar-col.featured .bar{background:linear-gradient(180deg,var(--accent-glow),var(--accent));box-shadow:0 18px 40px -10px rgba(31,242,249,0.45),0 0 0 1px rgba(31,242,249,0.3) inset}
+.bar-col.featured .bar-num{color:var(--accent-glow)}
+
+/* SLIDE — CAN/CANNOT (5+5 ro'yxat) */
+.cando{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)}
+.cando-col{background:rgba(255,255,255,0.04);border-radius:var(--r);padding:clamp(1.1rem,2.2vw,1.85rem);border-left:4px solid var(--accent);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,background 0.3s}
+.cando-col.cant{border-left-color:#ff4040;background:rgba(255,64,64,0.06)}
+.cando-col .cando-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.7rem}
+.cando-col.cant .cando-tag{color:#ff6060}
+.cando-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:clamp(0.45rem,0.8vw,0.65rem)}
+.cando-col li{font-size:clamp(0.78rem,1.02vw,0.95rem);line-height:1.45;color:#fff;padding-left:1.1rem;position:relative}
+.cando-col li::before{content:"·";position:absolute;left:0.3rem;color:var(--accent);font-weight:700;font-size:1.4em;line-height:1}
+.cando-col.cant li::before{color:#ff6060}
+.cando-col:hover{transform:translateY(-3px);box-shadow:0 12px 28px -12px rgba(37,99,235,0.3)}
+.cando-col.cant:hover{box-shadow:0 12px 28px -12px rgba(255,64,64,0.3)}
+
+/* SLIDE 12 — PRICING 3-CARD (badge + price + bullet list) */
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.6rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)}
+.price-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.1rem,2.2vw,1.8rem);display:flex;flex-direction:column;gap:0.6rem;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s}
+.price-card.featured{background:linear-gradient(150deg,rgba(37,99,235,0.22),rgba(11,45,121,0.18));border-color:rgba(96,165,250,0.45)}
+.price-card .badge{align-self:flex-start;display:inline-block;font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;padding:0.3rem 0.75rem;border-radius:99px;background:rgba(96,165,250,0.1);color:var(--accent-2);border:1px solid rgba(96,165,250,0.3)}
+.price-card.featured .badge{background:rgba(31,242,249,0.12);color:var(--accent-glow);border-color:rgba(31,242,249,0.35)}
+.price-card .price{font-family:var(--display);font-size:clamp(1.6rem,3vw,2.4rem);line-height:1;color:#fff;letter-spacing:-0.03em}
+.price-card .price small{font-family:'Space Grotesk',sans-serif;font-size:clamp(0.7rem,0.9vw,0.85rem);color:rgba(255,255,255,0.55);letter-spacing:0.05em;font-weight:400;display:block;margin-top:0.3rem;text-transform:none;letter-spacing:0.04em}
+.price-card .role{font-family:var(--display);font-size:clamp(0.85rem,1.15vw,1.05rem);text-transform:uppercase;letter-spacing:0.04em;color:var(--accent-2)}
+.price-card ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:clamp(0.35rem,0.65vw,0.55rem);margin-top:0.3rem}
+.price-card li{font-size:clamp(0.76rem,0.98vw,0.92rem);line-height:1.45;color:rgba(255,255,255,0.78);padding-left:1.1rem;position:relative}
+.price-card li::before{content:"›";position:absolute;left:0.2rem;color:var(--accent-2);font-weight:700}
+.price-card.danger li::before{color:#ff6060}
+.price-card .verdict{margin-top:auto;padding-top:0.5rem;border-top:1px solid rgba(255,255,255,0.08);font-family:var(--display);font-size:clamp(0.7rem,0.9vw,0.82rem);letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-2)}
+.price-card.danger .verdict{color:#ff8080}
+.price-card:hover{transform:translateY(-3px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+
+/* SLIDE — SECURITY (3-card with icons + accent) */
+.sec{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)}
+.sec .item{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.1rem,2.2vw,1.85rem)}
+.sec .item .ico{font-size:clamp(1.6rem,3vw,2.2rem);color:var(--accent);margin-bottom:0.6rem;display:block}
+.sec .item h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff}
+.sec .item p{font-size:clamp(0.82rem,1.1vw,1.02rem);line-height:1.5;color:rgba(255,255,255,0.78);margin-top:0.45rem}
+.sec .item .ex{margin-top:0.6rem;padding-top:0.5rem;border-top:1px solid rgba(255,255,255,0.08);font-size:clamp(0.74rem,0.95vw,0.88rem);line-height:1.45;color:rgba(255,255,255,0.62);font-style:italic}
+.sec .item .ex strong{font-family:var(--display);font-style:normal;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-2);font-weight:400;margin-right:0.4em}
+
+/* SLIDE — BRAINSTORM (questions list) */
+.s-brain .questions{display:flex;flex-direction:column;gap:clamp(0.85rem,1.5vw,1.3rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)}
+.q{font-family:var(--display);font-size:clamp(1.05rem,2vw,1.7rem);line-height:1.2;letter-spacing:-0.01em;color:#fff;display:flex;gap:clamp(0.65rem,1.3vw,1.1rem);align-items:flex-start}
+.q .n{color:var(--accent);flex-shrink:0}
+
+/* SLIDE — CLOSING + recap */
+.close-list{display:flex;flex-direction:column;gap:clamp(0.7rem,1.3vw,1.1rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)}
+.close-row{display:flex;gap:clamp(0.65rem,1.3vw,1.1rem);align-items:flex-start;padding:clamp(0.8rem,1.5vw,1.3rem);background:rgba(255,255,255,0.04);border-left:4px solid var(--accent);border-radius:0 var(--r) var(--r) 0}
+.close-row .arrow{color:var(--accent);font-family:var(--display);font-size:clamp(1.1rem,1.8vw,1.4rem)}
+.close-row p{font-size:var(--body);line-height:1.5;color:#fff;font-weight:400}
+.close-row p strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.02em}
+.s-close .recap{margin-top:clamp(0.85rem,1.5vw,1.4rem);padding-top:clamp(0.7rem,1.3vw,1.1rem);border-top:1px solid var(--soft);display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.5rem);flex-wrap:wrap}
+.s-close .recap-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);flex-shrink:0}
+.s-close .recap-terms{display:flex;gap:clamp(1rem,2vw,2rem);flex-wrap:wrap;flex:1}
+.s-close .recap-term{font-size:var(--body);color:rgba(255,255,255,0.7);line-height:1.4}
+.s-close .recap-term strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-right:0.5em;font-weight:400}
+.s-close .recap-term .ans{color:var(--accent-2)}
+
+/* SLIDE — Q&A */
+.s-qa .main{align-items:center;text-align:center}
+.qmark{font-family:var(--display);font-size:clamp(8rem,18vw,16rem);line-height:0.9;color:var(--accent);letter-spacing:-0.05em}
+
+/* SLIDE — COMPACT MYTH (3 row variant) */
+.myth.myth-tight{gap:clamp(0.55rem,1vw,0.85rem)}
+.myth.myth-tight .row{padding:clamp(0.7rem,1.3vw,1.1rem)}
+.myth.myth-tight .row p{font-size:clamp(0.78rem,1.05vw,0.98rem);line-height:1.45}
+.myth.myth-tight .row .tag{margin-bottom:0.4rem;font-size:clamp(0.65rem,0.85vw,0.8rem)}
+
+/* COMPARE — small token-counter pill style for slide 6 */
+.compare .col .pill{margin-top:0.4rem;font-family:'JetBrains Mono','Consolas','Courier New',monospace;font-size:clamp(0.7rem,0.95vw,0.88rem);color:var(--accent-glow);background:rgba(31,242,249,0.06);border:1px solid rgba(31,242,249,0.18);border-radius:0.4rem;padding:0.3rem 0.6rem;display:inline-block;letter-spacing:0.04em}
+
 /* Animations */
 @media (prefers-reduced-motion:no-preference){
   .slide.is-active .reveal{animation:up 0.7s cubic-bezier(0.16,1,0.3,1) both}
@@ -450,12 +585,12 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   </div>
   <div class="main">
     <div class="title-block reveal r2">
-      <span class="chip">Kun 1 · 16:30 — 17:30</span>
+      <span class="chip">Kun 1 · 17:45 — 18:45</span>
       <h1 class="title-hero">
-        SI platformalar<br>
+        AI platformalari<br>
         <span class="hl">bilan ishlash.</span>
       </h1>
-      <p class="tagline"><span class="accent-bar"></span>ChatGPT, Claude va Gemini — qaysi platforma qachon to’g’ri keladi.</p>
+      <p class="tagline"><span class="accent-bar"></span>ChatGPT, Claude va Gemini — qaysi platforma qachon to'g'ri keladi?</p>
     </div>
   </div>
 </section>
@@ -471,6 +606,7 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   </div>
   <div class="main">
     <h2 class="h2 reveal r2">Mavzuning <span class="hl">yo'l xaritasi</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">To'rtta asosiy bosqich — platformalar, atamalar, imkoniyat farqi va live mashq.</p>
     <div class="phase-grid reveal r3">
 
       <button class="phase-card fragment">
@@ -478,11 +614,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">01</span>
         </div>
         <div>
-          <h3 class="phase-title">ChatGPT</h3>
-          <p class="phase-desc">Kuchli tomonlar va asosiy use-case'lar.</p>
+          <h3 class="phase-title">Platformalar</h3>
+          <p class="phase-desc">Bir savol — uch xil javob jonli demo. 5 ta katta o'yinchi va ChatGPT · Claude · Gemini deep-dive.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~13 daq</span>
+          <span class="phase-time">~17 daq</span>
         </div>
       </button>
 
@@ -491,11 +627,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">02</span>
         </div>
         <div>
-          <h3 class="phase-title">Claude</h3>
-          <p class="phase-desc">Uzun kontekst va aniqlik talab qiladigan vazifalar.</p>
+          <h3 class="phase-title">Atamalar</h3>
+          <p class="phase-desc">Token va Context Window — narx va imkoniyat haqida muhandislar tilida gaplashish.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~13 daq</span>
+          <span class="phase-time">~10 daq</span>
         </div>
       </button>
 
@@ -504,11 +640,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">03</span>
         </div>
         <div>
-          <h3 class="phase-title">Gemini</h3>
-          <p class="phase-desc">Google ekosistemasi bilan integratsiya.</p>
+          <h3 class="phase-title">Imkoniyat farqi</h3>
+          <p class="phase-desc">Bank uchun tanlash mezoni, narx, web vs API, xavfsizlik va eng ko'p xatolar.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~13 daq</span>
+          <span class="phase-time">~17 daq</span>
         </div>
       </button>
 
@@ -517,11 +653,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">04</span>
         </div>
         <div>
-          <h3 class="phase-title">Taqqoslash</h3>
-          <p class="phase-desc">Bir vazifani 3 ta platformada solishtiramiz.</p>
+          <h3 class="phase-title">Live mashq</h3>
+          <p class="phase-desc">3 stol · 1 savol · 2 platforma. Stol prezentatsiyasi va yakuniy savol-javob.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~17 daq</span>
+          <span class="phase-time">~13 daq</span>
         </div>
       </button>
 
@@ -529,18 +665,594 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   </div>
 </section>
 
+<!-- SLIDE 3 — HOOK · Bir savol, 3 ta platforma -->
+<section class="slide s-hook-3">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Live taqqoslash · 3 platforma</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Bir savol — <span class="hl">uch xil javob</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Bir xil shaxsiy ma'lumotsiz hujjat parchasi, bir xil promt — uch xil javob. G'olibi yo'q; har biri boshqacha kuchli.</p>
+    <div class="compare-rich-3 reveal r3">
+      <div class="col fragment">
+        <h4>ChatGPT</h4>
+        <span class="out-label">AI javobi</span>
+        <div class="out">"3 ta asosiy risk: foiz, valyuta va mijoz to'lov qobiliyati. Eng kattasi — foiz riski, chunki..."</div>
+        <div class="verdict">→ Tez xulosa · dalil so'rang</div>
+      </div>
+      <div class="col win fragment">
+        <h4>Claude</h4>
+        <span class="out-label">AI javobi</span>
+        <div class="out">"Risk #1: valyuta riski (3.2-band, USD/UZS pegging). Risk #2: collateral coverage 75% — IFRS 9 bo'yicha sezilarli yetarsiz..."</div>
+        <div class="verdict">→ Bandga tayanish · inson tekshiruvi</div>
+      </div>
+      <div class="col fragment">
+        <h4>Gemini</h4>
+        <span class="out-label">AI javobi</span>
+        <div class="out">"3 ta risk topildi. 1- va 2-ni Workspace dokumentingizdagi 4-bandga bog'ladim, 3-si yangi — diqqat qiling..."</div>
+        <div class="verdict">→ Workspace qulay · ruxsat kerak</div>
+      </div>
+    </div>
+    <p class="reveal r3" style="margin-top:clamp(0.7rem,1.2vw,1rem);font-family:var(--display);font-size:clamp(0.78rem,1.05vw,0.98rem);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);text-align:center">→ "Qaysi yaxshi" emas — "qaysi vazifaga qaysi mos".</p>
+  </div>
+</section>
+
+<!-- SLIDE 4 — BOZOR XARITASI · 5 ta katta o'yinchi -->
+<section class="slide s-market">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Bozorda <span class="hl">5 ta katta o'yinchi</span> bor.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Mediada 100 ta nom bor — amalda esa o'nga yaqin. Bank ishi uchun beshini bilish kifoya.</p>
+    <div class="benefits-5 reveal r3">
+      <div class="benefit fragment">
+        <div class="stat">OpenAI · ChatGPT</div>
+        <h3>GPT-4o · GPT-5</h3>
+        <p>Eng katta ekosistema, plugin va GPT marketplace. Brainstorm va oddiy memo uchun mos.</p>
+        <div class="price">Plus · $20/oy</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">Anthropic · Claude</div>
+        <h3>Sonnet 4.5 · Opus 4.6</h3>
+        <p>Uzun matn ustasi. 200k tokenli kontekst, kamroq xato, sitata bilan javob beradi.</p>
+        <div class="price">Pro · $20/oy</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">Google · Gemini</div>
+        <h3>Gemini 2.5 Pro</h3>
+        <p>1M tokenli oyna, Workspace integratsiyasi, multimodal — kursimizning tanlovi.</p>
+        <div class="price">Workspace · $30/foyd/oy</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">Perplexity</div>
+        <h3>Search + AI</h3>
+        <p>Real-vaqt internet qidiruv + javob. Yangi ma'lumot kerak bo'lganda.</p>
+        <div class="price">Pro · $20/oy</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">YandexGPT / GigaChat</div>
+        <h3>RU lokal hosting</h3>
+        <p>Rus tili va mintaqaviy data residency talabi bo'lganda — tor doiradagi tanlov.</p>
+        <div class="price">API · shartnoma</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 — DICTIONARY · Token + Context Window -->
+<section class="slide s-dict">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Bankir uchun AI lug'ati · 7-modul</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.55rem,1vw,0.85rem)">Ikki so'z — <span class="hl">narx va imkoniyat</span> tili.</h2>
+    <p class="lead reveal r2">Bu ikki atama AI'ni narx va sifat bo'yicha solishtirishda eng ko'p ishlatiladi. Bir marta tushunamiz, keyingi 8 modulda yana eshitasiz.</p>
+    <div class="dict dict-2 reveal r3">
+      <div class="dict-card fragment">
+        <span class="dict-tag">Token</span>
+        <h3>So'z bo'lagi · hisob birligi</h3>
+        <p>AI matnni so'zga emas, <strong>tokenga</strong> bo'lib o'qiydi. O'zbek tilida 1 ta so'z ≈ 2–3 token. Foydalanish narxi tokenlar soniga qarab hisoblanadi.</p>
+        <div class="ex"><strong>Misol</strong>"Avtokredit foizi qancha?" — taxminan 8 token. Input + output qo'shilib hisoblanadi.</div>
+      </div>
+      <div class="dict-card fragment">
+        <span class="dict-tag">Context Window</span>
+        <h3>Kontekst oynasi</h3>
+        <p>AI <strong>bir martada</strong> o'qiy oladigan matn miqdori. Oyna kichik bo'lsa — uzun shartnomani qism-qismga bo'lib beramiz (RAG mexanizmi).</p>
+        <div class="ex"><strong>Misol</strong>Claude Opus 200k = ~150 sahifa. Gemini 1M = ~750 sahifa. O'rtacha shartnoma 5k = 4–5 sahifa.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — TOKEN MISOL · 1 so'z, 1 sahifa -->
+<section class="slide s-token-ex">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">1 so'z, 1 sahifa — <span class="hl">qancha token</span>?</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Token — bu so'z emas, <strong>so'z bo'lagi</strong>. Bir misol — keyin hech qachon adashmaysiz.</p>
+    <div class="compare reveal r3">
+      <div class="col">
+        <h4>1 ta so'z</h4>
+        <p>"avtokredit"</p>
+        <span class="pill">~3 token · [av] [to] [kredit]</span>
+      </div>
+      <div class="vs">→</div>
+      <div class="col">
+        <h4>1 ta jumla</h4>
+        <p>10 so'z</p>
+        <span class="pill">~25–30 token</span>
+      </div>
+      <div class="vs">→</div>
+      <div class="col win">
+        <h4>1 ta A4 sahifa</h4>
+        <p>~500 so'z</p>
+        <span class="pill">~1,200–1,500 token</span>
+      </div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.85rem,1.4vw,1.2rem);font-style:italic;color:rgba(255,255,255,0.72);max-width:78ch">→ Inglizchada 1 ta so'z ≈ 1.3 token (kompakt). O'zbek tilida AI so'zlarni ko'proq maydalaydi — narx ≈ 30–40% qimmatroq. Qisqa, aniq promt yozish — pul tejash.</p>
+  </div>
+</section>
+
+<!-- SLIDE 7 — CONTEXT WINDOW BAR CHART -->
+<section class="slide s-bars">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main" style="display:flex;flex-direction:column;min-height:0">
+    <h2 class="h2 reveal r2">Kontekst oynasi — <span class="hl">kim qancha sig'diradi</span>?</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">4 ta orientir. O'rtacha shartnoma hammasiga sig'adi. Lekin 100 sahifalik regulyator hujjati — boshqa hikoya.</p>
+    <div class="bars reveal r3">
+      <div class="bar-col">
+        <div class="bar-label">GPT-4o</div>
+        <div class="bar-num">128k</div>
+        <div class="bar-pages">~95 sahifa</div>
+        <div class="bar-track"><div class="bar" style="height:18%;width:62%"></div></div>
+      </div>
+      <div class="bar-col">
+        <div class="bar-label">Claude Opus 4.6</div>
+        <div class="bar-num">200k</div>
+        <div class="bar-pages">~150 sahifa</div>
+        <div class="bar-track"><div class="bar" style="height:28%;width:62%"></div></div>
+      </div>
+      <div class="bar-col featured">
+        <div class="bar-label">Gemini 2.5 Pro</div>
+        <div class="bar-num">1,000k</div>
+        <div class="bar-pages">~750 sahifa</div>
+        <div class="bar-track"><div class="bar" style="height:90%;width:62%"></div></div>
+      </div>
+      <div class="bar-col tiny">
+        <div class="bar-label">O'rtacha shartnoma</div>
+        <div class="bar-num">~5k</div>
+        <div class="bar-pages">~4 sahifa</div>
+        <div class="bar-track"><div class="bar" style="height:6%;width:62%"></div></div>
+      </div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.7rem,1.2vw,1rem);font-style:italic;color:rgba(255,255,255,0.65)">Holat: 2026-05. Aniq raqam tarif, API/Web rejimi va regionga qarab o'zgaradi — xarid qarori uchun vendorning rasmiy hujjati va yuridik xulosa talab qilinadi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 8 — ChatGPT chuqurlashish -->
+<section class="slide s-deep-chatgpt">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Deep-dive · 1/3</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.55rem,1vw,0.85rem)">ChatGPT — <span class="hl">eng katta ekosistema</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Eng tanish va eng keng tarqalgan. Plugin'lar, Custom GPT'lar, kod interpretatori — hammasi shu yerda.</p>
+    <div class="sec reveal r3">
+      <div class="item fragment">
+        <span class="ico"><img src="images/auto/slide-08-icon-card-1-rocket.svg" alt="rocket" style="width:1.4em;height:1.4em;filter:brightness(0) invert(1);opacity:0.85"></span>
+        <h3>Kuchli tomon</h3>
+        <p>Eng katta plugin va Custom GPT marketplace. Kod interpretatori — Excel fayllarni darhol tahlil qiladi.</p>
+        <div class="ex"><strong>Misol</strong>"Bo'lim FAQ" Custom GPT — 5 PDF yuklab, mini-bot tayyor.</div>
+      </div>
+      <div class="item fragment">
+        <span class="ico"><img src="images/auto/slide-08-icon-card-2-target.svg" alt="target" style="width:1.4em;height:1.4em;filter:brightness(0) invert(1);opacity:0.85"></span>
+        <h3>Qachon ishlatamiz</h3>
+        <p>Brainstorm, oddiy memo, mijoz xati, marketing matni. Aralash vazifalar uchun — birinchi tanlov.</p>
+        <div class="ex"><strong>Misol</strong>"Yangi mahsulot uchun 5 ta nom variantini ber".</div>
+      </div>
+      <div class="item fragment">
+        <span class="ico"><img src="images/auto/slide-08-icon-card-3-alert-triangle.svg" alt="alert-triangle" style="width:1.4em;height:1.4em;filter:brightness(0) invert(1);opacity:0.85"></span>
+        <h3>Cheklov</h3>
+        <p>Kontekst 128k token (~95 sahifa) — Claude'dan kichikroq. O'zbek tilida ba'zan "tarjima" hidi.</p>
+        <div class="ex"><strong>Diqqat</strong>Plus standart sozlamada ma'lumot o'qitishga (training) ketishi mumkin — sozlamadan o'chiring.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9 — Claude chuqurlashish -->
+<section class="slide s-deep-claude">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Deep-dive · 2/3</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.55rem,1vw,0.85rem)">Claude — <span class="hl">uzun matn ustasi</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Anthropic'ning Claude — uzun hujjat va dalilga tayanadigan tahlilda kuchli variantlardan biri. Aniq, ehtiyotkor, kamroq "o'ylab topadi".</p>
+    <div class="sec reveal r3">
+      <div class="item fragment">
+        <span class="ico"><img src="images/auto/slide-09-icon-card-1-rocket.svg" alt="rocket" style="width:1.4em;height:1.4em;filter:brightness(0) invert(1);opacity:0.85"></span>
+        <h3>Kuchli tomon</h3>
+        <p>200k tokenli kontekst (~150 sahifa). Kamroq gallyutsinatsiya, har sitatani bandi bilan ko'rsatadi.</p>
+        <div class="ex"><strong>Misol</strong>"4-bo'limning 3.2 paragrafida..." — Claude tipik javob formati.</div>
+      </div>
+      <div class="item fragment">
+        <span class="ico"><img src="images/auto/slide-09-icon-card-2-target.svg" alt="target" style="width:1.4em;height:1.4em;filter:brightness(0) invert(1);opacity:0.85"></span>
+        <h3>Qachon ishlatamiz</h3>
+        <p>Yuridik tahlil, IFRS / Bazel hujjatlari, sezgir matn. "Aniqlik &gt; tezlik" bo'lgan har ish.</p>
+        <div class="ex"><strong>Misol</strong>100 sahifali sindikat shartnomadan 3 ta risk topish.</div>
+      </div>
+      <div class="item fragment">
+        <span class="ico"><img src="images/auto/slide-09-icon-card-3-alert-triangle.svg" alt="alert-triangle" style="width:1.4em;height:1.4em;filter:brightness(0) invert(1);opacity:0.85"></span>
+        <h3>Cheklov</h3>
+        <p>Plugin marketplace yo'q, web qidiruv yo'q. Ekosistema kichikroq — faqat suhbat va API.</p>
+        <div class="ex"><strong>Diqqat</strong>"Bugungi USD/UZS kursi qancha?" — Claude bilmaydi (real vaqtda internetga ulanmagan).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10 — Gemini chuqurlashish (KURS TANLOVI) -->
+<section class="slide s-deep-gemini">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Deep-dive · 3/3 · Demo uchun</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.55rem,1vw,0.85rem)">Gemini — <span class="hl">kurs amaliyoti uchun</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Workspace + 1M tokenli oyna + multimodal (matn · rasm · ovoz · video). Bugungi labda demo uchun mos. Sizning bankingiz uchun tanlov — alohida baholanadi.</p>
+    <div class="sec reveal r3">
+      <div class="item fragment">
+        <span class="ico"><img src="images/auto/slide-10-icon-card-1-rocket.svg" alt="rocket" style="width:1.4em;height:1.4em;filter:brightness(0) invert(1);opacity:0.85"></span>
+        <h3>Kuchli tomon</h3>
+        <p>1M tokenli kontekst — eng keng. Workspace integratsiyasi, multimodal (PDF + jadval + rasm bir promtda).</p>
+        <div class="ex"><strong>Misol</strong>Skanerlangan PDF + Excel + mijoz suratidagi hujjat — birga tahlil.</div>
+      </div>
+      <div class="item fragment">
+        <span class="ico"><img src="images/auto/slide-10-icon-card-2-target.svg" alt="target" style="width:1.4em;height:1.4em;filter:brightness(0) invert(1);opacity:0.85"></span>
+        <h3>Qachon ishlatamiz</h3>
+        <p>Korporativ ish, RAG arxitekturasi (9-modul), n8n bilan AI ish tizimlari (8-modul).</p>
+        <div class="ex"><strong>Misol</strong>Bank Drive'idagi 50 PDF + Sheets jadval = bir savolga to'liq javob.</div>
+      </div>
+      <div class="item fragment">
+        <span class="ico"><img src="images/auto/slide-10-icon-card-3-alert-triangle.svg" alt="alert-triangle" style="width:1.4em;height:1.4em;filter:brightness(0) invert(1);opacity:0.85"></span>
+        <h3>Cheklov</h3>
+        <p>Ekosistema yangiroq, plugin marketplace kichikroq. Workspace tashqarisida ba'zi xususiyatlar yo'q.</p>
+        <div class="ex"><strong>Diqqat</strong>Vertex AI shartnomasi — Zero-Training kafolati (3-modul).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11 — Bank uchun tanlash mezoni -->
+<section class="slide s-cando">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Tanlovni <span class="hl">vazifa (use-case) xavfi</span> bilan tekshiramiz.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Modelni model kuchi bilan emas — ma'lumot turi, ruxsat, audit izi va inson tasdig'i bilan tanlaymiz. Mana bank governance cheklisti.</p>
+    <div class="cando reveal r3">
+      <div class="cando-col fragment">
+        <div class="cando-tag">✓ AI tanlashda HA</div>
+        <ul>
+          <li>Korporativ shartnoma bormi (Zero-Training)?</li>
+          <li>O'zbek tili sifati ishingizga yetarlimi (sinab ko'ring)?</li>
+          <li>Kerakli kontekst oynasi sig'adimi?</li>
+          <li>Data residency talabga mosmi (EU / US / RU)?</li>
+          <li>Oyiga narx byudjetga sig'adimi?</li>
+        </ul>
+      </div>
+      <div class="cando-col cant fragment">
+        <div class="cando-tag">✗ AI tanlashda YO'Q</div>
+        <ul>
+          <li>"Hammaga ChatGPT eng yaxshi" — moda bilan tanlash</li>
+          <li>Bo'lim ehtiyojini tekshirmasdan bitta model</li>
+          <li>Free tarifda PII (mijoz nomi, hisob raqami) jo'natish</li>
+          <li>Bitta platformaga bog'lanib qolish — alternativasiz</li>
+          <li>Live demo o'rniga "biroz keyin sinab ko'ramiz"</li>
+        </ul>
+      </div>
+    </div>
+    <div class="reveal r3" style="margin-top:clamp(1rem,2vw,2rem);background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(0.85rem,1.5vw,1.25rem);font-size:clamp(0.7rem,0.9vw,0.85rem);color:rgba(255,255,255,0.8)">
+      <strong style="color:var(--accent-2);display:block;margin-bottom:0.5rem;font-family:var(--display);letter-spacing:0.05em;text-transform:uppercase">Jonli misol: Muvofiqlik FAQ ichki saytda</strong>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1rem">
+        <div><span style="color:rgba(255,255,255,0.85);font-size:0.8em;text-transform:uppercase;display:block;font-family:var(--display);letter-spacing:0.05em">Ma'lumot</span>Ichki siyosat, PII yo'q</div>
+        <div><span style="color:rgba(255,255,255,0.85);font-size:0.8em;text-transform:uppercase;display:block;font-family:var(--display);letter-spacing:0.05em">Ruxsat</span>Bo'lim rahbari</div>
+        <div><span style="color:rgba(255,255,255,0.85);font-size:0.8em;text-transform:uppercase;display:block;font-family:var(--display);letter-spacing:0.05em">Kanal</span>Enterprise / API</div>
+        <div><span style="color:rgba(255,255,255,0.85);font-size:0.8em;text-transform:uppercase;display:block;font-family:var(--display);letter-spacing:0.05em">Tasdiq</span>Yurist nashrdan oldin</div>
+        <div><span style="color:rgba(255,255,255,0.85);font-size:0.8em;text-transform:uppercase;display:block;font-family:var(--display);letter-spacing:0.05em">Audit izi</span>Promt + javob logda</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12 — Narx va litsenziya -->
+<section class="slide s-pricing">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Narx — <span class="hl">3 ta darajada</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Shaxsiy tajriba vs jamoaviy ish vs to'liq korporativ integratsiya. Har birining narxi va imkoniyati boshqacha.</p>
+    <div class="pricing reveal r3">
+      <div class="price-card danger fragment">
+        <span class="badge">Free</span>
+        <div class="price">$0<small>tanishtiruv darajasi</small></div>
+        <div class="role">Shaxsiy tajriba</div>
+        <ul>
+          <li>Eski modellar, kichik kontekst</li>
+          <li>Ma'lumot training'ga ketishi mumkin</li>
+          <li>SLA va audit log yo'q</li>
+        </ul>
+        <div class="verdict">✗ Bank ishi uchun mos emas</div>
+      </div>
+      <div class="price-card fragment">
+        <span class="badge">Pro / Plus</span>
+        <div class="price">~$20–30<small>oyiga / xodim</small></div>
+        <div class="role">Bitta xodim</div>
+        <ul>
+          <li>Eng so'nggi modellar</li>
+          <li>Kattaroq kontekst, suhbat tarixi</li>
+          <li>O'qitishni o'chirish (training off) — sozlama orqali</li>
+        </ul>
+        <div class="verdict">→ Brainstorm · PII'siz ish</div>
+      </div>
+      <div class="price-card featured fragment">
+        <span class="badge">Enterprise / API</span>
+        <div class="price">Shartnoma<small>Vertex AI · ChatGPT Enterprise · Claude for Work</small></div>
+        <div class="role">Korporativ daraja</div>
+        <ul>
+          <li>Yozma korporativ shartnoma · training off</li>
+          <li>SAML SSO · audit log · 24/7</li>
+          <li>Saqlash muddati va o'chirish tartibi</li>
+        </ul>
+        <div class="verdict">✓ Production uchun shart bo'lgan kanal</div>
+      </div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.85rem,1.4vw,1.2rem);font-style:italic;color:rgba(255,255,255,0.65);font-size:var(--small)">Holat: 2026-05. Aniq narx tarif, region va shartnoma turiga qarab o'zgaradi. Bepul / consumer kanali bank ma'lumoti uchun taqiqlangan.</p>
+  </div>
+</section>
+
+<!-- SLIDE 13 — Web vs API -->
+<section class="slide s-web-api">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Brauzerda yozish vs <span class="hl">API orqali avtomat</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Bir xil model — ikki xil ishlatish. Birinchisi — qo'lda. Ikkinchisi — n8n orqali, soatiga 1000 marotaba.</p>
+    <div class="compare reveal r3">
+      <div class="col">
+        <h4>Brauzer · chat oynasi</h4>
+        <p>Bir martalik ish<br>Qo'lda nusxalash (copy-paste)<br>Bitta xodim ishlatadi<br>Tezkor sinov</p>
+      </div>
+      <div class="vs">→</div>
+      <div class="col win">
+        <h4>API + n8n · avtomat</h4>
+        <p>Avtomat ish jarayoni<br>Telegram → Bot → Hisobot<br>Butun bo'lim avtomat<br>Production daraja</p>
+      </div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.85rem,1.5vw,1.25rem);font-style:italic;color:rgba(255,255,255,0.72)">→ Kursning asosiy yo'nalishi — API. 8-modulda n8n bilan birinchi avtomat ishni yig'amiz, kod yozmasdan.</p>
+  </div>
+</section>
+
+<!-- SLIDE 14 — MODERN PLATFORM XUSUSIYATLARI · Rules + Skills + MCP + Agent (cross-ref) -->
+<section class="slide s-modern">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Bankir uchun AI lug'ati · 7-modul · ikkinchi qism</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,0.95vw,0.8rem)">Brauzerdan tashqari — yangi <span class="hl">to'rt xususiyat</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.35rem">ChatGPT, Claude, Gemini — bularning hammasi shunchaki chat oynasi emas. To'rtta xususiyat AI'ni bo'lim ish jarayoniga avtomat ulashga imkon beradi.</p>
+    <div class="modern-stack reveal r3">
+      <div class="dict-card fragment">
+        <span class="dict-tag">Rules</span>
+        <h3>Doimiy ish qoidasi</h3>
+        <p>AI uchun: qaysi rol, qaysi uslub, qaysi manba, qaysi ma'lumot taqiqlangan. Bir marta sozlanadi — har javobda eslatib turiladi. ChatGPT'da <strong>Custom Instructions</strong>, Claude'da <strong>Project Rules</strong>, Gemini'da Persona.</p>
+        <div class="ex"><strong>Misol</strong>"Sen Markaziy Bank muvofiqlik xodimisan. Faqat tasdiqlangan qoidalarga asoslan. Shaxsiy ma'lumot so'rama."</div>
+      </div>
+      <div class="dict-card fragment">
+        <span class="dict-tag">Skills</span>
+        <h3>Bo'lim uchun qayta ishlatiluvchi AI paketi</h3>
+        <p>Ko'rsatma, namuna, tekshiruv mezoni va ruxsat chegarasi — bir joyda. <strong>Egasi, versiyasi va tasdiqlash tartibi</strong> aniq bo'lsa, jamoa bir xil standartda ishlaydi. Claude Skills, ChatGPT Custom GPTs.</p>
+        <div class="ex"><strong>Misol</strong>"Mijoz shikoyatiga javob" Skill · "KYC tekshiruvi" Skill · "Hisobot tahlili" Skill — har bo'lim o'z paketini quradi.</div>
+      </div>
+      <div class="dict-card fragment">
+        <span class="dict-tag">MCP</span>
+        <h3>AI ↔ tashqi tizim · standart protokol</h3>
+        <p>AI platformani tashqi tizim bilan bog'lash usuli. Bankda <strong>faqat tasdiqlangan serverlar, ruxsat chegarasi, audit log va korporativ shartnoma</strong> bilan ishlatiladi. Anthropic 2024 da chiqargan; ChatGPT, Gemini ham qabul qilmoqda.</p>
+        <div class="ex"><strong>Misol</strong>Tasdiqlangan MCP ulagichi orqali AI faqat ruxsat berilgan jadval/hujjatni o'qiydi; yozish, yuborish, o'chirish — alohida ruxsat va audit izi bilan.</div>
+      </div>
+      <div class="cross-ref-card fragment">
+        <span class="cross-ref-label">Cross-reference · 10-modulda chuqur</span>
+        <h3>Agent rejimi</h3>
+        <p>Bu yerda faqat nomini eslab qolamiz: ayrim platformalarda AI vazifani bir necha qadamga bo'lib, <strong>ruxsat berilgan asboblardan</strong> foydalanishi mumkin. To'liq ta'rif, chegaralar va nazoratlar — 10-modulda.</p>
+      </div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.5rem,1vw,0.85rem);font-style:italic;color:rgba(255,255,255,0.7);font-size:clamp(0.74rem,0.95vw,0.88rem)">→ Hammasi bitta talab: bank ichida ishlatish — har biri korporativ shartnoma + audit log bilan. 14-slaydda xavfsizlik nazorati.</p>
+  </div>
+</section>
+
+<!-- SLIDE 15 — Xavfsizlik mezoni -->
+<section class="slide s-sec">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Xavfsizlik — <span class="hl">3 ta nazorat</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Ma'lumotni minimallashtirish · Ruxsat va audit izi · Inson tasdig'i. Har platforma bilan ish boshlashdan oldin uchchovi ham yozma kelishilgan bo'lishi shart.</p>
+    <div class="sec reveal r3">
+      <div class="item fragment">
+        <span class="ico"><img src="images/auto/slide-14-icon-card-1-lock.svg" alt="lock" style="width:1.4em;height:1.4em;filter:brightness(0) invert(1);opacity:0.85"></span>
+        <h3>Ma'lumotni minimallashtirish</h3>
+        <p>PII kerakmi? Yo'q bo'lsa olib tashlanadi. Server qayerda saqlanadi, qancha saqlanadi — javoblar shartnomada yozilgan.</p>
+      </div>
+      <div class="item fragment">
+        <span class="ico"><img src="images/auto/slide-14-icon-card-2-shield-check.svg" alt="shield-check" style="width:1.4em;height:1.4em;filter:brightness(0) invert(1);opacity:0.85"></span>
+        <h3>Ruxsat va audit izi</h3>
+        <p>Kim ishlatishi mumkin? Har promt log'ga tushadimi? "O'chirish" tugmasi ishlaydimi? Favqulodda holat (intsident) yuz bersa kim javobgar?</p>
+      </div>
+      <div class="item fragment">
+        <span class="ico"><img src="images/auto/slide-14-icon-card-3-file-text.svg" alt="file-text" style="width:1.4em;height:1.4em;filter:brightness(0) invert(1);opacity:0.85"></span>
+        <h3>Inson tasdig'i</h3>
+        <p>Javob tashqariga ketishidan oldin yurist/muvofiqlik tekshiradimi? "AI shunday dedi" — bu javob emas, bu chernovoy.</p>
+      </div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.85rem,1.4vw,1.2rem);font-style:italic;color:rgba(255,255,255,0.65);font-size:var(--small)">Standart sozlama 'xavfsiz' degani emas. Holat: 2026-05 — vendor sozlamalari va shartnomasi o'zgaradi, har xarid jarayonida qayta tekshiriladi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 16 — Eng ko'p uchraydigan 3 xato -->
+<section class="slide s-myth">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Eng ko'p uchraydigan <span class="hl">3 xato</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Banklarda AI joriy qilishda eng ko'p takrorlanadigan 3 ta afsona va ularning haqiqati.</p>
+    <div class="myth myth-tight reveal r3">
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>"Bitta platformaga sodiq qoling — <strong>hammasini shu yerda qiling</strong>."</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p><strong>Vazifaga qarab tanlang.</strong> Brainstorm = ChatGPT · uzun shartnoma = Claude · Workspace ishi = Gemini.</p></div>
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>"<strong>Bepul versiyasi yetarli</strong> — har holda AI-ku."</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p>Free = tanishuv. Bank ishi uchun <strong>hech qachon yo'q</strong> (PII training'ga ketishi mumkin). Pro = shaxsiy. Enterprise = production.</p></div>
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>"Yangi modelga <strong>darhol o'tish</strong> kerak — eski yomon."</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p>Sinab ko'ring, keyin o'ting. <strong>5 ta tipik vazifa</strong> bilan qiyoslang — yangisi har doim ham yaxshi bo'lavermaydi.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 17 — Live mashq · Stol bo'yicha -->
+<section class="slide s-brain">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Interaktiv · Stol bo'yicha · 6 daq</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.55rem,1vw,0.85rem)">3 stol — 1 keys — <span class="hl">2 platforma</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">G'olib platforma emas, g'olib javob mezoni muhim. Bankda "chiroyli javob" emas — tekshiriladigan, auditga chidamli javob ishlatiladi.</p>
+    <div class="questions reveal r3">
+      <div class="q fragment"><span class="n">01</span><span>Stolingizdagi <span style="color:var(--accent-2)">amaliy vaziyatni (keysni)</span> oling: Kredit, Muvofiqlik yoki Operatsion murojaat.</span></div>
+      <div class="q fragment"><span class="n">02</span><span>Ikkita platformaga yuboring va <span style="color:var(--accent-2)">5 mezon bo'yicha</span> baholang (dalil, taxmin yo'qligi, bank tili, aniq qadam, xavfsizlik).</span></div>
+      <div class="q fragment"><span class="n">03</span><span>Stol prezentatsiyasi — <span style="color:var(--accent-2)">30 soniya</span>: qaysi platforma qaysi mezonda yutdi?</span></div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.85rem,1.4vw,1.2rem);font-style:italic;color:rgba(255,255,255,0.72)">→ 4 daqiqa eksperiment + 2 daqiqa prezentatsiya. Diqqat: PII'siz savol — "Mijoz Aliyev..." emas, "Bir mijoz...".</p>
+    <div class="reveal r3" style="margin-top:clamp(0.85rem,1.4vw,1.2rem);background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(0.75rem,1.3vw,1.1rem);font-size:clamp(0.7rem,0.92vw,0.86rem);color:rgba(255,255,255,0.82)">
+      <strong style="color:var(--accent-2);display:block;margin-bottom:0.45rem;font-family:var(--display);letter-spacing:0.08em;text-transform:uppercase;font-size:0.95em">Yakuniy chiqish — qaror jadvali (har stol to'ldiradi)</strong>
+      <div style="font-family:var(--display);letter-spacing:0.04em;text-transform:uppercase;font-size:0.86em;color:#fff">Use-case · Ma'lumot turi · Ruxsat darajasi · Tavsiya etilgan kanal · Inson tasdig'i · Audit talabi · Pilot qarori</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 18 — Closing + recap -->
+<section class="slide s-close">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Bugungi moduldan <span class="hl">3 ta asosiy</span> xulosa.</h2>
+    <div class="close-list reveal r3">
+      <div class="close-row"><span class="arrow"><img src="images/auto/slide-17-icon-list-item-1-lightbulb.svg" alt="lightbulb" style="width:1.4em;height:1.4em;filter:brightness(0) invert(1);opacity:0.85"></span><p><strong>Platforma — brend tanlash emas.</strong> Har use-case uchun mezon: ma'lumot sezgirligi, hujjat hajmi, aniqlik talabi, audit izi, narx, integratsiya. Brendga emas — vazifaga qarab.</p></div>
+      <div class="close-row"><span class="arrow"><img src="images/auto/slide-17-icon-list-item-2-lightbulb.svg" alt="lightbulb" style="width:1.4em;height:1.4em;filter:brightness(0) invert(1);opacity:0.85"></span><p><strong>Token, Context, Rules, Skills, MCP — endi sizning tilingiz.</strong> IT-xarid va vendor bilan gaplashganda narx, sig'im, qoida sozlash va integratsiya talablarini asos qilib so'rashga tayyorsiz.</p></div>
+      <div class="close-row"><span class="arrow"><img src="images/auto/slide-17-icon-list-item-3-lightbulb.svg" alt="lightbulb" style="width:1.4em;height:1.4em;filter:brightness(0) invert(1);opacity:0.85"></span><p><strong>Bugun brauzerda — ertaga avtomatda.</strong> 8-modul: n8n + API bilan birinchi avtomat ish. Brauzerdan production'ga.</p></div>
+    </div>
+    <div class="recap reveal r3">
+      <div class="recap-tag">Lug'at recap · birga aytamiz</div>
+      <div class="recap-terms">
+        <div class="recap-term"><strong>Token</strong> <span class="ans">so'z bo'lagi · narx hisob birligi</span></div>
+        <div class="recap-term"><strong>Context Window</strong> <span class="ans">AI bir martada o'qiy oladigan matn miqdori</span></div>
+        <div class="recap-term"><strong>Rules</strong> <span class="ans">bir marta yozib qo'yilgan qoida · har xat avtomat</span></div>
+        <div class="recap-term"><strong>Skills</strong> <span class="ans">bo'lim uchun qayta ishlatiladigan AI paketi</span></div>
+        <div class="recap-term"><strong>MCP</strong> <span class="ans">AI'ni ichki tizimga ulashning standart usuli</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 19 — Q&A -->
+<section class="slide s-qa">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="qmark reveal r2">?</div>
+    <h2 class="h2 reveal r3" style="text-align:center">Sizning <span class="hl">savollaringiz</span>.</h2>
+    <p class="reveal r3" style="text-align:center;margin-top:clamp(1.5rem,3vw,2.5rem);font-family:var(--display);font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:0.1em;color:var(--accent-2)">murod@mohir.dev</p>
+  </div>
+</section>
+
 </main>
 
 <div class="hud">
-  <span class="counter">01 / 02</span>
+  <span class="counter">01 / 18</span>
   <div class="dots"></div>
   <div class="speaker"><span class="dot"></span><strong>Riskaliev Murad</strong> · NLP Engineer · Mohirdev</div>
 </div>
 
 <script>
 const TITLES = [
-  'Title · 7-modul',
-  "Yo'l xaritasi · Agenda"
+  "AI platformalari bilan ishlash",
+  "Mavzuning yo'l xaritasi",
+  "Bir savol — uch xil javob",
+  "Bozorda 5 ta katta o'yinchi bor",
+  "Ikki so'z — narx va imkoniyat tili",
+  "1 so'z, 1 sahifa — qancha token?",
+  "Kontekst oynasi — kim qancha sig'diradi?",
+  "ChatGPT — eng katta ekosistema",
+  "Claude — uzun matn ustasi",
+  "Gemini — kurs amaliyoti uchun",
+  "Tanlovni vazifa (use-case) xavfi bilan tekshiramiz",
+  "Narx — 3 ta darajada",
+  "Brauzerda yozish vs API orqali avtomat",
+  "Modern platform xususiyatlari · Rules · Skills · MCP · Agent",
+  "Xavfsizlik — 3 ta nazorat",
+  "Eng ko'p uchraydigan 3 xato",
+  "3 stol — 1 keys — 2 platforma",
+  "Bugungi moduldan 3 ta asosiy xulosa",
+  "Sizning savollaringiz"
 ];
 
 const slides = [...document.querySelectorAll('.slide')];

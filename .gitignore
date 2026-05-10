@@ -17,6 +17,12 @@ decks/**/dist/
 
 # Scratch / one-off scripts written during work
 .scratch-*
+.tmp/
+.tmp-*
+bankrag-*.js
+
+# Downloaded binaries / tools (ffmpeg, yt-dlp, chrome profile, cert bundles)
+.tools/
 
 # Secrets — never commit
 .env

@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>15-modul · Markaziy Bank seminar</title>
+<title>15-modul · Yakuniy taqdimot · Markaziy Bank seminar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:'Space Grotesk',sans-serif}
+body,p,li,.lead{letter-spacing:0.018em}
 
 :root{
   --bg:#020A24;--bg-2:#06173B;--bg-3:#0B2D79;
@@ -422,6 +423,162 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   box-shadow:0 12px 28px -12px rgba(37,99,235,0.3);
 }
 
+/* DICTIONARY / ATAMA QUIZ — flash-card style cards (front: term, fragment: definition) */
+.dict{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(0.85rem,1.6vw,1.5rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)}
+.dict.dict-2{grid-template-columns:1fr 1fr}
+.dict.dict-cols-3{grid-template-columns:repeat(3,1fr)}
+.dict-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(0.95rem,1.8vw,1.6rem);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
+.dict-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.dict-card .dict-tag{display:inline-block;font-family:var(--display);font-size:clamp(1.1rem,2.2vw,1.85rem);letter-spacing:0.02em;color:var(--accent-2);text-transform:uppercase;line-height:1;margin-bottom:0.55rem}
+.dict-card h3{font-family:var(--display);font-size:clamp(0.9rem,1.4vw,1.15rem);text-transform:uppercase;letter-spacing:0.02em;color:#fff;margin-bottom:0.45rem;font-weight:400}
+.dict-card p{font-size:clamp(0.78rem,1.05vw,0.98rem);line-height:1.45;color:rgba(255,255,255,0.78)}
+.dict-card p strong{color:var(--accent-2);font-weight:500}
+.dict-card:hover{transform:translateY(-3px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+
+/* CAN/CANNOT — capability boundaries */
+.cando{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.cando-col{background:rgba(255,255,255,0.04);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2rem);border-left:4px solid var(--accent);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,background 0.3s}
+.cando-col.cant{border-left-color:#ff4040;background:rgba(255,64,64,0.06)}
+.cando-col .cando-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.85rem}
+.cando-col.cant .cando-tag{color:#ff6060}
+.cando-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:clamp(0.45rem,0.9vw,0.75rem)}
+.cando-col li{font-size:var(--body);line-height:1.5;color:#fff;padding-left:1.25rem;position:relative}
+.cando-col li::before{content:"·";position:absolute;left:0.4rem;color:var(--accent);font-weight:700;font-size:1.4em;line-height:1}
+.cando-col.cant li::before{color:#ff6060}
+.cando-col:hover{transform:translateY(-3px);box-shadow:0 12px 28px -12px rgba(37,99,235,0.3)}
+.cando-col.cant:hover{box-shadow:0 12px 28px -12px rgba(255,64,64,0.3)}
+
+/* CLOSING — lug'at recap row */
+.s-close .recap{margin-top:clamp(1rem,2vw,1.75rem);padding-top:clamp(0.85rem,1.5vw,1.25rem);border-top:1px solid var(--soft);display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.5rem);flex-wrap:wrap}
+.s-close .recap-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);flex-shrink:0}
+.s-close .recap-terms{display:flex;gap:clamp(1rem,2vw,2rem);flex-wrap:wrap;flex:1}
+.s-close .recap-term{font-size:var(--body);color:rgba(255,255,255,0.7);line-height:1.4}
+.s-close .recap-term strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-right:0.5em;font-weight:400}
+.s-close .recap-term .ans{color:var(--accent-2)}
+
+/* MODULES GRID — 15-module 5x3 retrospective overview */
+.modules-grid{display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(3,1fr);gap:clamp(0.45rem,0.85vw,0.85rem);margin-top:clamp(0.7rem,1.3vw,1.1rem);min-height:0;flex:1}
+.mod-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:clamp(0.5rem,0.9vw,0.85rem);padding:clamp(0.55rem,1vw,0.95rem) clamp(0.6rem,1.1vw,1.05rem);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;transition:transform 0.3s cubic-bezier(0.16,1,0.3,1),background 0.3s,border-color 0.3s}
+.mod-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1)}
+.mod-card:hover::before{transform:scaleY(1)}
+.mod-card.featured{background:linear-gradient(160deg,rgba(37,99,235,0.18),rgba(37,99,235,0.04));border-color:rgba(96,165,250,0.35)}
+.mod-card .mod-num{font-family:var(--display);font-size:clamp(0.75rem,1.05vw,0.95rem);letter-spacing:0.15em;color:var(--accent-2);line-height:1}
+.mod-card .mod-name{font-family:var(--display);font-size:clamp(0.78rem,1.15vw,1.05rem);text-transform:uppercase;letter-spacing:-0.005em;line-height:1.05;color:#fff;margin-top:0.25rem}
+.mod-card .mod-key{font-size:clamp(0.65rem,0.85vw,0.78rem);line-height:1.3;color:rgba(255,255,255,0.65);margin-top:0.4rem}
+.mod-card:hover{transform:translateY(-2px);background:rgba(37,99,235,0.1);border-color:rgba(96,165,250,0.4)}
+
+/* GLOSSARY GRID — 30 atama final recap (5x6 dense grid) */
+.gloss-grid{display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(6,1fr);gap:clamp(0.35rem,0.65vw,0.65rem);margin-top:clamp(0.6rem,1.1vw,1rem);min-height:0;flex:1}
+.gloss-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:clamp(0.4rem,0.7vw,0.65rem);padding:clamp(0.4rem,0.75vw,0.7rem) clamp(0.5rem,0.9vw,0.85rem);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;transition:transform 0.3s cubic-bezier(0.16,1,0.3,1),background 0.3s,border-color 0.3s}
+.gloss-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent-2);opacity:0.4}
+.gloss-card.featured{background:linear-gradient(160deg,rgba(37,99,235,0.18),rgba(37,99,235,0.04));border-color:rgba(96,165,250,0.4)}
+.gloss-card .g-term{font-family:var(--display);font-size:clamp(0.72rem,1vw,0.92rem);text-transform:uppercase;letter-spacing:0.02em;color:#fff;line-height:1.05}
+.gloss-card .g-def{font-size:clamp(0.6rem,0.78vw,0.72rem);line-height:1.3;color:rgba(255,255,255,0.65);margin-top:0.25rem}
+.gloss-card:hover{transform:translateY(-2px);background:rgba(37,99,235,0.1);border-color:rgba(96,165,250,0.45)}
+
+/* CERTIFICATE — parchment-feel mockup using CSS only */
+.s-cert .main{align-items:center;justify-content:center}
+.cert-wrap{
+  width:min(90%,950px);
+  margin:0 auto;
+  background:linear-gradient(135deg,#f6efd9 0%, #f1e6c0 50%, #ead7a3 100%);
+  color:#3a2e15;
+  border-radius:clamp(0.5rem,1vw,0.9rem);
+  padding:clamp(1rem,2vw,1.85rem) clamp(1.5rem,3vw,3rem);
+  position:relative;
+  box-shadow:0 30px 80px -20px rgba(37,99,235,0.45),0 0 0 1px rgba(255,255,255,0.08) inset;
+  display:grid;grid-template-rows:auto auto 1fr auto;gap:clamp(0.55rem,1vw,0.9rem);
+  font-family:'Space Grotesk',sans-serif;
+  background-image:
+    linear-gradient(135deg,#f6efd9 0%, #f1e6c0 50%, #ead7a3 100%),
+    radial-gradient(circle at 20% 30%,rgba(120,90,30,0.05),transparent 40%),
+    radial-gradient(circle at 80% 70%,rgba(120,90,30,0.04),transparent 40%);
+}
+.cert-wrap::before{
+  content:"";position:absolute;
+  inset:clamp(0.4rem,0.9vw,0.85rem);
+  border:2px double #8a6e2a;
+  border-radius:clamp(0.3rem,0.7vw,0.6rem);
+  pointer-events:none;
+}
+.cert-wrap::after{
+  content:"";position:absolute;
+  inset:clamp(0.7rem,1.4vw,1.3rem);
+  border:1px solid rgba(138,110,42,0.45);
+  border-radius:clamp(0.25rem,0.55vw,0.5rem);
+  pointer-events:none;
+}
+.cert-corner{position:absolute;width:clamp(1.5rem,3vw,2.5rem);height:clamp(1.5rem,3vw,2.5rem);pointer-events:none}
+.cert-corner::before,.cert-corner::after{content:"";position:absolute;background:#8a6e2a}
+.cert-corner::before{width:100%;height:2px;top:50%;transform:translateY(-50%)}
+.cert-corner::after{width:2px;height:100%;left:50%;transform:translateX(-50%)}
+.cert-corner.tl{top:clamp(0.4rem,0.9vw,0.85rem);left:clamp(0.4rem,0.9vw,0.85rem)}
+.cert-corner.tr{top:clamp(0.4rem,0.9vw,0.85rem);right:clamp(0.4rem,0.9vw,0.85rem)}
+.cert-corner.bl{bottom:clamp(0.4rem,0.9vw,0.85rem);left:clamp(0.4rem,0.9vw,0.85rem)}
+.cert-corner.br{bottom:clamp(0.4rem,0.9vw,0.85rem);right:clamp(0.4rem,0.9vw,0.85rem)}
+.cert-logos{display:flex;justify-content:space-between;align-items:center;padding:0 clamp(1rem,2vw,2rem);position:relative;z-index:1}
+.cert-logos img{height:clamp(2rem,3.2vw,3rem);width:auto;filter:none;opacity:0.9}
+.cert-head{text-align:center;position:relative;z-index:1}
+.cert-eyebrow{font-family:var(--display);font-size:clamp(0.7rem,0.95vw,0.9rem);letter-spacing:0.35em;text-transform:uppercase;color:#8a6e2a;margin-bottom:0.4rem}
+.cert-title{font-family:var(--display);font-size:clamp(1.6rem,3.5vw,3rem);letter-spacing:0.18em;text-transform:uppercase;color:#3a2e15;line-height:1}
+.cert-rule{display:block;width:clamp(4rem,8vw,7rem);height:2px;background:#8a6e2a;margin:clamp(0.4rem,0.85vw,0.7rem) auto 0;border:none}
+.cert-body{text-align:center;position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(0.45rem,0.85vw,0.75rem)}
+.cert-line{font-size:clamp(0.85rem,1.15vw,1.05rem);color:#5a4720;line-height:1.45;letter-spacing:0.02em}
+.cert-name{font-family:var(--display);font-size:clamp(1.4rem,2.8vw,2.4rem);letter-spacing:0.1em;text-transform:uppercase;color:#3a2e15;line-height:1.05;padding:clamp(0.3rem,0.7vw,0.6rem) 0;border-top:1px dashed rgba(138,110,42,0.4);border-bottom:1px dashed rgba(138,110,42,0.4);margin:clamp(0.3rem,0.7vw,0.6rem) auto;display:inline-block;min-width:60%}
+.cert-course{font-family:var(--display);font-size:clamp(0.95rem,1.5vw,1.4rem);text-transform:uppercase;letter-spacing:0.05em;color:#3a2e15;line-height:1.15}
+.cert-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;padding:0 clamp(0.5rem,1vw,1.25rem);position:relative;z-index:1}
+.cert-sig{flex:1;text-align:left}
+.cert-sig-line{display:block;width:clamp(7rem,14vw,12rem);border-bottom:1px solid #8a6e2a;margin-bottom:0.3rem}
+.cert-sig-name{font-family:var(--display);font-size:clamp(0.75rem,1vw,0.92rem);letter-spacing:0.06em;text-transform:uppercase;color:#3a2e15;line-height:1.2}
+.cert-sig-role{font-size:clamp(0.7rem,0.9vw,0.82rem);color:#5a4720;line-height:1.3;font-style:italic}
+.cert-date{flex:1;text-align:right}
+.cert-date-label{font-family:var(--display);font-size:clamp(0.65rem,0.85vw,0.78rem);letter-spacing:0.18em;text-transform:uppercase;color:#8a6e2a;line-height:1.2;margin-bottom:0.2rem}
+.cert-date-val{font-family:var(--display);font-size:clamp(0.85rem,1.15vw,1.05rem);color:#3a2e15;letter-spacing:0.05em;line-height:1.2}
+.cert-seal{position:absolute;bottom:clamp(1rem,2vw,1.85rem);right:clamp(1rem,2vw,1.85rem);width:clamp(3rem,5.5vw,4.5rem);height:clamp(3rem,5.5vw,4.5rem);border:2px double #8a6e2a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:clamp(0.55rem,0.85vw,0.78rem);letter-spacing:0.15em;text-transform:uppercase;color:#8a6e2a;background:rgba(255,255,255,0.15);transform:rotate(-12deg);text-align:center;line-height:1;pointer-events:none}
+
+/* BRAINSTORM (.s-brain) — questions row */
+.s-brain .questions{display:flex;flex-direction:column;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,1.5rem)}
+.q{font-family:var(--display);font-size:clamp(1.2rem,2.6vw,2.25rem);line-height:1.15;letter-spacing:-0.01em;color:#fff;display:flex;gap:clamp(0.75rem,1.5vw,1.5rem);align-items:flex-start}
+.q .n{color:var(--accent);flex-shrink:0}
+
+/* ROADMAP (.road) — 3-step bugundan keyin */
+.road{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.road .step{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);position:relative;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s}
+.road .step .n{font-family:var(--display);font-size:clamp(1.75rem,3.5vw,2.75rem);color:var(--accent);line-height:1;letter-spacing:-0.04em}
+.road .step h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;margin-top:0.5rem;color:#fff}
+.road .step p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.7);margin-top:0.5rem}
+.road .step:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+
+/* SECURITY/RESOURCES (.sec) — 3-card */
+.sec{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.sec .item{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s}
+.sec .item .ico{font-size:clamp(1.75rem,3.5vw,2.5rem);color:var(--accent);margin-bottom:0.75rem}
+.sec .item h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff}
+.sec .item p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.75);margin-top:0.5rem}
+.sec .item:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+
+/* FLOW (.flow) — 4-step retrospective */
+.flow{display:flex;align-items:center;justify-content:center;gap:clamp(0.5rem,1vw,1rem);flex-wrap:nowrap;margin-top:clamp(1rem,2vw,2rem);overflow:hidden}
+.flow .step{flex:1;background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(0.85rem,1.6vw,1.4rem);text-align:center;min-width:0;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s}
+.flow .step.brain{background:linear-gradient(135deg,var(--accent),#1d4ed8);color:#fff;border-color:var(--accent)}
+.flow .step.brain .ico,.flow .step.brain h4,.flow .step.brain p{color:#fff}
+.flow .step .ico{font-size:clamp(1.5rem,3vw,2.2rem)}
+.flow .step h4{font-family:var(--display);font-size:clamp(0.85rem,1.4vw,1.15rem);text-transform:uppercase;letter-spacing:0.05em;margin-top:0.4rem;color:#fff}
+.flow .step p{font-size:clamp(0.7rem,1vw,0.9rem);line-height:1.4;color:rgba(255,255,255,0.7);margin-top:0.4rem}
+.flow .step:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+.flow .arrow{color:var(--accent);font-family:var(--display);font-size:clamp(1.2rem,2.4vw,1.8rem);flex-shrink:0}
+
+/* CLOSE-LIST (.close-list) — thank-you rows */
+.close-list{display:flex;flex-direction:column;gap:clamp(0.85rem,1.6vw,1.4rem);margin-top:clamp(1rem,2vw,1.5rem)}
+.close-row{display:flex;gap:clamp(0.75rem,1.5vw,1.25rem);align-items:flex-start;padding:clamp(0.85rem,1.6vw,1.4rem);background:rgba(255,255,255,0.04);border-left:4px solid var(--accent);border-radius:0 var(--r) var(--r) 0}
+.close-row .arrow{color:var(--accent);font-family:var(--display);font-size:clamp(1.2rem,2vw,1.5rem)}
+.close-row p{font-size:var(--body);line-height:1.55;color:#fff;font-weight:400}
+.close-row p strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.02em}
+
+/* Q&A */
+.s-qa .main{align-items:center;text-align:center}
+.qmark{font-family:var(--display);font-size:clamp(8rem,18vw,16rem);line-height:0.9;color:var(--accent);letter-spacing:-0.05em}
+
 /* Animations */
 @media (prefers-reduced-motion:no-preference){
   .slide.is-active .reveal{animation:up 0.7s cubic-bezier(0.16,1,0.3,1) both}
@@ -450,12 +607,13 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   </div>
   <div class="main">
     <div class="title-block reveal r2">
-      <span class="chip">Kun 2 · 16:30 — 17:45</span>
+      <span class="chip">Kun 2 · 17:15 — 17:45 + sertifikat</span>
       <h1 class="title-hero">
-        <span class="hl">Taqdimot</span><br>
-        ve yakuniy qism.
+        <span class="hl">Sertifikat</span><br>
+        va yo'lda<br>
+        ko'rishguncha.
       </h1>
-      <p class="tagline"><span class="accent-bar"></span>Guruhlarning AI yechimlari taqdimoti va sertifikat marosimi.</p>
+      <p class="tagline"><span class="accent-bar"></span>2 kun, 15 modul, 30+ atama. Endi siz bilan birga yopamiz.</p>
     </div>
   </div>
 </section>
@@ -470,7 +628,7 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
     <div class="eyebrow reveal r1">Agenda</div>
   </div>
   <div class="main">
-    <h2 class="h2 reveal r2">Mavzuning <span class="hl">yo'l xaritasi</span>.</h2>
+    <h2 class="h2 reveal r2">Yakuniy 4 ta <span class="hl">bo'lim</span>.</h2>
     <div class="phase-grid reveal r3">
 
       <button class="phase-card fragment">
@@ -478,11 +636,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">01</span>
         </div>
         <div>
-          <h3 class="phase-title">Guruh taqdimotlari</h3>
-          <p class="phase-desc">Har bir guruh prototipini namoyish qiladi.</p>
+          <h3 class="phase-title">Sayohat</h3>
+          <p class="phase-desc">2 kun, 4 bosqich, 15 modul — bir oynada ko'rib chiqamiz.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~30 daq</span>
+          <span class="phase-time">~5 daq</span>
         </div>
       </button>
 
@@ -491,11 +649,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">02</span>
         </div>
         <div>
-          <h3 class="phase-title">Maslahat</h3>
-          <p class="phase-desc">Mutaxassis fikri va savol-javob.</p>
+          <h3 class="phase-title">Lug'at quiz</h3>
+          <p class="phase-desc">30+ atamani 5 ta blokda jamoa bilan birga eslayb chiqamiz.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~15 daq</span>
+          <span class="phase-time">~12 daq</span>
         </div>
       </button>
 
@@ -504,11 +662,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">03</span>
         </div>
         <div>
-          <h3 class="phase-title">Sertifikat</h3>
-          <p class="phase-desc">Marosim va rasmiy qism.</p>
+          <h3 class="phase-title">Bugundan keyin</h3>
+          <p class="phase-desc">Kutilgan natija, 30 kunlik plan, davomi va resurslar.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~30 daq</span>
+          <span class="phase-time">~7 daq</span>
         </div>
       </button>
 
@@ -517,11 +675,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">04</span>
         </div>
         <div>
-          <h3 class="phase-title">Yakuniy so'z</h3>
-          <p class="phase-desc">Keyingi qadamlar va kontaktlar.</p>
+          <h3 class="phase-title">Sertifikat</h3>
+          <p class="phase-desc">Marosim, rahmat va xayrlashuv. Yo'lda ko'rishguncha.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~15 daq</span>
+          <span class="phase-time">~30+ daq</span>
         </div>
       </button>
 
@@ -529,18 +687,417 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   </div>
 </section>
 
+<!-- SLIDE 3 — SAYOHAT RETROSPECTIVE (.flow 4-step) -->
+<section class="slide s-flow">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2"><span class="hl">2 kun</span>, 4 bosqich, 15 modul.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Biz qaerdan boshlab, qayerga kelib qoldik. Birgina ko'zgu — keyin oldinga.</p>
+    <div class="flow reveal r3">
+      <div class="step"><div class="ico">🌅</div><h4>Day 1 · Erta</h4><p>Asoslar — modullar 1–4. AI nima, foyda, xavf, jarayon.</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">🛠️</div><h4>Day 1 · Kech</h4><p>Asboblar — modullar 5–8. Promt, kutubxona, platforma, n8n.</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><div class="ico">🧠</div><h4>Day 2 · Erta</h4><p>Tizimlar — modullar 9–12. RAG, agentlar, voice, pipeline.</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">🎓</div><h4>Day 2 · Kech</h4><p>Amaliyot — modullar 13–15. Keyslar, MVP, mana shu marosim.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 — 15 MODULES OVERVIEW (.modules-grid 5x3) -->
+<section class="slide s-modules">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main" style="align-self:stretch;justify-content:flex-start;display:flex;flex-direction:column;min-height:0">
+    <h2 class="h2 reveal r2">15 modul — bir <span class="hl">oynada</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Biz mana shu 15 ta to'xtovni bosib o'tdik. Birortasini eslamasangiz — qaytib ko'ramiz.</p>
+    <div class="modules-grid reveal r3">
+      <div class="mod-card featured"><span class="mod-num">01</span><div class="mod-name">Asoslar</div><span class="mod-key">RAG bot demo</span></div>
+      <div class="mod-card"><span class="mod-num">02</span><div class="mod-name">Use case</div><span class="mod-key">Skoring xaritasi</span></div>
+      <div class="mod-card"><span class="mod-num">03</span><div class="mod-name">Xavflar</div><span class="mod-key">Muvofiqlik</span></div>
+      <div class="mod-card"><span class="mod-num">04</span><div class="mod-name">Workflow</div><span class="mod-key">Jarayon zanjiri</span></div>
+      <div class="mod-card"><span class="mod-num">05</span><div class="mod-name">Promt</div><span class="mod-key">CoT · Few-shot</span></div>
+      <div class="mod-card featured"><span class="mod-num">06</span><div class="mod-name">Kutubxona</div><span class="mod-key">50+ shablon</span></div>
+      <div class="mod-card"><span class="mod-num">07</span><div class="mod-name">Platformalar</div><span class="mod-key">GPT · Claude · Gemini</span></div>
+      <div class="mod-card"><span class="mod-num">08</span><div class="mod-name">No-code</div><span class="mod-key">n8n · Zapier</span></div>
+      <div class="mod-card featured"><span class="mod-num">09</span><div class="mod-name">RAG qurish</div><span class="mod-key">Embedding</span></div>
+      <div class="mod-card"><span class="mod-num">10</span><div class="mod-name">Agentlar</div><span class="mod-key">Tool use</span></div>
+      <div class="mod-card"><span class="mod-num">11</span><div class="mod-name">Voice bot</div><span class="mod-key">Schema · STT</span></div>
+      <div class="mod-card"><span class="mod-num">12</span><div class="mod-name">Pipeline</div><span class="mod-key">Idempotent</span></div>
+      <div class="mod-card"><span class="mod-num">13</span><div class="mod-name">Real keyslar</div><span class="mod-key">JPMorgan · DBS</span></div>
+      <div class="mod-card featured"><span class="mod-num">14</span><div class="mod-name">MVP</div><span class="mod-key">Iteration</span></div>
+      <div class="mod-card featured"><span class="mod-num">15</span><div class="mod-name">Yakuniy</div><span class="mod-key">Sertifikat</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 — LUG'AT CHALLENGE INTRO (.s-brain) -->
+<section class="slide s-brain">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r2">Lug'at quiz · 5 blok</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)"><span class="hl">30+ atama</span> — birga eslayb chiqamiz.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Men atama aytaman — siz xorda javob aytasiz. Eslamasangiz — boshqa eslaydi. Qo'rqitmasangiz bo'ladi — bu imtihon emas, marosim.</p>
+    <div class="questions reveal r3">
+      <div class="q fragment"><span class="n">01</span><span>Atama ko'rsatildi → siz <span style="color:var(--accent-2)">2 soniya</span> o'ylaysiz → biz birga aytamiz.</span></div>
+      <div class="q fragment"><span class="n">02</span><span>Eslamadingiz? <span style="color:var(--accent-2)">Hech qisi yo'q</span> — yakuniy slaydda hammasi yana bir marta.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — LUG'AT QUIZ #1 · MODULLAR 1-3 -->
+<section class="slide s-quiz">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Quiz · Modullar 1 → 3</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)"><span class="hl">Asoslar</span> lug'ati.</h2>
+    <div class="dict dict-cols-3 reveal r3">
+      <div class="dict-card fragment"><span class="dict-tag">LLM</span><h3>Katta Til Modeli</h3><p>Bizning <strong>miya</strong> — AI'ning fikrlash qismi. Gemini, ChatGPT.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Promt</span><h3>Aniq buyruq</h3><p>AI'ga beradigan <strong>topshiriq</strong>. Yaxshi promt = yaxshi javob.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">API</span><h3>Ko'prik</h3><p>Ikki dastur orasidagi <strong>kanal</strong>. Telegram ↔ Gemini.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Use Case</span><h3>Qo'llash holati</h3><p>AI qo'yiladigan <strong>aniq vazifa</strong>. Mavhumlik yo'q.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Pilot</span><h3>Sinov loyihasi</h3><p><strong>Kichik versiya</strong>, ishlasa kengaytiramiz.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Hallucination</span><h3>Yolg'on javob</h3><p>AI <strong>o'ylab topgan</strong> ma'lumot. RAG bu xatoni yo'q qiladi.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7 — LUG'AT QUIZ #2 · MODULLAR 4-6 -->
+<section class="slide s-quiz">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Quiz · Modullar 4 → 6</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)"><span class="hl">Promt va jarayon</span> lug'ati.</h2>
+    <div class="dict dict-cols-3 reveal r3">
+      <div class="dict-card fragment"><span class="dict-tag">Workflow</span><h3>Jarayon zanjiri</h3><p>A → B → C — <strong>bosqichma-bosqich</strong> ish.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Decompose</span><h3>Vazifani bo'lish</h3><p>Katta ishni <strong>kichkina bosqichlarga</strong> ajratish.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Few-shot</span><h3>Misolli o'rgatish</h3><p>"Mana 2-3 misol, <strong>endi xuddi shunday qil</strong>".</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">CoT</span><h3>Fikr zanjiri</h3><p>"<strong>Bosqichma-bosqich o'yla</strong>, keyin javob ber".</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">System</span><h3>Tizim promti</h3><p>AI'ning <strong>rolini</strong> belgilash — har dialogda boshida.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Template</span><h3>Shablon promti</h3><p>[Kvadrat qavs]'larli <strong>tayyor matn</strong> — to'ldirib ishlatamiz.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8 — LUG'AT QUIZ #3 · MODULLAR 7-9 -->
+<section class="slide s-quiz">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Quiz · Modullar 7 → 9</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)"><span class="hl">Platformalar va RAG</span> lug'ati.</h2>
+    <div class="dict dict-cols-3 reveal r3">
+      <div class="dict-card fragment"><span class="dict-tag">Token</span><h3>So'z bo'lagi</h3><p>AI <strong>shu birlikda</strong> hisoblaydi. 1 sahifa A4 ≈ 650 token.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Context</span><h3>Kontekst oynasi</h3><p>AI <strong>bir martada</strong> qancha matn o'qiy oladi. Gemini ~1M.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Trigger</span><h3>Ish boshlovchi</h3><p>Soat 9:00, email keldi, forma to'ldirildi — <strong>signal</strong>.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Webhook</span><h3>Xabar nuqtasi</h3><p>Boshqa dasturdan kelgan <strong>xabar</strong> qabul qiladigan URL.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">RAG</span><h3>Qidir + javob ber</h3><p>Hujjatga qarab javob — <strong>shpargalka bilan a'lochi</strong>.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Embedding</span><h3>Vektor ko'rinishi</h3><p>Matnni <strong>raqamga</strong> aylantirish — qidirish uchun.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9 — LUG'AT QUIZ #4 · MODULLAR 10-12 -->
+<section class="slide s-quiz">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Quiz · Modullar 10 → 12</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)"><span class="hl">Agent va pipeline</span> lug'ati.</h2>
+    <div class="dict dict-cols-3 reveal r3">
+      <div class="dict-card fragment"><span class="dict-tag">Agent</span><h3>Fikrlovchi AI</h3><p>Faqat javob bermaydi — <strong>ish ham bajaradi</strong>.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Tool Use</span><h3>Asbob ishlatish</h3><p>AI'ga <strong>kalkulyator, baza, email</strong> kabi vositalar.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">STT</span><h3>Ovoz → Matn</h3><p>Bankir ovoz qoldiradi, bot <strong>matnga o'giradi</strong>.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Schema</span><h3>JSON shabloni</h3><p>AI'ga maydonlarni <strong>qat'iy belgilash</strong>. Function calling.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Pipeline</span><h3>Bosqichlar zanjiri</h3><p>Bitta promt'da hammasi emas — <strong>5 ta aniq bosqich</strong>.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Idempotent</span><h3>Qaytarilsa ham xato yo'q</h3><p>Bir xil kirish → <strong>bir xil chiqish</strong>. 2 marta yuborilmaydi.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10 — LUG'AT QUIZ #5 · MODULLAR 13-14 -->
+<section class="slide s-quiz">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Quiz · Modullar 13 → 14</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)"><span class="hl">Real loyihalar</span> lug'ati.</h2>
+    <div class="dict dict-2 reveal r3">
+      <div class="dict-card fragment"><span class="dict-tag">AI Adoption</span><h3>Foydalanish darajasi</h3><p>Texnologiyani sotib olish emas — <strong>kunlik foydalanish</strong>. McKinsey 2024: 70% pilot, faqat 14% production.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Production-grade</span><h3>Real ishda ishonchli</h3><p>Test bo'lib turgan emas — <strong>real mijoz xizmati</strong>. Audit log, role-based access, monitoring.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">MVP</span><h3>Eng kichik ishlaydigan</h3><p>6 oyga mukammal yechim emas — <strong>4 haftaga ishlaydigan</strong> versiya. Sinab boshlay olamiz.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Iteration</span><h3>Qadam-qadam yaxshilash</h3><p>Birinchi versiyada <strong>hammasi to'g'ri</strong> bo'lmasligi tabiiy. Bilamiz, takomillashtiramiz.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11 — KUTILGAN NATIJA (.cando) -->
+<section class="slide s-cando">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Bugundan <span class="hl">boshlay olasiz</span> — bugun emas.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Kutilgan natijani aniq belgilaymiz: hayajon bilan, lekin ehtiyot.</p>
+    <div class="cando reveal r3">
+      <div class="cando-col fragment">
+        <div class="cando-tag">✓ Bugundan boshlay olasiz</div>
+        <ul>
+          <li>ChatGPT/Claude/Gemini'ga bo'lim vazifasini berish</li>
+          <li>Promt yozishda Few-shot va CoT'ni ishlatish</li>
+          <li>1 ta jarayonni xaritalash (Workflow)</li>
+          <li>Promt kutubxonasidan tayyor shablon olish</li>
+          <li>Boshliqqa "MVP" deb taqdim eta olish</li>
+        </ul>
+      </div>
+      <div class="cando-col cant fragment">
+        <div class="cando-tag">✗ Hali shoshilmaslik kerak</div>
+        <ul>
+          <li>Tayyor agentni mijoz bilan ishga tushirish</li>
+          <li>Mijoz ma'lumotini tashqi AI'ga yuborish</li>
+          <li>Production'da test qilmasdan deploy qilish</li>
+          <li>"AI hammasini hal qiladi" deb taqdim etish</li>
+          <li>Ishni AI'ga butunlay topshirish</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12 — 30 KUN KEYIN (.road 3-step) -->
+<section class="slide s-road">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2"><span class="hl">30 kun</span> keyin — sizning yo'lingiz.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Aniq, qo'lga tushadigan rejim. Boshlig'ingiz tezligini farqlatadi.</p>
+    <div class="road reveal r3">
+      <div class="step">
+        <div class="n">01</div>
+        <h3>Hafta 1 — Topish</h3>
+        <p>Bo'limingizda 3 ta vaqt o'g'irlaydigan jarayonni ro'yxatlang. Use case skoringini qo'llang (2-modul). Eng yaxshi 1 ta'ni tanlang.</p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h3>Hafta 2–3 — Sinash</h3>
+        <p>1-modulning RAG bot prototipini bo'lim hujjati bilan moslang. 5 kishi bilan sinab ko'ring. Promt shablonlarini qo'shing.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h3>Hafta 4 — Joylashtirish</h3>
+        <p>Muvofiqlik / IT / xavfsizlik bilan kelishing. Audit log, role-based access yoqib qo'ying. Production-grade qiling.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13 — DAVOMI VA RESURSLAR (.sec 3-card) -->
+<section class="slide s-sec">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2"><span class="hl">Davomi</span> va resurslar.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Biz yo'qolmaymiz. Bu kurs bittagina dars emas — boshlanish.</p>
+    <div class="sec reveal r3">
+      <div class="item"><div class="ico">📚</div><h3>Promt kutubxonasi</h3><p>6-modulda ko'rgan 50+ shablon — Notion'da yashaydi. Linki Telegram guruhida. Yangi shablon kerak bo'lsa — so'rang, qo'shamiz.</p></div>
+      <div class="item"><div class="ico">💬</div><h3>Telegram yordam guruhi</h3><p>@cb_ai_seminar — savol turishi mumkin. Riskaliev va ishtirokchilar javob beradi. Birinchi 30 kun ayniqsa faol.</p></div>
+      <div class="item"><div class="ico">🎓</div><h3>Mohirdev kurslari</h3><p>Chuqur kirib bormoqchi bo'lsangiz — AI Engineering bootcamp. Bank xodimlariga 20% chegirma kodi: <strong>CB2026</strong>.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 14 — SERTIFIKAT (parchment mockup, CSS only) -->
+<section class="slide s-cert">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="cert-wrap reveal r2">
+      <span class="cert-corner tl"></span>
+      <span class="cert-corner tr"></span>
+      <span class="cert-corner bl"></span>
+      <span class="cert-corner br"></span>
+      <div class="cert-logos">
+        <img src="../_shared/logo-ministry.png" alt="Vazirlik">
+        <img src="../_shared/logo-digital-ed.png" alt="Markaz">
+      </div>
+      <div class="cert-head">
+        <div class="cert-eyebrow">Markaziy Bank seminari</div>
+        <div class="cert-title">Sertifikat</div>
+        <hr class="cert-rule">
+      </div>
+      <div class="cert-body">
+        <p class="cert-line">Ushbu hujjat bilan tasdiqlanadi:</p>
+        <div class="cert-name">[ ISHTIROKCHI ISMI ]</div>
+        <p class="cert-line">quyidagi kursni muvaffaqiyatli tamomladi:</p>
+        <div class="cert-course">Bank sektori uchun sun'iy intellekt<br><span style="font-size:0.7em;letter-spacing:0.08em">15 modul · 2 kun · 30+ atama</span></div>
+      </div>
+      <div class="cert-foot">
+        <div class="cert-sig">
+          <span class="cert-sig-line"></span>
+          <div class="cert-sig-name">Riskaliev Murad</div>
+          <div class="cert-sig-role">NLP Engineer · Mohirdev</div>
+        </div>
+        <div class="cert-date">
+          <div class="cert-date-label">Sana</div>
+          <div class="cert-date-val">[ DD.MM.2026 ]</div>
+        </div>
+      </div>
+      <div class="cert-seal">CB<br>2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 15 — RAHMAT (.s-close) -->
+<section class="slide s-close">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2"><span class="hl">Rahmat</span>.</h2>
+    <div class="close-list reveal r3">
+      <div class="close-row"><span class="arrow">💙</span><p><strong>Vaqtingiz uchun</strong> — ikki kun, samarali ishingizdan ajratib oldi. Bu hurmatga loyiq.</p></div>
+      <div class="close-row"><span class="arrow">💙</span><p><strong>Savollaringiz uchun</strong> — har savol meni va boshqa ishtirokchilarni o'qitdi. Keyingi seminarda eslab gapiraman.</p></div>
+      <div class="close-row"><span class="arrow">💙</span><p><strong>Qaytib kelishingiz uchun</strong> — Telegram'da, ofisda, keyingi yig'inlarda. Birinchi MVP'ni qurganingizda — ekran rasmi yuboring.</p></div>
+    </div>
+    <div class="recap reveal r3">
+      <div class="recap-tag">Kontakt · birga ko'rishamiz</div>
+      <div class="recap-terms">
+        <div class="recap-term"><strong>Email</strong> <span class="ans">murod@mohir.dev</span></div>
+        <div class="recap-term"><strong>Telegram</strong> <span class="ans">@riskaliev</span></div>
+        <div class="recap-term"><strong>Brand</strong> <span class="ans">crea7iveai</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 16 — LUG'AT RECAP YAKUNIY (30 atama bir oynada) -->
+<section class="slide s-gloss">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main" style="align-self:stretch;justify-content:flex-start;display:flex;flex-direction:column;min-height:0">
+    <h2 class="h2 reveal r2"><span class="hl">30 atama</span> — bir oynada.</h2>
+    <p class="lead reveal r2" style="margin-top:0.3rem">Telefoningizdan rasm oling. Bu — sizning kichik lug'atingiz.</p>
+    <div class="gloss-grid reveal r3">
+      <div class="gloss-card featured"><div class="g-term">LLM</div><div class="g-def">Katta Til Modeli</div></div>
+      <div class="gloss-card featured"><div class="g-term">Promt</div><div class="g-def">Aniq buyruq</div></div>
+      <div class="gloss-card featured"><div class="g-term">API</div><div class="g-def">Ko'prik</div></div>
+      <div class="gloss-card"><div class="g-term">Use Case</div><div class="g-def">Qo'llash holati</div></div>
+      <div class="gloss-card"><div class="g-term">Pilot</div><div class="g-def">Sinov loyihasi</div></div>
+      <div class="gloss-card"><div class="g-term">Hallucination</div><div class="g-def">AI yolg'oni</div></div>
+      <div class="gloss-card"><div class="g-term">Data Masking</div><div class="g-def">Maxfiy ma'lumotni yashirish</div></div>
+      <div class="gloss-card"><div class="g-term">Workflow</div><div class="g-def">Jarayon zanjiri</div></div>
+      <div class="gloss-card"><div class="g-term">Decompose</div><div class="g-def">Vazifani bo'lish</div></div>
+      <div class="gloss-card"><div class="g-term">Few-shot</div><div class="g-def">Misolli o'rgatish</div></div>
+      <div class="gloss-card"><div class="g-term">CoT</div><div class="g-def">Fikr zanjiri</div></div>
+      <div class="gloss-card"><div class="g-term">System Prompt</div><div class="g-def">AI rolini belgilash</div></div>
+      <div class="gloss-card"><div class="g-term">Template</div><div class="g-def">Tayyor shablon</div></div>
+      <div class="gloss-card featured"><div class="g-term">Token</div><div class="g-def">So'z bo'lagi</div></div>
+      <div class="gloss-card featured"><div class="g-term">Context</div><div class="g-def">Kontekst oynasi</div></div>
+      <div class="gloss-card"><div class="g-term">Trigger</div><div class="g-def">Ish boshlovchi signal</div></div>
+      <div class="gloss-card"><div class="g-term">Webhook</div><div class="g-def">Xabar nuqtasi (URL)</div></div>
+      <div class="gloss-card featured"><div class="g-term">RAG</div><div class="g-def">Qidir + javob ber</div></div>
+      <div class="gloss-card featured"><div class="g-term">Embedding</div><div class="g-def">Vektor ko'rinishi</div></div>
+      <div class="gloss-card"><div class="g-term">Agent</div><div class="g-def">Fikrlovchi AI</div></div>
+      <div class="gloss-card"><div class="g-term">Tool Use</div><div class="g-def">Asbob ishlatish</div></div>
+      <div class="gloss-card"><div class="g-term">STT</div><div class="g-def">Ovoz → matn</div></div>
+      <div class="gloss-card"><div class="g-term">Function Calling</div><div class="g-def">JSON schema</div></div>
+      <div class="gloss-card"><div class="g-term">Pipeline</div><div class="g-def">Bosqichlar zanjiri</div></div>
+      <div class="gloss-card"><div class="g-term">Idempotent</div><div class="g-def">Qaytarilsa xato yo'q</div></div>
+      <div class="gloss-card"><div class="g-term">Adoption</div><div class="g-def">Foydalanish darajasi</div></div>
+      <div class="gloss-card"><div class="g-term">Production</div><div class="g-def">Real ishda ishonchli</div></div>
+      <div class="gloss-card featured"><div class="g-term">MVP</div><div class="g-def">Eng kichik ishlaydigani</div></div>
+      <div class="gloss-card featured"><div class="g-term">Iteration</div><div class="g-def">Qadam-qadam yaxshilash</div></div>
+      <div class="gloss-card featured"><div class="g-term">Glossary</div><div class="g-def">Sizning yangi tilingiz</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 17 — Q&A · YO'LDA KO'RISHGUNCHA -->
+<section class="slide s-qa">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="qmark reveal r2">?</div>
+    <h2 class="h2 reveal r3" style="text-align:center">Sayohat tugadi. <span class="hl">Savollar</span> kutib turibdi.</h2>
+    <p class="reveal r3" style="text-align:center;margin-top:clamp(1.5rem,3vw,2.5rem);font-family:var(--display);font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:0.1em;color:var(--accent-2)">murod@mohir.dev · @riskaliev · crea7iveai</p>
+  </div>
+</section>
+
 </main>
 
 <div class="hud">
-  <span class="counter">01 / 02</span>
+  <span class="counter">01 / 17</span>
   <div class="dots"></div>
   <div class="speaker"><span class="dot"></span><strong>Riskaliev Murad</strong> · NLP Engineer · Mohirdev</div>
 </div>
 
 <script>
 const TITLES = [
-  'Title · 15-modul',
-  "Yo'l xaritasi · Agenda"
+  'Title · Sertifikat va yo\'lda ko\'rishguncha',
+  "Agenda · Yakuniy 4 bo'lim",
+  'Sayohat · 2 kun · 4 bosqich',
+  '15 modul · bir oynada',
+  "Lug'at challenge · Eslay olasizmi?",
+  "Quiz #1 · Modullar 1-3 · Asoslar",
+  "Quiz #2 · Modullar 4-6 · Promt va jarayon",
+  "Quiz #3 · Modullar 7-9 · Platformalar va RAG",
+  "Quiz #4 · Modullar 10-12 · Agent va pipeline",
+  "Quiz #5 · Modullar 13-14 · Real loyihalar",
+  "Bugundan boshlay olasiz · Can/Cannot",
+  "30 kun keyin · 3 hafta plan",
+  "Davomi va resurslar",
+  "Sertifikat",
+  "Rahmat · Speaker kontakt",
+  "30 atama · yakuniy lug'at",
+  "Q&A · Yo'lda ko'rishguncha"
 ];
 
 const slides = [...document.querySelectorAll('.slide')];

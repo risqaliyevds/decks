@@ -10,6 +10,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:'Space Grotesk',sans-serif}
+body,p,li,.lead{letter-spacing:0.018em}
 
 :root{
   --bg:#020A24;--bg-2:#06173B;--bg-3:#0B2D79;
@@ -422,6 +423,116 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   box-shadow:0 12px 28px -12px rgba(37,99,235,0.3);
 }
 
+/* === 11-deck additions (no locked-token edits) === */
+
+/* DICT — atama dictionary (2-card variant for paired atama) */
+.dict{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.dict.dict-2{grid-template-columns:1fr 1fr}
+.dict-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
+.dict-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.dict-card .dict-tag{display:inline-block;font-family:var(--display);font-size:clamp(1.4rem,2.8vw,2.4rem);letter-spacing:0.02em;color:var(--accent-2);text-transform:uppercase;line-height:1;margin-bottom:0.75rem}
+.dict-card h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:0.6rem}
+.dict-card p{font-size:var(--body);line-height:1.55;color:rgba(255,255,255,0.78)}
+.dict-card p strong{color:var(--accent-2);font-weight:500}
+.dict-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+
+/* CANDO — STT to'g'ri/xato 2-column */
+.cando{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.cando-col{background:rgba(255,255,255,0.04);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2rem);border-left:4px solid var(--accent);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,background 0.3s}
+.cando-col.cant{border-left-color:#ff4040;background:rgba(255,64,64,0.06)}
+.cando-col .cando-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.85rem}
+.cando-col.cant .cando-tag{color:#ff6060}
+.cando-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:clamp(0.55rem,1vw,0.85rem)}
+.cando-col li{font-size:var(--body);line-height:1.5;color:#fff;padding-left:1.25rem;position:relative}
+.cando-col li::before{content:"·";position:absolute;left:0.4rem;color:var(--accent);font-weight:700;font-size:1.4em;line-height:1}
+.cando-col.cant li::before{color:#ff6060}
+.cando-col:hover{transform:translateY(-3px);box-shadow:0 12px 28px -12px rgba(37,99,235,0.3)}
+.cando-col.cant:hover{box-shadow:0 12px 28px -12px rgba(255,64,64,0.3)}
+
+/* ROAD — 4-step variant for schema rules */
+.road.road-4{grid-template-columns:repeat(4,1fr)}
+
+/* BENEFITS — 4-col variant for 8-cell schema example */
+.benefits.benefits-4{grid-template-columns:repeat(4,1fr)}
+.benefits.benefits-4 .benefit{padding:clamp(0.9rem,1.7vw,1.45rem)}
+.benefits.benefits-4 .benefit .stat{font-size:clamp(1.1rem,1.8vw,1.55rem);font-family:'JetBrains Mono','Consolas',monospace;letter-spacing:0;color:var(--accent-2)}
+.benefits.benefits-4 .benefit h3{font-size:clamp(0.78rem,1.1vw,0.95rem);margin-top:0.3rem;color:#fff}
+.benefits.benefits-4 .benefit p{font-size:clamp(0.7rem,0.9vw,0.85rem);margin-top:0.35rem;line-height:1.4}
+
+/* TEMPLATE BOX — JSON / monospace card */
+.tpl-wrap{display:grid;grid-template-columns:1fr;gap:clamp(0.7rem,1.2vw,1rem);margin-top:clamp(0.75rem,1.4vw,1.1rem);min-height:0}
+.tpl-meta{display:flex;align-items:center;gap:clamp(0.5rem,1vw,0.85rem);flex-wrap:wrap}
+.tpl-meta .tpl-cat{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2)}
+.tpl-meta .tpl-id{font-family:var(--display);font-size:var(--small);letter-spacing:0.1em;color:var(--mute)}
+.template-box{
+  background:var(--ink);
+  color:rgba(255,255,255,0.86);
+  border:1px solid var(--soft);
+  border-left:3px solid var(--accent);
+  border-radius:var(--r);
+  padding:clamp(0.85rem,1.6vw,1.35rem) clamp(1rem,1.8vw,1.6rem);
+  font-family:'JetBrains Mono','Consolas',monospace;
+  font-size:clamp(0.72rem,0.98vw,0.92rem);
+  line-height:1.55;
+  white-space:pre-wrap;
+  overflow:auto;
+  position:relative;
+  box-shadow:0 18px 40px -20px rgba(2,10,36,0.8) inset;
+  max-height:100%;
+}
+.template-box .ph{color:var(--accent-2);background:rgba(96,165,250,0.1);border:1px solid rgba(96,165,250,0.25);padding:0.05em 0.35em;border-radius:0.3em;font-weight:500}
+.template-box .key{color:var(--accent-glow);font-weight:500}
+.template-box .str{color:var(--accent-2)}
+.template-box .com{color:var(--mute);font-style:italic}
+.tpl-hint{font-size:var(--small);color:var(--mute);font-style:italic;margin-top:clamp(0.4rem,0.8vw,0.65rem);letter-spacing:0.02em}
+
+/* CANVAS GRID — 2x2 worksheet preview */
+.canvas-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:clamp(0.7rem,1.3vw,1.15rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)}
+.canvas-cell{background:linear-gradient(135deg,rgba(37,99,235,0.12),rgba(255,255,255,0.04));border:2px dashed rgba(96,165,250,0.7);border-radius:clamp(0.5rem,0.9vw,0.85rem);padding:clamp(0.95rem,1.7vw,1.4rem);min-height:0;box-shadow:0 8px 24px -10px rgba(37,99,235,0.25)}
+.canvas-cell .canvas-tag{display:flex;align-items:center;gap:0.5rem;font-family:var(--display);font-size:clamp(0.95rem,1.35vw,1.2rem);letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-2);margin-bottom:0.55rem}
+.canvas-cell .canvas-tag .ico{font-size:clamp(1.1rem,1.7vw,1.5rem)}
+.canvas-cell p{font-size:clamp(0.9rem,1.2vw,1.1rem);line-height:1.5;color:rgba(255,255,255,0.85);font-style:italic}
+
+/* BRAINSTORM questions */
+.s-brain .questions{display:flex;flex-direction:column;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,1.5rem)}
+.q{font-family:var(--display);font-size:clamp(1.2rem,2.6vw,2.25rem);line-height:1.15;letter-spacing:-0.01em;color:#fff;display:flex;gap:clamp(0.75rem,1.5vw,1.5rem);align-items:flex-start}
+.q .n{color:var(--accent);flex-shrink:0}
+
+/* CLOSING — recap row */
+.s-close .recap{margin-top:clamp(1rem,2vw,1.4rem);padding-top:clamp(0.85rem,1.5vw,1.25rem);border-top:1px solid var(--soft);display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.5rem);flex-wrap:wrap}
+.s-close .recap-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);flex-shrink:0}
+.s-close .recap-terms{display:flex;gap:clamp(1rem,2vw,2rem);flex-wrap:wrap;flex:1}
+.s-close .recap-term{font-size:var(--body);color:rgba(255,255,255,0.7);line-height:1.4}
+.s-close .recap-term strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-right:0.5em;font-weight:400}
+.s-close .recap-term .ans{color:var(--accent-2)}
+
+/* HOOK 11 — voice waveform mockup */
+.voice-wave{background:#fff;border-radius:var(--r);width:100%;aspect-ratio:1.25;display:flex;align-items:center;justify-content:center;gap:clamp(0.18rem,0.4vw,0.32rem);padding:clamp(1rem,2vw,1.5rem);position:relative;box-shadow:0 30px 70px -20px rgba(37,99,235,0.5),0 0 0 1px rgba(96,165,250,0.25),0 0 60px -10px rgba(37,99,235,0.35)}
+.voice-wave::after{content:"";position:absolute;inset:-8px;border-radius:calc(var(--r) + 8px);background:linear-gradient(135deg,var(--accent),var(--accent-glow));z-index:-1;opacity:0.35;filter:blur(20px)}
+.voice-wave .bar{display:inline-block;width:clamp(0.25rem,0.55vw,0.45rem);background:linear-gradient(180deg,var(--accent),#1d4ed8);border-radius:99px;animation:wavep 1.4s ease-in-out infinite}
+.voice-wave .bar:nth-child(1){height:18%;animation-delay:0s}
+.voice-wave .bar:nth-child(2){height:38%;animation-delay:0.06s}
+.voice-wave .bar:nth-child(3){height:62%;animation-delay:0.12s}
+.voice-wave .bar:nth-child(4){height:84%;animation-delay:0.18s}
+.voice-wave .bar:nth-child(5){height:54%;animation-delay:0.24s}
+.voice-wave .bar:nth-child(6){height:72%;animation-delay:0.3s}
+.voice-wave .bar:nth-child(7){height:44%;animation-delay:0.36s}
+.voice-wave .bar:nth-child(8){height:88%;animation-delay:0.42s}
+.voice-wave .bar:nth-child(9){height:60%;animation-delay:0.48s}
+.voice-wave .bar:nth-child(10){height:36%;animation-delay:0.54s}
+.voice-wave .bar:nth-child(11){height:52%;animation-delay:0.6s}
+.voice-wave .bar:nth-child(12){height:24%;animation-delay:0.66s}
+.voice-wave .bar:nth-child(13){height:70%;animation-delay:0.72s}
+.voice-wave .bar:nth-child(14){height:46%;animation-delay:0.78s}
+.voice-wave .bar:nth-child(15){height:30%;animation-delay:0.84s}
+@keyframes wavep{0%,100%{transform:scaleY(0.6)}50%{transform:scaleY(1.05)}}
+.voice-meta{position:absolute;bottom:clamp(0.5rem,1vw,0.85rem);left:50%;transform:translateX(-50%);font-family:var(--display);font-size:clamp(0.65rem,0.9vw,0.85rem);letter-spacing:0.18em;text-transform:uppercase;color:var(--ink);background:rgba(255,255,255,0.85);padding:0.25rem 0.6rem;border-radius:99px}
+
+/* Banking 8-cell example layout */
+.audio-quote{background:rgba(255,255,255,0.04);border-left:3px solid var(--accent);border-radius:var(--r);padding:clamp(0.85rem,1.6vw,1.35rem) clamp(1rem,1.8vw,1.6rem);font-style:italic;color:rgba(255,255,255,0.85);font-size:clamp(0.85rem,1.15vw,1.05rem);line-height:1.55;margin-top:clamp(0.75rem,1.4vw,1.1rem)}
+.audio-quote strong{color:var(--accent-2);font-style:normal;font-weight:500}
+.audio-quote .ico{margin-right:0.4rem}
+
 /* Animations */
 @media (prefers-reduced-motion:no-preference){
   .slide.is-active .reveal{animation:up 0.7s cubic-bezier(0.16,1,0.3,1) both}
@@ -450,12 +561,12 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   </div>
   <div class="main">
     <div class="title-block reveal r2">
-      <span class="chip">Kun 2 · 11:00 — 12:00</span>
+      <span class="chip">Kun 2 · 14:00 — 15:00</span>
       <h1 class="title-hero">
         Bank uchun<br>
         <span class="hl">AI agenti dizayni.</span>
       </h1>
-      <p class="tagline"><span class="accent-bar"></span>Mijoz xizmati uchun aqlli agent prototipini birgalikda dizaynlaymiz.</p>
+      <p class="tagline"><span class="accent-bar"></span>Voice memo → CRM. Bankir gapiradi — bot to'ldirib qo'yadi.</p>
     </div>
   </div>
 </section>
@@ -478,11 +589,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">01</span>
         </div>
         <div>
-          <h3 class="phase-title">Use-case</h3>
-          <p class="phase-desc">Qaysi muammo agent uchun yaxshi nomzod.</p>
+          <h3 class="phase-title">Voice bot</h3>
+          <p class="phase-desc">Nima uchun voice memo? Live demo, qog'oz forma vs ovoz farqini ko'ramiz.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~13 daq</span>
+          <span class="phase-time">~9 daq</span>
         </div>
       </button>
 
@@ -491,11 +602,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">02</span>
         </div>
         <div>
-          <h3 class="phase-title">Arxitektura</h3>
-          <p class="phase-desc">Agentning tool va memory dizayni.</p>
+          <h3 class="phase-title">STT</h3>
+          <p class="phase-desc">Ovoz qanday matnga aylanadi? Whisper, Gemini, ElevenLabs — tanlov mezonlari.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~15 daq</span>
+          <span class="phase-time">~10 daq</span>
         </div>
       </button>
 
@@ -504,8 +615,8 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">03</span>
         </div>
         <div>
-          <h3 class="phase-title">Promtlar</h3>
-          <p class="phase-desc">System prompt va tool descriptions yozish.</p>
+          <h3 class="phase-title">Schema</h3>
+          <p class="phase-desc">AI'ga aniq formatdagi JSON yozishga majburlash. 4 qoida, real bank misoli.</p>
         </div>
         <div class="phase-foot">
           <span class="phase-time">~17 daq</span>
@@ -517,11 +628,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">04</span>
         </div>
         <div>
-          <h3 class="phase-title">Test</h3>
-          <p class="phase-desc">Agentni 5 ta turli savol bilan sinab ko'ramiz.</p>
+          <h3 class="phase-title">Birga loyihalash</h3>
+          <p class="phase-desc">Sifat, privacy va stol bo'yicha o'z bo'limingiz uchun schema canvas.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~15 daq</span>
+          <span class="phase-time">~24 daq</span>
         </div>
       </button>
 
@@ -529,10 +640,387 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   </div>
 </section>
 
+<!-- SLIDE 3 — HOOK · Live voice memo demo -->
+<section class="slide s-hook">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="voice-wave reveal r2">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      <span class="voice-meta">0:15 · Telegram voice</span>
+    </div>
+    <div class="reveal r3">
+      <span class="chip-out" style="background:transparent">Live demo · 15 sek</span>
+      <h2 class="h2" style="margin-top:clamp(0.6rem,1.2vw,1rem)">Bankir gapiradi — <span class="hl">bot eslab qoladi</span>.</h2>
+      <div class="demo-msg">"Aliyev Vali bilan uchrashdim. Avtokredit so'ramoqda — 200 mln so'm, 12 oy. Garov: kvartira. Hujjatlarni ertaga olib keladi."</div>
+      <p style="margin-top:clamp(0.7rem,1.4vw,1.15rem);font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2)">→ 15 sek keyin: Sheets'da yangi qator paydo bo'ladi</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 — Voice memo muammosi -->
+<section class="slide s-compare">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Avval <span class="hl">15 daqiqa</span>.<br>Hozir 15 sekund.</h2>
+    <p class="lead reveal r2">Ko'pchilik bankir uchrashuvdan qaytib formani xotirasidan tiklab yozadi. Yo'lda kelgan tafsilotlar yo'qoladi yoki tartibsiz tushadi. Voice memo bu tirqishni yopadi.</p>
+    <div class="compare reveal r3">
+      <div class="col"><h4>Avval · qog'oz forma</h4><p>📋 Stolda 15 daq<br>esdan chiqqan tafsilot<br>1 hafta kechikib kiritish</p></div>
+      <div class="vs">→</div>
+      <div class="col win"><h4>Hozir · voice memo</h4><p>🎙 Yo'lda 15 sek<br>real vaqtda yodga keladi<br>shu daqiqada CRM'da</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 — Lug'at · STT + Schema (.dict.dict-2) -->
+<section class="slide s-dict">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Bankir uchun AI lug'ati · 11-modul</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Ikki so'z — agentning <span class="hl">eshituv va xotirasi</span>.</h2>
+    <p class="lead reveal r2">Bu modulda yangi 2 atama. Voice bot ularsiz qurilmaydi. Hozir bir marta tushunsak — keyingi 13 slayd silliq o'tadi.</p>
+    <div class="dict dict-2 reveal r3">
+      <div class="dict-card fragment">
+        <span class="dict-tag">STT</span>
+        <h3>Speech-to-Text · Ovoz → Matn</h3>
+        <p>Telegramdagi 15 sekundlik ovozni 2 jumla <strong>matnga</strong> aylantiradigan AI modeli. Misol: <strong>Whisper</strong> (OpenAI), <strong>Gemini Flash</strong> (Google).</p>
+      </div>
+      <div class="dict-card fragment">
+        <span class="dict-tag">Schema · FC</span>
+        <h3>Schema + Function Calling</h3>
+        <p><strong>Schema</strong> — CRM uchun maydonlar ro'yxati va qoidasi. <strong>Function Calling</strong> — model shu qoidaga mos JSON qaytarishi uchun ishlatiladigan texnik usul. Validatsiya bo'sh yoki noto'g'ri maydonni aniqlaydi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — STT modellari (.sec 3-card) -->
+<section class="slide s-sec">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Qaysi <span class="hl">quloqni</span> tanlaymiz?</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">3 ta yetakchi STT modeli. Har birining kuchli tomoni va narxi bor. Bank uchun aniq tavsiya — pastda.</p>
+    <div class="sec reveal r3">
+      <div class="item fragment">
+        <div class="ico">🎙</div>
+        <h3>Whisper · OpenAI</h3>
+        <p>Ochiq kodli, eng keng tarqalgan. O'zbek tilini o'rta darajada tushunadi. Self-host mumkin — yopiq konturda saqlanadi.</p>
+      </div>
+      <div class="item fragment" style="border-color:rgba(96,165,250,0.45);background:rgba(37,99,235,0.08)">
+        <div class="ico">✨</div>
+        <h3>Gemini Flash · Google</h3>
+        <p>Audio formatni to'g'ridan-to'g'ri tushunadi. Bugungi seminar demosi shu model ustida ko'rsatiladi. n8n bilan tabiiy bog'lanadi.</p>
+      </div>
+      <div class="item fragment">
+        <div class="ico">🎯</div>
+        <h3>ElevenLabs Scribe</h3>
+        <p>Premium yo'l. Speaker diarization (kim gapirganini ajratish) imkoniyati. Murakkab uchrashuvlar uchun.</p>
+      </div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.7rem,1.3vw,1rem);font-style:italic;color:var(--mute)">→ Bank tanlovi 4 mezon bilan: o'zbek nutq sifati, ma'lumot qayerda qayta ishlanadi, treningga kirmaslik bandi, ichki tizimga ulash qulayligi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 7 — Voice bot arxitekturasi (.flow 5-step) -->
+<section class="slide s-flow">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2"><span class="hl">5 bosqich</span> — Telegramdan CRM'gacha.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Foydalanuvchi 1 ta tugmacha bosadi. Pastda — 5 ta avtomatik bosqich. Hech qaysi tashlab ketilmaydi.</p>
+    <div class="flow reveal r3">
+      <div class="step"><div class="ico">📱</div><h4>Telegram</h4><p>Bankir ovozli xabar yuboradi</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">🎙</div><h4>STT</h4><p>Gemini ovozni o'zbekcha matnga aylantiradi</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><div class="ico">🧠</div><h4>Ma'lumot ajratish</h4><p>Schema asosida JSON ajratib oladi</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">✓</div><h4>Validatsiya</h4><p>Ma'lumot turi va majburiyligi tekshiriladi</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">📊</div><h4>CRM</h4><p>Sheets'ga yoziladi, bankirga tasdiq keladi</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8 — Schema dizayn · JSON shabloni (.template-box) -->
+<section class="slide s-tpl">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Schema — AI uchun <span class="hl">forma chizig'i</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">8 ta maydon — kredit bo'limining uchrashuv hisoboti. AI har birini majburiy to'ldiradi yoki <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-2)">null</code> qaytaradi.</p>
+    <div class="tpl-wrap reveal r3">
+      <div class="tpl-meta"><span class="tpl-cat">Function calling schema</span><span class="tpl-id">bots/02_voice_memo · 8 maydon</span></div>
+      <pre class="template-box">{
+  <span class="key">"customer_name"</span>:        <span class="ph">F.I.SH yoki kompaniya</span>,
+  <span class="key">"customer_id_hint"</span>:     <span class="ph">STIR / pasport / telefon yoki null</span>,
+  <span class="key">"decision"</span>:             <span class="ph">1 jumla — uchrashuv natijasi</span>,
+  <span class="key">"follow_up"</span>:            <span class="ph">1 jumla — keyingi harakat</span>,
+  <span class="key">"next_step_date"</span>:       <span class="ph">ertaga | kelasi hafta | YYYY-MM-DD | null</span>,
+  <span class="key">"sentiment"</span>:            <span class="ph">positive | neutral | negative</span>,
+  <span class="key">"tags"</span>:                 [<span class="str">"kredit"</span>, <span class="str">"avtokredit"</span>, <span class="str">"garov-kvartira"</span>],
+  <span class="key">"notes_extra"</span>:          <span class="ph">1-2 jumla qo'shimcha eslatma</span>
+}</pre>
+      <p class="tpl-hint">→ Har maydon majburiy yoki null. AI hech qachon "tushunmadim" deb gapni qoldirib keta olmaydi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9 — Schema 4 qoidasi (.road.road-4) -->
+<section class="slide s-road">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Schema yozishning <span class="hl">4 qoidasi</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Yaxshi schema — yaxshi bot. 4 qadamni izchil bajaring, AI hech qayerga sirg'alib chiqmaydi.</p>
+    <div class="road road-4 reveal r3">
+      <div class="step"><div class="n">01</div><h3>Nomlash</h3><p><code style="font-family:'JetBrains Mono',monospace;color:var(--accent-2)">snake_case</code>, inglizcha, qisqa, aniq. <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-2)">customerName</code> emas — <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-2)">customer_name</code>.</p></div>
+      <div class="step"><div class="n">02</div><h3>Tip</h3><p>string · int · enum · array · date. Har maydon faqat <strong style="color:var(--accent-2);font-weight:500">bitta</strong> tipga ega bo'ladi. Aralashtirilmaydi.</p></div>
+      <div class="step"><div class="n">03</div><h3>Required</h3><p>Yo majburiy, yo nullable. "Balki" yo'q. Eng ko'p xato shu yerda bo'ladi.</p></div>
+      <div class="step"><div class="n">04</div><h3>Misol</h3><p>Promt'da 2–3 to'liq JSON misoli — model shu shablonni asos qilib, mos qaytaradi.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10 — Banking misol · audio quote → 8 fields -->
+<section class="slide s-example">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Real misol — <span class="hl">kredit uchrashuvi</span>.</h2>
+    <div class="audio-quote reveal r2"><span class="ico">🎙</span>"<strong>Aliyev Vali</strong> bilan uchrashdim. <strong>Avtokredit</strong> so'ramoqda, <strong>200 mln so'm, 12 oy</strong>. Garov sifatida <strong>kvartirasini</strong> taklif qildi. Hujjatlarni <strong>ertaga</strong> olib keladi. Mijoz <strong>xushmuomala, qiziqishi yuqori</strong>."</div>
+    <div class="benefits benefits-4 reveal r3">
+      <div class="benefit fragment"><div class="stat">customer_name</div><h3>Aliyev Vali</h3><p>F.I.SH ovozdan to'g'ridan-to'g'ri.</p></div>
+      <div class="benefit fragment"><div class="stat">decision</div><h3>avtokredit · 200M / 12 oy</h3><p>Asosiy qaror, 1 jumla.</p></div>
+      <div class="benefit fragment"><div class="stat">follow_up</div><h3>hujjatlarni qabul</h3><p>Keyingi bankir harakati.</p></div>
+      <div class="benefit fragment"><div class="stat">next_step_date</div><h3>2026-05-09</h3><p>"Ertaga" → tizim aniq sanani hisoblaydi.</p></div>
+      <div class="benefit fragment"><div class="stat">sentiment</div><h3>positive</h3><p>Enum 3 qiymatdan biri.</p></div>
+      <div class="benefit fragment"><div class="stat">tags</div><h3>[kredit, avtokredit, garov]</h3><p>Indekslash uchun.</p></div>
+      <div class="benefit fragment"><div class="stat">customer_id_hint</div><h3>null</h3><p>Aytilmagan — o'ylab topmaydi.</p></div>
+      <div class="benefit fragment"><div class="stat">notes_extra</div><h3>qiziqish yuqori</h3><p>Operator uchun kontekst.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11 — Schema validatsiya (.compare) -->
+<section class="slide s-compare">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Schema'siz — <span class="hl">chala ma'lumot</span>.<br>Schema bilan — toza CRM.</h2>
+    <p class="lead reveal r2">Validatsiya — bot va CRM o'rtasidagi qattiq filtr. Schema'ga tushmagan ma'lumot CRM'ga yetib bormaydi.</p>
+    <div class="compare reveal r3">
+      <div class="col"><h4>Schema'siz · xato yo'l</h4><p>AI erkin matn qaytaradi<br>"Mijoz: ehtimol Aliyev"<br>qo'lda tozalash ko'p</p></div>
+      <div class="vs">→</div>
+      <div class="col win"><h4>Schema bilan · to'g'ri yo'l</h4><p>AI qat'iy JSON qaytaradi<br>customer_name: "Aliyev Vali"<br>shubhali — inson tasdig'iga</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12 — STT xato turlari (.cando) -->
+<section class="slide s-cando">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">STT qachon to'g'ri,<br>qachon <span class="hl">adashadi</span>?</h2>
+    <p class="lead reveal r2">Avtomat tizim sehrli emas. Kuchli tomonini va chegarasini bilmasak — ishonch buziladi. Aniq kutishlar = qulay foydalanish.</p>
+    <div class="cando reveal r3">
+      <div class="cando-col fragment">
+        <div class="cando-tag">✓ To'g'ri eshitadi</div>
+        <ul>
+          <li>Tinch xona, 5–60 sek aniq nutq</li>
+          <li>Adabiy o'zbek tili (rasmiy uchrashuv)</li>
+          <li>Bank terminlari (kredit, foiz, garov)</li>
+          <li>Ko'p ishlatiladigan ism-familiyalar</li>
+          <li>Pauzali, tartibli gap</li>
+        </ul>
+      </div>
+      <div class="cando-col cant fragment">
+        <div class="cando-tag">✗ Xato qiladi</div>
+        <ul>
+          <li>Shovqinli muhit (ko'cha, mashina ichi)</li>
+          <li>Ikki kishi bir paytda gapirganda</li>
+          <li>Pasport seriyasi yoki hisob raqami harf-harf aytilganda</li>
+          <li>Lahja yoki sheva — qishloq nutqi</li>
+          <li>60 sekunddan uzun nutq, mavzu tarqoq bo'lganda</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13 — Privacy & compliance (.sec) -->
+<section class="slide s-sec">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Mijoz ovozi — <span class="hl">bank siri</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Voice memoda mijoz nomi, ehtimol pasport raqami, foiz miqdori bor. Qayerda saqlanadi, qancha vaqt, kim eshita oladi — har savolga aniq javob.</p>
+    <div class="sec reveal r3">
+      <div class="item fragment">
+        <div class="ico">🔒</div>
+        <h3>Saqlash konturi</h3>
+        <p>Audio va transkript bankning tasdiqlangan bulut konturida saqlanadi. Tashqi API ishlatilsa — DPA, ma'lumot qayerda saqlanishi (data residency) va ruxsatli rollar alohida hujjat bilan tasdiqlanadi.</p>
+      </div>
+      <div class="item fragment">
+        <div class="ico">⏱</div>
+        <h3>Saqlash muddati</h3>
+        <p>Audio, transkript va CRM qatori uchun retention muddati bank siyosatida belgilanadi. Avtomat o'chirish — alohida jarayon.</p>
+      </div>
+      <div class="item fragment">
+        <div class="ico">👤</div>
+        <h3>Kim eshitadi</h3>
+        <p>Faqat ruxsatli rollar. Inson eshitishi audit so'rovi orqali, har bir kirish log'ga yoziladi. Modelni o'qitish (trening) uchun yuborilmaydi (opt-out).</p>
+      </div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.7rem,1.3vw,1rem);font-style:italic;color:var(--mute)">→ Tasdiqsiz real mijoz ovozi demo yoki pilotga kiritilmaydi. 3-modulda Data Masking — shu qoida voice memo'ga ham tushadi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 14 — Tayyor template · bot folder pointer -->
+<section class="slide s-tpl">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2"><span class="hl">Tayyor pipeline</span> — tayyor loyiha papkasi.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Bu botning to'liq dizayni allaqachon yozilgan: workflow grafi, schema, prompt, conversation flow. Kursning <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-2)">bots/</code> papkasida — siz ko'rib, keyin moslab olasiz.</p>
+    <div class="tpl-wrap reveal r3">
+      <div class="tpl-meta"><span class="tpl-cat">Bot folder</span><span class="tpl-id">decks/cb_decks/bots/02_voice_memo/</span></div>
+      <pre class="template-box">bots/02_voice_memo/
+  ├─ <span class="key">README.md</span>                  <span class="com">← bu bot nima qiladi</span>
+  ├─ <span class="key">design/</span>
+  │   ├─ conversation-flow.md   <span class="com">← user → bot dialog</span>
+  │   ├─ workflow-graph.md      <span class="com">← n8n 11 node graph</span>
+  │   └─ data-schema.md         <span class="com">← Sheets layout, JSON</span>
+  └─ <span class="key">prompts/</span>
+      └─ extraction-prompt.md   <span class="com">← Gemini system prompt</span></pre>
+      <p class="tpl-hint">→ 12-modulda biz shu folder'ni ochib, n8n'da node-by-node quramiz.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 15 — Dizayn mashqi · 3 ta savol (.s-brain) -->
+<section class="slide s-brain">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r2">Dizayn mashqi · stol bo'yicha · 12 daq</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)">Sizning bo'limingiz uchun <span class="hl">voice bot</span>.</h2>
+    <div class="questions reveal r3">
+      <div class="q fragment"><span class="n">01</span><span>Sizning bo'limingizda <span style="color:var(--accent-2)">qanday voice memo</span> ko'p uchraydi? Kim, qachon, qaysi vaziyatda gapiradi?</span></div>
+      <div class="q fragment"><span class="n">02</span><span>Schema'da <span style="color:var(--accent-2)">qaysi 5 ta maydon</span> majburiy? (kredit / depozit / HR / muvofiqlikka moslab)</span></div>
+      <div class="q fragment"><span class="n">03</span><span>Ma'lumot qachon to'g'ridan-to'g'ri <span style="color:var(--accent-2)">CRM'ga</span>, qachon avval <span style="color:var(--accent-2)">menejerga</span> tushadi? Validatsiya yoki eskalatsiya qoidasi.</span></div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.7rem,1.3vw,1rem);font-style:italic;color:var(--mute)">→ 12 daqiqa stol ichida muhokama. Keyingi slaydda canvas to'ldiramiz.</p>
+  </div>
+</section>
+
+<!-- SLIDE 16 — Schema canvas worksheet (.canvas-grid) -->
+<section class="slide s-brain">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Stol bo'yicha · 8 daq · canvas to'ldirish</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)"><span class="hl">Schema canvas</span> — 4 katak, 2 jumla.</h2>
+    <div class="canvas-grid reveal r3">
+      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">🎙</span>Use case</div><p>Sizning bo'limda qaysi voice memo? (1 jumla)</p></div>
+      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">📋</span>5 maydon</div><p>Kerakli 5 ta JSON maydoni — har biri bitta so'z.</p></div>
+      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">⚙️</span>Validatsiya</div><p>Qaysi maydon majburiy, qaysi nullable?</p></div>
+      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">🚨</span>Eskalatsiya</div><p>Qachon to'g'ridan-to'g'ri menejerga jo'natiladi?</p></div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.6rem,1.1vw,0.95rem);font-style:italic;color:var(--mute)">→ 8 daqiqadan so'ng 2 ta stol o'z canvas'ini auditoriyaga taqdim etadi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 17 — Closing + lug'at recap -->
+<section class="slide s-close">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">O'zimiz bilan <span class="hl">olib ketadigan</span> 3 xulosa.</h2>
+    <div class="close-list reveal r3">
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Voice memo — bu pipeline</strong>, bitta promt emas. Telegram → STT → ekstraksiya → schema → CRM. Har bir bo'g'in — dizayn qarori.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Schema — agentning ruhi</strong>. Yaxshi schema CRM yozuvini bir xil formatda saqlaydi; shubhali holat inson tasdig'iga ketadi.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Pilot qarori bilan chiqamiz</strong> — har stol 1 betlik hujjat: use case, 5 maydon, retention, menejer tasdig'i. Tayyor template <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-2)">bots/02_voice_memo</code> papkasida.</p></div>
+    </div>
+    <div class="recap reveal r3">
+      <div class="recap-tag">Lug'at recap · birga aytamiz</div>
+      <div class="recap-terms">
+        <div class="recap-term"><strong>STT</strong> <span class="ans">ovozni matnga aylantirish</span></div>
+        <div class="recap-term"><strong>Schema / Function Calling</strong> <span class="ans">model JSON formatdagi maydonlarni qoidaga mos qaytarishi</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 18 — Q&A -->
+<section class="slide s-qa">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="qmark reveal r2">?</div>
+    <h2 class="h2 reveal r3" style="text-align:center">Sizning <span class="hl">savollaringiz</span>.</h2>
+    <p class="reveal r3" style="text-align:center;margin-top:clamp(1.5rem,3vw,2.5rem);font-family:var(--display);font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:0.1em;color:var(--accent-2)">murod@mohir.dev</p>
+  </div>
+</section>
+
 </main>
 
 <div class="hud">
-  <span class="counter">01 / 02</span>
+  <span class="counter">01 / 18</span>
   <div class="dots"></div>
   <div class="speaker"><span class="dot"></span><strong>Riskaliev Murad</strong> · NLP Engineer · Mohirdev</div>
 </div>
@@ -540,7 +1028,23 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
 <script>
 const TITLES = [
   'Title · 11-modul',
-  "Yo'l xaritasi · Agenda"
+  "Yo'l xaritasi · Agenda",
+  'Live voice memo demo',
+  "Voice memo muammosi · 15 daq vs 15 sek",
+  "Lug'at · STT + Schema",
+  'STT modellari · Whisper / Gemini / ElevenLabs',
+  'Voice bot arxitekturasi · 5 bosqich',
+  'Schema dizayn · JSON shabloni',
+  'Schema yozish · 4 qoida',
+  'Banking misol · kredit uchrashuvi',
+  "Schema validatsiya · chala vs toza",
+  'STT xato turlari · to\'g\'ri / xato',
+  'Privacy · ovoz qayerda saqlanadi',
+  'Tayyor template · bot folder',
+  "Dizayn mashqi · 3 ta savol",
+  'Schema canvas · worksheet',
+  "Yakun · 3 xulosa + lug'at recap",
+  'Savol-Javob · Q&A'
 ];
 
 const slides = [...document.querySelectorAll('.slide')];

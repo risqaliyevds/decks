@@ -10,6 +10,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:'Space Grotesk',sans-serif}
+body,p,li,.lead{letter-spacing:0.018em}
 
 :root{
   --bg:#020A24;--bg-2:#06173B;--bg-3:#0B2D79;
@@ -169,7 +170,7 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
 .benefit{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem)}
 .benefit .stat{font-family:var(--display);font-size:clamp(2rem,5vw,4rem);line-height:1;color:var(--accent);letter-spacing:-0.04em}
 .benefit h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;margin-top:0.5rem;color:#fff}
-.benefit p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.7);margin-top:0.5rem}
+.benefit p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.9);margin-top:0.5rem}
 
 /* SLIDE 6 — CASE STUDY */
 .cases{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
@@ -196,8 +197,8 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
 .flow .step.brain .ico,.flow .step.brain h4,.flow .step.brain p{color:#fff}
 .flow .step .ico{font-size:clamp(1.5rem,3vw,2.2rem)}
 .flow .step h4{font-family:var(--display);font-size:clamp(0.85rem,1.4vw,1.15rem);text-transform:uppercase;letter-spacing:0.05em;margin-top:0.4rem;color:#fff}
-.flow .step p{font-size:clamp(0.7rem,1vw,0.9rem);line-height:1.4;color:rgba(255,255,255,0.7);margin-top:0.4rem}
-.flow .arrow{color:var(--accent);font-family:var(--display);font-size:clamp(1.2rem,2.4vw,1.8rem);flex-shrink:0}
+.flow .step p{font-size:clamp(0.8rem,1.1vw,1rem);line-height:1.45;color:rgba(255,255,255,0.92);margin-top:0.4rem}
+.flow .arrow{color:var(--accent-2);font-family:var(--display);font-size:clamp(1.2rem,2.4vw,1.8rem);flex-shrink:0}
 
 /* SLIDE 9 — ROADMAP */
 .road{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
@@ -434,6 +435,106 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
 .reveal{opacity:0}
 .slide:not(.is-active) .reveal{opacity:0}
 .slide.is-active .reveal{opacity:1}
+
+/* === 5-DECK SPECIFIC ADDITIONS (do not edit locked tokens) === */
+
+/* SLIDE 3 — HOOK COMPARE (BAD vs GOOD with text bodies) */
+.compare-rich{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(0.8rem,1.8vw,1.6rem);align-items:stretch;margin-top:clamp(0.85rem,1.5vw,1.25rem)}
+.compare-rich .col{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(0.85rem,1.6vw,1.4rem);display:flex;flex-direction:column;gap:clamp(0.55rem,1vw,0.85rem);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s}
+.compare-rich .col.win{background:linear-gradient(150deg,rgba(37,99,235,0.22),rgba(11,45,121,0.18));border-color:rgba(96,165,250,0.45)}
+.compare-rich .col:hover{transform:translateY(-3px);box-shadow:0 12px 28px -12px rgba(37,99,235,0.35);border-color:rgba(96,165,250,0.4)}
+.compare-rich .col h4{font-family:var(--display);text-transform:uppercase;letter-spacing:0.14em;font-size:var(--small);color:var(--mute)}
+.compare-rich .col.win h4{color:var(--accent-2)}
+.compare-rich .pr-label{font-family:var(--display);font-size:clamp(0.65rem,0.85vw,0.8rem);letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-2)}
+.compare-rich .pr{font-family:'JetBrains Mono','Consolas','Courier New',monospace;font-size:clamp(0.85rem,1.15vw,1.05rem);line-height:1.55;color:#f4f8ff;background:rgba(0,0,0,0.45);border-left:3px solid var(--accent);border-radius:0 0.5rem 0.5rem 0;padding:clamp(0.65rem,1.2vw,0.95rem) clamp(0.8rem,1.4vw,1.15rem);white-space:pre-wrap;font-weight:500}
+.compare-rich .col.win .pr{border-left-color:var(--accent-2)}
+.compare-rich .out-label{font-family:var(--display);font-size:clamp(0.65rem,0.85vw,0.8rem);letter-spacing:0.2em;text-transform:uppercase;color:#ff8080}
+.compare-rich .col.win .out-label{color:var(--accent-glow)}
+.compare-rich .out{font-style:italic;font-size:clamp(0.85rem,1.15vw,1.05rem);line-height:1.55;color:rgba(255,255,255,0.95);padding:clamp(0.6rem,1.1vw,0.9rem) clamp(0.75rem,1.3vw,1.1rem);background:rgba(255,255,255,0.06);border-radius:0.5rem}
+.compare-rich .verdict{font-family:var(--display);text-transform:uppercase;letter-spacing:0.12em;font-size:clamp(0.7rem,0.9vw,0.85rem);color:#ff6060;margin-top:auto}
+.compare-rich .col.win .verdict{color:var(--accent-glow)}
+.compare-rich .vs-arrow{display:flex;align-items:center;font-family:var(--display);font-size:clamp(1.4rem,2.2vw,2rem);color:var(--accent-2);letter-spacing:0.05em}
+
+/* SLIDE 4 — 5-CARD ANATOMY GRID (2+3 responsive) */
+.benefits-5{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(0.8rem,1.5vw,1.4rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)}
+.benefits-5 .benefit{padding:clamp(0.95rem,1.8vw,1.5rem)}
+.benefits-5 .benefit:nth-child(1){grid-column:span 3}
+.benefits-5 .benefit:nth-child(2){grid-column:span 3}
+.benefits-5 .benefit:nth-child(3){grid-column:span 2}
+.benefits-5 .benefit:nth-child(4){grid-column:span 2}
+.benefits-5 .benefit:nth-child(5){grid-column:span 2}
+.benefits-5 .benefit .stat{font-size:clamp(1.6rem,3.2vw,2.5rem)}
+.benefits-5 .benefit h3{font-size:clamp(0.95rem,1.5vw,1.25rem);margin-top:0.35rem}
+.benefits-5 .benefit p{font-size:clamp(0.75rem,1vw,0.95rem);margin-top:0.4rem;line-height:1.45}
+.benefits-5 .benefit.opt{border-style:dashed;border-color:rgba(96,165,250,0.35)}
+.benefits-5 .benefit.opt .stat{color:var(--accent-2)}
+
+/* SLIDES 5 & 8 — DICT BASE + 2-CARD / 3-CARD VARIANTS */
+.dict{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.75rem);margin-top:clamp(1rem,2vw,1.75rem)}
+.dict.dict-2{grid-template-columns:1fr 1fr}
+.dict-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1rem,2vw,1.6rem);display:flex;flex-direction:column;gap:0.55rem;transition:transform .25s ease,border-color .25s ease,background .25s ease}
+.dict-card:hover{transform:translateY(-2px);border-color:rgba(96,165,250,0.35);background:rgba(96,165,250,0.06)}
+.dict-tag{display:inline-block;font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);padding:0.3rem 0.7rem;background:rgba(96,165,250,0.12);border-radius:0.4rem;align-self:flex-start}
+.dict-card h3{font-family:var(--display);font-size:clamp(1rem,1.5vw,1.3rem);text-transform:uppercase;letter-spacing:-0.005em;color:#fff;margin-top:0.15rem}
+.dict-card p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.92);font-weight:400}
+
+/* SLIDE 8 — DICT 3-CARD WITH PROMPT BODY */
+.dict-card .pr-mini{margin-top:0.65rem;font-family:'JetBrains Mono','Consolas','Courier New',monospace;font-size:clamp(0.85rem,1.1vw,1rem);line-height:1.6;color:#f4f8ff;background:rgba(0,0,0,0.45);border-left:2px solid var(--accent-2);padding:clamp(0.65rem,1.1vw,0.9rem) clamp(0.75rem,1.2vw,1rem);border-radius:0 0.4rem 0.4rem 0;white-space:pre-wrap;font-weight:500}
+.dict-card .pr-mini b{color:var(--accent-2);font-weight:500}
+
+/* SLIDE 11 — CHECKLIST (CAN-DO / CANT) */
+.cando{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,1.75rem);margin-top:clamp(1rem,2vw,1.5rem)}
+.cando-col{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1rem,2vw,1.6rem);border-left:4px solid var(--accent)}
+.cando-col.cant{border-left-color:#ff4040;background:rgba(255,64,64,0.06)}
+.cando-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.7rem;display:flex;align-items:center;gap:0.4rem}
+.cando-col.cant .cando-tag{color:#ff6060}
+.cando-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.55rem}
+.cando-col li{font-size:var(--body);line-height:1.45;color:rgba(255,255,255,0.95);padding-left:1.2rem;position:relative;font-weight:400}
+.cando-col li::before{content:"✓";position:absolute;left:0;top:0;color:var(--accent);font-family:var(--display);font-weight:700}
+.cando-col.cant li::before{content:"✗";color:#ff6060}
+
+/* SLIDE 12 — RECAP BLOCK */
+.recap{margin-top:clamp(1rem,2vw,1.5rem);padding:clamp(1rem,2vw,1.5rem) clamp(1.25rem,2.4vw,1.75rem);background:rgba(96,165,250,0.06);border:1px solid rgba(96,165,250,0.2);border-radius:var(--r)}
+.recap-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-2);margin-bottom:0.85rem}
+.recap-terms{display:grid;grid-template-columns:1fr 1fr;gap:clamp(0.75rem,1.5vw,1.25rem)}
+.recap-term{font-size:var(--body);line-height:1.5;color:#fff;display:flex;flex-direction:column;gap:0.25rem}
+.recap-term strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.02em;color:var(--accent-2);font-weight:600}
+.recap-term .ans{font-size:var(--small);color:rgba(255,255,255,0.7);font-weight:400;font-style:italic}
+
+@media (max-width:880px){.recap-terms{grid-template-columns:1fr}.cando{grid-template-columns:1fr}.dict{grid-template-columns:1fr}}
+
+/* SLIDE 9 — LIVE PROMPT BOX */
+.prompt-box{
+  margin-top:clamp(0.85rem,1.5vw,1.25rem);
+  background:#020714;
+  color:#e6edff;
+  font-family:'JetBrains Mono','Consolas','Courier New',monospace;
+  font-size:clamp(0.85rem,1.4vw,1.25rem);
+  line-height:1.7;
+  padding:clamp(1rem,2vw,1.75rem) clamp(1.25rem,2.4vw,2rem);
+  border-radius:var(--r);
+  border:1px solid rgba(96,165,250,0.25);
+  box-shadow:0 30px 60px -25px rgba(37,99,235,0.45),0 0 0 1px rgba(255,255,255,0.04) inset;
+  white-space:pre;
+  overflow:hidden;
+  position:relative;
+}
+.prompt-box::before{
+  content:"prompt.txt";
+  position:absolute;top:0.5rem;right:1rem;
+  font-family:var(--display);font-size:clamp(0.6rem,0.8vw,0.78rem);
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(96,165,250,0.55);
+}
+.prompt-box .ph{color:#ffd166;font-style:italic;background:rgba(255,209,102,0.12);padding:0.05em 0.4em;border-radius:0.25em;border:1px solid rgba(255,209,102,0.25)}
+.prompt-box .key{color:var(--accent-glow);font-weight:500}
+.prompt-box .com{color:rgba(122,138,163,0.75)}
+
+/* SLIDE 10 — COMPACT MYTH (3 PAIRS) */
+.myth.myth-tight{gap:clamp(0.55rem,1vw,0.85rem)}
+.myth.myth-tight .row{padding:clamp(0.7rem,1.3vw,1.1rem)}
+.myth.myth-tight .row p{font-size:clamp(0.78rem,1.05vw,0.98rem);line-height:1.45}
+.myth.myth-tight .row .tag{margin-bottom:0.4rem;font-size:clamp(0.6rem,0.78vw,0.72rem)}
 </style>
 </head>
 <body>
@@ -450,13 +551,13 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   </div>
   <div class="main">
     <div class="title-block reveal r2">
-      <span class="chip">Kun 1 · 14:30 — 15:30</span>
+      <span class="chip">Kun 1 · 15:15 — 16:15</span>
       <h1 class="title-hero">
         Promt<br>
         <span class="hl">muhandisligi</span><br>
         — professional daraja.
       </h1>
-      <p class="tagline"><span class="accent-bar"></span>AI bilan to’g’ri gaplashish texnikasi va shablonlari.</p>
+      <p class="tagline"><span class="accent-bar"></span>AI bilan to'g'ri gaplashish texnikasi va shablonlari.</p>
     </div>
   </div>
 </section>
@@ -480,10 +581,10 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
         </div>
         <div>
           <h3 class="phase-title">Asoslar</h3>
-          <p class="phase-desc">Promtning anatomiyasi — kontekst, vazifa, format.</p>
+          <p class="phase-desc">Nega AI ba'zida xato qiladi? Promtning 5 ta elementi va ikkita asosiy texnika.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~13 daq</span>
+          <span class="phase-time">~14 daq</span>
         </div>
       </button>
 
@@ -492,11 +593,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">02</span>
         </div>
         <div>
-          <h3 class="phase-title">Shablonlar</h3>
-          <p class="phase-desc">7 ta professional shablon va qachon ishlatish.</p>
+          <h3 class="phase-title">Texnikalar</h3>
+          <p class="phase-desc">Few-shot va Chain-of-Thought texnikalari — jonli misollar bilan.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~13 daq</span>
+          <span class="phase-time">~12 daq</span>
         </div>
       </button>
 
@@ -505,11 +606,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">03</span>
         </div>
         <div>
-          <h3 class="phase-title">Mashq</h3>
-          <p class="phase-desc">Real bank vazifalarida promt yozamiz.</p>
+          <h3 class="phase-title">Bank misollari</h3>
+          <p class="phase-desc">Kredit memo, mijoz javobi va KYC uchun tayyor 3 ta shablon.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~15 daq</span>
+          <span class="phase-time">~6 daq</span>
         </div>
       </button>
 
@@ -518,11 +619,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">04</span>
         </div>
         <div>
-          <h3 class="phase-title">Bank misollari</h3>
-          <p class="phase-desc">Skoring, komplaens va mijoz javoblar uchun promtlar.</p>
+          <h3 class="phase-title">Mashq</h3>
+          <p class="phase-desc">Live workshop — jamoa bilan birga professional promt yozamiz.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~15 daq</span>
+          <span class="phase-time">~25 daq</span>
         </div>
       </button>
 
@@ -530,10 +631,339 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   </div>
 </section>
 
+<!-- SLIDE 3 — HOOK · BAD vs GOOD (the showcase slide) -->
+<section class="slide s-hook-rich">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Hook · BAD vs GOOD</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.55rem,1vw,0.85rem)">Bir vazifa — <span class="hl">ikki natija</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Ikkita stajyorga bir xil topshiriq berdik. Promt qanday yozilsa — AI shunday javob beradi.</p>
+    <div class="compare-rich reveal r3">
+      <div class="col">
+        <h4>Yomon promt</h4>
+        <span class="pr-label">Promt</span>
+        <div class="pr">"Mijozga javob yoz."</div>
+        <span class="out-label">AI natijasi</span>
+        <div class="out">"Hurmatli mijoz, salom. Sizning savolingizni qabul qildik. Tez orada javob beramiz."</div>
+        <div class="verdict">✗ Bo'sh · foydasiz · nol ma'lumot</div>
+      </div>
+      <div class="vs-arrow">→</div>
+      <div class="col win">
+        <h4>To'liq promt</h4>
+        <span class="pr-label">Promt</span>
+        <div class="pr">Sen — tijorat banki mijoz xizmati operatorisan.
+Mijoz 80 mln so'm avtokredit so'rayapti, daromadi 12 mln.
+Skoringni tekshir va 3 ta abzasli javob yoz.</div>
+        <span class="out-label">AI natijasi</span>
+        <div class="out">"Arizangiz qabul qilindi. Oylik to'lov ~3.7 mln so'm. DTI = 31% (norma ≤45%). Keyingi qadam: pasport va ma'lumotnoma olib keling."</div>
+        <div class="verdict">✓ Aniq raqam · mantiq · keyingi qadam</div>
+      </div>
+    </div>
+    <p class="reveal r4" style="margin-top:clamp(0.7rem,1.3vw,1.1rem);font-family:var(--display);font-size:clamp(0.8rem,1.1vw,1.05rem);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);text-align:center">→ Farq AI'da emas — biz qanday savol berganimizda.</p>
+  </div>
+</section>
+
+<!-- SLIDE 4 — ANATOMY · 5 elements -->
+<section class="slide s-anatomy">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Sifatli promtning <span class="hl">5 ta elementi</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Yaxshi promt — rejaga muvofiq qurilgan jumla. Beshta blok bor: barchasi birdek muhim.</p>
+    <div class="benefits-5 reveal r3">
+      <div class="benefit fragment">
+        <div class="stat">01</div>
+        <h3>Rol</h3>
+        <p>AI'ga aniq rol bering. "Sen — 10 yillik tajribaga ega muvofiqlik tahlilchisisan".</p>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">02</div>
+        <h3>Kontekst</h3>
+        <p>Vaziyat nima? Mijoz kim? Qaysi qoidaga tayanyapmiz? Kontekstsiz AI — ko'zi bog'liq haydovchi.</p>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">03</div>
+        <h3>Vazifa</h3>
+        <p>Bitta aniq fe'l. "Tahlil qil", "Solishtir". Mavhum gaplar o'tmaydi.</p>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">04</div>
+        <h3>Format</h3>
+        <p>Eng ko'p unutiladigan qism. "3 ta abzas", "Jadval qilib ber", "100 ta so'z".</p>
+      </div>
+      <div class="benefit opt fragment">
+        <div class="stat">05</div>
+        <h3>Misollar</h3>
+        <p>Ixtiyoriy, lekin eng kuchli qurol. AI uslubni aynan sizning bank ovozingizdan oladi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 — DICTIONARY · Few-shot + CoT -->
+<section class="slide s-dict">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Bankir uchun AI lug'ati · 5-modul</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)">Ikkita texnika — promtning <span class="hl">kuchli qurollari</span>.</h2>
+    <p class="lead reveal r2">Bu ikki atamani keyingi 10 modulda yana eshitasiz. Hozir bir marta tushunsak — qolgan vaqtda osonroq bo'ladi.</p>
+    <div class="dict dict-2 reveal r3">
+      <div class="dict-card fragment">
+        <span class="dict-tag">Few-shot</span>
+        <h3>Namuna bilan o'rgatish</h3>
+        <p>AI'ga quruq qoida tushuntirgandan ko'ra, 3 ta tayyor hujjat berasiz. AI <strong>uslubni</strong> aynan sizning bank ovozingizdan oladi.</p>
+        <p style="margin-top:0.45rem;color:rgba(255,255,255,0.6);font-size:clamp(0.78rem,1vw,0.95rem)">Misol: 3 ta tasdiqlangan kredit memo namunasi → AI 4-chisini xuddi shunday ovoz va formatda yozadi.</p>
+      </div>
+      <div class="dict-card fragment">
+        <span class="dict-tag">Chain-of-Thought</span>
+        <h3>Fikr zanjiri · Ovoz chiqarib hisoblash</h3>
+        <p>Biz AI'ga "Shu kreditni beraylikmi?" demaymiz. Biz unga <strong>"Qadamma-qadam o'ylab, hisoblab ber"</strong> deymiz.</p>
+        <p style="margin-top:0.45rem;color:rgba(255,255,255,0.6);font-size:clamp(0.78rem,1vw,0.95rem)">Misol: "Avval daromadni hisobla → DTI ni top → tasdiqla yoki rad et." Audit izi tayyor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — FEW-SHOT · 0-shot → 1-shot → Few-shot -->
+<section class="slide s-fewshot">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2"><span class="hl">Few-shot</span> — namuna bilan o'rgatish.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Bir vazifani uch xil yozamiz. Misol soni qancha ko'p — javob shuncha aniq.</p>
+    <div class="flow reveal r3">
+      <div class="step">
+        <div class="ico">∅</div>
+        <h4>0-shot</h4>
+        <p><b style="color:var(--accent-2)">Promt:</b> "Javob yoz."</p>
+        <p style="margin-top:0.4rem;font-style:italic">Natija: umumiy, quruq, rasmiy.</p>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step">
+        <div class="ico">①</div>
+        <h4>1-shot</h4>
+        <p><b style="color:var(--accent-2)">Promt:</b> "Mana bu xatga o'xshatib yoz."</p>
+        <p style="margin-top:0.4rem;font-style:italic">Natija: format to'g'ri, lekin ohang g'alati.</p>
+      </div>
+      <div class="arrow">→</div>
+      <div class="step brain">
+        <div class="ico">③</div>
+        <h4>Few-shot</h4>
+        <p><b>Promt:</b> "Quyidagi 3 ta namuna kabi yoz."</p>
+        <p style="margin-top:0.4rem;font-style:italic">Natija: bank ovozi, xuddi 5 yil ishlagan mutaxassisdek.</p>
+      </div>
+    </div>
+    <p class="lead no-bar reveal r4" style="margin-top:clamp(0.85rem,1.5vw,1.25rem);font-style:italic;color:var(--mute);text-align:center">→ Production promtlarda 2–3 misol — oltin standart.</p>
+  </div>
+</section>
+
+<!-- SLIDE 7 — CHAIN-OF-THOUGHT · compare -->
+<section class="slide s-cot">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2"><span class="hl">Chain-of-Thought</span> — to'g'ridan-to'g'ri vs qadamma-qadam.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">AI'ni "fikrla, keyin javob ber" deb yo'naltirsangiz, murakkab vazifada xato keskin kamayadi.</p>
+    <div class="compare-rich reveal r3">
+      <div class="col">
+        <h4>To'g'ridan-to'g'ri</h4>
+        <span class="pr-label">Promt</span>
+        <div class="pr">"Mijoz daromadi 12 mln, kredit 80 mln. Kredit tasdiqlanadimi yoki yo'qmi?"</div>
+        <span class="out-label">AI natijasi</span>
+        <div class="out">"Tasdiqlanadi."</div>
+        <div class="verdict">✗ Audit izi yo'q</div>
+      </div>
+      <div class="vs-arrow">→</div>
+      <div class="col win">
+        <h4>CoT (qadamma-qadam)</h4>
+        <span class="pr-label">Promt</span>
+        <div class="pr">"Avval oylik to'lovni hisobla. So'ng DTI ni top. Agar DTI &lt; 45% bo'lsa, tasdiqla. Hisobni ko'rsatib ber."</div>
+        <span class="out-label">AI natijasi</span>
+        <div class="out">"1) To'lov 3.7 mln. 2) DTI 31%. 3) 31% &lt; 45% → Tasdiqlanadi."</div>
+        <div class="verdict">✓ Audit izi tayyor</div>
+      </div>
+    </div>
+    <p class="reveal r4" style="margin-top:clamp(0.7rem,1.3vw,1.1rem);font-family:var(--display);font-size:clamp(0.8rem,1.1vw,1.05rem);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);text-align:center">→ Sababini ko'rsatgan AI — auditga tushuntirib beradigan AI.</p>
+  </div>
+</section>
+
+<!-- SLIDE 8 — BANKING TEMPLATES · 3 cards -->
+<section class="slide s-banking">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Markaziy Bank xodimi uchun <span class="hl">3 ta tayyor shablon</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Uch xil bo'lim — bir xil 5 element. Telefoningizga rasmga oling, ertaga ishda ishlatasiz.</p>
+    <div class="dict reveal r3">
+      <div class="dict-card fragment">
+        <span class="dict-tag">Kredit memo</span>
+        <h3>Tahlilchi shabloni</h3>
+        <div class="pr-mini"><b>Sen — moliyaviy tartibga solish bo'yicha tahlilchisan.</b>
+Mijoz arizasi: [...]
+Qoida: [DTI ≤ 45%, qarz tarixi toza].
+<b>Vazifa:</b> 1 betlik xulosa — asosiy talablar, risklar.</div>
+      </div>
+      <div class="dict-card fragment">
+        <span class="dict-tag">Mijoz javobi</span>
+        <h3>Operator shabloni</h3>
+        <div class="pr-mini"><b>Sen — mijoz xizmati operatorisan.</b>
+Mijoz xati: [...]
+<b>Vazifa:</b> 3 abzasli javob: salomlashish · sababli xulosa · keyingi qadam.
+Ohang: rasmiy, hamdard, aniq.</div>
+      </div>
+      <div class="dict-card fragment">
+        <span class="dict-tag">KYC xulosa</span>
+        <h3>Muvofiqlik shabloni</h3>
+        <div class="pr-mini"><b>Sen — muvofiqlik xodimisan.</b>
+Mijoz hujjatlari: [...]
+Risk: low / med / high.
+<b>Vazifa:</b> 200 so'zda xulosa: shaxs · faoliyat manbai · anomaliyalar.</div>
+      </div>
+    </div>
+    <p class="lead no-bar reveal r4" style="margin-top:clamp(0.7rem,1.3vw,1.1rem);font-style:italic;color:var(--mute);text-align:center">→ 6-modulda 30+ shablonli kutubxona — har bo'lim uchun.</p>
+  </div>
+</section>
+
+<!-- SLIDE 9 — LIVE WORKSHOP · prompt-box -->
+<section class="slide s-brain">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Live · Birga yozamiz</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)">Sizning bo'limingiz uchun <span class="hl">promt yozaylik</span>.</h2>
+    <p class="lead reveal r2">Beshta blokni jamoa bilan birga to'ldiramiz. Yozish — ekranda. Tasdiq — sizning ovozingizdan.</p>
+    <pre class="prompt-box reveal r3"><span class="com"># Sizning bo'limingiz uchun shablon — birga to'ldiramiz</span>
+<span class="key">sen      —</span> <span class="ph">[ROL? — masalan: muvofiqlik tahlilchisi]</span>
+<span class="key">kontekst —</span> <span class="ph">[VAZIYAT? — hujjat, hisobot, qoida]</span>
+<span class="key">vazifa   —</span> <span class="ph">[NIMA QILISH KERAK? — bitta fe'l]</span>
+<span class="key">format   —</span> <span class="ph">[QANDAY KO'RINISHDA? — abzas, jadval, so'z soni]</span>
+<span class="key">misol    —</span> <span class="ph">[TASDIQLANGAN NAMUNA? — ixtiyoriy, kuchli]</span></pre>
+    <p class="lead no-bar reveal r4" style="margin-top:clamp(0.7rem,1.3vw,1.1rem);text-align:center;font-family:var(--display);font-size:clamp(0.8rem,1.1vw,1.05rem);letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-2)">→ 10 daqiqada — ish joyingizga olib ketadigan birinchi promtingiz tayyor.</p>
+  </div>
+</section>
+
+<!-- SLIDE 10 — COMMON MISTAKES · 3 myth/reality -->
+<section class="slide s-myth">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Yo'l qo'yiladigan <span class="hl">3 ta xato</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Afsona va Haqiqat.</p>
+    <div class="myth myth-tight reveal r3">
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p><strong>Qancha uzun yozsam</strong>, shuncha aqlli tushunadi.</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p><strong>Aniq promt</strong> uzun promtdan kuchli. Ortiqcha so'zlar chalg'itadi. 5 element yetarli.</p></div>
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>Real mijoz hujjatini AI'ga <strong>kiritib bersam</strong>, tezroq xulosa qiladi.</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p><strong>F.I.Sh., STIR, JShShIR, hisob raqami, bank siri — yubormang.</strong> Identifikatorlarni olib tashlang, raqamlarni umumlashtiring ("~100 mln"). Yakuniy javobni xodim tekshiradi.</p></div>
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>Bitta zo'r promt yozib olib, <strong>hamma ishga ishlatsa bo'ladi</strong>.</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p>Har vazifa uchun <strong>alohida shablon</strong> bo'lishi shart.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11 — QUALITY CHECKLIST · cando -->
+<section class="slide s-cando">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Yaxshi promtni <span class="hl">5 sekundda</span> taniysiz.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Yuborishdan oldin shu ro'yxat bilan tekshiring. Bittasi yetishmasa — qayta yozing.</p>
+    <div class="cando reveal r3">
+      <div class="cando-col">
+        <div class="cando-tag">✓ Yaxshi promt belgilari</div>
+        <ul>
+          <li>Rol aniq belgilangan (kim gapiradi)</li>
+          <li>Kontekst yetarli (vaziyat, hujjat, qoida)</li>
+          <li>Bitta aniq vazifa (bitta fe'l)</li>
+          <li>Format ko'rsatilgan (3 abzas, jadval, 100 so'z)</li>
+          <li>Manba va noaniqliklarni ko'rsatish so'ralgan</li>
+        </ul>
+      </div>
+      <div class="cando-col cant">
+        <div class="cando-tag">✗ Yomon promt belgilari</div>
+        <ul>
+          <li>"Yoz", "Tahlil qil" — kontekstsiz buyruq</li>
+          <li>Bir necha vazifa aralash (yoz + solishtir)</li>
+          <li>Format yo'q — "qisqa", "uzun" kabi mavhum so'zlar</li>
+          <li>Manba so'ralmagan — AI to'qib chiqaradi</li>
+          <li>Yakuniy tekshiruv ko'zda tutilmagan</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12 — CLOSING + RECAP -->
+<section class="slide s-close">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Bugundan <span class="hl">olib ketadigan</span> 3 ta asosiy xulosa.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Asosiy fikrlar va lug'at takrori.</p>
+    <div class="close-list reveal r3">
+      <div class="close-row"><span class="arrow"><img src="images/auto/slide-12-icon-row-1-key.svg" alt="" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1)"></span><p><strong>Promt — kalit ko'nikma.</strong> AI texnologiyasi qanchalik zo'r bo'lmasin, fikringiz aniq bo'lmasa, u foydasiz.</p></div>
+      <div class="close-row"><span class="arrow"><img src="images/auto/slide-12-icon-row-2-layout-list.svg" alt="" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1)"></span><p><strong>5 element shabloni</strong> (Rol · Kontekst · Vazifa · Format · Misol) — bo'limingizdan qat'iy nazar ishlaydi.</p></div>
+      <div class="close-row"><span class="arrow"><img src="images/auto/slide-12-icon-row-3-library.svg" alt="" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1)"></span><p><strong>Shablon kutubxonasi — vaqtni tejaydi.</strong> Tayyor shablon vazifaga moslanadi: noldan yozish o'rniga eng yaxshi versiyadan boshlanadi.</p></div>
+    </div>
+    <div class="recap reveal r3">
+      <div class="recap-tag">Lug'at recap · birga aytamiz</div>
+      <div class="recap-terms">
+        <div class="recap-term"><strong>Few-shot Prompting</strong> <span class="ans">namuna bilan o'rgatish — 2–3 misol</span></div>
+        <div class="recap-term"><strong>Chain-of-Thought</strong> <span class="ans">fikr zanjiri — qadamma-qadam o'yla</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13 — Q&A -->
+<section class="slide s-qa">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="qmark reveal r2">?</div>
+    <h2 class="h2 reveal r3" style="text-align:center">Sizning <span class="hl">savollaringiz</span>.</h2>
+    <p class="reveal r3" style="text-align:center;margin-top:clamp(1.5rem,3vw,2.5rem);font-family:var(--display);font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:0.1em;color:var(--accent-2)">murod@mohir.dev</p>
+  </div>
+</section>
+
 </main>
 
 <div class="hud">
-  <span class="counter">01 / 02</span>
+  <span class="counter">01 / 13</span>
   <div class="dots"></div>
   <div class="speaker"><span class="dot"></span><strong>Riskaliev Murad</strong> · NLP Engineer · Mohirdev</div>
 </div>
@@ -541,7 +971,18 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
 <script>
 const TITLES = [
   'Title · 5-modul',
-  "Yo'l xaritasi · Agenda"
+  "Yo'l xaritasi · Agenda",
+  'Hook · BAD vs GOOD promt',
+  "Promtning 5 ta elementi",
+  "Lug'at · Few-shot + Chain-of-Thought",
+  'Few-shot · namuna bilan o\'rgatish',
+  'Chain-of-Thought · to\'g\'ridan vs qadamma-qadam',
+  'Markaziy Bank xodimi uchun 3 ta tayyor shablon',
+  'Sizning bo\'limingiz uchun promt yozaylik',
+  "Yo'l qo'yiladigan 3 ta xato",
+  'Yaxshi promtni 5 sekundda taniysiz',
+  "Bugundan olib ketadigan 3 ta asosiy xulosa",
+  'Sizning savollaringiz'
 ];
 
 const slides = [...document.querySelectorAll('.slide')];

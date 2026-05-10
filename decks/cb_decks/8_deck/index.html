@@ -10,6 +10,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:'Space Grotesk',sans-serif}
+body,p,li,.lead{letter-spacing:0.018em}
 
 :root{
   --bg:#020A24;--bg-2:#06173B;--bg-3:#0B2D79;
@@ -434,6 +435,98 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
 .reveal{opacity:0}
 .slide:not(.is-active) .reveal{opacity:0}
 .slide.is-active .reveal{opacity:1}
+
+/* === 8-DECK ADDITIONS (do not edit locked tokens above) === */
+
+/* DICTIONARY (atama) — 2-card variant (dict-2) and shared base */
+.dict{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,1.5rem)}
+.dict.dict-2{grid-template-columns:1fr 1fr}
+.dict-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
+.dict-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.dict-card .dict-tag{display:inline-block;font-family:var(--display);font-size:clamp(1.4rem,2.8vw,2.4rem);letter-spacing:0.02em;color:var(--accent-2);text-transform:uppercase;line-height:1;margin-bottom:0.75rem}
+.dict-card h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:0.6rem}
+.dict-card p{font-size:var(--body);line-height:1.55;color:rgba(255,255,255,0.8)}
+.dict-card p strong{color:var(--accent-2);font-weight:500}
+.dict-card .ex{margin-top:clamp(0.6rem,1vw,0.85rem);padding-top:clamp(0.5rem,0.9vw,0.75rem);border-top:1px dashed rgba(255,255,255,0.12);font-size:var(--small);line-height:1.5;color:rgba(255,255,255,0.6);font-family:'JetBrains Mono','Consolas',monospace}
+.dict-card .ex b{color:var(--accent-2);font-weight:500}
+.dict-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+
+/* CAN/CANNOT (capability boundaries) */
+.cando{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,1.5rem)}
+.cando-col{background:rgba(255,255,255,0.04);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2rem);border-left:4px solid var(--accent);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,background 0.3s}
+.cando-col.cant{border-left-color:#ff4040;background:rgba(255,64,64,0.06)}
+.cando-col .cando-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.85rem}
+.cando-col.cant .cando-tag{color:#ff6060}
+.cando-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:clamp(0.5rem,0.9vw,0.8rem)}
+.cando-col li{font-size:var(--body);line-height:1.5;color:#fff;padding-left:1.25rem;position:relative}
+.cando-col li::before{content:"·";position:absolute;left:0.4rem;color:var(--accent);font-weight:700;font-size:1.4em;line-height:1}
+.cando-col.cant li::before{color:#ff6060}
+.cando-col:hover{transform:translateY(-3px);box-shadow:0 12px 28px -12px rgba(37,99,235,0.3)}
+.cando-col.cant:hover{box-shadow:0 12px 28px -12px rgba(255,64,64,0.3)}
+
+/* BENEFITS-5 — 5-card grid (2 wide on top, 3 on bottom) for trigger types */
+.benefits-5{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(0.8rem,1.5vw,1.4rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)}
+.benefits-5 .benefit{padding:clamp(0.95rem,1.8vw,1.5rem)}
+.benefits-5 .benefit:nth-child(1){grid-column:span 3}
+.benefits-5 .benefit:nth-child(2){grid-column:span 3}
+.benefits-5 .benefit:nth-child(3){grid-column:span 2}
+.benefits-5 .benefit:nth-child(4){grid-column:span 2}
+.benefits-5 .benefit:nth-child(5){grid-column:span 2}
+.benefits-5 .benefit .stat{font-size:clamp(1.6rem,3.2vw,2.5rem)}
+.benefits-5 .benefit h3{font-size:clamp(0.95rem,1.5vw,1.25rem);margin-top:0.35rem}
+.benefits-5 .benefit p{font-size:clamp(0.75rem,1vw,0.95rem);margin-top:0.4rem;line-height:1.45}
+.benefits-5 .benefit .ex{margin-top:0.5rem;padding-top:0.45rem;border-top:1px dashed rgba(255,255,255,0.1);font-size:clamp(0.7rem,0.9vw,0.85rem);line-height:1.4;color:rgba(255,255,255,0.6);font-style:italic}
+
+/* COMPARE-RICH (webhook URL examples — code blocks side-by-side) */
+.compare-rich{display:grid;grid-template-columns:1fr 1fr;gap:clamp(0.8rem,1.8vw,1.6rem);align-items:stretch;margin-top:clamp(0.85rem,1.5vw,1.25rem)}
+.compare-rich .col{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(0.85rem,1.6vw,1.4rem);display:flex;flex-direction:column;gap:clamp(0.55rem,1vw,0.85rem);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s}
+.compare-rich .col.win{background:linear-gradient(150deg,rgba(37,99,235,0.22),rgba(11,45,121,0.18));border-color:rgba(96,165,250,0.45)}
+.compare-rich .col:hover{transform:translateY(-3px);box-shadow:0 12px 28px -12px rgba(37,99,235,0.35);border-color:rgba(96,165,250,0.4)}
+.compare-rich .col h4{font-family:var(--display);text-transform:uppercase;letter-spacing:0.14em;font-size:var(--small);color:var(--mute)}
+.compare-rich .col.win h4{color:var(--accent-2)}
+.compare-rich .label{font-family:var(--display);font-size:clamp(0.65rem,0.85vw,0.8rem);letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-2)}
+.compare-rich .url{font-family:'JetBrains Mono','Consolas','Courier New',monospace;font-size:clamp(0.72rem,1vw,0.92rem);line-height:1.5;color:#fff;background:rgba(2,10,36,0.55);border-left:3px solid var(--accent);border-radius:0 0.5rem 0.5rem 0;padding:clamp(0.55rem,1vw,0.85rem) clamp(0.7rem,1.2vw,1rem);white-space:pre-wrap;word-break:break-all}
+.compare-rich .col.win .url{border-left-color:var(--accent-2)}
+.compare-rich .url b{color:var(--accent-glow);font-weight:500}
+.compare-rich .desc{font-size:clamp(0.78rem,1.05vw,0.95rem);line-height:1.5;color:rgba(255,255,255,0.78)}
+
+/* WORKFLOW MOCKUP (live mini-build node-list) */
+.wf-build{margin-top:clamp(0.85rem,1.5vw,1.25rem);background:#020714;color:#e6edff;font-family:'JetBrains Mono','Consolas','Courier New',monospace;font-size:clamp(0.78rem,1.05vw,0.98rem);line-height:1.55;padding:clamp(1rem,2vw,1.6rem);border-radius:var(--r);border:1px solid rgba(96,165,250,0.25);box-shadow:0 18px 50px -22px rgba(37,99,235,0.5);position:relative}
+.wf-build::before{content:"workflow.json";position:absolute;top:0.55rem;right:1rem;font-family:var(--display);font-size:clamp(0.6rem,0.8vw,0.78rem);letter-spacing:0.2em;text-transform:uppercase;color:rgba(96,165,250,0.55)}
+.wf-build .node{display:grid;grid-template-columns:auto 1fr auto;gap:0.85rem;align-items:center;padding:0.45rem 0;border-bottom:1px dashed rgba(255,255,255,0.06)}
+.wf-build .node:last-child{border-bottom:0}
+.wf-build .node.note{grid-template-columns:1fr;padding-top:0.6rem;border-bottom:0;border-top:1px dashed rgba(255,255,255,0.08);margin-top:0.3rem;text-align:center}
+.wf-build .n{color:var(--accent-glow);font-weight:500}
+.wf-build .name{color:#fff}
+.wf-build .name b{color:var(--accent-2);font-weight:500}
+.wf-build .kind{font-family:var(--display);font-size:clamp(0.6rem,0.8vw,0.75rem);letter-spacing:0.18em;text-transform:uppercase;color:rgba(96,165,250,0.7);background:rgba(37,99,235,0.12);border:1px solid rgba(96,165,250,0.25);border-radius:99px;padding:0.18rem 0.6rem;flex-shrink:0}
+.wf-build .kind.brain{color:#fff;background:linear-gradient(135deg,var(--accent),#1d4ed8);border-color:var(--accent)}
+.wf-build .com{color:rgba(122,138,163,0.75);font-style:italic}
+
+/* CLOSING — recap row (Lug'at recap) */
+.s-close .recap{margin-top:clamp(1rem,2vw,1.75rem);padding-top:clamp(0.85rem,1.5vw,1.25rem);border-top:1px solid var(--soft);display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.5rem);flex-wrap:wrap}
+.s-close .recap-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);flex-shrink:0}
+.s-close .recap-terms{display:flex;gap:clamp(1rem,2vw,2rem);flex-wrap:wrap;flex:1}
+.s-close .recap-term{font-size:var(--body);color:rgba(255,255,255,0.7);line-height:1.4}
+.s-close .recap-term strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-right:0.5em;font-weight:400}
+.s-close .recap-term .ans{color:var(--accent-2)}
+
+/* FLOW chip badge inline (for AI step marker) */
+.flow .step .chip{display:inline-block;background:#fff;color:var(--accent);font-family:var(--display);font-size:clamp(0.55rem,0.7vw,0.7rem);letter-spacing:0.18em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:99px;margin-top:0.4rem;line-height:1}
+.flow .step.brain .chip{background:#fff;color:var(--accent)}
+
+/* FLOW (vertical-stack flow for 6-step examples that don't fit horizontally) */
+.flow.flow-6{flex-wrap:nowrap;gap:clamp(0.3rem,0.7vw,0.7rem)}
+.flow.flow-6 .step{padding:clamp(0.65rem,1.2vw,1rem)}
+.flow.flow-6 .step h4{font-size:clamp(0.72rem,1.1vw,0.95rem)}
+.flow.flow-6 .step p{font-size:clamp(0.65rem,0.85vw,0.78rem)}
+.flow.flow-6 .step .ico{font-size:clamp(1.1rem,2.2vw,1.6rem)}
+.flow.flow-6 .arrow{font-size:clamp(0.95rem,1.8vw,1.4rem)}
+
+/* MYTH-TIGHT (3 pairs in compact grid) */
+.myth.myth-tight{gap:clamp(0.55rem,1vw,0.85rem)}
+.myth.myth-tight .row{padding:clamp(0.75rem,1.4vw,1.15rem)}
+.myth.myth-tight .row p{font-size:clamp(0.85rem,1.15vw,1.05rem);line-height:1.45}
 </style>
 </head>
 <body>
@@ -446,8 +539,7 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
     <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
   </div>
-  <div class="head">
-  </div>
+  <div class="head"></div>
   <div class="main">
     <div class="title-block reveal r2">
       <span class="chip">Kun 1 · 17:30 — 18:15</span>
@@ -455,7 +547,7 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
         <span class="hl">No-code</span><br>
         avtomatlashtirish.
       </h1>
-      <p class="tagline"><span class="accent-bar"></span>Zapier, n8n va Make — kodsiz integratsiya platformalari.</p>
+      <p class="tagline"><span class="accent-bar"></span>Zapier, Make, n8n — kodsiz workflow. Bo'lim xodimi o'zi yig'adi.</p>
     </div>
   </div>
 </section>
@@ -478,11 +570,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">01</span>
         </div>
         <div>
-          <h3 class="phase-title">Zapier</h3>
-          <p class="phase-desc">Eng oddiy yo’l — drag-and-drop avtomatlashtirish.</p>
+          <h3 class="phase-title">Nima uchun no-code</h3>
+          <p class="phase-desc">Bo'lim xodimi o'z workflow'ini yig'a oladi. IT navbatini kutmaymiz. Trigger va Webhook lug'atini bir oynada o'rganamiz.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~10 daq</span>
+          <span class="phase-time">~14 daq</span>
         </div>
       </button>
 
@@ -491,11 +583,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">02</span>
         </div>
         <div>
-          <h3 class="phase-title">n8n</h3>
-          <p class="phase-desc">Kuchli, ochiq kodli, korporativ uchun.</p>
+          <h3 class="phase-title">Platformalar</h3>
+          <p class="phase-desc">Zapier · Make · n8n — uch yo'lning farqi va bizning tanlov. Workflow anatomiyasi 5 qadam: Trigger → Filtr → AI → Saqlash → Bildirish.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~12 daq</span>
+          <span class="phase-time">~14 daq</span>
         </div>
       </button>
 
@@ -504,11 +596,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">03</span>
         </div>
         <div>
-          <h3 class="phase-title">Make</h3>
-          <p class="phase-desc">Vizual va murakkab oqimlar uchun.</p>
+          <h3 class="phase-title">Bank misollari</h3>
+          <p class="phase-desc">Spravka avtomatlashtirish · Email shikoyat toifalash · Muvofiqlik hisoboti har juma. Real bank workflow'lar — qadam-qadam.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~10 daq</span>
+          <span class="phase-time">~18 daq</span>
         </div>
       </button>
 
@@ -517,11 +609,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">04</span>
         </div>
         <div>
-          <h3 class="phase-title">Birinchi avtomat</h3>
-          <p class="phase-desc">Live demoda o'z avtomatlashtirishimizni quramiz.</p>
+          <h3 class="phase-title">Mini-build · mashq</h3>
+          <p class="phase-desc">5-nodeli workflow ekranda jonli yig'iladi. Eng katta xato + xavfsizlik. Ertaga 9-modulda RAG bilan davom etamiz.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~13 daq</span>
+          <span class="phase-time">~14 daq</span>
         </div>
       </button>
 
@@ -529,10 +621,484 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   </div>
 </section>
 
+<!-- SLIDE 3 — HOOK · programmer vs bo'lim xodim -->
+<section class="slide s-hook-cmp">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Hook · ikki yo'l, bir natija</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)">Spravka avtomatlashtirish — <span class="hl">prototipni kim yig'adi</span>?</h2>
+    <p class="lead reveal r2">Mijoz Telegram orqali spravka so'raydi. Bot ma'lumotni yig'ib, mijozga jo'natadi. Ikki yo'l — qaysi biri prototipni tezroq ko'rsatadi?</p>
+    <div class="compare reveal r3">
+      <div class="col">
+        <h4>An'anaviy yo'l</h4>
+        <p>Haftalar · IT navbati</p>
+        <p style="font-family:var(--display);font-size:clamp(0.75rem,1vw,0.9rem);letter-spacing:0.1em;color:var(--mute);margin-top:0.5rem">Brief · TZ · Sprint · Test · Deploy</p>
+      </div>
+      <div class="vs">vs</div>
+      <div class="col win">
+        <h4>No-code prototip yo'li</h4>
+        <p>Sandbox prototip · soatlarda</p>
+        <p style="font-family:var(--display);font-size:clamp(0.75rem,1vw,0.9rem);letter-spacing:0.1em;color:var(--accent-glow);margin-top:0.5rem">n8n · prototip → IT audit → pilot → production</p>
+      </div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.85rem,1.5vw,1.25rem);font-style:italic;color:var(--accent-2)">→ "No-code" — kim avtomatlashtira olishini kengaytirgan vosita. Tezligi pilot bilan o'lchanadi, va'da bilan emas.</p>
+  </div>
+</section>
+
+<!-- SLIDE 4 — NO-CODE FALSAFASI · 3-card benefits -->
+<section class="slide s-bens">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">No-code falsafasi · <span class="hl">3 ta yutuq</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Bu texnologiya emas — bu ish madaniyati o'zgarishi. Bo'lim prototip qiladi, IT xavfsizlik tekshiradi, komplaens tasdiqlaydi.</p>
+    <div class="benefits reveal r3">
+      <div class="benefit fragment">
+        <div class="stat">⚡</div>
+        <h3>Tezroq prototip</h3>
+        <p>Workflow g'oyasi tug'ildi — kun ichida sandbox'da prototip. Sprint, brief, TZ sikli qisqaradi.</p>
+        <div class="proof"><strong>Misol</strong> · spravka prototipi soatlarda, production qarori — pilotdan keyin.</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">↓</div>
+        <h3>IT navbatini yengillashtiradi</h3>
+        <p>Bo'lim xodimi sandbox'da yig'adi, sinab ko'radi. IT esa audit, xavfsizlik va integratsiyaga vaqt ajratadi.</p>
+        <div class="proof"><strong>Tahlil</strong> · IT strategik vazifalarga ko'proq vaqt sarflaydi.</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">👁</div>
+        <h3>Tushunish oson</h3>
+        <p>Workflow vizual — oqim ko'rinib turadi. Yangi xodim ham, auditor ham bir qarashda tushunadi.</p>
+        <div class="proof"><strong>Bonus</strong> · "qora quti" yo'qoladi — audit yengillashadi.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 — ATAMA · Trigger + Webhook (.dict.dict-2) -->
+<section class="slide s-dict">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Bankir uchun AI lug'ati · 8-modul</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Ikki so'z — workflow'ning <span class="hl">poydevori</span>.</h2>
+    <p class="lead reveal r2">Bu ikkalasi har bir avtomatlashtirishda uchraydi. Bir marta tushunsak — qolgani drag-and-drop (vizual yig'ish).</p>
+    <div class="dict dict-2 reveal r3">
+      <div class="dict-card fragment">
+        <span class="dict-tag">Trigger</span>
+        <h3>Qo'zg'atuvchi hodisa</h3>
+        <p>Workflow'ni <strong>boshlatadigan signal</strong>. Kim, qachon, qanday hodisa kelsa — bot uyg'onadi va ish boshlaydi.</p>
+        <div class="ex"><b>Misol</b> — Telegram'ga "/spravka" buyrug'i; soat 09:00; yangi email; mijoz form'ni to'ldirdi.</div>
+      </div>
+      <div class="dict-card fragment">
+        <span class="dict-tag">Webhook</span>
+        <h3>Boshqa dasturdan xabar olish nuqtasi</h3>
+        <p>Maxsus <strong>URL-eshik</strong>. Boshqa tizim shu eshikka xabar yuboradi — workflow uyg'onadi. Bankda eshik <em>ochiq</em> emas: token, IP cheklovi, imzo va audit log bilan himoyalanadi.</p>
+        <div class="ex"><b>URL</b> — https://n8n.bank.uz/webhook/spravka-arizasi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — 3 PLATFORMA TAQQOSLASH (.sec 3-card) -->
+<section class="slide s-sec">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Bozorda <span class="hl">3 ta yo'l</span> · har birining o'z o'rni bor.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Hammasi turli xizmatlarni bir oqimga ulaydi. Tanlov — use-case'ga qarab: ma'lumot turi, joylashuv talabi, narx, IT siyosati.</p>
+    <div class="sec reveal r3">
+      <div class="item fragment">
+        <div class="ico">⚡</div>
+        <h3>Zapier</h3>
+        <p><strong style="color:var(--accent-2)">Eng oddiy</strong> — yangi boshlovchilar uchun. 7000+ tayyor ulanish.</p>
+        <p style="margin-top:0.5rem;color:rgba(255,255,255,0.55);font-size:var(--small)">— Faqat AQSh serveri<br>— $30+/oy, vazifa bo'yicha hisob<br>— Bank ma'lumoti chetga chiqadi</p>
+      </div>
+      <div class="item fragment">
+        <div class="ico">🎨</div>
+        <h3>Make</h3>
+        <p><strong style="color:var(--accent-2)">Vizual va kuchli</strong> — murakkab oqimlar, branching, error handling.</p>
+        <p style="margin-top:0.5rem;color:rgba(255,255,255,0.55);font-size:var(--small)">— Yevropa serveri (GDPR)<br>— $9+/oy, operatsiya bo'yicha<br>— Hosting o'zimizniki emas</p>
+      </div>
+      <div class="item fragment" style="background:linear-gradient(150deg,rgba(37,99,235,0.18),rgba(11,45,121,0.12));border-color:rgba(96,165,250,0.45)">
+        <div class="ico" style="color:var(--accent-glow)">🛡️</div>
+        <h3>n8n · pilot uchun mos variant</h3>
+        <p><strong style="color:var(--accent-glow)">Self-hosted, ochiq kod</strong> — ma'lumot oqimini bank nazoratida ushlash osonroq.</p>
+        <p style="margin-top:0.5rem;color:rgba(255,255,255,0.7);font-size:var(--small)">— Self-hosted yoki bulut<br>— Bepul (jamoa) yoki $20/oy<br>— Connector, log, backup alohida audit</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7 — n8n NIMA UCHUN (3-card benefits) -->
+<section class="slide s-bens">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Nima uchun <span class="hl">n8n</span> · pilot uchun?</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">3-modulda muvofiqlik va xavflarni ko'rdik. Bank uchun "ma'lumot qayerda turadi" — bosh savol. n8n shu savolga aniq javob beradigan variantlardan biri.</p>
+    <div class="benefits reveal r3">
+      <div class="benefit fragment">
+        <div class="stat">🏦</div>
+        <h3>Self-hosted</h3>
+        <p>Bank serverida joylashtirilsa, mijoz ma'lumoti tashqi xizmatga uzatilmaydi. LLM chaqiruvi va loglar alohida audit qilinadi.</p>
+        <div class="proof"><strong>Bog'lanish</strong> · 3-modul "Yopiq kontur" tamoyili.</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">🌐</div>
+        <h3>Open-source</h3>
+        <p>Kod ochiq — IT xavfsizlik bo'limi konfiguratsiyani tekshira oladi. Vendor bog'liqligi minimal, lekin connector siyosati alohida boshqariladi.</p>
+        <div class="proof"><strong>Litsenziya</strong> · jamoaviy foydalanish bepul.</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">🔌</div>
+        <h3>500+ ulanish</h3>
+        <p>Telegram, Email, Sheets, Postgres, OpenAI, Gemini — tayyor. Har bir connector ishga tushishdan oldin xavfsizlik tekshiruvidan o'tkaziladi.</p>
+        <div class="proof"><strong>Ekspansiya</strong> · 9-modulda RAG'ni shu yerda quramiz.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8 — WORKFLOW ANATOMIYASI (5-step .flow) -->
+<section class="slide s-flow">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Workflow anatomiyasi · <span class="hl">5 qadam</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Har qanday avtomatlashtirish — shu beshlikning kombinatsiyasi. Telegram'dan savol keladi → filtrlanadi → AI'ga jo'natiladi → javob Sheets'ga yoziladi → menejerga xabar beriladi.</p>
+    <div class="flow reveal r3">
+      <div class="step"><div class="ico">⚡</div><h4>Trigger</h4><p>Telegram'da savol kelishi</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">🔍</div><h4>Filtr</h4><p>Bo'sh / dublikat / spam — chetlatish</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><div class="ico">🧠</div><h4>AI</h4><p>Gemini javobini tuzadi</p><span class="chip">AI</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">💾</div><h4>Saqlash</h4><p>Sheets/Postgres'ga yozish</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">📲</div><h4>Bildirish</h4><p>Mijoz va menejerga javob</p></div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem);font-style:italic;color:var(--mute)">→ 5 qadam · 5 ta n8n node. Hammasi sichqoncha bilan ulanadi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 9 — 5 TURDAGI TRIGGER (.benefits-5 grid) -->
+<section class="slide s-trig">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Trigger asosan <span class="hl">5 ta turdan</span> iborat bo'ladi.</h2>
+    <p class="lead reveal r2" style="margin-top:0.35rem">Workflow'ni nima boshlatadi? Bu 5 ta turdan biri — bank stsenariylarining ko'pchiligi shularga asoslanadi.</p>
+    <div class="benefits-5 reveal r3">
+      <div class="benefit fragment">
+        <div class="stat">⏰</div>
+        <h3>Schedule</h3>
+        <p>Vaqt belgilangan: har juma, har kuni 08:00, oyning 1-kuni.</p>
+        <div class="ex">Muvofiqlik hisoboti har juma 17:00 da yuboriladi.</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">🌐</div>
+        <h3>Webhook</h3>
+        <p>Boshqa tizim URL'ga xabar tashlaydi — bot uyg'onadi.</p>
+        <div class="ex">CRM mijoz holatini o'zgartirsa — bizga xabar.</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">📧</div>
+        <h3>Email</h3>
+        <p>Yangi xat keladi — ma'lum filtr bilan.</p>
+        <div class="ex">shikoyat@bank.uz'ga kelgan har bir xat tahlil qilinadi.</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">💬</div>
+        <h3>Telegram</h3>
+        <p>Botga xabar yoki buyruq kelishi.</p>
+        <div class="ex">/spravka — mijoz spravka so'raydi.</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">📋</div>
+        <h3>Form</h3>
+        <p>Saytdagi yoki Google Form to'ldirildi.</p>
+        <div class="ex">Yangi mijoz onlayn ariza yubordi.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10 — WEBHOOK CHUQURROQ (compare-rich) -->
+<section class="slide s-web">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Webhook · <span class="hl">eshik</span>, ikki xil ishlatiladi.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Bot uchun maxsus URL ochiladi. Boshqa dastur shu URL'ga xabar yuboradi — bizniki uyg'onadi. Tashqi xizmat ham, ichki tizim ham — bir xil interfeys orqali.</p>
+    <div class="compare-rich reveal r3">
+      <div class="col fragment">
+        <h4>1 · Tashqi xizmat → bizga</h4>
+        <span class="label">Telegram bot webhook</span>
+        <pre class="url">POST https://n8n.bank.uz/<b>webhook/telegram</b>
+{
+  "user": "@mijoz",
+  "text": "/spravka 2024-yil"
+}</pre>
+        <div class="desc">Mijoz botga yozgan har safar, Telegram bizga xabar yuboradi. Biz har soniyada "yangi xabar bormi?" deb so'rab o'tirmaymiz.</div>
+      </div>
+      <div class="col win fragment">
+        <h4>2 · Ichki tizim → bizga</h4>
+        <span class="label">CRM o'zgarish webhook</span>
+        <pre class="url">POST https://n8n.bank.uz/<b>webhook/crm-update</b>
+{
+  "client_id": "1023",
+  "status": "VIP"
+}</pre>
+        <div class="desc">CRM'da mijoz holati o'zgardi — bot bilib oladi va kerakli ishni boshlaydi (xat, eslatma, yangi tarif).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11 — BANK MISOLI #1 · SPRAVKA (6-step .flow) -->
+<section class="slide s-flow">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Misol #1 · Spravka avtomatlashtirish</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Mijoz Telegram orqali spravka oladi · <span class="hl">6 qadam</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.35rem">Trigger = Telegram'dan kelgan ariza. Mijoz bir necha soniyada PDF spravkani Telegram'da oladi — bo'lim xodimi ishtirok etmaydi.</p>
+    <div class="flow flow-6 reveal r3">
+      <div class="step"><div class="ico">💬</div><h4>Trigger</h4><p>Telegram /spravka</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">🆔</div><h4>Tasdiq</h4><p>JSHIR + telefon</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">🔍</div><h4>So'rov</h4><p>Bank API'dan ma'lumot</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><div class="ico">📄</div><h4>PDF tuzish</h4><p>Shablon + ma'lumot</p><span class="chip">AI</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">💾</div><h4>Audit</h4><p>So'rov log'i Sheets'da</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">📲</div><h4>Yuborish</h4><p>PDF Telegram'ga</p></div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem);font-style:italic;color:var(--mute)">→ Pilot baseline → o'lchov: vaqt, xato, eskalatsiya, audit sifati. Faqat shundan keyin production.</p>
+  </div>
+</section>
+
+<!-- SLIDE 12 — BANK MISOLI #2 · SHIKOYAT TOIFALASH (5-step .flow) -->
+<section class="slide s-flow">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Misol #2 · Shikoyat toifalash</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Email shikoyat — AI <span class="hl">avtomatik yo'naltiradi</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.35rem">Trigger = shikoyat@bank.uz'ga kelgan email. AI mavzuni o'qib, tegishli bo'limga yo'naltiradi. Operator endi saralash bilan vaqt sarflamaydi.</p>
+    <div class="flow reveal r3">
+      <div class="step"><div class="ico">📧</div><h4>Trigger</h4><p>Yangi email</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><div class="ico">🧠</div><h4>Toifalash</h4><p>Karta · Kredit · Mobile · Boshqa</p><span class="chip">AI</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">🔀</div><h4>Yo'naltirish</h4><p>Mas'ul bo'lim pochtasiga</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">💾</div><h4>Yozish</h4><p>CRM'da yangi tiket</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">⏱️</div><h4>SLA timer</h4><p>24 soat — eskalatsiya</p></div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem);font-style:italic;color:var(--mute)">→ Pilotda toifalash aniqligi va eskalatsiya soni o'lchanadi. Threshold belgilanadi — undan past bo'lsa, qo'lda saralash davom etadi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 13 — BANK MISOLI #3 · MUVOFIQLIK HISOBOT (Schedule trigger flow) -->
+<section class="slide s-flow">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Misol #3 · Muvofiqlik hisoboti</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Har juma 17:00 — <span class="hl">Schedule trigger</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.35rem">Muvofiqlik xodimi har juma 4 soatda hisobot to'plardi. Bot 5 daqiqada qiladi: ma'lumotni 3 manbadan yig'adi, AI xulosa yozadi, PDF tuzadi.</p>
+    <div class="flow reveal r3">
+      <div class="step"><div class="ico">⏰</div><h4>Trigger</h4><p>Juma · 17:00</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">📊</div><h4>Yig'ish</h4><p>Postgres + 1C + Sheets</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><div class="ico">🧠</div><h4>Tahlil</h4><p>Anomaliya + xulosa</p><span class="chip">AI</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">📄</div><h4>PDF</h4><p>Shablonga to'ldirish</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">📬</div><h4>Yuborish</h4><p>Email + arxiv</p></div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem);font-style:italic;color:var(--mute)">→ Maqsad: muvofiqlik xodimi saralash o'rniga tahlil bilan shug'ullansin. AI tayyorlaydi, inson tasdiqlaydi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 14 — LIVE MINI-BUILD (.s-brain + workflow mockup) -->
+<section class="slide s-brain">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Live mini-build · 10 daq · ekranda</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">5 ta node · <span class="hl">o'z ko'zingiz bilan</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.35rem">Telegram'dan kelgan savolni Gemini'ga jo'natamiz, javobni Sheets'ga yozamiz, mijozga qaytaramiz. Bizda hozir ekranda quriladi — siz savol bering.</p>
+    <div class="wf-build reveal r3">
+      <div class="node"><span class="n">01</span><span class="name">Telegram Trigger · <b>/savol</b> kelganda</span><span class="kind">Trigger</span></div>
+      <div class="node"><span class="n">02</span><span class="name">Set node — savol matnini ajratish</span><span class="kind">Filtr</span></div>
+      <div class="node"><span class="n">03</span><span class="name">Gemini · "Bank uslubida javob ber"</span><span class="kind brain">AI</span></div>
+      <div class="node"><span class="n">04</span><span class="name">Google Sheets — savol+javob yozish</span><span class="kind">Saqlash</span></div>
+      <div class="node"><span class="n">05</span><span class="name">Telegram Reply — javob qaytarish</span><span class="kind">Bildirish</span></div>
+      <div class="node note"><span class="com"># 5 ta node · 0 satr kod · 30 daqiqa qurish</span></div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem);text-align:center;font-family:var(--display);font-size:clamp(0.8rem,1.1vw,1.05rem);letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-2)">→ Endi siz savol bering — botga yozasiz, javob ekranda chiqadi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 15 — ENG KATTA XATO (.myth 3 row) -->
+<section class="slide s-myth">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Workflow'da <span class="hl">3 ta katta xato</span> · va to'g'risi.</h2>
+    <div class="myth myth-tight reveal r3">
+      <div class="row fragment"><div class="tag">✗ Xato</div><p><strong>"Workflow ishladi — boshqa qaramaymiz"</strong>. Siklga tushib qoldi: bot o'ziga o'zi xat yubordi, mijozga 200 marta xabar bordi.</p></div>
+      <div class="row real fragment"><div class="tag">✓ To'g'ri</div><p><strong>Idempotent dizayn</strong> — har trigger uchun unikal ID. Bir xil ID kelsa — qayta bajarmaydi. (12-modulda chuqur ko'ramiz.)</p></div>
+      <div class="row fragment"><div class="tag">✗ Xato</div><p><strong>"Xato bo'lsa, tizim o'zi xabar beradi"</strong>. Aslida workflow yarim tunda bildirmasdan to'xtab qolgan — ertasi kuni bilib qoldik. Mijozlar tushunarsiz xat oldi.</p></div>
+      <div class="row real fragment"><div class="tag">✓ To'g'ri</div><p><strong>Error workflow + Telegram alert</strong>. Yiqilsa — bo'lim rahbariga 30 soniyada Telegram'ga xabar. Audit log Sheets'da.</p></div>
+      <div class="row fragment"><div class="tag">✗ Xato</div><p><strong>"AI hammasini hal qiladi"</strong>. Mijoz ariza qildi — AI darrov tasdiqladi, kredit berdi. Inson ko'rmadi.</p></div>
+      <div class="row real fragment"><div class="tag">✓ To'g'ri</div><p><strong>AI tayyorlaydi, inson tasdiqlaydi</strong>. Yakuniy "ha/yo'q" — bankir imzosi. (4-modul hand-off tamoyili.)</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 16 — XAVFSIZLIK (.sec 3-card) -->
+<section class="slide s-sec">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Xavfsizlik · <span class="hl">3 ta qizil chiziq</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">No-code — qulay, lekin "xohlagan xodim xohlagan workflow yasashi" — xato. Muvofiqlik uchun shu 3 qoida shart.</p>
+    <div class="sec reveal r3">
+      <div class="item fragment">
+        <div class="ico">🔑</div>
+        <h3>API key — saqlanadi</h3>
+        <p>Telegram, Gemini, CRM kalitlari workflow ichiga emas — n8n credentials bo'limiga, shifrlangan holda. Vault'da kim o'zgartirganini ko'rsatadi.</p>
+      </div>
+      <div class="item fragment">
+        <div class="ico">📜</div>
+        <h3>Audit log — har qadam</h3>
+        <p>Har bir node ishlashi log'lanadi: kim, qachon, qanday ma'lumot. Xato bo'lsa — qaysi qadamda yiqilganini bir ko'rishda topamiz.</p>
+      </div>
+      <div class="item fragment">
+        <div class="ico">👥</div>
+        <h3>3 bosqichli nazorat</h3>
+        <p>Bo'lim xodimi prototip qiladi → IT xavfsizlik ulanishlar va maxfiy kalitlarni (credentials) tekshiradi → Komplaens audit izini tasdiqlaydi. Faqat shundan keyin production.</p>
+      </div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.5vw,1.25rem);font-style:italic;color:var(--mute)">→ 3-modul "Xavf va muvofiqlik" tamoyillari shu yerda ham ishlaydi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 17 — CLOSING + RECAP -->
+<section class="slide s-close">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Bugundan <span class="hl">olib ketadigan</span> 3 xulosa.</h2>
+    <div class="close-list reveal r3">
+      <div class="close-row"><span class="arrow">💡</span><p><strong>No-code — prototip tezligini oshiradi.</strong> Sandbox prototip soatlarda; production qarori IT audit + komplaens tasdig'idan keyin. Tezlik va'da emas — pilot bilan o'lchanadi.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Trigger — workflow'ning yuragi.</strong> Schedule, Webhook, Email, Telegram, Form — use-case ga qarab tanlanadi. Webhook bo'lsa: token, IP cheklovi, audit log shart.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Ertaga 9-modulda</strong> n8n ustida RAG (qidir+javob ber) bot quramiz — bo'limingiz uchun ishlaydigan birinchi AI yordamchi prototipi.</p></div>
+    </div>
+    <div class="recap reveal r3">
+      <div class="recap-tag">Lug'at recap · birga aytamiz</div>
+      <div class="recap-terms">
+        <div class="recap-term"><strong>Trigger</strong> <span class="ans">workflow'ni boshlatuvchi hodisa</span></div>
+        <div class="recap-term"><strong>Webhook</strong> <span class="ans">boshqa tizim xabar yuboradigan maxsus URL · token + log bilan himoyalanadi</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 18 — BANK QAROR VARAQASI (decision artifact) -->
+<section class="slide s-myth">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Bank qaror varaqasi · workflow pilotga chiqadimi?</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">6 ta savol — <span class="hl">production yoki sandbox</span>?</h2>
+    <p class="lead reveal r2" style="margin-top:0.35rem">Har bo'lim bitta workflow nomini yozsin. Quyidagi 6 savolga "ha" javobi bo'lmasa — workflow hali sandbox prototip, production emas.</p>
+    <div class="myth myth-tight reveal r3">
+      <div class="row real fragment"><div class="tag">1 · Trigger</div><p><strong>Trigger aniqmi?</strong> Email · Schedule · Telegram · Form · Webhook — qaysi biri va nega.</p></div>
+      <div class="row real fragment"><div class="tag">2 · Ma'lumot turi</div><p><strong>Ma'lumot turi aniqlanganmi?</strong> Ochiq · ichki · maxfiy · mijozga oid — har biri uchun alohida nazorat.</p></div>
+      <div class="row real fragment"><div class="tag">3 · Inson tasdig'i</div><p><strong>Inson qayerda tasdiqlaydi?</strong> AI faqat tayyorlaydimi yoki qaror ham qilyaptimi — bankir imzosi qayerda.</p></div>
+      <div class="row real fragment"><div class="tag">4 · Audit log</div><p><strong>Audit log bormi?</strong> Kim, qachon, nima kiritdi va nima chiqdi — tekshiruv uchun saqlanadimi.</p></div>
+      <div class="row real fragment"><div class="tag">5 · Test mezoni</div><p><strong>Test mezoni bormi?</strong> Vaqt · xato · SLA · eskalatsiya · xavfsizlik — pilot oxirida o'lchanadigan ko'rsatkichlar.</p></div>
+      <div class="row real fragment"><div class="tag">6 · Mas'ul shaxs</div><p><strong>Mas'ul shaxs bormi?</strong> Bo'lim rahbari · IT rahbari · Komplaens rahbari — uchalasi imzolaydi.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 19 — Q&A -->
+<section class="slide s-qa">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="qmark reveal r2">?</div>
+    <h2 class="h2 reveal r3" style="text-align:center">Sizning <span class="hl">savollaringiz</span>.</h2>
+    <p class="reveal r3" style="text-align:center;margin-top:clamp(1.5rem,3vw,2.5rem);font-family:var(--display);font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:0.1em;color:var(--accent-2)">murod@mohir.dev</p>
+  </div>
+</section>
+
 </main>
 
 <div class="hud">
-  <span class="counter">01 / 02</span>
+  <span class="counter">01 / 19</span>
   <div class="dots"></div>
   <div class="speaker"><span class="dot"></span><strong>Riskaliev Murad</strong> · NLP Engineer · Mohirdev</div>
 </div>
@@ -540,7 +1106,24 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
 <script>
 const TITLES = [
   'Title · 8-modul',
-  "Yo'l xaritasi · Agenda"
+  "Yo'l xaritasi · Agenda",
+  "Hook · prototipni kim yig'adi",
+  'No-code falsafasi · 3 yutuq',
+  "Atama · Trigger va Webhook",
+  'Platformalar · Zapier · Make · n8n',
+  'Nima uchun n8n · bank uchun',
+  'Workflow anatomiyasi · 5 qadam',
+  '5 turdagi Trigger',
+  'Webhook chuqurroq · ikki yo\'nalish',
+  'Misol #1 · Spravka avtomatlashtirish',
+  'Misol #2 · Email shikoyat toifalash',
+  'Misol #3 · Muvofiqlik hisobot · Schedule',
+  'Live mini-build · 5 ta node',
+  '3 ta katta xato · va to\'g\'risi',
+  'Xavfsizlik · 3 qizil chiziq',
+  "Yakun · 3 xulosa + lug'at recap",
+  'Bank qaror varaqasi · 6 savol',
+  'Savol-Javob · Q&A'
 ];
 
 const slides = [...document.querySelectorAll('.slide')];

@@ -10,6 +10,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:'Space Grotesk',sans-serif}
+body,p,li,.lead{letter-spacing:0.018em}
 
 :root{
   --bg:#020A24;--bg-2:#06173B;--bg-3:#0B2D79;
@@ -136,14 +137,23 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   display:inline-block;width:clamp(2rem,4vw,3rem);height:2px;
   background:var(--accent-2);margin-right:0.85rem;vertical-align:middle;
 }
+.s-title .title-motif{
+  position:absolute;right:clamp(2rem,5vw,5rem);bottom:clamp(3rem,6vw,5rem);
+  width:clamp(220px,28vw,420px);height:auto;
+  color:var(--accent-2);opacity:0.32;
+  pointer-events:none;z-index:0;
+  filter:drop-shadow(0 0 30px rgba(96,165,250,0.4));
+}
 
 /* SLIDE 2 — HOOK */
 .s-hook .main{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(1rem,2.5vw,3rem);align-items:center}
-.qr-box{background:#fff;border-radius:var(--r);aspect-ratio:1;max-width:min(30vw,360px);width:100%;display:flex;align-items:center;justify-content:center;color:var(--ink);font-family:var(--display);font-size:clamp(0.7rem,1vw,0.95rem);text-align:center;padding:1rem;letter-spacing:0.15em;text-transform:uppercase;
-  background-image:linear-gradient(45deg,#000 25%,transparent 25%),linear-gradient(-45deg,#000 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#000 75%),linear-gradient(-45deg,transparent 75%,#000 75%);
-  background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0;
+.qr-box{background:#fff;border-radius:var(--r);aspect-ratio:1;max-width:min(30vw,360px);width:100%;display:flex;align-items:center;justify-content:center;color:var(--ink);font-family:var(--display);font-size:clamp(0.7rem,1vw,0.95rem);text-align:center;padding:clamp(0.6rem,1vw,0.85rem);letter-spacing:0.15em;text-transform:uppercase;
+  box-shadow:0 30px 70px -20px rgba(37,99,235,0.5),0 0 0 1px rgba(96,165,250,0.25),0 0 60px -10px rgba(37,99,235,0.35);
+  position:relative;overflow:hidden;
 }
-.qr-box span{background:#fff;padding:0.5rem 0.75rem;border-radius:0.5rem}
+.qr-box img{width:100%;height:100%;object-fit:contain}
+.qr-box::after{content:"";position:absolute;inset:-8px;border-radius:calc(var(--r) + 8px);background:linear-gradient(135deg,var(--accent),var(--accent-glow));z-index:-1;opacity:0.35;filter:blur(20px)}
+.qr-box span{background:#fff;padding:0.5rem 0.75rem;border-radius:0.5rem;position:relative;z-index:1}
 .demo-msg{margin-top:clamp(1rem,2vw,1.5rem);font-style:italic;color:rgba(255,255,255,0.8);font-size:var(--body);border-left:3px solid var(--accent);padding-left:clamp(0.75rem,1.5vw,1.25rem)}
 
 /* SLIDE 3 — DEFINITION */
@@ -422,6 +432,97 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   box-shadow:0 12px 28px -12px rgba(37,99,235,0.3);
 }
 
+/* === 6_deck additions (do NOT touch locked tokens above) === */
+
+/* DICTIONARY — 2-card wider variant for atama dictionary */
+.dict{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.dict.dict-2{grid-template-columns:1fr 1fr}
+.dict-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
+.dict-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.dict-card .dict-tag{display:inline-block;font-family:var(--display);font-size:clamp(1.4rem,2.6vw,2.2rem);letter-spacing:0.02em;color:var(--accent-2);text-transform:uppercase;line-height:1;margin-bottom:0.6rem}
+.dict-card h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:0.55rem}
+.dict-card p{font-size:var(--body);line-height:1.55;color:rgba(255,255,255,0.78)}
+.dict-card p strong{color:var(--accent-2);font-weight:500}
+.dict-card .dict-eg{margin-top:0.7rem;padding-top:0.65rem;border-top:1px solid rgba(255,255,255,0.08);font-family:'JetBrains Mono','Consolas',monospace;font-size:clamp(0.72rem,0.95vw,0.88rem);color:rgba(255,255,255,0.85);line-height:1.5}
+.dict-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+
+/* LIBRARY 5-GRID — 5 categories (2+3 layout) */
+.lib-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(0.75rem,1.4vw,1.4rem);margin-top:clamp(0.85rem,1.5vw,1.4rem)}
+.lib-card{grid-column:span 2;background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1rem,1.8vw,1.6rem);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
+.lib-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1)}
+.lib-card:hover::before{transform:scaleY(1)}
+.lib-card .lib-ico{font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1;margin-bottom:0.55rem}
+.lib-card h3{font-family:var(--display);font-size:clamp(0.95rem,1.5vw,1.25rem);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;line-height:1.05}
+.lib-card .lib-count{display:inline-block;margin-top:0.5rem;font-family:var(--display);font-size:clamp(0.65rem,0.85vw,0.78rem);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);padding:0.25rem 0.55rem;border:1px solid rgba(96,165,250,0.35);border-radius:99px}
+.lib-card p{font-size:clamp(0.72rem,0.98vw,0.92rem);line-height:1.45;color:rgba(255,255,255,0.7);margin-top:0.55rem}
+.lib-card.featured{background:linear-gradient(160deg,rgba(37,99,235,0.18),rgba(37,99,235,0.04));border-color:rgba(96,165,250,0.35)}
+.lib-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+/* Row 1 → 2 cards centered (Kredit + Muvofiqlik). Row 2 → 3 cards (Mijoz / HR / Marketing) */
+.lib-grid .lib-card:nth-child(1){grid-column:2 / span 2}
+.lib-grid .lib-card:nth-child(2){grid-column:4 / span 2}
+.lib-grid .lib-card:nth-child(3){grid-column:1 / span 2}
+.lib-grid .lib-card:nth-child(4){grid-column:3 / span 2}
+.lib-grid .lib-card:nth-child(5){grid-column:5 / span 2}
+
+/* TEMPLATE BOX — monospace dark card with highlighted placeholders */
+.tpl-wrap{display:grid;grid-template-columns:1fr;gap:clamp(0.7rem,1.2vw,1rem);margin-top:clamp(0.75rem,1.4vw,1.1rem);min-height:0}
+.tpl-meta{display:flex;align-items:center;gap:clamp(0.5rem,1vw,0.85rem);flex-wrap:wrap}
+.tpl-meta .tpl-cat{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2)}
+.tpl-meta .tpl-id{font-family:var(--display);font-size:var(--small);letter-spacing:0.1em;color:var(--mute)}
+.tpl-meta .tpl-saves{font-family:'Space Grotesk',sans-serif;font-size:var(--small);color:rgba(255,255,255,0.55)}
+.template-box{
+  background:var(--ink);
+  color:rgba(255,255,255,0.86);
+  border:1px solid var(--soft);
+  border-left:3px solid var(--accent);
+  border-radius:var(--r);
+  padding:clamp(0.85rem,1.6vw,1.35rem) clamp(1rem,1.8vw,1.6rem);
+  font-family:'JetBrains Mono','Consolas',monospace;
+  font-size:clamp(0.92rem,1.3vw,1.18rem);
+  line-height:1.55;
+  white-space:pre-wrap;
+  overflow:auto;
+  position:relative;
+  box-shadow:0 18px 40px -20px rgba(2,10,36,0.8) inset;
+  max-height:100%;
+}
+.template-box .ph{
+  color:var(--accent-2);
+  background:rgba(96,165,250,0.1);
+  border:1px solid rgba(96,165,250,0.25);
+  padding:0.05em 0.35em;
+  border-radius:0.3em;
+  font-weight:500;
+}
+.template-box .role{color:var(--accent-glow);font-weight:500}
+.template-box .label{color:var(--accent);font-weight:500}
+.template-box .com{color:#cbd5e1;font-style:italic}
+.tpl-hint{font-size:var(--small);color:var(--mute);font-style:italic;margin-top:clamp(0.4rem,0.8vw,0.65rem);letter-spacing:0.02em}
+
+/* ROAD — 4-step variant for Sozlash slide */
+.road.road-4{grid-template-columns:repeat(4,1fr)}
+
+/* CANDO — Sifat tekshiruvi 5+5 belgi */
+.cando{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.cando-col{background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.35);border-radius:var(--r);padding:clamp(1rem,2vw,1.75rem);position:relative;overflow:hidden}
+.cando-col.cant{background:rgba(255,64,64,0.08);border-color:rgba(255,64,64,0.35)}
+.cando-col::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.cando-col.cant::before{background:#ff4040}
+.cando-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);margin-bottom:0.85rem}
+.cando-col.cant .cando-tag{color:#ff8080}
+.cando-col ul{list-style:none;display:flex;flex-direction:column;gap:0.55rem}
+.cando-col li{font-size:var(--body);line-height:1.45;color:rgba(255,255,255,0.88);padding-left:1.2rem;position:relative}
+.cando-col li::before{content:"·";position:absolute;left:0.35rem;top:-0.05rem;color:var(--accent-2);font-weight:900;font-size:1.2em}
+.cando-col.cant li::before{color:#ff6060}
+
+/* RECAP — Lug'at recap (closing slide) */
+.recap{background:linear-gradient(135deg,rgba(37,99,235,0.18),rgba(11,45,121,0.55));border:1px solid rgba(96,165,250,0.4);border-radius:var(--r);padding:clamp(1rem,2vw,1.5rem);margin-top:clamp(1rem,2vw,1.5rem)}
+.recap-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-2);margin-bottom:0.85rem}
+.recap-terms{display:grid;grid-template-columns:1fr 1fr;gap:clamp(0.75rem,1.5vw,1.25rem)}
+.recap-term{background:rgba(255,255,255,0.05);border-radius:calc(var(--r) * 0.6);padding:clamp(0.7rem,1.4vw,1rem) clamp(0.85rem,1.6vw,1.15rem);display:flex;flex-direction:column;gap:0.3rem}
+.recap-term strong{font-family:var(--display);font-size:clamp(0.95rem,1.4vw,1.1rem);text-transform:uppercase;letter-spacing:0.02em;color:#fff}
+.recap-term .ans{font-size:var(--body);color:rgba(255,255,255,0.78);line-height:1.4}
+
 /* Animations */
 @media (prefers-reduced-motion:no-preference){
   .slide.is-active .reveal{animation:up 0.7s cubic-bezier(0.16,1,0.3,1) both}
@@ -450,14 +551,42 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   </div>
   <div class="main">
     <div class="title-block reveal r2">
-      <span class="chip">Kun 1 · 15:30 — 16:30</span>
+      <span class="chip">Kun 1 · 16:30 — 17:30 · 6-modul</span>
       <h1 class="title-hero">
         Bank uchun<br>
-        <span class="hl">tayyor promt kutubxonasi.</span>
+        <span class="hl">tayyor promt</span><br>
+        kutubxonasi.
       </h1>
-      <p class="tagline"><span class="accent-bar"></span>Kundalik vazifalar uchun nusxa olib ishlatadigan promtlar to’plami.</p>
+      <p class="tagline"><span class="accent-bar"></span>Noldan yozma — kutubxonadan ol. Ertangi smenadayoq ishlatadigan promtlar to'plami.</p>
     </div>
   </div>
+  <svg class="title-motif" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
+      <rect x="20" y="20" width="280" height="200" rx="8"/>
+      <line x1="20" y1="80" x2="300" y2="80"/>
+      <line x1="20" y1="140" x2="300" y2="140"/>
+      <g>
+        <rect x="35" y="32" width="14" height="40" rx="2"/>
+        <rect x="55" y="28" width="12" height="44" rx="2"/>
+        <rect x="73" y="36" width="16" height="36" rx="2"/>
+        <rect x="95" y="30" width="12" height="42" rx="2"/>
+        <rect x="113" y="34" width="14" height="38" rx="2"/>
+        <rect x="135" y="28" width="14" height="44" rx="2"/>
+      </g>
+      <g>
+        <rect x="35" y="92" width="12" height="40" rx="2"/>
+        <rect x="53" y="96" width="16" height="36" rx="2"/>
+        <rect x="75" y="88" width="14" height="44" rx="2"/>
+        <rect x="95" y="92" width="14" height="40" rx="2"/>
+        <rect x="115" y="98" width="12" height="34" rx="2"/>
+      </g>
+      <g>
+        <rect x="35" y="152" width="14" height="40" rx="2"/>
+        <rect x="55" y="148" width="12" height="44" rx="2"/>
+        <rect x="73" y="156" width="16" height="36" rx="2"/>
+      </g>
+    </g>
+  </svg>
 </section>
 
 <!-- SLIDE 2 — AGENDA -->
@@ -478,11 +607,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">01</span>
         </div>
         <div>
-          <h3 class="phase-title">Tarmoqlar</h3>
-          <p class="phase-desc">Promtlar bo'limlar bo'yicha tartiblanadi.</p>
+          <h3 class="phase-title">Kutubxona</h3>
+          <p class="phase-desc">Tayyor promt nima, qanday ishlaydi va nega "noldan yozish" davri tugadi. Atama: System Prompt va Template Prompt.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~13 daq</span>
+          <span class="phase-time">~12 daq</span>
         </div>
       </button>
 
@@ -491,11 +620,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">02</span>
         </div>
         <div>
-          <h3 class="phase-title">Hujjat ishlash</h3>
-          <p class="phase-desc">Shartnoma, hisobot, memo uchun promtlar.</p>
+          <h3 class="phase-title">Kategoriyalar</h3>
+          <p class="phase-desc">5 ta yo'nalish — Kredit, Muvofiqlik, Mijoz xizmati, HR, Marketing. 3 ta haqiqiy shablonni ochib ko'ramiz.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~15 daq</span>
+          <span class="phase-time">~22 daq</span>
         </div>
       </button>
 
@@ -504,11 +633,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">03</span>
         </div>
         <div>
-          <h3 class="phase-title">Mijoz xizmati</h3>
-          <p class="phase-desc">FAQ, javob shablonlari va eskalatsiya.</p>
+          <h3 class="phase-title">Sozlash</h3>
+          <p class="phase-desc">4 qadamda har shablonni o'z bo'limingizga moslash. Live workshop — birgalikda bir shablonni qayta yozamiz.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~15 daq</span>
+          <span class="phase-time">~16 daq</span>
         </div>
       </button>
 
@@ -517,11 +646,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">04</span>
         </div>
         <div>
-          <h3 class="phase-title">Tahlil</h3>
-          <p class="phase-desc">Tahliliy hisobotlar va dashboardlar uchun promtlar.</p>
+          <h3 class="phase-title">Sifat tekshiruvi</h3>
+          <p class="phase-desc">Yuborishdan oldin 5 ta belgi · Qayta yozishni talab qiluvchi 5 ta belgi. Yakun va savol-javob.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~13 daq</span>
+          <span class="phase-time">~10 daq</span>
         </div>
       </button>
 
@@ -529,10 +658,380 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   </div>
 </section>
 
+<!-- SLIDE 3 — HOOK (Live template demo) -->
+<section class="slide s-hook">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="qr-box reveal r2">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&margin=10&data=https%3A%2F%2Fkutubxona.crea7iveai.uz%2Fcb-prompts" alt="Kutubxona QR kod" style="width:100%;height:100%;display:block;border-radius:calc(var(--r) * 0.7)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <span style="display:none">QR · KUTUBXONA</span>
+    </div>
+    <div class="reveal r3">
+      <span class="chip-out" style="background:transparent">Jonli namoyish · 1 daqiqada</span>
+      <h2 class="h2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Noldan yozma —<br><span class="hl">kutubxonadan</span> ol.</h2>
+      <p class="lead">Kutubxonada 50+ tayyor shablon. Nusxa ol, 3 ta maydonni to'ldir, yubor. Mijozga javob — 1 daqiqada, sifat — bosh boshqaruvchi imzolagan darajada.</p>
+      <div class="demo-msg">"Mijoz F.I.Sh.: Karimov Sherzod. Kredit summasi: 250 mln so'm. Maqsad: aylanma mablag'. Qo'mitaga 1 betlik memo tayyorla."</div>
+      <p style="margin-top:clamp(0.75rem,1.5vw,1.25rem);font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2)">→ Bo'sh varaq emas — to'ldiriladigan blanka</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 — COMPARE: System Prompt vs Template Prompt -->
+<section class="slide s-def">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Ikki xil promt —<br><span class="hl">ikki xil ish</span> qiladi.</h2>
+    <p class="lead reveal r2">System Prompt — botning xarakteri va qoidalari. Template Prompt — har safar to'ldiriladigan blanka. Birga ishlaganda — natija mustahkam.</p>
+    <div class="compare reveal r3">
+      <div class="col">
+        <h4>System Prompt</h4>
+        <p>Botning <br>"DOIMIY ROLI"</p>
+        <p style="font-size:var(--body);color:rgba(255,255,255,0.95);margin-top:0.85rem;font-weight:400;line-height:1.5">"Sen Markaziy Bank muvofiqlik xodimisan. Faqat tasdiqlangan qoidalarga asoslan. Shaxsiy ma'lumotni ko'rsatma."</p>
+      </div>
+      <div class="vs">+</div>
+      <div class="col win">
+        <h4>Template Prompt</h4>
+        <p>Har safar <br>"TO'LDIRILADIGAN BLANKA"</p>
+        <p style="font-family:'Space Grotesk',sans-serif;font-size:var(--body);color:rgba(255,255,255,0.92);margin-top:0.85rem;font-weight:400;line-height:1.5">"Mijoz: [MIJOZ_ISMI]. Kredit turi: [KREDIT_TURI]. 1 betlik memo tuz."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 — DICTIONARY (atama: System Prompt + Template Prompt) -->
+<section class="slide s-dict">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Bankir uchun AI lug'ati · 6-modul</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Ikki atama —<br>kutubxonaning <span class="hl">poydevori</span>.</h2>
+    <p class="lead reveal r2">Bu ikki atama yozma blankadek tushunarli. Birini bir marta yozasiz, ikkinchisini har kuni to'ldirasiz.</p>
+    <div class="dict dict-2 reveal r3">
+      <div class="dict-card fragment">
+        <span class="dict-tag">System Prompt</span>
+        <h3>Botning doimiy roli</h3>
+        <p>Botga "<strong>sen kimsan, qanday gapirishing kerak</strong>" deb bir marta aytib qo'yiladigan ko'rsatma. Bot har savolga shu rolda javob beradi — ohang, til, chegaralar — barchasi shu yerda.</p>
+        <div class="dict-eg">Misol: "Sen kredit bo'limi xodimisan. Faqat o'zbek tilida, rasmiy ohangda javob ber. Foiz stavkalarini taxmin qilma — bilmasang 'aniqlashtirib aytaman' deb yoz."</div>
+      </div>
+      <div class="dict-card fragment">
+        <span class="dict-tag">Template Prompt</span>
+        <h3>To'ldiriladigan blanka</h3>
+        <p>Har bir vazifa uchun <strong>tayyor matn</strong> — ichida [KVADRAT QAVS]'lar bor. Siz faqat shu joylarni to'ldirasiz: mijoz ismi, summasi, sana. Qolganini AI yozadi.</p>
+        <div class="dict-eg">Misol: "Mijoz: [MIJOZ_ISMI]. Summa: [SUMMA] so'm. Maqsad: [MAQSAD]. 1 betlik kredit memo tuz."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — LIBRARY OVERVIEW · 5 categories (2+3 layout) -->
+<section class="slide s-lib">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Kutubxona —<br>5 ta yo'nalish, <span class="hl">50+ shablon</span>.</h2>
+    <p class="lead reveal r2">Har shablonda egasi, versiyasi, tasdiqlovchisi va qo'llash sohasi qayd etilgan — bu nafaqat ro'yxat, balki tasdiqlangan ish reyestri.</p>
+    <div class="lib-grid reveal r3">
+      <div class="lib-card featured fragment">
+        <div class="lib-ico"><img src="images/auto/slide-06-icon-card-1-briefcase.svg" alt="briefcase" style="width:1.4em;height:1.4em;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div>
+        <h3>Kredit</h3>
+        <span class="lib-count">14 shablon</span>
+        <p>Memo, skoring xulosasi, garov tahlili, qaytarilish jadvali tushuntirishi.</p>
+      </div>
+      <div class="lib-card featured fragment">
+        <div class="lib-ico"><img src="images/auto/slide-06-icon-card-2-scale.svg" alt="scale" style="width:1.4em;height:1.4em;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div>
+        <h3>Muvofiqlik</h3>
+        <span class="lib-count">11 shablon</span>
+        <p>AML/KYC tekshiruvi, qoida buzilishi xulosasi, regulator so'rovlari.</p>
+      </div>
+      <div class="lib-card fragment">
+        <div class="lib-ico"><img src="images/auto/slide-06-icon-card-3-message-square.svg" alt="message-square" style="width:1.4em;height:1.4em;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div>
+        <h3>Mijoz xizmati</h3>
+        <span class="lib-count">12 shablon</span>
+        <p>FAQ javoblari, shikoyatga rasmiy javob, eskalatsiya xati.</p>
+      </div>
+      <div class="lib-card fragment">
+        <div class="lib-ico"><img src="images/auto/slide-06-icon-card-4-users.svg" alt="users" style="width:1.4em;height:1.4em;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div>
+        <h3>HR</h3>
+        <span class="lib-count">7 shablon</span>
+        <p>Vakansiya, intervyu xulosasi, ichki bildirishnoma, rejalashtiruv.</p>
+      </div>
+      <div class="lib-card fragment">
+        <div class="lib-ico"><img src="images/auto/slide-06-icon-card-5-megaphone.svg" alt="megaphone" style="width:1.4em;height:1.4em;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></div>
+        <h3>Marketing</h3>
+        <span class="lib-count">9 shablon</span>
+        <p>Mahsulot tavsifi, SMS aksiya, ijtimoiy tarmoq posti, email kampaniya.</p>
+      </div>
+    </div>
+    <p class="lead no-bar reveal r4" style="margin-top:clamp(0.6rem,1.2vw,1rem);font-size:var(--small);font-style:italic;color:var(--mute);letter-spacing:0.02em">→ Keyingi 3 slaydda 3 ta haqiqiy shablonni ochib ko'ramiz: Kredit · Mijoz xizmati · Muvofiqlik.</p>
+  </div>
+</section>
+
+<!-- SLIDE 7 — TEMPLATE #1 · KREDIT MEMO -->
+<section class="slide s-tpl">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="tpl-meta reveal r1">
+      <span class="tpl-cat">Shablon · Kredit</span>
+      <span class="tpl-id">#KR-04</span>
+      <span class="tpl-saves">· illyustrativ statistika</span>
+    </div>
+    <h2 class="h2 reveal r2" style="margin-top:0.5rem">1 betlik <span class="hl">kredit memo</span> tuzish.</h2>
+    <div class="tpl-wrap reveal r3">
+      <pre class="template-box"><span class="role">[ROL]</span> Sen tijorat krediti bo'limi xodimisan. Hujjatlar to'liq, ohang rasmiy. Foiz stavkasini taxmin qilma — qoidalardan ol.
+
+<span class="label">[VAZIFA]</span> Kredit komiteti uchun 1 betlik memo tayyorla. Hajmi: 350 so'zdan oshmasin.
+
+<span class="label">[KIRISH MA'LUMOTLARI]</span>
+· Mijoz: <span class="ph">[MIJOZ_ISMI]</span> · INN: <span class="ph">[INN]</span>
+· Kredit turi: <span class="ph">[KREDIT_TURI]</span>
+· So'ralgan summa: <span class="ph">[SUMMA]</span> so'm · Muddat: <span class="ph">[MUDDAT_OY]</span> oy
+· Maqsad: <span class="ph">[MAQSAD]</span>
+· Garov: <span class="ph">[GAROV_TURI]</span> · Bahosi: <span class="ph">[GAROV_BAHOSI]</span> so'm
+· Mijozning oxirgi 12 oylik aylanmasi: <span class="ph">[OYLIK_AYLANMA]</span> so'm
+· Ichki skoring bali: <span class="ph">[SKORING_BALI]</span> / 100
+
+<span class="label">[FORMAT]</span>
+1. Mijoz portreti (3 jumla)
+2. Maqsad va asoslash (3-4 jumla)
+3. Risklar va yumshatuv chorasi (ro'yxat, 3 nuqta)
+4. Tavsiya: TASDIQLASH / RAD ETISH / QO'SHIMCHA HUJJAT — sabab bilan
+
+<span class="com">// Eslatma: agar skoring bali 60 dan past bo'lsa, "Qo'shimcha hujjat" tavsiyasini bering.</span></pre>
+    </div>
+    <p class="tpl-hint reveal r4">→ Siz to'ldirgan 8 ta maydon · qolgan tuzilma har safar bir xil. Qo'mitaga keladigan memolar shu sababdan bir uslubda.</p>
+  </div>
+</section>
+
+<!-- SLIDE 8 — TEMPLATE #2 · MIJOZ XIZMATI JAVOBI -->
+<section class="slide s-tpl">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="tpl-meta reveal r1">
+      <span class="tpl-cat">Shablon · Mijoz xizmati</span>
+      <span class="tpl-id">#MX-07</span>
+      <span class="tpl-saves">· illyustrativ statistika</span>
+    </div>
+    <h2 class="h2 reveal r2" style="margin-top:0.5rem">Shikoyatga <span class="hl">rasmiy javob</span> tayyorlash.</h2>
+    <div class="tpl-wrap reveal r3">
+      <pre class="template-box"><span class="role">[ROL]</span> Sen mijozlar bilan ishlash bo'limi mutaxassisisan. Empatiya bor, ohang odob doirasida, lekin bo'sh va'da bermaysan. Faqat tasdiqlangan ma'lumotni yozasan.
+
+<span class="label">[VAZIFA]</span> Mijoz shikoyatiga rasmiy javob xati yoz. Hajmi: 180-220 so'z.
+
+<span class="label">[KIRISH MA'LUMOTLARI]</span>
+· Mijoz: <span class="ph">[MIJOZ_ISMI]</span> · Murojaat raqami: <span class="ph">[MUROJAAT_RAQAMI]</span>
+· Murojaat sanasi: <span class="ph">[MUROJAAT_SANASI]</span>
+· Kanal: <span class="ph">[KANAL]</span>  <span class="com">// Telegram / Call-center / Filial</span>
+· Shikoyat mavzusi: <span class="ph">[SHIKOYAT_MAVZUSI]</span>
+· Shikoyat mazmuni (qisqacha): <span class="ph">[SHIKOYAT_MAZMUNI]</span>
+· Tekshiruv natijasi: <span class="ph">[TEKSHIRUV_NATIJASI]</span>
+· Bank tomonidan ko'rilgan chora: <span class="ph">[CHORA]</span>
+· Mas'ul xodim: <span class="ph">[MASUL_XODIM]</span>
+
+<span class="label">[FORMAT]</span>
+1. Rasmiy salomlashish — mijozning ismi va sharifi bilan
+2. Murojaat uchun minnatdorlik (1 jumla, samimiy)
+3. Tekshiruv natijasi (aniq, bahonalarsiz)
+4. Ko'rilgan chora va sanasi
+5. Yopilish — 24 soat ichida qaytib bog'lanishni taklif
+
+<span class="com">// Taqiqlangan: "biz uddalay olmadik", "afsus", "kechiring" — o'rniga "...ni yaxshilash uchun..." deb yoz.</span></pre>
+    </div>
+    <p class="tpl-hint reveal r4">→ Mijoz xatining ohangi bir xil — operator kim bo'lishidan qat'i nazar. Shikoyat statistikasi: javob vaqti 3 soatdan 18 daqiqaga tushadi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 9 — TEMPLATE #3 · MUVOFIQLIK TEKSHIRUVI -->
+<section class="slide s-tpl">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="tpl-meta reveal r1">
+      <span class="tpl-cat">Shablon · Bank nazorati</span>
+      <span class="tpl-id">#KP-02</span>
+      <span class="tpl-saves">· illyustrativ statistika</span>
+    </div>
+    <h2 class="h2 reveal r2" style="margin-top:0.5rem">Tijorat banki <span class="hl">hisobotini</span> tahlil qilish.</h2>
+    <div class="tpl-wrap reveal r3">
+      <pre class="template-box"><span class="role">[ROL]</span> Sen Markaziy Bank Bank nazorati bo'limi tahlilchisisan. Hech qanday taxmin qilmaysan. Markaziy Bank reglamentiga ishora qila olmasang, "reglament topilmadi" deb yoz.
+
+<span class="label">[VAZIFA]</span> Tijorat banki choraklik hisobotidagi anomaliyalarni topish va xulosa tayyorlash.
+
+<span class="label">[KIRISH MA'LUMOTLARI]</span>
+· Bank nomi: <span class="ph">[BANK_NOMI]</span>
+· Hisobot davri: <span class="ph">[HISOBOT_DAVRI]</span>
+· Hisobot matni/raqamlari: <span class="ph">[HISOBOT_MATNI]</span>
+
+<span class="label">[NAZORAT NUQTALARI]</span>
+1. Likvidlik koeffitsienti
+2. Kapital yetarliligi
+3. AML signallari
+
+<span class="label">[FORMAT]</span>
+Har nuqta uchun: ✓ ME'YORDA / ⚠ ANOMALIYA / ✗ BUZILISH — qisqa izoh + reglament.
+Yakuniy xulosa: QABUL QILISH / QO'SHIMCHA SO'ROV / CHORA KO'RISH.
+
+<span class="com">// Diqqat: tijorat banki nomi yoki shaxsiy ma'lumotni xulosaga ko'chirma — faqat hisobot raqami va koeffitsient.</span></pre>
+    </div>
+    <p class="tpl-hint reveal r4">→ Audit izi avtomatik qoladi: kim, qachon, qaysi shablonni ishlatgan. Regulator tekshiruvida kerak bo'ladi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 10 — SOZLASH 4 QADAMI (.road, 4 cards) -->
+<section class="slide s-road">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Shablonni o'z bo'limingizga —<br><span class="hl">4 qadamda</span> moslang.</h2>
+    <p class="lead reveal r2">Tayyor shablon 80% ish. Qolgan 20% — sizga moslash. Mana 4 ta qadam:</p>
+    <div class="road road-4 reveal r3">
+      <div class="step">
+        <div class="n">01</div>
+        <h3>Rolni o'zgartiring</h3>
+        <p>"Kredit xodimi" o'rniga "Muvofiqlik auditori" yoki "Mijoz operatori" deb yozing. Bot shu rolga kiradi.</p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h3>Misol qo'shing</h3>
+        <p>Bo'limingiz uslubidagi 1 ta yozma misol qo'shing. Bot shu uslubni nusxalaydi.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h3>Formatni belgilang</h3>
+        <p>Hajmi (so'z), tuzilishi (1, 2, 3), majburiy maydonlar — aniq yozib qo'ying.</p>
+      </div>
+      <div class="step">
+        <div class="n">04</div>
+        <h3>Sinab ko'ring</h3>
+        <p>3 xil real ma'lumotda sinab ko'ring. Natija mos kelsa — saqlang. Aks holda 1-3 qadamlarni qaytaring.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11 — BRAINSTORM · LIVE CUSTOMIZATION WORKSHOP -->
+<section class="slide s-brain">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r2">Amaliy mashg'ulot · 8 daqiqa</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Birgalikda <span class="hl">qayta yozamiz</span> —<br>Kredit memo → Tijorat bankiga normativni tushuntirish.</h2>
+    <div class="questions reveal r3">
+      <div class="q fragment"><span class="n">01</span><span>Qaysi maydonlarni olib tashlaymiz? <span style="color:var(--accent-2)">(mijoz/skoring — kerak emas)</span></span></div>
+      <div class="q fragment"><span class="n">02</span><span>Yangi maydonlar — qaysi 4 tasi muhim? <span style="color:var(--accent-2)">(normativ raqami, sana, bandlar, ta'sir)</span></span></div>
+      <div class="q fragment"><span class="n">03</span><span>Format qismida tushuntirish strukturasi qanday bo'ladi? <span style="color:var(--accent-2)">(4 qismli aniq struktura)</span></span></div>
+    </div>
+    <p class="lead no-bar reveal r4" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">→ 8 daqiqada zaldagi takliflarga asoslanib yangi shablon yozib chiqamiz. Ekrandan kuzatamiz, jonli to'g'irlaymiz.</p>
+  </div>
+</section>
+
+<!-- SLIDE 12 — SIFAT TEKSHIRUVI · CANDO -->
+<section class="slide s-cando">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Yuborishdan oldin —<br><span class="hl">sifat tekshiruvi</span>.</h2>
+    <p class="lead reveal r2">AI yozdi — siz imzolaysiz. Mas'uliyat sizda. Quyidagi 5+5 belgi — 30 soniyalik majburiy darvoza, har yuborishdan oldin bajariladi va shablon ID + versiya audit iziga yoziladi.</p>
+    <div class="cando reveal r3">
+      <div class="cando-col fragment">
+        <div class="cando-tag">✓ Yuborsa bo'ladi</div>
+        <ul>
+          <li>Barcha [kvadrat qavslar] to'ldirilgan — bo'sh yer yo'q</li>
+          <li>Raqamlar va sanalar manbaga aniq mos keladi</li>
+          <li>Ohang rasmiy va ehtirom doirasida</li>
+          <li>Hech qanday taxminiy yoki "ehtimol" so'zi yo'q</li>
+          <li>Tekshirilmagan da'vo — qoidaga ishorasiz fakt — yo'q</li>
+        </ul>
+      </div>
+      <div class="cando-col cant fragment">
+        <div class="cando-tag">✗ Bu xatolar bo'lsa — qayta yozing</div>
+        <ul>
+          <li>Shaxsiy ma'lumot — ortiqcha (FIO + INN + telefon hammasi birga)</li>
+          <li>Foiz, balans, summa — taxmin qilingan, manba yo'q</li>
+          <li>"Albatta", "kafolat" so'zlari — bank kafolat bermaydi</li>
+          <li>Hajmning oshib ketishi — so'ralgan 200 so'z o'rniga 600 so'z</li>
+          <li>Mantiqiy uzilish — band 2 va 4 bir-biriga zid</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13 — CLOSING + RECAP -->
+<section class="slide s-close">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Bugundan <span class="hl">3 ta asosiy</span> xulosa.</h2>
+    <div class="close-list reveal r3">
+      <div class="close-row"><span class="arrow"><img src="images/auto/slide-13-icon-row-1-lightbulb.svg" alt="lightbulb" style="width:1.4em;height:1.4em;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></span><p><strong>Noldan yozma — kutubxonadan ol.</strong> 50+ shablon 5 ta yo'nalish bo'yicha tayyor. Nusxa oling, [kvadrat qavslar]ni to'ldiring, ishlating.</p></div>
+      <div class="close-row"><span class="arrow"><img src="images/auto/slide-13-icon-row-2-lightbulb.svg" alt="lightbulb" style="width:1.4em;height:1.4em;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></span><p><strong>4 qadamda o'z bo'limingizga moslang:</strong> rolni almashtiring → misol qo'shing → formatni aniqlang → 3 ta real ma'lumotda sinang.</p></div>
+      <div class="close-row"><span class="arrow"><img src="images/auto/slide-13-icon-row-3-lightbulb.svg" alt="lightbulb" style="width:1.4em;height:1.4em;filter:invert(60%) sepia(58%) saturate(2210%) hue-rotate(195deg) brightness(101%) contrast(96%)"></span><p><strong>AI yozdi — siz imzolaysiz.</strong> Yuborishdan oldin 30 soniyalik 5+5 belgi tekshiruvi — har safar.</p></div>
+    </div>
+    <div class="recap reveal r3">
+      <div class="recap-tag">Lug'at takrori · birga aytamiz</div>
+      <div class="recap-terms">
+        <div class="recap-term"><strong>System Prompt</strong> <span class="ans">botning doimiy roli — bir marta yoziladi</span></div>
+        <div class="recap-term"><strong>Template Prompt</strong> <span class="ans">to'ldiriladigan blanka — har kuni ishlatiladi</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 14 — Q&A -->
+<section class="slide s-qa">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="qmark reveal r2">?</div>
+    <h2 class="h2 reveal r3" style="text-align:center">Sizning <span class="hl">savollaringiz</span>.</h2>
+    <p class="reveal r3" style="text-align:center;margin-top:clamp(1.5rem,3vw,2.5rem);font-family:var(--display);font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:0.1em;color:var(--accent-2)">murod@mohir.dev</p>
+  </div>
+</section>
+
 </main>
 
 <div class="hud">
-  <span class="counter">01 / 02</span>
+  <span class="counter">01 / 14</span>
   <div class="dots"></div>
   <div class="speaker"><span class="dot"></span><strong>Riskaliev Murad</strong> · NLP Engineer · Mohirdev</div>
 </div>
@@ -540,7 +1039,19 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
 <script>
 const TITLES = [
   'Title · 6-modul',
-  "Yo'l xaritasi · Agenda"
+  "Yo'l xaritasi · Agenda",
+  'Hook · Live shablon demosi',
+  'System Prompt vs Template Prompt',
+  "Lug'at · System / Template Prompt",
+  'Kutubxona · 5 yo\'nalish',
+  'Shablon #KR-04 · Kredit memo',
+  'Shablon #MX-07 · Mijoz xizmati javobi',
+  'Shablon #KP-02 · Hisobot tahlili',
+  'Sozlash · 4 qadam',
+  'Workshop · birgalikda qayta yozamiz',
+  'Sifat tekshiruvi · 5+5 belgi',
+  "Yakun · 3 xulosa + lug'at recap",
+  'Savol-Javob · Q&A'
 ];
 
 const slides = [...document.querySelectorAll('.slide')];

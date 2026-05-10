@@ -1,307 +1,433 @@
+<!--
+  Humanized by .qa/humanize.mjs
+  Source: decks\cb_decks\1_deck/content.md (existing) + index.html + 19 screenshots
+  Model: gemini-3-pro-preview
+  Generated: 2026-05-10T08:11:20.413Z
+  Elapsed: 102.0s
+  Tokens: in=66404 out=7425
+-->
 # 1-modul · Bank sektori uchun sun'iy intellekt asoslari — to'liq kontent
 
 **Module:** 1-modul · Kun 1 · 9:15–10:15 (60 daqiqa)
-**Format:** Ma'ruza + muhokama
-**Audience:** Markaziy Bank xodimlari (non-technical)
+**Format:** Ma'ruza + jonli demo + interaktiv brainstorm
+**Audience:** Markaziy Bank xodimlari (operatsion, muvofiqlik, boshqaruv — dasturchilar emas)
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev
 **Brand:** crea7iveai
-**Slaydlar soni:** 13 ta · har biriga o'rtacha 4–5 daqiqa
+**Stack:** Gemini (miya) + RAG (xotira) + n8n (ishchi) — mutlaqo kodsiz
+**Slaydlar soni:** 19 ta · 4 ta faza
+**Atamalar:** LLM, Promt, API (Slayd 7 da kiritiladi, slayd 18 da auditoriya bilan birga qaytariladi). RAG va Embedding — 9-modulning atamalari, bu yerda demo botning ishlash printsipi sifatida tilga olinadi xolos.
 
-> Asosiy g'oya: kursning oxirida har bir ishtirokchi o'z bo'limi uchun (kredit, komplaens, mijozlarga xizmat) ishlaydigan Telegram bot yasab ketadi — kod yozmasdan.
+## Asosiy g'oya
 
----
-
-## Deck outline (13 slide)
-
-| # | Sarlavha | Format / urg'u | Vaqt |
-|---|---|---|---|
-| 1 | Bank sektori uchun SI asoslari: Nazariyadan amaliyotga | Title — kirish | ~3 daq |
-| 2 | Keling, kelajakni hozir sinab ko'ramiz! | Hook — QR demo | ~5 daq |
-| 3 | SI o'zi nima? (Bankir tilida) | Tushuncha — analogiya | ~4 daq |
-| 4 | Afsona va Haqiqat (miflarni yo'q qilamiz) | Taqqoslash — qo'rquvni yo'qotish | ~4 daq |
-| 5 | Nima uchun banklarga aynan hozir SI kerak? | 3 ta foyda | ~4 daq |
-| 6 | Jahon banklari tajribasi | Case study — JPMorgan, Morgan Stanley | ~5 daq |
-| 7 | Bizning vositalarimiz: "Lego" + "Miya" | Stack: Claude · n8n · MCP | ~4 daq |
-| 8 | Qanday qilib kodsiz bot ishlaydi? | Sxema — jarayon arxitekturasi | ~5 daq |
-| 9 | Bizning yo'l xaritamiz | Roadmap — 3 ta bot | ~4 daq |
-| 10 | Ma'lumotlar xavfsizligi | Bank siri va komplaens | ~5 daq |
-| 11 | Aqliy hujum (interaktiv muhokama) | Brainstorm — flipchart | ~7 daq |
-| 12 | Yakun va keyingi qadam | Transition → 2-modul | ~3 daq |
-| 13 | Savol-Javob (Q&A) | Open Q&A | ~7 daq |
+AI — qandaydir tushunarsiz sehr yoki sizning ishingizni tortib oladigan dushman emas. Bu shunchaki sizning charchamaydigan, super-aqlli stajyoringiz. Bugun biz u bilan qanday gaplashishni o'rganamiz va kurs oxirigacha har biringiz o'z bo'limingiz uchun bitta kodsiz bot yasab ketasiz. Markaziy Bank uchun eng muhimi — bu bot internetdan taxmin qilib emas, aynan sizning tasdiqlangan hujjatlaringizdan (RAG) xavfsiz javob berishini tushunib olish.
 
 ---
 
-## Slide 1 — Title
+## Deck outline (19 slayd)
+
+| # | Sarlavha | Format / urg'u | Vaqt | Faza |
+|---|---|---|---|---|
+| 1 | Bank sektori uchun sun'iy intellekt asoslari | Kirish | ~1 daq | — |
+| 2 | Mavzuning yo'l xaritasi | Agenda (4 bekat) | ~1 daq | — |
+| 3 | Odamlar AI'dan hozir qanday foydalanyapti? | WOW hook — rasm (kal/sochli) | ~1 daq | 01 |
+| 4 | AI ko'pincha kontent o'yinchog'i bo'lib qolyapti | WOW hook — video (it) | ~1 daq | 01 |
+| 5 | Keling, kelajakni hozir sinab ko'ramiz | Live demo (QR + bot) | ~5 daq | 01 |
+| 6 | AI = super-aqlli ishchi | Metafora (17 tab vs AI) | ~3 daq | 01 |
+| 7 | Uchta so'z — kursning poydevori | Lug'at (LLM, Promt, API) | ~4 daq | 01 |
+| 8 | AI ishimni olib qo'yadimi? — Yo'q | Dramatic answer | ~1 daq | 01 |
+| 9 | Miflarga qarshi zarba | Afsona ↔ Haqiqat (4 ta) | ~3 daq | 01 |
+| 10 | AI — bu vosita. Sehr emas. | Can / Cannot chegaralari | ~3 daq | 01 |
+| 11 | 10 yilda 15× o'sish | Global AI banking bozori | ~2 daq | 02 |
+| 12 | Osiyo-Tinch okeani — eng tez o'sadigan | Mintaqaviy o'sish | ~1 daq | 02 |
+| 13 | Banklar AI'ni qayerda ishlatadi? | 4 ta segment (Mijoz xizmati) | ~2 daq | 02 |
+| 14 | Botni 3 rol bilan eslab qolamiz | Arxitektura (Miya, Xotira, Ishchi) | ~4 daq | 03 |
+| 15 | Savol javobga qanday aylanadi? | RAG jarayoni (5 qadam) | ~4 daq | 03 |
+| 16 | Bank siri va ma'lumotlar — qizil chiziq | Xavfsizlik (Masking, Zero-train) | ~4 daq | 03 |
+| 17 | Eng zerikarli ish qaysi? | Interaktiv Wordcloud | ~6 daq | 04 |
+| 18 | 2 kundan keyin: | Xulosa + Lug'at recap | ~3 daq | 04 |
+| 19 | Sizning savollaringiz | Q&A | ~7 daq | 04 |
+
+---
+
+## Slide 1 — Bank sektori uchun sun'iy intellekt asoslari
 
 **Sarlavha:**
-Bank sektori uchun **Sun'iy Intellekt asoslari**: Nazariyadan amaliyotga qadam
+Bank sektori uchun **sun'iy intellekt** asoslari.
 
-**Kichik sarlavha:**
-Qanday qilib kod yozmasdan o'z shaxsiy AI-yordamchimizni (Telegram bot) yaratamiz?
+**Lead matn:**
+Kodsiz AI yechim — bank xodimlari uchun.
 
-**Vizual:**
-Zamonaviy bank ofisi va raqamli neyron tarmoqlarining abstrakt vizualizatsiyasi.
+**Vizual elementlar:**
+To'q ko'k fon, gridli yuza. Markazda katta oq sarlavha, "sun'iy intellekt" so'zi ko'k highlight bilan ajratilgan. Yuqorida vazirlik logotiplari.
 
 **Speaker notes:**
-Auditoriya bilan salomlashing. Ularga bu odatiy, zerikarli IT-ma'ruza emasligini, aksincha — kurs oxirida har biri o'zi ishlaydigan bo'lim (kredit, komplaens, mijozlarga xizmat) uchun tayyor, ishlaydigan Telegram bot yaratib ketishini ayting.
+Xush kelibsiz. Men Murad. Keling, darhol bir narsani kelishib olamiz: bu yerda qandaydir murakkab IT-ma'ruza bo'lmaydi. Men sizga kod yozishni o'rgatmayman. Ekranga e'tibor bering — "kodsiz AI yechim" degan yozuv bor. Ikki kundan keyin har biringiz o'z bo'limingiz — kredit bo'ladimi, muvofiqlikmi yoki mijozlarga xizmat ko'rsatishmi — o'sha yerdagi eng zerikarli ishingizni avtomatlashtiradigan bot yasab ketasiz. O'z qo'lingiz bilan. Dasturlashsiz.
 
 ---
 
-## Slide 2 — Hook · "Muzni yorish"
+## Slide 2 — Mavzuning yo'l xaritasi
 
 **Sarlavha:**
-Keling, kelajakni hozir sinab ko'ramiz!
+Mavzuning **yo'l xaritasi**.
 
-**Ekrandagi matn:**
-- **Maqsad:** Mijozning kredit layoqatini birlamchi baholash boti.
-- Ekranda QR kod va Telegram bot manzili.
+**Lead matn:**
+01 AI aslida nima · 02 Raqamlar nima deyapti · 03 Bot ichida nima bor · 04 Sizning bankingizda nimalar qilsak bo'ladi
 
-**Interaktiv harakat:**
-Ishtirokchilarga telefonlarini olib, ekrandagi QR kodni skaner qilishlarini so'rang. Ular oldindan tayyorlangan demo botga (n8n + Claude orqali sozlangan) shunday yozib ko'rishadi:
-> "Salom, men 50 mln so'm mikroqarz olmoqchiman, maoshim 7 mln."
+**Vizual elementlar:**
+4 ta bosqichli grid. Har bir bosqich alohida karta ko'rinishida, ustiga borganda ko'k rangda yonadi.
 
 **Speaker notes:**
-Ishtirokchilar botning qanchalik tez va aqlli javob berishini o'z ko'zlari bilan ko'rishlari kerak. Keyin ayting: *"Mana shu botni kursimiz oxirida siz o'zingiz yasaysiz. Hech qanday dasturlash tilini bilmasdan!"*
-
-**Tayyorgarlik (deck'dan tashqari):**
-- Demo bot oldindan ishlab qo'yilgan bo'lishi kerak (n8n workflow + Claude API).
-- QR kod slaydga PNG sifatida joylashtiriladi.
-- Telegram bot manzili va QR — ishtirokchilar tez ulansin.
+Oldimizda 60 daqiqa va 4 ta aniq bekat bor. Birinchi — vahimani yig'ishtirib, AI aslida nimaligini bankir tilida tushunib olamiz. Ikkinchi — nega butun dunyo banklari bunga millionlar sarflayotganini raqamlarda ko'ramiz. Uchinchi — o'sha "sehrli" botimiz ichida nima borligini qismlarga ajratamiz. Va oxirida, eng muhimi — sizning bo'limingizdagi qaysi ishlarni AI'ga topshirishimiz mumkinligini birga hal qilamiz. Ketdik.
 
 ---
 
-## Slide 3 — SI o'zi nima? (Bankir tilida)
+## Slide 3 — Odamlar AI'dan hozir qanday foydalanyapti?
 
 **Sarlavha:**
-Sun'iy intellekt — bu terminator emas, bu sizning **super-aqlli stajyoringiz**.
+Odamlar AI'dan hozir **qanday** foydalanyapti?
 
-**Ekrandagi matn:**
-- **Generativ AI (ChatGPT, Claude):** matnni o'qiydi, tahlil qiladi, yangi matn (yoki qaror) yaratadi.
-- **U qanday ishlaydi?** Internetdagi ulkan ma'lumotlar ustida o'qigan. Siz to'g'ri savol (promt) bersangiz, u kerakli javobni taxmin qilib yig'ib beradi.
+**Lead matn:**
+Bu qiziq. Lekin bu AI'ning eng past qiymatli ishlatilishi.
 
-**Vizual:**
-Ikki tomonlama qiyoslash — bir tomonda yuzlab qalin qog'oz jildlar (an'anaviy usul), ikkinchi tomonda bitta aqlli kompyuter/robot tezda xulosa qog'ozini uzatmoqda.
+**Vizual elementlar:**
+Ikkita rasm yonma-yon. AVVAL — kal sochli yigit. KEYIN — AI yordamida soch qo'shilgan o'sha yigit.
 
 **Speaker notes:**
-Bankirlarga kompyuter ichi qanday ishlashini tushuntirish shart emas. Asosiy fikr — AI bu sizga shablonlarni to'ldirib beradigan, mijoz shikoyatini tahlil qiladigan, hujjatdagi xatolarni topadigan **charchamas xodim**.
+Ekranga qarang. Ko'pchilik sun'iy intellekt deganda aynan shuni tushunadi. Rasm chizish, kimningdir yuzini o'zgartirish, memlar yasash. Aytmoqchi, bu o'zimman — AI menga soch qo'shib berdi. Qiziqmi? Ha. Lekin bank uchun buning bir tiyinlik qadri yo'q. Bu texnologiyaning eng ibtidoiy, eng past qiymatli ishlatilishi.
 
 ---
 
-## Slide 4 — Afsona va Haqiqat (miflarni yo'q qilamiz)
+## Slide 4 — AI ko'pincha kontent o'yinchog'i bo'lib qolyapti
 
 **Sarlavha:**
-"AI mening ishimni tortib oladimi?" — **Afsonalar va Haqiqatlar**
+AI ko'pincha **kontent o'yinchog'i** bo'lib qolyapti.
 
-**Ekrandagi taqqoslash jadvali:**
+**Lead matn:**
+Rasm, video, mem, trend. Odamlar AI'ni ko'rinadigan, kulgili narsalarga sarflayapti.
+Biz esa uni real ishga buramiz: hujjat, javob, tekshiruv, qaror tayyorlash.
 
-| ❌ Afsona | ✅ Haqiqat |
-|---|---|
-| SI odamlarning o'rnini egallaydi va ish o'rinlarini yo'q qiladi. | SI faqat monoton (zerikarli, qaytariluvchi) ishlarni oladi. **SIdan foydalana oladigan xodimlar — foydalana olmaydigan xodimlarning o'rnini egallaydi.** |
-| SIni ishlatish uchun dasturlashni bilish shart. | Bugungi kunda (n8n kabi vositalar yordamida) **"No-code"** integratsiya odatiy holatga aylangan. |
+**Vizual elementlar:**
+Chap tomonda raqsga tushayotgan itning videosi aylanib turibdi.
 
 **Speaker notes:**
-Bank xodimlarida har doim "bu texnologiya men uchun xavf" degan yashirin qo'rquv bo'ladi. Shu slaydda ularni tinchlantiring. AI bu **raqobatchi emas, bu qurol** ekanligini uqtiring. Ovozingizni tinchlantirib gapiring — bu slayd informatsiyani uzatish emas, **emotsiyani boshqarish** uchun.
+Yoki mana bu. Itlarga raqs tushirish. Odamlar AI'ni hozir asosan shunday o'yinchoq sifatida ko'ryapti. Biz esa keyingi ikki kunda bu o'yinchoqni haqiqiy ish quroliga aylantiramiz. Bizga raqs kerak emas. Biz yuz sahifalik nizomdan risklarni 5 soniyada topishni, mijozning savoliga aniq javob tayyorlashni va kredit arizasini tekshirishni xohlaymiz.
 
 ---
 
-## Slide 5 — Nima uchun banklarga aynan hozir SI kerak?
+## Slide 5 — Keling, kelajakni hozir sinab ko'ramiz
 
 **Sarlavha:**
-Nega bu muhim? *(Raqamlar gapirganda.)*
+Keling, kelajakni **hozir** sinab ko'ramiz.
 
-**3 ta foyda:**
-- ✅ **Vaqtni tejash** — hujjatlarni o'qish va tahlil qilish (skoring, komplaens) **10 barobar** tezlashadi.
-- ✅ **Xatolarni kamaytirish** — inson omili (charchoq, e'tiborsizlik) tufayli yuzaga keladigan xatolar nolga yaqinlashadi.
-- ✅ **Mijozlarga xizmat** — 24/7, kutishsiz javob.
+**Lead matn:**
+Bu Google emas. Bu sizning bankingizdagi ichki bilim.
 
-**Interaktiv savol (auditoriyaga):**
-> "Kuningizning qancha qismi bir xil turdagi shartnomalarni tekshirish yoki takrorlanuvchi savollarga javob berish bilan o'tadi?"
+**Vizual elementlar:**
+Katta QR kod va `t.me/bankragbot` ssilkasi. O'ng tomonda chat vizualizatsiyasi: foydalanuvchi avtokredit haqida so'rayapti, AI ichki PDF'dan qidirib javob beryapti.
 
 **Speaker notes:**
-Bu yerda 30–45 soniya javob kuting, bir-ikki ishtirokchidan eshiting. Aniq raqam aytsalar, uni 6-slaydga ko'prik sifatida ishlating ("mana shunday vaqtni qanday qaytarib olish mumkinligini ko'ramiz").
+Quruq gapdan ko'ra, keling amalda ko'ramiz. Telefonlarni olinglar. Shu QR kodni skaner qiling yoki Telegramdan botni toping. Unga bank xizmatlari, masalan avtokredit haqida ixtiyoriy savol yozing.
+*(10-15 soniya pauza, zal botga kirishini kuting)*
+Javob keldimi? E'tibor bering — bot Google'dan qidirib, taxmin qilib yozgani yo'q. U orqa fonda biz yuklagan bank PDF hujjatini ochdi, o'qidi va faqat o'sha qoidaga asoslanib javob berdi. Manba ham ko'rsatildi: `kredit_siyosati.pdf, 4.2-band`. Yakuniy qaror baribir mas'ul xodimda qoladi. Mana shu narsa real qiymat deyiladi.
 
----
-
-## Slide 6 — Jahon banklari tajribasi (Case Study)
-
-**Sarlavha:**
-Jahon banklari SIdan qanday foydalanmoqda?
-
-**Ekrandagi raqamlar va logotiplar:**
-
-- 🏦 **JPMorgan Chase — COIN dasturi**
-  Yuristlarning **360,000 soatlik** ishini soniyalarda amalga oshiradi (kredit shartnomalarini tekshirish).
-
-- 🏦 **Morgan Stanley — OpenAI asosida yordamchi**
-  Moliyaviy maslahatchilar mijozga xizmat ko'rsatayotgan vaqtda bot kerakli qoidalarni topib beradi.
-
-**Speaker notes:**
-Haqiqiy raqamlar va mashhur banklar nomini keltirish auditoriyada ishonch uyg'otadi. Asosiy fikr: *"Ular buni allaqachon qilyapti — biz esa endi boshlayapmiz."*
-
-Agar vaqt qolsa, qisqa qo'shimcha misollar:
-- **Bank of America — Erica** (mobil ilova ichidagi AI yordamchi, 1+ milliard so'rov).
-- **HSBC** — tranzaksiya monitoringida AI orqali firibgarlikni aniqlash.
-
----
-
-## Slide 7 — Bizning vositalarimiz · "Lego" konstruktori va "Miya"
-
-**Sarlavha:**
-Biz qanday qilib **kodsiz bot** yaratamiz? Bizning arsenal.
-
-**Stack (3 ta blok):**
-
-- 🧠 **Claude (Anthropic) — bizning "Miya".**
-  Matnlarni tushunadi, mantiqiy fikrlaydi, qaror qabul qiladi.
-
-- 🔌 **n8n — bizning "Qo'llarimiz" (Lego konstruktori).**
-  Telegramdan xabarni oladi, Claude'ga beradi, javobni qaytaradi. **Hech qanday kod kerak emas.**
-
-- 🤖 **Claude Code (MCP) — xavfsiz ko'prik.**
-  "Miya" va bank tizimlari o'rtasidagi rasmiy aloqa kanali. Claude'ga ma'lumotlar bazasidan xavfsiz foydalanish imkonini beradi.
-
-**Speaker notes:**
-MCP (Model Context Protocol) so'zi murakkab eshitilishi mumkin. Oddiy tushuntiring:
-> "Claude juda aqlli, lekin uning qo'li yo'q. U sizning Excel faylingizni o'zicha o'qiy olmaydi. MCP — bu Claude'ga **ko'z va qo'l** beradigan tizim."
-
----
-
-## Slide 8 — Qanday qilib kodsiz bot ishlaydi? (Sodda vizualizatsiya)
-
-**Sarlavha:**
-Parda ortida nima ro'y beradi? *(Jarayon arxitekturasi.)*
-
-**Vizual — zamonaviy chizma/sxema (4 ta qadam):**
-
-1. 📱 **Mijoz (Telegram)** — yozadi: *"Kredit shartlari qanday?"*
-2. ➡️ **n8n (Kuryer)** — savolni ushlab olib, darhol Claude'ga eltadi.
-3. 🧠 **Claude + MCP (Miya)** — savolni tushunadi, bankning ichki Word/PDF faylidan qoidalarni qidiradi va javob tuzadi.
-4. ⬅️ **n8n (Kuryer)** — tayyor javobni olib, Telegramga qaytaradi.
-
-**Speaker notes:**
-Shu joyda ayting: *"Mana shu sxemani sizlar chizasizlar, va u ishlaydi."* Sxema qanchalik sodda va chiroyli (modern UI/UX) bo'lsa, ularga shuncha oson yetib boradi. Strelkalar va ikonlar yordamida vizual ravishda olib boring — har bir bosqichda 5–10 soniya to'xtab, audiens bilan ko'z bilan kuzatib boring.
-
-**Vizual eslatma (designer'ga):**
-- Chap → o'ng oqim (bosqichli flow diagram).
-- Har bir blok rangli, animatsiya bilan birin-ketin paydo bo'lishi mumkin.
-- Strelkalar — bir tomonlama emas, tsikl ekanligini ko'rsatuvchi (so'rov ↔ javob).
-
----
-
-## Slide 9 — Bizning yo'l xaritamiz
-
-**Sarlavha:**
-Kelgusi 2 kunda qanday botlarni 0 dan yig'amiz?
-
-**3 ta qadam:**
-1. **FAQ boti** — mijozlarning eng ko'p beradigan savollariga javob beruvchi.
-2. **Hujjat tahlilchisi** — PDF shartnomani o'qib, undagi xatolarni topuvchi bot.
-3. **Kredit maslahatchisi** — mijoz ma'lumotlarini so'rab olib, dastlabki qarorni chiqaruvchi aqlli agent.
-
-**Speaker notes:**
-Darslar bosqichma-bosqich qiyinlashib boradi, lekin hammasi amaliy. Maqsadni aniq ko'rsating: "2 kun ichida 3 ta ishlaydigan bot."
-
----
-
-## Slide 10 — Ma'lumotlar xavfsizligi (Eng muhim savol!)
-
-**Sarlavha:**
-Bank siri va Mijoz ma'lumotlari: **AI bularni o'g'irlamaydimi?**
-
-**Ekrandagi matn (3 nuqta):**
-
-- 🔒 **Yopiq kontur:** biz yaratadigan tizimlar **API orqali himoyalangan** usulda ishlaydi.
-- 🛡️ **Maxfiylik (Privacy):** Claude tijorat versiyalarida mijoz ma'lumotlari **modellarni o'rgatish (train qilish) uchun ishlatilmaydi**.
-- 🎭 **Anonimlashtirish:** Shaxsiy ma'lumotlarni (pasport, ism) AIdan yashirib, **faqat raqamlarni** tahlilga berish usullari mavjud.
-
-**Speaker notes:**
-Bankirlar uchun eng og'riqli nuqta — xavfsizlik va komplaens. Bu yerda ikki narsani aniq qiling:
-1. Bu mavzu **3-modulda chuqur** o'tiladi — hozir batafsil kirmaymiz.
-2. Lekin **xavotirga o'rin yo'q** — texnik yechimlar mavjud, biz ularni amalda ko'ramiz.
-
-Agar zalda komplaens xodimi bo'lsa, uning ko'ziga qarab gapiring — bu slaydda **uning ishonchini** qozonish kerak.
-
----
-
-## Slide 11 — Interaktiv muhokama · "Aqliy hujum"
-
-**Sarlavha:**
-Keling, **sizning ishingizni** yengillashtiramiz!
-
-**Ekrandagi 2 ta savol:**
-1. Sizning bo'limingizda kuniga kamida 1 soat vaqt oladigan eng zerikarli ish qaysi?
-2. Sizningcha, uni qanday avtomatlashtirish mumkin?
-
-**Interaktiv harakat:**
-Oq doska (flipchart) ga ishtirokchilar aytgan **eng ko'p uchraydigan 3 ta muammoni** yozing. So'ng va'da bering:
-> "Ajoyib — mana shu muammolardan birini ertangi darsda n8n yordamida botga aylantiramiz."
-
-**Speaker notes:**
-Bu qism juda muhim. Ishtirokchilar ishonch hosil qilishlari kerak: AI **ishni tortib oluvchi yovuz kuch emas**, balki ularni **zerikarli rutinalardan qutqaruvchi vosita**. Salbiy reaktsiya (qo'rquv) sezilsa, darhol misol bilan tinchlantiring — masalan: "siz operatsion xodim bo'lsangiz, AI sizning hisobotingizni o'rniga yozmaydi, balki uni 1 soatdan 5 daqiqaga qisqartiradi."
+**Demo qoidasi (auditoriyaga aytib o'ting):** bot faqat oldindan yuklangan test PDF korpusidan javob beradi · real mijoz ma'lumoti ishlatilmagan · hujjatda javob bo'lmasa, bot "ma'lumot topilmadi" deydi.
 
 **Tayyorgarlik:**
-- Flipchart + qalin marker.
-- Yoki ekran ulashish + raqamli whiteboard (FigJam, Miro), agar zal jihozlangan bo'lsa.
+Bot uzilishsiz ishlab turganiga ishonch hosil qiling. Agar kimdadir internet ishlamasa, ekrandagi chat animatsiyasiga ishora qiling.
 
 ---
 
-## Slide 12 — Yakun va keyingi qadam
+## Slide 6 — AI = super-aqlli ishchi
 
 **Sarlavha:**
-Bugungi darsdan xulosa va keyingi qadam.
+AI = SUPER-AQLLI ISHCHI
 
-**3 ta xulosa:**
-- SIdan **qochish** kerak emas — uni **boshqarishni** o'rganish kerak.
-- **Kodsiz (no-code) texnologiyalar** bilan har bir bank xodimi o'z IT mahsulotini yarata oladi.
-- **Keyingi modul (2-modul):** Bank jarayonlarida SI qo'llash imkoniyatlarini chuqurroq aniqlash — guruhli tahlil formati.
+**Lead matn:**
+Metafora.
+
+**Vizual elementlar:**
+Ikkita panel. Chapda "17 TAB OCHILGAN" (charchagan xodim, qog'ozlar). O'ngda "AI TARTIBLANGAN ISH OQIMI" (hujjatni o'qiydi, xulosa qiladi, javob tayyorlaydi).
 
 **Speaker notes:**
-> "Agar tayyor bo'lsangiz, keyingi modulda ushbu g'oyalar qaysi qoliplarga tushishini va xavfsizlik (komplaens) masalalarini ko'rib chiqamiz."
+Aslida AI nima? U qandaydir hamma narsani biluvchi sehrgar emas. O'zingizni eng og'ir kuningizni eslang: brauzerda 17 ta tab ochilgan, oldingizda qog'ozlar uyumi, mijozlar bir xil savolni qayta-qayta beryapti, vaqt qistayapti. Charchaysiz, xato qilasiz.
+AI esa — charchamaydigan, e'tibori chalg'imaydigan super-aqlli stajyor. Unga hujjatni berasiz, "shu yerdan risklarni topib ber" deysiz, u sizga tayyor xulosani chiqarib beradi. U mustaqil qaror qabul qilmaydi, u sizga qora mehnatni qilib beradi.
 
 ---
 
-## Slide 13 — Savol-Javob (Q&A)
+## Slide 7 — Uchta so'z — kursning poydevori
 
 **Sarlavha:**
-**Sizning savollaringiz.**
+Uchta so'z — kursning **poydevori**.
 
-**Ekrandagi matn:**
-> "Har qanday savolni bering: xoh texnik, xoh shaxsiy."
+**Lead matn:**
+Keyingi 15 modulda bu uchta atama qaytib-qaytib chiqadi. Hozir bir marta tushunsak — dars ancha silliq kechadi.
 
-**Vizual:**
-Sodda, bo'sh slayd — fokus **ma'ruzachiga va auditoriyaga**, ekranga emas. Pastda kichik QR kod (1-modul slaydlari uchun yoki kursning kanal manzili) qoldirish mumkin.
+**Vizual elementlar:**
+3 ta karta:
+1. LLM (Katta Til Modeli) — Inson tilini tushunuvchi "Miya". (Gemini, ChatGPT)
+2. PROMT (To'g'ri Buyruq) — AI'dan narsa so'rash uchun yoziladigan savol.
+3. API (AI'ni avtomat ulash) — Brauzerdan qo'l bilan emas, AI ichki tizim bilan o'zi suhbat quradi: CRM, Telegram bot, sayt.
 
 **Speaker notes:**
-Ishtirokchilardan savollar kuting. Bu qism **5–10 daqiqa** vaqtni oladi va 1 soatlik normani to'ldirishga xizmat qiladi. Agar savol kelmasa — siz o'zingiz savol bering: *"Sizdan kim 'menga aynan shu bot kerak' deb hisoblayapti?"* yoki *"Eng ko'p qaysi muammo qiyin tuyulyapti?"*.
+IT jargonlarini yomon ko'raman, lekin shu uchta so'zni bugun kelishib olishimiz shart. Kurs davomida bularni ko'p eshitasiz.
+Birinchisi — **LLM**. Bu kompyuterning til miyasi. Masalan, ChatGPT yoki biz ishlatadigan Gemini.
+Ikkinchisi — **Promt**. Bu sizning AI'ga beradigan buyrug'ingiz. "Qisqa qilib yoz" yoki "Jadval qilib ber" — bular promt.
+Uchinchisi — **API**. Brauzerdan ChatGPTga qo'l bilan yozish — bir xil ish. Lekin bank ichida AI'ni har gal qo'l bilan ishlatib bo'lmaydi: 1000 ta xat keldi — 1000 marta yozasizmi? API — bu AI'ni Telegram bot, CRM, ichki sayt bilan avtomat ulash usuli. Bir marta sozlanadi, har xat o'zi ishlanadi. Boyagi Telegram botimiz aynan shu printsipda — AI bilan tizim API orqali bog'langan.
 
-Agar texnik savol kelsa — javobni qisqa bering, lekin: *"Bu masalani 5-modul (promt muhandisligi) yoki 10-modul (agentlar)da chuqur ko'ramiz"* deb ko'prik tashlang.
+---
+
+## Slide 8 — AI ishimni olib qo'yadimi?
+
+**Sarlavha:**
+AI ishimni olib qo'yadimi?
+
+**Lead matn:**
+AI ishlatadigan odam ishlatmaydigan odamni almashtiradi.
+
+**Vizual elementlar:**
+Markazda qizil rangda, qiyshiq urilgan ulkan "YO'Q" muhri (stamp).
+
+**Speaker notes:**
+Eng ko'p beriladigan, lekin hamma ham ochiq aytishga tortinadigan savol. AI ishimni olib qo'yadimi?
+Javob qisqa — YO'Q.
+AI o'z-o'zidan kelib bankir bo'lib qolmaydi. U kredit qarorini qabul qilolmaydi. Lekin bir narsani aniq biling: AI'dan foydalanishni o'rganib olgan bankir, eski usulda qog'oz titib o'tirgan bankirning o'rnini albatta egallaydi. Chunki u ishni 10 barobar tezroq qiladi. Biz shu birinchi guruhda bo'lishimiz kerak.
+
+---
+
+## Slide 9 — Miflarga qarshi zarba
+
+**Sarlavha:**
+**Miflarga** qarshi zarba.
+
+**Lead matn:**
+Afsona va Haqiqat juftliklari.
+
+**Vizual elementlar:**
+4 ta qator. Chapda qizil afsonalar, o'ngda ko'k haqiqatlar.
+1. Hamma ish yo'qoladi vs AI ishlatadiganlar qoladi.
+2. 5 yil dasturlash kerak vs "No-code" inqilobi.
+3. AI hamma narsani biladi vs RAG orqali PDFdan javob.
+4. AI = ChatGPT vs Gemini, Claude, n8n.
+
+**Speaker notes:**
+Zalda hozir "men dasturlashni bilmayman-ku" degan xavotir bor. Bu eng katta afsona. Hozir "No-code" inqilobi davri. Mantiqiy fikrlash kod yozishdan ancha muhimroq bo'lib qoldi.
+Yana bir xato tushuncha — "AI hamma narsani biladi". Yo'q, AI qachondir o'qitilgan bazasini biladi xolos. Yangi kredit stavkangizni u qayerdan bilsin? Shuning uchun biz unga RAG orqali o'zimizning aniq PDF hujjatimizni beramiz.
+Va oxirgisi, AI faqat ChatGPT degani emas. Bugun biz Google'ning Gemini modeli va n8n tizimi bilan ishlaymiz.
+
+---
+
+## Slide 10 — AI — bu vosita. Sehr emas.
+
+**Sarlavha:**
+AI — bu vosita. Sehr emas.
+
+**Lead matn:**
+Real bank misollari vs AI'ga yolg'iz topshirilmaydi.
+
+**Vizual elementlar:**
+Ikkita ustun. Chapda yashil belgilar bilan AI qila oladigan ishlar (Morgan Stanley, uchrashuv xulosasi, hujjat tahlili). O'ngda qizil belgilar bilan AI qila olmaydigan ishlar (Kredit tasdiqlash, AML qarori).
+
+**Speaker notes:**
+AI'dan sehrgar yasab olsak, ishonchimiz tez sinadi. Uning aniq chegaralari bor.
+U nima qila oladi? Morgan Stanley hozir maslahatchilariga yuzlab tahliliy hujjatlardan javobni soniyalarda topish uchun AI beryapti. Yoki uchrashuvdan keyin mijozga xulosa emailini yozishni AI'ga topshiryapti. Bu zo'r ishlaydi.
+Lekin u nimani eplay olmaydi? Yakuniy qarorni. AI sizga "bu mijozda risk borga o'xshaydi" deb signal berishi mumkin, lekin kreditni berish yoki rad etish tugmasini bosish har doim bankirning zimmasida qoladi. Mas'uliyatni AI'ga yuklab bo'lmaydi.
+
+---
+
+## Slide 11 — 10 yilda 15× o'sish
+
+**Sarlavha:**
+10 yilda **15× o'sish**
+
+**Lead matn:**
+AI Banking · Global Bozor
+
+**Vizual elementlar:**
+Katta raqamlar: 2023-yilda $20.87B → 2033-yilda $310.79B. O'rtada o'ngga qaragan strelka.
+
+**Speaker notes:**
+Nega aynan hozir Markaziy Bankda shu mavzuni o'tyapmiz? Chunki raqamlar aqldan ozdiradigan darajada.
+O'tgan yili bank sohasida AI'ga 20 milliard dollar sarflangan bo'lsa, keyingi 10 yilda bu raqam 310 milliardga chiqadi. Bu 15 barobar o'sish degani. Har ikki yarim yilda bozor ikki barobar kattalashyapti. Bu poyezd allaqachon stansiyadan chiqib ketdi, biz unga hozir sakrab chiqib olishimiz kerak.
+
+---
+
+## Slide 12 — Osiyo-Tinch okeani — eng tez o'sadigan mintaqa
+
+**Sarlavha:**
+**Osiyo-Tinch okeani** — eng tez o'sadigan mintaqa
+
+**Lead matn:**
+Mintaqaviy o'sish · 2024–2033
+
+**Vizual elementlar:**
+4 ta mintaqa ko'rsatilgan progress barlar. Shimoliy Amerika eng katta, lekin Osiyo-Tinch okeani ko'k rangda yonib turibdi (eng tez o'sish).
+
+**Speaker notes:**
+Eng qizig'i shundaki, bu o'sish faqatgina Amerikada bo'layotgani yo'q. Ha, eng katta bozor hozircha ularda. Lekin eng tez o'sayotgan mintaqa — bu Osiyo-Tinch okeani. Biz o'zimiz joylashgan mintaqa.
+Bugun siz o'rganayotgan narsalar ertaga O'zbekiston bank sektorida standartga aylanadi. Bugungi qadam — ertangi ustunlik.
+
+---
+
+## Slide 13 — Banklar AI'ni qayerda ishlatadi?
+
+**Sarlavha:**
+Banklar AI'ni **qayerda** ishlatadi?
+
+**Lead matn:**
+Bankda AI · Qo'llash sohalari
+
+**Vizual elementlar:**
+2x2 grid. Risk menejmenti, Mijozlarga xizmat, Virtual yordamchi, Moliyaviy maslahat. Mijozlarga xizmat kartasi ko'k highlight bilan ajratilgan (Eng tez o'sadigan segment).
+
+**Speaker notes:**
+Xo'sh, banklar bu milliardlarni aynan qayerga sarflayapti? To'rtta asosiy yo'nalish bor. Risk menejmentida skoring va firibgarlikni aniqlash uchun. Virtual yordamchi sifatida bankirlarni o'ziga.
+Lekin eng tez o'sadigan segment — bu Mijozlarga xizmat. 24/7 javob berish, navbatlarni yo'q qilish. Eslang, boya birinchi ko'rgan Telegram botimiz aynan shu segmentga tushadi.
+
+---
+
+## Slide 14 — Botni 3 rol bilan eslab qolamiz
+
+**Sarlavha:**
+Botni 3 rol bilan eslab qolamiz
+
+**Lead matn:**
+Tizim rollari
+
+**Vizual elementlar:**
+3 ta karta:
+1. Miya (Gemini) — Matnni tushunadi.
+2. Xotira (RAG) — Bankning tasdiqlangan hujjatlari.
+3. Ishchi (n8n) — Jarayonni boshqaradi.
+
+**Speaker notes:**
+Endi, keling boyagi botimizning qopqog'ini ochib, ichiga qaraymiz. U qanday ishlaydi? Bu yerda faqat uchta qahramon bor.
+Birinchisi — **Miya**. Bizda bu Gemini. U matnni o'qiydi va insondek tushunadi.
+Ikkinchisi — **Xotira**. Bu RAG tizimi. Ya'ni bizning bankimizning qoidalari, PDF hujjatlarimiz. Miya faqat shu xotiradan ma'lumot oladi.
+Uchinchisi — **Ishchi**. Bu n8n deb ataladigan platforma. U Telegramdan savolni oladi, xotiradan qidiradi, miyaga beradi va tayyor javobni yana Telegramga qaytaradi. U bizning qo'llarimiz.
+
+---
+
+## Slide 15 — Savol javobga qanday aylanadi?
+
+**Sarlavha:**
+Savol javobga qanday aylanadi?
+
+**Lead matn:**
+RAG jarayoni
+
+**Vizual elementlar:**
+Jarayon chizig'i: Savol → Qidiruv → PDF'dan topish → Tahlil → Javob.
+Pastda qora terminal (kod oynasi) ko'rinishida savol va javob logi.
+
+**Speaker notes:**
+Mijoz Telegramda "Avtokredit boshlang'ich to'lovi qancha?" deb yozganida nima yuz beradi?
+Ishchi (n8n) savolni oladi. Uni Xotiraga olib borib, "kredit_siyosati.pdf" ning 4.2-bo'limidan kerakli xatboshini topib oladi. Keyin bu qisqa matnni Miyaga (Gemini) berib, "Shunga qarab chiroyli javob yozib ber" deydi.
+Gemini tahlil qiladi va javob qaytaradi. Eng muhimi — u o'zidan hech narsa qo'shmaydi. Agar PDF'da javob bo'lmasa, "Men bu ma'lumotni topa olmadim" deydi. Bu bizni gallyutsinatsiyadan asraydi.
+
+---
+
+## Slide 16 — Bank siri va ma'lumotlar — qizil chiziq
+
+**Sarlavha:**
+Bank siri va ma'lumotlar — **qizil chiziq**.
+
+**Lead matn:**
+AI yechim bankda faqat quyidagi nazoratlar to'liq joriy bo'lganda ishlatiladi.
+
+**Vizual elementlar:**
+3 ta xavfsizlik bloki: Yopiq Kontur, Zero-Training, Data Masking.
+
+**Speaker notes:**
+Meni eshitib turib, ichingizda bitta savol aylanyapti: "Xavfsizlik nima bo'ladi? Bank siri-chi?"
+Juda to'g'ri savol. Biz ochiq ChatGPT'ga mijoz pasportini tashlamaymiz.
+Birinchidan, biz Yopiq Kontur (API) orqali ishlaymiz. Ikkinchidan, Google bilan "Zero-Training" kelishuvi bor — ya'ni biz yuborgan ma'lumotlar ularning modelini o'qitish uchun ishlatilmaydi. Uchinchidan, Data Masking — mijozning ismi, hisob raqami AI'ga yetib borguncha avtomatik tarzda o'chirib, yashirib yuboriladi. Muvofiqlik haqida ertaga 3-modulda juda chuqur gaplashamiz.
+
+---
+
+## Slide 17 — Eng zerikarli ish qaysi?
+
+**Sarlavha:**
+Eng zerikarli ish qaysi?
+
+**Lead matn:**
+Interaktiv so'rovnoma
+
+**Vizual elementlar:**
+Katta harflar bilan Wordcloud (so'zlar buluti): hisobot, hujjat tekshirish, mijoz savollari, shikoyatlar, Excel, takroriy javob. Pastida 4 ta mezon-pill: takrorlanadi · hujjatga tayanadi · xavfi past · inson tasdig'i saqlanadi.
+
+**Speaker notes:**
+Endi navbat sizga. Ma'ruza tugadi.
+O'ylab ko'ring, har kuni ishingizda asabingizni eng ko'p buzadigan, "shuni kimdir qilsa-yu, men qutulsam" deydigan eng zerikarli rutinalaringiz qaysi? Hisobot yig'ishmi? Yuzlab sahifa hujjat tekshirishmi? Yo oxiri ko'rinmaydigan Excel jadvallarmi?
+*(Zaldan javoblarni eshiting, Wordcloud'dagi so'zlarga urg'u bering)*
+Ajoyib. Mana shu aytgan muammolaringizning eng ko'p takrorlanganini olamiz va ertangi amaliyotda o'z qo'limiz bilan unga bot yasaymiz.
+
+---
+
+## Slide 18 — 2 kundan keyin:
+
+**Sarlavha:**
+2 kundan keyin:
+
+**Lead matn:**
+Siz AI haqida shunchaki eshitgan odam emas, AI bilan ishlaydigan bankirga aylanasiz.
+
+**Vizual elementlar:**
+Markazda katta xulosa matni. Pastda interaktiv lug'at recap: LLM = miya, Promt = buyruq, API = avtomat ulash.
+
+**Speaker notes:**
+Xulosa qilamiz. AI ishingizni olmaydi, u ishingizni tezlashtiradi.
+Keling, bugun o'rgangan uchta asosiy so'zimizni birga qaytaramiz. Men boshini aytaman, siz davomini.
+LLM nima edi? *(Zal: Kompyuter miyasi / Gemini)*
+Promt nima edi? *(Zal: AI'ga beriladigan buyruq / savol)*
+Va uchinchisi, API nima edi? *(Zal: AI'ni boshqa tizim bilan avtomat ulash / CRM, Telegram botga ulash)*
+Ajoyib. Ikki kundan keyin siz AI haqida shunchaki yangiliklarda o'qigan emas, uni real ishlatadigan bankirga aylanasiz.
+
+---
+
+## Slide 19 — Sizning savollaringiz
+
+**Sarlavha:**
+Sizning **savollaringiz**.
+
+**Lead matn:**
+murod@mohir.dev
+
+**Vizual elementlar:**
+Katta ko'k so'roq belgisi. Pastda spikerning elektron pochtasi.
+
+**Speaker notes:**
+Menda hozircha shular. Endi mikrofon sizda. Muvofiqlik, botning ishlashi, yoki hozirgina aytgan muammolaringiz bo'yicha qanday savollar bor? Bemalol.
+*(Savollarga javob bering. Agar texnik yoki muvofiqlik savoli juda chuqurlashsa, "Bu mavzuni 3 yoki 5-modulda batafsil ko'ramiz" deb ko'prik tashlang).*
 
 ---
 
 ## Series-wide bog'lanish
 
-- **Avvalgi modul:** — *(yo'q — bu kursning birinchi moduli)*
-- **Keyingi modul:** [`2_deck/`](../2_deck/) — Bank jarayonlarida SI qo'llash imkoniyatlarini aniqlash · *Guruhli tahlil*
+- **Keyingi modul:** `2_deck/` — Bank jarayonlarida SI qo'llash imkoniyatlarini aniqlash (bu yerda yig'ilgan og'riqlar tahlil qilinadi).
+- **Muvofiqlik chuqur:** `3_deck/` — Xavfsizlik va yopiq kontur (slide 16 dagi mavzular).
+- **RAG chuqur:** `9_deck/` — Slide 15 dagi jarayonni o'z qo'limiz bilan yig'amiz.
 
-## Tayyorgarlik checklist (deck'dan tashqari)
+## Tayyorgarlik checklist
 
-- [ ] Demo Telegram bot ishlayapti (n8n workflow + Claude API + kredit-skoring promti)
-- [ ] QR kod slaydga eksport qilingan (slide 2 va slide 13)
-- [ ] Flipchart + markerlar zalda mavjud (slide 11)
-- [ ] Bot manzili / QR ekranga yaqqol ko'rinadigan o'lchamda
-- [ ] Backup: agar ishtirokchilarda telefon bilan muammo bo'lsa, ekrandan o'zingiz demo qilib ko'rsating
-- [ ] JPMorgan / Morgan Stanley logotiplari yoki ularning rasmiy press iqtiboslari (slide 6)
-- [ ] Slide 8 sxemasi — chizma sifatida tayyorlangan (animatsion bo'lsa yana yaxshi)
+- [ ] Demo Telegram bot (`bots/01_rag_basics/`) barqaror ishlayotganini tekshirish.
+- [ ] Slide 5 dagi QR kod aynan o'sha botga olib borishini telefon orqali sinab ko'rish.
+- [ ] Slide 3 va 4 dagi media (rasm va video) to'g'ri ochilayotganini tekshirish.
+- [ ] Slide 11 va 12 dagi Spherical Insights raqamlarini (15x o'sish, $310B) xotirada yangilash.
+- [ ] Slide 18 dagi lug'at recap interaktivligini (klaviatura o'ng tugmasi bilan birin-ketin ochilishini) sinash.
 
 ## Vaqt rejimi (60 daqiqa)
 
-| Bloklar | Slaydlar | Vaqt |
+| Faza | Slaydlar | Vaqt |
 |---|---|---|
-| Kirish + hook | 1–2 | ~8 daq |
-| Tushuncha | 3–4 | ~8 daq |
-| Foyda + dunyo tajribasi | 5–6 | ~9 daq |
-| Texnik blok | 7–8 | ~9 daq |
-| Yo'l xaritasi + xavfsizlik | 9–10 | ~9 daq |
-| Interaktiv | 11 | ~7 daq |
-| Yopilish + Q&A | 12–13 | ~10 daq |
-| **Jami** | **13** | **~60 daq** |
+| Kirish va Yo'l xaritasi | 1–2 | ~2 daq |
+| 01 · Tushuncha va Miflar | 3–10 | ~17 daq |
+| 02 · Raqamlar va Bozor | 11–13 | ~5 daq |
+| 03 · Texnik jarayon va Xavfsizlik | 14–16 | ~12 daq |
+| 04 · Amaliyot, Xulosa va Q&A | 17–19 | ~24 daq |
+| **Jami** | **19 ta slayd** | **~60 daq** |
+
+---
+
+## Restructure tarixi
+- **v5 (joriy):** 19 slaydlik jonli `index.html` bilan to'liq sinxronlandi. RAG tushunchasi to'g'rilandi. AI klişelari tozalandi, gapirish ohangi bankir/spiker tiliga o'girildi.
+- **v4:** 14 → 19 slayd. Wow hook ikkilik (image + video), Spherical Insights stat trio, stamp "YO'Q", interaktiv lug'at recap qo'shilgan.

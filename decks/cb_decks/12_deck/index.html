@@ -10,6 +10,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:'Space Grotesk',sans-serif}
+body,p,li,.lead{letter-spacing:0.018em}
 
 :root{
   --bg:#020A24;--bg-2:#06173B;--bg-3:#0B2D79;
@@ -422,6 +423,147 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   box-shadow:0 12px 28px -12px rgba(37,99,235,0.3);
 }
 
+/* MODULE 12 — additions on top of locked tokens (no token edits) */
+
+/* DICT — atama dictionary, 2-card variant */
+.dict{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.dict.dict-2{grid-template-columns:1fr 1fr}
+.dict-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
+.dict-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.dict-card .dict-tag{display:inline-block;font-family:var(--display);font-size:clamp(1.4rem,2.8vw,2.4rem);letter-spacing:0.02em;color:var(--accent-2);text-transform:uppercase;line-height:1;margin-bottom:0.75rem}
+.dict-card h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:0.6rem}
+.dict-card p{font-size:var(--body);line-height:1.55;color:rgba(255,255,255,0.78)}
+.dict-card p strong{color:var(--accent-2);font-weight:500}
+.dict-card .ex{margin-top:0.85rem;padding-top:0.6rem;border-top:1px solid rgba(255,255,255,0.08);font-size:clamp(0.78rem,1vw,0.95rem);line-height:1.5;color:rgba(255,255,255,0.65);font-style:italic}
+.dict-card .ex strong{font-family:var(--display);font-style:normal;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-2);font-weight:400;margin-right:0.4em}
+.dict-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+
+/* BENEFITS-4 — 4-grid variant for taxonomies */
+.benefits.benefits-4{grid-template-columns:repeat(4,1fr)}
+.benefits-4 .benefit{padding:clamp(1rem,2vw,1.65rem)}
+.benefits-4 .benefit h3{font-size:clamp(0.95rem,1.4vw,1.25rem)}
+.benefits-4 .benefit p{font-size:clamp(0.78rem,1vw,0.95rem)}
+.benefits-4 .benefit .ico{font-size:clamp(1.4rem,2.6vw,2rem);margin-bottom:0.6rem;display:block;color:var(--accent)}
+.benefits-4 .benefit .ex{margin-top:clamp(0.6rem,1.2vw,1rem);padding-top:clamp(0.45rem,0.9vw,0.7rem);border-top:1px solid rgba(255,255,255,0.1);font-size:clamp(0.7rem,0.92vw,0.85rem);line-height:1.45;color:rgba(255,255,255,0.65);font-style:italic}
+.benefits-4 .benefit .ex strong{font-family:var(--display);font-style:normal;text-transform:uppercase;letter-spacing:0.04em;color:var(--accent-2);font-weight:400;margin-right:0.35em}
+
+/* TEMPLATE BOX — code/log monospace block */
+.template-box{
+  background:var(--ink);
+  color:rgba(255,255,255,0.86);
+  border:1px solid var(--soft);
+  border-left:3px solid var(--accent);
+  border-radius:var(--r);
+  padding:clamp(0.85rem,1.6vw,1.35rem) clamp(1rem,1.8vw,1.6rem);
+  font-family:'JetBrains Mono','Consolas',monospace;
+  font-size:clamp(0.72rem,0.98vw,0.92rem);
+  line-height:1.55;
+  white-space:pre-wrap;
+  overflow:auto;
+  position:relative;
+  box-shadow:0 18px 40px -20px rgba(2,10,36,0.8) inset;
+  max-height:100%;
+  margin-top:clamp(0.85rem,1.5vw,1.25rem);
+}
+.template-box .ph{color:var(--accent-2);background:rgba(96,165,250,0.1);border:1px solid rgba(96,165,250,0.25);padding:0.05em 0.35em;border-radius:0.3em;font-weight:500}
+.template-box .role{color:var(--accent-glow);font-weight:500}
+.template-box .label{color:var(--accent);font-weight:500}
+.template-box .com{color:var(--mute);font-style:italic}
+.template-box .ok{color:#4ade80;font-weight:500}
+.template-box .err{color:#ff6060;font-weight:500}
+.template-box .warn{color:#fbbf24;font-weight:500}
+.tpl-hint{font-size:var(--small);color:var(--mute);font-style:italic;margin-top:clamp(0.4rem,0.8vw,0.65rem);letter-spacing:0.02em}
+
+/* CANDO — capability boundaries */
+.cando{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.cando-col{background:rgba(255,255,255,0.04);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2rem);border-left:4px solid var(--accent);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,background 0.3s}
+.cando-col.cant{border-left-color:#ff4040;background:rgba(255,64,64,0.06)}
+.cando-col .cando-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.85rem}
+.cando-col.cant .cando-tag{color:#ff6060}
+.cando-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:clamp(0.55rem,1vw,0.85rem)}
+.cando-col li{font-size:var(--body);line-height:1.5;color:#fff;padding-left:1.25rem;position:relative}
+.cando-col li::before{content:"·";position:absolute;left:0.4rem;color:var(--accent);font-weight:700;font-size:1.4em;line-height:1}
+.cando-col.cant li::before{color:#ff6060}
+.cando-col:hover{transform:translateY(-3px);box-shadow:0 12px 28px -12px rgba(37,99,235,0.3)}
+.cando-col.cant:hover{box-shadow:0 12px 28px -12px rgba(255,64,64,0.3)}
+
+/* MYTH — 4-row variant for module 12 */
+.myth.myth-4{grid-template-columns:1fr 1fr;gap:clamp(0.7rem,1.4vw,1.25rem)}
+.myth.myth-4 .row{padding:clamp(0.85rem,1.6vw,1.4rem)}
+.myth.myth-4 .row p{font-size:clamp(0.85rem,1.1vw,1.05rem);line-height:1.45}
+
+/* BENEFIT proof footer */
+.benefit .proof{margin-top:clamp(0.75rem,1.4vw,1.15rem);padding-top:clamp(0.55rem,1vw,0.85rem);border-top:1px solid rgba(255,255,255,0.1);font-size:clamp(0.7rem,0.9vw,0.85rem);line-height:1.45;color:rgba(255,255,255,0.7)}
+.benefit .proof strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-2);font-weight:400}
+
+/* CANVAS GRID — 2x3 worksheet */
+.canvas-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:clamp(0.7rem,1.3vw,1.15rem);margin-top:clamp(0.85rem,1.5vw,1.25rem);flex:1;min-height:0}
+.canvas-cell{background:linear-gradient(135deg,rgba(37,99,235,0.12),rgba(255,255,255,0.04));border:2px dashed rgba(96,165,250,0.7);border-radius:clamp(0.5rem,0.9vw,0.85rem);padding:clamp(0.85rem,1.5vw,1.25rem);min-height:0;box-shadow:0 8px 24px -10px rgba(37,99,235,0.25);display:flex;flex-direction:column;gap:clamp(0.4rem,0.7vw,0.6rem)}
+.canvas-cell .canvas-tag{display:flex;align-items:center;gap:0.5rem;font-family:var(--display);font-size:clamp(0.85rem,1.2vw,1.05rem);letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-2)}
+.canvas-cell .canvas-tag .ico{font-size:clamp(1rem,1.5vw,1.4rem)}
+.canvas-cell p{font-size:clamp(0.78rem,1.05vw,1rem);line-height:1.5;color:rgba(255,255,255,0.82)}
+.canvas-cell p strong{color:#fff;font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;font-weight:400;font-size:0.92em}
+
+/* BRAINSTORM */
+.s-brain .questions{display:flex;flex-direction:column;gap:clamp(0.85rem,1.6vw,1.4rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)}
+.q{font-family:var(--display);font-size:clamp(1rem,2vw,1.65rem);line-height:1.2;letter-spacing:-0.01em;color:#fff;display:flex;gap:clamp(0.75rem,1.5vw,1.25rem);align-items:flex-start}
+.q .n{color:var(--accent);flex-shrink:0}
+
+/* CLOSING + recap */
+.close-list{display:flex;flex-direction:column;gap:clamp(0.7rem,1.3vw,1.15rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)}
+.close-row{display:flex;gap:clamp(0.75rem,1.5vw,1.25rem);align-items:flex-start;padding:clamp(0.85rem,1.6vw,1.4rem);background:rgba(255,255,255,0.04);border-left:4px solid var(--accent);border-radius:0 var(--r) var(--r) 0}
+.close-row .arrow{color:var(--accent);font-family:var(--display);font-size:clamp(1.2rem,2vw,1.5rem)}
+.close-row p{font-size:var(--body);line-height:1.55;color:#fff;font-weight:400}
+.close-row p strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.02em}
+.s-close .recap{margin-top:clamp(0.85rem,1.5vw,1.4rem);padding-top:clamp(0.7rem,1.3vw,1.1rem);border-top:1px solid var(--soft);display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.5rem);flex-wrap:wrap}
+.s-close .recap-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);flex-shrink:0}
+.s-close .recap-terms{display:flex;gap:clamp(1rem,2vw,2rem);flex-wrap:wrap;flex:1}
+.s-close .recap-term{font-size:var(--body);color:rgba(255,255,255,0.7);line-height:1.4}
+.s-close .recap-term strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-right:0.5em;font-weight:400}
+.s-close .recap-term .ans{color:var(--accent-2)}
+
+/* Q&A */
+.s-qa .main{align-items:center;text-align:center}
+.qmark{font-family:var(--display);font-size:clamp(8rem,18vw,16rem);line-height:0.9;color:var(--accent);letter-spacing:-0.05em}
+
+/* COMPARE-RICH — wider compare with header + body lines (idempotency slide) */
+.compare-rich{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,1.75rem);margin-top:clamp(0.85rem,1.5vw,1.25rem);align-items:stretch}
+.compare-rich .rich-col{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1rem,2vw,1.65rem);display:flex;flex-direction:column;gap:clamp(0.5rem,1vw,0.85rem);position:relative;overflow:hidden}
+.compare-rich .rich-col.bad{border-left:4px solid #ff5050}
+.compare-rich .rich-col.good{border-left:4px solid var(--accent);background:rgba(37,99,235,0.06)}
+.compare-rich .rich-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase}
+.compare-rich .rich-col.bad .rich-tag{color:#ff7070}
+.compare-rich .rich-col.good .rich-tag{color:var(--accent-2)}
+.compare-rich .rich-col h3{font-family:var(--display);font-size:clamp(1.05rem,1.7vw,1.4rem);text-transform:uppercase;letter-spacing:-0.01em;color:#fff}
+.compare-rich .rich-col p{font-size:clamp(0.82rem,1.1vw,1.02rem);line-height:1.5;color:rgba(255,255,255,0.78)}
+.compare-rich .rich-col .outcome{margin-top:auto;padding-top:clamp(0.55rem,1vw,0.85rem);border-top:1px solid rgba(255,255,255,0.08);font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;font-size:clamp(0.78rem,1vw,0.95rem)}
+.compare-rich .rich-col.bad .outcome{color:#ff8080}
+.compare-rich .rich-col.good .outcome{color:var(--accent-2)}
+.compare-rich .rich-col:hover{transform:translateY(-3px);box-shadow:0 12px 28px -12px rgba(37,99,235,0.3);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s}
+
+/* FLOW — 6-step variant + branching pipeline */
+.flow.flow-6 .step{padding:clamp(0.7rem,1.3vw,1.15rem)}
+.flow.flow-6 .step h4{font-size:clamp(0.75rem,1.15vw,0.98rem)}
+.flow.flow-6 .step p{font-size:clamp(0.62rem,0.85vw,0.78rem)}
+.flow.flow-6 .step .ico{font-size:clamp(1.3rem,2.4vw,1.85rem)}
+.flow.flow-6 .arrow{font-size:clamp(1rem,1.8vw,1.4rem)}
+.flow .step .stepnum{display:inline-block;font-family:var(--display);font-size:clamp(0.6rem,0.85vw,0.75rem);letter-spacing:0.18em;color:var(--accent);background:rgba(37,99,235,0.18);padding:0.15rem 0.5rem;border-radius:99px;margin-bottom:0.35rem}
+.flow.flow-6 .step.brain .stepnum{background:rgba(255,255,255,0.18);color:#fff}
+
+/* BRANCH — pipeline branching diagram */
+.branch{display:grid;grid-template-columns:auto auto auto 1fr;gap:clamp(0.7rem,1.3vw,1.15rem);margin-top:clamp(0.85rem,1.5vw,1.25rem);align-items:center}
+.branch-col{display:flex;flex-direction:column;gap:clamp(0.55rem,1vw,0.85rem)}
+.branch-node{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(0.7rem,1.3vw,1.1rem) clamp(0.85rem,1.5vw,1.3rem);text-align:center;min-width:0}
+.branch-node.brain{background:linear-gradient(135deg,var(--accent),#1d4ed8);border-color:var(--accent);color:#fff}
+.branch-node.premium{border-left:3px solid var(--accent-glow)}
+.branch-node.standard{border-left:3px solid var(--accent-2)}
+.branch-node h4{font-family:var(--display);font-size:clamp(0.78rem,1.15vw,1rem);text-transform:uppercase;letter-spacing:0.05em;color:#fff}
+.branch-node p{font-size:clamp(0.68rem,0.95vw,0.85rem);line-height:1.45;color:rgba(255,255,255,0.7);margin-top:0.3rem}
+.branch-node .gate{font-family:var(--display);font-size:clamp(0.6rem,0.85vw,0.75rem);letter-spacing:0.18em;color:var(--accent-glow);text-transform:uppercase;display:block;margin-bottom:0.3rem}
+.branch-node.standard .gate{color:var(--accent-2)}
+.branch .arrow{font-family:var(--display);color:var(--accent);font-size:clamp(1rem,1.8vw,1.5rem);text-align:center}
+.branch .if-node{background:rgba(37,99,235,0.1);border:1px dashed var(--accent-2);border-radius:var(--r);padding:clamp(0.6rem,1.1vw,0.95rem);text-align:center;font-family:var(--display);font-size:clamp(0.7rem,1vw,0.9rem);text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-2)}
+
 /* Animations */
 @media (prefers-reduced-motion:no-preference){
   .slide.is-active .reveal{animation:up 0.7s cubic-bezier(0.16,1,0.3,1) both}
@@ -452,10 +594,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
     <div class="title-block reveal r2">
       <span class="chip">Kun 2 · 13:00 — 14:00</span>
       <h1 class="title-hero">
-        <span class="hl">Murakkab</span><br>
-        AI jarayonlari.
+        Murakkab<br>
+        <span class="hl">AI jarayonlari</span><br>
+        — pipeline va debug.
       </h1>
-      <p class="tagline"><span class="accent-bar"></span>Ko’p qadamli, ko’p tizimli AI jarayonlarini qanday qurish kerak.</p>
+      <p class="tagline"><span class="accent-bar"></span>Bitta promtdan ko'p bosqichli, qayta ishga tushirsa ham xato qilmaydigan tizimga.</p>
     </div>
   </div>
 </section>
@@ -478,8 +621,8 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">01</span>
         </div>
         <div>
-          <h3 class="phase-title">Multi-step</h3>
-          <p class="phase-desc">Bir vazifani bir nechta qadamga bo'lish.</p>
+          <h3 class="phase-title">Pipeline</h3>
+          <p class="phase-desc">Nima uchun bitta promt yetmaydi. Bosqichlarga bo'lish — aniqlik, tekshiruv va idempotent dizayn manbai.</p>
         </div>
         <div class="phase-foot">
           <span class="phase-time">~13 daq</span>
@@ -491,11 +634,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">02</span>
         </div>
         <div>
-          <h3 class="phase-title">Tool calling</h3>
-          <p class="phase-desc">Agentni tashqi tizimlarga ulash.</p>
+          <h3 class="phase-title">Voice bot tahlili</h3>
+          <p class="phase-desc">11-modulda chizgan voice memo bot — endi 6 ta bosqichni bittama-bitta ochamiz va har birida nimani kutishni belgilaymiz.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~15 daq</span>
+          <span class="phase-time">~9 daq</span>
         </div>
       </button>
 
@@ -504,11 +647,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">03</span>
         </div>
         <div>
-          <h3 class="phase-title">Memory</h3>
-          <p class="phase-desc">Uzun kontekstni saqlash strategiyasi.</p>
+          <h3 class="phase-title">Debugging</h3>
+          <p class="phase-desc">Logging, replay, idempotency, narx optimizatsiyasi va branching. Pipeline buzilsa qanday topish va qayta ishga tushirish.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~15 daq</span>
+          <span class="phase-time">~18 daq</span>
         </div>
       </button>
 
@@ -517,8 +660,8 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">04</span>
         </div>
         <div>
-          <h3 class="phase-title">Bank misollari</h3>
-          <p class="phase-desc">Komplaens va kredit jarayonlarida tatbiq.</p>
+          <h3 class="phase-title">Amaliyot</h3>
+          <p class="phase-desc">Real bug-hunt mashqi — ekranda buzilgan log. Debug checklistni birga to'ldiramiz, production tayyorligini baholaymiz.</p>
         </div>
         <div class="phase-foot">
           <span class="phase-time">~17 daq</span>
@@ -529,10 +672,444 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   </div>
 </section>
 
+<!-- SLIDE 3 — HOOK · Bitta promt vs Pipeline -->
+<section class="slide s-hook-cmp">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Hook · 11-moduldan davom</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.9rem)">Bitta promt yetmaydi —<br>chunki <span class="hl">bir nechta ish</span> qiladi.</h2>
+    <p class="lead reveal r2">Voice memo botiga "audio'ni eshit, ekstrakt qil, CRM'ga yoz" deb bitta promt yozsangiz — debug qilolmaysiz, xato qayerda ekanini bilmaysiz, qayta ishga tushirsangiz mijozga 2 ta xat yuboradi.</p>
+    <div class="compare-rich reveal r3">
+      <div class="rich-col bad">
+        <span class="rich-tag">✗ Bitta promtli bot</span>
+        <h3>"Hammasi bir oynada"</h3>
+        <p>Audio kirdi → Gemini "eshit, tushun, ekstrakt qil, CRM'ga yoz, foydalanuvchiga javob ber" — bitta uzun promt.</p>
+        <p>Xato yuz berdi. Qaysi bosqichda? Bilmaymiz. Qayta yuborsak, takrorlanadi.</p>
+        <span class="outcome">→ Qora quti · debug imkonsiz</span>
+      </div>
+      <div class="rich-col good">
+        <span class="rich-tag">✓ 6-bosqichli pipeline</span>
+        <h3>"Har bosqich — alohida"</h3>
+        <p>Audio → STT → bo'lish → ekstrakt → schema validatsiya → CRM. Har bosqich log qoldiradi, alohida qayta ishga tushadi.</p>
+        <p>Xato 4-bosqichda — uchinchi va to'rtinchini qaytadan ishlatamiz, qolgani saqlanib qoladi.</p>
+        <span class="outcome">→ Tekshiruvchan · idempotent</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 — WHY PIPELINE · 3 ta sabab -->
+<section class="slide s-why">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Nima uchun pipeline —<br>uch <span class="hl">amaliy sabab</span>.</h2>
+    <p class="lead reveal r2">Pipeline — bu modaning emas, mas'uliyatning yechimi. Bank uchun har bosqich nima uchun keraklini aniq tushunish shart.</p>
+    <div class="benefits reveal r3">
+      <div class="benefit fragment">
+        <div class="stat">1.</div>
+        <h3>Aniqroq</h3>
+        <p>Har bosqich bitta vazifa qiladi — STT faqat eshitadi, ekstrakt faqat ajratadi. Promtlar qisqaroq, sifat ortadi.</p>
+        <div class="proof"><strong>Misol</strong> · STT'da xato bo'lsa — tark qilamiz, ekstrakt'da xato bo'lsa — qayta urinib ko'ramiz</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">2.</div>
+        <h3>Tekshiruvchan</h3>
+        <p>Har bosqichdan keyin natija saqlanadi. Buzilgan joyni log'dan topib bo'ladi. Audit uchun zarur.</p>
+        <div class="proof"><strong>Misol</strong> · muvofiqlik auditori "qaysi qadamda mijoz nomi paydo bo'ldi?" — 5 sekundda javob</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">3.</div>
+        <h3>Idempotent</h3>
+        <p>Bir voice memo'ni 2 marta yuborsa ham — bitta yozuv. Qayta ishga tushirilganda mijozga ortiqcha xat yo'q.</p>
+        <div class="proof"><strong>Misol</strong> · request_id orqali tekshiruv · keyingi slaydlarda chuqur</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 — DICTIONARY · Pipeline + Idempotent design -->
+<section class="slide s-dict">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Bankir uchun AI lug'ati</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.9rem)">Ikki atama — modulning <span class="hl">poydevori</span>.</h2>
+    <p class="lead reveal r2">Bu atamalar 12-modulda kiritiladi va keyingi modullarda qayta-qayta uchraydi. Bir marta tushunsak — qolgani osonroq.</p>
+    <div class="dict dict-2 reveal r3">
+      <div class="dict-card fragment">
+        <span class="dict-tag">Pipeline</span>
+        <h3>Ko'p bosqichli AI zanjiri</h3>
+        <p>Bir vazifani <strong>bir nechta ketma-ket bosqich</strong>ga bo'lish. Har bosqich alohida promt yoki dastur, har bosqich log qoldiradi.</p>
+        <div class="ex"><strong>Bank misol</strong> · Voice memo: audio → STT → ekstrakt → schema → CRM (5 bosqich)</div>
+      </div>
+      <div class="dict-card fragment">
+        <span class="dict-tag">Idempotent design</span>
+        <h3>Qayta ishlatilsa ham xatosiz</h3>
+        <p>Bir xil kirish — <strong>bir xil chiqish</strong>. Bir voice memo'ni 10 marta yuborsangiz, CRM'da bitta yozuv hosil bo'ladi. Mijozga bitta xat ketadi.</p>
+        <div class="ex"><strong>Mexanizm</strong> · har so'rovga unique request_id beriladi, ishlangan ID'lar saqlanadi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — IDEMPOTENT MISOL · compare-rich -->
+<section class="slide s-idem">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Idempotency real misolda —<br>"<span class="hl">2 marta xat</span>" muammosi.</h2>
+    <p class="lead reveal r2">Bankir voice memo yubordi, internet uzildi. Tizim "kelmadi" deb o'yladi va qayta yubordi. Endi tasavvur qiling: nima bo'ladi?</p>
+    <div class="compare-rich reveal r3">
+      <div class="rich-col bad">
+        <span class="rich-tag">✗ Idempotent emas</span>
+        <h3>Hech qanday tekshiruv yo'q</h3>
+        <p><strong>14:02</strong> · Memo #1 keldi → CRM yangi yozuv #M-001 → mijozga "saqlandi" xati</p>
+        <p><strong>14:02</strong> · Memo #1 yana keldi (retry) → CRM yangi yozuv #M-002 → mijozga yana "saqlandi" xati</p>
+        <span class="outcome">→ 2 ta yozuv · 2 ta xat · ishonch yo'qolishi</span>
+      </div>
+      <div class="rich-col good">
+        <span class="rich-tag">✓ Idempotent dizayn</span>
+        <h3>request_id bilan tekshiruv</h3>
+        <p><strong>14:02</strong> · Memo #1 keldi (id=A4F2) → tekshirildi: yangi → CRM #M-001 → xat ketdi</p>
+        <p><strong>14:02</strong> · id=A4F2 yana keldi → tekshirildi: <em>allaqachon ishlangan</em> → eski natija qaytariladi</p>
+        <span class="outcome">→ 1 ta yozuv · 1 ta xat · ishonch saqlandi</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7 — VOICE BOT PIPELINE · 6-step flow -->
+<section class="slide s-voice-flow">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">11-moduldan davom · bots/02_voice_memo</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.9rem)">Voice memo bot — <span class="hl">6 bosqichli</span> pipeline.</h2>
+    <p class="lead reveal r2">Bankir 15 sekund gapirdi. Foydalanuvchi uchun bitta amal — ichida 6 bosqich. Har biri alohida log qoldiradi, alohida qayta ishga tushadi.</p>
+    <div class="flow flow-6 reveal r3">
+      <div class="step"><span class="stepnum">01</span><div class="ico">🎙️</div><h4>Audio kelishi</h4><p>Telegram'dan ovoz fayli</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><span class="stepnum">02</span><div class="ico">📝</div><h4>STT</h4><p>Gemini audio → o'zbek matni</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="stepnum">03</span><div class="ico">✂️</div><h4>Bo'lish</h4><p>Mijoz, qaror, izoh — qism</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><span class="stepnum">04</span><div class="ico">🎯</div><h4>Ekstrakt</h4><p>Gemini → JSON maydonlar</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="stepnum">05</span><div class="ico">✅</div><h4>Schema</h4><p>Tip va majburiy maydon tekshiruvi</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="stepnum">06</span><div class="ico">📊</div><h4>CRM</h4><p>Sheets'ga yozuv + tasdiq</p></div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.85rem,1.5vw,1.25rem);font-style:italic;color:var(--mute)">→ 02 va 04 — Gemini chaqiruvi (xarajat). 03, 05, 06 — kodli logika (tezkor).</p>
+  </div>
+</section>
+
+<!-- SLIDE 8 — 4 TURDAGI XATO · benefits-4 -->
+<section class="slide s-errs">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Har bosqich — o'zining <span class="hl">xato turi</span>.</h2>
+    <p class="lead reveal r2">Pipeline'ning qadri shu — biz xatoning <em>turini</em> aniq biladigan bo'lamiz. Har turi uchun alohida yechim.</p>
+    <div class="benefits benefits-4 reveal r3">
+      <div class="benefit fragment">
+        <span class="ico">🎙️</span>
+        <h3>1 · Audio sifati</h3>
+        <p>Shovqin baland, ovoz qisqa, shu jumladan tinch yozuv.</p>
+        <div class="ex"><strong>Yechim</strong> · 3 sek'dan qisqa bo'lsa rad et, foydalanuvchidan qayta so'ra</div>
+      </div>
+      <div class="benefit fragment">
+        <span class="ico">📝</span>
+        <h3>2 · STT xatosi</h3>
+        <p>Lahja, maxsus terminlar, aralash til (o'zbek + rus).</p>
+        <div class="ex"><strong>Yechim</strong> · prompt'ga "bank atamalari uchraydi" eslatma · pastki ishonch — auditga</div>
+      </div>
+      <div class="benefit fragment">
+        <span class="ico">🎯</span>
+        <h3>3 · Ekstrakt xatosi</h3>
+        <p>"Ertaga" — qaysi sana? Mijoz ismi noto'g'ri yozildi.</p>
+        <div class="ex"><strong>Yechim</strong> · few-shot misollar · sana hisoblash uchun aniq qoida</div>
+      </div>
+      <div class="benefit fragment">
+        <span class="ico">✅</span>
+        <h3>4 · Validatsiya</h3>
+        <p>Majburiy maydon yo'q, tip noto'g'ri, qiymat ro'yxatdan tashqari.</p>
+        <div class="ex"><strong>Yechim</strong> · schema xato → bankirga "qaysi maydonni qo'shish" so'rovi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9 — DEBUG STRATEGY 1 · LOGGING -->
+<section class="slide s-log">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Debug strategy 1</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.9rem)">Logging — <span class="hl">qora qutini</span> oydinlashtirish.</h2>
+    <p class="lead reveal r2">Har bosqich uchun 3 narsani yozib qo'yish: kirish, oraliq natija, xato konteksti. n8n'ning "Sheets log" node'i — yetarli boshlang'ich.</p>
+    <pre class="template-box reveal r3"><span class="label">[2026-05-08 14:02:11]</span> <span class="ok">request_id=A4F2</span>  user=bankir_aliyev
+<span class="label">step=01</span>  audio_received       size=247KB  duration=18.3s
+<span class="label">step=02</span>  stt_complete         <span class="ok">ok</span>     model=gemini-1.5-flash  tokens_in=audio  tokens_out=142
+                                  text="Aliyev Vali bilan uchrashdim. Avtokredit so'ramoqda..."
+<span class="label">step=03</span>  split_sections       <span class="ok">ok</span>     sections=4  (mijoz, qaror, izoh, sana)
+<span class="label">step=04</span>  extract_fields       <span class="ok">ok</span>     model=gemini-1.5-pro  tokens_out=89
+                                  fields={customer:"Aliyev V.", amount:200000000, term:12, ...}
+<span class="label">step=05</span>  schema_validate      <span class="warn">warn</span>   missing=next_step_date · "ertaga" → ?
+<span class="label">step=06</span>  crm_write            <span class="err">FAIL</span>  reason="next_step_date majburiy"
+                                  <span class="com">// → bankirga qayta so'rov: "Ertaga = 2026-05-09 deb tushunsam, to'g'rimi?"</span></pre>
+    <p class="tpl-hint reveal r3">→ Auditor 2 daqiqa ichida topadi: xato 5-bosqichda · sabab — sana noaniq · oldingi bosqichlar saqlanib qoldi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 10 — DEBUG STRATEGY 2 · REPLAY vs IDEMPOTENCY -->
+<section class="slide s-replay">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Debug strategy 2</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.9rem)">Replay — <span class="hl">to'xtagan joydan</span> davom.</h2>
+    <p class="lead reveal r2">Pipeline 5-bosqichda buzildi. Boshidan boshlash kerakmi? Yo'q — agar har bosqich natijani saqlasak va idempotent bo'lsa, biz to'xtagan joydan davom etamiz.</p>
+    <div class="compare reveal r3">
+      <div class="col"><h4>Replay strategiyasi yo'q</h4><p>Crash → 1-bosqichdan qayta<br>Audio yana yuklanadi · STT yana chaqiriladi · narx 2 marta · sekin</p></div>
+      <div class="vs">→</div>
+      <div class="col win"><h4>Idempotent + replay</h4><p>Crash → 5-bosqichdan davom<br>Oldingi natijalar bazadan o'qiladi · faqat 5 va 6 ishlatiladi · arzon · tezkor</p></div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.85rem,1.5vw,1.25rem);font-style:italic;color:var(--mute)">→ Texnik amaliyot: har bosqich (input_hash, output) juftligini Sheets/DB'ga yozadi. Replay shu hash bo'yicha tekshiradi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 11 — COST OPTIMIZATSIYA -->
+<section class="slide s-cost">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Pipeline + <span class="hl">narx</span> — uch qoida.</h2>
+    <p class="lead reveal r2">Bitta promtli botda har so'rov bir xil narx. Pipeline — narxni 5–10 baravar tushiradi, agar 3 ta sodda qoidaga rioya qilsak.</p>
+    <div class="benefits reveal r3">
+      <div class="benefit fragment">
+        <div class="stat">1.</div>
+        <h3>Kichik model birinchi</h3>
+        <p>Sodda bosqichlarni Gemini Flash bajaradi (10× arzon). Faqat ekstrakt va murakkab fikrlash uchun Pro.</p>
+        <div class="proof"><strong>Misol</strong> · STT va bo'lish — Flash · ekstrakt — Pro</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">2.</div>
+        <h3>Cache uy</h3>
+        <p>Bir xil hujjat 100 mijoz uchun ishlatilsa — bir marta embed qilamiz, qolgani cache'dan. Narx ~95% kam.</p>
+        <div class="proof"><strong>Misol</strong> · tarif PDF, qoidalar bazasi · request_hash bilan</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">3.</div>
+        <h3>Fallback to small</h3>
+        <p>Agar Pro ishlamasa yoki sekin javob bersa — Flash'ga avtomatik o'tish. Qulaylik kafolatlangan.</p>
+        <div class="proof"><strong>Misol</strong> · n8n'da "if timeout > 5s → use flash" sharti</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12 — PIPELINE BRANCHING · if/else -->
+<section class="slide s-branch">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Branching — <span class="hl">premium</span> vs oddiy mijoz.</h2>
+    <p class="lead reveal r2">Pipeline har doim bir xil yo'l bilan ketmaydi. Mijoz turi bo'yicha biz qimmat modelni faqat kerakli holatlarda ishlatamiz.</p>
+    <div class="branch reveal r3">
+      <div class="branch-col">
+        <div class="branch-node"><h4>01 · Audio</h4><p>Memo keldi</p></div>
+        <div class="branch-node brain"><h4>02 · STT</h4><p>Flash · arzon</p></div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="if-node">Agar mijoz<br>VIP bo'lsa?</div>
+      <div class="branch-col">
+        <div class="branch-node premium"><span class="gate">Ha · VIP</span><h4>03–05 · Pro</h4><p>Murakkab ekstrakt · sentiment · Risk Officer'ga eskartma</p></div>
+        <div class="branch-node standard"><span class="gate">Yo'q · Oddiy</span><h4>03–05 · Flash</h4><p>Standart ekstrakt · CRM'ga to'g'ridan-to'g'ri</p></div>
+      </div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.85rem,1.5vw,1.25rem);font-style:italic;color:var(--mute)">→ Misol: mijoz balansi &gt; 1 mlrd so'm yoki yopiq shartnoma summasi katta bo'lsa — Pro yo'naltiriladi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 13 — ENG KO'P UCHRAYDIGAN XATO · myth 4-row -->
+<section class="slide s-myth">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Pipeline qurishda <span class="hl">eng tipik</span> xatolar.</h2>
+    <div class="myth myth-4 reveal r3">
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>"<strong>Bir promtga</strong> hammasini sig'dirsam, sodda bo'ladi."</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p><strong>Sodda emas, qora quti.</strong> Aniq bosqichlar — debug, audit va xarajat uchun zarur.</p></div>
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>"<strong>Logging sekinlatadi</strong>, production'da o'chirib qo'yamiz."</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p><strong>Logging — asosiy sarmoya.</strong> Bankda o'chiq log = audit yo'q = muvofiqlik muammosi.</p></div>
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>"<strong>Idempotency keyinroq</strong> qo'shamiz, hozir ishlasa bo'ldi."</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p><strong>Birinchi kun'dan kerak.</strong> Mijozga 2 ta xat ketishi sotsial xato — ishonchni qaytarib bo'lmaydi.</p></div>
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>"<strong>Pro modelni</strong> har joyda ishlatamiz — sifat muhim."</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p><strong>10× ortiq narx</strong> — ko'p bosqich Flash'da ham ishlaydi. Pro — faqat fikrlash kerak bo'lganda.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 14 — REAL BUG-HUNT MASHQ · s-brain + log -->
+<section class="slide s-brain">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Interaktiv · Bug-hunt · 6 daq</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.9rem)">Loglarda <span class="hl">xato</span>ni topamiz.</h2>
+    <pre class="template-box reveal r3"><span class="label">[14:47:02]</span> request_id=B7C9
+<span class="label">step=01</span> audio_received  size=412KB  duration=24.1s
+<span class="label">step=02</span> stt_complete    <span class="ok">ok</span>   text="Karimov Sherzod bilan gaplashdim, depozit ochishni xohladi, 50 million..."
+<span class="label">step=03</span> split_sections  <span class="ok">ok</span>   sections=3
+<span class="label">step=04</span> extract_fields  <span class="ok">ok</span>   {customer:"Karimov Sh.", product:"depozit", amount:50000000, term:null, ...}
+<span class="label">step=05</span> schema_validate <span class="ok">ok</span>
+<span class="label">step=06</span> crm_write       <span class="err">FAIL</span> http=500  retry=1
+<span class="label">step=06</span> crm_write       <span class="err">FAIL</span> http=500  retry=2
+<span class="label">step=06</span> crm_write       <span class="ok">ok</span>   row=#M-3318
+<span class="label">step=07</span> notify_user     <span class="ok">ok</span>   sent_count=3 ← <span class="warn">!</span></pre>
+    <div class="questions reveal r3">
+      <div class="q fragment"><span class="n">01</span><span>Xato qaysi bosqichda ko'rinadi va <span style="color:var(--accent-2)">asl sabab</span> qaysi?</span></div>
+      <div class="q fragment"><span class="n">02</span><span>Bankir 3 ta tasdiq xati oldi. <span style="color:var(--accent-2)">Idempotency</span> qaysi bosqichga kerak edi?</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 15 — DEBUG CHECKLIST · canvas-grid 2x3 -->
+<section class="slide s-checklist">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Debug checklist — <span class="hl">6 ta savol</span>.</h2>
+    <p class="lead reveal r2">Pipeline buzilganda boshqa savol bermang. Aynan shu 6 ta — tartib bilan. Birinchi 2 daqiqada javobi topilmasa, undan keyin chuqurroq ketamiz.</p>
+    <div class="canvas-grid reveal r3">
+      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">1</span> Qaysi bosqich?</div><p><strong>Avval log'ni o'qing.</strong> Step raqami bilan FAIL qatorini toping. Boshqa bosqichlarda muammo izlamang.</p></div>
+      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">2</span> Kirish to'g'rimi?</div><p><strong>Oldingi bosqichning chiqishi</strong> shu bosqichga to'g'ri keldimi? Format, tip, tilning kelishuvi.</p></div>
+      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">3</span> Birinchi marta xatomi?</div><p><strong>Retry tarixi.</strong> Ikkinchi urinishda o'tdimi? Vaqtinchalik (network) yoki doimiy xato.</p></div>
+      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">4</span> Idempotent boldimi?</div><p><strong>Mijozga ortiqcha xat ketdimi?</strong> CRM'da takror yozuv bormi? request_id tekshiruvi to'g'rimi.</p></div>
+      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">5</span> Promt o'zgardi?</div><p><strong>Yaqinda yangilash bo'ldimi?</strong> Schema yangilandimi? Few-shot misollar to'g'rimi. Versiyani solishtirish.</p></div>
+      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">6</span> Replay imkonimi?</div><p><strong>Eski natijalarni</strong> yangidan ishlatib bo'ladimi? Yo'q bo'lsa — keyingi pipeline'da bu imkonni qo'ying.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 16 — PRODUCTION TAYYOR PIPELINE BELGILARI · cando -->
+<section class="slide s-cando">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Production'ga tayyor —<br>yoki <span class="hl">tayyor emas</span>.</h2>
+    <p class="lead reveal r2">Bu ro'yxatni 11–12-modullarda qurilgan har qanday botga tatbiq eting. 5 ta "Ha" bo'lmasa — pilot rejimida qoldiring.</p>
+    <div class="cando reveal r3">
+      <div class="cando-col fragment">
+        <div class="cando-tag">✓ Tayyor — qo'yib yuborsa bo'ladi</div>
+        <ul>
+          <li>Har bosqich alohida log qoldiradi (request_id bilan)</li>
+          <li>request_id orqali idempotency tekshiruvi bor</li>
+          <li>Schema validatsiyasi va majburiy maydonlar tekshiruvi</li>
+          <li>Fallback model (Pro → Flash) sozlangan</li>
+          <li>Bankir uchun "qaysi bosqichda nima bo'ldi" hisobot oson topiladi</li>
+        </ul>
+      </div>
+      <div class="cando-col cant fragment">
+        <div class="cando-tag">✗ Tayyor emas — pilotda qoling</div>
+        <ul>
+          <li>Bitta uzun promt — bosqichlar yo'q</li>
+          <li>Log faqat error'da yoziladi, oraliq natija yo'q</li>
+          <li>Retry yo'q yoki idempotency'siz retry — mijozga takror xat</li>
+          <li>Har so'rov Pro modelda — narx 5–10× shart emas</li>
+          <li>Schema yo'q — "har xil maydonlar" CRM'ga tushadi</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 17 — CLOSING + lug'at recap -->
+<section class="slide s-close">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Bugundan <span class="hl">qaytib ketadigan</span> 3 xulosa.</h2>
+    <div class="close-list reveal r3">
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Bitta promt — qora quti.</strong> Pipeline — aniq bosqichlar, har biri log qoldiradi va alohida qayta ishga tushadi.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Idempotency — birinchi kun'dan.</strong> request_id orqali tekshiruv. Mijozga 2 ta xat ketishi — qaytarib bo'lmaydigan ishonch zarari.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Keyingi modul:</strong> 13-modulda biz JPMorgan, Morgan Stanley, DBS va O'zbekiston banklarining real production keyslarini tahlil qilamiz.</p></div>
+    </div>
+    <div class="recap reveal r3">
+      <div class="recap-tag">Lug'at recap · birga aytamiz</div>
+      <div class="recap-terms">
+        <div class="recap-term"><strong>Pipeline</strong> <span class="ans">ko'p bosqichli AI ish zanjiri</span></div>
+        <div class="recap-term"><strong>Idempotent design</strong> <span class="ans">qayta ishga tushsa ham bitta natija</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 18 — Q&A -->
+<section class="slide s-qa">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="qmark reveal r2">?</div>
+    <h2 class="h2 reveal r3" style="text-align:center">Sizning <span class="hl">savollaringiz</span>.</h2>
+    <p class="reveal r3" style="text-align:center;margin-top:clamp(1.5rem,3vw,2.5rem);font-family:var(--display);font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:0.1em;color:var(--accent-2)">murod@mohir.dev</p>
+  </div>
+</section>
+
 </main>
 
 <div class="hud">
-  <span class="counter">01 / 02</span>
+  <span class="counter">01 / 18</span>
   <div class="dots"></div>
   <div class="speaker"><span class="dot"></span><strong>Riskaliev Murad</strong> · NLP Engineer · Mohirdev</div>
 </div>
@@ -540,7 +1117,23 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
 <script>
 const TITLES = [
   'Title · 12-modul',
-  "Yo'l xaritasi · Agenda"
+  "Yo'l xaritasi · Agenda",
+  'Hook · Bitta promt vs Pipeline',
+  "Nima uchun pipeline · 3 sabab",
+  "Lug'at · Pipeline va Idempotent design",
+  'Idempotency real misol · 2 marta xat',
+  'Voice bot · 6 bosqichli pipeline',
+  '4 turdagi xato · har bosqichga maxsus',
+  'Debug 1 · Logging · log misol',
+  'Debug 2 · Replay vs Idempotency',
+  'Narx · 3 ta optimizatsiya qoidasi',
+  'Branching · VIP vs oddiy mijoz',
+  'Eng tipik xatolar · 4 juftlik',
+  'Bug-hunt mashqi · log o\'qib topamiz',
+  'Debug checklist · 6 ta savol',
+  'Production tayyorligi · cando',
+  'Yakun · 3 xulosa + lug\'at recap',
+  'Savol-Javob · Q&A'
 ];
 
 const slides = [...document.querySelectorAll('.slide')];

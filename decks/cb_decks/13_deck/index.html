@@ -10,6 +10,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:'Space Grotesk',sans-serif}
+body,p,li,.lead{letter-spacing:0.018em}
 
 :root{
   --bg:#020A24;--bg-2:#06173B;--bg-3:#0B2D79;
@@ -422,6 +423,65 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   box-shadow:0 12px 28px -12px rgba(37,99,235,0.3);
 }
 
+/* DICTIONARY (atama cards) — supports 2-card or 3-card via .dict-2 */
+.dict{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.dict.dict-2{grid-template-columns:1fr 1fr}
+.dict-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
+.dict-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.dict-card .dict-tag{display:inline-block;font-family:var(--display);font-size:clamp(1.4rem,2.8vw,2.4rem);letter-spacing:0.02em;color:var(--accent-2);text-transform:uppercase;line-height:1;margin-bottom:0.75rem}
+.dict-card h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:0.6rem}
+.dict-card p{font-size:var(--body);line-height:1.55;color:rgba(255,255,255,0.78)}
+.dict-card p strong{color:var(--accent-2);font-weight:500}
+.dict-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+
+/* CANDO — Bunday qil / Bunday qilma 2-col */
+.cando{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.cando-col{background:rgba(255,255,255,0.04);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2rem);border-left:4px solid var(--accent);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,background 0.3s}
+.cando-col.cant{border-left-color:#ff4040;background:rgba(255,64,64,0.06)}
+.cando-col .cando-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.85rem}
+.cando-col.cant .cando-tag{color:#ff6060}
+.cando-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:clamp(0.45rem,0.9vw,0.7rem)}
+.cando-col li{font-size:clamp(0.78rem,1.05vw,0.98rem);line-height:1.45;color:#fff;padding-left:1.1rem;position:relative}
+.cando-col li::before{content:"·";position:absolute;left:0.3rem;color:var(--accent);font-weight:700;font-size:1.4em;line-height:1}
+.cando-col.cant li::before{color:#ff6060}
+.cando-col:hover{transform:translateY(-3px);box-shadow:0 12px 28px -12px rgba(37,99,235,0.3)}
+.cando-col.cant:hover{box-shadow:0 12px 28px -12px rgba(255,64,64,0.3)}
+
+/* BENEFITS proof block — for case-card stat with attribution */
+.benefit .proof{margin-top:clamp(0.75rem,1.4vw,1.15rem);padding-top:clamp(0.55rem,1vw,0.85rem);border-top:1px solid rgba(255,255,255,0.1);font-size:clamp(0.7rem,0.9vw,0.85rem);line-height:1.45;color:rgba(255,255,255,0.7)}
+.benefit .proof strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-2);font-weight:400}
+.benefit .proof.muted{color:rgba(255,255,255,0.45);font-style:italic}
+
+/* 4-col modifiers (success factors) */
+.benefits.benefits-4{grid-template-columns:repeat(4,1fr)}
+.sec.sec-4{grid-template-columns:repeat(4,1fr)}
+.benefits-4 .benefit{padding:clamp(1rem,2vw,1.65rem)}
+.benefits-4 .benefit h3{font-size:clamp(0.95rem,1.4vw,1.25rem)}
+.benefits-4 .benefit p{font-size:clamp(0.78rem,1vw,0.95rem)}
+.benefits-4 .benefit .ico{font-size:clamp(1.4rem,2.6vw,2rem);margin-bottom:0.6rem;display:block}
+
+/* 2-col sec for regional case */
+.sec.sec-2{grid-template-columns:1fr 1fr}
+
+/* CLOSING — lug'at recap row */
+.s-close .recap{margin-top:clamp(1rem,2vw,1.75rem);padding-top:clamp(0.85rem,1.5vw,1.25rem);border-top:1px solid var(--soft);display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.5rem);flex-wrap:wrap}
+.s-close .recap-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);flex-shrink:0}
+.s-close .recap-terms{display:flex;gap:clamp(1rem,2vw,2rem);flex-wrap:wrap;flex:1}
+.s-close .recap-term{font-size:var(--body);color:rgba(255,255,255,0.7);line-height:1.4}
+.s-close .recap-term strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-right:0.5em;font-weight:400}
+.s-close .recap-term .ans{color:var(--accent-2)}
+
+/* MASHQ TABLE — case-comparison worksheet */
+.case-table{width:100%;margin-top:clamp(0.85rem,1.5vw,1.25rem);border-collapse:separate;border-spacing:clamp(0.45rem,0.9vw,0.7rem);table-layout:fixed}
+.case-table th,.case-table td{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:clamp(0.45rem,0.9vw,0.7rem);padding:clamp(0.65rem,1.2vw,1rem);vertical-align:top;text-align:left}
+.case-table th{font-family:var(--display);font-size:clamp(0.72rem,0.95vw,0.9rem);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);background:rgba(37,99,235,0.08)}
+.case-table td{font-size:clamp(0.76rem,1vw,0.95rem);line-height:1.4;color:rgba(255,255,255,0.82)}
+.case-table .col-dept{font-family:var(--display);text-transform:uppercase;letter-spacing:0.04em;color:#fff;font-size:clamp(0.78rem,1.05vw,0.98rem)}
+
+/* CASE — extra-rich variant for big stat case-card 3-grid (slide JPMorgan) */
+.benefits.benefits-rich .benefit .stat{font-size:clamp(1.6rem,3.6vw,2.8rem)}
+.benefits.benefits-rich .benefit h3{font-size:clamp(0.95rem,1.45vw,1.2rem)}
+
 /* Animations */
 @media (prefers-reduced-motion:no-preference){
   .slide.is-active .reveal{animation:up 0.7s cubic-bezier(0.16,1,0.3,1) both}
@@ -455,7 +515,7 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
         Bank amaliyotidagi<br>
         <span class="hl">real keyslar.</span>
       </h1>
-      <p class="tagline"><span class="accent-bar"></span>O’zbek va jahon banklaridan amaliy AI implementatsiya keyslari.</p>
+      <p class="tagline"><span class="accent-bar"></span>Jahon va mintaqa banklarining AI keyslari — raqamlar, saboq, sizning bo'limingizga drift.</p>
     </div>
   </div>
 </section>
@@ -478,11 +538,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">01</span>
         </div>
         <div>
-          <h3 class="phase-title">Kredit skoring</h3>
-          <p class="phase-desc">AI bilan skoring — natija va xavflar.</p>
+          <h3 class="phase-title">Kontekst</h3>
+          <p class="phase-desc">McKinsey'ning 70/14 raqami, keys-stadi metodologiyasi va bugungi ikki kalit atama: AI Adoption va Production-grade.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~15 daq</span>
+          <span class="phase-time">~10 daq</span>
         </div>
       </button>
 
@@ -491,11 +551,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">02</span>
         </div>
         <div>
-          <h3 class="phase-title">Komplaens</h3>
-          <p class="phase-desc">AML va KYC avtomatlashtirish.</p>
+          <h3 class="phase-title">Global keys</h3>
+          <p class="phase-desc">JPMorgan COIN, Morgan Stanley, Bank of America Erica, DBS Singapur, Sberbank GigaChat — har birida raqam, yechim va saboq.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~15 daq</span>
+          <span class="phase-time">~20 daq</span>
         </div>
       </button>
 
@@ -504,11 +564,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">03</span>
         </div>
         <div>
-          <h3 class="phase-title">Mijoz xizmati</h3>
-          <p class="phase-desc">Chatbot va virtual maslahatchilar.</p>
+          <h3 class="phase-title">Mintaqaviy</h3>
+          <p class="phase-desc">Qozog'iston (Halyk, Forte) va O'zbekiston banklari (Uzum, Anorbank, Kapital) — bizdagi haqiqat va boshlanayotgan trend.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~15 daq</span>
+          <span class="phase-time">~7 daq</span>
         </div>
       </button>
 
@@ -517,11 +577,11 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
           <span class="phase-num">04</span>
         </div>
         <div>
-          <h3 class="phase-title">Hujjat ishlash</h3>
-          <p class="phase-desc">Hujjat tahlili va ekstraktsiya.</p>
+          <h3 class="phase-title">Saboq + mashq</h3>
+          <p class="phase-desc">Muvaffaqiyat va failure naqshlari, do/don't ro'yxati, va eng muhimi — sizning bo'limingiz uchun drift mashqi.</p>
         </div>
         <div class="phase-foot">
-          <span class="phase-time">~15 daq</span>
+          <span class="phase-time">~23 daq</span>
         </div>
       </button>
 
@@ -529,10 +589,445 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
   </div>
 </section>
 
+<!-- SLIDE 3 — HOOK · McKinsey 70/14 -->
+<section class="slide s-hook">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main" style="display:block">
+    <span class="chip-out reveal r1">McKinsey · "The State of AI" 2024</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">70% bankda AI bor.<br>Faqat <span class="hl">14% production'da</span> ishlaydi.</h2>
+    <p class="lead reveal r2">Har 5 ta pilotning 4 tasi demo bo'lib o'lib qoladi. Sabab — texnologiya emas. Sabab — "adoption" va "production-grade" tushunchalarining yetishmasligi. Bugun shu farqni ochamiz.</p>
+    <div class="compare reveal r3">
+      <div class="col"><h4>Pilot bor</h4><p>70%<br><span style="font-family:'Space Grotesk';font-size:0.5em;font-weight:400;color:rgba(255,255,255,0.7)">demolarda qoladi</span></p></div>
+      <div class="vs">→</div>
+      <div class="col win"><h4>Production'da</h4><p>14%<br><span style="font-family:'Space Grotesk';font-size:0.5em;font-weight:400;color:rgba(255,255,255,0.85)">kunlik ishda turadi</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 — METHODOLOGY · 3-card -->
+<section class="slide s-method">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Har keys'ni <span class="hl">3 ta savol</span> bilan o'qiymiz.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Tarjima emas — taqqoslash uchun shablon. Mashq slaydida ham shu uch ustunga qaytamiz.</p>
+    <div class="benefits reveal r3">
+      <div class="benefit fragment">
+        <div class="stat">01</div>
+        <h3>Kontekst</h3>
+        <p>Bank qaysi muammoni yechmoqchi edi? Hajm, cheklovlar, kim foydalanadi?</p>
+        <div class="proof muted">"Texnologiya emas, biznes muammosi" — bo'lim, jarayon, foydalanuvchi.</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">02</div>
+        <h3>Yechim</h3>
+        <p>Qaysi AI texnologiyasi tanlangan, jarayon ichiga qanday joylashgan, kim ishlatadi?</p>
+        <div class="proof muted">RAG / agent / pipeline — Kun 2 birinchi yarmida ko'rganlarimiz.</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">03</div>
+        <h3>Natija + saboq</h3>
+        <p>Aniq metrikalar (vaqt, soat, foiz) va biz uchun olib qolinadigan 1 saboq.</p>
+        <div class="proof muted">"Biz qilolmaymiz" emas — har keys'dan kamida bitta drift.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 — ATAMA dictionary · AI Adoption + Production-grade -->
+<section class="slide s-dict">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Bankir uchun AI lug'ati · 13-modul</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Ikki so'z — keys'larning <span class="hl">lakmus qog'ozi</span>.</h2>
+    <p class="lead reveal r2">Bu ikki atama bugun har keys'da, har drift'da, har failure pattern'da qaytib chiqadi. Keyin recap — birga aytamiz.</p>
+    <div class="dict dict-2 reveal r3">
+      <div class="dict-card fragment">
+        <span class="dict-tag">AI Adoption</span>
+        <h3>Kunlik foydalanish</h3>
+        <p>Yaratilgan emas — <strong>ishlatilayotgan</strong>. Login ochildi degan ma'no emas, bo'limning 70+ foiz xodimi kunda foydalanyapti va o'lchanyapti, deganidir.</p>
+      </div>
+      <div class="dict-card fragment">
+        <span class="dict-tag">Production-grade</span>
+        <h3>Test emas, real</h3>
+        <p>Tizim 99% uptime'da, log va monitoring bor, fallback bor. AI ishlamaganda biznes <strong>to'xtab qolmaydi</strong>. Texnik ham, organizatsion ham belgi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — KEYS 1 · JPMorgan COIN -->
+<section class="slide s-case">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Keys 1 · JPMorgan Chase · 2017</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">COIN — shartnoma <span class="hl">tahlilchi</span>.</h2>
+    <p class="lead reveal r2">12,000 ta yillik kommertsial kredit shartnomasi → kalit shartlarni qo'lda chiqarish kunlar oladi. NLP modeli 5–6 soniyada chiqaradi, yurist faqat tasdiqlaydi.</p>
+    <div class="benefits benefits-rich reveal r3">
+      <div class="benefit fragment">
+        <div class="stat">360k</div>
+        <h3>Soat tejaldi</h3>
+        <p>Yiliga, faqat yuristlar ishidan. Eng zerikarli, qaytariluvchi qism AI'ga o'tdi.</p>
+        <div class="proof"><strong>JPMorgan</strong> · 2017 press release</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">5 soniya</div>
+        <h3>Bir shartnoma</h3>
+        <p>Avval bir yurist 1 ta murakkab shartnomani 30+ daqiqada o'qir edi. Hozir AI 5 soniya, yurist tasdiqlash 2 daqiqa.</p>
+        <div class="proof muted">Mexanik vazifani AI oldi — qaror odamda qoldi.</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">12k</div>
+        <h3>Yillik shartnoma</h3>
+        <p>Hajm shu darajada bo'lganida AI'ning ROI'i shubhasiz. Kichik hajmda AI haqli emas.</p>
+        <div class="proof muted">Saboq: hajm yetarli use case'ni tanlang.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7 — KEYS 2 · Morgan Stanley AI Assistant -->
+<section class="slide s-case">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Keys 2 · Morgan Stanley · 2023</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">AI Assistant — <span class="hl">RAG</span> 16,000 maslahatchi uchun.</h2>
+    <p class="lead reveal r2">100,000+ ichki tadqiqot hujjati. Maslahatchi savolga javob izlash uchun 30+ daqiqa sarflar edi. OpenAI GPT-4 ustida qurilgan RAG — bizga 9-modulda ko'rgan arxitektura.</p>
+    <div class="flow reveal r3">
+      <div class="step"><div class="ico">💬</div><h4>Savol</h4><p>"Energetika sektori bo'yicha so'nggi 6 oy tahlili?"</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">📚</div><h4>RAG</h4><p>100k+ hujjatdan top-3 chunk topiladi</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><div class="ico">🧠</div><h4>GPT-4</h4><p>Topilgan kontekstga asoslangan javob</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="ico">✅</div><h4>Tasdiq</h4><p>Maslahatchi o'qiydi, mijozga yuboradi</p></div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.5vw,1.25rem);font-style:italic;color:var(--mute)">→ Saboq: RAG bilim qidiruvini tezlashtiradi, qaror qilishni emas. Maslahatchi mas'uliyatda qoladi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 8 — KEYS 3 · Bank of America Erica -->
+<section class="slide s-case">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Keys 3 · Bank of America · 2018+</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Erica — telefondagi <span class="hl">virtual yordamchi</span>.</h2>
+    <p class="lead reveal r2">Mobil ilovaga to'g'ridan-to'g'ri singdirilgan. Mijoz alohida bot ochmaydi — Erica allaqachon bank ilovasida turadi. Bu — adoption inqilobi.</p>
+    <div class="benefits benefits-rich reveal r3">
+      <div class="benefit fragment">
+        <div class="stat">2 mlrd+</div>
+        <h3>Interaksiya</h3>
+        <p>2018 dan beri to'plangan mijoz so'rovlari soni. AQShdagi eng katta AI banking yordamchisi.</p>
+        <div class="proof"><strong>BofA</strong> · 2024 yillik hisobot</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">42 mln</div>
+        <h3>Aktiv foydalanuvchi</h3>
+        <p>"Ochildi" emas — kunda yoki haftada ishlatadiganlar soni. Real adoption.</p>
+        <div class="proof"><strong>BofA</strong> · ko'p yillik o'sish trendi</div>
+      </div>
+      <div class="benefit fragment">
+        <div class="stat">0</div>
+        <h3>Maslahat berish</h3>
+        <p>Erica investitsiya yoki kredit bo'yicha maslahat bermaydi. Faqat ma'lumot ko'rsatadi va oddiy aksiya qiladi — compliance chiziq.</p>
+        <div class="proof muted">Saboq: agent o'zi qaror qilmasin.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9 — KEYS 4 · DBS Singapore -->
+<section class="slide s-case">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Keys 4 · DBS Singapur · 2018–2024</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">600+ use case — <span class="hl">data-driven bank</span> yo'li.</h2>
+    <p class="lead reveal r2">Bir loyiha emas — butun bank ichida AI tarqatish. Risk skoring, fraud, mijoz xizmati, HR, hatto kod yozish ham. ~$370M ekonomik foyda 2023da (DBS yillik hisobot).</p>
+    <div class="compare reveal r3">
+      <div class="col"><h4>Avval</h4><p>5 kun<br><span style="font-family:'Space Grotesk';font-size:0.5em;font-weight:400;color:rgba(255,255,255,0.7)">qog'oz, manual tekshiruv</span></p></div>
+      <div class="vs">→</div>
+      <div class="col win"><h4>AI bilan</h4><p>1 minut<br><span style="font-family:'Space Grotesk';font-size:0.5em;font-weight:400;color:rgba(255,255,255,0.85)">oraliq qaror · inson tasdiqlaydi</span></p></div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.5vw,1.25rem);font-style:italic;color:var(--mute)">→ Saboq: ko'lam kichik 1 loyiha emas, 5+ yillik strategiya. Tezroq emas, lekin barqaror.</p>
+  </div>
+</section>
+
+<!-- SLIDE 10 — KEYS 5 · Sberbank GigaChat -->
+<section class="slide s-case">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Keys 5 · Sberbank · 2023+</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">GigaChat — <span class="hl">o'z LLM</span> qurish yo'li.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Rossiya bozorida ma'lumot suvereniteti talabi qattiq. Sberbank o'z modeli, o'z bulutida — bu yo'l mavjud, lekin har bank uchun emas.</p>
+    <div class="sec reveal r3">
+      <div class="item fragment"><div class="ico">💪</div><h3>Kuchli tomon</h3><p>Ma'lumot ham, model ham bank kontrolida. Tashqi vendor'ga bog'lanish nol. Mijoz xizmati va ichki HR'ga joylashgan.</p></div>
+      <div class="item fragment"><div class="ico">⚠️</div><h3>Ehtiyot</h3><p>Bahosi yuqori — yuzlab million $ darajasida investitsiya. Sifati hozircha GPT-4 / Claude darajasiga to'liq teng emas.</p></div>
+      <div class="item fragment"><div class="ico">📌</div><h3>Bizga saboq</h3><p>"O'zimiz qurish" yo'li haqiqiy, lekin O'zbekiston uchun erta. Mavjud xavfsiz API'lardan boshlash to'g'ri qaror.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11 — MINTAQAVIY · Qozog'iston -->
+<section class="slide s-case">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Mintaqaviy · Qozog'iston</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Halyk va Forte — <span class="hl">bizdan bir qadam</span> oldinda.</h2>
+    <p class="lead reveal r2">Markaziy Osiyoda AI implementatsiyasida yetakchi misollar. Hech qaysi o'z modelini qurmaydi — mavjud API'larni ehtiyot bilan ishlatadi. Aynan biz uchun moslashadigan yo'l.</p>
+    <div class="sec sec-2 reveal r3">
+      <div class="item fragment">
+        <div class="ico">🏦</div>
+        <h3>Halyk Bank</h3>
+        <p>2020 dan beri ML asosli kredit skoring, anti-fraud va mijoz segmentatsiyasi. So'nggi yillarda generativ AI: chatbot, ichki hujjat tahlili. Core stack'da.</p>
+      </div>
+      <div class="item fragment">
+        <div class="ico">📱</div>
+        <h3>Forte Bank</h3>
+        <p>Raqamli kanallarga urg'u: mobil ilovada AI yordamchi, kredit oldindan tasdiqlash. Aniq raqamlar oshkor qilinmagan, lekin kunlik foydalanuvchilar millionlab.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12 — MINTAQAVIY · O'zbekiston -->
+<section class="slide s-case">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Mintaqaviy · O'zbekiston · 2024+</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Trend boshlangan — <span class="hl">production hali oldinda</span>.</h2>
+    <p class="lead reveal r2">Halol baho: hozircha "JPMorgan COIN" darajasidagi keys yo'q. Ko'pi pilot, ba'zilari ichki PoC. Bu yomon emas — har yo'l shu nuqtadan boshlanadi.</p>
+    <div class="sec reveal r3">
+      <div class="item fragment"><div class="ico">💳</div><h3>Uzum Bank</h3><p>Raqamli neobank sifatida AI'ni mahsulotning bir qismi qilib pozitsiyalaydi. 2024 dan boshlab chatbot, kredit oldindan baholash, fraud detection.</p></div>
+      <div class="item fragment"><div class="ico">🏛️</div><h3>Anorbank</h3><p>Mijoz xizmati va ichki avtomatlashtirish piloti. Mobil ilovada generativ AI'ni sinash bosqichida.</p></div>
+      <div class="item fragment"><div class="ico">📊</div><h3>Kapital Bank</h3><p>Hujjat ekstraktsiyasi va kredit jarayonini AI bilan tezlashtirish piloti. Aniq production raqamlari hali e'lon qilinmagan.</p></div>
+    </div>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.5vw,1.25rem);font-style:italic;color:var(--mute)">→ Markaziy Bank'ning roli katta: standart va talab — buyurtma berasiz, banklar javob beradi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 13 — Muvaffaqiyat omillari · benefits-4 -->
+<section class="slide s-success">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">7 ta keys, <span class="hl">4 ta omil</span> — qaytadan-qaytadon.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Texnologiya yoki byudjet emas. Mana bu 4 omil bor banklar production'ga chiqadi, yo'q banklar pilotda qoladi.</p>
+    <div class="benefits benefits-4 reveal r3">
+      <div class="benefit fragment">
+        <span class="ico">👔</span>
+        <h3>Boshlik turtkisi</h3>
+        <p>CEO yoki Pravlenie a'zosi shaxsan loyihaga kirgan. Pulning yo'nalishi shu yerdan boshlanadi.</p>
+      </div>
+      <div class="benefit fragment">
+        <span class="ico">🎯</span>
+        <h3>Aniq use case</h3>
+        <p>"AI bilan nima qilamiz" emas, "qaysi 1 ta jarayonni qisqartiramiz". Tor doirada boshlash.</p>
+      </div>
+      <div class="benefit fragment">
+        <span class="ico">📚</span>
+        <h3>Ma'lumot tayyor</h3>
+        <p>RAG ishlasin uchun hujjatlar tartibli, indekslanadigan, yangi versiyali. Ko'p banklar shu joyda cho'kadi.</p>
+      </div>
+      <div class="benefit fragment">
+        <span class="ico">🤝</span>
+        <h3>Muvofiqlik hamkor</h3>
+        <p>Risk va comply'dan keyin emas — ular bilan birgalikda boshlash. Aks holda 6 oy keyin yopiladi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 14 — FAILURE 1 · Pilotda qolish -->
+<section class="slide s-myth">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Failure pattern · 1</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">"Pilotda qolish" — eng <span class="hl">ommabop</span> qabr.</h2>
+    <div class="myth reveal r3">
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>Pilot — bu <strong>demo</strong> uchun. Menejer ko'rsa — loyiha bitdi.</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p>Pilot — bu <strong>production'ga ko'prik</strong>. 12 hafta, 1 ta foydalanuvchi guruhi, kunlik ishlatish, aniq metrika.</p></div>
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>Pilotda <strong>hammasini</strong> tekshiramiz — 5 use case, 3 bo'lim.</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p>Pilot — <strong>tor</strong>. 1 use case, 1 bo'lim, 4 hafta. Ko'lam keyin keladi.</p></div>
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>Pilot tugagandan keyin <strong>production rejasi</strong> qilinadi.</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p>Pilot rejasi bilan <strong>birga</strong> production rejasi yoziladi: kim qabul qiladi, qaysi tizimga ulanadi, qancha xarajat.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 15 — FAILURE 2 · Texnologiya bor, jarayon yo'q -->
+<section class="slide s-myth">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Failure pattern · 2</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">"Texnologiya bor, <span class="hl">jarayon yo'q</span>" — ko'rinmas xato.</h2>
+    <p class="lead reveal r2">Bot ishlayapti. Lekin xodimlar ishlatmaydi. Sababi — AI ish jarayoniga singdirilmagan, alohida tab'da o'tiribdi.</p>
+    <div class="myth reveal r3">
+      <div class="row fragment"><div class="tag">✗ Holat</div><p>Bo'limga shartnoma boti qo'ydik. Lekin xodimlar hali ham PDF'ni qo'lda ochib o'qiyapti. <strong>Workflow o'zgarmagan</strong>.</p></div>
+      <div class="row real fragment"><div class="tag">✓ Yechim</div><p>Bot xodim allaqachon ishlatadigan tizimga (CRM, Outlook, ichki portal) joylashishi kerak. <strong>Tabiiy</strong> bo'lsin, majburiy emas.</p></div>
+      <div class="row fragment"><div class="tag">✗ Holat</div><p>"AI vositasi mavjud" deb e'lon qildik — 3 oy keyin <strong>0% adoption</strong>.</p></div>
+      <div class="row real fragment"><div class="tag">✓ Yechim</div><p>Foydalanuvchi shu vositadan foydalanmasa, ishini <strong>sekinroq</strong> qiladi — ana shu darajaga yetkazing.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 16 — SABOQ · Cando 6+6 -->
+<section class="slide s-cando">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Saboq — <span class="hl">qil</span> va qilma.</h2>
+    <p class="lead reveal r2">7 keys'ni siqib bitta jadvalga sig'dirdik. Bu sizning checklist'ingiz — shu qog'oz bilan bo'limga qaytishni tavsiya qilaman.</p>
+    <div class="cando reveal r3">
+      <div class="cando-col fragment">
+        <div class="cando-tag">✓ Bunday qiling</div>
+        <ul>
+          <li>1 ta tor use case'dan boshlang — bo'lim, jarayon, foydalanuvchi aniq</li>
+          <li>Ma'lumot bazasini birinchi kunda tekshirib chiqing</li>
+          <li>Muvofiqlik va riskni boshidan jamoaga oling</li>
+          <li>Kunlik ishlatish metrikalarini o'rnating (login emas, foydalanish)</li>
+          <li>Manual fallback yo'lini saqlang — AI ishlamasa biznes to'xtamasin</li>
+          <li>Har 4 hafta retrospektiva — nima ishladi, nima yo'q</li>
+        </ul>
+      </div>
+      <div class="cando-col cant fragment">
+        <div class="cando-tag">✗ Bunday qilmang</div>
+        <ul>
+          <li>Barcha bo'limlarni bir vaqtda boshlamang — 1 dan 5 ga qarab keng</li>
+          <li>"AI yaxshi narsa" umumiy gaplari bilan loyihani sotmang</li>
+          <li>Texnologiya tanlovini biznesdan oldin qilmang</li>
+          <li>Pilot natijasini production rejasiz qoldirmang</li>
+          <li>Modeldan to'liq qaror qilishni kutmang — inson tasdig'i bo'lsin</li>
+          <li>"AI sizni almashtiradi" demang — "zerikarli ishni oladi" deyishingiz kerak</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 17 — MASHQ · Drift table -->
+<section class="slide s-brain">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Mashq · 8 daqiqa · 3 stol</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Bo'limingizni keys'ga <span class="hl">taqqoslab</span>, drift'larni toping.</h2>
+    <p class="lead reveal r2">Stol kredit / KYC / mijoz xizmati'ni tanlaydi. 3 ustunni to'ldiring — keyin 1 vakil 1 daqiqada baland aytadi.</p>
+    <table class="case-table reveal r3">
+      <thead>
+        <tr>
+          <th style="width:18%">Bo'lim</th>
+          <th style="width:27%">Bizning hozirgi jarayon</th>
+          <th style="width:27%">Global keys qanday qilgan</th>
+          <th style="width:28%">Drift — uzilish nuqtasi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="col-dept">Stol 1 · Kredit</td><td>Hozirgi skoring qadamlari, kim qaror qiladi, qancha vaqt?</td><td>JPMorgan COIN — yurist tasdiqlaydi, AI ekstraktsiya qiladi</td><td>Bizda kim tasdiqlaydi? Hujjat formati bir xilmi?</td></tr>
+        <tr><td class="col-dept">Stol 2 · KYC</td><td>Mijoz tekshiruvi, sanksiya ro'yxati, qancha vaqt oladi?</td><td>DBS — AI tavsiya, inson imzolaydi, fraud rejasi alohida</td><td>Bizda real-time integratsiya bormi? Logging qaerda?</td></tr>
+        <tr><td class="col-dept">Stol 3 · Mijoz xizmati</td><td>Operator ishi, eng ko'p so'rov turlari, qancha qayta ishlash?</td><td>BofA Erica — bot mobil ilovada, faqat ma'lumot, maslahat yo'q</td><td>Bizning ilovamizdagi UX qaerda? Compliance chiziq qaerda?</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SLIDE 18 — CLOSING + recap -->
+<section class="slide s-close">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Bugundan <span class="hl">qaytib ketadigan</span> 3 xulosa.</h2>
+    <div class="close-list reveal r3">
+      <div class="close-row"><span class="arrow">💡</span><p><strong>70/14 farqi texnologiya emas</strong> — adoption va jarayonda. Eng zo'r modelni olishingiz mumkin, ammo bo'lim ishlatmasa — pilot bo'lib qoladi.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Keys'lar shablon emas, kompas</strong>. Hech bir bank sizning aynan vaziyatingizda emas — har biri 1-2 ta savol beradi: kim tasdiqlaydi? qancha tejaldi? qanday metrika?</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Pilot = production'ga ko'prik</strong>. Pilot rejasi bilan birga production rejasi yozilsin: kim qabul qiladi, qaysi tizimga ulanadi, byudjet qancha.</p></div>
+    </div>
+    <div class="recap reveal r3">
+      <div class="recap-tag">Lug'at recap · birga aytamiz</div>
+      <div class="recap-terms">
+        <div class="recap-term"><strong>AI Adoption</strong> <span class="ans">kunlik haqiqiy foydalanish — login emas</span></div>
+        <div class="recap-term"><strong>Production-grade</strong> <span class="ans">test emas, ishonchli, fallback bor</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 19 — Q&A -->
+<section class="slide s-qa">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="qmark reveal r2">?</div>
+    <h2 class="h2 reveal r3" style="text-align:center">Sizning <span class="hl">savollaringiz</span>.</h2>
+    <p class="reveal r3" style="text-align:center;margin-top:clamp(1.5rem,3vw,2.5rem);font-family:var(--display);font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:0.1em;color:var(--accent-2)">murod@mohir.dev</p>
+  </div>
+</section>
+
 </main>
 
 <div class="hud">
-  <span class="counter">01 / 02</span>
+  <span class="counter">01 / 19</span>
   <div class="dots"></div>
   <div class="speaker"><span class="dot"></span><strong>Riskaliev Murad</strong> · NLP Engineer · Mohirdev</div>
 </div>
@@ -540,7 +1035,24 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
 <script>
 const TITLES = [
   'Title · 13-modul',
-  "Yo'l xaritasi · Agenda"
+  "Yo'l xaritasi · Agenda",
+  'Hook · McKinsey 70/14',
+  'Metodologiya · 3 savol',
+  "Atama · AI Adoption + Production-grade",
+  'Keys 1 · JPMorgan COIN',
+  'Keys 2 · Morgan Stanley AI Assistant',
+  'Keys 3 · Bank of America Erica',
+  'Keys 4 · DBS Singapur',
+  'Keys 5 · Sberbank GigaChat',
+  "Mintaqaviy · Qozog'iston (Halyk, Forte)",
+  "Mintaqaviy · O'zbekiston banklari",
+  'Muvaffaqiyat · 4 omil',
+  'Failure 1 · Pilotda qolish',
+  "Failure 2 · Texnologiya bor, jarayon yo'q",
+  'Saboq · Qil va qilma',
+  'Mashq · Drift jadvali',
+  "Yakun · 3 xulosa + lug'at recap",
+  'Savol-Javob · Q&A'
 ];
 
 const slides = [...document.querySelectorAll('.slide')];
