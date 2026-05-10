@@ -7,7 +7,7 @@
 **Brand:** crea7iveai
 **Framework:** Custom HTML (single-file, `index.html`) — Style A locked tokens
 **Slaydlar soni:** 17 ta · 4 ta faza
-**Atamalar:** **Glossary review** (barcha 30+ atama 5 ta quiz slaydda) · **Q&A**
+**Atamalar:** **Glossary review** (barcha 29 atama 5 ta quiz slaydda) · **Q&A**
 **To'liq kontent:** [`content.md`](./content.md)
 
 ---
@@ -16,8 +16,8 @@
 
 Bu — kursning oxirgi taqdimoti. Maqsad uch xil:
 
-1. **Sayohatni eslatish** — 15 modul, 2 kun, 30+ atama. Jamoa qanday yo'lni bosib o'tdi.
-2. **Lug'atni mustahkamlash** — barcha 30+ atamani 5 ta quiz slayd orqali jonli ravishda eslab chiqamiz. Ishtirokchi atama eshitganda yo'qolib qolmaydi.
+1. **Sayohatni eslatish** — 15 modul, 2 kun, 29 atama. Jamoa qanday yo'lni bosib o'tdi.
+2. **Lug'atni mustahkamlash** — barcha 29 atamani 5 ta quiz slayd orqali jonli ravishda eslab chiqamiz. Ishtirokchi atama eshitganda yo'qolib qolmaydi.
 3. **Hayajonli xayrlashuv** — sertifikat, davomi va resurslar. Ishtirokchi "men endi qila olaman" his qiladi.
 
 Tonlama: yumshoq, hurmat-li, "siz harakat qildingiz, biz bu yerdamiz" tarzida.
@@ -41,7 +41,7 @@ Tonlama: yumshoq, hurmat-li, "siz harakat qildingiz, biz bu yerdamiz" tarzida.
 13. **Davomi va resurslar** — `.sec` 3-card (Promt kutubxonasi · Telegram yordam guruhi · Mohirdev kursi)
 14. **Sertifikat** — stylized parchment mockup, ikkala logo, ishtirokchi ismi placeholder, imzo
 15. **Auditoriyaga rahmat** — `.s-close` style yumshoq xayrlashuv + speaker kontakt
-16. **Lug'at recap (yakuniy)** — barcha 30+ atama bitta katta `.lib-grid` da
+16. **Lug'at recap (yakuniy)** — barcha 29 atama bitta katta `.lib-grid` da
 17. **Q&A va xayrlashuv** — `.s-qa` "Sayohat tugadi, savollar kutib turibdi"
 
 ---

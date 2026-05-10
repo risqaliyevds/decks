@@ -10,7 +10,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:'Space Grotesk',sans-serif}
-body,p,li,.lead{letter-spacing:0.018em}
+body,p,li,.lead,.dict-card p,.dict-card h3,.cando-col li,.close-row p,.q,.q span,.phase-desc,.case p,.benefit p,.flow .step p,.road .step p,.sec .item p,.mod-card .mod-key,.gloss-card .g-def,.cert-line{letter-spacing:0.025em}
 
 :root{
   --bg:#020A24;--bg-2:#06173B;--bg-3:#0B2D79;
@@ -427,6 +427,8 @@ body,p,li,.lead{letter-spacing:0.018em}
 .dict{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(0.85rem,1.6vw,1.5rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)}
 .dict.dict-2{grid-template-columns:1fr 1fr}
 .dict.dict-cols-3{grid-template-columns:repeat(3,1fr)}
+.dict.dict-cols-3 .dict-card.span-3{grid-column:1 / -1}
+.dict.dict-cols-3 .dict-card.span-3{padding-top:clamp(0.7rem,1.3vw,1.1rem);padding-bottom:clamp(0.7rem,1.3vw,1.1rem)}
 .dict-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(0.95rem,1.8vw,1.6rem);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
 .dict-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
 .dict-card .dict-tag{display:inline-block;font-family:var(--display);font-size:clamp(1.1rem,2.2vw,1.85rem);letter-spacing:0.02em;color:var(--accent-2);text-transform:uppercase;line-height:1;margin-bottom:0.55rem}
@@ -613,7 +615,7 @@ body,p,li,.lead{letter-spacing:0.018em}
         va yo'lda<br>
         ko'rishguncha.
       </h1>
-      <p class="tagline"><span class="accent-bar"></span>2 kun, 15 modul, 30+ atama. Endi siz bilan birga yopamiz.</p>
+      <p class="tagline"><span class="accent-bar"></span>2 kun, 15 modul, 29 atama. Endi kursni birgalikda yakunlaymiz.</p>
     </div>
   </div>
 </section>
@@ -650,7 +652,7 @@ body,p,li,.lead{letter-spacing:0.018em}
         </div>
         <div>
           <h3 class="phase-title">Lug'at quiz</h3>
-          <p class="phase-desc">30+ atamani 5 ta blokda jamoa bilan birga eslayb chiqamiz.</p>
+          <p class="phase-desc">29 ta asosiy atamani 5 ta blokda jamoa bilan birga eslab chiqamiz.</p>
         </div>
         <div class="phase-foot">
           <span class="phase-time">~12 daq</span>
@@ -696,13 +698,13 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <h2 class="h2 reveal r2"><span class="hl">2 kun</span>, 4 bosqich, 15 modul.</h2>
-    <p class="lead reveal r2" style="margin-top:0.5rem">Biz qaerdan boshlab, qayerga kelib qoldik. Birgina ko'zgu — keyin oldinga.</p>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Biz qayerdan boshladik va qayerga yetib keldik. Ortga bir nazar — keyin oldinga.</p>
     <div class="flow reveal r3">
       <div class="step"><div class="ico">🌅</div><h4>Day 1 · Erta</h4><p>Asoslar — modullar 1–4. AI nima, foyda, xavf, jarayon.</p></div>
       <div class="arrow">→</div>
       <div class="step"><div class="ico">🛠️</div><h4>Day 1 · Kech</h4><p>Asboblar — modullar 5–8. Promt, kutubxona, platforma, n8n.</p></div>
       <div class="arrow">→</div>
-      <div class="step brain"><div class="ico">🧠</div><h4>Day 2 · Erta</h4><p>Tizimlar — modullar 9–12. RAG, agentlar, voice, pipeline.</p></div>
+      <div class="step brain"><div class="ico">🧠</div><h4>Day 2 · Erta</h4><p>Tizimlar — modullar 9–12. Classifier, agent, RAG, pipeline.</p></div>
       <div class="arrow">→</div>
       <div class="step"><div class="ico">🎓</div><h4>Day 2 · Kech</h4><p>Amaliyot — modullar 13–15. Keyslar, MVP, mana shu marosim.</p></div>
     </div>
@@ -718,7 +720,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main" style="align-self:stretch;justify-content:flex-start;display:flex;flex-direction:column;min-height:0">
     <h2 class="h2 reveal r2">15 modul — bir <span class="hl">oynada</span>.</h2>
-    <p class="lead reveal r2" style="margin-top:0.4rem">Biz mana shu 15 ta to'xtovni bosib o'tdik. Birortasini eslamasangiz — qaytib ko'ramiz.</p>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Biz mana shu 15 ta bekatni bosib o'tdik. Birortasini eslamasangiz — qaytib ko'ramiz.</p>
     <div class="modules-grid reveal r3">
       <div class="mod-card featured"><span class="mod-num">01</span><div class="mod-name">Asoslar</div><span class="mod-key">RAG bot demo</span></div>
       <div class="mod-card"><span class="mod-num">02</span><div class="mod-name">Use case</div><span class="mod-key">Skoring xaritasi</span></div>
@@ -728,9 +730,9 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="mod-card featured"><span class="mod-num">06</span><div class="mod-name">Kutubxona</div><span class="mod-key">50+ shablon</span></div>
       <div class="mod-card"><span class="mod-num">07</span><div class="mod-name">Platformalar</div><span class="mod-key">GPT · Claude · Gemini</span></div>
       <div class="mod-card"><span class="mod-num">08</span><div class="mod-name">No-code</div><span class="mod-key">n8n · Zapier</span></div>
-      <div class="mod-card featured"><span class="mod-num">09</span><div class="mod-name">RAG qurish</div><span class="mod-key">Embedding</span></div>
+      <div class="mod-card featured"><span class="mod-num">09</span><div class="mod-name">Birinchi workflow</div><span class="mod-key">Classification · Schema</span></div>
       <div class="mod-card"><span class="mod-num">10</span><div class="mod-name">Agentlar</div><span class="mod-key">Tool use</span></div>
-      <div class="mod-card"><span class="mod-num">11</span><div class="mod-name">Voice bot</div><span class="mod-key">Schema · STT</span></div>
+      <div class="mod-card featured"><span class="mod-num">11</span><div class="mod-name">RAG chatbot</div><span class="mod-key">Embedding</span></div>
       <div class="mod-card"><span class="mod-num">12</span><div class="mod-name">Pipeline</div><span class="mod-key">Idempotent</span></div>
       <div class="mod-card"><span class="mod-num">13</span><div class="mod-name">Real keyslar</div><span class="mod-key">JPMorgan · DBS</span></div>
       <div class="mod-card featured"><span class="mod-num">14</span><div class="mod-name">MVP</div><span class="mod-key">Iteration</span></div>
@@ -748,11 +750,11 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <span class="chip-out reveal r2">Lug'at quiz · 5 blok</span>
-    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)"><span class="hl">30+ atama</span> — birga eslayb chiqamiz.</h2>
-    <p class="lead reveal r2" style="margin-top:0.5rem">Men atama aytaman — siz xorda javob aytasiz. Eslamasangiz — boshqa eslaydi. Qo'rqitmasangiz bo'ladi — bu imtihon emas, marosim.</p>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)"><span class="hl">29 ta atamani</span> — birga eslab chiqamiz.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Men atama aytaman — siz xorda javob aytasiz. Eslay olmasangiz — boshqalar eslaydi. Xavotir olmang — bu imtihon emas, marosim.</p>
     <div class="questions reveal r3">
       <div class="q fragment"><span class="n">01</span><span>Atama ko'rsatildi → siz <span style="color:var(--accent-2)">2 soniya</span> o'ylaysiz → biz birga aytamiz.</span></div>
-      <div class="q fragment"><span class="n">02</span><span>Eslamadingiz? <span style="color:var(--accent-2)">Hech qisi yo'q</span> — yakuniy slaydda hammasi yana bir marta.</span></div>
+      <div class="q fragment"><span class="n">02</span><span>Eslay olmasangiz? <span style="color:var(--accent-2)">Muammo emas</span> — yakuniy slaydda hammasini yana bir bor ko'ramiz.</span></div>
     </div>
   </div>
 </section>
@@ -768,12 +770,13 @@ body,p,li,.lead{letter-spacing:0.018em}
     <span class="chip-out reveal r1">Quiz · Modullar 1 → 3</span>
     <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)"><span class="hl">Asoslar</span> lug'ati.</h2>
     <div class="dict dict-cols-3 reveal r3">
-      <div class="dict-card fragment"><span class="dict-tag">LLM</span><h3>Katta Til Modeli</h3><p>Bizning <strong>miya</strong> — AI'ning fikrlash qismi. Gemini, ChatGPT.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">LLM</span><h3>Katta Til Modeli</h3><p>Bizning <strong>miyamiz</strong> — AI'ning fikrlash qismi. Gemini, ChatGPT.</p></div>
       <div class="dict-card fragment"><span class="dict-tag">Promt</span><h3>Aniq buyruq</h3><p>AI'ga beradigan <strong>topshiriq</strong>. Yaxshi promt = yaxshi javob.</p></div>
       <div class="dict-card fragment"><span class="dict-tag">API</span><h3>Ko'prik</h3><p>Ikki dastur orasidagi <strong>kanal</strong>. Telegram ↔ Gemini.</p></div>
       <div class="dict-card fragment"><span class="dict-tag">Use Case</span><h3>Qo'llash holati</h3><p>AI qo'yiladigan <strong>aniq vazifa</strong>. Mavhumlik yo'q.</p></div>
-      <div class="dict-card fragment"><span class="dict-tag">Pilot</span><h3>Sinov loyihasi</h3><p><strong>Kichik versiya</strong>, ishlasa kengaytiramiz.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Pilot Loyiha</span><h3>Sinov loyihasi</h3><p><strong>Kichik versiya</strong>, ishlasa kengaytiramiz.</p></div>
       <div class="dict-card fragment"><span class="dict-tag">Hallucination</span><h3>Yolg'on javob</h3><p>AI <strong>o'ylab topgan</strong> ma'lumot. RAG bu xatoni yo'q qiladi.</p></div>
+      <div class="dict-card fragment span-3"><span class="dict-tag">Data Masking</span><h3>Maxfiy ma'lumotni yashirish</h3><p>Ism, hisob raqami, summa — AI'ga yuborishdan oldin <strong>maskalanadi</strong>. Bu — muvofiqlik talabi.</p></div>
     </div>
   </div>
 </section>
@@ -790,7 +793,7 @@ body,p,li,.lead{letter-spacing:0.018em}
     <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)"><span class="hl">Promt va jarayon</span> lug'ati.</h2>
     <div class="dict dict-cols-3 reveal r3">
       <div class="dict-card fragment"><span class="dict-tag">Workflow</span><h3>Jarayon zanjiri</h3><p>A → B → C — <strong>bosqichma-bosqich</strong> ish.</p></div>
-      <div class="dict-card fragment"><span class="dict-tag">Decompose</span><h3>Vazifani bo'lish</h3><p>Katta ishni <strong>kichkina bosqichlarga</strong> ajratish.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Task Decomposition</span><h3>Vazifani bo'lish</h3><p>Katta ishni <strong>kichik bosqichlarga</strong> ajratish.</p></div>
       <div class="dict-card fragment"><span class="dict-tag">Few-shot</span><h3>Misolli o'rgatish</h3><p>"Mana 2-3 misol, <strong>endi xuddi shunday qil</strong>".</p></div>
       <div class="dict-card fragment"><span class="dict-tag">CoT</span><h3>Fikr zanjiri</h3><p>"<strong>Bosqichma-bosqich o'yla</strong>, keyin javob ber".</p></div>
       <div class="dict-card fragment"><span class="dict-tag">System</span><h3>Tizim promti</h3><p>AI'ning <strong>rolini</strong> belgilash — har dialogda boshida.</p></div>
@@ -808,14 +811,14 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <span class="chip-out reveal r1">Quiz · Modullar 7 → 9</span>
-    <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)"><span class="hl">Platformalar va RAG</span> lug'ati.</h2>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)"><span class="hl">Platforma va birinchi workflow</span> lug'ati.</h2>
     <div class="dict dict-cols-3 reveal r3">
       <div class="dict-card fragment"><span class="dict-tag">Token</span><h3>So'z bo'lagi</h3><p>AI <strong>shu birlikda</strong> hisoblaydi. 1 sahifa A4 ≈ 650 token.</p></div>
       <div class="dict-card fragment"><span class="dict-tag">Context</span><h3>Kontekst oynasi</h3><p>AI <strong>bir martada</strong> qancha matn o'qiy oladi. Gemini ~1M.</p></div>
       <div class="dict-card fragment"><span class="dict-tag">Trigger</span><h3>Ish boshlovchi</h3><p>Soat 9:00, email keldi, forma to'ldirildi — <strong>signal</strong>.</p></div>
       <div class="dict-card fragment"><span class="dict-tag">Webhook</span><h3>Xabar nuqtasi</h3><p>Boshqa dasturdan kelgan <strong>xabar</strong> qabul qiladigan URL.</p></div>
-      <div class="dict-card fragment"><span class="dict-tag">RAG</span><h3>Qidir + javob ber</h3><p>Hujjatga qarab javob — <strong>shpargalka bilan a'lochi</strong>.</p></div>
-      <div class="dict-card fragment"><span class="dict-tag">Embedding</span><h3>Vektor ko'rinishi</h3><p>Matnni <strong>raqamga</strong> aylantirish — qidirish uchun.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Classification</span><h3>Tasniflash</h3><p>Murojaatni <strong>toifaga ajratish</strong>: kredit · karta · shikoyat.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Schema</span><h3>Sxema-bo'yicha javob</h3><p>JSON shabloni — AI <strong>aniq maydonlarda</strong> javob beradi.</p></div>
     </div>
   </div>
 </section>
@@ -829,13 +832,13 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <span class="chip-out reveal r1">Quiz · Modullar 10 → 12</span>
-    <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)"><span class="hl">Agent va pipeline</span> lug'ati.</h2>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)"><span class="hl">Agent, RAG va pipeline</span> lug'ati.</h2>
     <div class="dict dict-cols-3 reveal r3">
       <div class="dict-card fragment"><span class="dict-tag">Agent</span><h3>Fikrlovchi AI</h3><p>Faqat javob bermaydi — <strong>ish ham bajaradi</strong>.</p></div>
       <div class="dict-card fragment"><span class="dict-tag">Tool Use</span><h3>Asbob ishlatish</h3><p>AI'ga <strong>kalkulyator, baza, email</strong> kabi vositalar.</p></div>
-      <div class="dict-card fragment"><span class="dict-tag">STT</span><h3>Ovoz → Matn</h3><p>Bankir ovoz qoldiradi, bot <strong>matnga o'giradi</strong>.</p></div>
-      <div class="dict-card fragment"><span class="dict-tag">Schema</span><h3>JSON shabloni</h3><p>AI'ga maydonlarni <strong>qat'iy belgilash</strong>. Function calling.</p></div>
-      <div class="dict-card fragment"><span class="dict-tag">Pipeline</span><h3>Bosqichlar zanjiri</h3><p>Bitta promt'da hammasi emas — <strong>5 ta aniq bosqich</strong>.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">RAG</span><h3>Qidir + javob ber</h3><p>O'z hujjatingdan javob — <strong>shpargalka bilan a'lochi</strong>.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Embedding</span><h3>Vektor ko'rinishi</h3><p>Matnni <strong>raqamga</strong> aylantirish — qidirish uchun.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">Pipeline</span><h3>Bosqichlar zanjiri</h3><p>Bitta promtda hammasi emas — <strong>5 ta aniq bosqich</strong>.</p></div>
       <div class="dict-card fragment"><span class="dict-tag">Idempotent</span><h3>Qaytarilsa ham xato yo'q</h3><p>Bir xil kirish → <strong>bir xil chiqish</strong>. 2 marta yuborilmaydi.</p></div>
     </div>
   </div>
@@ -852,9 +855,9 @@ body,p,li,.lead{letter-spacing:0.018em}
     <span class="chip-out reveal r1">Quiz · Modullar 13 → 14</span>
     <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)"><span class="hl">Real loyihalar</span> lug'ati.</h2>
     <div class="dict dict-2 reveal r3">
-      <div class="dict-card fragment"><span class="dict-tag">AI Adoption</span><h3>Foydalanish darajasi</h3><p>Texnologiyani sotib olish emas — <strong>kunlik foydalanish</strong>. McKinsey 2024: 70% pilot, faqat 14% production.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">AI Adoption</span><h3>Foydalanish darajasi</h3><p>Texnologiyani sotib olish emas — <strong>kundalik foydalanish</strong>. McKinsey 2024: 70% pilot, faqat 14% production.</p></div>
       <div class="dict-card fragment"><span class="dict-tag">Production-grade</span><h3>Real ishda ishonchli</h3><p>Test bo'lib turgan emas — <strong>real mijoz xizmati</strong>. Audit log, role-based access, monitoring.</p></div>
-      <div class="dict-card fragment"><span class="dict-tag">MVP</span><h3>Eng kichik ishlaydigan</h3><p>6 oyga mukammal yechim emas — <strong>4 haftaga ishlaydigan</strong> versiya. Sinab boshlay olamiz.</p></div>
+      <div class="dict-card fragment"><span class="dict-tag">MVP</span><h3>Eng kichik ishlaydigan</h3><p>6 oylik mukammal yechim emas — <strong>4 haftada ishlaydigan</strong> versiya. Sinab boshlay olamiz.</p></div>
       <div class="dict-card fragment"><span class="dict-tag">Iteration</span><h3>Qadam-qadam yaxshilash</h3><p>Birinchi versiyada <strong>hammasi to'g'ri</strong> bo'lmasligi tabiiy. Bilamiz, takomillashtiramiz.</p></div>
     </div>
   </div>
@@ -868,7 +871,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main">
-    <h2 class="h2 reveal r2">Bugundan <span class="hl">boshlay olasiz</span> — bugun emas.</h2>
+    <h2 class="h2 reveal r2">Bugundan <span class="hl">boshlay olasiz</span> — lekin hammasini emas.</h2>
     <p class="lead reveal r2" style="margin-top:0.4rem">Kutilgan natijani aniq belgilaymiz: hayajon bilan, lekin ehtiyot.</p>
     <div class="cando reveal r3">
       <div class="cando-col fragment">
@@ -903,8 +906,8 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main">
-    <h2 class="h2 reveal r2"><span class="hl">30 kun</span> keyin — sizning yo'lingiz.</h2>
-    <p class="lead reveal r2" style="margin-top:0.4rem">Aniq, qo'lga tushadigan rejim. Boshlig'ingiz tezligini farqlatadi.</p>
+    <h2 class="h2 reveal r2"><span class="hl">Keyingi 30 kun</span> — sizning yo'lingiz.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Aniq, amalda bajariladigan reja. Tezlik bo'limingiz, rahbaringiz va muvofiqlik talablariga bog'liq.</p>
     <div class="road reveal r3">
       <div class="step">
         <div class="n">01</div>
@@ -914,7 +917,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="step">
         <div class="n">02</div>
         <h3>Hafta 2–3 — Sinash</h3>
-        <p>1-modulning RAG bot prototipini bo'lim hujjati bilan moslang. 5 kishi bilan sinab ko'ring. Promt shablonlarini qo'shing.</p>
+        <p>1-modulning RAG bot prototipini bo'lim hujjati bilan moslashtiring. 5 kishi bilan sinab ko'ring. Promt shablonlarini qo'shing.</p>
       </div>
       <div class="step">
         <div class="n">03</div>
@@ -969,7 +972,7 @@ body,p,li,.lead{letter-spacing:0.018em}
         <p class="cert-line">Ushbu hujjat bilan tasdiqlanadi:</p>
         <div class="cert-name">[ ISHTIROKCHI ISMI ]</div>
         <p class="cert-line">quyidagi kursni muvaffaqiyatli tamomladi:</p>
-        <div class="cert-course">Bank sektori uchun sun'iy intellekt<br><span style="font-size:0.7em;letter-spacing:0.08em">15 modul · 2 kun · 30+ atama</span></div>
+        <div class="cert-course">Bank sektori uchun sun'iy intellekt<br><span style="font-size:0.7em;letter-spacing:0.08em">15 modul · 2 kun · 29 atama</span></div>
       </div>
       <div class="cert-foot">
         <div class="cert-sig">
@@ -997,9 +1000,9 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="main">
     <h2 class="h2 reveal r2"><span class="hl">Rahmat</span>.</h2>
     <div class="close-list reveal r3">
-      <div class="close-row"><span class="arrow">💙</span><p><strong>Vaqtingiz uchun</strong> — ikki kun, samarali ishingizdan ajratib oldi. Bu hurmatga loyiq.</p></div>
+      <div class="close-row"><span class="arrow">💙</span><p><strong>Vaqtingiz uchun</strong> — ikki kun, samarali ish vaqtingizdan ajratdingiz. Bu hurmatga loyiq.</p></div>
       <div class="close-row"><span class="arrow">💙</span><p><strong>Savollaringiz uchun</strong> — har savol meni va boshqa ishtirokchilarni o'qitdi. Keyingi seminarda eslab gapiraman.</p></div>
-      <div class="close-row"><span class="arrow">💙</span><p><strong>Qaytib kelishingiz uchun</strong> — Telegram'da, ofisda, keyingi yig'inlarda. Birinchi MVP'ni qurganingizda — ekran rasmi yuboring.</p></div>
+      <div class="close-row"><span class="arrow">💙</span><p><strong>Aloqada qolishingiz uchun</strong> — Telegram'da, ofisda, keyingi yig'inlarda. Birinchi MVP'ni qurganingizda — ekran rasmi yuboring.</p></div>
     </div>
     <div class="recap reveal r3">
       <div class="recap-tag">Kontakt · birga ko'rishamiz</div>
@@ -1020,39 +1023,38 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main" style="align-self:stretch;justify-content:flex-start;display:flex;flex-direction:column;min-height:0">
-    <h2 class="h2 reveal r2"><span class="hl">30 atama</span> — bir oynada.</h2>
-    <p class="lead reveal r2" style="margin-top:0.3rem">Telefoningizdan rasm oling. Bu — sizning kichik lug'atingiz.</p>
+    <h2 class="h2 reveal r2"><span class="hl">29 atama</span> — bir oynada.</h2>
+    <p class="lead reveal r2" style="margin-top:0.3rem">Telefoningizga saqlab qo'ying — bu kursdan keyingi qisqa lug'atingiz.</p>
     <div class="gloss-grid reveal r3">
       <div class="gloss-card featured"><div class="g-term">LLM</div><div class="g-def">Katta Til Modeli</div></div>
       <div class="gloss-card featured"><div class="g-term">Promt</div><div class="g-def">Aniq buyruq</div></div>
       <div class="gloss-card featured"><div class="g-term">API</div><div class="g-def">Ko'prik</div></div>
       <div class="gloss-card"><div class="g-term">Use Case</div><div class="g-def">Qo'llash holati</div></div>
-      <div class="gloss-card"><div class="g-term">Pilot</div><div class="g-def">Sinov loyihasi</div></div>
+      <div class="gloss-card"><div class="g-term">Pilot Loyiha</div><div class="g-def">Sinov loyihasi</div></div>
       <div class="gloss-card"><div class="g-term">Hallucination</div><div class="g-def">AI yolg'oni</div></div>
       <div class="gloss-card"><div class="g-term">Data Masking</div><div class="g-def">Maxfiy ma'lumotni yashirish</div></div>
       <div class="gloss-card"><div class="g-term">Workflow</div><div class="g-def">Jarayon zanjiri</div></div>
-      <div class="gloss-card"><div class="g-term">Decompose</div><div class="g-def">Vazifani bo'lish</div></div>
+      <div class="gloss-card"><div class="g-term">Task Decomposition</div><div class="g-def">Vazifani bo'lish</div></div>
       <div class="gloss-card"><div class="g-term">Few-shot</div><div class="g-def">Misolli o'rgatish</div></div>
-      <div class="gloss-card"><div class="g-term">CoT</div><div class="g-def">Fikr zanjiri</div></div>
+      <div class="gloss-card"><div class="g-term">CoT</div><div class="g-def">Chain-of-Thought · fikr zanjiri</div></div>
       <div class="gloss-card"><div class="g-term">System Prompt</div><div class="g-def">AI rolini belgilash</div></div>
-      <div class="gloss-card"><div class="g-term">Template</div><div class="g-def">Tayyor shablon</div></div>
+      <div class="gloss-card"><div class="g-term">Template Prompt</div><div class="g-def">Tayyor shablon</div></div>
       <div class="gloss-card featured"><div class="g-term">Token</div><div class="g-def">So'z bo'lagi</div></div>
-      <div class="gloss-card featured"><div class="g-term">Context</div><div class="g-def">Kontekst oynasi</div></div>
+      <div class="gloss-card featured"><div class="g-term">Context Window</div><div class="g-def">Kontekst oynasi</div></div>
       <div class="gloss-card"><div class="g-term">Trigger</div><div class="g-def">Ish boshlovchi signal</div></div>
       <div class="gloss-card"><div class="g-term">Webhook</div><div class="g-def">Xabar nuqtasi (URL)</div></div>
-      <div class="gloss-card featured"><div class="g-term">RAG</div><div class="g-def">Qidir + javob ber</div></div>
-      <div class="gloss-card featured"><div class="g-term">Embedding</div><div class="g-def">Vektor ko'rinishi</div></div>
+      <div class="gloss-card featured"><div class="g-term">Classification</div><div class="g-def">Toifaga ajratish</div></div>
+      <div class="gloss-card featured"><div class="g-term">Schema</div><div class="g-def">Sxema-bo'yicha javob</div></div>
       <div class="gloss-card"><div class="g-term">Agent</div><div class="g-def">Fikrlovchi AI</div></div>
       <div class="gloss-card"><div class="g-term">Tool Use</div><div class="g-def">Asbob ishlatish</div></div>
-      <div class="gloss-card"><div class="g-term">STT</div><div class="g-def">Ovoz → matn</div></div>
-      <div class="gloss-card"><div class="g-term">Function Calling</div><div class="g-def">JSON schema</div></div>
+      <div class="gloss-card featured"><div class="g-term">RAG</div><div class="g-def">Qidir + javob ber</div></div>
+      <div class="gloss-card featured"><div class="g-term">Embedding</div><div class="g-def">Vektor ko'rinishi</div></div>
       <div class="gloss-card"><div class="g-term">Pipeline</div><div class="g-def">Bosqichlar zanjiri</div></div>
       <div class="gloss-card"><div class="g-term">Idempotent</div><div class="g-def">Qaytarilsa xato yo'q</div></div>
-      <div class="gloss-card"><div class="g-term">Adoption</div><div class="g-def">Foydalanish darajasi</div></div>
-      <div class="gloss-card"><div class="g-term">Production</div><div class="g-def">Real ishda ishonchli</div></div>
+      <div class="gloss-card"><div class="g-term">AI Adoption</div><div class="g-def">Foydalanish darajasi</div></div>
+      <div class="gloss-card"><div class="g-term">Production-grade</div><div class="g-def">Real ishda ishonchli</div></div>
       <div class="gloss-card featured"><div class="g-term">MVP</div><div class="g-def">Eng kichik ishlaydigani</div></div>
       <div class="gloss-card featured"><div class="g-term">Iteration</div><div class="g-def">Qadam-qadam yaxshilash</div></div>
-      <div class="gloss-card featured"><div class="g-term">Glossary</div><div class="g-def">Sizning yangi tilingiz</div></div>
     </div>
   </div>
 </section>
@@ -1096,7 +1098,7 @@ const TITLES = [
   "Davomi va resurslar",
   "Sertifikat",
   "Rahmat · Speaker kontakt",
-  "30 atama · yakuniy lug'at",
+  "29 atama · yakuniy lug'at",
   "Q&A · Yo'lda ko'rishguncha"
 ];
 

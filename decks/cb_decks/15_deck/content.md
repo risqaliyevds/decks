@@ -7,7 +7,7 @@
 **Brand:** crea7iveai
 **Slaydlar soni:** 17 ta
 
-> Asosiy g'oya: 2 kun, 15 modul, 30+ atama. Bu slayd to'plami "biz birga yo'lni bosib o'tdik" tarzida xayrlashuvga olib keladi. Quiz emas — birgalikda eslab chiqish marosimi.
+> Asosiy g'oya: 2 kun, 15 modul, 29 atama. Bu slayd to'plami "biz birga yo'lni bosib o'tdik" tarzida xayrlashuvga olib keladi. Quiz emas — birgalikda eslab chiqish marosimi.
 
 ---
 
@@ -18,7 +18,7 @@
 
 **Chip:** Kun 2 · 17:15 — 17:45 + sertifikat
 
-**Tagline:** 2 kun, 15 modul, 30+ atama. Endi siz bilan birga yopamiz.
+**Tagline:** 2 kun, 15 modul, 29 atama. Endi siz bilan birga yopamiz.
 
 **Speaker notes:**
 Bu — kursning oxirgi taqdimoti. Birinchi gap muhim: "Salom, biz oxirgi slayd to'plamida turibmiz". Auditoriyaga aniq ayting — bu modul texnika emas, balki **yopilish marosimi**. Ohangni 1-modul'dagi energiya emas, **yumshoq, do'stona** qilib boshlang. 60 soniya — title'da uzoq turib qolmang. "Keling, biz nima qilganimizni eslayb ko'ramiz" — keyingi slaydga ko'prik.
@@ -34,7 +34,7 @@ Tonlama: minnatdorchilik, ammo prim emas. "Siz ikki kun davomida vaqt ajratdingi
 **4 faza (2×2 grid):**
 
 1. **01 — Sayohat** · ~5 daq · Day 1 / Day 2 retrospective (slaydlar 3–4)
-2. **02 — Lug'at quiz** · ~12 daq · 30+ atama 5 ta blokda (slaydlar 5–10)
+2. **02 — Lug'at quiz** · ~12 daq · 29 atama 5 ta blokda (slaydlar 5–10)
 3. **03 — Bugundan keyin** · ~7 daq · Kutilgan natija + 30 kunlik plan + resurslar (slaydlar 11–13)
 4. **04 — Sertifikat** · ~30+ daq · Marosim, xayrlashuv, Q&A (slaydlar 14–17)
 
@@ -99,7 +99,7 @@ Bu slayd — "men hozirning o'zida hammasini eslayman" deb auditoriya his qiladi
 
 **Chip:** Lug'at quiz · 5 blok
 
-**Sarlavha:** **30+ atama** — birga eslayb chiqamiz.
+**Sarlavha:** **29 atama** — birga eslayb chiqamiz.
 
 **Lead:**
 Endi mashq vaqti. Men atama aytaman — siz xorda javob aytasiz. Eslamasangiz — boshqa eslaydi. Birortasi yo'q deb qolmaydi.
@@ -381,7 +381,7 @@ Tonlama: "Biz yo'qolmaymiz. Bu kurs bittagina dars emas — boshlanish."
 
 Keyin:
 
-> "Bu — sizning sertifikatingiz. 15 modul, 2 kun, 30+ atama. Vazirlik va Markaz tasdiq berdi. Bu — qog'oz emas. Bu — siz buni **qildingiz** degan dalil."
+> "Bu — sizning sertifikatingiz. 15 modul, 2 kun, 29 atama. Vazirlik va Markaz tasdiq berdi. Bu — qog'oz emas. Bu — siz buni **qildingiz** degan dalil."
 
 Marosim formatini aniq qiling:
 
@@ -420,9 +420,9 @@ Yopish bilan kontakt'larni ekranda qoldirib qo'ying. Speaker chiqib turishidan o
 
 ---
 
-## Slide 16 — Lug'at recap (yakuniy) · 30 atama bir oynada
+## Slide 16 — Lug'at recap (yakuniy) · 29 atama bir oynada
 
-**Sarlavha:** **30 atama** — bir oynada.
+**Sarlavha:** **29 atama** — bir oynada.
 
 **Vizual:** `.lib-grid` adapted, 5×6 grid (30 ta kichkina card). Har card'da atama va 2-3 so'zlik izoh.
 
@@ -437,7 +437,7 @@ Bu — **screenshot olib qo'yish** kerak bo'lgan slayd. Auditoriyaga ayting: "Te
 
 Keyin:
 
-> "Bu 30 atama — 2 kunlik kursning eng katta yutug'i. Bu so'zlarni eshitganingizda yo'qolib qolmaysiz. Boshlik bilan, IT bilan, muvofiqlik bilan **bir tilda** gaplashasiz."
+> "Bu 29 atama — 2 kunlik kursning eng katta yutug'i. Bu so'zlarni eshitganingizda yo'qolib qolmaysiz. Boshlik bilan, IT bilan, muvofiqlik bilan **bir tilda** gaplashasiz."
 
 Bu slayd — 16-slayd, oxirgi-qoldi-ikki. Quyish nuqtasidan oldingi vizual cho'qqi.
 

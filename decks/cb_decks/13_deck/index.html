@@ -464,12 +464,21 @@ body,p,li,.lead{letter-spacing:0.018em}
 .sec.sec-2{grid-template-columns:1fr 1fr}
 
 /* CLOSING — lug'at recap row */
-.s-close .recap{margin-top:clamp(1rem,2vw,1.75rem);padding-top:clamp(0.85rem,1.5vw,1.25rem);border-top:1px solid var(--soft);display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.5rem);flex-wrap:wrap}
+.s-close .recap{margin-top:clamp(0.75rem,1.4vw,1.25rem);padding-top:clamp(0.75rem,1.3vw,1.1rem);border-top:1px solid var(--soft);display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.5rem);flex-wrap:wrap}
 .s-close .recap-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);flex-shrink:0}
 .s-close .recap-terms{display:flex;gap:clamp(1rem,2vw,2rem);flex-wrap:wrap;flex:1}
 .s-close .recap-term{font-size:var(--body);color:rgba(255,255,255,0.7);line-height:1.4}
 .s-close .recap-term strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-right:0.5em;font-weight:400}
 .s-close .recap-term .ans{color:var(--accent-2)}
+
+/* CLOSING artifact — pilot gate checklist (5 rows) */
+.s-close .gate{margin-top:clamp(0.75rem,1.4vw,1.1rem);background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(37,99,235,0.03));border:1px solid rgba(96,165,250,0.25);border-radius:var(--r);padding:clamp(0.85rem,1.6vw,1.4rem) clamp(1rem,2vw,1.75rem)}
+.s-close .gate-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);margin-bottom:clamp(0.5rem,0.9vw,0.75rem)}
+.s-close .gate-list{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(0.55rem,1vw,0.85rem)}
+.s-close .gate-item{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:clamp(0.4rem,0.8vw,0.65rem);padding:clamp(0.55rem,1vw,0.85rem) clamp(0.65rem,1.1vw,0.95rem)}
+.s-close .gate-item .n{font-family:var(--display);font-size:clamp(0.78rem,1.05vw,0.95rem);color:var(--accent-2);letter-spacing:0.05em;display:block;margin-bottom:0.25rem}
+.s-close .gate-item p{font-size:clamp(0.72rem,0.95vw,0.85rem);line-height:1.4;color:rgba(255,255,255,0.8)}
+.s-close .gate-item p strong{color:#fff;font-family:var(--display);text-transform:uppercase;letter-spacing:0.02em;font-weight:400}
 
 /* MASHQ TABLE — case-comparison worksheet */
 .case-table{width:100%;margin-top:clamp(0.85rem,1.5vw,1.25rem);border-collapse:separate;border-spacing:clamp(0.45rem,0.9vw,0.7rem);table-layout:fixed}
@@ -578,7 +587,7 @@ body,p,li,.lead{letter-spacing:0.018em}
         </div>
         <div>
           <h3 class="phase-title">Saboq + mashq</h3>
-          <p class="phase-desc">Muvaffaqiyat va failure naqshlari, do/don't ro'yxati, va eng muhimi — sizning bo'limingiz uchun drift mashqi.</p>
+          <p class="phase-desc">Muvaffaqiyat omillari va eng ko'p uchraydigan xatolar, qil/qilma ro'yxati, va eng muhimi — sizning bo'limingiz uchun drift mashqi.</p>
         </div>
         <div class="phase-foot">
           <span class="phase-time">~23 daq</span>
@@ -597,11 +606,11 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main" style="display:block">
-    <span class="chip-out reveal r1">McKinsey · "The State of AI" 2024</span>
-    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">70% bankda AI bor.<br>Faqat <span class="hl">14% production'da</span> ishlaydi.</h2>
-    <p class="lead reveal r2">Har 5 ta pilotning 4 tasi demo bo'lib o'lib qoladi. Sabab — texnologiya emas. Sabab — "adoption" va "production-grade" tushunchalarining yetishmasligi. Bugun shu farqni ochamiz.</p>
+    <span class="chip-out reveal r1">McKinsey · "The State of AI" 2024 · global so'rov</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">70% tashkilotda AI bor.<br>Faqat <span class="hl">14% production'da</span> ishlaydi.</h2>
+    <p class="lead reveal r2">Tashkilotlar AI'ni tez sinaydi, lekin kundalik ishga chiqarish ancha qiyin. Banklarda ham xuddi shu naqsh — sabab texnologiya emas, "adoption" va "production-grade"ning yetishmasligi. Bugun shu farqni ochamiz.</p>
     <div class="compare reveal r3">
-      <div class="col"><h4>Pilot bor</h4><p>70%<br><span style="font-family:'Space Grotesk';font-size:0.5em;font-weight:400;color:rgba(255,255,255,0.7)">demolarda qoladi</span></p></div>
+      <div class="col"><h4>Pilot bor</h4><p>70%<br><span style="font-family:'Space Grotesk';font-size:0.5em;font-weight:400;color:rgba(255,255,255,0.7)">tashkilotlarda · sinov bosqichida</span></p></div>
       <div class="vs">→</div>
       <div class="col win"><h4>Production'da</h4><p>14%<br><span style="font-family:'Space Grotesk';font-size:0.5em;font-weight:400;color:rgba(255,255,255,0.85)">kunlik ishda turadi</span></p></div>
     </div>
@@ -634,7 +643,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="benefit fragment">
         <div class="stat">03</div>
         <h3>Natija + saboq</h3>
-        <p>Aniq metrikalar (vaqt, soat, foiz) va biz uchun olib qolinadigan 1 saboq.</p>
+        <p>Aniq metrikalar (vaqt, soat, foiz) va biz uchun chiqariladigan 1 xulosa.</p>
         <div class="proof muted">"Biz qilolmaymiz" emas — har keys'dan kamida bitta drift.</div>
       </div>
     </div>
@@ -655,13 +664,13 @@ body,p,li,.lead{letter-spacing:0.018em}
     <div class="dict dict-2 reveal r3">
       <div class="dict-card fragment">
         <span class="dict-tag">AI Adoption</span>
-        <h3>Kunlik foydalanish</h3>
-        <p>Yaratilgan emas — <strong>ishlatilayotgan</strong>. Login ochildi degan ma'no emas, bo'limning 70+ foiz xodimi kunda foydalanyapti va o'lchanyapti, deganidir.</p>
+        <h3>Foydalanish va ta'sir</h3>
+        <p>Tizim borligi emas — <strong>belgilangan guruh muntazam ishlatadi</strong> va ish natijasiga ta'sir qiladi. KPI har loyihada o'ziga xos: vaqt, xato, qaytarilish kabilar.</p>
       </div>
       <div class="dict-card fragment">
         <span class="dict-tag">Production-grade</span>
-        <h3>Test emas, real</h3>
-        <p>Tizim 99% uptime'da, log va monitoring bor, fallback bor. AI ishlamaganda biznes <strong>to'xtab qolmaydi</strong>. Texnik ham, organizatsion ham belgi.</p>
+        <h3>Bank standartida turadi</h3>
+        <p>SLA (kafolatlangan ishlash), audit izi, ruxsatlar nazorati, zaxira rejasi (fallback) — bank infrastrukturasi ko'tara oladigan. AI ishlamaganda biznes <strong>to'xtab qolmaydi</strong>.</p>
       </div>
     </div>
   </div>
@@ -676,8 +685,8 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <span class="chip-out reveal r1">Keys 1 · JPMorgan Chase · 2017</span>
-    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">COIN — shartnoma <span class="hl">tahlilchi</span>.</h2>
-    <p class="lead reveal r2">12,000 ta yillik kommertsial kredit shartnomasi → kalit shartlarni qo'lda chiqarish kunlar oladi. NLP modeli 5–6 soniyada chiqaradi, yurist faqat tasdiqlaydi.</p>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">COIN — shartnomalar <span class="hl">tahlilchisi</span>.</h2>
+    <p class="lead reveal r2">12,000 ta yillik tijorat krediti shartnomasi → kalit shartlarni qo'lda chiqarish kunlar oladi. NLP modeli 5–6 soniyada chiqaradi, yurist tasdiqlaydi.</p>
     <div class="benefits benefits-rich reveal r3">
       <div class="benefit fragment">
         <div class="stat">360k</div>
@@ -694,7 +703,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="benefit fragment">
         <div class="stat">12k</div>
         <h3>Yillik shartnoma</h3>
-        <p>Hajm shu darajada bo'lganida AI'ning ROI'i shubhasiz. Kichik hajmda AI haqli emas.</p>
+        <p>Hajm shu darajada bo'lganida AI'ning ROI ko'rsatkichi shubhasiz. Kichik hajmda AI haqli emas.</p>
         <div class="proof muted">Saboq: hajm yetarli use case'ni tanlang.</div>
       </div>
     </div>
@@ -745,9 +754,9 @@ body,p,li,.lead{letter-spacing:0.018em}
       </div>
       <div class="benefit fragment">
         <div class="stat">42 mln</div>
-        <h3>Aktiv foydalanuvchi</h3>
-        <p>"Ochildi" emas — kunda yoki haftada ishlatadiganlar soni. Real adoption.</p>
-        <div class="proof"><strong>BofA</strong> · ko'p yillik o'sish trendi</div>
+        <h3>Foydalanuvchi</h3>
+        <p>Erica'ni ishga tushirib ko'rgan mijozlar — "login emas, foydalanish" ko'lami shu darajada.</p>
+        <div class="proof"><strong>BofA</strong> · 2024 yil oxirigacha jamlangan</div>
       </div>
       <div class="benefit fragment">
         <div class="stat">0</div>
@@ -768,10 +777,10 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <span class="chip-out reveal r1">Keys 4 · DBS Singapur · 2018–2024</span>
-    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">600+ use case — <span class="hl">data-driven bank</span> yo'li.</h2>
-    <p class="lead reveal r2">Bir loyiha emas — butun bank ichida AI tarqatish. Risk skoring, fraud, mijoz xizmati, HR, hatto kod yozish ham. ~$370M ekonomik foyda 2023da (DBS yillik hisobot).</p>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">350+ use case — <span class="hl">data-driven bank</span> yo'li.</h2>
+    <p class="lead reveal r2">Bir loyiha emas — butun bank ichida AI tarqatish (350+ use case · 800+ model). Risk skoring, fraud, mijoz xizmati, HR. 2023 da ~370 mln Singapur dollari (~275 mln AQSh dollari) ekonomik foyda — DBS yillik hisobotidan.</p>
     <div class="compare reveal r3">
-      <div class="col"><h4>Avval</h4><p>5 kun<br><span style="font-family:'Space Grotesk';font-size:0.5em;font-weight:400;color:rgba(255,255,255,0.7)">qog'oz, manual tekshiruv</span></p></div>
+      <div class="col"><h4>Avval</h4><p>5 kun<br><span style="font-family:'Space Grotesk';font-size:0.5em;font-weight:400;color:rgba(255,255,255,0.7)">qog'oz, qo'lda tekshiruv</span></p></div>
       <div class="vs">→</div>
       <div class="col win"><h4>AI bilan</h4><p>1 minut<br><span style="font-family:'Space Grotesk';font-size:0.5em;font-weight:400;color:rgba(255,255,255,0.85)">oraliq qaror · inson tasdiqlaydi</span></p></div>
     </div>
@@ -788,12 +797,12 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <span class="chip-out reveal r1">Keys 5 · Sberbank · 2023+</span>
-    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">GigaChat — <span class="hl">o'z LLM</span> qurish yo'li.</h2>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">GigaChat — <span class="hl">o'z LLM modelini</span> qurish yo'li.</h2>
     <p class="lead reveal r2" style="margin-top:0.5rem">Rossiya bozorida ma'lumot suvereniteti talabi qattiq. Sberbank o'z modeli, o'z bulutida — bu yo'l mavjud, lekin har bank uchun emas.</p>
     <div class="sec reveal r3">
       <div class="item fragment"><div class="ico">💪</div><h3>Kuchli tomon</h3><p>Ma'lumot ham, model ham bank kontrolida. Tashqi vendor'ga bog'lanish nol. Mijoz xizmati va ichki HR'ga joylashgan.</p></div>
       <div class="item fragment"><div class="ico">⚠️</div><h3>Ehtiyot</h3><p>Bahosi yuqori — yuzlab million $ darajasida investitsiya. Sifati hozircha GPT-4 / Claude darajasiga to'liq teng emas.</p></div>
-      <div class="item fragment"><div class="ico">📌</div><h3>Bizga saboq</h3><p>"O'zimiz qurish" yo'li haqiqiy, lekin O'zbekiston uchun erta. Mavjud xavfsiz API'lardan boshlash to'g'ri qaror.</p></div>
+      <div class="item fragment"><div class="ico">📌</div><h3>Bizga saboq</h3><p>"O'z model" va "tashqi vendor" — ikki ekstremal tanlov emas. Har pilot uchun 4 mezon: ma'lumot qayerda qoladi, audit log bormi, xarajat qancha, fallback qanday.</p></div>
     </div>
   </div>
 </section>
@@ -808,7 +817,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="main">
     <span class="chip-out reveal r1">Mintaqaviy · Qozog'iston</span>
     <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Halyk va Forte — <span class="hl">bizdan bir qadam</span> oldinda.</h2>
-    <p class="lead reveal r2">Markaziy Osiyoda AI implementatsiyasida yetakchi misollar. Hech qaysi o'z modelini qurmaydi — mavjud API'larni ehtiyot bilan ishlatadi. Aynan biz uchun moslashadigan yo'l.</p>
+    <p class="lead reveal r2">Markaziy Osiyoda AI implementatsiyasida yetakchi misollar. Hech qaysi bank o'z LLM'ini qurmaydi — sertifikatlangan, shartnomaviy nazorat ostidagi vendor xizmatlaridan ehtiyot bilan foydalanadi. Bizga mos yo'l.</p>
     <div class="sec sec-2 reveal r3">
       <div class="item fragment">
         <div class="ico">🏦</div>
@@ -818,7 +827,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="item fragment">
         <div class="ico">📱</div>
         <h3>Forte Bank</h3>
-        <p>Raqamli kanallarga urg'u: mobil ilovada AI yordamchi, kredit oldindan tasdiqlash. Aniq raqamlar oshkor qilinmagan, lekin kunlik foydalanuvchilar millionlab.</p>
+        <p>Raqamli kanallarga urg'u: mobil ilovada AI yordamchi, kredit oldindan tasdiqlash. Aniq raqamlar rasmiy oshkor qilinmagan — kuzatilayotgan yo'nalish.</p>
       </div>
     </div>
   </div>
@@ -834,7 +843,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="main">
     <span class="chip-out reveal r1">Mintaqaviy · O'zbekiston · 2024+</span>
     <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Trend boshlangan — <span class="hl">production hali oldinda</span>.</h2>
-    <p class="lead reveal r2">Halol baho: hozircha "JPMorgan COIN" darajasidagi keys yo'q. Ko'pi pilot, ba'zilari ichki PoC. Bu yomon emas — har yo'l shu nuqtadan boshlanadi.</p>
+    <p class="lead reveal r2">Xolis baho: hozircha "JPMorgan COIN" darajasidagi keys yo'q. Ko'pi pilot, ba'zilari ichki sinov (PoC). Bu yomon emas — har yo'l shu nuqtadan boshlanadi.</p>
     <div class="sec reveal r3">
       <div class="item fragment"><div class="ico">💳</div><h3>Uzum Bank</h3><p>Raqamli neobank sifatida AI'ni mahsulotning bir qismi qilib pozitsiyalaydi. 2024 dan boshlab chatbot, kredit oldindan baholash, fraud detection.</p></div>
       <div class="item fragment"><div class="ico">🏛️</div><h3>Anorbank</h3><p>Mijoz xizmati va ichki avtomatlashtirish piloti. Mobil ilovada generativ AI'ni sinash bosqichida.</p></div>
@@ -852,13 +861,13 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main">
-    <h2 class="h2 reveal r2">7 ta keys, <span class="hl">4 ta omil</span> — qaytadan-qaytadon.</h2>
+    <h2 class="h2 reveal r2">7 ta keys, <span class="hl">4 ta omil</span> — qayta-qayta.</h2>
     <p class="lead reveal r2" style="margin-top:0.5rem">Texnologiya yoki byudjet emas. Mana bu 4 omil bor banklar production'ga chiqadi, yo'q banklar pilotda qoladi.</p>
     <div class="benefits benefits-4 reveal r3">
       <div class="benefit fragment">
         <span class="ico">👔</span>
-        <h3>Boshlik turtkisi</h3>
-        <p>CEO yoki Pravlenie a'zosi shaxsan loyihaga kirgan. Pulning yo'nalishi shu yerdan boshlanadi.</p>
+        <h3>Boshliq turtkisi</h3>
+        <p>CEO yoki Boshqaruv kengashi a'zosi shaxsan loyihaga kirgan. Pulning yo'nalishi shu yerdan boshlanadi.</p>
       </div>
       <div class="benefit fragment">
         <span class="ico">🎯</span>
@@ -872,8 +881,8 @@ body,p,li,.lead{letter-spacing:0.018em}
       </div>
       <div class="benefit fragment">
         <span class="ico">🤝</span>
-        <h3>Muvofiqlik hamkor</h3>
-        <p>Risk va comply'dan keyin emas — ular bilan birgalikda boshlash. Aks holda 6 oy keyin yopiladi.</p>
+        <h3>Muvofiqlik hamkori</h3>
+        <p>Risk va muvofiqlik birinchi kundan stol atrofida: kim tasdiqlaydi, audit izi qayerda, zaxira yo'li nima — pilotdan oldin yoziladi.</p>
       </div>
     </div>
   </div>
@@ -888,14 +897,14 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <span class="chip-out reveal r1">Failure pattern · 1</span>
-    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">"Pilotda qolish" — eng <span class="hl">ommabop</span> qabr.</h2>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">"Pilotda qolish" — eng <span class="hl">ko'p uchraydigan</span> tugallanmaslik.</h2>
     <div class="myth reveal r3">
       <div class="row fragment"><div class="tag">✗ Afsona</div><p>Pilot — bu <strong>demo</strong> uchun. Menejer ko'rsa — loyiha bitdi.</p></div>
       <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p>Pilot — bu <strong>production'ga ko'prik</strong>. 12 hafta, 1 ta foydalanuvchi guruhi, kunlik ishlatish, aniq metrika.</p></div>
       <div class="row fragment"><div class="tag">✗ Afsona</div><p>Pilotda <strong>hammasini</strong> tekshiramiz — 5 use case, 3 bo'lim.</p></div>
       <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p>Pilot — <strong>tor</strong>. 1 use case, 1 bo'lim, 4 hafta. Ko'lam keyin keladi.</p></div>
-      <div class="row fragment"><div class="tag">✗ Afsona</div><p>Pilot tugagandan keyin <strong>production rejasi</strong> qilinadi.</p></div>
-      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p>Pilot rejasi bilan <strong>birga</strong> production rejasi yoziladi: kim qabul qiladi, qaysi tizimga ulanadi, qancha xarajat.</p></div>
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>Pilot tugagandan keyin <strong>production rejasi</strong> tuziladi.</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p>Pilot rejasi bilan <strong>birga</strong> production rejasi yoziladi: kim qabul qiladi, qaysi tizimga ulanadi, qancha xarajat talab etiladi.</p></div>
     </div>
   </div>
 </section>
@@ -910,10 +919,10 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="main">
     <span class="chip-out reveal r1">Failure pattern · 2</span>
     <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">"Texnologiya bor, <span class="hl">jarayon yo'q</span>" — ko'rinmas xato.</h2>
-    <p class="lead reveal r2">Bot ishlayapti. Lekin xodimlar ishlatmaydi. Sababi — AI ish jarayoniga singdirilmagan, alohida tab'da o'tiribdi.</p>
+    <p class="lead reveal r2">Bot ishlayapti. Lekin xodimlar ishlatmaydi. Sababi — AI ish jarayoniga singdirilmagan, alohida oynada o'tiribdi.</p>
     <div class="myth reveal r3">
       <div class="row fragment"><div class="tag">✗ Holat</div><p>Bo'limga shartnoma boti qo'ydik. Lekin xodimlar hali ham PDF'ni qo'lda ochib o'qiyapti. <strong>Workflow o'zgarmagan</strong>.</p></div>
-      <div class="row real fragment"><div class="tag">✓ Yechim</div><p>Bot xodim allaqachon ishlatadigan tizimga (CRM, Outlook, ichki portal) joylashishi kerak. <strong>Tabiiy</strong> bo'lsin, majburiy emas.</p></div>
+      <div class="row real fragment"><div class="tag">✓ Yechim</div><p>Bot xodim odatda ishlatadigan tizimga (CRM, Outlook, ichki portal) joylashishi kerak. <strong>Tabiiy</strong> bo'lsin, majburiy emas.</p></div>
       <div class="row fragment"><div class="tag">✗ Holat</div><p>"AI vositasi mavjud" deb e'lon qildik — 3 oy keyin <strong>0% adoption</strong>.</p></div>
       <div class="row real fragment"><div class="tag">✓ Yechim</div><p>Foydalanuvchi shu vositadan foydalanmasa, ishini <strong>sekinroq</strong> qiladi — ana shu darajaga yetkazing.</p></div>
     </div>
@@ -938,14 +947,14 @@ body,p,li,.lead{letter-spacing:0.018em}
           <li>Ma'lumot bazasini birinchi kunda tekshirib chiqing</li>
           <li>Muvofiqlik va riskni boshidan jamoaga oling</li>
           <li>Kunlik ishlatish metrikalarini o'rnating (login emas, foydalanish)</li>
-          <li>Manual fallback yo'lini saqlang — AI ishlamasa biznes to'xtamasin</li>
+          <li>Qo'lda fallback yo'lini saqlang — AI ishlamasa biznes to'xtamasin</li>
           <li>Har 4 hafta retrospektiva — nima ishladi, nima yo'q</li>
         </ul>
       </div>
       <div class="cando-col cant fragment">
         <div class="cando-tag">✗ Bunday qilmang</div>
         <ul>
-          <li>Barcha bo'limlarni bir vaqtda boshlamang — 1 dan 5 ga qarab keng</li>
+          <li>Barcha bo'limlarni bir vaqtda boshlamang — 1 dan boshlab kengaytiring</li>
           <li>"AI yaxshi narsa" umumiy gaplari bilan loyihani sotmang</li>
           <li>Texnologiya tanlovini biznesdan oldin qilmang</li>
           <li>Pilot natijasini production rejasiz qoldirmang</li>
@@ -967,7 +976,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="main">
     <span class="chip-out reveal r1">Mashq · 8 daqiqa · 3 stol</span>
     <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Bo'limingizni keys'ga <span class="hl">taqqoslab</span>, drift'larni toping.</h2>
-    <p class="lead reveal r2">Stol kredit / KYC / mijoz xizmati'ni tanlaydi. 3 ustunni to'ldiring — keyin 1 vakil 1 daqiqada baland aytadi.</p>
+    <p class="lead reveal r2">Stol kredit / KYC / mijoz xizmatini tanlaydi. 3 ustunni to'ldiring — keyin 1 vakil 1 daqiqada ovoz chiqarib o'qiydi.</p>
     <table class="case-table reveal r3">
       <thead>
         <tr>
@@ -979,8 +988,8 @@ body,p,li,.lead{letter-spacing:0.018em}
       </thead>
       <tbody>
         <tr><td class="col-dept">Stol 1 · Kredit</td><td>Hozirgi skoring qadamlari, kim qaror qiladi, qancha vaqt?</td><td>JPMorgan COIN — yurist tasdiqlaydi, AI ekstraktsiya qiladi</td><td>Bizda kim tasdiqlaydi? Hujjat formati bir xilmi?</td></tr>
-        <tr><td class="col-dept">Stol 2 · KYC</td><td>Mijoz tekshiruvi, sanksiya ro'yxati, qancha vaqt oladi?</td><td>DBS — AI tavsiya, inson imzolaydi, fraud rejasi alohida</td><td>Bizda real-time integratsiya bormi? Logging qaerda?</td></tr>
-        <tr><td class="col-dept">Stol 3 · Mijoz xizmati</td><td>Operator ishi, eng ko'p so'rov turlari, qancha qayta ishlash?</td><td>BofA Erica — bot mobil ilovada, faqat ma'lumot, maslahat yo'q</td><td>Bizning ilovamizdagi UX qaerda? Compliance chiziq qaerda?</td></tr>
+        <tr><td class="col-dept">Stol 2 · KYC</td><td>Mijoz tekshiruvi, sanksiya ro'yxati, qancha vaqt oladi?</td><td>DBS — AI tavsiya, inson imzolaydi, fraud rejasi alohida</td><td>Bizda real-time integratsiya bormi? Logging qayerda?</td></tr>
+        <tr><td class="col-dept">Stol 3 · Mijoz xizmati</td><td>Operator ishi, eng ko'p so'rov turlari, qancha qayta ishlash?</td><td>BofA Erica — bot mobil ilovada, faqat ma'lumot, maslahat yo'q</td><td>Bizning ilovamizdagi UX qayerda? Compliance chiziq qayerda?</td></tr>
       </tbody>
     </table>
   </div>
@@ -994,17 +1003,27 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main">
-    <h2 class="h2 reveal r2">Bugundan <span class="hl">qaytib ketadigan</span> 3 xulosa.</h2>
+    <h2 class="h2 reveal r2">Bugundan <span class="hl">olib ketiladigan</span> hujjat.</h2>
     <div class="close-list reveal r3">
-      <div class="close-row"><span class="arrow">💡</span><p><strong>70/14 farqi texnologiya emas</strong> — adoption va jarayonda. Eng zo'r modelni olishingiz mumkin, ammo bo'lim ishlatmasa — pilot bo'lib qoladi.</p></div>
-      <div class="close-row"><span class="arrow">💡</span><p><strong>Keys'lar shablon emas, kompas</strong>. Hech bir bank sizning aynan vaziyatingizda emas — har biri 1-2 ta savol beradi: kim tasdiqlaydi? qancha tejaldi? qanday metrika?</p></div>
-      <div class="close-row"><span class="arrow">💡</span><p><strong>Pilot = production'ga ko'prik</strong>. Pilot rejasi bilan birga production rejasi yozilsin: kim qabul qiladi, qaysi tizimga ulanadi, byudjet qancha.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>70/14 farqi texnologiya emas</strong> — adoption va jarayonda. Eng zo'r modelni olsangiz ham, bo'lim ishlatmasa — pilot bo'lib qoladi.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Keys'lar shablon emas, kompas</strong>. Har biri 1-2 ta savol beradi: kim tasdiqlaydi? qancha tejaldi? qanday metrika? — javoblar bilan o'z keys'ingizni yozasiz.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Pilot = production'ga ko'prik</strong>. Pilot rejasi bilan birga production rejasi yoziladi — egasi, ulanish, byudjet birinchi kunda aniq.</p></div>
+    </div>
+    <div class="gate reveal r3">
+      <div class="gate-tag">Pilot Readiness · 5 ta darvoza · bo'limga olib qaytadigan checklist</div>
+      <div class="gate-list">
+        <div class="gate-item"><span class="n">01</span><p><strong>Use case</strong> aniq · foydalanuvchi guruhi belgilangan</p></div>
+        <div class="gate-item"><span class="n">02</span><p><strong>Ma'lumot</strong> manbasi · shaxsiy ma'lumot (PII) saqlash joyi</p></div>
+        <div class="gate-item"><span class="n">03</span><p><strong>Inson tasdig'i</strong> + qo'lda zaxira yo'li</p></div>
+        <div class="gate-item"><span class="n">04</span><p><strong>Adoption KPI</strong> · login emas, foydalanish</p></div>
+        <div class="gate-item"><span class="n">05</span><p><strong>SLA + audit izi</strong> · monitoring · egasi</p></div>
+      </div>
     </div>
     <div class="recap reveal r3">
       <div class="recap-tag">Lug'at recap · birga aytamiz</div>
       <div class="recap-terms">
-        <div class="recap-term"><strong>AI Adoption</strong> <span class="ans">kunlik haqiqiy foydalanish — login emas</span></div>
-        <div class="recap-term"><strong>Production-grade</strong> <span class="ans">test emas, ishonchli, fallback bor</span></div>
+        <div class="recap-term"><strong>AI Adoption</strong> <span class="ans">belgilangan guruhda muntazam foydalanish va ish natijasiga ta'sir</span></div>
+        <div class="recap-term"><strong>Production-grade</strong> <span class="ans">SLA, audit log, fallback, egasi — bank standartlarida turadigan</span></div>
       </div>
     </div>
   </div>
@@ -1020,7 +1039,8 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="main">
     <div class="qmark reveal r2">?</div>
     <h2 class="h2 reveal r3" style="text-align:center">Sizning <span class="hl">savollaringiz</span>.</h2>
-    <p class="reveal r3" style="text-align:center;margin-top:clamp(1.5rem,3vw,2.5rem);font-family:var(--display);font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:0.1em;color:var(--accent-2)">murod@mohir.dev</p>
+    <p class="reveal r3" style="text-align:center;margin-top:clamp(1rem,2vw,1.75rem);font-size:clamp(0.95rem,1.3vw,1.15rem);color:rgba(255,255,255,0.78);max-width:60ch;margin-left:auto;margin-right:auto;line-height:1.5">Vendor tanlash, byudjet, ichki resurs vs tashqi vendor, kerakli xodimlar tarkibi, muvofiqlik — barcha amaliy savollarga javob beraman.</p>
+    <p class="reveal r3" style="text-align:center;margin-top:clamp(1.25rem,2.5vw,2rem);font-family:var(--display);font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:0.1em;color:var(--accent-2)">murod@mohir.dev</p>
   </div>
 </section>
 

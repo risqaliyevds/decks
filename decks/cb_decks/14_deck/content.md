@@ -56,11 +56,11 @@ Diqqat qiling — har versiya orasida 1–2 hafta vaqt o'tdi. V1ni darhol bo'lim
 
 ---
 
-## Slide 7 — MVP misoli #2: Voice bot
+## Slide 7 — MVP misoli #2: Classifier bot
 
-Ikkinchi misol — 11-moduldagi voice memo bot. **V1** — bot Telegram audio xabarni qabul qiladi, transcribe qiladi (matnga aylantiradi), bankirga matn ko'rinishida qaytaradi. Hech qanday ekstrakt yo'q, schema yo'q. Faqat ovozni matn qiladi. **V2** — schema bo'yicha asosiy maydonlarni ekstrakt qildirdik: mijoz ismi, sana, asosiy mavzu. Endi bankir CRM'ga qo'lda yozish o'rniga AI tayyor maydonlarni beradi. **V3** — CRM integratsiyasi qo'shildi, bot Sheets'ga to'g'ridan-to'g'ri yozadi, bankir tasdiqlaydi.
+Ikkinchi misol — 9-moduldagi classifier bot. **V1** — 7 ta n8n node, single-turn, xotira yo'q, kategoriyalar promtga "hardcode" qilingan. Bo'lim 30 daqiqada qurib chiqadi: bot xabarni 5 oilaga ajratadi, Sheets'ga yozadi. Foyda bor — lekin bir mijozning xabari ikki marta kelsa, ikki yozuv chiqadi. **V2** — chat_id + message_id bo'yicha takror tekshiruv (12-modul · idempotent dizayn). Tarmoq retry'da yozuv ikkilanmaydi. Bo'lim sinab ko'rdi, ishonch oshdi. **V3** — multi-turn xotira qo'shildi, har bank uchun maxsus kategoriyalar ro'yxati, shoshilinchlik bo'yicha yo'naltirish, operatorga webhook eskalatsiyasi.
 
-Yana o'sha xulosa — har versiya 1–2 hafta. V1 darajasida ham bankir vaqt tejaydi (qo'lda yozish o'rniga matn olyapti). V3 oxirida — to'liq avtomatlashgan oqim. Lekin biz V3 dan boshlasak, **V1 darajasida muammo bormi** degan savolga javob bermay qolardik.
+Pattern bir xil — V1 1-kun, V2 1-hafta, V3 1-oy. Har versiya orasida bo'lim sinov + bankir feedback. Agar V3 dan boshlasak — V1 darajasida muammo bor-yo'qligini umuman bilmay qolardik.
 
 ---
 
