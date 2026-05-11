@@ -14,7 +14,7 @@
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev
 **Brand:** crea7iveai
 **Stack:** Gemini (miya) + RAG (xotira) + n8n (ishchi) — mutlaqo kodsiz
-**Slaydlar soni:** 19 ta · 4 ta faza
+**Slaydlar soni:** 20 ta · 4 ta faza
 **Atamalar:** LLM, Promt, API (Slayd 7 da kiritiladi, slayd 18 da auditoriya bilan birga qaytariladi). RAG va Embedding — 9-modulning atamalari, bu yerda demo botning ishlash printsipi sifatida tilga olinadi xolos.
 
 ## Asosiy g'oya
@@ -23,29 +23,30 @@ AI — qandaydir tushunarsiz sehr yoki sizning ishingizni tortib oladigan dushma
 
 ---
 
-## Deck outline (19 slayd)
+## Deck outline (20 slayd)
 
 | # | Sarlavha | Format / urg'u | Vaqt | Faza |
 |---|---|---|---|---|
 | 1 | Bank sektori uchun sun'iy intellekt asoslari | Kirish | ~1 daq | — |
 | 2 | Mavzuning yo'l xaritasi | Agenda (4 bekat) | ~1 daq | — |
-| 3 | Odamlar AI'dan hozir qanday foydalanyapti? | WOW hook — rasm (kal/sochli) | ~1 daq | 01 |
-| 4 | AI ko'pincha kontent o'yinchog'i bo'lib qolyapti | WOW hook — video (it) | ~1 daq | 01 |
-| 5 | Keling, kelajakni hozir sinab ko'ramiz | Live demo (QR + bot) | ~5 daq | 01 |
-| 6 | AI = super-aqlli ishchi | Metafora (17 tab vs AI) | ~3 daq | 01 |
-| 7 | Uchta so'z — kursning poydevori | Lug'at (LLM, Promt, API) | ~4 daq | 01 |
-| 8 | AI ishimni olib qo'yadimi? — Yo'q | Dramatic answer | ~1 daq | 01 |
-| 9 | Miflarga qarshi zarba | Afsona ↔ Haqiqat (4 ta) | ~3 daq | 01 |
-| 10 | AI — bu vosita. Sehr emas. | Can / Cannot chegaralari | ~3 daq | 01 |
-| 11 | 10 yilda 15× o'sish | Global AI banking bozori | ~2 daq | 02 |
-| 12 | Osiyo-Tinch okeani — eng tez o'sadigan | Mintaqaviy o'sish | ~1 daq | 02 |
-| 13 | Banklar AI'ni qayerda ishlatadi? | 4 ta segment (Mijoz xizmati) | ~2 daq | 02 |
-| 14 | Botni 3 rol bilan eslab qolamiz | Arxitektura (Miya, Xotira, Ishchi) | ~4 daq | 03 |
-| 15 | Savol javobga qanday aylanadi? | RAG jarayoni (5 qadam) | ~4 daq | 03 |
-| 16 | Bank siri va ma'lumotlar — qizil chiziq | Xavfsizlik (Masking, Zero-train) | ~4 daq | 03 |
-| 17 | Eng zerikarli ish qaysi? | Interaktiv Wordcloud | ~6 daq | 04 |
-| 18 | 2 kundan keyin: | Xulosa + Lug'at recap | ~3 daq | 04 |
-| 19 | Sizning savollaringiz | Q&A | ~7 daq | 04 |
+| 3 | Tanishuv · Kim sizga gapiradi? | Speaker intro (60 soniya) | ~1 daq | — |
+| 4 | Odamlar AI'dan hozir qanday foydalanyapti? | WOW hook — rasm (kal/sochli) | ~1 daq | 01 |
+| 5 | AI ko'pincha kontent o'yinchog'i bo'lib qolyapti | WOW hook — video (it) | ~1 daq | 01 |
+| 6 | Keling, kelajakni hozir sinab ko'ramiz | Live demo (QR + bot) | ~5 daq | 01 |
+| 7 | AI = super-aqlli ishchi | Metafora (17 tab vs AI) | ~3 daq | 01 |
+| 8 | Uchta so'z — kursning poydevori | Lug'at (LLM, Promt, API) | ~4 daq | 01 |
+| 9 | AI ishimni olib qo'yadimi? — Yo'q | Dramatic answer | ~1 daq | 01 |
+| 10 | Miflarga qarshi zarba | Afsona ↔ Haqiqat (4 ta) | ~3 daq | 01 |
+| 11 | AI — bu vosita. Sehr emas. | Can / Cannot chegaralari | ~3 daq | 01 |
+| 12 | 10 yilda 15× o'sish | Global AI banking bozori | ~2 daq | 02 |
+| 13 | Osiyo-Tinch okeani — eng tez o'sadigan | Mintaqaviy o'sish | ~1 daq | 02 |
+| 14 | Banklar AI'ni qayerda ishlatadi? | 4 ta segment (Mijoz xizmati) | ~2 daq | 02 |
+| 15 | Botni 3 rol bilan eslab qolamiz | Arxitektura (Miya, Xotira, Ishchi) | ~4 daq | 03 |
+| 16 | Savol javobga qanday aylanadi? | RAG jarayoni (5 qadam) | ~4 daq | 03 |
+| 17 | Bank siri va ma'lumotlar — qizil chiziq | Xavfsizlik (Masking, Zero-train) | ~4 daq | 03 |
+| 18 | Eng zerikarli ish qaysi? | Interaktiv Wordcloud | ~6 daq | 04 |
+| 19 | 2 kundan keyin: | Xulosa + Lug'at recap | ~3 daq | 04 |
+| 20 | Sizning savollaringiz | Q&A | ~7 daq | 04 |
 
 ---
 
@@ -111,14 +112,14 @@ Sizga **2 kun** davomida kim gapiradi?
 **Speaker notes:**
 60 soniyalik tanishuv. Tezkor, ammo asoslangan. Bankir nima uchun aynan menga ishonishi kerakligini bilishi muhim — qog'oz emas, real loyihalar.
 
-Boshlang: ism, lavozim, brend. So'ng 1 jumla bilan tajriba doirasini bering: "7 yildan beri AI bilan ishlayman, asosiy fokus — O'zbek tilida ishlaydigan production tizimlar". Bu jumla auditoriya uchun signal: ona tilida AI yangiliklarini aytayotgan odam.
+Boshlang: ism, lavozim, brend. So'ng 1 jumla bilan tajriba doirasini bering: "3+ yildan beri AI bilan ishlayman, asosiy fokus — O'zbek tilida ishlaydigan production tizimlar". Bu jumla auditoriya uchun signal: ona tilida AI yangiliklarini aytayotgan odam.
 
 Loyihalarni 1-2 ta misol bilan sharhlang (hammasini aytmang — slaydda bor):
 - **dialix** — AI suhbat platformasi, biznes yordamchi botlar quradi.
 - **saytoai** — har qanday sayt ustiga AI suhbatdosh qo'shadi.
 - Qolganlarini "qiziqsangiz LinkedIn'da to'liq ro'yxat" deb yopib qo'ying.
 
-3 raqam — qisqa va aniq. **2 kun** raqamiga urg'u bering: "Shu 7 yillik tajribani 2 kun ichida sizga topshiramoz; nazariya emas — bu loyihalardan olingan real darslar".
+3 raqam — qisqa va aniq. **2 kun** raqamiga urg'u bering: "Shu 3+ yillik tajribani 2 kun ichida sizga topshiramoz; nazariya emas — bu loyihalardan olingan real darslar".
 
 LinkedIn havolasini eslatib qo'ying — auditoriyaga: "Slaydlardan keyin profiledan ham topishingiz mumkin".
 
@@ -142,7 +143,7 @@ Ekranga qarang. Ko'pchilik sun'iy intellekt deganda aynan shuni tushunadi. Rasm 
 
 ---
 
-## Slide 4 — AI ko'pincha kontent o'yinchog'i bo'lib qolyapti
+## Slide 5 — AI ko'pincha kontent o'yinchog'i bo'lib qolyapti
 
 **Sarlavha:**
 AI ko'pincha **kontent o'yinchog'i** bo'lib qolyapti.
@@ -159,7 +160,7 @@ Yoki mana bu. Itlarga raqs tushirish. Odamlar AI'ni hozir asosan shunday o'yinch
 
 ---
 
-## Slide 5 — Keling, kelajakni hozir sinab ko'ramiz
+## Slide 6 — Keling, kelajakni hozir sinab ko'ramiz
 
 **Sarlavha:**
 Keling, kelajakni **hozir** sinab ko'ramiz.
@@ -182,7 +183,7 @@ Bot uzilishsiz ishlab turganiga ishonch hosil qiling. Agar kimdadir internet ish
 
 ---
 
-## Slide 6 — AI = super-aqlli ishchi
+## Slide 7 — AI = super-aqlli ishchi
 
 **Sarlavha:**
 AI = SUPER-AQLLI ISHCHI
@@ -199,7 +200,7 @@ AI esa — charchamaydigan, e'tibori chalg'imaydigan super-aqlli stajyor. Unga h
 
 ---
 
-## Slide 7 — Uchta so'z — kursning poydevori
+## Slide 8 — Uchta so'z — kursning poydevori
 
 **Sarlavha:**
 Uchta so'z — kursning **poydevori**.
@@ -221,7 +222,7 @@ Uchinchisi — **API**. Brauzerdan ChatGPTga qo'l bilan yozish — bir xil ish. 
 
 ---
 
-## Slide 8 — AI ishimni olib qo'yadimi?
+## Slide 9 — AI ishimni olib qo'yadimi?
 
 **Sarlavha:**
 AI ishimni olib qo'yadimi?
@@ -239,7 +240,7 @@ AI o'z-o'zidan kelib bankir bo'lib qolmaydi. U kredit qarorini qabul qilolmaydi.
 
 ---
 
-## Slide 9 — Miflarga qarshi zarba
+## Slide 10 — Miflarga qarshi zarba
 
 **Sarlavha:**
 **Miflarga** qarshi zarba.
@@ -261,7 +262,7 @@ Va oxirgisi, AI faqat ChatGPT degani emas. Bugun biz Google'ning Gemini modeli v
 
 ---
 
-## Slide 10 — AI — bu vosita. Sehr emas.
+## Slide 11 — AI — bu vosita. Sehr emas.
 
 **Sarlavha:**
 AI — bu vosita. Sehr emas.
@@ -279,7 +280,7 @@ Lekin u nimani eplay olmaydi? Yakuniy qarorni. AI sizga "bu mijozda risk borga o
 
 ---
 
-## Slide 11 — 10 yilda 15× o'sish
+## Slide 12 — 10 yilda 15× o'sish
 
 **Sarlavha:**
 10 yilda **15× o'sish**
@@ -296,7 +297,7 @@ O'tgan yili bank sohasida AI'ga 20 milliard dollar sarflangan bo'lsa, keyingi 10
 
 ---
 
-## Slide 12 — Osiyo-Tinch okeani — eng tez o'sadigan mintaqa
+## Slide 13 — Osiyo-Tinch okeani — eng tez o'sadigan mintaqa
 
 **Sarlavha:**
 **Osiyo-Tinch okeani** — eng tez o'sadigan mintaqa
@@ -313,7 +314,7 @@ Bugun siz o'rganayotgan narsalar ertaga O'zbekiston bank sektorida standartga ay
 
 ---
 
-## Slide 13 — Banklar AI'ni qayerda ishlatadi?
+## Slide 14 — Banklar AI'ni qayerda ishlatadi?
 
 **Sarlavha:**
 Banklar AI'ni **qayerda** ishlatadi?
@@ -330,7 +331,7 @@ Lekin eng tez o'sadigan segment — bu Mijozlarga xizmat. 24/7 javob berish, nav
 
 ---
 
-## Slide 14 — Botni 3 rol bilan eslab qolamiz
+## Slide 15 — Botni 3 rol bilan eslab qolamiz
 
 **Sarlavha:**
 Botni 3 rol bilan eslab qolamiz
@@ -352,7 +353,7 @@ Uchinchisi — **Ishchi**. Bu n8n deb ataladigan platforma. U Telegramdan savoln
 
 ---
 
-## Slide 15 — Savol javobga qanday aylanadi?
+## Slide 16 — Savol javobga qanday aylanadi?
 
 **Sarlavha:**
 Savol javobga qanday aylanadi?
@@ -371,7 +372,7 @@ Gemini tahlil qiladi va javob qaytaradi. Eng muhimi — u o'zidan hech narsa qo'
 
 ---
 
-## Slide 16 — Bank siri va ma'lumotlar — qizil chiziq
+## Slide 17 — Bank siri va ma'lumotlar — qizil chiziq
 
 **Sarlavha:**
 Bank siri va ma'lumotlar — **qizil chiziq**.
@@ -389,7 +390,7 @@ Birinchidan, biz Yopiq Kontur (API) orqali ishlaymiz. Ikkinchidan, Google bilan 
 
 ---
 
-## Slide 17 — Eng zerikarli ish qaysi?
+## Slide 18 — Eng zerikarli ish qaysi?
 
 **Sarlavha:**
 Eng zerikarli ish qaysi?
@@ -408,7 +409,7 @@ Ajoyib. Mana shu aytgan muammolaringizning eng ko'p takrorlanganini olamiz va er
 
 ---
 
-## Slide 18 — 2 kundan keyin:
+## Slide 19 — 2 kundan keyin:
 
 **Sarlavha:**
 2 kundan keyin:
@@ -429,7 +430,7 @@ Ajoyib. Ikki kundan keyin siz AI haqida shunchaki yangiliklarda o'qigan emas, un
 
 ---
 
-## Slide 19 — Sizning savollaringiz
+## Slide 20 — Sizning savollaringiz
 
 **Sarlavha:**
 Sizning **savollaringiz**.

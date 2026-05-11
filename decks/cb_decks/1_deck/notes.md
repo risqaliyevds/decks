@@ -8,7 +8,7 @@
 **Framework:** Custom HTML (single-file `index.html`)
 **Stack o'rgatiladi:** Gemini (LLM) + RAG (xotira) + n8n (orkestratsiya) — kodsiz
 **Slaydlar soni:** 19 ta · 4 ta faza
-**Atamalar (≥2/modul talabi):** LLM, Promt, RAG — slayd 7 da kiritiladi, slayd 18 da interaktiv recap (auditoriya bilan birga aytamiz)
+**Atamalar (≥2/modul talabi):** LLM, Promt, API — slayd 7 da kiritiladi, slayd 18 da interaktiv recap (auditoriya bilan birga aytamiz)
 **To'liq kontent:** [`content.md`](./content.md)
 
 ## Outline (one bullet = one slide)
@@ -17,9 +17,9 @@
 2. **Agenda** — 4 faza: AI aslida nima · Raqamlar nima deyapti · Bot ichida nima bor · Sizning bankingizda nimalar qilsak bo'ladi
 3. **WOW hook · suratda** — kal odamga AI sochi qo'shgan ("avval / keyin"), pattern interrupt
 4. **WOW hook · videoda** — kuchuk videosi, "bu — o'yin, endi — ish" tranzisi
-5. **Live RAG demo** — QR + chat bubble, audience telefonida bot bilan muloqot
+5. **Live demo · bank bot** — QR + chat bubble, audience telefonida bot bilan muloqot
 6. **Stajyor metafora** — 17 tab ochilgan vs AI'ning tartiblangan ish oqimi (Gemini panel)
-7. **Bankir uchun AI lug'ati** — LLM · Promt · RAG (3 ta dict-card)
+7. **Bankir uchun AI lug'ati** — LLM · Promt · API (3 ta dict-card)
 8. **AI ishimni olib qo'yadimi?** — qizil "YO'Q" stamp, dramatic answer
 9. **Miflarga qarshi zarba** — 4 ta afsona ↔ haqiqat juftligi (jobs · programming · know-it-all · ChatGPT=AI)
 10. **AI — bu vosita. Sehr emas** — Can/Cannot ikki ustun: real bank misollari ↔ AI'ga yolg'iz topshirilmaydigan ishlar
@@ -30,7 +30,7 @@
 15. **RAG jarayoni** — Savol → Qidiruv → PDF'dan topish → Tahlil → Javob (5 ta pill + terminal)
 16. **Xavfsizlik** — Yopiq Kontur · Zero-Training · Data Masking (3 ta item)
 17. **Wordcloud — eng zerikarli ish** — interaktiv brainstorm (Mentimeter / Slido)
-18. **Closing · 2 kundan keyin** — "AI bilan ishlaydigan bankirga aylanasiz" + lug'at recap (LLM = miya · Promt = buyruq · RAG = ichki bilim — fragment animation bilan auditoriya birga aytadi)
+18. **Closing · 2 kundan keyin** — "AI bilan ishlaydigan bankirga aylanasiz" + lug'at recap (LLM = miya · Promt = buyruq · API = avtomat ulash — fragment animation bilan auditoriya birga aytadi)
 19. **Q&A** — katta `?` belgisi · `murod@mohir.dev`
 
 ## Asosiy g'oya (thesis)
@@ -73,7 +73,7 @@ AI sehr yoki dushman emas. Bu sizning **super-aqlli stajyoringiz** — kod yozma
 - **Keyingi modul:** [`2_deck/`](../2_deck/) — Bank jarayonlarida SI qo'llash imkoniyatlarini aniqlash
 - **Muvofiqlik chuqur:** [`3_deck/`](../3_deck/)
 - **Promt chuqur:** [`5_deck/`](../5_deck/)
-- **RAG chuqur (student build):** [`9_deck/`](../9_deck/) — bu modulda kiritilgan RAG atamasining chuqur darsi
+- **RAG chuqur (showcase):** [`11_deck/`](../11_deck/) — kechagi demo botning chuqur arxitekturasi (RAG + Embedding atamalari deck 11 da)
 - **Yakuniy glossary review:** [`15_deck/`](../15_deck/) — barcha 30+ atama interaktiv quizda
 
 ## Restructure tarixi

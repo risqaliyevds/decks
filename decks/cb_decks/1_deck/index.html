@@ -589,12 +589,14 @@ body,p,li,.lead{letter-spacing:0.018em}
 .slide.is-active .reveal{opacity:1}
 
 /* SLIDE 3 — WHO I AM (speaker intro) */
-.s-whoami .main{display:flex;flex-direction:column;gap:clamp(0.5rem,1vw,0.95rem)}
-.whoami{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(1.25rem,2.8vw,2.75rem);margin-top:clamp(0.85rem,1.5vw,1.4rem)}
-.whoami-bio{display:flex;flex-direction:column;gap:clamp(0.4rem,0.8vw,0.7rem)}
-.bio-name{font-family:var(--display);font-size:clamp(1.6rem,2.8vw,2.4rem);line-height:1;letter-spacing:-0.02em;color:#fff;text-transform:uppercase}
-.bio-role{font-family:var(--display);font-size:clamp(0.85rem,1.2vw,1.05rem);letter-spacing:0.08em;color:var(--accent-2);text-transform:uppercase}
-.bio-brand{font-size:clamp(0.78rem,1vw,0.92rem);color:rgba(255,255,255,0.65);letter-spacing:0.04em}
+.s-whoami .main{display:flex;flex-direction:column;gap:clamp(0.4rem,0.8vw,0.7rem)}
+.whoami{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(1.25rem,2.8vw,2.75rem);margin-top:clamp(0.7rem,1.3vw,1.2rem)}
+.whoami-bio{display:flex;flex-direction:column;gap:clamp(0.45rem,0.9vw,0.75rem)}
+.bio-name{font-family:var(--display);font-size:clamp(2.5rem,4.6vw,4.2rem);line-height:0.95;letter-spacing:-0.035em;color:#fff;text-transform:uppercase}
+.bio-mohirdev{display:flex;align-items:center;gap:clamp(0.55rem,1vw,0.9rem);margin-top:clamp(0.2rem,0.5vw,0.4rem)}
+.bio-mohirdev .mohirdev-mark-big{height:clamp(2.4rem,3.6vw,3.2rem);width:auto}
+.bio-mohirdev .at-label{font-family:var(--display);font-size:clamp(0.85rem,1.2vw,1.1rem);letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.45)}
+.bio-brand{font-size:clamp(0.85rem,1.15vw,1.05rem);color:rgba(255,255,255,0.7);letter-spacing:0.04em;margin-top:clamp(0.25rem,0.5vw,0.4rem)}
 .bio-brand strong{color:var(--accent-2);font-weight:500}
 .bio-line{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.85);margin-top:clamp(0.45rem,0.9vw,0.75rem)}
 .bio-line strong{color:var(--accent-2);font-weight:500}
@@ -722,22 +724,26 @@ body,p,li,.lead{letter-spacing:0.018em}
     <div class="whoami reveal r3">
       <div class="whoami-bio">
         <div class="bio-name">Riskaliev Murad</div>
-        <div class="bio-brand">Brend: <strong>crea7iveai</strong></div>
+        <div class="bio-mohirdev">
+          <span class="at-label">@</span>
+          <img src="../_shared/logo-mohirdev-iconmark-white.png" alt="Mohirdev" class="mohirdev-mark-big">
+        </div>
+        <div class="bio-brand">Shaxsiy loyiha: <strong>crea7iveai</strong></div>
 
-        <p class="bio-line">3+ yildan beri AI va NLP loyihalari ustida ishlayman. Asosiy yo'nalish — <strong>O'zbek tili uchun production-grade AI</strong>: bank, ta'lim, e-commerce sohalarida.</p>
+        <p class="bio-line">3+ yildan beri AI va NLP loyihalari ustida ishlayman. Fokus — <strong>o'zbek tilida ishlaydigan amaliy AI tizimlari</strong>: bank, ta'lim va onlayn savdo sohalarida.</p>
 
         <div class="bio-strengths">
           <div class="strength-item">
             <span class="strength-num">10+</span>
-            <span class="strength-text">production AI mahsulotlar</span>
+            <span class="strength-text">AI loyiha va prototip</span>
           </div>
           <div class="strength-item">
             <span class="strength-num">5+</span>
-            <span class="strength-text">o'z startaplari va MVP'lar</span>
+            <span class="strength-text">startap va MVP tajribasi</span>
           </div>
           <div class="strength-item">
             <span class="strength-num">2 kun</span>
-            <span class="strength-text">bugun sizga shu tajribani topshiraman</span>
+            <span class="strength-text">real loyihalardan olingan darslar</span>
           </div>
         </div>
       </div>
@@ -747,28 +753,30 @@ body,p,li,.lead{letter-spacing:0.018em}
         <div class="projects-grid">
           <div class="proj fragment">
             <div class="proj-name">dialix</div>
-            <div class="proj-tag">AI suhbat platformasi</div>
+            <div class="proj-tag">AI suhbat tizimi loyihasi</div>
           </div>
           <div class="proj fragment">
             <div class="proj-name">labelcraft</div>
-            <div class="proj-tag">ML data labeling</div>
+            <div class="proj-tag">data labeling vositasi</div>
           </div>
           <div class="proj fragment">
             <div class="proj-name">manakartabot</div>
-            <div class="proj-tag">Telegram AI bot</div>
+            <div class="proj-tag">Telegram AI yordamchi</div>
           </div>
           <div class="proj fragment">
             <div class="proj-name">saytoai</div>
-            <div class="proj-tag">Sayt → AI yordamchi</div>
+            <div class="proj-tag">sayt uchun AI suhbatdosh</div>
           </div>
         </div>
-        <p class="proj-more">+ va boshqa pet-projects va MVP'lar</p>
+        <p class="proj-more">+ boshqa tajriba loyihalari va MVPlar</p>
         <a class="proj-link" href="https://www.linkedin.com/in/risqaliyevds/" target="_blank" rel="noopener">
           <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           linkedin.com/in/risqaliyevds
         </a>
       </div>
     </div>
+
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.85rem,1.4vw,1.2rem);font-style:italic;color:rgba(255,255,255,0.65);font-size:clamp(0.78rem,1vw,0.92rem)">→ Bu kurs urg'usi: <strong>bank jarayonlarida vaqtni tejash, xatoni kamaytirish va xavfsiz qo'llash</strong>.</p>
   </div>
 </section>
 
@@ -838,8 +846,8 @@ body,p,li,.lead{letter-spacing:0.018em}
       <a class="qr-url" href="https://t.me/bankragbot">t.me/bankragbot</a>
     </div>
     <div class="reveal r3">
-      <span class="chip-out" style="background:transparent">Live recall · 1-modul demosi</span>
-      <h2 class="h2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">1-modulda ishlatgan bot — <span class="hl">bugun siz quryapsiz</span>.</h2>
+      <span class="chip-out" style="background:transparent">Live demo · bank bot</span>
+      <h2 class="h2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Keling, kelajakni <span class="hl">hozir</span> sinab ko'ramiz.</h2>
       <div class="chat">
         <div class="bubble user">Avtokredit uchun boshlang'ich to'lov?</div>
         <div class="bubble ai fragment is-visible">AI tahlil qilmoqda... ichki PDF qidirilmoqda</div>
