@@ -7,7 +7,7 @@
 **Brand:** crea7iveai
 **Framework:** Custom HTML (single-file, `index.html`)
 **Stack koryazasi:** Telegram + n8n (self-hosted) + Gemini + Google Sheets
-**Slaydlar soni:** 18 ta · 4 ta faza
+**Slaydlar soni:** 19 ta · 4 ta faza
 **Atamalar (≥2/modul talabi):** **Trigger** · **Webhook** — slide 5 da kiritiladi, slide 17 da recap
 **To'liq kontent:** [`content.md`](./content.md)
 

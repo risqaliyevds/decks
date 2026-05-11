@@ -1,102 +1,54 @@
-Verdict: NEEDS-FIXES
-Score: 7/10
+Verdict: SHIP AFTER SMALL FIXES
+Score: 8/10
 
-The deck has a useful step-by-step RAG story and it satisfies the series rule of introducing RAG and Embedding on slide 5 and recapping them on slide 18. It is close to usable for a Markaziy Bank audience, but it needs governance tightening before delivery: remove vendor certainty, replace shaky numeric precision with test discipline, and end with a bank decision artifact instead of only Q&A.
+This deck is now pointed at the right module goal: a first, simple AI workflow that bankers can build live. The Classification + Schema atamalar are introduced on slide 5, reused in the user journey, and recapped on slide 18. RAG/Embedding are only forward references to modules 10-11, not re-taught here, which fits the series terminology rule.
 
-Verification note: the deck references the paired student-build as `bots/01_rag_basics/` in `content.md`, `notes.md`, and slide 13 of `index.html`, but `C:\projects\slides\bots\01_rag_basics` does not exist in the workspace. Fix the path or add the missing bot folder before shipping.
+The main fixes are precision and governance tone. The deck repeatedly says "no code", but the paired bot README has a Code node with an 8-line JS snippet. For a live 15-30 minute build, call this "tayyor kod bo'lagi copy-paste qilinadi" instead of "kod yo'q". Also tighten the data/privacy language: Telegram text is sent to Gemini, and customer/operator rows are stored in Google Sheets, so the bank story must be "demo uchun, productionda PII masking, access control, audit, and approval needed", not "ma'lumot tashqariga chiqmaydi".
 
-Top 5 Content Improvements
+Top 5 Uzbek Rewrites
 
-1. Replace "RAG = hallucination minimum" with a governance-safe claim.
+1. Slide 7 / 15 / 18: replace absolute "no code" with build-along-accurate wording.
 
-Current issue: slide 4 and slide 18 imply RAG largely solves hallucination. For a bank audience, that is too absolute. RAG reduces unsupported answers only when source quality, retrieval, prompt rules, and testing are controlled.
+Current risk: "kod yo'q" conflicts with the paired bot's Pick Operator Code node.
 
-Concrete rewrite in Uzbek:
+Rewrite:
+7 ta asosiy node bilan quramiz. Murakkab dasturlash yo'q: faqat bitta tayyor Pick Operator skriptini copy-paste qilamiz, qolgan sozlamalar n8n oynasida tanlanadi.
 
-Slide 4 lead:
-Oddiy LLM umumiy bilimga tayanadi va manbasiz javob berishi mumkin. RAG esa javobdan oldin bank hujjatidan tegishli bo'lakni topadi va javobni shu manbaga bog'laydi. Bu xato xavfini kamaytiradi, lekin manba sifati va test natijasi bilan tekshirilishi shart.
+2. Slide 12 speaker notes: fix the governance/privacy claim.
 
-Slide 18 first takeaway:
-RAG - "qidir + manbaga tayanib javob ber". U gallyutsinatsiya xavfini kamaytiradi, lekin nolga tushirmaydi. Bankda har bir RAG bot test savollari va manba havolasi bilan qabul qilinadi.
+Current risk: "Mijoz ma'lumoti tashqi serverga chiqmaydi (faqat Gemini API...)" is internally contradictory and too soft for a Central Bank audience.
 
-2. Tighten RAG and Embedding definitions so terms are clean, bank-safe, and technically accurate.
+Rewrite:
+Demo rejimida mijoz xati Gemini API'ga tasniflash uchun yuboriladi, natija esa bank boshqaradigan Google Sheets jadvaliga yoziladi. Production uchun alohida qaror kerak: PII masking, token va Sheets huquqlari, audit log, ma'lumot saqlash muddati va komplaens roziligi.
 
-Current issue: "qidir + javob bil" is memorable but imprecise. "AI hujjatdan ko'chirib javob beradi" in notes is risky because generation is not copying. Embedding examples use exact-looking dimensions and similarity scores without explaining they are illustrative.
+3. Slide 5: make Schema more Uzbek and less "JSON-first".
 
-Concrete rewrite in Uzbek:
+Current risk: non-technical audience may remember JSON syntax but miss the business reason.
 
-Slide 5 RAG card:
-RAG - Retrieval-Augmented Generation. Bankir tilida: "avval manbani top, keyin javob yoz". Bot savolga javob berishdan oldin tasdiqlangan ichki hujjatdan tegishli bo'laklarni topadi, keyin javobni faqat shu bo'laklarga tayangan holda tuzadi.
+Rewrite:
+Schema - botning javobi uchun qat'iy shakl. Bankir tilida: AI erkin matn yozmaydi, faqat kelishilgan kataklarni to'ldiradi: toifa, mavzu, tafsilot, shoshilinchlik. Shu sabab Sheets ustunlari adashmaydi va operator avtomatik topiladi.
 
-Slide 5 Embedding card:
-Embedding - matnning ma'no izi. Matn raqamli vektorga aylantiriladi, shunda "avtokredit foizi" va "mashina krediti stavkasi" kabi yaqin ma'noli iboralar bir-biriga yaqin topiladi. Raqamlar modelga bog'liq; slayddagi qiymatlar soddalashtirilgan misol.
+4. Slide 14: clarify classifier boundaries without teaching RAG/Embedding.
 
-Slide 18 recap:
-RAG = avval manbani topish, keyin shu manbaga tayangan javob yozish.
-Embedding = matnni ma'nosi bo'yicha qidirish uchun raqamli vektorga aylantirish.
+Current risk: "RAG kerak" is acceptable as a forward reference, but do not define it here.
 
-3. Replace vendor absolutism and product recommendations with selection criteria.
+Rewrite:
+Agar mijoz "foiz stavkasi qancha?" deb aniq javob so'rasa, bu classifier vazifasi emas. Bugungi bot xatni yo'naltiradi. Hujjatdan javob beradigan botni 11-modulda ko'ramiz.
 
-Current issue: Gemini is positioned as the center/brain, `gemini-embedding-001` is treated as the expected model, and Supabase pgvector is called "bank uchun eng yaxshisi". For Markaziy Bank, the deck should teach a decision framework, not imply one vendor or database is institutionally correct.
+5. Slide 18: strengthen the bank decision artifact as the output of the live exercise.
 
-Concrete rewrite in Uzbek:
+Current risk: the artifact exists, but it should be framed as the thing every table submits, not a decorative closing block.
 
-Slide 7 lead:
-Markazda bitta aniq vendor emas, LLM xizmati turadi. Mashqda Gemini ishlatamiz; bank muhitida model va infratuzilma axborot xavfsizligi, ma'lumot joylashuvi, audit talabi va xarajat bo'yicha tanlanadi.
+Rewrite:
+Mashg'ulot yakuni - faqat ishlagan bot emas, pilot qaror varaqasi. Har stol 5 bandni topshiradi: bo'lim, toifalar, 10 ta test xat natijasi, asosiy xavflar, va qaror - pilotga ruxsat / qayta ishlash / rad etish.
 
-Slide 10 flow:
-Embedding modeli -> matn vektori. Muhim qoida: hujjatni saqlashda ham, savolni qidirishda ham bir xil embedding modeli ishlatiladi.
+Punch List
 
-Slide 12 lead:
-Vector DB tanlovi "eng yaxshi" degan bitta javobga ega emas. Qaror 4 mezon bilan olinadi: ma'lumot qayerda saqlanadi, audit log bormi, jamoa qaysi texnologiyani qo'llab-quvvatlay oladi, yuklama va xarajat qanday.
-
-Slide 12 card labels:
-Supabase pgvector -> Postgres ekotizimi bor jamoalar uchun nomzod.
-Pinecone -> boshqariladigan servis kerak bo'lsa, komplaens tekshiruvidan keyin.
-Chroma / In-Memory -> o'quv mashqi va prototip uchun, production qarori emas.
-
-4. Replace shaky numeric precision with testing discipline.
-
-Current issue: 800/120 chunking, Top-3, 300 ms, 200 ms, 1.5 seconds, 80% questions, and Pinecone price are framed too precisely. These numbers will vary by document, language, model, network, database, and deployment. A bank audience needs a test harness mindset.
-
-Concrete rewrite in Uzbek:
-
-Slide 9:
-Boshlang'ich sozlama: 500-800 belgi atrofida chunk, kichik overlap bilan. Lekin yakuniy sozlama test orqali tanlanadi: 20-30 real savol beriladi, bot topgan manba va javob to'g'riligi tekshiriladi.
-
-Slide 11:
-Savol kelganda 4 harakat bo'ladi: savol vektorga aylanadi, yaqin chunklar topiladi, javob yoziladi, manba ko'rsatiladi. Tezlik deploymentga bog'liq; bank uchun asosiy metrika - javob va manba to'g'riligi.
-
-Slide 16:
-Top-K ni Top-3 dan boshlang, keyin test qiling. Agar javob manbani o'tkazib yuborsa - Top-K yoki chunk hajmini o'zgartiring. Agar javobda ortiqcha shovqin bo'lsa - Top-K ni kamaytiring yoki hujjatni yaxshiroq bo'ling.
-
-Slide 17:
-"80% savollar" o'rniga: Bo'limdagi takrorlanuvchi savollarning qaysi qismi RAGga mos kelishini test savollari orqali o'lchaysiz.
-
-5. End with a bank decision artifact, not just "you built a bot".
-
-Current issue: the ending motivates the next module, but it does not leave participants with a governance-ready artifact. For Markaziy Bank, the output should be a short decision sheet: can this bot move from exercise to pilot, under what controls, and who approves?
-
-Concrete rewrite in Uzbek:
-
-Replace slide 18 third takeaway:
-Bugungi yakun - ishlagan bot emas, qaror varaqasi. Har stol quyidagini topshiradi: hujjat nomi, 5 ta test savol, javob/manba natijasi, topilgan xavflar, keyingi qaror.
-
-Add closing artifact block:
-RAG pilot qaror varaqasi:
-1. Use case: qaysi bo'lim va qaysi savollar?
-2. Manba: qaysi hujjat, versiya sanasi, egasi kim?
-3. Test: nechta savoldan nechtasi to'g'ri manbani topdi?
-4. Xavf: maxfiy ma'lumot, noto'g'ri javob, eskirgan hujjat xavfi.
-5. Qaror: pilotga ruxsat / qayta ishlash / rad etish.
-
-Slide 19 Q&A prompt:
-Savollar: RAG, n8n, vector DB tanlovi, komplaens va pilot qarori bo'yicha.
-
-Additional Punch List
-
-- Uzbek language cleanup: use one spelling consistently. Prefer "komplaens" or "muvofiqlik", not both randomly; "vektor bazasi" may be clearer than "Vector DB" for first mention; "xatboshi" is not always equal to "chunk", so define "bo'lak/chunk" once.
-- Fix module bridge inconsistency: slide 17 says "12-modul - ertaga", while notes also mention 10-modul. Day 2 sequence says module 10 follows module 9; use "10-modulda agent tushunchasi" and reserve 12-modul for multi-step pipeline.
-- Slide 14 content is good, but add an explicit "RAG ishlamaydi -> agent/pipeline yoki qoida dvigateli kerak" line for calculation and comparison tasks.
-- Slide 13 path must be clickable/usable in the workshop. Since the paired bot folder is missing, participants cannot follow the build as written.
-- Closing recap meets the atamalar rule, but pair it with the decision artifact so the last business memory is "qaysi shart bilan pilot qilamiz?", not only vocabulary.
+- Content accuracy: update all "no code" claims to "no complex coding" or "tayyor skript copy-paste". The bot README explicitly includes a Code node, so the current wording can break trust during the build.
+- Governance fit: add one visible production caveat on slide 12 or 18: PII masking, access control, audit, and approval. This is a Central Bank deck; the audience should leave with controls, not only a working demo.
+- Atamalar: keep Classification + Schema as the only official terms for this module. Do not expand RAG or Embedding definitions here; slide 17 can keep them as module 11 forward refs.
+- Build-along tone: slide 15 is strong. Add "instructor shablonidan boshlaymiz" or "har stolga tayyor Sheets template beriladi" so the 15-30 minute promise sounds credible.
+- Uzbek quality: prefer "tasniflagich" or "classifier" consistently. Right now both are fine, but slide titles lean English. For bank audience, use "classifier (tasniflagich)" once, then mostly "tasniflagich".
+- Bank decision artifact: slide 18 is the right artifact. Make it operational: every table must submit the decision sheet, and the facilitator collects it before Q&A.
+- Visual/screenshots: rendered deck is clean overall. Slide 3's QR dominates while the RAG-to-classifier message is dim; increase contrast or simplify that slide if time permits.
+- Link note: user-requested `bots/01_classifier_bot/README.md` is not at repo root. Actual path read for this review: `decks/cb_decks/bots/01_classifier_bot/README.md`. The deck's `../bots/01_classifier_bot` link is correct from `9_deck`.

@@ -31,7 +31,7 @@
 | 4 | Sifatli promtning 5 ta elementi | 5 ta element grid | ~4 daq | 01 Asoslar |
 | 5 | Ikkita texnika — promtning kuchli qurollari | Few-shot + CoT lug'ati | ~3 daq | 01 Asoslar |
 | 6 | Few-shot — namuna bilan o'rgatish | 0-shot → 1-shot → Few-shot | ~6 daq | 02 Texnikalar |
-| 7 | Chain-of-Thought — to'g'ridan vs qadamma-qadam | Audit izi va mantiq | ~6 daq | 02 Texnikalar |
+| 7 | Chain-of-Thought — quruq vs asoslangan javob | Audit izi · 5 qismli format | ~6 daq | 02 Texnikalar |
 | 8 | Bankir uchun 3 ta tayyor shablon | Kredit memo · Mijoz · KYC | ~6 daq | 03 Bank misollari |
 | 9 | Sizning bo'limingiz uchun promt yozaylik | Live workshop (`<pre>`) | ~12 daq | 04 Mashq |
 | 10 | Yo'l qo'yiladigan 3 ta xato | Afsona vs Haqiqat | ~4 daq | 04 Mashq |
@@ -99,15 +99,15 @@ Ekranda ikkita karta. Chapda qorong'i "Yomon promt", o'ngda yorqin "To'la promt"
 **Speaker notes:**
 Ekranga qaraymiz. Tasavvur qiling, bo'limingizga ikkita stajyor keldi. Ikkalasiga ham bir xil vazifa berdingiz.
 
-Chapdagi stajyorga aytdingiz: "Mijozga javob yoz". Bo'ldi.
-U nima yozdi? *"Hurmatli mijoz, salom. Sizning savolingizni qabul qildik. Tez orada javob beramiz."* 
-Shu zalda kim shunday xat yozgan xodimni maqtagan bo'lardi? Hech kim. Bu xatda nol ma'lumot. Bo'sh.
+Chapdagi stajyorga aytdingiz: "Hisobotni tahlil qil". Bo'ldi.
+U nima yozdi? *"Hisobot ko'rib chiqildi. Bir nechta ko'rsatkichlar belgilanishi mumkin. Qo'shimcha ma'lumot kerak."* 
+Shu zalda kim shunday xulosa yozgan xodimni maqtagan bo'lardi? Hech kim. Bu xulosada nol ma'lumot. Bo'sh.
 
-Endi o'ng tomonga qaraymiz. Ikkinchi stajyorga aniqroq aytdingiz: *"Sen — Markaziy Bank mijoz xizmati operatorisan. Mijoz 80 mln so'm avtokredit so'rayapti, daromadi 12 mln. Skoringni tekshir va 3 ta abzasli javob yoz."*
+Endi o'ng tomonga qaraymiz. Ikkinchi stajyorga aniqroq aytdingiz: *"Sen — bank nazorati bo'limi tahlilchisan. Quyidagi prudensial hisobotda 3 ta ko'rsatkich talabga mos kelmasa, rahbariyat uchun 1 betlik xulosa tayyorla: faktlar · qaysi normaga zid · risk · keyingi qadam."*
 
-Natijani qarang: *"Arizangiz qabul qilindi. Oylik to'lov ~3.7 mln so'm. DTI = 31% (norma ≤45%). Keyingi qadam: pasport va ma'lumotnoma olib keling."*
+Natijani qarang: *"1) Kapital yetarliligi 11.2% (norma ≥13%). 2) Likvidlik 18% (norma ≥25%). 3) Risk: o'rta-yuqori. Tavsiya: 3 kun ichida tushuntirish xati so'rash."*
 
-Farqni ko'ryapsizmi? Aniq raqam bor, mantiq bor, keyingi qadam bor. Mijoz tunda yozsa ham ertalabni kutmaydi, aniq javobini oladi.
+Farqni ko'ryapsizmi? Aniq raqam bor, mantiq bor, keyingi qadam bor. Rahbariyat oldida himoyalanadigan, audit izi tayyor xulosa.
 
 (Pauza)
 Sizlarga bitta sirni aytaman. Bu ikkala stajyor ham — bitta AI. Bitta model. Farq AI'da emas. Farq — biz qanday savol berganimizda.
@@ -155,8 +155,7 @@ Eslaysizlarmi, har darsning boshida atama o'rganyapmiz. Bugun yodlab olishimiz k
 Birinchisi: **Few-shot Prompting**. O'zbekchasiga — "namuna bilan o'rgatish".
 AI'ga quruq qoida tushuntirgandan ko'ra, "Mana senga arxivdagi 3 ta tayyor hujjat, to'rtinchisini xuddi shularga o'xshatib yoz" deymiz. AI naqshni aynan sizning bank ovozingizdan oladi.
 
-Ikkinchisi: **Chain-of-Thought** yoki qisqacha CoT. O'zbekchasiga — "Fikr zanjiri" yoki "Ovoz chiqarib hisoblash".
-Biz AI'ga "Shu kreditni beraylikmi?" demaymiz. Biz unga "Qadamma-qadam o'ylab, hisoblab ber" deymiz. Bu nima uchun kerakligini hozir amalda ko'rsataman.
+Ikkinchisi: **Chain-of-Thought** yoki qisqacha CoT. O'zbekchasiga — "Asoslangan javob · audit izi". Bu modelning ichki fikrini chiqarish emas. Maqsad — javob formatini biz boshqarish: AI'dan quruq "Ha/Yo'q" emas, **asos · mezon · hisob-kitob · tekshiruv bandlari** bilan javob so'raymiz. Auditga tushuntirsa bo'ladigan javob shu yerdan boshlanadi.
 
 ---
 
@@ -182,28 +181,28 @@ Few-shot (bir nechta namuna). Ekranga qarang, uchinchi bosqich. Biz unga eng taj
 
 ---
 
-## Slide 7 — Chain-of-Thought — to'g'ridan vs qadamma-qadam
+## Slide 7 — Chain-of-Thought — quruq javob vs asoslangan javob
 
 **Sarlavha:**
-**Chain-of-Thought** — to'g'ridan vs qadamma-qadam.
+**Chain-of-Thought** — quruq javob vs asoslangan javob.
 
 **Lead matn:**
-AI'ni "fikrla, keyin javob ber" deb yo'naltirsangiz, murakkab vazifada xato keskin kamayadi.
+Bu AI'ning ichki fikrini chiqarish emas. Maqsad — javob formatini biz boshqarish: faktlar, mezon, hisob va tekshiruv bandlarini alohida ko'rsatish.
 
 **Vizual elementlar:**
-Chapda "To'g'ridan-to'g'ri" so'rovi va natijasi (qizil xoch: Audit izi yo'q). O'ngda "CoT (qadamma-qadam)" so'rovi va natijasi (yashil galochka: Audit izi tayyor).
+Chapda "Quruq so'rov" va AI natijasi (qizil xoch: asos yo'q). O'ngda "CoT · Asoslangan format" so'rovi va natijasi (yashil galochka: asos · mezon · audit izi tayyor).
 
 **Speaker notes:**
-Endi, bankdagi eng nozik masala. Muvofiqlik va Risk xodimlari bormi zalda? Bu sizlar uchun.
+Endi, eng nozik masala. Muvofiqlik va nazorat xodimlari bormi zalda? Bu sizlar uchun.
 
-Chap tomonga qarang. AI'dan so'rayapmiz: "Mijoz daromadi 12 mln, kredit 80 mln. Tasdiqlanadimi yo'qmi?"
-AI javob beryapti: "Tasdiqlanadi."
-(Pauza) Sizga bitta xodim kelib, hujjatga qaramasdan "Ha, beravering" desa, ishonasizmi? Yo'q! "Nega?" degan savolga asos kerak.
+Chap tomonga qarang. AI'dan so'rayapmiz: "AML hisobotida shubhali operatsiya bormi? Risk yuqorimi?"
+AI javob beryapti: "Ha, risk yuqori."
+(Pauza) Sizga bitta xodim kelib, hujjatga qaramasdan "Ha, risk bor" desa, ishonasizmi? Yo'q! Asos, mezon, qaysi raqam ortib ketdi — hammasi kerak.
 
-O'ng tomonga qarang. Promtni o'zgartiramiz: "Avval oylik to'lovni hisobla. So'ng DTI ni top. Agar DTI 45% dan past bo'lsa, keyin tasdiqla. Hisobni ko'rsatib ber."
-Endi AI javobi: "1) To'lov 3.7 mln. 2) DTI 31%. 3) 31% < 45%, shuning uchun Tasdiqlanadi."
+O'ng tomonga qarang. Promtni o'zgartiramiz: "Quyidagi hisobotni tahlil qil. Javob formatini saqla: 1) faktlar, 2) qo'llangan mezon, 3) hisob-kitob, 4) nomuvofiqlik yoki risk, 5) inson tekshiruvi kerak bandlar. Yetishmagan ma'lumotni taxmin qilma."
+Endi AI javobi: "1) 3 ta tranzaksiya 200 mln dan oshgan. 2) Mezon: 100 mln ostonasi. 3) 3/3 oshgan. 4) Manba hujjati yo'q. 5) Compliance xodimi tasdig'i kerak."
 
-Mana bu — Audit izi. Sababini ko'rsata olgan AI — auditga bemalol tushuntirib bera oladigan AI.
+Mana bu — asoslangan javob. Asosini ko'rsatgan AI javobini xodim tekshirishi va himoyalashi oson. Bu modelning ichki fikrini chiqarish emas — bu javob formatini biz boshqarishimiz.
 
 ---
 
@@ -342,8 +341,10 @@ Endi, o'sha an'anamiz. Lug'atni eslaymiz, hammamiz birgalikda aytamiz.
 (Zalga qarab so'rang) AI'ga 2-3 ta tayyor hujjat ko'rsatib, naqsh o'rgatish nima deyilardi?
 *(Zaldan kuting: "Few-shot")* To'g'ri!
 
-AI'ni "qadamma-qadam o'yla" deb, audit izi qoldirishga majbur qilish nima edi?
+AI javobida asos, mezon, hisob va tekshiruv bandlarini ko'rsatishga majbur qilish nima edi?
 *(Zaldan kuting: "Chain-of-Thought")* Ajoyib. Bu atamalarni yoddan chiqarmang.
+
+Va yana bir muhim narsa — promt qanchalik yaxshi bo'lmasin, yakuniy javobgarlik mas'ul xodimda qoladi. AI xatoni kamaytiradi, lekin yo'q qilmaydi.
 
 ---
 

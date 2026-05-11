@@ -7,31 +7,32 @@
 **Brand:** crea7iveai
 **Framework:** Custom HTML (single-file `index.html`)
 **Stack o'rgatiladi:** Gemini (LLM) + RAG (xotira) + n8n (orkestratsiya) — kodsiz
-**Slaydlar soni:** 19 ta · 4 ta faza
-**Atamalar (≥2/modul talabi):** LLM, Promt, API — slayd 7 da kiritiladi, slayd 18 da interaktiv recap (auditoriya bilan birga aytamiz)
+**Slaydlar soni:** 20 ta · 4 ta faza
+**Atamalar (≥2/modul talabi):** LLM, Promt, API — slayd 8 da kiritiladi, slayd 19 da interaktiv recap (auditoriya bilan birga aytamiz) + AI qaror kartasi ko'prigi
 **To'liq kontent:** [`content.md`](./content.md)
 
 ## Outline (one bullet = one slide)
 
 1. **Title** — Bank sektori uchun sun'iy intellekt asoslari · "Kodsiz AI yechim"
 2. **Agenda** — 4 faza: AI aslida nima · Raqamlar nima deyapti · Bot ichida nima bor · Sizning bankingizda nimalar qilsak bo'ladi
-3. **WOW hook · suratda** — kal odamga AI sochi qo'shgan ("avval / keyin"), pattern interrupt
-4. **WOW hook · videoda** — kuchuk videosi, "bu — o'yin, endi — ish" tranzisi
-5. **Live demo · bank bot** — QR + chat bubble, audience telefonida bot bilan muloqot
-6. **Stajyor metafora** — 17 tab ochilgan vs AI'ning tartiblangan ish oqimi (Gemini panel)
-7. **Bankir uchun AI lug'ati** — LLM · Promt · API (3 ta dict-card)
-8. **AI ishimni olib qo'yadimi?** — qizil "YO'Q" stamp, dramatic answer
-9. **Miflarga qarshi zarba** — 4 ta afsona ↔ haqiqat juftligi (jobs · programming · know-it-all · ChatGPT=AI)
-10. **AI — bu vosita. Sehr emas** — Can/Cannot ikki ustun: real bank misollari ↔ AI'ga yolg'iz topshirilmaydigan ishlar
-11. **AI banking · global bozor** — $20.87B → $310.79B, 10 yilda 15× o'sish (Spherical Insights 2024)
-12. **Mintaqaviy o'sish** — Osiyo-Tinch okeani eng tez o'sadigan mintaqa (4 ta region bar)
-13. **Bankda AI · qo'llash sohalari** — 4 ta segment: Risk menejmenti · Mijozlarga xizmat · Virtual yordamchi · Moliyaviy maslahat
-14. **Tizim rollari** — Botni 3 rol bilan eslab qolamiz: Miya (Gemini) · Xotira (RAG) · Ishchi (n8n)
-15. **RAG jarayoni** — Savol → Qidiruv → PDF'dan topish → Tahlil → Javob (5 ta pill + terminal)
-16. **Xavfsizlik** — Yopiq Kontur · Zero-Training · Data Masking (3 ta item)
-17. **Wordcloud — eng zerikarli ish** — interaktiv brainstorm (Mentimeter / Slido)
-18. **Closing · 2 kundan keyin** — "AI bilan ishlaydigan bankirga aylanasiz" + lug'at recap (LLM = miya · Promt = buyruq · API = avtomat ulash — fragment animation bilan auditoriya birga aytadi)
-19. **Q&A** — katta `?` belgisi · `murod@mohir.dev`
+3. **Tanishuv** — Riskaliev Murad · Mohirdev · crea7iveai · 3+ yil AI/NLP · 60 soniya bio + loyihalar + LinkedIn
+4. **WOW hook · suratda** — kal odamga AI sochi qo'shgan ("avval / keyin"), pattern interrupt
+5. **WOW hook · videoda** — kuchuk videosi, "bu — o'yin, endi — ish" tranzisi
+6. **Live demo · bank bot** — QR + chat bubble, audience telefonida bot bilan muloqot (demo qoidasi: tasdiqlangan PDF, real ma'lumot yo'q, javob topilmasa "ma'lumot yo'q")
+7. **Stajyor metafora** — 17 tab ochilgan vs AI'ning tartiblangan ish oqimi (Gemini panel)
+8. **Bankir uchun AI lug'ati** — LLM · Promt · API (3 ta dict-card)
+9. **AI ishimni olib qo'yadimi?** — qizil "YO'Q" stamp, dramatic answer
+10. **Miflarga qarshi zarba** — 4 ta afsona ↔ haqiqat juftligi (jobs · programming · know-it-all · ChatGPT=AI)
+11. **AI — bu vosita. Sehr emas** — Can/Cannot ikki ustun: real bank misollari ↔ AI'ga yolg'iz topshirilmaydigan ishlar
+12. **AI banking · global bozor** — $20.87B → $310.79B, 10 yilda 15× o'sish (Spherical Insights 2024)
+13. **Mintaqaviy o'sish** — Osiyo-Tinch okeani eng tez o'sadigan mintaqa (4 ta region bar) · O'zbekiston bo'yicha alohida prognoz emas
+14. **Bankda AI · qo'llash sohalari** — 4 ta segment: Risk menejmenti · Mijozlarga xizmat · Virtual yordamchi · Moliyaviy maslahat
+15. **Tizim rollari** — Botni 3 rol bilan eslab qolamiz: Miya (Gemini) · Xotira (RAG) · Ishchi (n8n)
+16. **Demo bot ish oqimi** — Savol → Qidiruv → PDF'dan topish → Tahlil → Javob (5 ta pill + terminal)
+17. **Xavfsizlik** — Yopiq Kontur · O'qitilmaydi (zero-training) · Ma'lumot yashirish (3 ta item)
+18. **Wordcloud — eng zerikarli ish** — interaktiv brainstorm · 4 ta mezon-pill
+19. **Closing · 2 kundan keyin** — "AI bilan ishlaydigan bankirga aylanasiz" + lug'at recap (LLM = miya · Promt = buyruq · API = avtomat ulash) + AI qaror kartasi ko'prigi (jarayon · hujjat · inson tasdig'i)
+20. **Q&A** — katta `?` belgisi · `murod@mohir.dev` + Telegram @crea7iveai
 
 ## Asosiy g'oya (thesis)
 
@@ -41,12 +42,12 @@ AI sehr yoki dushman emas. Bu sizning **super-aqlli stajyoringiz** — kod yozma
 
 | Faza | Slaydlar | Vaqt |
 |---|---|---|
-| Title + Agenda | 1–2 | ~2 daq |
-| 01 · AI aslida nima | 3–10 | ~22 daq |
-| 02 · Raqamlar nima deyapti | 11–13 | ~5 daq |
-| 03 · Bot ichida nima bor | 14–16 | ~14 daq |
-| 04 · Sizning bankingizda nimalar qilsak bo'ladi | 17–19 | ~17 daq |
-| **Jami** | **19** | **~60 daq** |
+| Title + Agenda + Tanishuv | 1–3 | ~3 daq |
+| 01 · AI aslida nima | 4–11 | ~22 daq |
+| 02 · Raqamlar nima deyapti | 12–14 | ~5 daq |
+| 03 · Bot ichida nima bor | 15–17 | ~12 daq |
+| 04 · Sizning bankingizda nimalar qilsak bo'ladi | 18–20 | ~18 daq |
+| **Jami** | **20** | **~60 daq** |
 
 ## Design lock-in (cb_decks series-wide)
 

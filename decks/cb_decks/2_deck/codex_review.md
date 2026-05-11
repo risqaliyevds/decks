@@ -1,56 +1,103 @@
-Updated [codex_review.md](C:/projects/slides/decks/cb_decks/2_deck/codex_review.md) with the requested Markdown review.
+# Codex Review · 2-deck
 
-Verdict: usable, but not ready as-is for Markaziy Bank staff. Score: `6/10`.
+## Verdict + Score
 
-Main fixes called out:
-- Reframe Slide 5 around CB workflows, not commercial bank execution.
-- Put Uzbek term first: `Qo'llash holati (Use Case)`.
-- Replace the Slide 7 red-zone example with regulator-relevant automated sanction/decision risk.
-- Fix Slide 8’s misleading “50 samples to train model” claim.
-- Strengthen Slide 10 with owner/approval/audit trail, not just “risk boundary”.
+**Verdict:** Shipga yaqin, lekin Markaziy Bank auditoriyasi uchun hali **governance-ready** emas. Workshop energiyasi yaxshi, Use Case/Pilot skeleti bor, canvas ham ishlaydi. Lekin 5 joyni silliqlash kerak: Markaziy Bank mandati, atamalarni Uzbek-first kiritish, texnik aniqlik, vendor/AI absolutizmini yumshatish, va yakunda bank qaror artefaktini aniq chiqarish.
 
-Also flagged the stale `notes.md`, the Slide 10 typo, and the need to standardize `SI` vs `AI`.
-mi: Banklardan kelgan prudensial hisobotlarda keskin o'zgarishlarni aniqlash va inspektorga tekshiruv ro'yxatini tayyorlash.`
-   - `Iste'molchi huquqlari: Murojaatlarni bank, hudud, mavzu va jiddiylik bo'yicha saralash; xodim faqat tasdiqlaydi va murakkab holatga kiradi.`
-   - `Muvofiqlik / Huquq: Yangi normativ hujjat qaysi ichki tartib, yo'riqnoma yoki nazorat chek-listiga ta'sir qilishini ko'rsatish.`
-   - `Ichki yordam: Xodim savollariga faqat tasdiqlangan ichki hujjatlar asosida javob qoralamasi tayyorlash.`
+**Score:** **7/10**
 
-2. **Slide 6 — “Use Case” definition is too startup-ish; Uzbek first, English second.**
-   Non-technical management should not be forced to think in English terms. Keep the term for course continuity, but lead with the Uzbek business meaning.
+## Punch List
 
-   **Rewrite:**
-   - Current: `Use Case / Qo'llash Holati`
-   - Better: `Qo'llash holati (Use Case)`
-   - Current body: `Qaysi muammoni, qaysi bo'limda, qancha vaqtni tejab hal qilamiz?`
-   - Better body: `Qaysi jarayonda, qaysi xodimga, qaysi o'lchanadigan natijani beradi?`
-   - Better example: `Banklardan kelgan hisobotlarda anomal o'zgarishlarni 2 soat emas, 20 daqiqada dastlabki ro'yxatga chiqarish.`
+1. **Content accuracy + governance fit**
+   - Slide 5 Markaziy Bankga moslashgan, lekin ayrim misollar hali tijorat banki ijrosiga tortadi: `avtokredit`, `kredit memo`, `filial`, `core banking`. Bularni faqat "tijorat banki misoli" deb alohida belgilash yoki CB nazorat/muvofiqlik artefaktlariga almashtirish kerak.
+   - Slide 7 dagi qizil zona `To'liq avtomatik kredit qarori` yaxshi anti-pattern, lekin CB xodimi uchun kuchliroq risk: AI asosida avtomatik sanksiya, majburiy ko'rsatma, inspeksiya xulosasi yoki supervisory action chiqarish.
+   - Slide 8 da `50 ta namuna modelni o'rgatish uchun` degan fikr noaniq. 50 ta tarixiy holat odatda model o'rgatish emas, balki pilotni baholash, xatolarni ko'rish va xodim tasdig'i jarayonini tekshirish uchun kerak.
 
-3. **Slide 7 — “to'liq avtomatik kredit qarori” is the wrong red-zone example for this audience.**
-   It is vivid, but it pulls the room toward commercial lending and away from CB governance. Use a regulator-relevant “never” example.
+2. **Atamalar coverage**
+   - Talab bajarilgan: `Use Case` va `Pilot Loyiha` Slide 6 da kiritilgan, Slide 11 da recap bor.
+   - Lekin auditoriya Uzbek-first bo'lishi kerak: `Qo'llash holati (Use Case)` va `Pilot loyiha` deb berish yaxshiroq. Hozir inglizcha label birinchi turibdi.
+   - Closing recap yaxshi, ammo javoblar biroz tor: Use Case faqat "qancha tejaydi" emas, balki "qaysi o'lchanadigan natija beradi" bo'lishi kerak. Bankda natija faqat vaqt emas: xato kamayishi, SLA, audit izining to'liqligi, navbat qisqarishi ham bo'lishi mumkin.
 
-   **Rewrite red quadrant:**
-   - Current: `To'liq avtomatik kredit qarori`
-   - Better: `AI asosida avtomatik sanksiya / majburiy ko'rsatma chiqarish`
-   - Add line: `AI faqat signal va dalil paketini tayyorlaydi; rasmiy qaror, ko'rsatma va imzo vakolatli xodimda qoladi.`
+3. **Uzbek language quality**
+   - `klassifikatsiya` o'rniga ko'p joyda `tasniflash` yoki `saralash` yetadi.
+   - `skreaningi` noto'g'ri/og'ir: `skrinning` yoki undan ham yaxshisi `dastlabki tekshiruv`.
+   - `metric` emas, `metrika`.
+   - `qayerga tushadi` og'zaki va biroz g'alati; Markaziy Bank ohangi uchun `qayerga mos tushadi` yoki `qaysi jarayonga qo'llanadi`.
+   - `shafqatsizlarcha qisqartiring` workshopda kulgili bo'lishi mumkin, lekin rasmiy auditoriyada `keskin toraytiring` yaxshiroq.
 
-4. **Slide 8 — “50 ta namuna modelni o'rgatish uchun” is technically sloppy and risky.**
-   For modern AI pilots, 50 examples often validate a workflow, prompt, checklist, and measurement method; it usually does not “train a model”. This matters because non-technical management may leave with the wrong procurement/data expectation.
+4. **Vendor absolutism / AI absolutism**
+   - Deck vendor nomlariga bog'lanmagan, bu yaxshi. Lekin `AI 30 soniyada qilib beradi`, `bor model + bizning ma'lumot`, `doim yuqori-chap`, `hech qachon` kabi iboralar absolutistik eshitiladi.
+   - Governance auditoriyasi uchun formulani yumshating: `pilotda tekshiramiz`, `ma'lumot sifati va ruxsatga bog'liq`, `odatda`, `birinchi nomzod sifatida`, `yuqori riskli holatlarda ruxsatli qaror jarayoni kerak`.
+   - Slide 9 dagi `Strategiya keyin yoziladi` ham haddan tashqari keskin. Markaziy Bankda strategik ramka, ma'lumot siyosati va javobgarlik chizig'i parallel yurishi kerak.
 
-   **Rewrite condition 02:**
-   - Current: `Kamida 50 ta tarixiy namuna kerak. Bu raqamga yetmasangiz, modelni o'rgatib bo'lmaydi...`
-   - Better: `Kamida 50 ta tarixiy holat kerak: natijani solishtirish, xatolarni ko'rish va xodim tasdig'i jarayonini tekshirish uchun. Bu hali model o'rgatish degani emas.`
+5. **Bank decision artifact at closing**
+   - Hozir Slide 12 savol-javob bilan tugaydi. Workshop natijasi esa bankda qaror hujjatiga aylanishi kerak.
+   - Yakunda har stol topshiradigan artefaktni nomlang: `Pilot nomzod varaqasi` yoki `Pilot qaror kartasi`.
+   - Minimal maydonlar: jarayon nomi, bo'lim egasi, ma'lumot manbasi, metrika, risk/nazorat chegarasi, mas'ul tasdiqlovchi, audit izi, Go/No-Go/Revise qarori.
 
-5. **Slide 10 — canvas lacks an owner/approval field; “risk boundary” alone is not enough for muvofiqlik.**
-   For CB operations and management, the question is not only “AI nima qilmaydi?”, but also “kim tekshiradi, kim tasdiqlaydi, audit izi qayerda qoladi?” Add this now, even if it compresses another field.
+## Top 5 Rewrites in Uzbek
 
-   **Rewrite the 5th canvas cell:**
-   - Current: `Xavf chegarasi — Qaysi qaror AI'ga berilmaydi?`
-   - Better: `Nazorat chegarasi — AI nima tayyorlaydi, kim tekshiradi, kim tasdiqlaydi, audit izi qayerda qoladi?`
-   - Example answer: `AI anomal holatlar ro'yxatini va dalil paketini tayyorlaydi. Inspektor tekshiradi, bo'lim rahbari tasdiqlaydi, versiya va manbalar jurnalga yoziladi.`
+1. **Slide 6 · Atamalarni Uzbek-first kiritish**
 
-## Other Must-Fix Notes
+   Current:
+   `Use Case / Qo'llash Holati`
 
-- **Slide 10 typo in `content.md`:** `Vag'a qilingan bo'lsa` is broken. Use `Mavhum yozilgan bo'lsa — bu qo'llash holati emas.`
-- **`notes.md` is stale:** it still says 13 total in the timing table and old slide-5 examples like `Kredit · Muvofiqlik · Mijoz xizmati · HR`. Update it or delete it from handoff; it will mislead the presenter.
-- **Terminology swap looks complete for `komplaens`, but “muvofiqlik” now needs sharper governance framing.** Replace vague safety language with concrete phrases: `vakolatli xodim`, `tasdiqlash`, `audit izi`, `manba ko'rsatkichi`, `nazorat chegarasi`.
-- **Reduce “AI” where “SI” is used in the title.** Pick one public-facing convention. For this Uzbek deck, prefer `SI`; keep `AI` only where explaining borrowed terms.
+   Rewrite:
+   `Qo'llash holati (Use Case)`
+
+   Body:
+   `Qaysi jarayonda, qaysi xodimga, qaysi o'lchanadigan natijani beradi?`
+
+   Example:
+   `Banklardan kelgan prudensial hisobotlarda keskin o'zgarishlarni 2 soat emas, 20 daqiqada dastlabki ro'yxatga chiqarish. Yakuniy baho inspektorda qoladi.`
+
+2. **Slide 6 · Pilot Loyiha ta'rifini texnik jihatdan tozalash**
+
+   Current:
+   `50 ta tarixiy namuna ustida sinab ko'rish. 4-6 hafta.`
+
+   Rewrite:
+   `Pilot loyiha - qo'llash holatini kichik, nazoratli muhitda tekshirish: 1 bo'lim, 1 jarayon, 1 hujjat turi, kamida 50 ta tarixiy holat, 4-6 hafta, 1-2 ta aniq metrika. Natija chiqsa - kengaytirish ko'rib chiqiladi; chiqmasa - yopiladi va xulosa hujjatlashtiriladi.`
+
+3. **Slide 7 · Qizil zona misolini Markaziy Bankka moslash**
+
+   Current:
+   `To'liq avtomatik kredit qarori`
+
+   Rewrite:
+   `AI asosida avtomatik sanksiya yoki majburiy ko'rsatma chiqarish`
+
+   Support line:
+   `SI signal, dalil paketi va qoralama tayyorlashi mumkin. Rasmiy qaror, ko'rsatma, imzo va javobgarlik vakolatli xodimda qoladi.`
+
+4. **Slide 8 · 50 namuna haqidagi noaniqlikni tuzatish**
+
+   Current:
+   `Bu raqamga yetmasangiz, modelni o'rgatib bo'lmaydi va natija aniq bo'lmaydi.`
+
+   Rewrite:
+   `50 ta tarixiy holat modelni o'rgatish uchun emas, pilotni tekshirish uchun kerak: eski natija bilan solishtiramiz, xato turlarini ko'ramiz, xodim tasdig'i qancha vaqt olishini o'lchaymiz.`
+
+5. **Slide 11-12 · Closingni bank qaror artefakti bilan yopish**
+
+   Add before Q&A:
+   `Har stol yakunda bitta "Pilot qaror kartasi" topshiradi:`
+
+   Card fields:
+   `1) Jarayon nomi`
+   `2) Bo'lim egasi`
+   `3) Ma'lumot manbasi`
+   `4) Pilot metrikasi`
+   `5) Nazorat chegarasi: SI nima tayyorlaydi, kim tekshiradi, kim tasdiqlaydi`
+   `6) Audit izi: manbalar, versiya, qaror sababi qayerda saqlanadi`
+   `7) Qaror: Go / Revise / No-Go`
+
+   Closing line:
+   `Bugun maqsad "AI g'oya" topish emas. Maqsad - rahbariyat va muvofiqlik ko'rib chiqa oladigan bitta o'lchanadigan pilot qaror kartasini chiqarish.`
+
+## Small Cleanup
+
+- `notes.md` stale: 13 slayd timing va eski department misollari qolgan. Uni `content.md` va `index.html` bilan sinxronlang.
+- `SI` va `AI` aralash ishlatilgan. Public-facing slaydlarda `SI`, atama yoki inglizcha ibora ichida `AI` ishlatsin.
+- Slide 10 `Pilot metrikasi` qatorini soddalashtiring: `Vaqt -%, xato -%, SLA +% yoki yopilish vaqti`.
+- Slide 11 birinchi xulosani yumshating: `SI loyihasi shunchaki qiziq g'oya emas - u o'lchanadigan jarayon muammosi.`

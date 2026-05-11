@@ -212,13 +212,13 @@ Shu ikkita so'zni to'g'ri tushunsak, keyingi 13 modulda hech qaerda yo'qolmaymiz
 **Vizual elementlar:**
 2 ta katta yonma-yon kartochka. Chap: USE CASE. O'ng: PILOT LOYIHA. Pastda kichik ramka: **"Pilot testi"** — *"Agar natijani raqam bilan o'lcha olmasak, bu hali pilot emas."*
 
-**Use Case ta'rifi:**
-Qaysi **muammoni**, qaysi **bo'limda**, qancha **vaqt tejab** hal qilamiz?
-*Misol (yomon):* "Kredit jarayonini avtomatlashtirish" — bu strategiya, use case emas.
-*Misol (yaxshi):* "Avtokredit memosi tahlilini 90 daqiqadan 15 daqiqaga tushirish".
+**Qo'llash holati (Use Case) ta'rifi:**
+Qaysi **jarayonda**, qaysi **xodimga**, qaysi **o'lchanadigan natijani** beradi?
+*Misol (yomon):* "Kredit jarayonini avtomatlashtirish" — bu strategiya, qo'llash holati emas.
+*Misol (yaxshi):* "Prudensial hisobotdagi keskin o'zgarishlarni 2 soat emas, 20 daqiqada dastlabki ro'yxatga chiqarish. Yakuniy baho inspektorda qoladi."
 
-**Pilot Loyiha ta'rifi:**
-Use Case'ni qog'ozdan olib, **bitta filialda, bitta mahsulotda, 50 ta tarixiy namuna ustida** sinab ko'rish. 4–6 hafta. Ishladi — kengaytiramiz. Ishlamadi — yopamiz, xulosa olib qolamiz.
+**Pilot loyiha ta'rifi:**
+Qo'llash holatini nazoratli muhitda tekshirish: **1 bo'lim · 1 jarayon · 1 hujjat turi**, kamida **50 ta tarixiy holat**, **4–6 hafta**, **1–2 ta aniq metrika**. Natija chiqsa — kengaytirish ko'rib chiqiladi; chiqmasa — yopiladi va xulosa hujjatlashtiriladi.
 
 **Pilot testi (Codex'dan):**
 > Agar natijani raqam bilan o'lchay olmasak, bu hali pilot emas — bu shunchaki tajriba.
@@ -258,7 +258,7 @@ Ko'p loyiha bor, vaqt cheklangan. Qayerdan boshlash — eng qiyin qadam.
   *Misol:* Ichki FAQ bot — qiladi-yu, lekin katta tejamga olib kelmaydi.
 
 - 🔴 **QIZIL — yuqori murakkablik / past foyda** (HECH QACHON)
-  *Misol:* To'liq avtomatik kredit qarori — risk juda baland, tartibga zid, regulator tasdig'i yo'q.
+  *Misol:* Avtomatik sanksiya · majburiy ko'rsatma — SI faqat signal va dalil paketini tayyorlaydi; rasmiy qaror, ko'rsatma va imzo vakolatli xodimda qoladi.
 
 **Speaker notes:**
 O'z bo'limingizga borib **birdan 10 ta loyihani boshlasangiz** nima bo'ladi? Aytaman: hammasi o'ladi. Hech qaysisi oxiriga yetmaydi. Byudjet ham, asab ham, ishonch ham tugaydi. Shuning uchun saralash matritsasi.
@@ -291,7 +291,7 @@ Bu mezonlardan birortasi tushib qolsa — bu pilot emas, bu xohish.
 1. **Bitta bo'lim** — butun bankga emas, faqat bitta xizmat yoki filialga.
 2. **Bitta jarayon** — "kredit" emas, "avtokredit memosining 3-bandi tahlili".
 3. **Bitta hujjat turi** — Excel'lar va PDFlar aralash emas.
-4. **50 ta tarixiy namuna** — kamida shu ko'p, AI o'qib o'rganishi uchun.
+4. **50 ta tarixiy holat** — pilotni tekshirish uchun: eski natija bilan solishtirish, xato turlarini ko'rish, xodim tasdig'i vaqtini o'lchash. Model o'rgatish degani emas.
 5. **4–6 hafta + 1 aniq metric** — vaqt va o'lchov belgilanmagan bo'lsa, bu xohish.
 
 **Speaker notes:**
@@ -405,8 +405,8 @@ BUGUNGI **3 TA ASOSIY XULOSA**.
 3. **AI yakuniy qaror emas** — u **dalil, qoralama va signal**. Yakuniy "ha" yoki "yo'q" har doim insonda.
 
 **Lug'at recap (auditoriya bilan birga aytamiz):**
-- **Use Case** = ?  →  *(zal javobi)* Qaysi muammo, qaysi bo'lim, qancha tejaydi.
-- **Pilot Loyiha** = ?  →  *(zal javobi)* 1·1·1·50·4–6 hafta · raqam bilan o'lchanadi.
+- **Qo'llash holati (Use Case)** = ?  →  *(zal javobi)* Qaysi jarayonda, qaysi xodimga, qaysi o'lchanadigan natija.
+- **Pilot loyiha** = ?  →  *(zal javobi)* 1·1·1·50·4–6 hafta · 1–2 metrika bilan o'lchanadi.
 
 **Speaker notes:**
 Vaqt tugadi. Stoldagi qog'ozlaringizni qoldiring — keyingi modullarda biz ulardan **eng kuchli 2 tasini tanlab, real loyihaga aylantiramiz**.

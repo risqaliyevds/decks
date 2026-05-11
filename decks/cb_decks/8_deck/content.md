@@ -43,7 +43,7 @@ Yo'l xaritamiz to'rt qismdan iborat. Birinchi qismda — nima uchun bu mavzu siz
 ## Slide 3 — Hook · prototipni kim yig'adi
 
 **Sarlavha:** Spravka avtomatlashtirish — prototipni kim yig'adi?
-**Compare:** An'anaviy yo'l (haftalar + IT navbati) vs No-code prototip yo'li (sandbox prototip soatlarda · prototip → IT audit → pilot → production)
+**Compare:** An'anaviy yo'l (haftalar + IT navbati) vs No-code prototip yo'li (sandbox prototipi soatlarda · prototip → IT audit → pilot → production)
 
 **Speaker text (~210 so'z):**
 Bir misol bilan boshlayman — har bankda uchraydigan vaziyat. Mijoz sizdan spravka so'raydi: hisobida qancha aylanma bor edi 2024-yilda. Bo'lim xodimi qo'l bilan tayyorlaydi, imzolaydi, mijozga yuboradi — 15-20 daqiqa. Kuniga 50 marta. Yiliga 12 ming marta. Avtomatlashtirish kerakligi aniq. Endi savol: kim qiladi? Eski yo'l: bo'lim xodim IT bo'limga ariza yozadi. Brief tayyor bo'lishi 3-4 kun. TZ — yana hafta. Sprint, test, deploy — 2 hafta umumiy, agar yengil bo'lsa. Uch oydan keyin bot ishlay boshlaydi. Yangi yo'l: bo'lim xodimi o'zi yig'adi. n8n ochadi, Telegram trigger node tashlaydi, sichqoncha bilan ulaydi. 30 daqiqa — bot tayyor. IT bo'limi keyin auditdan o'tkazadi, xavfsizlik tekshiradi, production'ga chiqarishni tasdiqlaydi. Bu — no-code inqilobi. "Avtomatlashtirish kim qila oladi?" degan savolga javob o'zgardi. Bu sizning kursingizdagi eng amaliy modul, chunki ertaga bormang, bugungi bilim bilan o'z bo'limingizdagi bitta jarayonni avtomatlashtirishingiz mumkin. Va bu yerda eng zo'r qismi — IT bo'lim sizdan minnatdor bo'ladi, chunki ularning navbati bo'shaydi.
@@ -53,7 +53,7 @@ Bir misol bilan boshlayman — har bankda uchraydigan vaziyat. Mijoz sizdan spra
 ## Slide 4 — No-code falsafasi · 3 ta yutuq
 
 **Sarlavha:** No-code falsafasi · 3 ta yutuq.
-**Lead:** Bu texnologiya emas — bu ish madaniyati o'zgarishi. Bo'lim prototip qiladi, IT xavfsizlik tekshiradi, komplaens tasdiqlaydi.
+**Lead:** Bu texnologiya emas — bu ish madaniyati o'zgarishi. Bo'lim prototip qiladi, IT xavfsizlik bo'limi tekshiradi, komplayens tasdiqlaydi.
 **3 benefit:** ⚡ Tezroq prototip · ↓ IT navbatini yengillashtiradi · 👁 Tushunish oson
 
 **Speaker text (~190 so'z):**
@@ -77,7 +77,7 @@ Endi ikkita kalit so'zni o'rganib olaylik. Bularsiz keyingi 13 ta slayd tushunar
 
 **Sarlavha:** Bozorda 3 ta yo'l · har birining o'z o'rni bor.
 **3 platforma (.sec):**
-- **Zapier:** eng oddiy · 7000+ ulanish · faqat AQSh serveri · $30+/oy · use-case ga qarab — bank ma'lumoti chiqishi mumkin
+- **Zapier:** eng oddiy · 7000+ ulanish · faqat AQSh serveri · $30+/oy · use-case'ga qarab — bank ma'lumoti chiqishi mumkin
 - **Make:** vizual · murakkab oqim · Yevropa serveri (GDPR) · $9+/oy · hosting o'zimizniki emas
 - **n8n** (pilot uchun mos variant): self-hosted joylashtirilsa, ma'lumot oqimini bank nazoratida ushlash osonroq · bepul yoki $20/oy · connector/log/backup alohida audit
 
@@ -213,8 +213,8 @@ No-code qanchalik qulay bo'lsa, shunchalik xavfli — agar to'g'ri qoidalar bo'l
 
 **Sarlavha:** Bugundan qaytib ketadigan 3 xulosa.
 **3 xulosa:**
-- No-code — prototip tezligini oshiradi (sandbox prototip soatlarda · production qarori IT audit + komplaens tasdig'idan keyin · tezlik pilot bilan o'lchanadi)
-- Trigger — workflow'ning yuragi (5 turdan biri · use-case ga qarab; Webhook bo'lsa: token + IP + audit log shart)
+- No-code — prototip tezligini oshiradi (sandbox prototipi soatlarda · production qarori IT audit + komplayens tasdig'idan keyin · tezlik pilot bilan o'lchanadi)
+- Trigger — workflow'ning yuragi (5 turdan biri · use-case'ga qarab; Webhook bo'lsa: token + IP + audit log shart)
 - Ertaga 9-modulda RAG bot prototipini quramiz n8n ustida
 **Lug'at recap:** Trigger · Webhook (token + log bilan himoyalanadi)
 
@@ -224,7 +224,7 @@ No-code qanchalik qulay bo'lsa, shunchalik xavfli — agar to'g'ri qoidalar bo'l
 
 **Sarlavha:** 6 ta savol — production yoki sandbox?
 **Chip:** Bank qaror varaqasi · workflow pilotga chiqadimi?
-**Lead:** Har bo'lim bitta workflow nomini yozsin. 6 savolga "ha" javobi bo'lmasa — sandbox prototip, production emas.
+**Lead:** Har bo'lim bitta workflow nomini yozsin. 6 savolga "ha" javobi bo'lmasa — sandbox prototipi, production emas.
 
 **6 ta savol:**
 1. **Trigger aniqmi?** Email · Schedule · Telegram · Form · Webhook — qaysi va nega.
@@ -232,10 +232,10 @@ No-code qanchalik qulay bo'lsa, shunchalik xavfli — agar to'g'ri qoidalar bo'l
 3. **Inson qayerda tasdiqlaydi?** AI faqat tayyorlaydimi yoki qaror ham qilyaptimi — bankir imzosi qaerda.
 4. **Audit log bormi?** Kim, qachon, nima kiritdi va nima chiqdi.
 5. **Test mezoni bormi?** Vaqt · xato · SLA · eskalatsiya · xavfsizlik — pilot oxirida o'lchanadigan ko'rsatkichlar.
-6. **Mas'ul shaxs bormi?** Bo'lim rahbari · IT rahbari · Komplaens rahbari — uchalasi imzolaydi.
+6. **Mas'ul shaxs bormi?** Bo'lim rahbari · IT rahbari · Komplayens rahbari — uchalasi imzolaydi.
 
 **Speaker text (~150 so'z):**
-Yakuniy savol-javobdan oldin — bugun olib ketadigan bitta artefakt. Bank qaror varaqasi. Har bo'lim 9-modulgacha bo'lgan tanaffusda bitta workflow nomini yozsin. So'ng shu 6 savolga "ha" yoki "yo'q" javob bering. Trigger aniqmi? Email yoki Schedule yoki Webhook — qaysi va nega. Ma'lumot turi qanday — ochiq jamoatchilik bo'limi axboroti emas, mijoz hisob raqami yoki shaxsiy ma'lumot bo'lsa, alohida nazorat shart. Inson qayerda tasdiqlaydi? AI faqat tayyorlasin, yakuniy "ha/yo'q" — bankir. Audit log: har qadam yozilishi shart. Test mezoni — pilot oxirida nimani o'lchaysiz: vaqt, xato, SLA, xavfsizlik incidenti. Mas'ul ega — uchov: bo'lim egasi, IT egasi, komplaens egasi. Faqat 6 ta "ha" bo'lsa — workflow pilotdan production'ga chiqadi. Aks holda — sandbox'da qoladi. Bu varaqa ertaga 9-modulda RAG bot loyihalashda ham ishlaydi.
+Yakuniy savol-javobdan oldin — bugun olib ketadigan bitta artefakt. Bank qaror varaqasi. Har bo'lim 9-modulgacha bo'lgan tanaffusda bitta workflow nomini yozsin. So'ng shu 6 savolga "ha" yoki "yo'q" javob bering. Trigger aniqmi? Email yoki Schedule yoki Webhook — qaysi va nega. Ma'lumot turi qanday — ochiq jamoatchilik bo'limi axboroti emas, mijoz hisob raqami yoki shaxsiy ma'lumot bo'lsa, alohida nazorat shart. Inson qayerda tasdiqlaydi? AI faqat tayyorlasin, yakuniy "ha/yo'q" — bankir. Audit log: har qadam yozilishi shart. Test mezoni — pilot oxirida nimani o'lchaysiz: vaqt, xato, SLA, xavfsizlik incidenti. Mas'ul shaxs — uchov: bo'lim rahbari, IT rahbari, komplayens rahbari. Faqat 6 ta "ha" bo'lsa — workflow pilotdan production'ga chiqadi. Aks holda — sandbox'da qoladi. Bu varaqa ertaga 9-modulda RAG bot loyihalashda ham ishlaydi.
 
 **Speaker text (~190 so'z):**
 Yakun. Bugundan uy ga olib ketadigan uch fikr. Birinchisi: no-code — bo'lim xodimining yangi ish vositasi. Spravka misoli edi: 2 hafta sprintdan 30 daqiqali yig'ishga o'tdik. Programmist navbatini kutmaymiz — o'zimiz yig'amiz, IT auditdan o'tkazadi. Bu sizning ish kunlik amaliyotingizni o'zgartirishi mumkin bo'lgan eng amaliy bilim. Ikkinchisi: trigger — workflow'ning yuragi. Schedule, Webhook, Email, Telegram, Form. Bank stsenariylarining 95% shu beshlikka tushadi. Avtomatlashtirishni boshlaganda doim birinchi savol: "qaysi trigger?" Aniq javob bilan qoldirsangiz — qolgan qadamlar oson kelishadi. Uchinchisi: ertaga 9-modulda biz aynan shu n8n ustida sizning bo'limingiz uchun ishlaydigan birinchi RAG botni quramiz. Bu siz bilan birga qurish — auditoriyadagi har bir ishtirokchi bo'limining hujjatlariga asoslangan o'z botiga ega bo'ladi. Endi — lug'at recap. Birga aytamiz: Trigger nima edi? — workflow'ni boshlatuvchi hodisa. Webhook nima edi? — boshqa dasturdan xabar olish nuqtasi, URL. Yaxshi. Day 1 yakunlandi. Ertaga 9:00 da kun ikkita boshlanadi — kuchni saqlang, 9-modul amaliy va kuchli bo'ladi.

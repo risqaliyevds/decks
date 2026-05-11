@@ -593,9 +593,9 @@ body,p,li,.lead{letter-spacing:0.018em}
 .whoami{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(1.25rem,2.8vw,2.75rem);margin-top:clamp(0.7rem,1.3vw,1.2rem)}
 .whoami-bio{display:flex;flex-direction:column;gap:clamp(0.45rem,0.9vw,0.75rem)}
 .bio-name{font-family:var(--display);font-size:clamp(2.5rem,4.6vw,4.2rem);line-height:0.95;letter-spacing:-0.035em;color:#fff;text-transform:uppercase}
-.bio-mohirdev{display:flex;align-items:center;gap:clamp(0.55rem,1vw,0.9rem);margin-top:clamp(0.2rem,0.5vw,0.4rem)}
-.bio-mohirdev .mohirdev-mark-big{height:clamp(2.4rem,3.6vw,3.2rem);width:auto}
-.bio-mohirdev .at-label{font-family:var(--display);font-size:clamp(0.85rem,1.2vw,1.1rem);letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.45)}
+.bio-header{display:flex;align-items:center;gap:clamp(0.85rem,1.6vw,1.6rem);flex-wrap:wrap}
+.bio-header .mohirdev-mark-big{height:clamp(2.4rem,3.6vw,3.2rem);width:auto}
+.bio-sep{font-family:var(--display);font-size:clamp(2rem,3.6vw,3.4rem);color:rgba(255,255,255,0.25);line-height:0.9;font-weight:400;letter-spacing:0;user-select:none}
 .bio-brand{font-size:clamp(0.85rem,1.15vw,1.05rem);color:rgba(255,255,255,0.7);letter-spacing:0.04em;margin-top:clamp(0.25rem,0.5vw,0.4rem)}
 .bio-brand strong{color:var(--accent-2);font-weight:500}
 .bio-line{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.85);margin-top:clamp(0.45rem,0.9vw,0.75rem)}
@@ -630,7 +630,7 @@ body,p,li,.lead{letter-spacing:0.018em}
 </div>
   <div class="main">
     <div class="title-block reveal r2">
-      <span class="chip">Kun 1 · 9:15 — 10:15</span>
+      <span class="chip">Kun 1 · 9:15–10:15</span>
       <h1 class="title-hero">
         Bank sektori uchun<br>
         <span class="hl">sun'iy intellekt</span><br>
@@ -699,7 +699,7 @@ body,p,li,.lead{letter-spacing:0.018em}
 </div>
         <div>
           <h3 class="phase-title">Sizning bankingizda nimalar qilsak bo'ladi</h3>
-          <p class="phase-desc">Eng zerikarli ishni AI vazifasiga aylantiramiz.</p>
+          <p class="phase-desc">Eng zerikarli ishni AI'ga topshiramiz.</p>
         </div>
         <div class="phase-foot">
 <span class="phase-time">~17 daq</span>
@@ -718,19 +718,19 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main">
-    <span class="chip-out reveal r1">Tanishuv · 60 soniya</span>
-    <h2 class="h2 reveal r2" style="margin-top:clamp(0.45rem,0.9vw,0.75rem)">Sizga <span class="hl">2 kun</span> davomida kim gapiradi?</h2>
+    <div class="bio-header reveal r1">
+      <div class="bio-name">Riskaliev Murad</div>
+      <span class="bio-sep">|</span>
+      <img src="../_shared/logo-mohirdev-iconmark-white.png" alt="Mohirdev" class="mohirdev-mark-big">
+    </div>
+    <span class="chip-out reveal r2" style="margin-top:clamp(0.4rem,0.8vw,0.7rem)">Tanishuv · 60 soniya</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.3rem,0.6vw,0.5rem)">Sizga <span class="hl">2 kun</span> davomida kim gapiradi?</h2>
 
     <div class="whoami reveal r3">
       <div class="whoami-bio">
-        <div class="bio-name">Riskaliev Murad</div>
-        <div class="bio-mohirdev">
-          <span class="at-label">@</span>
-          <img src="../_shared/logo-mohirdev-iconmark-white.png" alt="Mohirdev" class="mohirdev-mark-big">
-        </div>
         <div class="bio-brand">Shaxsiy loyiha: <strong>crea7iveai</strong></div>
 
-        <p class="bio-line">3+ yildan beri AI va NLP loyihalari ustida ishlayman. Fokus — <strong>o'zbek tilida ishlaydigan amaliy AI tizimlari</strong>: bank, ta'lim va onlayn savdo sohalarida.</p>
+        <p class="bio-line">3+ yildan beri AI va NLP loyihalari ustida ishlayman. Fokus — <strong>O'zbek tilida ishlaydigan amaliy AI tizimlari</strong>: bank, ta'lim va onlayn savdo sohalarida.</p>
 
         <div class="bio-strengths">
           <div class="strength-item">
@@ -849,12 +849,12 @@ body,p,li,.lead{letter-spacing:0.018em}
       <span class="chip-out" style="background:transparent">Live demo · bank bot</span>
       <h2 class="h2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Keling, kelajakni <span class="hl">hozir</span> sinab ko'ramiz.</h2>
       <div class="chat">
-        <div class="bubble user">Avtokredit uchun boshlang'ich to'lov?</div>
-        <div class="bubble ai fragment is-visible">AI tahlil qilmoqda... ichki PDF qidirilmoqda</div>
-        <div class="bubble ai fragment is-visible">Javob <strong>kredit_siyosati.pdf, 4.2-band</strong> asosida tuzildi. Yakuniy qaror — mas'ul xodimda.</div>
+        <div class="bubble user">Avtokredit uchun boshlang'ich to'lov qancha?</div>
+        <div class="bubble ai fragment">AI tahlil qilmoqda... ichki PDF qidirilmoqda</div>
+        <div class="bubble ai fragment">Boshlang'ich to'lov <strong>25%</strong> etib belgilangan. <em>Manba: kredit_siyosati.pdf, 4.2-band.</em> Yakuniy qaror — mas'ul xodimda.</div>
       </div>
-      <p class="lead no-bar" style="margin-top:clamp(0.85rem,1.6vw,1.4rem)">Kechagi sehr — bugungi qoida. Modul oxirida har stol shu botni o'z PDF'i bilan qura oladi.</p>
-      <p class="lead no-bar" style="margin-top:clamp(0.5rem,0.9vw,0.8rem);font-size:var(--small);color:rgba(255,255,255,0.55)">Stack: 5 ta n8n node · 1 ta vektor bazasi · 1 ta PDF. Kod yo'q.</p>
+      <p class="lead no-bar" style="margin-top:clamp(0.85rem,1.6vw,1.4rem)">Bugun botning ishlash mantig'ini ko'ramiz: tasdiqlangan hujjatdan dalil — javob qoralamasi — inson tasdig'i.</p>
+      <p class="lead no-bar" style="margin-top:clamp(0.5rem,0.9vw,0.8rem);font-size:var(--small);color:rgba(255,255,255,0.78)">Demo qoidasi: faqat oldindan yuklangan test PDF · real mijoz ma'lumoti yo'q · javob topilmasa "ma'lumot yo'q" deydi.</p>
     </div>
   </div>
 </section>
@@ -916,7 +916,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="dict-card fragment">
         <span class="dict-tag">API</span>
         <h3>AI'ni avtomat ulash</h3>
-        <p>Brauzerdan AI'ga yozish — qo'lda ish. <strong>API</strong> orqali AI <strong>ichki tizim bilan</strong> avtomat suhbat quradi: CRM, Telegram bot, sayt — bir marta sozlanadi, har xat o'zi ishlanadi.</p>
+        <p>Brauzerdan AI'ga yozish — qo'lda ish. <strong>API</strong> orqali AI <strong>ichki tizim bilan</strong> avtomat suhbat quradi: CRM, Telegram bot, sayt — bir marta sozlanadi, har bir so'rov avtomatik ishlanadi.</p>
       </div>
     </div>
   </div>
@@ -984,7 +984,7 @@ body,p,li,.lead{letter-spacing:0.018em}
         <div class="cando-tag">✗ AI'ga yolg'iz topshirilmaydi</div>
         <ul>
           <li><strong>Kreditni tasdiqlash/rad etish:</strong> yakuniy qaror skoring, siyosat va mas'ul xodim nazoratida qoladi.</li>
-          <li><strong>AML / muvofiqlik xulosasi:</strong> AI signal beradi, lekin regulyatorga yuboriladigan qarorni inson qabul qiladi.</li>
+          <li><strong>AML / muvofiqlik xulosasi:</strong> AI signal beradi, lekin regulyatorga yuboriladigan hisobotni inson tasdiqlaydi.</li>
           <li><strong>Pasport va karta ma'lumotlari:</strong> oddiy ommaviy chatbotga yuborilmaydi; ma'lumotni yashirish va yopiq kontur kerak.</li>
           <li><strong>Foiz, kurs, balans:</strong> ichki bank tizimi yoki rasmiy ulanish bo'lmasa, AI taxmin qilib yuborishi mumkin.</li>
         </ul>
@@ -1005,7 +1005,7 @@ body,p,li,.lead{letter-spacing:0.018em}
     <div class="kicker reveal r1">AI banking · global bozor</div>
     <h2 class="big reveal r2">10 yilda <span class="hl">15× o'sish</span></h2>
     <div class="stat-leap reveal r3">
-      <div class="stat-block stat-from fragment is-visible">
+      <div class="stat-block stat-from">
         <div class="stat-year">2023</div>
         <div class="stat-num">$20.87B</div>
       </div>
@@ -1064,7 +1064,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       </div>
     </div>
     <p class="lead no-bar reveal r4">
-      O'zbekiston aynan shu mintaqada. <strong>Bugungi qadam — ertangi ustunlik.</strong>
+      Bu O'zbekiston bo'yicha alohida prognoz emas, ammo bank sektorida AI tezlashayotganini ko'rsatuvchi signal. <strong>Xulosa: nazorat va pilot mezonlari bilan sinaymiz.</strong>
     </p>
     <div class="stat-source reveal r4">Manba: Spherical Insights · AI in Banking Market Report 2024 (illyustrativ qiymatlar)</div>
   </div>
@@ -1138,17 +1138,17 @@ body,p,li,.lead{letter-spacing:0.018em}
     <div class="kicker reveal r1">Demo bot ish oqimi · 9-modulda chuqur</div>
     <h2 class="big reveal r2" style="max-width:32ch">Savol javobga qanday aylanadi?</h2>
     <div class="flowline reveal r3" style="font-size:var(--body)">
-      <span class="pill fragment">Savol</span><span class="arrow">→</span>
-      <span class="pill fragment">Qidiruv</span><span class="arrow">→</span>
-      <span class="pill fragment">Hujjatdan topish</span><span class="arrow">→</span>
-      <span class="pill fragment">Tahlil</span><span class="arrow">→</span>
+      <span class="pill fragment">Savol</span><span class="arrow fragment">→</span>
+      <span class="pill fragment">Qidiruv</span><span class="arrow fragment">→</span>
+      <span class="pill fragment">Hujjatdan topish</span><span class="arrow fragment">→</span>
+      <span class="pill fragment">Tahlil</span><span class="arrow fragment">→</span>
       <span class="pill fragment">Javob</span>
     </div>
     <div class="terminal reveal r3" style="margin-top:clamp(1rem,2vw,2rem)">
       <div class="tabs"><span></span><span></span><span></span></div>
-      <div class="term-line"><b>Savol:</b> "Avtokredit uchun boshlang'ich to'lov qancha?"</div>
+      <div class="term-line"><b>Savol:</b> «Avtokredit uchun boshlang'ich to'lov qancha?»</div>
       <div class="term-line"><b>Qidiruv:</b> kredit_siyosati.pdf / 4.2-band</div>
-      <div class="term-line"><b>Javob:</b> faqat topilgan qoidaga tayangan holda</div>
+      <div class="term-line"><b>Javob:</b> Boshlang'ich to'lov 25% — faqat qoidaga tayangan holda</div>
     </div>
   </div>
 </section>
@@ -1166,8 +1166,8 @@ body,p,li,.lead{letter-spacing:0.018em}
     <p class="lead reveal r2" style="margin-top:0.5rem">AI yechim bankda faqat quyidagi nazoratlar to'liq joriy bo'lganda ishlatiladi.</p>
     <div class="sec reveal r3">
       <div class="item fragment"><div class="ico">🔒</div><h3>Yopiq Kontur</h3><p>Barcha ma'lumot almashinuvi to'g'ridan-to'g'ri himoyalangan API kanallari orqali bo'ladi.</p></div>
-      <div class="item fragment"><div class="ico">🛡️</div><h3>O'qitilmaydi</h3><p>Korporativ shartnoma orqali yuborilgan ma'lumot AI'ni kelajakda o'qitish uchun ishlatilmaydi.</p></div>
-      <div class="item fragment"><div class="ico">🎭</div><h3>Ma'lumot yashirish</h3><p>Ism, familiya, hisob raqami AI'ga uzatishdan oldin avtomatik yashiriladi. Texnik nomi — 3-modulda.</p></div>
+      <div class="item fragment"><div class="ico">🛡️</div><h3>O'qitilmaydi</h3><p>Faqat korporativ shartnoma va «zero-training» sharti asosida ishlanadi — yuborilgan ma'lumotlar modelni o'qitish uchun ishlatilmaydi.</p></div>
+      <div class="item fragment"><div class="ico">🎭</div><h3>Ma'lumot yashirish</h3><p>Ism, familiya, hisob raqami AI'ga uzatishdan oldin avtomatik yashiriladi. Buning texnik jarayoni bilan 3-modulda tanishamiz.</p></div>
     </div>
     <p class="lead no-bar reveal r4" style="margin-top:clamp(0.75rem,1.5vw,1.25rem);font-style:italic;color:var(--mute)">→ Muvofiqlik chuqur ko'rib chiqiladi — 3-modulda.</p>
   </div>
@@ -1182,7 +1182,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head">
 </div>
   <div class="main">
-    <div class="kicker reveal r1">Interaktiv so'rovnoma · use-case tanlovi</div>
+    <div class="kicker reveal r1">Interaktiv so'rovnoma · jarayon tanlovi</div>
     <h2 class="big reveal r2" style="max-width:32ch">Eng zerikarli ish qaysi?</h2>
     <div class="panel wordcloud reveal r3" style="margin-top:clamp(0.85rem,1.6vw,1.5rem)">
       <span class="w1">hisobot</span>
@@ -1213,14 +1213,18 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="main center">
     <div class="kicker reveal r1">Xulosa</div>
     <h2 class="big reveal r2">2 kundan keyin:</h2>
-    <p class="lead no-bar reveal r3" style="font-size:clamp(1.4rem,2.8vw,2.6rem);max-width:34ch;color:#fff;text-align:center;margin-left:auto;margin-right:auto">siz <span class="tok">AI</span> haqida eshitgan odam emas, <span class="hl"><span class="tok">AI</span> bilan ishlaydigan bankirga</span> aylanasiz.</p>
-    <div class="reveal r3" style="display:flex;flex-direction:column;align-items:center;gap:clamp(0.6rem,1.1vw,0.9rem);margin-top:clamp(1rem,2vw,1.6rem)">
+    <p class="lead no-bar reveal r3" style="font-size:clamp(1.15rem,2.2vw,2rem);max-width:34ch;color:#fff;text-align:center;margin-left:auto;margin-right:auto">Siz <span class="tok">AI</span> haqida eshitgan odam emas, <span class="hl"><span class="tok">AI</span> bilan ishlaydigan bankirga</span> aylanasiz.</p>
+    <div class="reveal r3" style="display:flex;flex-direction:column;align-items:center;gap:clamp(0.45rem,0.85vw,0.7rem);margin-top:clamp(0.7rem,1.4vw,1.1rem)">
       <span class="kicker" style="color:rgba(255,255,255,0.85)">Lug'at recap · birga aytamiz</span>
       <div class="flowline" style="justify-content:center;margin-top:0">
         <span class="pill"><strong>LLM</strong><span class="fragment is-visible"> = miya</span></span>
         <span class="pill"><strong>Promt</strong><span class="fragment is-visible"> = buyruq</span></span>
         <span class="pill"><strong>API</strong><span class="fragment is-visible"> = avtomat ulash</span></span>
       </div>
+    </div>
+    <div class="reveal r4" style="display:flex;flex-direction:column;align-items:center;gap:clamp(0.4rem,0.7vw,0.6rem);margin-top:clamp(0.8rem,1.5vw,1.2rem);padding:clamp(0.7rem,1.3vw,1rem) clamp(1rem,2vw,1.6rem);border:1px solid rgba(96,165,250,0.32);border-radius:var(--r);background:rgba(96,165,250,0.06);max-width:64ch">
+      <span class="kicker" style="color:var(--accent-2)">→ Keyingi modulga ko'prik · AI qaror kartasi</span>
+      <p class="lead no-bar" style="text-align:center;margin:0;font-size:clamp(0.85rem,1.1vw,1rem);color:rgba(255,255,255,0.88)">1) Qaysi takroriy jarayon? 2) Qaysi tasdiqlangan hujjat? 3) Qaysi joyda inson tasdig'i?</p>
     </div>
   </div>
 </section>
@@ -1252,7 +1256,7 @@ body,p,li,.lead{letter-spacing:0.018em}
 </main>
 
 <div class="hud">
-  <span class="counter">01 / 19</span>
+  <span class="counter">01 / 20</span>
   <div class="dots"></div>
   <div class="speaker"><span class="dot"></span><strong>Riskaliev Murad</strong> · NLP Engineer · <img src="../_shared/logo-mohirdev-iconmark-white.png" alt="Mohirdev" class="mohirdev-mark"></div>
 </div>

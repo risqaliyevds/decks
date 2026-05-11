@@ -111,7 +111,7 @@ Qanday jaranglayapti? Juda ishonarli. Hujjat raqami, sana, aniq foiz bor. Hatto 
 **Speaker notes:**
 Xavfni yengish uchun avval uni nomlash kerak. AI bankka kelganda 4 xil bosh og'rig'i olib keladi.
 
-1. **Ma'lumot oqishi.** Mijoz ismini to'g'ridan-to'g'ri OpenAI'ga yuborsak nima bo'ladi? Bank siri buziladi. Ertasi kuni muammo.
+1. **Ma'lumot oqishi.** Mijoz ismini himoyalanmagan kanal orqali to'g'ridan-to'g'ri OpenAI'ga yuborsak nima bo'ladi? Bank siri buziladi. Ertasi kuni muammo.
 2. **Gallyutsinatsiya.** Boyagi ko'rganimiz. AI'ning qonun to'qib chiqarishi.
 3. **Bias (noxolislik).** Skoring modelimiz nega aynan shu mijozga "yo'q" dedi? Misol: AQShda bir bank kartasi xotin-qizlarga erlariga qaraganda 10 baravar past limit bergan — sabab tushuntirib berolmadi. AI o'zi bilmagan namunani o'rganib qoladi.
 4. **Regulyator buzilishi.** MB inspektori kelib qanday qaror qilganingizni so'rasa, "AI shunday dedi" deb qutulolmaysiz. Audit izi yo'qmi — jarima.
@@ -134,7 +134,7 @@ Har modulda lug'atimizni boyitib boryapmiz. Bugun muvofiqlik uchun eng muhim ikk
 
 Birinchisi — **Hallucination**. Gallyutsinatsiya. Bu AI bilmagan narsasini "bilmayman" demay, ishonch bilan o'ylab topishi. Fakt yo'q. Bank uchun bu eng qimmat xato.
 
-Ikkinchisi — **Data Masking**. Bu bizning qalqonimiz. Ism, karta, telefon AI'ga yetib borguncha yo'lda avtomatik tokenlarga ([ISM], [KARTA]) almashadi. AI matn mantiqini tushunadi, lekin kimligini bilmaydi.
+Ikkinchisi — **Data Masking**. Bu bizning qalqonimiz. Ism, karta, telefon, hisob, INN — AI'ga yetib borguncha yo'lda avtomatik tokenlarga ([ISM], [KARTA]) almashadi. Lekin muhim eslatma: masking qoidalari muntazam test qilinadi, chunki noto'g'ri sozlash bank sirini ochib yuborishi mumkin.
 
 Shu ikki so'zni dars oxirida yana so'rayman.
 
@@ -174,7 +174,7 @@ Endi eng nozik masala — mijoz shaxsiy ma'lumotlari.
 
 Nima qilamiz? O'rtaga "gateway" (darvoza) qo'yamiz. Bu darvoza xabarni oladi va barcha nozik joylarni tokenlarga almashtiradi. AI'ga nima boradi? (o'ngga qarang) "Salom, men [ISM], [KARTA_4] kartam ushlanib qoldi."
 
-AI'ga mantiq kerak, u karta bloklanganini tushunadi va javob tayyorlaydi. Qaytayotganda darvoza yana ismni joyiga qo'yib mijozga beradi. AI esa hech qachon Akmal Karimovni ko'rmadi.
+AI'ga mantiq kerak, u karta bloklanganini tushunadi va javob tayyorlaydi. Qaytayotganda darvoza yana ismni joyiga qo'yib mijozga beradi. Masking shaxsni aniqlovchi ma'lumotlarni AI'ga tushishdan saqlaydi — lekin qoidalar muntazam test qilinishi shart.
 
 ---
 
@@ -191,7 +191,7 @@ Har qanday bot yoki model ishga tushishidan oldin uchta elakdan o'tishi kerak.
 
 Birinchisi — Markaziy Bank talablari. Bank siri qonuni, axborot xavfsizligi standartlari.
 Ikkinchisi — o'zimizning ichki siyosat. Kengash tasdiqlagan qoidalar, javobgarlik matritsasi.
-Uchinchisi — Xalqaro standartlar. "Bizga GDPR nima kerak" demang. Agar xalqaro kartalar (Visa/Mastercard) bilan ishlasangiz yoki chet el bankida vakillik hisobingiz bo'lsa, sizdan shuni talab qilishadi.
+Uchinchisi — Xalqaro standartlar. "Bizga GDPR nima kerak" demang. Agar xalqaro kartalar (Visa/Mastercard) bilan ishlasangiz, chet el bankida vakillik hisobingiz bo'lsa yoki tashqi audit kelsa, hamkor talabi sifatida ko'tarilishi mumkin.
 
 Bittasidan o'tolmadikmi — proyekt to'xtaydi. Shuning uchun buni arxitektura bosqichida o'ylash kerak.
 
@@ -246,15 +246,15 @@ Shu rollardan biri aniq belgilanmasa, loyiha bo'yicha javobgarlik, audit izi va 
 3 ta senariy kartasi. Tagida Past, O'rta, Yuqori tugmalari.
 
 **Speaker notes:**
-Endi ozgina uyg'onamiz. Men senariyni o'qiyman, siz qo'l ko'tarib ovoz berasiz: bu xavf Pastmi (Yashil), O'rtami (Sariq) yoki Yuqorimi (Qizil)? Tayyormisiz?
+Endi ozgina uyg'onamiz. Men senariyni o'qiyman, siz qo'l ko'tarib ovoz berasiz: yashil — past xavf, sariq — o'rta, qizil — yuqori. Tayyormisiz?
 
-**Senariy 1:** Operator chat-botdan yangi kredit mahsuloti shartlari haqida so'rayapti, bot ichki PDF qoidasidan javob beryapti, mijoz ismi maskalangan.
+**Senariy 1:** Operator chat-botdan yangi kredit mahsuloti shartlari haqida so'radi, bot ichki PDF qoidasidan javob berdi, mijoz ismi maskalandi.
 Kim yashil deydi? Qo'llarni ko'ray. (pauza) To'g'ri, yashil. RAG bor, masking bor.
 
-**Senariy 2:** Skoring modeli kreditni rad etdi. Lekin sababini tushuntirib bera olmaydi. Qora quti.
+**Senariy 2:** Skoring modeli kreditni rad etdi. Lekin sababini tushuntirib bera olmadi. Qora quti.
 Nima deysiz? (pauza) Ha, bu sariq-qizil. Mijoz e'tiroz qilsa, asoslab berolmaysiz.
 
-**Senariy 3:** Marketing bo'limi mijozlar bazasini ChatGPT'ga yuklab, "segmentatsiya qilib ber" dedi. Maskalashsiz.
+**Senariy 3:** Marketing bo'limi mijozlar bazasini ChatGPT'ga yukladi va "segmentatsiya qilib ber" dedi. Maskalashsiz, audit logsiz.
 Qani... Qizillar qo'lini ko'tarsin. (kuladi) Aynan! Bu to'liq qizil. Bank sirini ochiqchasiga buzish.
 
 ---
@@ -288,8 +288,8 @@ Odamlar AI haqida ko'p afsonalarga ishonishadi. Keling, ularni tezda yo'q qilami
 **Speaker notes:**
 Xulosa qilamiz. Muvofiqlik — texnologiyani bo'g'ish uchun emas, xavfsiz ishlatish uchun. Bizning 3 ta tayanchimiz bor:
 1. Gallyutsinatsiyaga qarshi — **RAG** (hujjatdan ko'chirish).
-2. Shaxsiy ma'lumot oqishiga qarshi — **Data Masking** (ismlarni yashirish).
-3. Boshboshdoqlikka qarshi — **4 rol va Audit log**.
+2. Shaxsiy ma'lumot oqishiga qarshi — **Data Masking** (ism/karta/INNni yashirish, qoidalar test qilinadi).
+3. Boshboshdoqlikka qarshi — **4 rol + audit log + qaror kartasi** (Go/No-Go hujjatlashtiriladi).
 
 Endi, odatimizga ko'ra, dars boshidagi lug'atni birga qaytaramiz. Qani, zal:
 
@@ -297,7 +297,7 @@ Endi, odatimizga ko'ra, dars boshidagi lug'atni birga qaytaramiz. Qani, zal:
 (Zal bilan birga): *AI ishonch bilan o'ylab topgan, mavjud bo'lmagan javob!*
 
 **Data Masking** nima?
-(Zal bilan birga): *Shaxsiy ma'lumotlarni AI'ga uzatishdan oldin tokenlarga almashtirish!*
+(Zal bilan birga): *Shaxsiy va bank siri ma'lumotlarni AI'ga ketishidan oldin tokenlarga almashtirish!*
 
 Ajoyib. Arxitekturani tushundik. Endi savollar.
 

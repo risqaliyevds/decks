@@ -621,7 +621,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main">
-    <h2 class="h2 reveal r2">"Hisobimda nechta pul?" —<br>bot va agent <span class="hl">bir xil emas</span>.</h2>
+    <h2 class="h2 reveal r2">"Hisobimda qancha mablag' bor?" —<br>bot va agent <span class="hl">bir xil ishlamaydi</span>.</h2>
     <p class="lead reveal r2">Bittagina mijoz savoli — ikki xil javob. Farq matnda emas, ish bajarishda.</p>
     <div class="compare reveal r3">
       <div class="col">
@@ -671,7 +671,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="main">
     <span class="chip-out reveal r1">Bankir uchun AI lug'ati · 10-modul</span>
     <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Ikki so'z — modulning <span class="hl">poydevori</span>.</h2>
-    <p class="lead reveal r2">Bu ikki atama 11, 12, 14-modullarda qaytadi. Hozir bir marta tushunsak — qolgan kun engil o'tadi.</p>
+    <p class="lead reveal r2">Bu ikki atama 11, 12, 14-modullarda qaytadi. Hozir bir marta tushunsak — qolgan kun yengil o'tadi.</p>
     <div class="dict dict-2 reveal r3">
       <div class="dict-card fragment">
         <span class="dict-tag">Agent</span>
@@ -681,7 +681,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="dict-card fragment">
         <span class="dict-tag">Tool Use</span>
         <h3>Asbobdan foydalanish</h3>
-        <p>AI ruxsatli asbobni chaqiradi. Bankda ikki guruh: <strong>read tool (o'qish)</strong> — balans, hujjat, kursni oladi; <strong>write tool (yozish)</strong> — tizimga ta'sir qiladi (xat, hisob, fayl) va odatda <strong>inson tasdig'i, limit va audit</strong>ni talab qiladi.</p>
+        <p>AI ruxsatli asbobni chaqiradi. Bankda ikki guruh: <strong>read tool (o'qish)</strong> — balans, hujjat, kursni oladi; <strong>write tool (yozish)</strong> — tizimga ta'sir qiladi (xat, hisob, fayl) va odatda <strong>inson tasdig'i, limit va audit</strong> talab qiladi.</p>
       </div>
     </div>
   </div>
@@ -780,7 +780,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="benefit fragment">
         <div class="stat">05</div>
         <h3>Calculation · hisob-kitob</h3>
-        <p>LLM matematikada zaif. Calculator toolini berish kerak (read tool).</p>
+        <p>LLM matematikada zaif. Kalkulyator asbobini berish kerak (read tool).</p>
         <div class="ex"><strong>Misol</strong>credit_emi · currency_convert</div>
       </div>
     </div>
@@ -830,9 +830,9 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="arrow">→</div>
       <div class="step"><div class="ico">🗂️</div><h4>customer_lookup</h4><p>read tool — demo mijoz topildi.</p></div>
       <div class="arrow">→</div>
-      <div class="step brain"><div class="ico">📅</div><h4>credit_schedule</h4><p>read tool — keyingi to'lov sanasi va summasi.</p><span class="chip">Tool</span></div>
+      <div class="step"><div class="ico">📅</div><h4>credit_schedule</h4><p>read tool — keyingi to'lov sanasi va summasi.</p><span class="chip">Tool</span></div>
       <div class="arrow">→</div>
-      <div class="step"><div class="ico">📲</div><h4>Javob</h4><p>Sana + summa. Eslatma — write tool, inson tasdig'i bilan.</p></div>
+      <div class="step brain"><div class="ico">📲</div><h4>Javob</h4><p>Sana + summa. Eslatma — write tool, inson tasdig'i bilan.</p></div>
     </div>
   </div>
 </section>
@@ -878,7 +878,7 @@ body,p,li,.lead{letter-spacing:0.018em}
           <li>Vazifa aniq, bir o'qda — savol → tool → javob</li>
           <li>Mas'uliyat 1 bo'limga tushadi (operator, KYC)</li>
           <li>Tool soni 3–6 ga kiradi</li>
-          <li>Sikl natijasi tekshiriladigan</li>
+          <li>Sikl natijasini tekshirish oson</li>
           <li>Audit log bitta joyda yig'iladi</li>
         </ul>
       </div>
@@ -886,9 +886,9 @@ body,p,li,.lead{letter-spacing:0.018em}
         <div class="cando-tag">✗ Bitta agent — yomon</div>
         <ul>
           <li>Vazifa 5+ bo'limga tarqalgan (kredit + muvofiqlik + xazina)</li>
-          <li>Har bo'limning o'z qoidasi — bitta agent bilolmaydi</li>
+          <li>Har bo'limning o'z qoidasi bor — bitta agent hammasini qamrab ololmaydi</li>
           <li>Tool soni 15+ — agent yo'qolib qoladi</li>
-          <li>Ikki tomonlama qaror (mijoz + bank manfaati)</li>
+          <li>Ziddiyatli qaror (mijoz vs bank manfaati)</li>
           <li>Birinchi xato butun jarayonni to'xtatadi</li>
         </ul>
       </div>
@@ -910,7 +910,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="item fragment">
         <div class="ico">👻</div>
         <h3>Mavjud bo'lmagan asbobni chaqirish</h3>
-        <p>Agent yo'q toolni "ishlatdim" deb yozadi yoki parametrni xato beradi. Yechim: <strong>schema validatsiya</strong> (11-modul).</p>
+        <p>Agent yo'q toolni "ishlatdim" deb yozadi yoki parametrni xato beradi. Yechim: <strong>schema validatsiyasi</strong> (11-modul).</p>
       </div>
       <div class="item fragment">
         <div class="ico">♾️</div>
@@ -920,7 +920,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="item fragment">
         <div class="ico">🚧</div>
         <h3>Xavfsizlik chegarasi</h3>
-        <p>Agent o'z-o'zi xat yuboradi, hisob o'zgartiradi, fayl o'chiradi. Yechim: <strong>write tool</strong>'larga inson tasdig'i, limit, audit.</p>
+        <p>Agent mustaqil ravishda xat yuboradi, hisob o'zgartiradi, fayl o'chiradi. Yechim: <strong>write tool</strong>'larga inson tasdig'i, limit, audit.</p>
       </div>
     </div>
   </div>
@@ -971,7 +971,7 @@ body,p,li,.lead{letter-spacing:0.018em}
     <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Sizning bo'limingizda <span class="hl">qanday agent</span> kerak?</h2>
     <div class="questions reveal r3">
       <div class="q fragment"><span class="n">01</span><span>Qaysi <span class="hint">takrorlanadigan vazifa</span> uchun agent kerak — kuniga 10+ marta?</span></div>
-      <div class="q fragment"><span class="n">02</span><span>Agentga <span class="hint">qaysi 3 ta tool</span> berasiz? (DB · API · file · email · hisob)</span></div>
+      <div class="q fragment"><span class="n">02</span><span>Agentga <span class="hint">qaysi 3 ta tool</span> berasiz? (DB · API · file · email · hisob-kitob)</span></div>
       <div class="q fragment"><span class="n">03</span><span>Qayerda <span class="hint">xavf</span> bor? Tool xato chaqirsa — nima yo'qotamiz?</span></div>
     </div>
   </div>
@@ -989,13 +989,13 @@ body,p,li,.lead{letter-spacing:0.018em}
     <div class="close-list reveal r3">
       <div class="close-row"><span class="arrow">💡</span><p><strong>Agent ≠ bot</strong> — agent ruxsat berilgan tool'lardan foydalanib bosqich tanlaydi. Tool Use bu farqning markazi.</p></div>
       <div class="close-row"><span class="arrow">💡</span><p><strong>Aniq, tor doirada qiling</strong> — birinchi agent: 1 vazifa + 3 tool + 1 bo'lim. Multi-agent — keyinroq.</p></div>
-      <div class="close-row"><span class="arrow">💡</span><p><strong>Xavf chegaralari aniq</strong> — schema validatsiya, qadam cheklovi (max_steps), write tool'larga inson tasdig'i, audit log.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Xavf chegaralari aniq</strong> — schema validatsiyasi, qadam cheklovi (max_steps), write tool'larga inson tasdig'i, audit log.</p></div>
     </div>
     <div class="recap reveal r3">
       <div class="recap-tag">Lug'at recap · birga aytamiz</div>
       <div class="recap-terms">
         <div class="recap-term"><strong>Agent</strong> <span class="ans">ruxsatli yordamchi tizim: LLM + xotira + asboblar; chegaradan chiqsa — insonga uzatadi</span></div>
-        <div class="recap-term"><strong>Tool Use</strong> <span class="ans">read tool — o'qiydi · write tool — tasdiq, limit, audit talab qiladi</span></div>
+        <div class="recap-term"><strong>Tool Use</strong> <span class="ans">read tool — faqat o'qiydi · write tool — tasdiq, limit va audit talab qiladi</span></div>
       </div>
     </div>
   </div>

@@ -48,7 +48,7 @@ Mavzuning **yo'l xaritasi**.
 ## Slide 3 — Hook · "Bot vs Agent — bittagina misol"
 
 **Sarlavha:**
-"Hisobimda nechta pul?" — **bot va agent** bir xil emas.
+"Hisobimda qancha mablag' bor?" — **bot va agent** bir xil ishlamaydi.
 
 **Mazmun (`.compare` 2-col):**
 
@@ -87,10 +87,10 @@ Ikkita so'z — modulning **poydevori**.
 **Mazmun (`.dict.dict-2`):**
 
 - **Agent** — *"Fikrlovchi yordamchi tizim"*. LLM + xotira + ruxsat berilgan asboblar bir tizimda. Vazifani tushunadi, mosini tanlaydi, natijani izohlaydi va belgilangan chegaradan chiqsa — inson xodimiga uzatadi. Mustaqil qaror egasi emas: huquq, limit va javobgarlik bank siyosati bilan belgilanadi.
-- **Tool Use** — *"Asbobdan foydalanish"*. AI ruxsatli asbobni chaqiradi. Bankda ikki guruh: **read tool** — faqat o'qiydi (balans, hujjat, kurs); **write tool** — tizimga ta'sir qiladi (xat, hisob, fayl) va odatda inson tasdig'i, limit va auditni talab qiladi.
+- **Tool Use** — *"Asbobdan foydalanish"*. AI ruxsatli asbobni chaqiradi. Bankda ikki guruh: **read tool** — faqat o'qiydi (balans, hujjat, kurs); **write tool** — tizimga ta'sir qiladi (xat, hisob, fayl) va odatda inson tasdig'i, limit va audit talab qiladi.
 
 **Speaker notes (~170 so'z):**
-Bu ikki atama bugundan keyin har modulda qaytadi: 11-modulda function calling bilan birga, 12-modulda pipeline ichida, 14-modulda guruhli loyihada. Hozir bir marta to'g'ri tushunsak — qolgan kun engil o'tadi. Agent — bu **bitta dastur**. Uning ichida 3 ta narsa bor: LLM (mantiqiy fikrlash uchun), xotira (avvalgi savollar va RAG bilim bazasi), va asboblar ro'yxati. Bu uchtasi birgalikda — agent. Tool Use — bu agent ichidagi eng muhim qobiliyat. Avvalgi LLM faqat matn yozardi. Tool use bilan u: bank tizimiga so'rov yuboradi, valyuta kursini API'dan oladi, kalkulyatorda hisoblaydi, faylga yozadi. AIning "qo'li" — shu. Hozircha shuni eslab qoling: agent — bu yondashuv, tool use — bu agentning eng muhim mexanizmi. Birinchisiz ikkinchisi yo'q. Birga aytamiz: Agent — fikrlovchi yordamchi. Tool Use — asbobdan foydalanish.
+Bu ikki atama bugundan keyin har modulda qaytadi: 11-modulda function calling bilan birga, 12-modulda pipeline ichida, 14-modulda guruhli loyihada. Hozir bir marta to'g'ri tushunsak — qolgan kun yengil o'tadi. Agent — bu **bitta dastur**. Uning ichida 3 ta narsa bor: LLM (mantiqiy fikrlash uchun), xotira (avvalgi savollar va RAG bilim bazasi), va asboblar ro'yxati. Bu uchtasi birgalikda — agent. Tool Use — bu agent ichidagi eng muhim qobiliyat. Avvalgi LLM faqat matn yozardi. Tool use bilan u: bank tizimiga so'rov yuboradi, valyuta kursini API'dan oladi, kalkulyatorda hisoblaydi, faylga yozadi. AIning "qo'li" — shu. Hozircha shuni eslab qoling: agent — bu yondashuv, tool use — bu agentning eng muhim mexanizmi. Birinchisiz ikkinchisi yo'q. Birga aytamiz: Agent — fikrlovchi yordamchi. Tool Use — asbobdan foydalanish.
 
 ---
 
@@ -138,7 +138,7 @@ Sizning agentingizga **qaysi 5 ta tool**?
 2. **DB query (baza so'rovi)** — Bank ichki bazaga so'rov, faqat o'qish huquqi (read tool). *Misol: mijoz hisobi, tarix, kredit jadvali.*
 3. **File read (fayl o'qish)** — PDF/Excel/Word fayldan kerakli xatboshini topish (read tool, RAG bilan). *Misol: shartnoma, tarif jadvali.*
 4. **Email/Telegram (xabar)** — Xabar yuborish (write tool). Limit, inson tasdig'i va audit shart. *Misol: mijozga eslatma, rahbarga hisobot.*
-5. **Calculation (hisob-kitob)** — Calculator tool (read tool). LLM matematikada zaif. *Misol: kredit foizi, EMI, valyuta konvertatsiyasi.*
+5. **Calculation (hisob-kitob)** — Kalkulyator asbobi (read tool). LLM matematikada zaif. *Misol: kredit foizi, EMI, valyuta konvertatsiyasi.*
 
 **Speaker notes (~170 so'z):**
 Bank ichida ko'pchilik agent shu 5 ta tool atrofida quriladi. Birinchisi — API call. Bu eng keng tarqalgan: agent tashqi xizmatga so'rov yuboradi va javobni javobiga qo'shadi. Markaziy bank kursi, mijoz raqamiga xat, sanksiyalar bazasi — hammasi shu yerda. Ikkinchisi — Database query. Bank ichki bazasiga "SELECT" so'rovi. Mijoz balansi, oxirgi 10 o'tkazma, kredit jadvali — bu DB tool bilan olinadi. Eslatma: agentga to'g'ri huquq bering — faqat o'qish, yozmaslik. Uchinchisi — File read. PDF shartnomadan kerakli xatboshini topadi. Bu RAG bilan birga ishlaydi. To'rtinchisi — Email/Telegram send. Agent o'zi xat yubora oladi: "Mijozga eslatma jo'nat" desa — yuboradi. Bu eng xavfli tool — buni 13-slaydda ko'rib chiqamiz. Beshinchisi — Calculation. LLM matematikada zaif, shuning uchun calculator toolini berish kerak. Agent o'zi hisoblamaydi — toolga buyuradi. Sizning bo'limingizda qaysi 3 ta tool eng kerak? — bu savol slayd 15 da qaytadi.
@@ -207,14 +207,14 @@ Multi-agent — qachon **HA**, qachon **YO'Q**.
 - Vazifa aniq, bir o'qda — savol → tool → javob.
 - Mas'uliyat 1 bo'limga tushadi (operator, KYC).
 - Tool soni 3–6 ga kiradi.
-- Sikl natijasi tekshiriladigan.
+- Sikl natijasini tekshirish oson.
 - Audit log bitta joyda yig'iladi.
 
 **YO'Q — Bitta agent uchun yomon:**
 - Vazifa 5+ bo'limga tarqalgan (kredit + muvofiqlik + xazina + xavfsizlik).
-- Har bo'limning o'z qoidasi bor — bitta agent hammasini bilolmaydi.
+- Har bo'limning o'z qoidasi bor — bitta agent hammasini qamrab ololmaydi.
 - Tool soni 15+ — agent yo'qolib qoladi.
-- Bitta agent ikkalovchi qaror qabul qiladi (mijoz va bank manfaati ziddiyati).
+- Bitta agentga ziddiyatli qaror beriladi (mijoz va bank manfaati to'qnashuvi).
 - Birinchi xato butun jarayonni to'xtatadi.
 
 **Speaker notes (~190 so'z):**
@@ -229,12 +229,12 @@ Agentlarning **3 ta xavf nuqtasi**.
 
 **Mazmun (`.sec` 3-card):**
 
-- **Mavjud bo'lmagan asbobni chaqirish (Hallucinated tool call)** — Agent yo'q toolni "ishlatdim" deb yozadi yoki parametrni xato beradi. Yechim: schema validatsiya (11-modul).
+- **Mavjud bo'lmagan asbobni chaqirish (Hallucinated tool call)** — Agent yo'q toolni "ishlatdim" deb yozadi yoki parametrni xato beradi. Yechim: schema validatsiyasi (11-modul).
 - **Cheksiz sikl (Infinite loop)** — Agent siklda qolib ketadi: tool chaqiradi → natija yoqmaydi → yana chaqiradi. Yechim: qadam cheklovi (max_steps = 5–8).
-- **Xavfsizlik chegarasi (Security boundary)** — Agent o'z-o'zi xat yuboradi, hisob o'zgartiradi, fayl o'chiradi. Yechim: write tool'larga inson tasdig'i, limit, audit; har tool huquqi alohida.
+- **Xavfsizlik chegarasi (Security boundary)** — Agent mustaqil ravishda xat yuboradi, hisob o'zgartiradi, fayl o'chiradi. Yechim: write tool'larga inson tasdig'i, limit, audit; har tool huquqi alohida.
 
 **Speaker notes (~190 so'z):**
-Agent — kuchli, lekin xavfli vosita. Uchta eng katta xavfni biling. Birinchisi — hallucinated tool call. Agent ko'p marta toolni xayoliga keltirib chaqiradi: "balance_get" deb yozadi, lekin bizda "balance_check" bor. Yoki parametrni xato beradi: account_id o'rniga ism yozadi. Bu bilan tizimda xato keladi. Yechim — schema validatsiya: har tool chaqiruvi oldin tekshiriladi, mos kelmasa bekor qilinadi. Buni 11-modulda function calling bilan o'rganamiz. Ikkinchisi — infinite loop. Agent o'z natijasini yoqtirmaydi va qayta-qayta chaqiradi. Bu — qimmat (har chaqiruv pul) va xavfli (foydalanuvchi javobni kutib qoladi). Yechim — qattiq cheklov: max 5–8 qadam, undan keyin agent to'xtaydi va "Yordam topa olmadim, operatorga jo'natayinmi?" deydi. Uchinchisi va eng xavflisi — security boundary. Agentga "email_send" tool berdik — u bir xato qildi va 1000 ta mijozga noto'g'ri xat yubordi. Yechim: yozish (write) tool'lariga albatta inson tasdig'i. O'qish (read) tool'lar avtomatik bo'lishi mumkin, yozish — yo'q. Bu qoida. Muvofiqlikda esa — har tool huquqi alohida loglanadi.
+Agent — kuchli, lekin xavfli vosita. Uchta eng katta xavfni biling. Birinchisi — hallucinated tool call. Agent ko'p marta toolni xayoliga keltirib chaqiradi: "balance_get" deb yozadi, lekin bizda "balance_check" bor. Yoki parametrni xato beradi: account_id o'rniga ism yozadi. Bu bilan tizimda xato keladi. Yechim — schema validatsiyasi: har tool chaqiruvi oldin tekshiriladi, mos kelmasa bekor qilinadi. Buni 11-modulda function calling bilan o'rganamiz. Ikkinchisi — infinite loop. Agent o'z natijasini yoqtirmaydi va qayta-qayta chaqiradi. Bu — qimmat (har chaqiruv pul) va xavfli (foydalanuvchi javobni kutib qoladi). Yechim — qattiq cheklov: max 5–8 qadam, undan keyin agent to'xtaydi va "Yordam topa olmadim, operatorga jo'natayinmi?" deydi. Uchinchisi va eng xavflisi — security boundary. Agentga "email_send" tool berdik — u bir xato qildi va 1000 ta mijozga noto'g'ri xat yubordi. Yechim: yozish (write) tool'lariga albatta inson tasdig'i. O'qish (read) tool'lar avtomatik bo'lishi mumkin, yozish — yo'q. Bu qoida. Muvofiqlikda esa — har tool huquqi alohida loglanadi.
 
 ---
 
@@ -281,14 +281,14 @@ Bugun **o'zingiz bilan olib ketadigan** 3 xulosa.
 
 1. **Agent ≠ bot** — agent ruxsat berilgan tool'lardan foydalanib bosqich tanlaydi. Tool Use bu farqning markazi.
 2. **Aniq, tor doirada qiling** — birinchi agent: 1 vazifa + 3 tool + 1 bo'lim. Multi-agent — keyinroq.
-3. **Xavf chegaralari aniq** — schema validatsiya, qadam cheklovi (max_steps), write tool'larga inson tasdig'i, audit log.
+3. **Xavf chegaralari aniq** — schema validatsiyasi, qadam cheklovi (max_steps), write tool'larga inson tasdig'i, audit log.
 
 **Lug'at recap (`.recap`):**
 - **Agent** — ruxsatli yordamchi tizim: LLM + xotira + asboblar; chegaradan chiqsa — insonga uzatadi
 - **Tool Use** — read tool o'qiydi · write tool tasdiq, limit va audit talab qiladi
 
 **Speaker notes (~150 so'z):**
-Auditoriyaga 3 xulosani qisqa ovoz bilan birga aytamiz. Birinchisi — agent va bot bir xil emas. Bu — modulning markaziy farqi. Ikkinchisi — agent loyihasini boshlaganda, tor doirada qiling. Bizning birinchi maslahatimiz: 1 vazifa, 3 tool, 1 bo'lim. Multi-agent moda, lekin ko'p xato. Uchinchisi — xavfni avval bilib oling: schema validatsiya, max steps, va eng muhimi — write tool'lar uchun inson tasdig'i. Lug'at recapda 30 soniya: "Agent — bu nima edi?" — auditoriyadan biri javob beradi: "fikrlovchi yordamchi". "Tool Use — bu nima edi?" — yana javob: "asbobdan foydalanish". Quvvatlangan retentsiya — bu eng muhim usul. Keyingi modul (11-modul) — bizda voice memo bot va schema dizayni: agent qurishning amaliy davomi.
+Auditoriyaga 3 xulosani qisqa ovoz bilan birga aytamiz. Birinchisi — agent va bot bir xil emas. Bu — modulning markaziy farqi. Ikkinchisi — agent loyihasini boshlaganda, tor doirada qiling. Bizning birinchi maslahatimiz: 1 vazifa, 3 tool, 1 bo'lim. Multi-agent moda, lekin ko'p xato. Uchinchisi — xavfni avval bilib oling: schema validatsiyasi, max steps, va eng muhimi — write tool'lar uchun inson tasdig'i. Lug'at recapda 30 soniya: "Agent — bu nima edi?" — auditoriyadan biri javob beradi: "fikrlovchi yordamchi". "Tool Use — bu nima edi?" — yana javob: "asbobdan foydalanish". Quvvatlangan retentsiya — bu eng muhim usul. Keyingi modul (11-modul) — bizda voice memo bot va schema dizayni: agent qurishning amaliy davomi.
 
 ---
 

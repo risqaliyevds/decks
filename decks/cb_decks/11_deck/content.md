@@ -80,7 +80,7 @@ Aniq raqam ko'rsating. "Pure LLM 22% deb javob berdi. Bank PDF'da 18% yozilgan. 
 **2 ta dict-card:**
 
 - **RAG** — *Retrieval-Augmented Generation*
-  Bankir tilida: "**AI internetdan emas, faqat sizning bank PDF'idan o'qib javob beradi**". Avval qidiradi, keyin shu manbaga tayanib javob yozadi. Manbasiz — javob yo'q.
+  Bankir tilida: "**AI avval tasdiqlangan bank hujjatlaridan mos bandni topadi, keyin faqat shu bandga tayanib javob yozadi**". Manba topilmasa — javob yo'q.
 
 - **Embedding** — *matnning vektor ko'rinishi*
   Matnni raqamli vakilga aylantirish — shunda **"avtokredit foizi"** va **"mashina krediti stavkasi"** bir-biriga yaqin topiladi (ma'no jihatidan). Foydalanuvchi qaysi so'zni ishlatishidan qat'i nazar — bot to'g'ri bandni topadi.
@@ -114,7 +114,7 @@ Bu modulda yangi 2 atama. Boshqa decklar bularni qayta ta'riflamaydi (uniqueness
 
 **4 stat-cell:**
 - **77 Node** — 9-modul klassifikator: 7 node. Bu — 11x katta.
-- **14 Marshrut** — Q&A + 6 admin: /help /list_docs /add_doc /delete_doc /reindex /stats /cancel
+- **14 Marshrut** — Q&A + 7 admin (/help /list_docs /add_doc /delete_doc /reindex /stats /cancel) + 6 tasdiqlash/xato qadami.
 - **2 Eshik** — Front: Telegram (savol). Back: Manual Trigger (admin reload).
 - **5 Top-K** — Har savolga 5 ta eng yaqin chunk. 800 belgi, 120 overlap.
 
@@ -156,7 +156,7 @@ Overlap nima ekanligini visualisation bilan ko'rsating. "Bandning bog'lovchi qis
 
 - **Mijoz savoli** — "Avtokredit foizi qancha?" (Embedding: vektor [0.21, 0.84, ...] · Top-K=5 chunk topiladi · AI Agent shu 5 chunk'ga tayanib javob tuzadi)
 
-- **Bot javobi** — "Avtokredit nizomi 4-bandiga ko'ra: yangi avto — yillik **18%**; ikkilamchi bozor — yillik **21%**; boshlang'ich to'lov 30% dan kam emas; 5 yildan eski avto uchun 50%."
+- **Bot javobi** — "Kredit siyosati 4-bandiga ko'ra: yangi avto — yillik **18%**; ikkilamchi bozor — yillik **21%**; boshlang'ich to'lov 30% dan kam emas; 5 yildan eski avto uchun 50%."
   - **Manba:** kredit_siyosati.pdf · 4.1-band, 4.2-band
   - "Yakuniy qaror — bankir hamkasbim bilan kelishilgan holda bo'ladi."
 
@@ -165,7 +165,7 @@ Overlap nima ekanligini visualisation bilan ko'rsating. "Bandning bog'lovchi qis
 ## Slide 11 — Manba tekshiruvi · har javob = audit izi
 
 **Sarlavha:** Har javob — **manba bilan**. Har manba — audit izi.
-**Lead:** RAG botning bank uchun asosiy ustunligi — javobni bekor qilib bo'ladi.
+**Lead:** RAG botning bank uchun asosiy ustunligi — har bir javobni audit qilish mumkin.
 
 **4 audit-row:**
 1. **Manba majburiyati** (`systemPrompt:5`) — System prompt: "Faqat topilgan parchalardan javob ber. Topilmasa — 'Ushbu hujjatda ma'lumot topilmadi'. Internetdan, taxmindan — taqiqlangan."
@@ -199,7 +199,7 @@ Overlap nima ekanligini visualisation bilan ko'rsating. "Bandning bog'lovchi qis
 
 ## Slide 13 — Privacy · bank PDF qayerda saqlanadi
 
-**Sarlavha:** Bank PDF — **bank ichida**.
+**Sarlavha:** Bank PDF — **bank tasdiqlagan konturda**.
 
 **3 sec:**
 - 🔒 **Saqlash konturi** — Drive folder bank tasdiqlangan bulut konturida. Embedding + LLM = Gemini API orqali (Vertex AI Workspace, korporativ shartnoma + opt-out treningdan).
@@ -255,11 +255,11 @@ bots/02_rag_chatbot/
 **Sarlavha:** **RAG pilot canvas** — 5 qator, qaror.
 
 **5 qator:**
-1. 🎯 **Use case** — Bo'limning qaysi savol oqimi RAG bilan yopiladi? (1 jumla)
-2. 📚 **Manba** — Qaysi 3 ta PDF korpusga tushadi? Kim qo'sha oladi (admin allow-list)?
-3. ✅ **Test savollar** — 20 ta real savol — bot to'g'ri javob va to'g'ri manba bermasa, pilot rad qilinadi.
-4. ⚠️ **Xavf** — "Topilmadi" mumkinmi? Eski hujjat ishlatilsa nima bo'ladi? Eskalatsiya qoidasi.
-5. 🚦 **Qaror** — "Bormaymiz / sintetik PDF bilan boshlaymiz / haqiqiy korpus bilan boshlaymiz". Yakuniy.
+1. 🎯 **Use case** — Bo'limning qaysi savol oqimi RAG bilan yopiladi? (1 jumla · mas'ul bo'lim ko'rsatiladi)
+2. 📚 **Manba** — Qaysi 3 ta PDF korpusga tushadi? Hujjat toifasi, yangilanish davri, admin allow-list.
+3. ✅ **Test savollar** — 20 ta savol test seti — har javobda manba majburiy, xato javob 0, "topilmadi" holatlari alohida ko'rib chiqiladi.
+4. ⚠️ **Xavf + eskalatsiya** — "Topilmadi" qachon to'g'ri? Eski hujjat ishlatilsa nima bo'ladi? Eskalatsiya egasi kim?
+5. 🚦 **Qaror** — "Hozir boshlamaymiz / sintetik hujjat bilan sinaymiz / cheklangan haqiqiy korpus bilan pilot qilamiz". Qaror egasi va qayta indekslash davri yoziladi.
 
 **Yakuniy qator:** → 8 daqiqadan so'ng 2 ta stol o'z qarorini auditoriyaga taqdim etadi.
 
@@ -271,7 +271,7 @@ bots/02_rag_chatbot/
 
 **3 ta close-row:**
 - 💡 **RAG — manbasiz emas, manbaga tayangan AI**. Bank uchun yagona to'g'ri javob: ichki PDF + iqtibos. "Topilmadi" — javob, "balki" emas.
-- 💡 **Showcase — graduation yo'li**. 9-modulda 7 nodeli klassifikator qurdingiz; bu — uning chuqur, manba bilan ishlaydigan versiyasi (77 node).
+- 💡 **Showcase — keyingi darajaga andoza**. 9-modulda 7 nodeli klassifikator qurdingiz; bu — uning chuqur, manba bilan ishlaydigan versiyasi (77 node). Bugun siz arxitekturani ko'rib, o'z pilotingizga talab yozasiz — qurish emas.
 - 💡 **Pilot qarori bilan chiqamiz** — har stol 5 qatorli canvas: use case + manba + test + xavf + qaror. Tayyor template `bots/02_rag_chatbot` papkasida.
 
 **Lug'at recap (interaktiv, 30–60 sek):**

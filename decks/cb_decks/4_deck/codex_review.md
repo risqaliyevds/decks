@@ -1,37 +1,50 @@
-Verdict: post-swap wording is cleaner, but this is still a “workflow 101” deck, not yet a strong **Use Case → Pilot** module for Central Bank operations.
+Verdict: **SHIP after small content edits.**
 
-Score: **6/10**
+Score: **8/10**
 
-**Top 5 Content Fixes**
+This deck is clear, practical, and mostly fits the Central Bank audience. The best parts are slide 5 vocabulary, slide 8 bank-report workflow, slide 9 human/SI boundary, and slide 10 table exercise. It now works as a hands-on module, not just a lecture.
 
-1. **Use Case → Pilot outcome is not explicit enough.**  
-Current slide 10 ends at “5–7 qadamga bo‘ling” ([index.html](/c:/projects/slides/decks/cb_decks/4_deck/index.html:830)). It should force a pilot-ready artifact.
+Main gap: the final exercise artifact is still not strict enough for a bank setting. A table can leave with "5-7 qadam + SI qadam + metric", but not necessarily with data boundary, evidence source, exception path, accountable decision owner, and audit note. For Central Bank staff, that missing governance layer matters.
 
-Rewrite:
-> Bugungi natija: har stol bitta use case’ni pilotga tayyorlaydi — jarayon xaritasi, SI bajaradigan qadam, ma’lumot chegarasi, mas’ul egasi va muvaffaqiyat mezoni.
+## Punch-List
 
-2. **No pilot selection filter. Too many weak ideas could pass.**  
-Add a simple “pilotga arziydimi?” gate before the exercise.
+1. **Content accuracy**
+   - Slide 6 says every bank task fits into 5 steps. Useful teaching simplification, but too absolute. Say "ko'p bank jarayonlari" or "ko'p holatda shu 5 qadamga tushadi".
+   - Slide 8 says "2 tasini SI bajaradi". Better governance wording: SI "yordam beradi" or "qoralama tayyorlaydi"; final decision and interpretation remain human-owned.
+   - Slide 12 recap "Katta vazifa = 3 ta kichik" is memorable, but inaccurate as a definition. Task Decomposition means splitting into smaller, checkable tasks; 3 is just the classroom pattern.
 
-Rewrite:
-> Pilotga faqat 4 shartdan o‘tgan ish kiradi: tez-tez takrorlanadi, vaqt oladi, natijasi tekshiriladi, yakuniy qaror insonda qoladi. Shu 4 shartdan bittasi yo‘q bo‘lsa, bu hozircha pilot emas.
+2. **Governance fit**
+   - Slide 9 is strong: it names personal data, bank secrecy, internal draft decisions, inspection strategy, norm interpretation, final signature, and audit note.
+   - Slide 10 should carry that governance discipline into the exercise. Add one required field: "SIga berilmaydigan ma'lumot/qaror" or "ma'lumot chegarasi".
+   - Add "manba/audit izi" to the pilot map, otherwise the artifact is operational but not regulator-grade.
 
-3. **Metrics are missing. Management audience needs numbers.**  
-The deck says “har safar bir xil sifat” ([index.html](/c:/projects/slides/decks/cb_decks/4_deck/index.html:650)), but never defines how quality is measured.
+3. **Atamalar: Workflow + Task Decomposition**
+   - Requirement is met: slide 5 introduces both terms, slide 12 recaps them.
+   - Improve intro consistency: Workflow is currently tied to exactly 5 steps; Task Decomposition is tied to exactly 3. Keep those as training templates, not definitions.
+   - Recap should say "kichik, tekshiriladigan qadamlarga bo'lish", not only "3 ga bo'lish".
 
-Rewrite:
-> Pilot muvaffaqiyati 3 raqam bilan o‘lchanadi: ko‘rib chiqish vaqti necha foiz qisqardi, qayta ishlash soni kamaydimı, xato yoki qaytarilgan hujjatlar ulushi oshmadimi.
+4. **Uzbek quality**
+   - Overall Uzbek is good: conversational, concrete, and not too technical.
+   - A few phrases feel translated or stiff: "Normativ talqinga moslik", "Pilot uchun 4 shartdan o'tgan ish", "muvaffaqiyat mezoni".
+   - Prefer bank-office Uzbek: "normativga mosligini tekshirish", "pilotga mos ish", "natija mezoni".
 
-4. **Risk/data boundary is too soft.**  
-Slide 10 asks “SIga bermaslik kerak bo‘lgan ma’lumot nima?” ([index.html](/c:/projects/slides/decks/cb_decks/4_deck/index.html:834)), but Central Bank staff need a harder rule.
+5. **Bank decision artifact**
+   - The desired output should be named explicitly: **pilot xaritasi** or **qaror oldi xaritasi**.
+   - Required fields should be visible on slide 10 or speaker notes: jarayon nomi, 5-7 qadam, mas'ul egasi, SI yordam beradigan 1-2 qadam, SIga berilmaydigan ma'lumot/qaror, tekshiruv manbasi, muvaffaqiyat mezoni, yakuniy qaror egasi.
 
-Rewrite:
-> SIga berilmaydi: shaxsiy ma’lumot, bank siri, ichki qaror loyihasi, tekshiruv strategiyasi va tasdiqlanmagan normativ talqin. Avval anonimlashtirish, keyin SI.
+## Top 5 Uzbek Rewrites
 
-5. **Slide 8 example is useful, but not pilot-shaped.**  
-It shows “2 tasini SI bajaradi” ([index.html](/c:/projects/slides/decks/cb_decks/4_deck/index.html:771)), but lacks owner/control/output.
+1. Slide 6 lead:
+   > Ko'p bank jarayonlarini shu 5 qadamga tushirish mumkin: kirish, tekshiruv, tahlil, xulosa, yetkazish. SI odatda tahlil va qoralama tayyorlashda yordam beradi.
 
-Rewrite:
-> Pilot misoli: tijorat banki hisoboti. SI faqat 2 vazifani bajaradi: raqamlarni ajratadi va savollar qoralamasini beradi. Xodim normativni tekshiradi, rahbar yakuniy qarorni tasdiqlaydi, audit uchun manba va izoh saqlanadi.
+2. Slide 8 title/claim:
+   > Boshidan oxirigacha: 5 qadam, 2 tasida SI yordam beradi.
 
-Also: [notes.md](/c:/projects/slides/decks/cb_decks/4_deck/notes.md:52) still says “kredit arizasi flow”, while live slide 8 is “Tijorat banki hisoboti”. Fix that mismatch before presenter handoff.
+3. Slide 8 speaker framing:
+   > SI raqamlarni ajratadi va savollar qoralamasini tayyorlaydi. Xodim normativga mosligini tekshiradi, rahbar yoki mas'ul shaxs yakuniy qarorni tasdiqlaydi.
+
+4. Slide 10 exercise step 03:
+   > SI yordam beradigan 1-2 qadamni belgilang. Yoniga uch narsani yozing: SIga nima berilmaydi, natija qaysi manba bilan tekshiriladi, muvaffaqiyat qaysi raqam bilan o'lchanadi.
+
+5. Slide 12 recap:
+   > Task Decomposition - katta vazifani kichik, tekshiriladigan qadamlarga bo'lish. Bugungi mashqda biz buni 3 qadamli usul bilan ko'rdik: yig', top, yoz.

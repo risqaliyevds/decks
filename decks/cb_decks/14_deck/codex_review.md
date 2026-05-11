@@ -1,81 +1,67 @@
 # Verdict
 
-**Score: 7/10.** Deck 14 is structurally strong for a final group project: MVP and Iteration are introduced on slide 5, used through the practical tasks, and recapped on slide 18. The bank governance message is present ("yakuniy qaror odam/bankir zimmasida"), and the module fits `CLAUDE.md` expectations for non-technical Central Bank staff.
+**Score: 8/10.** Deck 14 is close to delivery-ready: it fits the group-project slot, introduces **MVP** and **Iteration** on slide 5, recaps them on slide 18, and keeps the most important governance line visible: the agent gathers information, but final decisions stay with a bankir. Screenshots confirm the visual flow is readable and the closing now includes a **1 betlik MVP qaror varaqasi**.
 
-Main fixes before delivery: remove shaky precision where it sounds like a promise, soften vendor lock-in language, repair Uzbek phrasing, align slide 16 with the speaker text, and end with a tangible bank decision artifact instead of only "we saw one agent."
+Main remaining work: align speaker text with the improved HTML, soften absolute claims, remove a few shaky technical references, and make the closing artifact more operational for a Central Bank audience.
 
-## Punch-List Review
+## Punch-List
 
-### Content Accuracy
+### 1. Content Accuracy
 
-- **Slide 16 mismatch:** heading says "5 test", `content.md` lists 5 tests, but `index.html`/screenshot show only 4. Add the missing "chetga chiqish" test or rename to "4 test". Best fix: keep 5 and add "mavzudan tashqari savol -> bankirga yo'naltirish".
-- **`bots/03_complex_agent` path is relative to `decks/cb_decks/`, not repo root.** In speaker text/slide labels this is fine inside the seminar folder, but if mentioned orally say "`cb_decks/bots/03_complex_agent` shabloni".
-- **"13 nodali n8n shablon" is partly true but too exact for the slide.** Bot docs say simplified ~13-node template, 13 text-only / 17 with file branch, while the TS workflow currently has the file branch left for v2. Replace with "soddalashtirilgan n8n shablon" or "taxminan 13 nodali asosiy oqim".
-- **"50 ta xabar" should be "50 ta turn/xabar oynasi" or less precise.** The bot docs use memory window 50 turns; saying "so'nggi 50 ta xabar" may be technically off.
-- **"4 hafta" / "1-2 hafta" / "85%" / "30 daqiqa" are good teaching anchors but read like guaranteed outcomes.** Keep them as examples: "masalan", "odatda", "pilot mezoni sifatida".
+- **Speaker text is behind the HTML.** `content.md` still says slide 11 has "13 ta n8n node", "Agent (Gemini)", and "so'nggi 50 ta xabar"; the current slide wisely says "soddalashtirilgan n8n shabloni" and "LLM (demoda Gemini)". Update speaker text to the slide wording.
+- **RAG reference likely wrong:** `content.md` slide 6 says "9-modulda biz RAG botni qurgan edik", but `CLAUDE.md` maps deck 9 to classifier bot and deck 11 to RAG chatbot. Rewrite as "11-moduldagi RAG chatbot misolida..." or keep it generic.
+- **Schema reference is wrong:** `content.md` slide 13 says "11-modulda Schema atamasini gaplashgan edik"; `CLAUDE.md` maps **Schema** to deck 9. Fix to "9-moduldagi Schema atamasi".
+- **Avoid hard promises:** "4 hafta", "1-2 hafta", "85%", "30 daqiqa", "24 soat" work as examples, but should be framed as demo/pilot assumptions: "masalan", "pilot mezoni sifatida", "bugungi shablonda".
+- **Slide 16 is now fixed.** Earlier mismatch is gone: screenshot and HTML both show 5 tests, including "chetga chiqish".
 
-### Governance Fit
+### 2. Governance Fit
 
-- Strong: slide 11, 12, 16, 18 keep final decision with the human banker. This fits Central Bank/compliance audience.
-- Add one explicit governance artifact near the end: **"MVP qaror varaqasi"** or **"Pilotga chiqarish qarori"** with fields: owner, scope, excluded decisions, success metric, data boundary, escalation rule, next iteration date.
-- Slide 12 says the bot must state the banker decides. Good, but it should also say **bot does not assess creditworthiness or approve/reject**. That closes the biggest banking-risk gap.
-- Slide 14 knowledge-base update strategy should include an owner: "tarif o'zgarsa kim tasdiqlaydi?" Without owner, governance is incomplete.
+- Strong fit: slides 11, 12, 16, and 18 repeatedly say the agent does not make the final banking decision.
+- Slide 12 should explicitly add: **bot kreditga layoqatni baholamaydi, foiz/stavka va tasdiq/rad qarorini bermaydi**. Current "ha/yo'q demaydi" is good, but creditworthiness needs to be named.
+- Slide 14 is governance-aware because it asks who confirms tariff changes. Keep that in speaker text too: **ma'lumot egasi bo'lmasa, RAG bazasi governance'dan o'tmagan hisoblanadi**.
+- Closing artifact is the right direction. Add one line orally: **"Bu varaqa pilotga ruxsat emas; bu pilotni muhokama qilish uchun qaror materiali."** That fits Central Bank tone better.
 
-### Atamalar Coverage
+### 3. Atamalar: MVP + Iteration Intro + Recap
 
-- Meets the `CLAUDE.md` rule: **MVP** and **Iteration** are introduced on slide 5 and recapped on slide 18.
-- The deck correctly uses prior terms as cross-references: RAG, Schema, Agent, Prompt, Knowledge Base are contextual, not reintroduced as official new terms.
-- Tighten the Uzbek for MVP: "Minimum Mahsulot" is understandable, but **"eng kichik ishlaydigan versiya"** should be the phrase repeated most often. "Minimum Mahsulot" alone sounds unnatural.
-- Use one spelling consistently: **"iteratsiya"** in Uzbek prose, **"Iteration"** only as the official English term on the glossary card.
+- Meets `CLAUDE.md`: official new terms are **MVP** and **Iteration**, introduced on slide 5 and recapped on slide 18.
+- Good: other terms (RAG, Schema, Agent, LLM, prompt, knowledge base) are used as prior-course context rather than new glossary entries.
+- Uzbek prose should prefer **iteratsiya** after the glossary slide; keep **Iteration** only as the English term label.
+- "Minimum Mahsulot" is usable as a translation, but the phrase participants should remember is **eng kichik ishlaydigan versiya**. Repeat that more than "Minimum Mahsulot".
 
-### Uzbek Quality
+### 4. Group-Project Tone
 
-- Fix typos and awkward forms in `content.md`: `kog'ozga` -> `qog'ozga`, `qoshib` -> `qo'shib`, `siklasi` -> `sikli`, `to'g'rladik` -> `to'g'riladik`, `beresizlar` -> `berasizlar` or `berishingiz`, `ayatamiz` -> `aytamiz`.
-- "kommentariya beraman" -> **"izoh beraman"**.
-- "naturaliklik muhim" -> **"tabiiy chiqishi muhim"**.
-- "stol bo'yicha" is overused and sometimes unclear. Use **"har stol"**, **"stolda"**, or **"guruhingiz"** depending on sentence.
-- "Banker'lar" in notes should be **"bankirlar"**.
+- The deck correctly shifts from lecture to table work after slide 11. The 5-stol split is clear and practical.
+- Watch ownership language: "biz taqdim qilamiz" in `content.md` slide 17 weakens the participant ownership. Better: **"siz taqdim qilasiz, men qisqa izoh beraman."**
+- Slide 17/18 should make output expectations concrete: each table leaves with one filled decision sheet, not only a verbal demo.
+- The tone should be collaborative, not heroic. Avoid "bugun bitta tayyor agentni ko'ramiz" if the room is only designing components; say **"bitta agent dizaynini yig'amiz."**
 
-### Vendor Absolutism
+### 5. Uzbek Quality
 
-- Vendor lock-in is mostly not absolutist, but slide 11 still reads like the architecture must be **Gemini + n8n + Telegram + Sheets/Drive**.
-- Keep the concrete demo stack, but phrase it as an example: **"bugungi demo stack"**, **"masalan, Gemini modeli"**, **"Sheets o'rnida ichki reyestr bo'lishi mumkin"**.
-- Replace "Agent (Gemini)" with **"Agent (LLM modeli; demoda Gemini)"** if the goal is governance-neutral bank training.
-- Replace "Telegramdan Sheetsgacha" with **"kanaldan reyestrgacha"** in one place, then mention Telegram/Sheets as the demo implementation.
+- Fix typos in `content.md`: `kog'ozga` -> `qog'ozga`, `qoshib` -> `qo'shib`, `siklasi` -> `sikli`, `to'g'rladik` -> `to'g'riladik`, `beresizlar` -> `berasizlar` or `berishingiz`, `ayatamiz` -> `aytamiz`.
+- Replace awkward words: `kommentariya beraman` -> **izoh beraman**, `prezentatsiya` -> **taqdimot**, `komanda` -> **jamoa**.
+- Standardize spelling: **stsenariy** or **senariy**, but do not mix both.
+- `notes.md`: `Banker'lar` -> **bankirlar**.
+- Current screenshots are visually readable, but some body text is low-contrast by design. Do not add more text to slides 5, 16, or 18 without reducing elsewhere.
 
-### Replace Shaky Numeric Precision
+### 6. MVP Qaror Varaqasi at Closing
 
-- "6 oy mukammal -> rad etiladi" is a useful hook, but too absolute. Better: **"6 oy mukammal deb qurilgan loyiha ko'pincha real bo'lim sinovidan o'tmaydi."**
-- "4 hafta MVP" should become **"4 haftalik MVP maqsadi"** or **"4 hafta ichida sinovga chiqadigan V1"**.
-- "85% holatda to'g'ri" should be example-only: **"[masalan: 10 holatdan kamida 8 tasida to'g'ri tushunadi]"**.
-- "13 nodali", "50 ta xabar", "24 soat" should be framed as template defaults, not bank policy.
-
-### Ending: Bank Decision Artifact
-
-- Current ending is motivational and recap-heavy; it does not leave participants with a bank-ready artifact.
-- Add or rewrite the final closing so the output is: **"Har stol yakunda 1 betlik MVP qaror varaqasini topshiradi."**
-- Minimum artifact fields:
-  - Muammo va foydalanuvchi
-  - MVP doirasi va doiradan tashqari ishlar
-  - Bot nimalarni qila olmaydi
-  - Muvaffaqiyat mezoni
-  - Ma'lumot manbasi va mas'ul egasi
-  - Bankirga eskalatsiya qoidasi
-  - Keyingi iteratsiya sanasi
+- Slide 18 already includes the right fields: muammo, doira, doiradan tashqari, bot nima qilolmaydi, muvaffaqiyat mezoni, ma'lumot egasi, eskalatsiya, keyingi iteratsiya sanasi.
+- Make it the actual close, not a side note. Say: **"Bugungi topshiriq shu varaqani to'ldirish bilan yopiladi."**
+- Add two missing bank-governance fields if space allows in handout/speaker text: **risk egasi** and **pilotni to'xtatish sharti**.
 
 ## Top 5 Uzbek Rewrites
 
-1. **Current:** `"6 oy mukammal" yoki "4 hafta ishlaydigan" -- qaysi loyiha omon qoldi?`  
-   **Rewrite:** `"6 oyda mukammal"mi yoki "4 haftada sinovga tayyor V1"mi -- bankda qaysi biri yashab ketadi?`
+1. **Current:** "Bugun xayolingizdagi loyihani 6 oydan keyinga qoldirmaysiz."  
+   **Rewrite:** "Bugun katta g'oyani 6 oyga cho'zmaymiz; uni 4 haftada sinovga chiqadigan V1 ko'rinishiga tushiramiz."
 
-2. **Current:** `MVP -- Minimum Mahsulot`  
-   **Rewrite:** `MVP -- eng kichik ishlaydigan versiya. Demo emas: bankir bir hafta sinab ko'radigan V1.`
+2. **Current:** "MVP - Minimum Mahsulot."  
+   **Rewrite:** "MVP - eng kichik ishlaydigan versiya: demo emas, bankir bir hafta sinab ko'radigan V1."
 
-3. **Current:** `13 nodali n8n shablon. Mijozdan ma'lumot va hujjat yig'adi...`  
-   **Rewrite:** `Bugungi demo -- n8n asosidagi soddalashtirilgan agent shabloni. U mijozdan ma'lumot va hujjat yig'adi, yakunda bankir ko'radigan qator tayyorlaydi.`
+3. **Current:** "13 ta n8n nodedan iborat, Telegram'dan kelgan..."  
+   **Rewrite:** "Bugungi demo - n8n asosidagi soddalashtirilgan agent shabloni: kanaldan kelgan murojaatni reyestrga tayyor qatorga aylantiradi."
 
-4. **Current:** `Iteration -- kichik o'zgarish, qayta sinash.`  
-   **Rewrite:** `Iteratsiya -- hammasini qayta qurish emas; bitta o'zgarishni kiritib, real holatda qayta sinash.`
+4. **Current:** "Iteration - Build, Test, Measure, Learn - qayta-qayta yaxshilash sikli."  
+   **Rewrite:** "Iteratsiya - hammasini qayta qurish emas; bitta o'zgarishni kiritib, real holatda qayta sinash."
 
-5. **Current:** `Oxirida -- biz 5 ta bo'lakni qo'shib, bitta to'liq agentni ko'ramiz.`  
-   **Rewrite:** `Oxirida har stol 1 betlik MVP qaror varaqasini beradi: nima quriladi, nima qurilmaydi, kim tasdiqlaydi va keyingi iteratsiya qachon.`
+5. **Current:** "Oxirida biz 5 ta bo'lakni qo'shib, bitta to'liq agentni ko'ramiz."  
+   **Rewrite:** "Oxirida har stol 1 betlik MVP qaror varaqasini beradi: nima quriladi, nima qurilmaydi, kim javobgar va keyingi iteratsiya qachon."

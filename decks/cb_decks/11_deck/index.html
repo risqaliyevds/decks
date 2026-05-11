@@ -311,11 +311,11 @@ body,p,li,.lead{letter-spacing:0.018em}
 .close-row .arrow{color:var(--accent);font-family:var(--display);font-size:clamp(1.2rem,2vw,1.5rem)}
 .close-row p{font-size:var(--body);line-height:1.55;color:#fff;font-weight:400}
 .close-row p strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.02em}
-.s-close .recap{margin-top:clamp(1rem,2vw,1.4rem);padding-top:clamp(0.85rem,1.5vw,1.25rem);border-top:1px solid var(--soft);display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.5rem);flex-wrap:wrap}
-.s-close .recap-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);flex-shrink:0}
+.s-close .recap{margin-top:clamp(1rem,2vw,1.4rem);padding:clamp(0.95rem,1.6vw,1.4rem) clamp(1rem,1.8vw,1.6rem);background:linear-gradient(135deg,rgba(37,99,235,0.16),rgba(11,45,121,0.32));border:1px solid rgba(96,165,250,0.4);border-radius:var(--r);display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.5rem);flex-wrap:wrap;box-shadow:0 16px 36px -18px rgba(37,99,235,0.45)}
+.s-close .recap-tag{font-family:var(--display);font-size:clamp(0.78rem,1vw,0.95rem);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-glow);flex-shrink:0}
 .s-close .recap-terms{display:flex;gap:clamp(1rem,2vw,2rem);flex-wrap:wrap;flex:1}
-.s-close .recap-term{font-size:var(--body);color:rgba(255,255,255,0.7);line-height:1.4}
-.s-close .recap-term strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-right:0.5em;font-weight:400}
+.s-close .recap-term{font-size:clamp(0.9rem,1.2vw,1.1rem);color:rgba(255,255,255,0.92);line-height:1.45}
+.s-close .recap-term strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-right:0.5em;font-weight:400;font-size:1.05em}
 .s-close .recap-term .ans{color:var(--accent-2)}
 
 /* SLIDE 18 — Q&A */
@@ -646,7 +646,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <h2 class="h2 reveal r2">Pure LLM — <span class="hl">uydirma</span>.<br>RAG — manbaga tayangan.</h2>
-    <p class="lead reveal r2">Oddiy LLM umumiy bilimga tayanadi va manbasiz javob berishi mumkin — bankka yaramaydi. RAG javobdan oldin <strong>tasdiqlangan ichki PDF'dan</strong> tegishli bandni topadi va javobni shu manbaga bog'laydi: gallyutsinatsiya xavfi keskin tushadi, har javob ortida audit izi qoladi.</p>
+    <p class="lead reveal r2">Oddiy LLM umumiy bilimga tayanadi va manbasiz javob berishi mumkin — bankka yaramaydi. RAG javobdan oldin <strong>tasdiqlangan ichki PDF'dan</strong> tegishli bandni topadi va javobni shu manbaga bog'laydi: gallyutsinatsiya xavfi keskin kamayadi, har javob ortida audit izi qoladi.</p>
     <div class="compare-rich reveal r3">
       <div class="col">
         <h4>Pure LLM &middot; "balki" javobi</h4>
@@ -677,7 +677,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="dict-card fragment">
         <span class="dict-tag">RAG</span>
         <h3>Retrieval-Augmented Generation</h3>
-        <p>Bankir tilida: "<strong>AI internetdan emas, faqat sizning bank PDF'idan o'qib javob beradi</strong>". Avval qidiradi, keyin shu manbaga tayanib javob yozadi. Manbasiz — javob yo'q.</p>
+        <p>Bankir tilida: "<strong>AI avval tasdiqlangan bank hujjatlaridan mos bandni topadi, keyin faqat shu bandga tayanib javob yozadi</strong>". Manba topilmasa — javob yo'q.</p>
       </div>
       <div class="dict-card fragment">
         <span class="dict-tag">Embedding</span>
@@ -699,7 +699,7 @@ body,p,li,.lead{letter-spacing:0.018em}
     <h2 class="h2 reveal r2">RAG — to'rtta <span class="hl">bosqichdan</span> iborat.</h2>
     <p class="lead reveal r2">Birinchi 3 bosqich — bir martalik tayyorgarlik (hujjat o'zgargandagina takrorlanadi). 4-bosqich — har savolda ishlaydi. Mashqda Gemini va in-memory vector store; bank muhitida model va infratuzilma muvofiqlik talabiga qarab tanlanadi.</p>
     <div class="flow reveal r3">
-      <div class="step"><div class="ico">📚</div><h4>1 · Indexing</h4><p>Drive folderidagi PDF yig'iladi va tayyorlanadi</p></div>
+      <div class="step"><div class="ico">📚</div><h4>1 · Indexing</h4><p>Drive papkasidagi PDF'lar yig'iladi va tayyorlanadi</p></div>
       <div class="arrow">→</div>
       <div class="step"><div class="ico">✂️</div><h4>2 · Chunking</h4><p>800 belgili bo'laklarga, 120 overlap bilan</p></div>
       <div class="arrow">→</div>
@@ -721,7 +721,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="main">
     <span class="chip-out reveal r1">Production grade · BankRAGBoti</span>
     <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Real bot — <span class="hl">77 node, 14 marshrut</span>, ikki eshik.</h2>
-    <p class="lead reveal r2">Ipak Yo'li Bank uchun yozilgan. Kursning 1-modul demo botidir — bugun siz uning ichini ochasiz. Telegram + Gemini + Sheets + Drive + In-Memory vector store.</p>
+    <p class="lead reveal r2">Ipak Yo'li Bank uchun yozilgan. 1-moduldagi demo botning o'zi — bugun siz uning ichini ochasiz. Telegram + Gemini + Sheets + Drive + In-Memory vector store.</p>
     <div class="stat-grid reveal r3">
       <div class="stat-cell fragment">
         <div class="stat-num">77</div>
@@ -731,7 +731,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="stat-cell fragment">
         <div class="stat-num">14</div>
         <div class="stat-lbl">Marshrut</div>
-        <div class="stat-sub">Q&amp;A + 7 admin: /help /list_docs /add_doc /delete_doc /reindex /stats /cancel</div>
+        <div class="stat-sub">Q&amp;A + 7 admin (/help /list_docs /add_doc /delete_doc /reindex /stats /cancel) + 6 tasdiqlash/xato qadami.</div>
       </div>
       <div class="stat-cell fragment">
         <div class="stat-num">2</div>
@@ -761,7 +761,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <h2 class="h2 reveal r2">Bank PDF qo'llanma — <span class="hl">Drive + Sheets</span>.</h2>
-    <p class="lead reveal r2">Hujjat — bir joyda. Indeks — ikkinchi joyda. Vektor — uchinchi joyda. Audit shu uchligi ustiga qurildi.</p>
+    <p class="lead reveal r2">Hujjat — bir joyda. Indeks — ikkinchi joyda. Vektor — uchinchi joyda. Audit shu uchlik asosiga qurildi.</p>
     <div class="corpus reveal r3">
       <div class="col">
         <h3><span class="ico">📁</span>Drive folder</h3>
@@ -798,7 +798,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <h2 class="h2 reveal r2">Chunk — <span class="hl">800 belgi · 120 overlap</span>.</h2>
-    <p class="lead reveal r2">Butun PDF'ni AI'ga bera olmaymiz — kontekst oynasi to'lib ketadi. PDF'ni bo'laklarga ajratamiz, har biriga vektor; har savolga eng yaqin 5 ta bo'lak topiladi.</p>
+    <p class="lead reveal r2">Butun PDF'ni AI'ga bera olmaymiz — kontekst oynasi to'lib ketadi. PDF'ni bo'laklarga ajratamiz, har birini vektorga aylantiramiz; har savolga eng yaqin 5 ta bo'lak topiladi.</p>
     <div class="chunk-vis reveal r3">
       <div class="chunk-doc">
         <h4>kredit_siyosati.pdf · 4-bo'lim</h4>
@@ -847,7 +847,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       </div>
       <div class="bank-a">
         <span class="a-tag">✓ Bot javobi</span>
-        <p class="a-text">"<strong>Avtokredit nizomi 4-bandiga ko'ra:</strong><br>· Yangi avto — yillik <strong>18%</strong><br>· Ikkilamchi bozor — yillik <strong>21%</strong><br>· Boshlang'ich to'lov 30% dan kam emas; 5 yildan eski avto uchun 50%."</p>
+        <p class="a-text">"<strong>Kredit siyosati 4-bandiga ko'ra:</strong><br>· Yangi avto — yillik <strong>18%</strong><br>· Ikkilamchi bozor — yillik <strong>21%</strong><br>· Boshlang'ich to'lov 30% dan kam emas; 5 yildan eski avto uchun 50%."</p>
         <div class="a-source"><strong>Manba:</strong> kredit_siyosati.pdf · 4.1-band, 4.2-band</div>
         <p style="font-size:clamp(0.78rem,1.05vw,0.95rem);color:rgba(255,255,255,0.7);font-style:italic">Yakuniy qaror — bankir hamkasbim bilan kelishilgan holda bo'ladi.</p>
       </div>
@@ -864,13 +864,13 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <h2 class="h2 reveal r2">Har javob — <span class="hl">manba bilan</span>. Har manba — audit izi.</h2>
-    <p class="lead reveal r2">RAG botning bank uchun asosiy ustunligi — har javobni orqasidan tekshirib bo'ladi. Kim, qachon, qaysi PDF'dan, qaysi banddan — hammasi yozilgan.</p>
+    <p class="lead reveal r2">RAG botning bank uchun asosiy ustunligi — har bir javobni audit qilish mumkin. Kim, qachon, qaysi PDF'dan, qaysi banddan — hammasi yozilgan.</p>
     <div class="audit-list reveal r3">
       <div class="audit-row fragment">
         <span class="num">01</span>
         <div class="body">
           <h4>Manba majburiyati</h4>
-          <p>System prompt: "Faqat topilgan parchalardan javob ber. Topilmasa — 'Ushbu hujjatda ma'lumot topilmadi' deb yoz." Internetdan, taxmindan — taqiqlangan.</p>
+          <p>System prompt: "Faqat topilgan parchalardan javob ber. Topilmasa — 'Ushbu hujjatda ma'lumot topilmadi' deb yoz." Internetdan olish yoki taxmin qilish — taqiqlangan.</p>
         </div>
         <span class="tag">system-prompt.md</span>
       </div>
@@ -894,7 +894,7 @@ body,p,li,.lead{letter-spacing:0.018em}
         <span class="num">04</span>
         <div class="body">
           <h4>Hujjat versiyasi</h4>
-          <p>Documents tab: doc_id, added_by, added_at, is_active. Eski versiyani <strong>/delete_doc</strong> arxivga oladi (soft-delete); <strong>/reindex</strong> butun korpusni qayta quradi.</p>
+          <p>Documents tab: doc_id, added_by, added_at, is_active. Eski versiyani <strong>/delete_doc</strong> arxivga o'tkazadi (soft-delete); <strong>/reindex</strong> butun korpusni qayta quradi.</p>
         </div>
         <span class="tag">Documents</span>
       </div>
@@ -930,7 +930,7 @@ body,p,li,.lead{letter-spacing:0.018em}
           <li>Hisob-kitob talab qiladigan savollar</li>
           <li>Muddati o'tgan hujjat (RAG bilmaydi — qayta indekslamaguncha)</li>
           <li>Real-time ma'lumot (bugungi kurs)</li>
-          <li>Chunk chegarasiga tushgan band — topa olmaslik (retrieval miss)</li>
+          <li>Chunk chegarasiga tushgan band — ma'lumotning uzilib qolishi (retrieval miss)</li>
         </ul>
       </div>
     </div>
@@ -946,13 +946,13 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main">
-    <h2 class="h2 reveal r2">Bank PDF — <span class="hl">bank ichida</span>.</h2>
-    <p class="lead reveal r2" style="margin-top:0.5rem">Korpusda mijoz nomi, foiz miqdori, ichki nizom bandlari bor. Qayerda saqlanadi, kim qo'sha oladi, kim eshita oladi — har savolga aniq javob.</p>
+    <h2 class="h2 reveal r2">Bank PDF — <span class="hl">bank tasdiqlagan konturda</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Korpusda mijoz nomi, foiz miqdori, ichki nizom bandlari bor. Qayerda saqlanadi, kim qo'sha oladi, kim o'qiy oladi — har bir savolga aniq javob bo'lishi shart. Embedding va LLM chaqiruvi tasdiqlangan korporativ shartnoma shartlari asosida.</p>
     <div class="sec reveal r3">
       <div class="item fragment">
         <div class="ico">🔒</div>
         <h3>Saqlash konturi</h3>
-        <p>Drive folder bank tasdiqlangan bulut konturida. Embedding va LLM chaqiruvi — Gemini API orqali (Vertex AI Workspace, korporativ shartnoma + AI modelini o'qitishni taqiqlash bandi).</p>
+        <p>Drive folder bank tasdiqlagan bulut konturida. Embedding va LLM chaqiruvi — Gemini API orqali (Vertex AI Workspace, korporativ shartnoma + AI modelini o'qitishni taqiqlash bandi).</p>
       </div>
       <div class="item fragment">
         <div class="ico">📜</div>
@@ -978,23 +978,22 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <h2 class="h2 reveal r2"><span class="hl">Tayyor pipeline</span> — to'liq dizayn papkasi.</h2>
-    <p class="lead reveal r2" style="margin-top:0.5rem">Bu botning to'liq dizayni va prompt'lari <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-2)">bots/02_rag_chatbot/</code> da. Workflow grafi, system prompt, admin command sxemasi — hammasi bor. Showcase: ko'ramiz, n8n'da ochib, ichidan o'rganamiz.</p>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Bu botning to'liq dizayni va prompt'lari <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-2)">bots/02_rag_chatbot/</code> papkasida. Workflow grafi, system prompt, admin command sxemasi — hammasi bor. Showcase: n8n'da ochib, ichini o'rganamiz.</p>
     <div class="tpl-wrap reveal r3">
       <div class="tpl-meta"><span class="tpl-cat">Bot folder</span><span class="tpl-id">decks/cb_decks/bots/02_rag_chatbot/</span></div>
       <pre class="template-box">bots/02_rag_chatbot/
   ├─ <span class="key">README.md</span>                            <span class="com">← bot nima qiladi · 2 eshik mental model</span>
   ├─ <span class="key">design/</span>
-  │   ├─ workflow-graph.md              <span class="com">← 77 node, 14 marshrut, ASCII grafi</span>
+  │   ├─ workflow-graph.md              <span class="com">← node grafi, marshrutlar, ASCII xaritasi</span>
   │   ├─ conversation-flow.md           <span class="com">← Q&amp;A oqimi + admin buyruqlari</span>
   │   └─ data-schema.md                 <span class="com">← Sheets tab'lar, Drive layout, chunk strategy</span>
-  ├─ <span class="key">prompt/</span>
-  │   ├─ 00-MASTER-PROMPT.md            <span class="com">← bitta paste — bot tikladi</span>
-  │   ├─ 01-overview-and-mental-model.md
-  │   ├─ 04-chain-qa-rag.md             <span class="com">← asosiy savol-javob oqimi</span>
-  │   └─ … (10 ta chain fayli)
   └─ <span class="key">prompts/</span>
-      └─ system-prompt.md               <span class="com">← AI Agent persona, RAG-only qoidalar</span></pre>
-      <p class="tpl-hint">→ Live workflow: <strong>kLcPx1CZX9RwH1z8</strong> — risqaliyevds.app.n8n.cloud. Pipeline arxitekturasi 12-modulda chuqur.</p>
+      ├─ 00-MASTER-PROMPT.md            <span class="com">← instructor reference: bot arxitekturasi sxemasi</span>
+      ├─ 01-overview-and-mental-model.md
+      ├─ 04-chain-qa-rag.md             <span class="com">← asosiy savol-javob oqimi</span>
+      ├─ system-prompt.md               <span class="com">← AI Agent persona, RAG-only qoidalar</span>
+      └─ … (chain fayllari)</pre>
+      <p class="tpl-hint">→ Bugun rebuild emas; arxitekturani o'qiymiz va o'z pilotimizga talab yozamiz. Live workflow: <strong>kLcPx1CZX9RwH1z8</strong> — risqaliyevds.app.n8n.cloud.</p>
     </div>
   </div>
 </section>
@@ -1031,23 +1030,23 @@ body,p,li,.lead{letter-spacing:0.018em}
     <div class="pilot-canvas reveal r3">
       <div class="pilot-row">
         <span class="pilot-tag"><span class="ico">🎯</span>Use case</span>
-        <p>Bo'limning qaysi savol oqimi RAG bilan yopiladi? (1 jumla)</p>
+        <p>Bo'limning qaysi savol oqimi RAG bilan yopiladi? (1 jumla · mas'ul bo'lim ko'rsatiladi)</p>
       </div>
       <div class="pilot-row">
         <span class="pilot-tag"><span class="ico">📚</span>Manba</span>
-        <p>Qaysi 3 ta PDF korpusga tushadi? Kim qo'sha oladi (admin allow-list)?</p>
+        <p>Qaysi 3 ta PDF korpusga tushadi? Hujjat toifasi, yangilanish davri, admin allow-list.</p>
       </div>
       <div class="pilot-row">
         <span class="pilot-tag"><span class="ico">✅</span>Test savollar</span>
-        <p>20 ta real savol — bot to'g'ri javob va to'g'ri manba bermasa, pilot rad qilinadi.</p>
+        <p>20 ta savol test seti — har javobda manba majburiy, xato javob 0, "topilmadi" holatlari alohida ko'rib chiqiladi.</p>
       </div>
       <div class="pilot-row">
-        <span class="pilot-tag"><span class="ico">⚠️</span>Xavf</span>
-        <p>"Topilmadi" mumkinmi? Eski hujjat ishlatilsa nima bo'ladi? Eskalatsiya qoidasi.</p>
+        <span class="pilot-tag"><span class="ico">⚠️</span>Xavf + eskalatsiya</span>
+        <p>"Topilmadi" qachon to'g'ri? Eski hujjat ishlatilsa nima bo'ladi? Eskalatsiya egasi kim?</p>
       </div>
       <div class="pilot-row">
         <span class="pilot-tag"><span class="ico">🚦</span>Qaror</span>
-        <p>"Bormaymiz / sintetik PDF bilan boshlaymiz / haqiqiy korpus bilan boshlaymiz". Yakuniy.</p>
+        <p>"Hozir boshlamaymiz / sintetik hujjat bilan sinaymiz / cheklangan haqiqiy korpus bilan pilot qilamiz". Qaror egasi va qayta indekslash davri yoziladi.</p>
       </div>
     </div>
     <p class="lead no-bar reveal r3" style="margin-top:clamp(0.5rem,1vw,0.8rem);font-style:italic;color:var(--mute)">→ 8 daqiqadan so'ng 2 ta stol o'z qarorini auditoriyaga taqdim etadi.</p>
@@ -1065,7 +1064,7 @@ body,p,li,.lead{letter-spacing:0.018em}
     <h2 class="h2 reveal r2">O'zimiz bilan <span class="hl">olib ketadigan</span> 3 xulosa.</h2>
     <div class="close-list reveal r3">
       <div class="close-row"><span class="arrow">💡</span><p><strong>RAG — manbasiz emas, manbaga tayangan AI</strong>. Bank uchun yagona to'g'ri javob: ichki PDF + iqtibos. "Topilmadi" — javob, "balki" emas.</p></div>
-      <div class="close-row"><span class="arrow">💡</span><p><strong>Showcase — keyingi darajaga o'sish</strong>. 9-modulda 7 nodeli klassifikator qurdingiz; bu — uning chuqur, manba bilan ishlaydigan versiyasi (77 node). Shu yo'ldan o'tish mumkin.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Showcase — keyingi darajaga andoza</strong>. 9-modulda 7 nodeli klassifikator qurdingiz; bu — uning chuqur, manba bilan ishlaydigan versiyasi (77 node). Bu modul sizga pilot rejasi yozish uchun arxitekturani ko'rsatadi — qurish emas.</p></div>
       <div class="close-row"><span class="arrow">💡</span><p><strong>Pilot qarori bilan chiqamiz</strong> — har stol 5 qatorli canvas: use case + manba + test + xavf + qaror. Tayyor template <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-2)">bots/02_rag_chatbot</code> papkasida.</p></div>
     </div>
     <div class="recap reveal r3">

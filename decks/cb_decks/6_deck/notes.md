@@ -22,7 +22,7 @@
 8. **Shablon #MX-07** — Mijoz xizmati javobi (full template)
 9. **Shablon #KP-02** — Muvofiqlik tekshiruvi (full template)
 10. **Sozlash** — 4 qadam (Rolni · Misol · Format · Sina)
-11. **Live workshop** — birgalikda Kredit memoni "Garov tahlili"ga qayta yozamiz
+11. **Live workshop** — birgalikda Kredit memoni "Tijorat bankiga normativni tushuntirish"ga qayta yozamiz
 12. **Sifat tekshiruvi** — `.cando` 5+5 belgi (yuborsa bo'ladi · qayta yoz)
 13. **Closing** — 3 xulosa + lug'at recap (System Prompt / Template Prompt)
 14. **Q&A** — ochiq savol-javob, murod@mohir.dev
@@ -49,7 +49,7 @@ Modul oxirida har bir ishtirokchi **ertangi smendayoq ishlatadigan 3 ta tayyor s
 - **6 (Kutubxona):** Har bir kategoriya ostida shablon soni — "kerak bo'lganda manzilni eslab qoling" deb oching. Featured 2 ta (Kredit + Muvofiqlik) — eng keng ishlatiladigan.
 - **7–9 (3 ta shablon):** Har shablonga ~5 daqiqa. Birinchi marta o'qib bering — placeholderlar yoritilganini ko'rsating. Foydalanish statistikasini eslang ("bu oyda X marta") — auditoriya bu shablonlar haqiqatda ishlatilayotganini sezadi.
 - **10 (Sozlash):** 4 qadamni qo'l ko'rsatib o'ting — har biri qisqa. "Bu 80/20 qoidasi" — tayyor shablon 80%, sizga moslash 20%.
-- **11 (Workshop):** **Eng muhim slayd.** Kredit memoni "Garov bahosi xulosasi"ga aylantiramiz. Auditoriyadan 4-5 ta maydonni so'rang, jonli yozib boring. Maydonlar `[GAROV_TURI]`, `[BOZOR_BAHOSI]`, `[LIKVIDLILIK]`, `[SUDDA_TEKSHIRUV]` — yana qaysi? Vaqt: ~8 daqiqa.
+- **11 (Workshop):** **Eng muhim slayd.** Kredit memoni "Tijorat bankiga normativni tushuntirish"ga aylantiramiz. Auditoriyadan 4-5 ta maydonni so'rang, jonli yozib boring. Maydonlar `[NORMATIV_RAQAMI]`, `[KUCHGA_KIRGAN_SANA]`, `[O'ZGARGAN_BANDLAR]`, `[AMALIYOTGA_TA'SIRI]`. Format — 4 qismli aniq struktura: Eski tartib → Yangi tartib → Qachondan → Kim bilan bog'lansa. Vaqt: ~8 daqiqa.
 - **12 (Sifat tekshiruvi):** "AI yozdi — siz imzolaysiz." Mas'uliyat baribir bankirda. 5+5 belgini auditoriya bilan birga o'qing.
 - **13 (Closing):** 3 xulosa qisqa, recap interaktiv: "Eslay olasizmi: System Prompt nima edi?" — jamoa bilan birga ayting.
 

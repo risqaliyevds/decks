@@ -1,87 +1,83 @@
 # Verdict: NEEDS-FIXES
 
-**Score: 7/10**
+**Score: 8/10**
 
-Deck yaxshi strukturaga ega: Trigger va Webhook slide 5 da kiritilgan, slide 17 da recap bor, bank workflow misollari auditoriyaga yaqin. Lekin Markaziy Bank auditoriyasi uchun hozirgi matnda vendor tarafkashligi, isbotlanmagan aniq raqamlar va "bo'lim xodimi o'zi qiladi" degan boshqaruvga xavfli ohang kuchli. Ship qilishdan oldin governance tilini kuchaytirish, raqamlarni test intizomiga almashtirish va yakunni bank qaror artefakti bilan tugatish kerak.
+HTML deck va screenshotlar delivery uchun deyarli tayyor: Trigger + Webhook slide 5 da aniq kiritilgan, slide 17 da recap bor, slide 18 esa Markaziy Bank auditoriyasiga mos qaror varaqasi beradi. Asosiy muammo: `content.md` va `notes.md` HTML'dan ortda qolgan. Shu sabab speaker matni hali ham n8n absolutizmi, isbotlanmagan raqamlar va "bo'lim xodimi o'zi qiladi" ohangini kuchliroq saqlab turibdi. Deckni topshirishdan oldin manba kontentni HTML bilan sinxronlash va vendor/jarayon claims'larini ehtiyotkorroq qilish kerak.
 
-## Top 5 Content Improvements
+## Punch-List
 
-### 1. Vendor absolutizmini kamaytiring: n8n "bizning tanlov" emas, "pilot uchun tavsiya etiladigan variant"
+### 1. Content accuracy
 
-**Muammo:** Slide 6-7 Zapier/Make/n8n taqqoslashida n8n deyarli shartsiz g'olib sifatida berilgan: "hech narsa chetga chiqmaydi", "Vendor lock-in yo'q", "to'liq mos", "bepul". Bu Central Bank auditoriyasi uchun juda absolyut. Self-hosted bo'lsa ham LLM provayderi, loglar, connector konfiguratsiyasi, backup, update va credential siyosati alohida boshqariladi.
+- `notes.md` hali **18 ta slayd** deydi, lekin `index.html`, screenshotlar va `content.md` **19 ta slayd**. Bu QA va speaker prep uchun chalkashlik beradi.
+- `content.md` boshida mini-workflow **4-nodeli** deb yozilgan, deck esa 5 node ko'rsatadi: Telegram Trigger -> Set -> Gemini -> Sheets -> Reply.
+- Speaker textda "hech qanday ma'lumot tashqariga chiqmaydi", "bir bayt ham chiqmaydi", "Markaziy Bank talablariga to'liq mos", "vendor lock-in yo'q" kabi absolyut iboralar qolgan. Self-hosted n8n buni avtomatik kafolatlamaydi: LLM chaqiruvlari, connectorlar, loglar, backup, update va credential siyosati alohida audit qilinadi.
+- "2 hafta -> 30 daqiqa", "90% aniqlik", "95%", "operator vaqti 0", "4 soat -> 5 daqiqa" kabi raqamlar manbasiz aniq va'da bo'lib eshitiladi. HTML ba'zi joylarda "pilot bilan o'lchanadi" deb tuzatgan, lekin speaker text hali eski ohangda.
 
-**Rewrite (Slide 6/7):**
+### 2. Governance fit
 
-> Bank uchun platforma tanlashda savol "qaysi biri zo'r?" emas, "qaysi biri qaysi nazorat bilan ishlatiladi?" bo'ladi. Zapier va Make tez prototip uchun qulay, lekin regulyator ma'lumotlari va mijoz ma'lumotlari bo'yicha cheklovlar bor. n8n self-hosted joylashtirilsa, ma'lumot oqimini bank ichida boshqarish osonlashadi. Shuning uchun ushbu modulda n8n'ni pilot uchun asosiy variant sifatida ko'ramiz. Yakuniy tanlov esa IT xavfsizlik, komplaens, ma'lumot egalari va xarid siyosati tasdig'idan keyin qilinadi.
+- Slide 16 va 18 kuchli, lekin governance framing slide 3-4 speaker matniga ham ko'chishi kerak. "IT navbatini kutmaymiz; o'zimiz yig'amiz" degan asosiy tezis Markaziy Bank kontekstida "sandbox prototip qilamiz; IT va komplayens production'ni tasdiqlaydi" shaklida aytilishi kerak.
+- Slide 18 qaror varaqasi yaxshi: trigger, ma'lumot turi, inson tasdig'i, audit log, test mezoni, mas'ul shaxs. Uni speaker textda "pilotga chiqadimi?" deb atash to'g'riroq; hozir ba'zi joylarda "production yoki sandbox" keskinroq chiqadi.
+- "Bo'lim xodimi workflow yaratadi" deganda vakolat chegarasi kerak: kim sandbox ochadi, kim credential beradi, kim webhook URL'ni tashqi/ichki tizimga ulaydi, kim production activate qiladi.
 
-**Slide text replacement:**
+### 3. Atamalar: Trigger + Webhook intro + recap
 
-> **n8n - pilot uchun mos variant:** self-hosted joylashtirish mumkin, ma'lumot oqimini bank nazoratida ushlash osonroq, lekin connectorlar, LLM chaqiruvlari, loglar va backup alohida audit qilinadi.
+- Talab bajarilgan: rasmiy kiritish slide 5 da, recap slide 17 da. Atama uniqueness rule buzilmagan.
+- Trigger izohi sodda va bankir tilida. "Qo'zg'atuvchi hodisa" ishlaydi, lekin recapda "workflow'ni boshlatuvchi hodisa" yodda qoladi.
+- Webhook intro yaxshi, lekin xavfsizlik ro'yxatini to'liqroq va bir xil qilish kerak: token, IP cheklovi, imzo tekshiruvi, rate limit, audit log, mas'ul egasi. Hozir slide 5 "token + IP + imzo + audit log", slide 17 "token + IP + audit log", recap pastida esa "token + log" deb qisqaradi.
 
-### 2. Aniq raqamlarni "testing discipline" bilan almashtiring
+### 4. Uzbek quality
 
-**Muammo:** "2 hafta yoki 30 daqiqa", "10x", "95%", "operator vaqti 0", "90% aniqlik", "4 soat -> 5 daqiqa" kabi raqamlar ishonchli manbasiz juda aniq eshitiladi. Bank auditoriyasi bunday slaydlarda metodika kutadi: baseline, pilot, test dataset, acceptance threshold, monitoring.
+- "komplaens" o'rniga bir xil "komplayens" ishlating. HTML va screenshotlarda hali "Komplaens" bor.
+- "qaerda/qayerda" aralash. Bir variantni tanlang; tavsiya: "qayerda".
+- "use-case ga" -> "use-case'ga"; slide 17 HTML'da hali apostrof tushgan.
+- "Bizda hozir ekranda quriladi" g'alati passiv: "Biz uni hozir ekranda quramiz".
+- "uy ga", "kun ikkita", "quriganini ko'radi", "Mas'ul ega" kabi speaker text xatolarini tozalash kerak. Screenshotlarda ko'rinmaydi, lekin delivery paytida bilinadi.
 
-**Rewrite (Slide 3/4/11/12/13/17):**
+### 5. Vendor absolutism: no-code tools comparison
 
-> Raqamni va'da qilmaymiz, o'lchaymiz. Pilotdan oldin baseline olinadi: bir spravka qancha vaqt oladi, nechta xato chiqadi, nechta murojaat inson aralashuvini talab qiladi. Pilotda 2 hafta davomida test oqimi yuritiladi. Keyin qaror jadvali to'ldiriladi: vaqt tejalishi, xato kamayishi, SLA buzilishi, xavfsizlik incidenti, foydalanuvchi shikoyati. Shundan keyin workflow production'ga chiqishi yoki qayta ishlanishi hal qilinadi.
+- Zapier uchun "faqat AQSh serveri" va "bank ma'lumoti chetga chiqadi" juda keskin. To'g'riroq framing: "cloud xizmat; ma'lumot qayerda qayta ishlanishi, subprocessorlar, data residency va enterprise controls xarid/IT tekshiruvini talab qiladi."
+- Make uchun "Yevropa serveri (GDPR)" yetarli emas. Make rasmiy security sahifasida AWS EC2 private instances, GDPR, SOC 2 Type II/SOC 3 va log retention haqida gapiradi; deck buni "baribir xavf" emas, "cloud governance tekshiruvi kerak" deb berishi kerak.
+- n8n uchun "open-source" o'rniga "source-available / fair-code litsenziya" deb aniqroq aytish kerak. Free self-hosted community edition bor, lekin community edition enterprise funksiyalarining hammasini bermaydi: SSO, external secrets, log streaming, version control, workflow/credential sharing kabi cheklovlar bor.
+- "500+ ulanish" va narxlar tez eskiradi. Slide speaker matnida "rasmiy sahifada yangilanadigan connector/pricing ro'yxati" deb yumshating.
 
-**Slide text replacement:**
+## Top 5 Uzbek Rewrites
 
-> **Tezlik - va'da emas, o'lchov:** baseline -> pilot -> test natijasi -> production qarori.
+### 1. Slide 1 / opening: vendor va data absolutizmini yumshatish
 
-> **Spravka misoli:** avval 2 haftalik pilotda 100 ta test ariza o'tkaziladi. Maqsad: vaqt, xato, eskalatsiya va audit log sifati bo'yicha o'lchangan natija olish.
+**Replace speaker line:**
 
-### 3. Governance fit: "bo'lim xodimi o'zi yig'adi" modelini uch bosqichli nazoratga o'tkazing
+> Nima uchun n8n? Chunki u self-hosted joylashtirilsa, workflow ijrosi va loglarni bank nazoratidagi muhitda ushlash mumkin. Lekin bu "hammasi avtomatik xavfsiz" degani emas: LLM chaqiruvlari, connectorlar, credentiallar va backup alohida tekshiriladi. Bugun n8n'ni pilot uchun qulay variant sifatida ko'ramiz.
 
-**Muammo:** Deckning asosiy g'oyasi "IT navbatini kutmaymiz; o'zimiz yig'amiz" deb kuchli berilgan. Bu energiya beradi, lekin Central Bank kontekstida noto'g'ri xulosa tug'dirishi mumkin: istalgan xodim istalgan avtomatlashtirishni ishga tushiradi. Slide 16 xavfsizlik bor, lekin boshqaruv modeli oldinroq va aniqroq chiqishi kerak.
+### 2. Slide 3-4: governance modelni asosiy g'oyaga qo'shish
 
-**Rewrite (Slide 3 yoki Slide 4 ga qo'shish):**
+**Replace "bo'lim xodimi o'zi yig'adi" framing:**
 
-> No-code bankda "xohlagan odam xohlagan workflow qiladi" degani emas. To'g'ri model uch bosqichli: bo'lim xodimi jarayonni chizadi va sandbox'da prototip yig'adi; IT xavfsizlik integratsiya, credential, log va tarmoq chegarasini tekshiradi; komplaens ma'lumot turi, mijozga ta'sir va audit izini tasdiqlaydi. Faqat shundan keyin workflow production'ga chiqadi.
+> Bankdagi to'g'ri model shunday: bo'lim xodimi jarayonni chizadi va sandbox'da prototip yig'adi. IT xavfsizlik ulanishlar, credentiallar, webhook va loglarni tekshiradi. Komplayens ma'lumot turi, mijozga ta'sir va audit izini tasdiqlaydi. Faqat shundan keyin workflow pilotga, keyin production'ga chiqadi.
 
-**Slide text replacement:**
+### 3. Slide 5 / 17: Webhook xavfsizlik recapini bir xil qilish
 
-> **Bank modeli:** bo'lim prototip qiladi -> IT xavfsizlik tekshiradi -> komplaens tasdiqlaydi -> production.
+**Replace Webhook definition + recap:**
 
-### 4. Atamalar yaxshi kiritilgan, lekin Webhook xavfsizlik chegarasi bilan recapped bo'lishi kerak
+> **Webhook** - boshqa tizim xabar yuboradigan maxsus URL. Bankda webhook ochiq eshik emas: token, IP cheklovi, imzo tekshiruvi, rate limit, audit log va mas'ul egasi bilan ishlaydi.
 
-**Muammo:** Trigger va Webhook kiritilishi talabga mos. Lekin Webhook "URL-eshik" sifatida aytilganda bank auditoriyasi darhol xavfsizlik savolini kutadi: kim yubora oladi, autentifikatsiya bormi, imzo/token bormi, rate limit bormi, loglanadimi? Closing recap ham faqat izoh beradi, governance xotirasini mustahkamlamaydi.
+**Recap line:**
 
-**Rewrite (Slide 5):**
+> **Webhook nima?** Boshqa tizim xabar yuboradigan maxsus URL. **Bankda qachon ruxsat?** Token/IP/imzo, rate limit, audit log va mas'ul egasi bo'lsa.
 
-> **Trigger** - workflow'ni boshlatadigan hodisa. Misol: yangi email keldi, juma 17:00 bo'ldi, Telegram botga /spravka yozildi.
->
-> **Webhook** - boshqa tizim xabar yuboradigan maxsus URL. Bankda webhook ochilsa, u ochiq eshik emas: token, IP cheklovi, imzo tekshiruvi, rate limit va audit log bilan himoyalanadi.
+### 4. Slide 6-7: no-code platformalar comparisonini neytral qilish
 
-**Rewrite (Slide 17 recap):**
+**Replace platform comparison block:**
 
-> Lug'at recap - birga aytamiz:
->
-> **Trigger nima?** Workflow'ni boshlatadigan hodisa.
->
-> **Webhook nima?** Boshqa tizim xabar yuboradigan maxsus URL.
->
-> **Bankda webhook qachon ruxsat?** Token/IP cheklovi, log va mas'ul egasi bor bo'lsa.
+> Savol "qaysi platforma eng zo'r?" emas, "qaysi jarayon qaysi nazorat bilan ishlaydi?" Zapier juda tez start beradi va ko'p tayyor integratsiyaga ega, lekin cloud data governance tekshiruvi kerak. Make vizual oqimlar va error handling uchun qulay, enterprise xavfsizlik imkoniyatlari bor, lekin baribir cloud/subprocessor nazorati ko'riladi. n8n self-hosted joylashtirilsa, ijro muhiti bank nazoratiga yaqinlashadi; shunga qaramay connectorlar, LLM chaqiruvlari, loglar, backup va enterprise funksiyalar alohida audit qilinadi.
 
-### 5. Yakun Q&A emas, bank qaror artefakti bilan tugasin
+### 5. Slide 11-13 / examples: aniq raqamlarni pilot o'lchoviga almashtirish
 
-**Muammo:** Slide 17 yaxshi recap qiladi, lekin modul oxirida auditoriya qo'lida qaror chiqarish vositasi qolmaydi. Markaziy Bank xodimlari uchun eng foydali yakun: qaysi workflow pilotga chiqishi mumkinligini baholaydigan mini decision sheet.
+**Replace benefits paragraph:**
 
-**Rewrite (Slide 17 ni kuchaytirish yoki Slide 18 Q&A oldidan qo'shish):**
+> Bu yerda raqamni va'da qilmaymiz, o'lchaymiz. Avval baseline olinadi: bitta spravka yoki shikoyat qancha vaqt oladi, nechta xato chiqadi, nechta holat inson aralashuvini talab qiladi. Pilotda test oqimi yuradi. Keyin qaror beriladi: vaqt tejalishi, xato kamayishi, SLA, eskalatsiya va audit sifati yetarlimi yoki workflow sandbox'da qayta ishlanadimi.
 
-> **Bank qaror varaqasi: workflow pilotga chiqadimi?**
->
-> 1. Trigger aniqmi? Email, Schedule, Telegram, Form yoki Webhook.
-> 2. Ma'lumot turi aniqlanganmi? Ochiq, ichki, maxfiy yoki mijozga oid.
-> 3. Inson tasdig'i qayerda turadi? AI faqat tayyorlaydimi yoki qaror ham qilyaptimi?
-> 4. Audit log bormi? Kim, qachon, nima kiritdi, nima chiqdi.
-> 5. Test mezoni bormi? Vaqt, xato, SLA, eskalatsiya va xavfsizlik bo'yicha o'lchov.
-> 6. Mas'ul egasi bormi? Bo'lim egasi, IT egasi, komplaens egasi.
->
-> Shu 6 savolga javob bo'lmasa, workflow hali production emas, faqat sandbox prototip.
+## Sources Checked For Vendor Claims
 
-**Closing replacement:**
-
-> Bugungi qaror artefakti: har bir bo'lim bitta workflow nomini yozadi va 6 savol bo'yicha baholaydi. Ertaga 9-modulda RAG bot qurishdan oldin aynan shu varaqaga qaytamiz.
-
+- Zapier official docs: task usage, limits, pay-per-task billing, integrations count.
+- Make official pricing and security pages: credits/pricing, GDPR/SOC controls, AWS hosting, default log retention.
+- n8n official docs/pricing: free self-hosted community edition, hosted/self-hosted data location, community edition limitations.

@@ -1,41 +1,48 @@
-Verdict: **6/10**. Muvofiqlik swap qilingan, lekin deck hali ham “Markaziy Bank professional prompt engineering” emas, ko‘proq retail-bank xodimlari uchun basic ChatGPT treningga o‘xshaydi.
+Verdict: **Score 6/10**. Deck struktura jihatdan tayyor: 13 slayd, Few-shot + Chain-of-Thought slide 5 da kiritilgan, slide 12 da recap bor, maxfiylik haqida ogohlantirish qo'shilgan. Lekin mazmun hali "Markaziy Bank xodimlari uchun professional promt muhandisligi" darajasiga to'liq chiqmagan: misollar retail kredit/avtokreditga og'ib ketgan, CoT ichki fikrlashni ochishga chaqirgandek berilgan, governance qismi public AI va bank siri bo'yicha yetarlicha qat'iy emas, ayrim jumlalar vendor/AI absolutizmiga yaqin.
 
-**Top 5 remaining content fixes**
+## Punch-list
 
-1. **Markaziy Bank konteksti noto‘g‘ri: kredit/avtokredit approval juda retail-bank.**  
-Slide 3/7/9 dagi “80 mln avtokredit, DTI, tasdiqlanadimi” misollari MB xodimi uchun begona va hatto vakolat jihatdan chalkash. Operatsion/muvofiqlik/management uchun regulyator ishlariga burish kerak.
+1. **Content accuracy: Chain-of-Thought xavfsiz berilmagan.**  
+   Slide 5/7/12 da "qadamma-qadam o'yla", "fikrla, keyin javob ber", "fikr zanjiri" iboralari professional muhitda noto'g'ri signal beradi. Regulyator auditoriyasi uchun kerak narsa modelning ichki fikrini chiqarish emas, balki tekshiriladigan asos: faktlar, mezon, hisob-kitob, noaniqlik, inson tasdig'i.
 
-Rewrite:
-> “Tijorat bankidan kelgan AML hisobotida 3 ta yuqori riskli tranzaksiya bor. Me’yoriy talab: shubhali operatsiyalar bo‘yicha izoh, manba va keyingi nazorat chorasi ko‘rsatilishi kerak. 1 betlik rahbariyat xulosasini tayyorla: faktlar, risk, ochiq savollar, tavsiya.”
+2. **Governance fit: MB konteksti zaif.**  
+   Slide 3/7/9 dagi "80 mln avtokredit", "DTI < 45%", "kredit tasdiqlanadimi" misollari tijorat banki front-office ishiga o'xshaydi. Markaziy Bank uchun nazorat xati, AML/CFT hisobot, prudensial ko'rsatkichlar, normativ hujjat solishtirish, rahbariyat brifi kabi regulyator vazifalari ustun bo'lishi kerak.
 
-2. **Chain-of-Thought “qadamma-qadam o‘yla / fikrni ko‘rsat” deb o‘rgatilgan, bu professional darajada xavfli.**  
-Audit izi kerak, lekin “modelning ichki fikr zanjiri” emas. Professional prompt: hisob-kitob, dalil, taxmin, manba, qaror mezoni ko‘rsatiladi.
+3. **Atamalar: Few-shot yaxshi, CoT intro va recap qayta yozilishi kerak.**  
+   Few-shot "namuna bilan o'rgatish" sifatida tushunarli. Chain-of-Thought esa "ichki fikrni yozdirish" emas, "asoslangan javob formati" sifatida berilsin. Recap ham "qadamma-qadam o'yla" emas, "asos, hisob va tekshiruv bandlarini ko'rsat" deb yopilishi kerak.
 
-Rewrite:
-> “Ichki fikrlash jarayonini yozma. Natijani quyidagi formatda ber: 1) ishlatilgan faktlar, 2) hisob-kitob yoki tekshiruv mezoni, 3) topilgan nomuvofiqliklar, 4) ishonch darajasi, 5) inson tekshirishi kerak bo‘lgan joylar.”
+4. **Uzbek quality: ayrim iboralar sun'iy yoki og'zaki haddan tashqari.**  
+   "AI sizning ovozingizni oladi", "oltin standart", "AI ahmoqona javob beradi", "mo''jizaviy promt", "doston yozib beradi" kabi iboralar seminarni jonlantiradi, lekin Markaziy Bank auditoriyasida bir oz arzon eshitilishi mumkin. Ton: sodda, lekin institutsional bo'lsin.
 
-3. **Maxfiylik qoidasi juda sodda: “ismni Mijoz X qiling” yetmaydi.**  
-Muvofiqlik auditoriyasida PII, bank siri, ichki nazorat hujjatlari, tergov/tekshiruv materiallari, regulator yozishmalari bor. “Anonimlashtirib yuboring” degan gap public AI uchun yetarli siyosat emas.
+5. **Vendor absolutism / AI absolutism: haddan tashqari ishonch kamaytirilsin.**  
+   "Shablon ishingizni kamida 30 daqiqaga qisqartiradi", "xato keskin kamayadi", "sifatli javob", "AI auditga bemalol tushuntirib beradi", "natijaning yomon chiqishi AI xatosi emas" kabi tezislar yumshatilsin. To'g'ri ramka: promt xatoni kamaytiradi, lekin yo'q qilmaydi; yakuniy qaror va javobgarlik xodimda qoladi.
 
-Rewrite:
-> “AI’ga faqat tasdiqlangan korporativ muhitda ma’lumot kiriting. Public servisga mijoz F.I.Sh., hisob raqami, STIR/JShShIR, tranzaksiya ID, ichki tekshiruv xulosasi yoki bank siri bo‘lgan matn kiritilmaydi. Zarur bo‘lsa: agregatsiya qiling, identifikatorlarni olib tashlang, minimal kontekst bering.”
+## Top 5 Uzbek Rewrites
 
-4. **“Yomon natija AI xatosi emas, bizning qolip bermaganimiz” degan tezis noto‘g‘ri va xavfli.**  
-Professional auditoriya uchun AI har doim tekshiriladigan yordamchi. Prompt yaxshi bo‘lsa ham model xato qiladi, manba to‘qiydi, siyosatni noto‘g‘ri talqin qiladi.
+1. **Slide 7 CoT lead / atama izohi**
 
-Rewrite:
-> “Yaxshi promt xatoni kamaytiradi, lekin yo‘q qilmaydi. Yakuniy qaror AI’da emas, mas’ul xodimda qoladi. Har bir javobda manba, taxmin, noaniqlik va tekshirish kerak bo‘lgan bandlar alohida ko‘rsatiladi.”
+   Eski yo'nalish: "AI'ni fikrla, keyin javob ber deb yo'naltirsangiz..."  
+   Rewrite:
+   > Chain-of-Thought bu AI'ning ichki fikrini yozdirish emas. Amaliy ishda undan maqsad: javobda faktlar, hisob-kitob, qaror mezoni va tekshirilishi kerak bo'lgan joylarni alohida ko'rsatish.
 
-5. **Professional daraja yetishmayapti: 5 element + few-shot + CoT basic daraja.**  
-Module 5 “professional level” bo‘lsa, kamida output criteria, source grounding, red-team check, escalation, reusable template governance bo‘lishi kerak.
+2. **Slide 7 promt namunasi**
 
-Rewrite slide/checklist:
-> “Professional promt checklist:  
-> 1) Maqsad: qaror, xulosa yoki loyiha matnimi?  
-> 2) Manba: faqat berilgan hujjatlarga tayan.  
-> 3) Chegara: yetishmagan ma’lumotni taxmin qilma.  
-> 4) Format: rahbariyat xulosasi / jadval / risk reyestri.  
-> 5) Nazorat: noaniqliklar va inson tasdiqlashi kerak bo‘lgan bandlarni chiqar.  
-> 6) Maxfiylik: shaxsiy va bank sirini kiritma.”
+   Rewrite:
+   > Quyidagi ma'lumot asosida qisqa nazorat xulosasi tayyorla. Faqat berilgan faktlarga tayan. Javob formatini saqla: 1) asosiy faktlar, 2) qo'llangan mezon, 3) hisob-kitob, 4) nomuvofiqlik yoki risk, 5) inson tekshirishi kerak bo'lgan bandlar. Yetishmagan ma'lumot bo'lsa, taxmin qilma.
 
-Most urgent rewrite: replace retail credit examples with **regulatory supervision, AML/CFT, internal memo, policy comparison, management briefing** examples. Otherwise the muvofiqlik terminology is fixed, but the substance still smells like commercial-bank customer service training.
+3. **Slide 3/7 retail kredit misolini MB kontekstiga almashtirish**
+
+   Rewrite:
+   > Tijorat bankidan kelgan AML/CFT hisobotida 3 ta yuqori riskli operatsiya ko'rsatilgan. Vazifa: rahbariyat uchun 1 betlik xulosa tayyorla: faktlar, risk sababi, qaysi talabga bog'liqligi, ochiq savollar va keyingi nazorat qadami.
+
+4. **Slide 10 maxfiylik/governance qoidasi**
+
+   Rewrite:
+   > Public AI servisiga mijoz F.I.Sh., hisob raqami, STIR/JShShIR, tranzaksiya ID, ichki tekshiruv xulosasi, nazorat yozishmalari yoki bank siri bo'lgan matn kiritilmaydi. Faqat tasdiqlangan korporativ muhitda, minimal zarur kontekst bilan ishlang. Shaxsiy identifikatorlarni olib tashlang, raqamlarni agregatsiya qiling, yakuniy xulosani mas'ul xodim tekshirsin.
+
+5. **Slide 12 recap va yakuniy tezis**
+
+   Rewrite:
+   > Few-shot Prompting = AI'ga tasdiqlangan 2-3 ta namuna berib, kerakli format va ohangni ko'rsatish.  
+   > Chain-of-Thought = yakuniy javobda asos, mezon, hisob-kitob va tekshiruv bandlarini ko'rsatishni so'rash.  
+   > Yaxshi promt xatoni kamaytiradi, lekin javobgarlikni AI'ga o'tkazmaydi.

@@ -1,47 +1,43 @@
-# Codex Review - Slide 14 atamalar
+# Codex Review - 7-deck punch-list
 
-**Verdict:** NEEDS-FIXES
+**Verdict:** NEEDS-FIXES  
 **Score:** 7/10
 
-Slide 14 is useful and mostly understandable for a non-technical Markaziy Bank audience, but it currently breaks the atamalar uniqueness rule for **Agent**: deck 10 already introduces Agent officially, while slide 14 uses `dict-tag` and gives a fresh definition. Rules, Skills, and MCP are generally clear, but MCP and Agent need stronger governance framing: platform features must be treated as contract-controlled capabilities, not default permissions.
+Deckning asosiy yo'nalishi to'g'ri: platformani brend bo'yicha emas, use-case, ma'lumot sezgirligi, audit izi va narx bo'yicha tanlash kerakligi yaxshi ochilgan. `index.html`dagi joriy versiya CLAUDE.md talabiga yaqin: slide 5 Token + Context Window, slide 14 Rules + Skills + MCP, Agent esa cross-ref, slide 18 esa 5 atama recap qiladi.
 
-Closing slide 18 correctly recaps all 5 target atamalar: **Token + Context Window + Rules + Skills + MCP**. The only small cleanup is the summary line saying "Context" while the official term is **Context Window**.
+Lekin hali punch-list bor:
 
-## Top 5 Concrete Uzbek Rewrites
+- **Content sync:** `content.md` va `notes.md` eskirgan. Ikkalasi 18 slayd va faqat Token/Context Window deydi; `index.html` va screenshots esa 19 slayd, slide 14 yangi atamalar, slide 18 besh atama recap. Notes/source yangilanmasa keyingi QA noto'g'ri deckni tekshiradi.
+- **Content accuracy:** platforma raqamlari bir xil mahsulot yuzasidan berilmagan. ChatGPT app, OpenAI API, Gemini API/Workspace, Claude web/API alohida kanallar; context window, narx, data-retention va tool access kanaldan kanalga o'zgaradi. Slaydlarda "Holat: 2026-05" bor, lekin jadval buni amalda ajratmayapti.
+- **Governance fit:** slide 11 va 15 kuchli. Slide 14da ham korporativ shartnoma + audit log bor, lekin "AI'ni bo'lim ish jarayoniga avtomat ulashga imkon beradi" juda keng eshitiladi. "Imkon beradi" o'rniga "faqat ruxsatli kanal orqali ulanishi mumkin" framing kerak.
+- **Atamalar:** rasmiy mapping bajarilgan: Token, Context Window, Rules, Skills, MCP. Agent `dict-tag` emas va cross-ref bo'lib turibdi - yaxshi. Closingda ikkinchi xulosa "Context" deb qisqartirgan; rasmiy nom **Context Window** bo'lishi kerak.
+- **Uzbek quality:** umumiy til auditoriyaga mos. Ammo "vendor", "production", "API/Web rejimi", "Persona", "training", "right to erasure" kabi joylarda yoki o'zbekcha izoh qo'shish, yoki bir xil uslubda qoldirish kerak. "YandexGPT / GigaChat - RU lokal hosting" Markaziy Bank auditoriyasi uchun juda qo'pol va siyosiy/huquqiy jihatdan ehtiyotliroq yozilishi kerak.
+- **Vendor absolutism:** ChatGPT/Claude/Gemini solishtiruvida "eng katta ekosistema", "uzun matn ustasi", "eng keng", "kamroq xato", "kursimizning tanlovi" kabi mutlaq ohanglar bor. Buni "ko'pincha", "shu demo uchun", "rasmiy limit va shartnomaga qarab" bilan yumshatish kerak. Ayniqsa Claude uchun "real-vaqtda internetga ulanmagan" va ChatGPT uchun "GPT-4o 128k" kabi jumlalar tez eskiradi va mahsulot kanaliga bog'liq.
 
-### 1. Agent card must become cross-reference only
+**Top 5 Uzbek Rewrites**
 
-Current phrasing redefines Agent. Replace the full Agent card body with:
+1. Slide 4 - 5 platforma kartasi vendor-absolutismni kamaytirsin:
 
-> **Agent - 10-modulda alohida o'rganamiz**  
-> Bu yerda faqat nomini eslab qolamiz: ayrim platformalarda AI vazifani bir necha qadamga bo'lib, ruxsat berilgan asboblardan foydalanishi mumkin. Batafsil ta'rif, chegaralar va nazoratlar - 10-modulda.
+> **Bozorda bir nechta yirik yo'nalish bor.** Bank uchun nomdan oldin kanalni ajratamiz: chat ilova, korporativ workspace yoki API. Raqamlar va imkoniyatlar tarif, region, shartnoma va ruxsat sozlamasiga qarab o'zgaradi.
 
-### 2. MCP definition should be less absolute and more governance-fit
+2. Slide 7 - context window jadvali aniqroq governance disclaimer bilan:
 
-Current "qo'shimcha kod yozmasdan" can sound like risk-free integration. Rewrite:
+> **Kontekst oynasi - orientir, xarid qarori emas.** Bu raqamlar model/API/Web kanaliga qarab farq qiladi. Pilotdan oldin vendorning rasmiy hujjati, data-residency sharti, retention siyosati va yuridik xulosa alohida tekshiriladi.
 
-> **MCP** - AI platformani tashqi tizimlar bilan bog'lash uchun standart protokol. Bankda bu faqat tasdiqlangan serverlar, ruxsat chegarasi, audit log va korporativ shartnoma bilan ishlatiladi.
+3. Slide 10 - Gemini framingni demo tanlov sifatida qoldirish:
 
-### 3. MCP example should avoid implying direct access is automatically allowed
+> **Gemini - bugungi lab uchun qulay demo muhiti.** Uzun kontekst, multimodal input va Workspace integratsiyasi mashqni tez ko'rsatishga yordam beradi. Bu Markaziy Bank uchun yakuniy tavsiya emas; real tanlov use-case, xavfsizlik, audit izi, narx va data-residency bo'yicha alohida baholanadi.
 
-Current example names external services as if connection is immediate. Rewrite:
+4. Slide 14 - lead matn governance-fit bo'lsin:
 
-> **Misol:** tasdiqlangan MCP ulagichi orqali AI faqat ruxsat berilgan jadval yoki hujjatni o'qiydi; yozish, yuborish yoki o'chirish amallari alohida ruxsat va audit izi bilan boshqariladi.
+> ChatGPT, Claude va Gemini faqat chat oynasi emas. Rules, Skills va MCP bo'lim ishini standartlashtirishga yordam beradi, lekin bankda ular faqat korporativ shartnoma, ruxsat chegarasi, audit log va inson tasdig'i bilan ishlatiladi. Agent rejimi esa 10-modulda alohida ochiladi.
 
-### 4. Rules definition should say "policy guardrail," not just writing style
+5. Slide 18 - closing recapdagi rasmiy 5 atama:
 
-Current Rules text is clear, but too much like tone settings. Rewrite:
+> **Token, Context Window, Rules, Skills, MCP - endi sizning ish tilingiz.** IT-xarid va vendor bilan gaplashganda narx, sig'im, doimiy qoida, qayta ishlatiladigan paket va ruxsatli integratsiya talablarini aniq so'raysiz.
 
-> **Rules** - AI uchun doimiy ish qoidasi: qaysi rol, qaysi uslub, qaysi manba, qaysi ma'lumot taqiqlangan. Bir marta sozlanadi, har javobda eslatib turiladi.
+**Source-check notes**
 
-### 5. Skills should avoid "butun bo'lim ishlatadi" without ownership controls
-
-Current Skills text is easy, but needs owner/version framing. Rewrite:
-
-> **Skills** - bo'lim uchun qayta ishlatiladigan AI paketi: ko'rsatma, namuna, tekshiruv mezoni va ruxsat chegarasi bir joyda. Egasi, versiyasi va tasdiqlash tartibi aniq bo'lsa, jamoa bir xil standartda ishlaydi.
-
-## Minor Closing Cleanup
-
-Slide 18 summary line should use the official term:
-
-> **Token, Context Window, Rules, Skills, MCP - endi sizning tilingiz.**
+- OpenAI docs/product pages currently separate ChatGPT Business/Enterprise limits from API model limits; deck should not mix them in one hard number.
+- Anthropic docs present Claude model context mostly as 200K, with 1M long context as a channel/model-specific beta for Sonnet/API.
+- Google Gemini docs list Gemini 2.5 Pro with 1,048,576 input tokens and pricing changes above 200K-token prompts; the deck should mention long-context cost tiers when using 1M as the headline.

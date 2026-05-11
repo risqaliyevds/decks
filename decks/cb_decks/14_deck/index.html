@@ -735,7 +735,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="step">
         <div class="ico">03</div>
         <h4>V3 · Agent</h4>
-        <p>Tool calling qo'shildi. Mijoz hisobini tekshira oladi. Agent darajasi.</p>
+        <p>Asboblar (Tool Use) qo'shildi. Mijoz hisobini tekshira oladi. Agent darajasi.</p>
       </div>
     </div>
     <p class="lead no-bar reveal r3" style="margin-top:clamp(0.85rem,1.5vw,1.25rem);font-style:italic;color:var(--mute)">→ Agar V3 dan boshlasak — V1 darajasida muammo bor-yo'qligini bilmay qolardik.</p>
@@ -757,19 +757,19 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="step">
         <div class="ico">01</div>
         <h4>V1 · 7 node</h4>
-        <p>Single-turn · xotira yo'q · kategoriyalar promtga yozilgan. Bot xabarni 5 oilaga ajratadi · Sheets'ga yozadi.</p>
+        <p>Bir bosqichli · xotira yo'q · kategoriyalar promtga yozilgan. Bot xabarni 5 oilaga ajratadi · Sheets'ga yozadi.</p>
       </div>
       <div class="arrow">→</div>
       <div class="step brain">
         <div class="ico">02</div>
-        <h4>V2 · Dedup</h4>
-        <p>chat_id + message_id bo'yicha takroriy tekshiruv. Tarmoq retry'da xabar 2-marta yozilmaydi (12-modul · idempotent).</p>
+        <h4>V2 · Dublikat filtri</h4>
+        <p>chat_id + message_id bo'yicha takroriy tekshiruv. Tarmoq uzilishlarida xabar 2-marta yozilmaydi (12-modul · idempotent).</p>
       </div>
       <div class="arrow">→</div>
       <div class="step">
         <div class="ico">03</div>
         <h4>V3 · Production</h4>
-        <p>Multi-turn xotira · har bank uchun maxsus kategoriyalar · shoshilinchlik bo'yicha yo'naltirish · operatorga webhook.</p>
+        <p>Ko'p bosqichli xotira · har bank uchun maxsus kategoriyalar · shoshilinchlik bo'yicha yo'naltirish · operatorga webhook.</p>
       </div>
     </div>
     <p class="lead no-bar reveal r3" style="margin-top:clamp(0.85rem,1.5vw,1.25rem);font-style:italic;color:var(--mute)">→ V1 — 1-kun · V2 — 1-hafta · V3 — 1-oy. Har versiya orasida bo'lim sinov + bankir feedback.</p>
@@ -827,7 +827,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <span class="tpl-cat">Shablon · Loyiha brief</span>
       <span class="tpl-id">#MVP-01</span>
     </div>
-    <h2 class="h2 reveal r2" style="margin-top:0.5rem">Har AI loyihasi — <span class="hl">5 maydonli brief</span>dan boshlanadi.</h2>
+    <h2 class="h2 reveal r2" style="margin-top:0.5rem">Har AI loyihasi — <span class="hl">5 maydonli briefdan</span> boshlanadi.</h2>
     <div class="tpl-wrap reveal r3">
       <pre class="template-box"><span class="label">[MUAMMO]</span>     Bo'limimizdagi qaysi takrorlanuvchi vazifa? · 1–2 jumla, aniq.
                 <span class="ph">[Misol: kredit arizasini Telegram'da qabul qilib, hujjatlarni yig'ish]</span>
@@ -860,7 +860,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <h2 class="h2 reveal r2">Bank ichida AI loyihalari — <span class="hl">4 oila</span>.</h2>
-    <p class="lead reveal r2" style="margin-top:0.5rem">Stol o'z stsenariysini shu to'rttadan birida pozitsiyalaydi. Tanlov keyin prompt, schema va bilim bazasini belgilaydi.</p>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Stol o'z stsenariysini shu to'rttadan biriga moslaydi. Tanlov keyin prompt, schema va bilim bazasini belgilaydi.</p>
     <div class="benefits benefits-4 reveal r3">
       <div class="benefit fragment">
         <span class="ico">📄</span>
@@ -916,8 +916,8 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="arrow">→</div>
       <div class="step">
         <div class="ico">💾</div>
-        <h4>03 · Memory</h4>
-        <p>So'nggi turn oynasi (~50 xabar) + inline JSON state · bot eslab qoladi.</p>
+        <h4>03 · Xotira</h4>
+        <p>So'nggi 50 ta xabar + ichki xotira holati · bot eslab qoladi.</p>
       </div>
       <div class="arrow">→</div>
       <div class="step">
@@ -951,9 +951,9 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="task-body">
         <div class="task-list">
           <div class="item"><span class="lbl">Stsenariy</span><p><strong>Tanlang</strong>kredit · depozit · HR · muvofiqlik · siz tanlagan boshqasi.</p></div>
-          <div class="item"><span class="lbl">Prompt</span><p><strong>To'ldiring</strong>{DEPARTMENT}, {USE_CASE}, {ENTITY_TYPES} placeholderlari · ohang va chegaralar.</p></div>
+          <div class="item"><span class="lbl">Prompt</span><p><strong>To'ldiring</strong>{DEPARTMENT}, {USE_CASE}, {ENTITY_TYPES} o'zgaruvchilari · ohang va chegaralar.</p></div>
           <div class="item"><span class="lbl">Tool list</span><p><strong>5 ta nom</strong>get_customer_data · save_progress · request_document · validate_input · escalate_to_banker.</p></div>
-          <div class="item"><span class="lbl">Mas'uliyat</span><p><strong>Majburiy</strong>bot kreditlik qobiliyatini baholamaydi · "ha/yo'q" demaydi · yakuniy qarorni bankir qabul qiladi.</p></div>
+          <div class="item"><span class="lbl">Mas'uliyat</span><p><strong>Majburiy</strong>bot kreditga layoqatlilikni baholamaydi · "ha/yo'q" demaydi · yakuniy qarorni bankir qabul qiladi.</p></div>
         </div>
         <p class="task-tip"><strong>Eslatma</strong>1-modul Can/Cannot · 3-modul xavfsizlik chiziqlari shu jumlada amaliyga aylanadi.</p>
       </div>
@@ -1003,7 +1003,7 @@ body,p,li,.lead{letter-spacing:0.018em}
           <div class="item"><span class="lbl">Hujjatlar</span><p><strong>3–5 ta</strong>tariflar PDF · ichki qoidalar · mijoz uchun ko'rsatma · FAQ. Real fayl emas — nomi va mazmunini sanang.</p></div>
           <div class="item"><span class="lbl">Chunking</span><p><strong>Strategiya</strong>chunk hajmi (250 yoki 500 so'z?) · bo'limlar bo'yichami yoki paragraf bo'yichami?</p></div>
           <div class="item"><span class="lbl">Misol</span><p><strong>Aniq</strong>"Tariflar PDF — har tarif (oilaviy kredit, biznes kredit) alohida chunk".</p></div>
-          <div class="item"><span class="lbl">Yangilash</span><p><strong>Variant + ega</strong>qo'lda yoki avtomat sinxronizatsiya · "tarif o'zgarsa kim tasdiqlaydi?" — egasiz governance to'liq emas.</p></div>
+          <div class="item"><span class="lbl">Yangilash</span><p><strong>Variant + ega</strong>qo'lda yoki avtomat sinxronizatsiya · "tarif o'zgarsa kim tasdiqlaydi?" — egasiz nazorat to'liq emas.</p></div>
         </div>
         <p class="task-tip"><strong>Eslatma</strong>11-modul RAG sxemasi · Embedding atamasi · top-K — shu yerda amaliyga aylanadi.</p>
       </div>
@@ -1025,9 +1025,9 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="task-num">04<small>Stol</small></div>
       <div class="task-body">
         <div class="task-list">
-          <div class="item"><span class="lbl">Stsenariy 1 · Happy path</span><p><strong>To'liq</strong>salom · ism · ariza ma'lumotlari · hujjat · tasdiq · bankirga. Hammasi joyiga.</p></div>
-          <div class="item"><span class="lbl">Stsenariy 2 · Kamchilik</span><p><strong>Hujjat yo'q</strong>noto'g'ri narsa keldi · qaytadan so'rash · necha marta · qachon "bankirga ulayman".</p></div>
-          <div class="item"><span class="lbl">Stsenariy 3 · Chetga chiqish</span><p><strong>Mavzudan tashqari</strong>"Umuman bu kreditni olishim kerakmi?" · javob: "Bankir bilan suhbatlashing".</p></div>
+          <div class="item"><span class="lbl">Stsenariy 1 · Ideal holat</span><p><strong>To'liq</strong>salom · ism · ariza ma'lumotlari · hujjat · tasdiq · bankirga. Hammasi joyiga.</p></div>
+          <div class="item"><span class="lbl">Stsenariy 2 · Kamchilik</span><p><strong>Hujjat yo'q</strong>noto'g'ri fayl yuborildi · qaytadan so'rash · necha marta · qachon "bankirga ulayman".</p></div>
+          <div class="item"><span class="lbl">Stsenariy 3 · Chetga chiqish</span><p><strong>Mavzudan tashqari</strong>"Umuman bu kreditni olishim kerakmi?" · Javob: "Bankir bilan suhbatlashing".</p></div>
           <div class="item"><span class="lbl">Format</span><p><strong>Yozish</strong>har stsenariyni 5–8 qatorda · bot · mijoz navbatida · tabiiy chiqishi muhim.</p></div>
         </div>
         <p class="task-tip"><strong>Tip</strong>rasmiy emas, professional. "Hurmatli mijoz" jumlasidan qoching · "Salom! Sizga qanday yordam beray?" yaxshiroq.</p>
@@ -1050,7 +1050,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="task-num">05<small>Stol</small></div>
       <div class="task-body">
         <div class="task-list">
-          <div class="item"><span class="lbl">Test 1 · Happy</span><p><strong>To'g'ri kelgan</strong>mijoz hammasini to'liq beradi → bot 6 maydonli qatorni Sheets'ga yozadi.</p></div>
+          <div class="item"><span class="lbl">Test 1 · Ideal holat</span><p><strong>To'g'ri kelgan</strong>mijoz hammasini to'liq beradi → bot 6 maydonli qatorni Sheets'ga yozadi.</p></div>
           <div class="item"><span class="lbl">Test 2 · Bo'sh javob</span><p><strong>"Salom" yozdi</strong>keyin yo'q bo'ldi → bot 24 soatdan keyin eslatma yuboradi.</p></div>
           <div class="item"><span class="lbl">Test 3 · Noto'g'ri hujjat</span><p><strong>PDF o'rniga selfie</strong>bot to'g'ri formatni so'raydi · 2 marta urinishdan keyin bankirga ulaydi.</p></div>
           <div class="item"><span class="lbl">Test 4 · Chetga chiqish</span><p><strong>Mavzudan tashqari</strong>"bu kreditni olishim kerakmi?" → bot qaror bermaydi · bankirga ulaydi.</p></div>

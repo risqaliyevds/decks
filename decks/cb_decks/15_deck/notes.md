@@ -6,7 +6,7 @@
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev
 **Brand:** crea7iveai
 **Framework:** Custom HTML (single-file, `index.html`) — Style A locked tokens
-**Slaydlar soni:** 17 ta · 4 ta faza
+**Slaydlar soni:** 16 ta · 4 ta faza (sertifikat marosimi off-deck — bosma sertifikat orqali)
 **Atamalar:** **Glossary review** (barcha 29 atama 5 ta quiz slaydda) · **Q&A**
 **To'liq kontent:** [`content.md`](./content.md)
 
@@ -26,23 +26,22 @@ Tonlama: yumshoq, hurmat-li, "siz harakat qildingiz, biz bu yerdamiz" tarzida.
 
 ## Outline (one bullet = one slide)
 
-1. **Title** — "Sertifikat va yo'lda ko'rishguncha" (Kun 2 chip)
-2. **Agenda** — 4 faza (Sayohat · Lug'at quiz · Sertifikat · Davomi)
+1. **Title** — "Sertifikat va yana ko'rishguncha" (Kun 2 chip)
+2. **Agenda** — 4 faza (Sayohat · Lug'at quiz · Bugundan keyin · Sertifikat)
 3. **Sayohat retrospective** — `.flow` 4-step: Day 1 AM → Day 1 PM → Day 2 AM → Day 2 PM
-4. **15 modul ko'rinishida** — `.lib-grid` 5×3 (15 ta card, har biri modul nomi + bitta kalit so'z)
-5. **Lug'at challenge intro** — `.s-brain` "Eslay olasizmi?" — birga aytamiz qoidasi
-6. **Lug'at quiz #1 (modullar 1–3)** — 6 atama: LLM · Promt · API · Use Case · Pilot Loyiha · Hallucination · Data Masking (8 ta — flash-card grid)
-7. **Lug'at quiz #2 (modullar 4–6)** — Workflow · Task Decomposition · Few-shot · Chain-of-Thought · System Prompt · Template Prompt
-8. **Lug'at quiz #3 (modullar 7–9)** — Token · Context Window · Trigger · Webhook · RAG · Embedding
-9. **Lug'at quiz #4 (modullar 10–12)** — Agent · Tool Use · STT · Function Calling · Pipeline · Idempotent
+4. **15 modul ko'rinishida** — `.modules-grid` 5×3 (15 ta card, har biri modul nomi + bitta kalit so'z)
+5. **Lug'at challenge intro** — `.s-brain` "Eslay olasizmi?" — birgalikda aytamiz qoidasi
+6. **Lug'at quiz #1 (modullar 1–3)** — 7 atama: LLM · Promt · API · Use Case · Pilot Loyiha · Hallucination · Data Masking
+7. **Lug'at quiz #2 (modullar 4–6)** — Workflow · Task Decomposition · Few-shot · CoT · System Prompt · Template Prompt
+8. **Lug'at quiz #3 (modullar 7–9)** — Token · Context Window · Trigger · Webhook · Classification · Schema
+9. **Lug'at quiz #4 (modullar 10–12)** — Agent · Tool Use · RAG · Embedding · Pipeline · Idempotent
 10. **Lug'at quiz #5 (modullar 13–14)** — AI Adoption · Production-grade · MVP · Iteration
 11. **Sizdan kutilgan natija** — `.cando` "Bugundan boshlay olasiz" / "Hali shoshilmaslik kerak"
 12. **30 kun keyin** — `.road` 3-step (Hafta 1 · Hafta 2–3 · Hafta 4)
 13. **Davomi va resurslar** — `.sec` 3-card (Promt kutubxonasi · Telegram yordam guruhi · Mohirdev kursi)
-14. **Sertifikat** — stylized parchment mockup, ikkala logo, ishtirokchi ismi placeholder, imzo
+14. **Lug'at recap (yakuniy)** — barcha 29 atama bitta katta `.gloss-grid` da
 15. **Auditoriyaga rahmat** — `.s-close` style yumshoq xayrlashuv + speaker kontakt
-16. **Lug'at recap (yakuniy)** — barcha 29 atama bitta katta `.lib-grid` da
-17. **Q&A va xayrlashuv** — `.s-qa` "Sayohat tugadi, savollar kutib turibdi"
+16. **Q&A va xayrlashuv** — `.s-qa` "Sayohat tugadi, savollaringiz bo'lsa shu yerda davom etamiz"
 
 ---
 
@@ -54,11 +53,11 @@ Tonlama: yumshoq, hurmat-li, "siz harakat qildingiz, biz bu yerdamiz" tarzida.
 | 01 · Sayohat | 3–4 | ~5 daq |
 | 02 · Lug'at quiz | 5–10 | ~12 daq |
 | 03 · Bugundan keyin | 11–13 | ~7 daq |
-| 04 · Sertifikat va xayrlashuv | 14–17 | ~30+ daq (marosim) |
+| 04 · 29 atama + Rahmat + Q&A | 14–16 | ~30+ daq (off-deck sertifikat marosimi) |
 
 ---
 
-## Atamalar mapping (kursning butun glossary'si — 30 ta)
+## Atamalar mapping (kursning butun glossary'si — 29 ta)
 
 | # | Modul | Atama 1 | Atama 2 |
 |---|---|---|---|
@@ -67,18 +66,18 @@ Tonlama: yumshoq, hurmat-li, "siz harakat qildingiz, biz bu yerdamiz" tarzida.
 | 2 | Use case discovery | Use Case | Pilot Loyiha |
 | 3 | Risks / compliance | Hallucination | Data Masking |
 | 4 | Process structuring | Workflow | Task Decomposition |
-| 5 | Prompt engineering | Few-shot Prompting | Chain-of-Thought |
+| 5 | Prompt engineering | Few-shot | Chain-of-Thought (CoT) |
 | 6 | Prompt library | System Prompt | Template Prompt |
 | 7 | AI platforms | Token | Context Window |
 | 8 | No-code | Trigger | Webhook |
-| 9 | First AI workflow | RAG | Embedding |
+| 9 | First AI workflow | Classification | Schema |
 | 10 | Agents intro | Agent | Tool Use |
-| 11 | Voice agent design | Speech-to-Text (STT) | Function Calling |
+| 11 | RAG chatbot design | RAG | Embedding |
 | 12 | Complex pipelines | Pipeline | Idempotent design |
 | 13 | Real cases | AI Adoption | Production-grade |
 | 14 | Solution development | MVP | Iteration |
 
-**Jami:** 30 ta atama (1-modul ichida 3 ta — LLM, Promt, API; qolgan har modul — 2 ta).
+**Jami:** 29 ta atama (1-modul ichida 3 ta — LLM, Promt, API; qolgan har modul — 2 ta).
 
 ---
 

@@ -8,7 +8,7 @@ Module 14 · Kun 2 · 15:00 — 16:30 · Guruhli loyiha
 
 Salom, hammaga. 14-modulga xush kelibsiz. Hozirgacha biz nazariyani ko'rib chiqdik, atamalarni o'rgandik, bot ko'rdik. Bu modulda esa **birga qo'l urib quramiz**. Stollarda bir-ikki bo'lib emas, butun zal bir vaqtda bitta murakkab AI yechimi ustida ishlaydi — har stol bir bo'lakni oladi, oxirida hammasini yig'ib, bir tayyor agentni ko'ramiz.
 
-Bugun siz xayolingizdagi loyihani 6 oydan keyinga qoldirmaysiz. Bugun "minimal ishlaydigan versiyasi" qanday ko'rinishini kog'ozga tushirib, demo qilib chiqamiz. Maqsad — bir narsani isbotlash: **bo'limimizga AI yechimini biz o'zimiz dizayn qila olamiz**. Mukammal qilish kerak emas, ishlaydigan versiyasi yetarli. Ishlasa — keyin yaxshilaymiz.
+Bugun siz xayolingizdagi loyihani 6 oydan keyinga qoldirmaysiz. Bugun "minimal ishlaydigan versiyasi" qanday ko'rinishini qog'ozga tushirib, demo qilib chiqamiz. Maqsad — bir narsani isbotlash: **bo'limimizga AI yechimini biz o'zimiz dizayn qila olamiz**. Mukammal qilish kerak emas, ishlaydigan versiyasi yetarli. Ishlasa — keyin yaxshilaymiz.
 
 Boshlaymiz.
 
@@ -24,7 +24,7 @@ Bu modul davriy ma'ruza emas — **stol-ish moduli**. Slaydlar slide 11 dan keyi
 
 ## Slide 3 — Hook · 6 oy vs 4 hafta
 
-Sizga ikkita tanish kartina ko'rsatay. Birinchisi: katta bank, "AI strategiyasi" qoshib qo'yilgan, 6 oy davomida texnik komanda yopiq xonada o'tirib mukammal yechim quradi, hujjat to'la, prezentatsiya rang-barang — natijada loyiha **rad etiladi**, chunki real bo'limga qaytib kelganda kerakli muammoni hal qilmaydi. Ikkinchi kartina: kichik komanda 4 haftada eng asosiy funksiyani yig'adi, bo'limga olib boradi, foydalanuvchi sinab ko'radi, kamchiligini aytadi, keyin asta-sekin yaxshilanadi.
+Sizga ikkita tanish kartina ko'rsatay. Birinchisi: katta bank, "AI strategiyasi" qo'shib qo'yilgan, 6 oy davomida texnik komanda yopiq xonada o'tirib mukammal yechim quradi, hujjat to'la, prezentatsiya rang-barang — natijada loyiha **rad etiladi**, chunki real bo'limga qaytib kelganda kerakli muammoni hal qilmaydi. Ikkinchi kartina: kichik komanda 4 haftada eng asosiy funksiyani yig'adi, bo'limga olib boradi, foydalanuvchi sinab ko'radi, kamchiligini aytadi, keyin asta-sekin yaxshilanadi.
 
 Qaysi loyiha omon qoldi? **Ikkinchisi.** Sababi oddiy: birinchisi bilan biz "biz bilamiz nima yaxshi" deb taxmin qilamiz; ikkinchisi bilan **foydalanuvchi o'zi aytadi**. Kim ko'p hujjat yozdi — chiroyli; kim ko'p sinov o'tkazdi — to'g'ri qildi.
 
@@ -50,21 +50,21 @@ Eslab qoling: bugun MVP quramiz, ertaga iteratsiya qilamiz. Hech qachon bir mart
 
 ## Slide 6 — MVP misoli #1: RAG bot
 
-9-modulda biz RAG botni qurgan edik. Lekin u birdaniga to'liq emas edi. **V1** — eng oddiy: bot faqat tayyor 20 ta savolga javob beradi, FAQ darajasida. Bo'lim ko'rdi, sinadi. Foyda bor, lekin yetarli emas. **V2** — chunking qo'shdik: PDF hujjatlardan kerakli xatboshilarni topib javob bera oladi. Endi bot 200 ta savolga javob bermoqda. **V3** — agentlik qo'shdik: bot kerak bo'lganda mijoz hisobini tekshirish funksiyasini chaqira oladi.
+11-moduldagi RAG chatbot misolida ko'rdikki, u birdaniga to'liq emas edi. **V1** — eng oddiy: bot faqat tayyor 20 ta savolga javob beradi, FAQ darajasida. Bo'lim ko'rdi, sinadi. Foyda bor, lekin yetarli emas. **V2** — chunking qo'shdik: PDF hujjatlardan kerakli xatboshilarni topib javob bera oladi. Endi bot 200 ta savolga javob bermoqda. **V3** — agentlik qo'shdik: bot kerak bo'lganda mijoz hisobini tekshirish funksiyasini chaqira oladi.
 
-Diqqat qiling — har versiya orasida 1–2 hafta vaqt o'tdi. V1ni darhol bo'limga berdik, ular sinadi, kamchilik aytdi, biz V2da to'g'rladik. Agar 6 oy V3 ustida ishlasak, kerakmasligi ham mumkin edi. **MVP — bu V1 bo'lib turadi**, V3 emas. V1 darajasida foyda bo'lyaptimi — keyin V2 ga, keyin V3 ga.
+Diqqat qiling — har versiya orasida 1–2 hafta vaqt o'tdi. V1ni darhol bo'limga berdik, ular sinadi, kamchilik aytdi, biz V2da to'g'riladik. Agar 6 oy V3 ustida ishlasak, kerakmasligi ham mumkin edi. **MVP — bu V1 bo'lib turadi**, V3 emas. V1 darajasida foyda bo'lyaptimi — keyin V2 ga, keyin V3 ga.
 
 ---
 
 ## Slide 7 — MVP misoli #2: Classifier bot
 
-Ikkinchi misol — 9-moduldagi classifier bot. **V1** — 7 ta n8n node, single-turn, xotira yo'q, kategoriyalar promtga "hardcode" qilingan. Bo'lim 30 daqiqada qurib chiqadi: bot xabarni 5 oilaga ajratadi, Sheets'ga yozadi. Foyda bor — lekin bir mijozning xabari ikki marta kelsa, ikki yozuv chiqadi. **V2** — chat_id + message_id bo'yicha takror tekshiruv (12-modul · idempotent dizayn). Tarmoq retry'da yozuv ikkilanmaydi. Bo'lim sinab ko'rdi, ishonch oshdi. **V3** — multi-turn xotira qo'shildi, har bank uchun maxsus kategoriyalar ro'yxati, shoshilinchlik bo'yicha yo'naltirish, operatorga webhook eskalatsiyasi.
+Ikkinchi misol — 9-moduldagi classifier bot. **V1** — 7 ta n8n node, single-turn, xotira yo'q, kategoriyalar promtga "hardcode" qilingan. Bo'lim 30 daqiqada qurib chiqadi: bot xabarni 5 oilaga ajratadi, Sheets'ga yozadi. Foyda bor — lekin bir mijozning xabari ikki marta kelsa, ikki yozuv chiqadi. **V2** — chat_id + message_id bo'yicha takroriy tekshiruv (12-modul · idempotent dizayn). Tarmoq retry'da yozuv ikkilanmaydi. Bo'lim sinab ko'rdi, ishonch oshdi. **V3** — multi-turn xotira qo'shildi, har bank uchun maxsus kategoriyalar ro'yxati, shoshilinchlik bo'yicha yo'naltirish, operatorga webhook eskalatsiyasi.
 
 Pattern bir xil — V1 1-kun, V2 1-hafta, V3 1-oy. Har versiya orasida bo'lim sinov + bankir feedback. Agar V3 dan boshlasak — V1 darajasida muammo bor-yo'qligini umuman bilmay qolardik.
 
 ---
 
-## Slide 8 — Iteration siklasi
+## Slide 8 — Iteration sikli
 
 Iteration sikli to'rt qadamdan iborat. **Build** — bir bosqich qo'shamiz, masalan, schema'ga yangi maydon. **Test** — 5–10 ta real holatda sinaymiz: ishlaydimi? **Measure** — o'lchaymiz: necha foiz holatda to'g'ri ishladi, bankir necha marta qo'lda tuzatdi, qancha vaqt tejandi? **Learn** — saboq: nima yaxshi bo'ldi, nima ishlamadi, keyingi siklda nimani o'zgartiramiz?
 
@@ -92,9 +92,9 @@ Diqqat — har stol bugungi loyihasini shu to'rtta oilaning birida pozitsiyalayd
 
 ## Slide 11 — Bugungi guruhli loyiha · `bots/03_complex_agent`
 
-Endi tanishtirayotgan narsa bugungi guruh loyihasi. Bu — `bots/03_complex_agent/` papkasidagi tayyor shablon: 13 ta n8n nodedan iborat, Telegram'dan kelgan ko'p bosqichli suhbatni boshqaradigan, ma'lumot va hujjat yig'uvchi bot. Ko'rib turganingiz — **5 bosqichli oqim**.
+Endi tanishtirayotgan narsa bugungi guruh loyihasi. Bu — `bots/03_complex_agent/` papkasidagi tayyor shablon: n8n asosidagi soddalashtirilgan agent shabloni — kanaldan kelgan murojaatni reyestrga tayyor qatorga aylantiradi. Bugungi demoda Telegram → Sheets, lekin kanal va reyestrni ichki muqobillar bilan almashtirsa bo'ladi. Ko'rib turganingiz — **5 bosqichli oqim**.
 
-**Bosqich 1 — Telegram:** mijoz xabar yuboradi (matn, audio yoki fayl). **Bosqich 2 — Agent (Gemini):** xabarni o'qiydi, suhbatning qaysi bosqichida ekanligini tushunadi (kirish / ism / hujjat / tasdiq), keyingi savolni tuzadi. **Bosqich 3 — Memory:** so'nggi 50 ta xabar va inline JSON state — bot eslab qoladi. **Bosqich 4 — Sheets/Drive:** har mijoz bitta qator, yig'ilgan ma'lumot va hujjat link'lari shu yerda. **Bosqich 5 — Bankir:** mijoz tugatgach, bankir hamkasbga signal — yakuniy qaror har doim **odam** zimmasida.
+**Bosqich 1 — Telegram (kanal):** mijoz xabar yuboradi (matn, audio yoki fayl). **Bosqich 2 — Agent (LLM modeli; demoda Gemini):** xabarni o'qiydi, suhbatning qaysi bosqichida ekanligini tushunadi (kirish / ism / hujjat / tasdiq), keyingi savolni tuzadi. **Bosqich 3 — Memory:** turn oynasi (~50 xabar) va inline JSON state — bot eslab qoladi; n8n redeploy bo'lsa ham Sheet'dagi qator suhbatni davom ettiradi. **Bosqich 4 — Sheets/Drive (reyestr):** har mijoz bitta qator, yig'ilgan ma'lumot va hujjat link'lari shu yerda. **Bosqich 5 — Bankir:** mijoz tugatgach, bankir hamkasbga signal — yakuniy qaror har doim **odam** zimmasida.
 
 Bot **5 ta stsenariyga** moslangan: Kredit, Depozit, HR onboarding, Muvofiqlik shikoyat, yoki sizning stolingiz tanlagan boshqa stsenariy. Stollar bir xil shablon ustida ishlaydi, lekin har biri o'z stsenariysiga moslaydi.
 
@@ -104,7 +104,7 @@ Bot **5 ta stsenariyga** moslangan: Kredit, Depozit, HR onboarding, Muvofiqlik s
 
 Stol 1 — botning **miyasi**ni dizayn qiladi. Ya'ni system prompt va asbob ro'yxati. Sizning vazifangiz: stol stsenariysini tanlang (kredit / depozit / HR / muvofiqlik), keyin `prompts/system-prompt.md` shablonidagi `{DEPARTMENT}`, `{USE_CASE}`, `{ENTITY_TYPES}` o'rinlarini to'ldiring. Asoslantirib yozing — bot kim, qanday ohangda, qanday chegaralar bilan?
 
-Eng muhim qism — **mas'uliyat chegarasi**. Bot hech qachon yakuniy bank qarorini chiqarmaydi. Har suhbat oxirida shu jumla bo'lishi shart: "Yakuniy qarorni bizning bankir hamkasbim qabul qiladi, men shu uchun ma'lumotlarni yig'aman". Bu — 1-modulda gaplashgan Can/Cannot va 3-moduldagi xavfsizlik chiziqlarining amalda namoyon bo'lishi. Stolda 5 ta tool nomini ham tanlang: get_customer_data, save_progress, request_document, va h.k.
+Eng muhim qism — **mas'uliyat chegarasi**. Bot hech qachon yakuniy bank qarorini chiqarmaydi: **kreditga layoqatlilikni baholamaydi**, foiz/stavka aytmaydi, "ha/yo'q" demaydi. Har suhbat oxirida shu jumla bo'lishi shart: "Yakuniy qarorni bizning bankir hamkasbim qabul qiladi, men shu uchun ma'lumotlarni yig'aman". Bu — 1-modulda gaplashgan Can/Cannot va 3-moduldagi xavfsizlik chiziqlarining amalda namoyon bo'lishi. Stolda 5 ta tool nomini ham tanlang: get_customer_data, save_progress, request_document, va h.k.
 
 20 daqiqa vaqt bor, oxirida 1 ta vakil prezentatsiya qiladi.
 
@@ -114,7 +114,7 @@ Eng muhim qism — **mas'uliyat chegarasi**. Bot hech qachon yakuniy bank qarori
 
 Stol 2 — **ma'lumot tuzilishi**ni dizayn qiladi. Ya'ni: bot suhbat oxirida qanday ko'rinishda Sheets'ga yozadi? Qanday ustunlar? Qanday tip — matn, raqam, sana, tanlov ro'yxati? Stol stsenariysiga qarab 6 ta asosiy maydonni tanlang. Masalan, kredit uchun: ism · INN · summa · muddat · maqsad · garov. HR uchun: ism · pozitsiya · boshlash sanasi · hujjatlar · maslahatchi · status.
 
-Schema dizayni — 11-modulda Schema atamasini gaplashgan edik. Function calling shablonidan kelib chiqib, har maydonga **tip**, **majburiy/ixtiyoriy**, **misol** — uchtasi yozilishi kerak. Aks holda bot maydonni noto'g'ri to'ldirib qo'yadi yoki bo'sh qoldiradi. Validatsiya qoidalari ham yozing — masalan, "summa minimum 1 mln so'm", "sana bugundan keyin emas".
+Schema dizayni — 9-moduldagi Schema atamasini gaplashgan edik. Function calling shablonidan kelib chiqib, har maydonga **tip**, **majburiy/ixtiyoriy**, **misol** — uchtasi yozilishi kerak. Aks holda bot maydonni noto'g'ri to'ldirib qo'yadi yoki bo'sh qoldiradi. Validatsiya qoidalari ham yozing — masalan, "summa minimum 1 mln so'm", "sana bugundan keyin emas".
 
 Eslatma: schema oddiy bo'lsin. **6 maydon yetadi**, 20 maydon emas. Iteratsiya qilamiz.
 
@@ -122,7 +122,7 @@ Eslatma: schema oddiy bo'lsin. **6 maydon yetadi**, 20 maydon emas. Iteratsiya q
 
 ## Slide 14 — Stol 3 vazifasi · Bilim bazasi
 
-Stol 3 — botning **kutubxonasi**ni tayyorlaydi. Ya'ni RAG bazasi: bot qaysi hujjatdan ma'lumot oladi? Stol stsenariysi uchun 3–5 ta hujjat tanlang: tariflar PDF, ichki qoidalar, mijoz uchun ko'rsatma, FAQ. Real hujjatga ehtiyoj yo'q — bugun nomini va mazmunini sanab beresizlar yetadi.
+Stol 3 — botning **kutubxonasi**ni tayyorlaydi. Ya'ni RAG bazasi: bot qaysi hujjatdan ma'lumot oladi? Stol stsenariysi uchun 3–5 ta hujjat tanlang: tariflar PDF, ichki qoidalar, mijoz uchun ko'rsatma, FAQ. Real hujjatga ehtiyoj yo'q — bugun nomini va mazmunini sanab berishingiz yetadi.
 
 Keyingi savol — **chunking strategiyasi**. 9-modulda gaplashgan edik: butun PDF emas, kichik bo'laklar. Stolda hal qiling: chunk hajmi qancha (250 so'z? 500 so'z?), bo'limlar bo'yichami yoki paragraf bo'yichami? Misolni keltiring: "Tariflar PDF — har tarif (oilaviy kredit, biznes kredit) alohida chunk".
 
@@ -160,14 +160,16 @@ Endi ish stoliga o'tamiz. Har stolda A4 worksheet bor — slaydda ko'rib turgani
 
 Vaqt — **30 daqiqa stolda ishlash**. Bu vaqt davomida har stol o'z vazifasini (slide 12–16 bo'yicha) bajaradi — 1-stol agent prompt yozadi, 2-stol schema chizadi, va h.k. Men stol bo'yicha aylanaman, savolingizga javob beraman.
 
-Keyin **30 daqiqa demo va savol-javob.** Har stol 5 daqiqa: o'z bo'lagini taqdim qiladi, qolgan stollar savol beradi, men kommentariya beraman. Oxirida — biz 5 ta bo'lakni qo'shib, bitta to'liq agentni ko'ramiz. Bu modulning yutug'i shu — **siz dizayn qildingiz, biz taqdim qilamiz.**
+Keyin **30 daqiqa demo va savol-javob.** Har stol 5 daqiqa: o'z bo'lagini taqdim qiladi, qolgan stollar savol beradi, men qisqa izoh beraman. Oxirida — 5 ta bo'lakni qo'shib, bitta agent dizaynini yig'amiz. Bu modulning yutug'i shu — **siz dizayn qildingiz, siz taqdim qilasiz.**
 
 ---
 
 ## Slide 18 — Closing + lug'at recap
 
-Bugundan uchta narsani olib ketamiz. **Birinchi:** mukammal yechim 6 oyda — afsona; ishlaydigan MVP 4 haftada — haqiqat. Biz buni bugungi kunda qilib ko'rsatdik. **Ikkinchi:** AI loyihasi bir martalik emas — har 1–2 haftada bir Iteration. Build, Test, Measure, Learn. **Uchinchi:** dizayn — bo'lim ichidagi bankirning vazifasi, dasturchining emas. Siz bilasiz qaysi muammo dolzarb, siz bilasiz qaysi maydonlar muhim. Texnik komanda — quradi. Lekin nimani qurish kerakligini siz aytasiz.
+Bugundan uchta narsani olib ketamiz. **Birinchi:** "6 oyda mukammal" deb qurilgan loyiha ko'pincha real bo'lim sinovidan o'tmaydi; maqsad — 4 haftada sinovga tayyor V1, keyin iteratsiya. **Ikkinchi:** AI loyihasi bir martalik emas — har 1–2 haftada bir Iteration. Build, Test, Measure, Learn. **Uchinchi:** dizayn — bo'lim ichidagi bankirning vazifasi, dasturchining emas. Siz bilasiz qaysi muammo dolzarb, siz bilasiz qaysi maydonlar muhim. Texnik jamoa — quradi. Lekin nimani qurish kerakligini siz aytasiz.
 
-Lug'at recap — birga ayatamiz. **MVP** — bu nima edi? Minimum Mahsulot, eng kichik ishlaydigan versiya. **Iteration** — bu nima edi? Build, Test, Measure, Learn — qayta-qayta yaxshilash sikli.
+**Topshiriq.** Bugungi mashq shu bilan yopiladi: har stol 1 betlik **MVP qaror varaqasini** topshiradi — muammo, doira, doiradan tashqari, bot nima qilolmaydi, muvaffaqiyat mezoni, ma'lumot egasi, bankirga eskalatsiya, keyingi iteratsiya sanasi. Bu varaqa pilotga ruxsat emas; bu — pilotni muhokama qilish uchun qaror materiali.
 
-15-modulda — sertifikat va yo'l-yorug', shu yerga tayyor keldingiz. Endi sizning **stol prezentatsiyalaringizga** o'taman. Birinchi stol kim?
+Lug'at recap — birga aytamiz. **MVP** — bu nima edi? Eng kichik ishlaydigan versiya — bankir bir hafta sinab ko'radigan V1. **Iteration** — bu nima edi? Build, Test, Measure, Learn — bitta o'zgarish + qayta sinash sikli.
+
+15-modulda — sertifikat va yo'l-yorug', shu yerga tayyor keldingiz. Endi sizning **stol taqdimotlaringizga** o'taman. Birinchi stol kim?

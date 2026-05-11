@@ -1,67 +1,59 @@
 # Verdict
 
-**Score: 6.5/10.** Deck yaxshi hikoya qiladi va 13-modul uchun kerakli ikki atamani (`AI Adoption`, `Production-grade`) toza kiritib, closing slaydda qaytaradi. Lekin Markaziy Bank auditoriyasi uchun hali "case inspiration" og'ir, "supervisory decision artifact" yengil. Eng katta risklar: manbasi noaniq yoki aralash raqamlar, vendor/yo'l bo'yicha absolut gaplar, regional keyslar dalilsiz umumlashtirilgani, va yakunda bank nimani qaror qilishi kerakligi hujjat ko'rinishida yopilmagani.
+**Score: 7/10.** Deckning hikoya chizig'i kuchli: 5 global keys -> mintaqaviy realizm -> pilotdan production'ga o'tish saboqlari. `AI Adoption` va `Production-grade` atamalari CLAUDE.md talabiga mos kiritilgan va closing'da qaytarilgan. Lekin Markaziy Bank auditoriyasi uchun case-study aniqligi hali yetarli emas: ayrim raqamlar noto'g'ri label qilingan, rasmiy manbada topilmaydigan operatsion claimlar bor, regional banklar dalilsiz turibdi, vendor/build-buy xulosalari esa biroz normativ chiqadi.
 
 ## Punch List
 
-1. **McKinsey 70/14 hook'ni bank-specific deb aytmang.** Slayd 3 va speaker textda "dunyo bo'ylab banklarning 70 foizi / 14 foizi" deyiladi, lekin buni aniq bank sektori metrikasi sifatida ishlatish xavfli. Agar manba umumiy AI survey bo'lsa, "global tashkilotlar bo'yicha" yoki "banklarda ham ko'rinadigan muammo" deb yumshating. Manba nomi va yilini slayd footnote'iga qo'ying.
+1. **BofA Erica: "42 mln+ aktiv foydalanuvchi"ni tuzating.** BofA 2024-04-08 press release'ida Erica 2 mlrd+ interaction va 42 mln+ client'ga yordam bergani aytiladi, lekin bu "active users" emas. 2025 press release'da esa 2.5 mlrd+ interaction va 20 mln active users deyiladi. Slayd 8 va speaker textda: "42 mln+ mijozga yordam bergan" yoki "20 mln active users, 2.5 mlrd+ interaction (2025)" deb aniq sana bilan bering.
 
-2. **DBS raqamlari aralashgan.** Slayd 9/notes 600+ use case deydi; DBS 2023 annual report kontekstida ko'proq "800+ models, 350 use cases, SGD 370M economic benefit" shakli uchraydi. "600+ use case"ni "350+ use case / 800+ model"ga to'g'rilang yoki eski 2022/2023 manbasini alohida ko'rsating.
+2. **DBS asosiy raqamlari to'g'ri, lekin "5 kun -> 1 minut" claimi manbasiz.** DBS 2023 annual report: 350+ use case, 800+ model, SGD 370 mln economic benefit. Bu yaxshi. Ammo kredit skoring "avval 5 kun, hozir 1 minut / 1 soat" rasmiy annual reportda ko'rinmaydi. Uni olib tashlang yoki "misol sifatida" emas, "agar shu yo'nalishda qo'llansa" deb qayta yozing.
 
-3. **Morgan Stanley va JPMorgan natija claimlarini ehtiyotlang.** "30-40 daqiqadan 1 daqiqaga" va "xato darajasi yurist bilan teng yoki yaxshiroq" kabi gaplar kuchli, lekin slaydda manba yo'q. Rasmiy ochiqlanmagan joylarda "reported / bank oshkor qilmagan / taxminiy" deb ayting. Markaziy Bank auditoriyasi bunday metrikaga darhol "qanday o'lchangan?" deb qaraydi.
+3. **JPMorgan COIN claimlari asosan sourceable, lekin manbani aniqlashtiring.** Rasmiy JPMC 2016 annual report COiN uchun 12,000 annual commercial credit agreements, 150 attributes, seconds vs up to 360,000 hours per year deydi. "2017 press release" o'rniga "JPMC Annual Report 2016 / COiN rollout 2017" deb bering. "Xato darajasi yurist bilan teng yoki yaxshiroq" claimiga manba bo'lmasa, "xatoni kamaytirish maqsad qilingan" deb yumshating.
 
-4. **BofA Erica raqamlariga sana qo'shing.** "2 mlrd+ interaksiya, 42 mln+ aktiv foydalanuvchi" yaxshi hook, lekin vaqt kesimi kerak: qaysi annual report, qaysi yil oxiri, "active users" Erica uchunmi yoki digital banking uchunmi. Slaydda "BofA annual report, 2023/2024" kabi aniq izoh bo'lsin.
+4. **Morgan Stanley: architecture to'g'ri, performance metric ehtiyot.** OpenAI/Morgan Stanley manbalari GPT-4, AI @ Morgan Stanley Assistant, 100,000 document corpus va financial advisor use case'ni tasdiqlaydi. Lekin "30-40 daqiqadan 1 daqiqaga" Morgan Stanley tomonidan ochiq metrika sifatida ko'rinmaydi. "javob qidirishni sezilarli tezlashtirdi; aniq vaqt tejalishi ochiqlanmagan" deb yozing.
 
-5. **Sberbank slaydi vendor absolutizmga yaqin.** "O'zbekiston uchun erta" va "mavjud xavfsiz API'lardan foydalanish to'g'ri qaror" Markaziy Bank uchun haddan tashqari normativ. Regulyator auditoriyasida to'g'ri savol: build/buy/hosted API/on-prem open model tanlovining risk mezonlari. "To'g'ri qaror" o'rniga "past xavfli pilot uchun boshqariladigan API yoki lokal deployment variantlari solishtiriladi" deb yozing.
+5. **Sberbank/GigaChat slaydi eng ko'p ehtiyot talab qiladi.** "Kunlik millionlab so'rov", "yuzlab million dollar", "GPT-4/Claude darajasiga teng emas" kabi gaplar rasmiy, neytral manbaga tayanmasa riskli. Sber developer sahifasida 2023 oxirida 1 mln unique users va data RF serverlarida saqlanishi kabi claimlar bor. Slaydni "suveren model yo'li: data residency + local ecosystem; lekin xarajat, benchmark, governance ochiq baholanishi kerak" shakliga o'tkazing.
 
-6. **"OpenAI/Anthropic/Yandex API'lari" qatori governance jihatdan nozik.** Markaziy Bank auditoriyasida vendor nomi emas, data residency, audit log, shartnoma, model monitoring, PII masking, incident response mezonlari muhim. Vendorlar ro'yxatini "sertifikatlangan / shartnomaviy nazorat ostidagi vendor"ga aylantiring.
+6. **Regional bank claimslarini dalilsiz fakt sifatida bermang.** Halyk, Forte, Uzum, Anorbank, Kapital bo'yicha AI chatbot / scoring / document extraction gaplari rasmiy manbasiz juda aniq turibdi. Eng xavfsiz variant: "rasmiy ochiq raqamlar cheklangan; kuzatilayotgan yo'nalishlar: scoring, fraud, customer support, hujjat avtomatlashtirish" deb umumlashtirish.
 
-7. **Mintaqaviy keyslar dalilga muhtoj.** Halyk, Forte, Uzum, Anorbank, Kapital Bank bo'yicha "core stack", "millionlab foydalanuvchi", "2024 dan AI" kabi jumlalar manbasiz turibdi. Rasmiy press release yoki annual report bo'lmasa, "e'lon qilingan raqamlar cheklangan; kuzatilayotgan yo'nalishlar" deb ayting.
+7. **Governance fit yaxshi boshlangan, lekin regulator uchun alohida gate kerak.** Slayd 13 va 18ga qo'shing: data residency, PII masking, model validation, human approval, audit trail, incident/complaint handling, RTO/RPO, model drift monitoring, third-party risk. Hozirgi checklist yaxshi, lekin "bank ichki loyiha" darajasida; Markaziy Bank uchun supervisory savollar aniqroq bo'lishi kerak.
 
-8. **Governance fit kuchaytirilishi kerak.** Success factors ichida risk/compliance bor, lekin Markaziy Bank uchun alohida "qaror oldidan 6 savol" kerak: ma'lumot qayerda saqlanadi, PII qanday maskalanadi, model qarorini kim imzolaydi, audit log qayerda, fallback nima, model drift qanday kuzatiladi.
+8. **Atamalar joylashuvi mos, lekin intro yanada bankircha bo'lsin.** `AI Adoption` yaxshi: "tizim borligi emas, muntazam foydalanish + ish natijasiga ta'sir". `Production-grade`ga faqat SLA/log/fallback emas, "model validation, access control, change management, complaint handling" qo'shilsa keyingi case'lar bilan ko'proq yopishadi.
 
-9. **Production-grade ta'rifi yaxshi, lekin bank standarti bilan yopilmagan.** Slayd 5 99% uptime, log, fallback, monitoring deydi. Bank auditoriyasi uchun bunga SLA, RTO/RPO, access control, change management, audit trail, model validation, complaint handling qo'shilsa atama realroq bo'ladi.
+9. **Recap kuchli, ammo 70/14 xulosasini manbaga bog'lab yumshating.** McKinsey 2024 umumiy tashkilotlar bo'yicha AI adoption/production trendini beradi; uni "banklarda ham shu naqsh ko'rinadi" deb aytish mumkin, lekin "banklarda 70/14" deb ko'rsatish xavfli. Slayd 3 footnote: "McKinsey global survey, 2024; sector-specific bank metric emas" kabi bo'lsin.
 
-10. **AI Adoption uchun "70+ foiz xodim" juda aniq threshold bo'lib qolgan.** Bu universal standart emas. "Adoption = belgilangan foydalanuvchi guruhida muntazam foydalanish va ish natijasiga ta'sir" deb bering; thresholdni har loyiha KPI sifatida belgilaydi.
+10. **Vendor absolutism qisman kamaygan, lekin slide 11da hali bor.** "Hech qaysi bank o'z LLM'ini qurmaydi" va "Bizga mos yo'l" juda umumiy. To'g'ri frame: "Ko'p regional banklar build emas, controlled buy/partner modelidan boshlashi mumkin; lekin tanlov data sensitivity va criticality bo'yicha qilinadi."
 
-11. **Uzbek tili umumiy yaxshi, lekin aralash register ko'p.** "technical", "comply", "production", "core stack", "drift", "use case" ishlatiladi. Ba'zilari kurs atamalari sifatida qolishi mumkin, lekin birinchi ishlatilganda o'zbekcha tayanch qo'shing: "drift - mos kelmaslik nuqtasi", "use case - aniq qo'llash holati", "compliance - muvofiqlik".
+11. **Uzbek sifati yaxshi, ammo register aralash.** `use case`, `production`, `RAG`, `fallback`, `drift`, `compliance`, `logging` kurs atamasi sifatida qolishi mumkin, lekin birinchi ishlatishda o'zbekcha tayanch bering: "drift - mos kelmaslik nuqtasi", "fallback - qo'lda zaxira yo'li", "compliance - muvofiqlik".
 
-12. **Ba'zi iboralar davlat auditoriyasi uchun keskin.** "eng ommabop qabr", "cho'kadi", "taxtga qo'yiladi" og'zaki energiya beradi, lekin Markaziy Bank seminarida biroz silliqlash kerak. "eng ko'p uchraydigan tugallanmagan holat", "shu bosqichda to'xtab qoladi", "arxivda qoladi" yetarli.
+12. **Visual screenshots: ship qilish mumkin, lekin dense joylar bor.** Slayd 17 jadvali foydali, ammo live zalda mayda ko'rinadi. Slayd 18 ham kuchli, lekin pastdagi recap juda past kontrastda. Review maqsadi content bo'lsa ham, delivery oldidan 17/18 uchun font/contrast tekshiruvi kerak.
 
-13. **Ending qaror artefakti bilan tugamayapti.** Slayd 17 mashq yaxshi, lekin slayd 18 closing faqat xulosa. Oxirida "AI pilot readiness one-pager" yoki "Production gate checklist" berilishi kerak. Auditoriya bo'limga qaytganda bitta qaror hujjatini to'ldira olsin.
+## Top 5 Uzbek Rewrites
 
-14. **Screenshots bo'yicha vizual holat yaxshi, lekin dense slaydlar bor.** 14, 16, 17-slaydlar 60 daqiqalik live delivery uchun o'qilishi mumkin, lekin auditoriya yoshi/aralashligi hisobga olinsa matnni 15-20% qisqartirish foydali. 17-slaydda jadvalni "topshiriq qog'ozi" sifatida alohida printable artifact qilish ham yaxshi.
+1. **Slide 3 / Hook**
 
-15. **Atamalar coverage series rule'ga mos.** Slayd 5 da rasmiy kiritilgan, 13-16 da kontekstda ishlatilgan, 18 da recap bor. Faqat `Production-grade` avval deck 11 notesida "production-grade RAG" deb ishlatilgani bor; bu yerda rasmiy ta'rif 13-modulniki bo'lib qolishi uchun boshqa decklarda qayta ta'riflanmaganini tekshirish kerak.
+   "McKinsey 2024 global so'rovi bitta narsani ko'rsatadi: AI'ni sinash oson, kundalik ishga chiqarish qiyin. Bu banklarda ham ko'rinadi. Bugungi savol: pilotdan production'ga o'tish uchun qaysi governance va adoption shartlari oldindan yozilishi kerak?"
 
-## Top 5 Rewrites In Uzbek
+2. **Slide 8 / BofA Erica**
 
-1. **Slayd 3 hook**
+   "BofA ma'lumotiga ko'ra, Erica 2018 yildan beri 2 mlrd+ interaction va 42 mln+ mijozga xizmat ko'rsatgan. Bu 'active user' emas, lekin adoption ko'lami katta ekanini ko'rsatadi: yordamchi alohida kanal emas, mijoz allaqachon ishlatayotgan mobil ilova ichida."
 
-   Hozirgi: "70% bankda AI bor. Faqat 14% production'da ishlaydi."
+3. **Slide 9 / DBS**
 
-   Taklif: "AI pilotlari ko'p, production kam. McKinsey 2024 so'rovi shuni ko'rsatadi: tashkilotlar AI'ni tez sinayapti, lekin kundalik ishga chiqarish ancha qiyin. Bugungi savol: bankda pilotdan production'ga o'tish uchun qaysi shartlar kerak?"
+   "DBS 2023 yillik hisobotida 350+ AI use case, 800+ model va SGD 370 mln economic benefit ko'rsatadi. Muhim saboq: bu bitta chatbot emas, bank bo'ylab model governance, risk assessment va human oversight bilan yuradigan ko'p yillik dastur."
 
-2. **Slayd 5 AI Adoption**
+4. **Slide 10 / Sberbank GigaChat**
 
-   Hozirgi: "kunlik ishda 70+ foiz xodim shu vositadan foydalanyapti."
+   "GigaChat bizga bitta savol beradi: qaysi holatda o'z modelimiz kerak, qaysi holatda boshqariladigan vendor yetarli? Javob vendor nomidan boshlanmaydi. Avval 4 mezon: ma'lumot qayerda qoladi, audit izi bormi, umumiy xarajat qancha, AI ishlamasa fallback qanday?"
 
-   Taklif: "AI Adoption - tizim borligi emas, belgilangan foydalanuvchi guruhi uni muntazam ishlatishi va bu ish natijasida ko'rinishi. Masalan: 50 nafar operatorning ko'p so'rovlari yangi yordamchi orqali o'tadi, vaqt va xato metrikasi o'lchanadi."
+5. **Slide 18 / Production Gate**
 
-3. **Slayd 10 Sberbank / build-vs-buy saboq**
+   "Pilot production'ga faqat 5 darvozadan keyin o'tadi: use case va foydalanuvchi guruhi aniq; ma'lumot manbasi va PII nazorati bor; inson tasdig'i va qo'lda fallback yozilgan; adoption KPI login emas, real foydalanishni o'lchaydi; production gate'da SLA, audit log, monitoring, egasi va incident javobgarligi belgilangan."
 
-   Hozirgi: "O'zbekiston uchun hozircha bu yo'l erta - mavjud xavfsiz API'lardan foydalanish to'g'ri qaror."
+## Source Notes
 
-   Taklif: "Biz uchun saboq: 'o'z modelimiz' va 'tashqi vendor' ikki ekstremal tanlov emas. Har pilot uchun 4 mezon solishtiriladi: ma'lumot qayerda qoladi, audit log bormi, xarajat qancha, fallback qanday. Shundan keyin API, lokal model yoki ichki platforma tanlanadi."
-
-4. **Slayd 13 governance factor**
-
-   Hozirgi: "Muvofiqlik hamkor: Risk va comply'dan keyin emas - ular bilan birgalikda boshlash."
-
-   Taklif: "Muvofiqlik boshidan stol atrofida bo'ladi: qaysi ma'lumot ishlatiladi, kim tasdiqlaydi, audit izi qayerda saqlanadi, mijozga noto'g'ri javob berilsa kim javobgar - bular pilotdan oldin yoziladi."
-
-5. **Slayd 18 closing / bank decision artifact**
-
-   Hozirgi: "Bugundan qaytib ketadigan 3 xulosa."
-
-   Taklif: "Bugundan olib ketiladigan hujjat: AI pilot readiness varaqasi. 1) use case va foydalanuvchi guruhi, 2) ma'lumot manbasi va PII nazorati, 3) inson tasdig'i va fallback, 4) adoption KPI, 5) production gate: SLA, log, monitoring, egasi. Shu 5 qatordan o'tmagan pilot production'ga chiqmaydi."
+- JPMorgan Chase Annual Report 2016, Matt Zames section: COiN, 12,000 commercial credit agreements, 150 attributes, seconds vs 360,000 hours/year.
+- Morgan Stanley press release "Key Milestone in Innovation Journey with OpenAI" and OpenAI Morgan Stanley customer story: GPT-4 assistant, advisor knowledge base, 100,000 document corpus.
+- Bank of America newsroom, 2024-04-08: Erica 2B+ interactions, 42M+ clients helped; 2025 digital banking release: 2.5B+ interactions, 20M active Erica users.
+- DBS Annual Report 2023 CIO/CEO statements: 350+ use cases, 800+ models, SGD 370M economic benefit, Responsible AI taskforce / FEAT governance.
+- Sber developer pages: GigaChat launched as Russian business API; 2023-end 1M unique users claim and RF data-storage positioning. Use these only with date/source caveat.

@@ -552,7 +552,7 @@ body,p,li,.lead{letter-spacing:0.018em}
 .flow.flow-6 .step.brain .stepnum{background:rgba(255,255,255,0.18);color:#fff}
 
 /* BRANCH — pipeline branching diagram */
-.branch{display:grid;grid-template-columns:auto auto auto 1fr;gap:clamp(0.7rem,1.3vw,1.15rem);margin-top:clamp(0.85rem,1.5vw,1.25rem);align-items:center}
+.branch{display:grid;grid-template-columns:auto auto auto auto 1fr;gap:clamp(0.7rem,1.3vw,1.15rem);margin-top:clamp(0.85rem,1.5vw,1.25rem);align-items:center}
 .branch-col{display:flex;flex-direction:column;gap:clamp(0.55rem,1vw,0.85rem)}
 .branch-node{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(0.7rem,1.3vw,1.1rem) clamp(0.85rem,1.5vw,1.3rem);text-align:center;min-width:0}
 .branch-node.brain{background:linear-gradient(135deg,var(--accent),#1d4ed8);border-color:var(--accent);color:#fff}
@@ -683,19 +683,19 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="main">
     <span class="chip-out reveal r1">Hook · 9-moduldan davom</span>
     <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.9rem)">Bitta promt yetmaydi —<br>chunki <span class="hl">bir nechta ish</span> qiladi.</h2>
-    <p class="lead reveal r2">Klassifikator botingizga "matnni o'qi, tasnifla, operator tanla, Sheets'ga yoz, mijozga javob ber" deb bitta promt yozsangiz — debug qilolmaysiz, xato qayerda ekanini bilmaysiz, qayta ishga tushirsangiz mijozga 2 ta xat yuboradi.</p>
+    <p class="lead reveal r2">Klassifikator botingizga "matnni o'qi, tasnifla, operator tanla, Sheets'ga yoz, mijozga javob ber" deb bitta promt yozsangiz — debug qila olmaysiz. Xato qayerda ekanini bilmaysiz. Qayta ishga tushirsangiz mijozga 2 ta xat yuboradi.</p>
     <div class="compare-rich reveal r3">
       <div class="rich-col bad">
         <span class="rich-tag">✗ Bitta promtli bot</span>
         <h3>"Hammasi bir oynada"</h3>
-        <p>Xabar kirdi → Gemini "tushun, tasnifla, operator top, yozuv qil, mijozga javob ber" — bitta uzun promt.</p>
+        <p>Xabar kirdi → Gemini "tushun, tasnifla, operator top, ariza yoz, mijozga javob ber" — bitta uzun promt.</p>
         <p>Xato yuz berdi. Qaysi bosqichda? Bilmaymiz. Qayta yuborsak, takrorlanadi.</p>
         <span class="outcome">→ Qora quti · debug imkonsiz</span>
       </div>
       <div class="rich-col good">
         <span class="rich-tag">✓ 7-bosqichli pipeline</span>
         <h3>"Har bosqich — alohida"</h3>
-        <p>Xabar → tasniflash → operator o'qish → operator tanlash → ariza yozish → javob shakllantirish → yuborish. Har bosqich log qoldiradi, alohida qayta ishga tushadi.</p>
+        <p>Xabar → tasniflash → operatorlar ro'yxatini o'qish → operator tanlash → ariza yozish → javob shakllantirish → yuborish. Har bosqich log qoldiradi, alohida qayta ishga tushadi.</p>
         <p>Xato 5-bosqichda — faqat shu bosqichdan qaytadan ishlatamiz, oldingi natijalar saqlanib qoladi.</p>
         <span class="outcome">→ Tekshiruvchan · idempotent</span>
       </div>
@@ -717,20 +717,20 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="benefit fragment">
         <div class="stat">1.</div>
         <h3>Aniqroq</h3>
-        <p>Har bosqich bitta vazifa qiladi — LLM faqat tasniflaydi, Code faqat operator tanlaydi. Promtlar qisqaroq, sifat ortadi.</p>
+        <p>Har bosqich bitta vazifa qiladi — LLM faqat tasniflaydi, Code faqat operator tanlaydi. Promtlar qisqaradi, sifat ortadi.</p>
         <div class="proof"><strong>Misol</strong> · LLM'da xato bo'lsa — to'xtatamiz, Sheets'da xato bo'lsa — qayta urinib ko'ramiz</div>
       </div>
       <div class="benefit fragment">
         <div class="stat">2.</div>
         <h3>Tekshiruvchan</h3>
-        <p>Har bosqichdan keyin natija saqlanadi. Buzilgan joyni logdan topib bo'ladi. Audit uchun zarur.</p>
+        <p>Har bosqichdan keyin natija saqlanadi. Buzilgan joyni logdan topish mumkin. Audit uchun zarur.</p>
         <div class="proof"><strong>Misol</strong> · muvofiqlik auditori "qaysi qadamda toifa aniqlandi?" — 5 sekundda javob</div>
       </div>
       <div class="benefit fragment">
         <div class="stat">3.</div>
-        <h3>Idempotent</h3>
-        <p>Bir mijoz xabarini 2 marta yuborsa ham — Applications'da bitta yozuv. Qayta ishga tushirilganda mijozga ortiqcha xat yo'q.</p>
-        <div class="proof"><strong>Misol</strong> · message_id orqali tekshiruv · keyingi slaydlarda chuqur</div>
+        <h3>Takrorlansa ham xavfsiz</h3>
+        <p>Bir mijoz xabari qayta kelsa ham Applications'da bitta yozuv qoladi, mijozga ortiqcha xat ketmaydi. Keyingi slaydda buni rasmiy atama bilan nomlaymiz.</p>
+        <div class="proof"><strong>Misol</strong> · message_id orqali tekshiruv · keyingi slaydda batafsil</div>
       </div>
     </div>
   </div>
@@ -756,7 +756,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       </div>
       <div class="dict-card fragment">
         <span class="dict-tag">Idempotent design</span>
-        <h3>Qayta ishlatilsa ham xatosiz</h3>
+        <h3>Qayta ishga tushirilsa ham xatosiz</h3>
         <p>Bir xil kirish — <strong>bir xil chiqish</strong>. Bir mijoz xabarini 10 marta yuborsangiz, Applications'da bitta ariza yoziladi. Mijozga bitta xat ketadi.</p>
         <div class="ex"><strong>Mexanizm</strong> · har xabarga unique message_id beriladi, ishlangan ID'lar saqlanadi</div>
       </div>
@@ -773,7 +773,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <h2 class="h2 reveal r2">Idempotency real misolda —<br>"<span class="hl">2 marta xat</span>" muammosi.</h2>
-    <p class="lead reveal r2">Mijoz Telegram'ga "Avtokredit kerak" deb yubordi, network uzildi. Telegram "kelmadi" deb o'yladi va qayta yubordi. Endi tasavvur qiling: nima bo'ladi?</p>
+    <p class="lead reveal r2">Mijoz Telegram'ga "Avtokredit kerak" deb yubordi, tarmoq uzildi. Telegram "kelmadi" deb o'yladi va qayta yubordi. Endi tasavvur qiling: nima bo'ladi?</p>
     <div class="compare-rich reveal r3">
       <div class="rich-col bad">
         <span class="rich-tag">✗ Idempotent emas</span>
@@ -803,7 +803,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="main">
     <span class="chip-out reveal r1">9-moduldan davom · bots/01_classifier_bot</span>
     <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.9rem)">Klassifikator bot — <span class="hl">7 bosqichli</span> pipeline.</h2>
-    <p class="lead reveal r2">Mijoz Telegram'ga xabar yozdi. Foydalanuvchi uchun bitta amal — ichida 7 bosqich. Har biri alohida log qoldiradi, alohida qayta ishga tushadi.</p>
+    <p class="lead reveal r2">Mijoz Telegram'ga xabar yozdi. Foydalanuvchi uchun bitta amal — ichida 7 bosqich. 9-modulda bu demo flow edi; production versiyada har bosqich log qoldirishi, xato bo'lsa shu joydan qayta davom etishi kerak.</p>
     <div class="flow flow-6 reveal r3">
       <div class="step"><span class="stepnum">01</span><div class="ico">📨</div><h4>Telegram</h4><p>Xabar trigger'ga keldi</p></div>
       <div class="arrow">→</div>
@@ -819,7 +819,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="arrow">→</div>
       <div class="step"><span class="stepnum">07</span><div class="ico">📤</div><h4>Send</h4><p>Telegram javobi</p></div>
     </div>
-    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.85rem,1.5vw,1.25rem);font-style:italic;color:var(--mute)">→ 02 va 04 — qaror chiqaruvchi bosqichlar (02 Gemini xarajat, 04 Code logika). 01, 03, 05, 06, 07 — integratsiya va tezkor logika.</p>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.85rem,1.5vw,1.25rem);font-style:italic;color:var(--mute)">→ 02 va 04 — qaror chiqaruvchi bosqichlar (02 Gemini — pullik, 04 Code — logika). 01, 03, 05, 06, 07 — integratsiya va tezkor logika.</p>
   </div>
 </section>
 
@@ -837,14 +837,14 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="benefit fragment">
         <span class="ico">🧠</span>
         <h3>1 · LLM xatosi</h3>
-        <p>Gemini noto'g'ri toifa berdi yoki JSON sxemadan tashqari javob qaytardi.</p>
+        <p>Gemini noto'g'ri toifa berdi yoki JSON sxemaga mos bo'lmagan javob qaytardi.</p>
         <div class="ex"><strong>Yechim</strong> · Output Parser sxemani qattiq tekshiradi · qayta urinish + temperature 0.2</div>
       </div>
       <div class="benefit fragment">
         <span class="ico">📋</span>
         <h3>2 · Sheets mavjud emas</h3>
-        <p>Google Sheets API kechikdi yoki rate-limit'ga tushdi (5xx).</p>
-        <div class="ex"><strong>Yechim</strong> · 3 marta retry exponential backoff · oxirida fallback "operator keyinroq"</div>
+        <p>Google Sheets API kechikdi (5xx) yoki rate-limit'ga tushdi (429).</p>
+        <div class="ex"><strong>Yechim</strong> · 3 marta qayta urinish (kutish bilan) · oxirida fallback "operator keyinroq"</div>
       </div>
       <div class="benefit fragment">
         <span class="ico">🎯</span>
@@ -882,7 +882,7 @@ body,p,li,.lead{letter-spacing:0.018em}
 <span class="label">step=05</span>  sheets_append_app    <span class="warn">warn</span>   row=#A-318 yozildi  duration=2.4s (sekin)
 <span class="label">step=06</span>  format_reply         <span class="ok">ok</span>     reply_len=187
 <span class="label">step=07</span>  telegram_send        <span class="err">FAIL</span>  http=429 rate_limit  retry_after=30s
-                                  <span class="com">// → ariza saqlangan, javob 30 sek'da yuboriladi (idempotent retry)</span></pre>
+                                  <span class="com">// → ariza saqlangan, 30s dan keyin retry</span></pre>
     <p class="tpl-hint reveal r3">→ Auditor 2 daqiqa ichida topadi: xato 7-bosqichda · sabab — Telegram rate-limit · ariza 5-bosqichda saqlanib qoldi.</p>
   </div>
 </section>
@@ -930,13 +930,13 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="benefit fragment">
         <div class="stat">1.</div>
         <h3>Kichik model birinchi</h3>
-        <p>5 toifaga tasniflash uchun Gemini Flash kifoya (10× arzon). Pro faqat noaniq holat yoki sentiment kerak bo'lsa.</p>
+        <p>5 toifaga tasniflash uchun Gemini Flash kifoya (10× arzon). Pro model faqat noaniq holatlar yoki sentiment tahlili kerak bo'lsa ishlatiladi.</p>
         <div class="proof"><strong>Misol</strong> · klassifikator default — Flash · "shikoyat" toifasida sentiment uchun Pro</div>
       </div>
       <div class="benefit fragment">
         <div class="stat">2.</div>
         <h3>Jadvalni xotirada saqlash</h3>
-        <p>Operators jadvali har xabarda qayta o'qilmasin — n8n'da 5 daqiqaga keshlanadi. 100 xabar/min'da Sheets API chaqiruvi 95% kam.</p>
+        <p>Operatorlar jadvali har xabarda qayta o'qilmasin — n8n'da 5 daqiqaga keshlanadi. Daqiqasiga 100 ta xabar kelganda, Sheets API chaqiruvi 95% ga kamayadi.</p>
         <div class="proof"><strong>Misol</strong> · Sheets Read · kesh=5 daq · operator yangilanishi 5 daq kechikadi (qabul qilinishi mumkin)</div>
       </div>
       <div class="benefit fragment">
@@ -965,7 +965,8 @@ body,p,li,.lead{letter-spacing:0.018em}
         <div class="branch-node brain"><h4>02 · LLM Chain</h4><p>Flash · toifa + urgency</p></div>
       </div>
       <div class="arrow">→</div>
-      <div class="if-node">Agar urgency<br>= high bo'lsa?</div>
+      <div class="if-node">Agar urgency = high?</div>
+      <div class="arrow">→</div>
       <div class="branch-col">
         <div class="branch-node premium"><span class="gate">Ha · high</span><h4>03–07 · Tez yo'l</h4><p>Birinchi faol operator · darhol bildirishnoma · 5 daqiqada javob</p></div>
         <div class="branch-node standard"><span class="gate">Yo'q · low/medium</span><h4>03–07 · Standart</h4><p>Toifa bo'yicha operator · email · 24 soat ichida</p></div>
@@ -985,14 +986,14 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="main">
     <h2 class="h2 reveal r2">Pipeline qurishda <span class="hl">eng tipik</span> xatolar.</h2>
     <div class="myth myth-4 reveal r3">
-      <div class="row fragment"><div class="tag">✗ Afsona</div><p>"<strong>Bir promtga</strong> hammasini sig'dirsam, sodda bo'ladi."</p></div>
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p>"<strong>Bitta promtga</strong> hammasini sig'dirsam, sodda bo'ladi."</p></div>
       <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p><strong>Sodda emas, qora quti.</strong> Aniq bosqichlar — debug, audit va xarajat uchun zarur.</p></div>
       <div class="row fragment"><div class="tag">✗ Afsona</div><p>"<strong>Logging sekinlatadi</strong>, production'da o'chirib qo'yamiz."</p></div>
       <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p><strong>Logging — asosiy sarmoya.</strong> Bankda o'chiq log = audit yo'q = muvofiqlik muammosi.</p></div>
       <div class="row fragment"><div class="tag">✗ Afsona</div><p>"<strong>Idempotency keyinroq</strong> qo'shamiz, hozir ishlasa bo'ldi."</p></div>
       <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p><strong>Birinchi kundan kerak.</strong> Mijozga 2 ta xat ketishi sotsial xato — ishonchni qaytarib bo'lmaydi.</p></div>
       <div class="row fragment"><div class="tag">✗ Afsona</div><p>"<strong>Pro modelni</strong> har joyda ishlatamiz — sifat muhim."</p></div>
-      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p><strong>10× ortiq narx</strong> — ko'p bosqich Flash'da ham ishlaydi. Pro — faqat fikrlash kerak bo'lganda.</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p><strong>10 baravar qimmat</strong> — ko'p bosqich Flash'da ham ishlaydi. Pro — faqat fikrlash kerak bo'lganda.</p></div>
     </div>
   </div>
 </section>
@@ -1018,8 +1019,8 @@ body,p,li,.lead{letter-spacing:0.018em}
 <span class="label">step=06</span> format_reply       <span class="ok">ok</span>   reply_len=192
 <span class="label">step=07</span> telegram_send      <span class="ok">ok</span>   sent_count=3 ← <span class="warn">!</span></pre>
     <div class="questions reveal r3">
-      <div class="q fragment"><span class="n">01</span><span>Xato qaysi bosqichda ko'rinadi va <span style="color:var(--accent-2)">asl sabab</span> qaysi?</span></div>
-      <div class="q fragment"><span class="n">02</span><span>Mijoz 3 ta tasdiq xati oldi. <span style="color:var(--accent-2)">Idempotency</span> qaysi bosqichga kerak edi?</span></div>
+      <div class="q fragment"><span class="n">01</span><span>Xato qaysi bosqichda ko'rinadi va <span style="color:var(--accent-2)">asl sababi</span> nima?</span></div>
+      <div class="q fragment"><span class="n">02</span><span>Mijoz 3 ta tasdiq xati oldi. <span style="color:var(--accent-2)">Idempotency</span> qaysi bosqichda kerak edi?</span></div>
     </div>
   </div>
 </section>
@@ -1036,11 +1037,11 @@ body,p,li,.lead{letter-spacing:0.018em}
     <p class="lead reveal r2">Pipeline buzilganda boshqa savol bermang. Aynan shu 6 ta — tartib bilan. Birinchi 2 daqiqada javobi topilmasa, undan keyin chuqurroq ketamiz.</p>
     <div class="canvas-grid reveal r3">
       <div class="canvas-cell"><div class="canvas-tag"><span class="ico">1</span> Qaysi bosqich?</div><p><strong>Avval log'ni o'qing.</strong> Step raqami bilan FAIL qatorini toping. Boshqa bosqichlarda muammo izlamang.</p></div>
-      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">2</span> Kirish to'g'rimi?</div><p><strong>Oldingi bosqichning chiqishi</strong> shu bosqichga to'g'ri keldimi? Format, tip, tillar mosligi.</p></div>
+      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">2</span> Kirish to'g'rimi?</div><p><strong>Oldingi bosqichning chiqishi</strong> shu bosqichga to'g'ri keldimi? Format, ma'lumot tipi, til mosligi.</p></div>
       <div class="canvas-cell"><div class="canvas-tag"><span class="ico">3</span> Birinchi marta xatomi?</div><p><strong>Retry tarixi.</strong> Ikkinchi urinishda o'tdimi? Vaqtinchalik (network) yoki doimiy xato.</p></div>
-      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">4</span> Idempotent bo'ldimi?</div><p><strong>Mijozga ortiqcha xat ketdimi?</strong> Applications'da takror yozuv bormi? message_id tekshiruvi to'g'rimi?</p></div>
-      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">5</span> Promt o'zgardi?</div><p><strong>Yaqinda yangilash bo'ldimi?</strong> Schema yangilandimi? Few-shot misollar to'g'rimi? Versiyani solishtirish.</p></div>
-      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">6</span> Replay imkonimi?</div><p><strong>Eski natijalarni</strong> yangidan ishlatib bo'ladimi? Yo'q bo'lsa — keyingi pipeline'da bu imkonni qo'ying.</p></div>
+      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">4</span> Idempotent bo'ldimi?</div><p><strong>Mijozga ortiqcha xat ketdimi?</strong> Applications'da takroriy yozuv bormi? message_id tekshiruvi to'g'rimi?</p></div>
+      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">5</span> Promt o'zgardimi?</div><p><strong>Yaqinda yangilash bo'ldimi?</strong> Schema yangilandimi? Few-shot misollar to'g'rimi? Versiyani solishtirish.</p></div>
+      <div class="canvas-cell"><div class="canvas-tag"><span class="ico">6</span> Replay imkoni bormi?</div><p><strong>Eski natijalarni</strong> yangidan ishlatib bo'ladimi? Yo'q bo'lsa — keyingi pipeline'da bu imkonni qo'ying.</p></div>
     </div>
   </div>
 </section>
@@ -1061,7 +1062,7 @@ body,p,li,.lead{letter-spacing:0.018em}
         <ul>
           <li>Har bosqich alohida log qoldiradi (message_id + chat_id bilan)</li>
           <li>message_id orqali idempotency tekshiruvi bor (Sheets'da dublikatlarni tozalash)</li>
-          <li>Output Parser sxema validatsiyasi · 5 ta toifa bo'yicha qat'iy tekshiruv</li>
+          <li>Output Parser orqali sxemani qat'iy tekshirish · 5 ta toifa bo'yicha</li>
           <li>Fallback model (Pro → Flash) va Sheets retry sozlangan</li>
           <li>Bankir uchun "qaysi bosqichda nima bo'ldi" hisoboti oson topiladi</li>
         </ul>
@@ -1072,7 +1073,7 @@ body,p,li,.lead{letter-spacing:0.018em}
           <li>Bitta uzun promt — bosqichlar yo'q</li>
           <li>Log faqat error'da yoziladi, oraliq natija yo'q</li>
           <li>Retry yo'q yoki idempotency'siz retry — mijozga takror xat</li>
-          <li>Har so'rov Pro modelda — 5–10× ortiqcha xarajat shart emas</li>
+          <li>Har bir so'rov Pro modelda — 5–10× ortiqcha xarajat shart emas</li>
           <li>Schema yo'q — "har xil maydonlar" Applications'ga tushadi</li>
         </ul>
       </div>
@@ -1088,11 +1089,11 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main">
-    <h2 class="h2 reveal r2">Bugundan <span class="hl">qaytib ketadigan</span> 3 xulosa.</h2>
+    <h2 class="h2 reveal r2">Bugungi darsdan <span class="hl">3 ta asosiy</span> xulosa.</h2>
     <div class="close-list reveal r3">
       <div class="close-row"><span class="arrow">💡</span><p><strong>9-modulda qurdingiz — endi production'ga.</strong> Klassifikator botingiz "ishlaydi" dan "doim ishlaydi" ga o'tishi uchun pipeline + log + idempotency kerak.</p></div>
-      <div class="close-row"><span class="arrow">💡</span><p><strong>Idempotency — birinchi kundan.</strong> message_id orqali tekshiruv. Mijozga 2 ta xat ketishi — qaytarib bo'lmaydigan ishonch zarari.</p></div>
-      <div class="close-row"><span class="arrow">💡</span><p><strong>Keyingi modullar:</strong> 13-modulda real bank keyslari (JPMorgan, DBS, O'zbekiston banklari), 14-modulda esa siz o'z guruh loyihangizni qurasiz.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Idempotency — birinchi kundan.</strong> message_id orqali tekshiruv. Mijozga 2 ta xat ketishi — mijoz ishonchini butunlay yo'qotish.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>13-modulda — shu checklist bilan.</strong> Real bank keyslarini o'qiymiz: qayerda pipeline bor, qayerda log bor, retry idempotentmi, branch biznes qoidasiga bo'ysunadimi, xarajat nazoratdami? 14-modulda — guruh loyihangiz.</p></div>
     </div>
     <div class="recap reveal r3">
       <div class="recap-tag">Lug'at recap · birga aytamiz</div>

@@ -1,65 +1,49 @@
-Verdict: Deck is usable as a generic bank prompt-template demo, but not yet “Markaziy Bank-ready”; governance, data controls, approval workflow, and regulator-specific language are too soft.
+Verdict: **Shartli o'tadi, lekin Markaziy Bank auditoriyasi uchun hali governance-first emas.** Deck "50+ shablon, nusxa ol, to'ldir, yubor" kayfiyatida qolgan; regulator seminarida asosiy xabar "tasdiqlangan shablon, inson tekshiruvi, audit izi, vakolat chegarasi" bo'lishi kerak. Atamalar talabi bajarilgan, ammo System Prompt / Template Prompt intro va recap yanada aniqroq, interaktivroq bo'lishi lozim.
 
-Score: **5/10**
+Score: **6/10**
 
-## Top 5 Content Improvements
+## Punch-list
 
-1. **Kutubxona “tayyor promtlar ro‘yxati” emas, boshqariladigan reyestr bo‘lishi kerak.**
+1. **Content accuracy:** Kredit memo, HR, Marketing va "mijozga javob" misollari tijorat banki ichki amaliyotiga yaqin; Markaziy Bank uchun asosiy tokchalar bank nazorati, prudensial tahlil, normativ tushuntirish, murojaatlar va AML/CFT bo'lishi kerak. "Bosh boshqaruvchi imzolagan darajada", "10 yillik bankir yozgandek", "1 daqiqada yubor" kabi da'volar haddan tashqari absolut.
 
-Current framing: “50+ shablon, nusxa ol, to‘ldir, yubor” sounds risky for a regulator.
+2. **Governance fit:** Slide 6 va 12 governance ni eslatadi, lekin yetarli darajada formal qilmaydi. Har template uchun egasi, versiya, tasdiqlovchi, ma'lumot tasnifi, ruxsatli platforma, eskalatsiya sharti, audit izi va qayta ko'rib chiqish sanasi majburiy maydon sifatida ko'rinishi kerak.
 
-Rewrite:
-> **Promt kutubxonasi — bu tasdiqlangan ish shablonlari reyestri.**  
-> Har bir shablonda egasi, versiyasi, tasdiqlovchisi, qo‘llash sohasi, taqiqlangan holatlar va oxirgi ko‘rib chiqilgan sana bo‘ladi. Xodim shablonni o‘zgartirsa, yangi versiya sifatida muvofiqlik va axborot xavfsizligi ko‘rigidan o‘tadi.
+3. **Atamalar:** System Prompt va Template Prompt rasmiy kiritilgan, recap bor. Muammo: slide 4 atamalarni slide 5 dan oldin to'liq ishlatib yuboradi; slide 13 esa javoblarni darhol ko'rsatadi, interaktiv "Eslay olasizmi?" shakli zaif. Slide 5 dagi "botning miyasi" iborasi non-technical auditoriya uchun tushunarli, lekin regulator kontekstida "doimiy yo'riqnoma" aniqroq.
 
-2. **Slide 3 hook haddan tashqari “tezlik”ka sotyapti; Markaziy Bank auditoriyasiga “nazorat + izchillik” sotilishi kerak.**
+4. **Uzbek quality:** Umumiy til yaxshi, lekin bir nechta joyda o'zbekcha ish yuritish uslubi marketing ohangiga o'tib ketadi: "zo'r promt", "qutqaruvchi", "sehr emas", "aksiya olgan", "doston yozib beradi". Xatolar: `smendayoq/smenadayoq`, `qollarni` -> `qo'llarni`, `to'g'irlaymiz` -> `to'g'rilaymiz`, `instruktsiya` -> `yo'riqnoma`.
 
-“3 ta maydonni to‘ldir, yubor” regulator uchun yomon signal. “Yuborish”dan oldin inson tekshiruvi shart.
+5. **Vendor absolutism:** Notes/content "Gemini + n8n + Notion/Confluence"ni stack sifatida qulflab qo'ygan. Markaziy Bank deckida bu "tasdiqlangan SI platformasi + tasdiqlangan avtomatlashtirish vositasi + ichki bilim bazasi" deb vendor-neutral berilishi kerak; Gemini/n8n faqat demo varianti sifatida aytilsin.
+
+## Top 5 Uzbek Rewrites
+
+1. **Slide 3 hook**
+
+Current tone: "Nusxa ol, 3 ta maydonni to'ldir, yubor."
 
 Rewrite:
 > **Noldan yozma — tasdiqlangan shablondan boshlang.**  
-> Shablon hujjat tuzilmasini, ohangni va majburiy nazorat nuqtalarini bir xil qiladi. Xodim ma’lumotni kiritadi, AI loyiha matnini tayyorlaydi, yakuniy qaror va imzo mas’ul xodimda qoladi.
+> Shablon hujjat tuzilmasi, ohangi va majburiy nazorat nuqtalarini bir xil ushlab turadi. Xodim ma'lumotni kiritadi, SI loyiha matnini tayyorlaydi, yakuniy tekshiruv va imzo mas'ul xodimda qoladi.
 
-3. **Promptlarning o‘zida governance yetishmaydi: ma’lumot sinfi, manba, eskalatsiya, audit izi yo‘q.**
-
-Har bir template ichiga `[MA’LUMOT_TASNIFI]`, `[MANBA_HUJJAT]`, `[TASDIQLOVCHI]`, `[ESKALATSIYA_SHARTI]` kiritish kerak.
-
-Rewrite template block:
-```text
-[NAZORAT QOIDALARI]
-- Faqat kiritilgan hujjat va ko‘rsatilgan normativ manbalarga tayan.
-- Normativ band topilmasa: “Normativ asos ko‘rsatilmagan” deb yoz.
-- Shaxsiy ma’lumotlarni yakuniy xulosaga ko‘chirma.
-- Qaror qabul qilma; faqat loyiha xulosa va tekshiruv savollarini tayyorla.
-
-[KIRISH MA’LUMOTLARI]
-- Ma’lumot tasnifi: [OCHIQ / ICHKI / MAXFIY]
-- Manba hujjat: [HUJJAT_NOMI_RAҚAMI_SANASI]
-- Tekshiruvchi xodim: [FIO_LAVOZIM]
-- Tasdiqlovchi: [BOLIM_RAHBARI]
-```
-
-4. **Markaziy Bank specificity zaif: Kredit, HR, Marketing tijorat bankiga o‘xshaydi.**
-
-Audience Markaziy Bank bo‘lsa, asosiy “tokchalar” bank nazorati, prudensial tahlil, murojaatlar, normativ-huquqiy tushuntirish, muvofiqlik/AML bo‘lishi kerak.
-
-Rewrite slide 6 categories:
-> **Kutubxona — Markaziy Bank ish jarayonlari bo‘yicha 5 yo‘nalish:**  
-> 1. **Bank nazorati:** kapital, likvidlik, prudensial ko‘rsatkichlar bo‘yicha tahlil  
-> 2. **Muvofiqlik va AML/CFT:** shubhali belgilar, sanksiya riski, ichki nazorat savollari  
-> 3. **Normativ tushuntirish:** tijorat banklariga rasmiy izoh va qo‘llash bo‘yicha xat  
-> 4. **Murojaatlar:** fuqarolar va tashkilotlardan kelgan murojaatlarga javob loyihasi  
-> 5. **Boshqaruv axboroti:** rahbariyat uchun qisqa brif, xulosa va qaror variantlari
-
-5. **Slide 12 sifat tekshiruvi yaxshi, lekin bank-ready emas: “5+5 belgi” o‘rniga approval gate kerak.**
-
-Current checklist individual hushyorlikka tayanadi. Regulator uchun formal gate bo‘lishi kerak.
+2. **Slide 5 System Prompt intro**
 
 Rewrite:
-> **Yuborishdan oldin 4 ta majburiy darvoza:**  
-> **1. Fakt tekshiruvi:** raqam, sana, bank nomi va normativ band manba bilan solishtirildi.  
-> **2. Ma’lumot xavfsizligi:** ortiqcha shaxsiy yoki maxfiy ma’lumot olib tashlandi.  
-> **3. Muvofiqlik ko‘rigi:** xulosa vakolatdan oshmaydi, qaror sifatida yozilmagan.  
-> **4. Audit izi:** shablon ID, versiya, foydalanuvchi, sana va tasdiqlovchi qayd etildi.
+> **System Prompt — doimiy yo'riqnoma.**  
+> U SI yordamchisiga rol, ohang, ruxsat etilgan manbalar va taqiqlangan harakatlarni belgilab beradi. Masalan: "Faqat kiritilgan hujjat va ko'rsatilgan normativ bandlarga tayan. Manba topilmasa, taxmin qilma."
 
-Brutal bottom line: deck “AI bilan tezroq yozamiz” kayfiyatida qolib ketgan. Markaziy Bank uchun uni “tasdiqlangan shablonlar orqali izchil, tekshiriladigan va javobgarligi aniq ish yuritamiz” degan pozitsiyaga burish kerak.
+3. **Slide 5 Template Prompt intro**
+
+Rewrite:
+> **Template Prompt — to'ldiriladigan ish blankasi.**  
+> Unda doimiy tuzilma va bo'sh maydonlar bo'ladi: `[HUJJAT_RAQAMI]`, `[SANA]`, `[NORMATIV_BAND]`, `[TEKSHIRUV_NATIJASI]`. Xodim faqat bugungi ishga tegishli ma'lumotlarni kiritadi.
+
+4. **Slide 6 categories**
+
+Rewrite:
+> **Kutubxona — Markaziy Bank ish jarayonlari bo'yicha 5 yo'nalish:**  
+> Bank nazorati; prudensial ko'rsatkichlar tahlili; AML/CFT va muvofiqlik; normativ-huquqiy tushuntirish; fuqarolar va tashkilotlar murojaatlari. Har shablonda egasi, versiyasi, tasdiqlovchisi va qo'llash chegarasi ko'rsatiladi.
+
+5. **Slide 12 + recap**
+
+Rewrite:
+> **Yuborishdan oldin 4 darvoza:** faktlar manba bilan solishtirildi; ortiqcha shaxsiy yoki maxfiy ma'lumot olib tashlandi; matn vakolatdan oshib qaror bermayapti; shablon ID, versiya, foydalanuvchi, sana va tasdiqlovchi audit iziga yozildi.  
+> **Recap:** "System Prompt nima?" — doimiy yo'riqnoma. "Template Prompt nima?" — to'ldiriladigan ish blankasi.

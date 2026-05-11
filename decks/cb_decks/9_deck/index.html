@@ -726,7 +726,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <h2 class="h2 reveal r2">Erkin javob — odamga.<br><span class="hl">Strukturali javob</span> — tizimga.</h2>
-    <p class="lead reveal r2">Bugungi botning siri shunda: AI ixtiyoriy matn yozmaydi. U faqat aniq maydonlarni to'ldiradi — toifa, mavzu, batafsil, shoshilinchlik. Shu sof JSONni Sheets to'g'ridan-to'g'ri saqlaydi va operatorni topadi.</p>
+    <p class="lead reveal r2">Bugungi botning siri shunda: AI ixtiyoriy matn yozmaydi. U faqat aniq maydonlarni to'ldiradi — toifa, mavzu, tafsilot, shoshilinchlik. Shu sof JSONni Sheets to'g'ridan-to'g'ri saqlaydi va operatorni topadi.</p>
     <div class="compare-rich reveal r3">
       <div class="col">
         <h4>Erkin javob · odam o'qiydi</h4>
@@ -761,8 +761,8 @@ body,p,li,.lead{letter-spacing:0.018em}
       </div>
       <div class="dict-card fragment">
         <span class="dict-tag">Schema</span>
-        <h3>Sxema · qat'iy tuzilgan javob</h3>
-        <p>Bankir tilida: "<strong>AI faqat aniq maydonlarni to'ldiradi</strong>". Erkin matn yozmaydi — har javobda aynan shu 4 ta katak: <strong>category, subject, details, urgency</strong>. Sheets'ning ustun nomlari shu, mos kelishi avtomatik.</p>
+        <h3>Sxema · javob uchun qat'iy shakl</h3>
+        <p>Bankir tilida: "<strong>AI erkin matn yozmaydi, faqat kelishilgan kataklarni to'ldiradi</strong>" — toifa, mavzu, tafsilot, shoshilinchlik. Shu sabab Sheets ustunlari adashmaydi, operator avtomatik topiladi.</p>
       </div>
     </div>
   </div>
@@ -777,7 +777,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <h2 class="h2 reveal r2"><span class="hl">Schema</span> misoli — mijoz xati JSON'ga aylanadi.</h2>
-    <p class="lead reveal r2">Mijoz qanday yozsa — bot bir xil 4 ta maydonni to'ldiradi. <strong style="color:var(--accent-2)">Erkin matn yo'q · faqat tuzilgan ma'lumot.</strong></p>
+    <p class="lead reveal r2">Mijoz qanday yozsa — bot bir xil 4 ta maydonni to'ldiradi. <strong style="color:var(--accent-2)">Erkin matn yo'q · faqat strukturali ma'lumot.</strong></p>
     <div class="embed-grid reveal r3">
       <div class="head-cell">Mijoz xati</div>
       <div class="head-cell"></div>
@@ -816,7 +816,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <h2 class="h2 reveal r2">BankYordamchi — <span class="hl">7 ta node</span>, bitta yo'nalish.</h2>
-    <p class="lead reveal r2">Telegram → AI tasniflaydi → Sheets'dan operator topadi → ariza saqlanadi → mijozga javob. Markazda Gemini turadi; har node n8n'da 1–2 daqiqada sozlanadi, kod yo'q.</p>
+    <p class="lead reveal r2">Telegram → AI tasniflaydi → Sheets'dan operator topadi → ariza saqlanadi → mijozga javob. Markazda Gemini turadi; har node n8n'da 1–2 daqiqada sozlanadi, murakkab dasturlash yo'q.</p>
     <div class="flow reveal r3">
       <div class="step"><div class="ico">💬</div><h4>1 · Telegram</h4><p>Mijoz xatini qabul qiladi</p></div>
       <div class="arrow">→</div>
@@ -826,7 +826,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="arrow">→</div>
       <div class="step"><div class="ico">📤</div><h4>5–7 · Saqla + javob</h4><p>Ariza yoziladi · operator nomi bilan javob mijozga</p></div>
     </div>
-    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem);font-style:italic;color:var(--mute)">→ Keyingi 4 slaydda har bosqichni alohida ochamiz. Hech qayerda kod yozilmaydi — faqat n8n maydonchalari.</p>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem);font-style:italic;color:var(--mute)">→ Keyingi 4 slaydda har bosqichni alohida ochamiz. Faqat <strong>bitta tayyor skript copy-paste</strong> — qolgan sozlamalar n8n oynasida tanlanadi.</p>
   </div>
 </section>
 
@@ -902,11 +902,11 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="main">
     <span class="chip-out reveal r1">Bosqich 3 / 4 · Operatorni topish</span>
     <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Toifaga mos <span class="hl">operatorni</span> Sheets'dan olamiz.</h2>
-    <p class="lead reveal r2">Gemini "kredit" deb ajratdi — endi Operators jadvalidan kredit toifasidagi <strong>faol operatorni</strong> topish kerak. Filtr ikki shart bilan ishlaydi: kategoriya + active=TRUE.</p>
+    <p class="lead reveal r2">Gemini "kredit" deb ajratdi — endi Operators jadvalidan kredit toifasidagi <strong>faol operatorni</strong> topish kerak. Filtr ikki shart bilan ishlaydi: toifa (category) + active=TRUE.</p>
     <div class="flow reveal r3">
-      <div class="step brain"><div class="ico">📋</div><h4>Node 3 · Read Operators</h4><p>Sheets node · ichida filtr: category={{$json.category}} <strong>VA</strong> active=TRUE</p></div>
+      <div class="step brain"><div class="ico">📋</div><h4>Node 3 · Read Operators</h4><p>Sheets node · ichida filtr: category={{$json.category}} <strong>AND</strong> active=TRUE</p></div>
       <div class="arrow">→</div>
-      <div class="step brain"><div class="ico">👤</div><h4>Node 4 · Pick Operator</h4><p>Tayyor 8 qatorli skript · birinchi qatorni oladi · bo'sh bo'lsa "Tayinlanmagan"</p></div>
+      <div class="step brain"><div class="ico">👤</div><h4>Node 4 · Code (Pick Operator)</h4><p>Tayyor 8 qatorli skript copy-paste · birinchi qatorni oladi · bo'sh bo'lsa "Tayinlanmagan"</p></div>
     </div>
     <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem);font-style:italic;color:var(--mute)">→ Operators jadvalini siz to'ldirasiz — bo'limga yangi xodim qo'shilsa <strong>satr qo'shasiz</strong>, ketsa active=FALSE qilasiz. Bot sizning sozlamangizni quvib boradi.</p>
   </div>
@@ -926,7 +926,7 @@ body,p,li,.lead{letter-spacing:0.018em}
     <div class="flow reveal r3">
       <div class="step"><div class="ico">📥</div><h4>Append Application</h4><p>Sheets'ga to'liq satr: vaqt, mijoz, toifa, mavzu, operator</p></div>
       <div class="arrow">→</div>
-      <div class="step"><div class="ico">✍️</div><h4>Format Reply</h4><p>Set node · O'zbekcha matn shabloni: "Salom! Operatoringiz: ..."</p></div>
+      <div class="step"><div class="ico">✍️</div><h4>Format Reply</h4><p><strong>Edit Fields</strong> (sobiq Set) node · O'zbekcha matn shabloni: "Salom! Operatoringiz: ..."</p></div>
       <div class="arrow">→</div>
       <div class="step brain"><div class="ico">📤</div><h4>Telegram Send</h4><p>Mijozga javob jo'natiladi · operator nomi va kontakti bilan</p></div>
     </div>
@@ -943,7 +943,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <h2 class="h2 reveal r2">Botning butun "xotirasi" — <span class="hl">2 ta varaq</span>.</h2>
-    <p class="lead reveal r2">Bitta Google Sheets fayli, ikki tab. Birinchisini siz to'ldirasiz (operatorlar bo'limga ko'ra), ikkinchisini bot to'ldiradi (har mijoz xati). Ma'lumotlar bazasi yo'q · Drive yo'q · ortiqcha integratsiya yo'q.</p>
+    <p class="lead reveal r2">Bitta Google Sheets fayli, ikki varaq. Birinchisini siz to'ldirasiz (operatorlar ro'yxati bo'limga ko'ra), ikkinchisini bot to'ldiradi (har mijoz xati). Ma'lumotlar bazasi yo'q · Drive yo'q · ortiqcha integratsiya yo'q.</p>
     <div class="sec reveal r3">
       <div class="item fragment">
         <div class="ico">👥</div>
@@ -977,7 +977,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="main">
     <span class="chip-out reveal r1">BankYordamchi · mijoz yo'li · 4 qadam</span>
     <h2 class="h2 reveal r2" style="margin-top:clamp(0.45rem,0.9vw,0.75rem)">Bot xatni <span class="hl">qanday qayta ishlaydi</span>?</h2>
-    <p class="lead reveal r2">Mijoz Telegramga xat yozadi. Bot to'rt qadam — <strong>AI tasniflaydi</strong> · operator topiladi · ariza saqlanadi · javob qaytadi. Hech qaysi qadamda kod yozilmaydi.</p>
+    <p class="lead reveal r2">Mijoz Telegramga xat yozadi. Bot to'rt qadamda ishlaydi — <strong>AI tasniflaydi</strong> · operator topiladi · ariza saqlanadi · javob qaytadi. Murakkab dasturlash yo'q.</p>
 
     <div class="journey reveal r3">
       <div class="step fragment">
@@ -1049,13 +1049,13 @@ body,p,li,.lead{letter-spacing:0.018em}
         <ul>
           <li>Bir xatda 2–3 niyat ("kredit + karta + shikoyat")</li>
           <li>Toifalar chegarasi noaniq (kredit/lizing farqi)</li>
-          <li>Mijozga aniq javob kerak — manba bilan (RAG kerak)</li>
+          <li>Mijozga aniq javob kerak — hujjatdan (11-modul mavzusi)</li>
           <li>Hisob-kitob, taqqoslash, ko'p qadamli savol</li>
           <li>50+ toifa · "agent" yondashuvi to'g'riroq (10-modul)</li>
         </ul>
       </div>
     </div>
-    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem);font-style:italic;color:var(--mute)">→ Yetmasa — <strong>agent</strong> (10-modul) yoki <strong>RAG</strong> (11-modul) qo'shiladi. Bugungi bot — birinchi qadam.</p>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem);font-style:italic;color:var(--mute)">→ Yetmasa — <strong>agent</strong> (10-modul) yoki <strong>hujjatdan javob</strong> (11-modul) qo'shiladi. Bugungi bot — birinchi qadam.</p>
   </div>
 </section>
 
@@ -1070,11 +1070,11 @@ body,p,li,.lead{letter-spacing:0.018em}
     <span class="chip-out reveal r2">Live build · Stollar bo'yicha · 15–30 daq</span>
     <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Endi navbat <span class="hl">sizga</span> — har stol o'z BankYordamchisini yig'adi.</h2>
     <div class="questions reveal r3">
-      <div class="q fragment"><span class="n">01</span><span>n8n'da <span style="color:var(--accent-2)">7 ta node</span> ulang: Telegram trigger → LLM Chain → Sheets read → Pick Operator → Sheets append → Set → Telegram send.</span></div>
+      <div class="q fragment"><span class="n">01</span><span>n8n'da <span style="color:var(--accent-2)">7 ta node</span> ulang: Telegram trigger → LLM Chain → Sheets read → <strong>Code</strong> (Pick Operator) → Sheets append → <strong>Edit Fields</strong> → Telegram send.</span></div>
       <div class="q fragment"><span class="n">02</span><span>Operators sheet'iga <span style="color:var(--accent-2)">5 ta operatorni</span> kiriting — har toifaga bittadan (kredit, karta, depozit, shikoyat, info).</span></div>
       <div class="q fragment"><span class="n">03</span><span>Telegram'dan <span style="color:var(--accent-2)">3 ta xat</span> yuboring (kredit · karta yo'qoldi · omonat). Sheets'ga to'g'ri toifa va to'g'ri operator yozilishini tekshiring.</span></div>
     </div>
-    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem)">→ <strong>15 daq</strong> qurish · <strong>10 daq</strong> test va sozlash · <strong>5 daq</strong> stollararo hisobot.</p>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem)">→ Instructor shablonidan boshlaymiz · har stolga tayyor Sheets template · <strong>15 daq</strong> qurish · <strong>10 daq</strong> test · <strong>5 daq</strong> stollararo hisobot.</p>
   </div>
 </section>
 
@@ -1088,7 +1088,7 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="main">
     <h2 class="h2 reveal r2">4 ta xato — <span class="hl">oldindan</span> bilsak, oldini olamiz.</h2>
     <div class="myth myth-4 reveal r3">
-      <div class="row fragment"><div class="tag">✗ Xato</div><p>Gemini JSON o'rniga <strong>erkin matn</strong> qaytaradi · markdown bilan ```json o'raydi</p></div>
+      <div class="row fragment"><div class="tag">✗ Xato</div><p>Gemini JSON o'rniga <strong>erkin matn</strong> qaytaradi · markdown bilan (<code>```json ... ```</code>) o'raydi</p></div>
       <div class="row real fragment"><div class="tag">✓ Tuzatish</div><p>System prompt'ga aniq: "<strong>faqat sof JSON</strong>, markdown belgilari yo'q". Output Parser'ni yoqing — sxemaga mos kelmasa qayta so'raydi.</p></div>
       <div class="row fragment"><div class="tag">✗ Xato</div><p>Toifa Sheets'dagidan boshqa nom bilan chiqadi — "Kredit" yoki "credit" (Operators'da <strong style="text-transform:none">kredit</strong>)</p></div>
       <div class="row real fragment"><div class="tag">✓ Tuzatish</div><p>5 ta toifa nomini bir xil shaklda yozing — kichik harf, lotin: <strong style="text-transform:none">kredit/karta/depozit/shikoyat/info</strong>. Sheets'da ham xuddi shu format.</p></div>
@@ -1141,8 +1141,8 @@ body,p,li,.lead{letter-spacing:0.018em}
     <h2 class="h2 reveal r2">Bugungi mashg'ulotdan <span class="hl">3 ta asosiy</span> xulosa.</h2>
     <div class="close-list reveal r3">
       <div class="close-row"><span class="arrow">💡</span><p><strong>Classification + Schema = birinchi ish tizimingiz.</strong> Mijoz erkin yozadi · AI sof JSON chiqaradi · tizim avtomatik triage qiladi.</p></div>
-      <div class="close-row"><span class="arrow">💡</span><p><strong>7 ta node, kod yo'q.</strong> Telegram + Gemini + Sheets · 15–30 daqiqada quriladi · har bo'lim o'z toifa va operator ro'yxatini kiritadi.</p></div>
-      <div class="close-row"><span class="arrow">💡</span><p><strong>Bugungi yakun — ishlaydigan bot va qaror varaqasi.</strong> Har stol topshiradi: bo'lim, toifalar, test xatlari natijasi, xavflar, keyingi qaror.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>7 ta node, murakkab dasturlash yo'q.</strong> Telegram + Gemini + Sheets · bitta tayyor skript copy-paste · 15–30 daqiqada quriladi · har bo'lim o'z toifa va operator ro'yxatini kiritadi.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Mashg'ulot yakuni — pilot qaror varaqasi.</strong> Har stol topshiradi: bo'lim, toifalar, 10 ta test xat natijasi, asosiy xavflar va qaror — pilotga ruxsat / qayta ishlash / rad etish.</p></div>
     </div>
     <div class="artifact reveal r3">
       <div class="artifact-tag">Classifier pilot qaror varaqasi · har stol</div>

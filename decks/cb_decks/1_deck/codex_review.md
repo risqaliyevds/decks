@@ -1,107 +1,63 @@
-# Deck Review
+# Verdict + Score 7/10
 
-**Verdict:** Kuchli energiya bor, lekin Markaziy Bank auditoriyasi uchun hozircha juda “AI-trener/hype” kayfiyatida; ishonch, nazorat va real bank jarayonlari yetarli og‘irlikda emas.
+Deck kuchli ochiladi: non-technical auditoriyaga AI'ni sodda metafora, jonli demo va 3 ta asosiy atama orqali tushuntiradi. Lekin Markaziy Bank auditoriyasi uchun governance tili hali yetarli darajada "regulyatorcha" emas: demo xavfsizligi, AI qaror qabul qilmasligi, manba chegarasi, shartnoma/audit talablari va yakuniy qaror artefakti aniqroq yopilishi kerak.
 
-**Current content score:** **6/10**
+Score: 7/10. Tuzatilsa 8.5/10 ga chiqadi.
 
-## 5 Eng Muhim Tuzatish
+## Punch List
 
-### 1. Slayd 3-4: “soch qo‘shish / raqsga tushgan it”ni kesing
-Bu CB xodimlari oldida past darajali hook. Kuldiradi, lekin mavzuni yengillashtirib yuboradi.
+1. **Content accuracy + Markaziy Bank fit**
+   - Spherical Insights raqamlari mos: $20.87B (2023) -> $310.79B (2033), CAGR 31.01%, APAC fastest growth deb berilgan. Lekin slide 13 dagi "O'zbekiston aynan shu mintaqada" jumlasi ehtiyotkor emas: O'zbekiston odatda Central Asia deb yuritiladi, APAC forecast'ini to'g'ridan-to'g'ri O'zbekistonga bog'lamang.
+   - "Har stol shu botni o'z PDF'i bilan qura oladi", "har biringiz bot yasab ketasiz" kabi va'dalar Markaziy Bank kontekstida kuchli eshitiladi. "Prototip mantig'ini tushunamiz / past xavfli use case tanlaymiz" deb yumshating.
+   - "Google bilan Zero-Training kelishuvi bor" fakt sifatida aytilmasin, agar aynan shartnoma yo'q bo'lsa. "Faqat korporativ shartnoma va zero-training sharti tasdiqlangandan keyin" deyish kerak.
+   - Markaziy Bank uchun "mijozlarga xizmat / avtokredit" misoli tijorat bankiga yaqin. Regulyatorga mosroq misollar qo'shing: normativ hujjat qidiruvi, banklardan kelgan hisobotlarni dastlabki tekshirish, murojaatlarni yo'naltirish, ichki FAQ.
+   - Slide 11/17 dagi human-in-loop yaxshi, lekin "audit log", "ma'lumot klassifikatsiyasi", "vakolat", "model javobi tavsiya xolos" kabi governance markerlar yetishmaydi.
 
-**O‘rniga real bank og‘rig‘i bilan oching:**
+2. **Atamalar coverage: LLM + Promt + API**
+   - Slide 8 lug'at mavjud va series rule'ga mos: LLM, Promt, API dict-card sifatida kiritilgan.
+   - Slide 19 closing recap ham mavjud, lekin screenshotda juda mayda va "LLM = miya / Promt = buyruq / API = avtomat ulash" juda qisqa. Speaker notes yaxshi, lekin slaydning o'zida bank misoli yetishmaydi.
+   - "Promt" atamasi kurs mapping'ida shunday berilgan, lekin professional auditoriya uchun bir marta "prompt/promt" yozilishi haqida izoh berish mumkin. Aks holda "Promt" imlo xatosidek ko'rinadi.
+   - RAG slide 15-16 da qayta ta'rifga yaqin keladi. CLAUDE rule bo'yicha RAG rasmiy atama sifatida deck 11 ga tegishli; bu yerda "hujjatga tayangan javob mexanizmi" deb yuritib, RAG'ni faqat nom sifatida qoldiring.
 
-**Slayd 3 yangi sarlavha:**
-> Har kuni takrorlanadigan ish: hujjat qidirish, solishtirish, javob tayyorlash
+3. **Uzbek language quality**
+   - Umumiy til jonli, lekin ayrim joylari og'zaki va keskin: "poyezdga sakrab chiqish", "aqldan ozdiradigan", "bir tiyinlik qadri yo'q", "o'rnini egallaydi". Markaziy Bank seminarida bularni aniq, sokin, professional gaplarga almashtiring.
+   - "AI", "No-code", "production-grade", "data labeling", "MVP" kabi inglizcha qatlam ko'p. Kerakli joyda qavsli izoh bering yoki soddalashtiring.
+   - "ssilka", "klishe", "printsip" o'rniga "havola", "andoza gap", "tamoyil" ishlating.
+   - "Markaziy Bank" bilan gapirganda "bankingiz" o'rniga ko'proq "bo'limingiz", "tashkilotingiz", "nazorat jarayoni", "ichki ish oqimi" ishlasin.
 
-**Lead:**
-> AI’ning qiymati rasm yasashda emas. Qiymat — 80 betlik hujjatdan kerakli bandni topish, xulosalash va xatoni kamaytirishda.
+4. **New Tanishuv slide 3**
+   - Slide yaxshi ko'rinadi va ishonch beradi, lekin "10+ AI loyiha va prototip", "5+ startup va MVP", "2 kun real loyihalardan olingan darslar" kabi formulirovka "10+ production AI mahsulotlar"dan ishonchliroq.
+   - Bank/regulyator auditoriyasi uchun eng kuchli signal loyiha nomlari emas, risk-aware delivery: "o'zbek tilidagi AI, hujjat bilan ishlash, demo/prototip, xavfsizlik cheklovlari bilan ishlash tajribasi".
+   - "Bugun sizga shu tajribani topshiraman" o'rniga "shu tajribadan amaliy ish tartibini chiqarib beraman" deyish kerak. Bu kamroq oversell.
 
-**Slayd 4 yangi matn:**
-> Bugungi savol: AI bankda kimning o‘rnini bosadi emas.  
-> To‘g‘ri savol: qaysi takroriy ishni tezroq, izchilroq va nazorat ostida bajarishga yordam beradi?
+5. **Closing bank decision artifact**
+   - Slide 19 yaxshi recap, ammo qaror artefakti yo'q. Modul oxirida ishtirokchi qo'lida bitta bankcha artefakt qolishi kerak: "AI tashabbusi uchun 1 betlik qaror kartasi".
+   - Closingda 3 savol bo'lsin: qaysi jarayon, qaysi ma'lumot, qaysi nazorat? Bu 2-deck use-case discovery'ga tabiiy ko'prik bo'ladi.
+   - Artefakt Markaziy Bank governance tilida bo'lsin: maqsad, ma'lumot turi, risk darajasi, inson tasdig'i, audit izi, pilot mezoni, go/no-go qarori.
 
----
+## Top 5 Rewrites In Uzbek
 
-### 2. Slayd 5: Demo uchun “ishonch shartlari” yo‘q
-Live bot yaxshi, lekin “Bu Google emas” yetmaydi. Auditoriya darhol so‘raydi: qaysi hujjat? real ma’lumot bormi? javob topilmasa nima qiladi?
+1. **Slide 3 Tanishuv - credibility without oversell**
+   - Hozirgi yo'nalish: "10+ production AI mahsulotlar / 2 kun - tajribani topshiraman"
+   - Rewrite:
+   > 3+ yildan beri o'zbek tilida ishlaydigan AI yechimlar, hujjat bilan ishlaydigan yordamchilar va prototiplar ustida ishlayman. Bu 2 kunda sizga model nomlarini emas, bank jarayonida AI'ni xavfsiz sinash tartibini ko'rsataman.
 
-**Slayd 5 ga qo‘shing:**
+2. **Slide 6 demo - governance-safe claim**
+   - Hozirgi yo'nalish: "Modul oxirida har stol shu botni o'z PDF'i bilan qura oladi"
+   - Rewrite:
+   > Bugun biz botning ishlash mantiqini ko'ramiz: savol keladi, tasdiqlangan hujjatdan dalil topiladi, javob qoralamasi tayyorlanadi. Real joriy etish faqat ma'lumot xavfsizligi, vakolat va inson tasdig'i belgilangandan keyin ko'rib chiqiladi.
 
-> Demo qoidasi: bot faqat oldindan yuklangan test PDF korpusidan javob beradi.  
-> Real mijoz ma’lumotlari ishlatilmaydi.  
-> Hujjatda javob bo‘lmasa, bot “ma’lumot topilmadi” deb aytishi kerak.  
-> Yakuniy qaror baribir mas’ul xodimda qoladi.
+3. **Slide 8 lug'at - stronger bank examples**
+   - Rewrite:
+   > LLM - matnni tushunadigan til modeli: nizom, xat va murojaat matnini o'qiydi.  
+   > Promt - AI'ga beriladigan aniq topshiriq: "shu hujjatdan 3 ta riskni top va band raqamini ko'rsat".  
+   > API - AI'ni ichki tizimga ulash yo'li: xat, bot yoki CRM'dan kelgan so'rov avtomatik qayta ishlanadi.
 
-**Chat javobini ham shunday qiling:**
-> “Men bu javobni `kredit_siyosati.pdf`, 4.2-band asosida tayyorladim. Agar bankning amaldagi ichki qarori yangilangan bo‘lsa, mas’ul xodim tasdiqlashi kerak.”
+4. **Slide 13 regional stat - avoid overclaim**
+   - Hozirgi yo'nalish: "O'zbekiston aynan shu mintaqada"
+   - Rewrite:
+   > Bu raqamlar O'zbekiston bo'yicha alohida prognoz emas, lekin bank sektorida AI tezlashayotganini ko'rsatadigan global signal. Biz uchun muhim xulosa: texnologiyani shoshilmasdan, nazorat va pilot mezonlari bilan sinash kerak.
 
----
-
-### 3. Slayd 16: Xavfsizlik bo‘yicha da’volar xavfli darajada qat’iy
-“Bizning arxitekturamiz xavfsizlik talablariga to‘liq javob beradi” degan gapni kesing. Bu muvofiqlik auditoriyasi oldida himoyasiz da’vo.
-
-**Almashtiring:**
-
-> AI yechim bankda faqat nazoratlar to‘liq bo‘lsa ishlatiladi.
-
-**3 blokni shunday yozing:**
-
-> **Ma’lumot tasnifi**  
-> Bank siri, shaxsiy ma’lumot va ochiq ma’lumot alohida ishlanadi.
-
-> **Kirish va audit**  
-> Kim qanday savol berdi, qaysi hujjatdan javob olindi — loglanadi.
-
-> **Inson tasdig‘i**  
-> Kredit, AML, muvofiqlik va mijozga ta’sir qiluvchi qarorlar AI tomonidan yakunlanmaydi.
-
-**Kesiladigan ibora:**
-> “xavfsizlik talablariga to‘liq javob beradi”
-
-**Sabab:** “to‘liq” deyish uchun huquqiy asos, data residency, DPA, access control, logging, retention, model provider shartlari ko‘rsatilishi kerak.
-
----
-
-### 4. Slayd 11-13: Global bozor statistikasi ko‘p, CB uchun “nima qilish kerak” kam
-Spherical Insights raqamlari mos: $20.87B → $310.79B, 31.01% CAGR, Asia-Pacific fastest growth deb berilgan. Manba: https://www.sphericalinsights.com/reports/ai-in-banking-market
-
-Lekin 3 slayd global market hype uchun ko‘p. CB auditoriyasi uchun buni 1 slaydga tushiring, qolgan joyni regulyatorlik va operatsion foydaga bering.
-
-**Slayd 11 rewrite:**
-> Dunyo banklari AI’ni moda uchun emas, xarajat, tezlik va nazorat uchun joriy qilyapti.
-
-**Slayd 12 o‘rniga yangi slayd:**
-> Markaziy Bank uchun 3 ustuvor savol:  
-> 1. AI bank operatsion riskini kamaytiradimi?  
-> 2. Mijozga noto‘g‘ri javob berish xavfini oshirmaydimi?  
-> 3. Qarorlar izohlanadigan va audit qilinadigan bo‘ladimi?
-
-**Slayd 13 lead:**
-> Biz AI’ni “qiziq texnologiya” sifatida emas, nazorat qilinadigan ish jarayoni sifatida ko‘ramiz.
-
----
-
-### 5. Slayd 17: Wordcloud yetarli emas; amaliy natija chiqmaydi
-“Eng zerikarli ish qaysi?” yaxshi savol, lekin boshqaruv/muvofiqlik auditoriyasi uchun bu juda yumshoq. Mashg‘ulot oxirida tanlanadigan use-case mezoni bo‘lishi kerak.
-
-**Slayd 17 ni scoring jadvalga aylantiring:**
-
-> Bugun bitta use-case tanlaymiz. Mezonlar:  
-> Takrorlanadimi?  
-> Hujjatga tayanadimi?  
-> Xavfi pastmi?  
-> Inson tasdig‘i saqlanadimi?  
-> 2 kunda prototip qilish mumkinmi?
-
-**Concrete Uzbek prompt:**
-> Bo‘limingizdagi bitta ishni tanlang:  
-> “Har hafta/har kuni takrorlanadi, hujjatga tayanadi, yakuniy qaror insonda qoladi.”  
-> Shunday ish AI uchun yaxshi nomzod.
-
-**Misollarni qo‘shing:**
-> Mijoz shikoyatini tasniflash  
-> Ichki yo‘riqnomadan javob topish  
-> Hisobot matnini qisqartirish  
-> Tekshiruv checklistini oldindan to‘ldirish  
-> AML signalini izohlash, lekin qaror bermaslik
+5. **Slide 19 closing - add decision artifact**
+   - Rewrite:
+   > Bugungi yakuniy natija: har bir guruh bitta "AI qaror kartasi"ni to'ldiradi. 1) Qaysi jarayon takrorlanadi? 2) Qaysi tasdiqlangan hujjatga tayanadi? 3) Qaysi joyda inson tasdig'i shart? Shu karta 2-moduldagi use-case tanlovimizga kirish nuqtasi bo'ladi.

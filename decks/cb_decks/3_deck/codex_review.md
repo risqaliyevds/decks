@@ -1,71 +1,46 @@
-**Verdict:** Kuchli skelet bor, lekin hozirgi matn regulyator auditoriyasi uchun haddan tashqari “demo-sotuvchi”, ayrim joylarda esa xavfni kamaytirib ko‘rsatadi.
+**Verdict:** Deck mavzuga mos va auditoriya uchun tushunarli: xavf -> nazorat -> boshqaruv zanjiri bor, Hallucination/Data Masking kiritilgan va recap qilingan. Lekin Markaziy Bank auditoriyasi uchun ayrim gaplar hali ham absolyut: RAG, masking va audit log "kafolat" emas, nazorat chorasi sifatida aytilishi kerak. Eng katta bo'shliq: bank ishga tushirishdan oldin qanday qaror hujjati bilan "go/no-go" qiladi, shu artifact slaydda yo'q.
 
-**Score:** 6/10
+**Score:** 7/10
 
-## Top 5 Content Improvements
+## Top 5 Rewrites In Uzbek
 
-1. **“RAG nolga tushiradi” degan claim xavfli.**
-Bu Markaziy Bank auditoriyasida darhol qizil bayroq: hech narsa xavfni nolga tushirmaydi.
+1. **Vendor absolutism va texnik kafolatlarni yumshatish**
 
-**Hozir:**  
-`GALLYUTSINATSIYANI RAG NOLGA TUSHIRADI.`
+Hozirgi ruh: `AI hech qachon haqiqiy mijoz nomini bilmaydi`, `har qanday xavfni boshqarsa bo'ladi`, `har qaror manbasi loglanadi`.
 
-**Yaxshiroq:**  
-`RAG gallyutsinatsiya xavfini kamaytiradi, lekin nazoratni almashtirmaydi.`
+**Rewrite:**  
+`Masking va RAG xavfni kamaytiradi, lekin uni yo'q qilmaydi. Shuning uchun har bir AI yechimida cheklangan ma'lumot, inson nazorati, test natijalari va audit izi birga talab qilinadi. Provayder tanlashda ham "ishonamiz" emas, shartnoma, data residency, retention va log siyosati tekshiriladi.`
 
-**Lead rewrite:**  
-`AI javobi tasdiqlangan manbalarga bog‘lanadi. Manba topilmasa, tizim javob bermasligi yoki inson tekshiruviga yuborishi kerak.`
+2. **Data Masking intro + recapni aniqroq qilish**
 
-2. **Muvofiqlik “xavfsiz koridor” metaforasi yaxshi, lekin juda yumshoq.**
-Compliance audience uchun asosiy xabar: muvofiqlik innovation blocker emas, lekin mustaqil nazorat funksiyasi.
+Hozir yaxshi boshlangan, lekin masking "AI hech narsa ko'rmaydi" degan mutlaq va'daga yaqinlashib qolgan. Masking qaysi ma'lumot turlarini yopishi va qayta identifikatsiya xavfi borligi aytilsin.
 
-**Hozir:**  
-`Muvofiqlik — qizil chiziq emas, xavfsiz koridor.`
+**Rewrite:**  
+`Data Masking - mijozni tanitadigan ma'lumotlarni AI'ga yuborishdan oldin tokenlarga almashtirish: ism, telefon, karta raqami, hisob raqami, INN, manzil. AI matn vazifasini ko'radi, lekin shaxsni aniqlovchi asl qiymatlarni ko'rmasligi kerak. Muhim eslatma: masking qoidalari test qilinadi, chunki noto'g'ri sozlangan masking bank sirini baribir ochib yuborishi mumkin.`
 
-**Yaxshiroq:**  
-`Muvofiqlik — AI’ni ruxsat etilgan chegarada ishlatish tizimi.`
+**Recap rewrite:**  
+`Data Masking nima? - Shaxsiy va bank siriga oid ma'lumotlarni AI'ga ketishidan oldin tokenlarga almashtirish; keyin javob bankning nazoratli tizimida qayta tiklanadi.`
 
-**Closing rewrite:**  
-`Muvofiqlik AI loyihasini to‘xtatish uchun emas, uning qayerda, qanday ma’lumot bilan va kim javobgarligida ishlashini aniq belgilash uchun kerak.`
+3. **Hallucination + RAGni governance-safe qilib aytish**
 
-3. **“Muvofiqlik” swap ba’zi joylarda tabiiy emas.**
-Rol yoki bo‘lim haqida gapirganda “muvofiqlik” yolg‘iz turmaydi; “muvofiqlik nazorati”, “muvofiqlik xizmati”, “regulyator talablari” tabiiyroq.
+Hozir RAG yechimi yaxshi tushuntirilgan, lekin "manbadan ko'chiradi" juda soddalashtirilgan. RAG noto'g'ri hujjat, eskirgan hujjat yoki noto'g'ri retrieval bilan xato qilishi mumkin.
 
-**Hozir:**  
-`Kredit, muvofiqlik yoki mijoz xizmati boshlig‘i.`
+**Rewrite:**  
+`Hallucination - AI fakt yo'q joyda ishonchli javob yasab berishi. RAG bu xavfni kamaytiradi: model javobni tasdiqlangan hujjatlar bazasidan qidiradi, manbani ko'rsatadi va manba topilmasa javobni to'xtatadi yoki inson tekshiruviga yuboradi. Lekin RAG ham nazorat o'rnini bosmaydi: hujjat bazasi yangiligi, manba sifati va javob formati doim tekshiriladi.`
 
-**Yaxshiroq:**  
-`Kredit, muvofiqlik nazorati yoki mijozlarga xizmat ko‘rsatish yo‘nalishi rahbari.`
+4. **Muvofiqlik qatlamlarini aniq yurisdiksiya bilan berish**
 
-**Hozir:**  
-`IT xavfsizligi + muvofiqlik + huquq.`
+Slide 8 dagi GDPR/EU AI Act foydali orientir, lekin "hamma bankka bevosita majburiy" kabi eshitilmasin. O'zbekiston banki uchun asosiy tayanch - mahalliy regulyator, bank siri, shaxsiy ma'lumotlar, axborot xavfsizligi va ichki siyosat.
 
-**Yaxshiroq:**  
-`Axborot xavfsizligi, muvofiqlik nazorati va yuridik xizmat vakillari.`
+**Rewrite:**  
+`AI yechimi uch turdagi talabdan o'tadi: 1) O'zbekiston regulyator talablari - bank siri, shaxsiy ma'lumotlar va axborot xavfsizligi; 2) bankning ichki siyosati - risk appetite, javobgarlik, model nazorati va audit; 3) tashqi hamkorlar va xalqaro amaliyot - ISO 27001, GDPR andozasi, yuqori xavfli AI uchun izohlanuvchanlik talablari. Xalqaro standartlar har doim ham bevosita qonun emas, lekin hamkor va audit talabida paydo bo'lishi mumkin.`
 
-4. **Slide 8 yuridik/regulyator qatlamlari juda umumiy va biroz noaniq.**
-GDPR / EU AI Act ni “talab” sifatida berish ehtiyot talab qiladi. Ular hamma mahalliy bank holatiga avtomatik tatbiq etilmaydi.
+5. **Bank decision artifact qo'shish**
 
-**Hozir:**  
-`GDPR talablari, ISO 27001, EU AI Act.`
+Deck boshqaruv rollarini beradi, ammo qaror qanday rasmiylashtirilishini bermaydi. Markaziy Bank xodimlari uchun eng kerakli narsa - "qaysi hujjatni so'raymiz?" degan javob.
 
-**Yaxshiroq:**  
-`Xalqaro amaliyot va hamkor talablar: shaxsiy ma’lumotlarni himoya qilish, axborot xavfsizligi, model riskini boshqarish va yuqori xavfli AI uchun izohlanuvchanlik.`
+**Rewrite:**  
+`Har AI vositasi ishga tushishidan oldin bitta qaror kartasi to'ldiriladi: use case nomi, biznes egasi, ishlatiladigan ma'lumot turi, provayder/model, masking talabi, RAG manbalari, human-in-the-loop nuqtasi, audit log tarkibi, log saqlash muddati, qoldiq xavf bahosi va tasdiqlagan qo'mita. Shu karta bo'lmasa, "AI tayyor" degan gap boshqaruv qarori hisoblanmaydi.`
 
-**Slide title rewrite:**  
-`AI yechimi 3 turdagi talabdan o‘tadi: regulyator, ichki nazorat, tashqi hamkorlar.`
-
-5. **Tone ba’zi joylarda Markaziy Bank auditoriyasi uchun haddan tashqari keskin/casual.**
-“Axlat”, “bo‘g‘ish”, “portlaydi”, “uyalmasdan” kabi iboralar energiya beradi, lekin professional ishonchni pasaytiradi.
-
-**Hozir:**  
-`internetdagi butun axlat va taxminlarini aralashtirib javob beradi.`
-
-**Yaxshiroq:**  
-`ochiq manbalardagi noto‘liq, eskirgan yoki kontekstsiz ma’lumotlarga tayanib javob berishi mumkin.`
-
-**Hozir:**  
-`Shu 4 ta roldan bittasi bo‘sh qolsa, loyiha ertami-kechmi portlaydi.`
-
-**Yaxshiroq:**  
-`Shu rollardan biri aniq belgilanmasa, loyiha bo‘yicha javobgarlik, audit izi va qaror sifati zaiflashadi.`
+**Suggested slide insert:**  
+`Slide 10 dan keyin yoki Slide 13 recapda kichik blok: "Bank qaror kartasi: Egasi -> Ma'lumot -> Nazorat -> Qoldiq xavf -> Go/No-Go".`

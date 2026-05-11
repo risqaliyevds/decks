@@ -89,7 +89,7 @@ Erkin javob — odamga.
 **Strukturali javob** — tizimga.
 
 **Lead:**
-Bugungi botning siri shunda: AI ixtiyoriy matn yozmaydi. U faqat aniq maydonlarni to'ldiradi — toifa, mavzu, batafsil, shoshilinchlik. Shu sof JSONni Sheets to'g'ridan-to'g'ri saqlaydi va operatorni topadi.
+Bugungi botning siri shunda: AI ixtiyoriy matn yozmaydi. U faqat aniq maydonlarni to'ldiradi — toifa, mavzu, tafsilot, shoshilinchlik. Shu sof JSONni Sheets to'g'ridan-to'g'ri saqlaydi va operatorni topadi.
 
 **Compare bloki:**
 | Erkin javob (odam o'qiydi) | → | Strukturali javob (tizim o'qiydi) |
@@ -117,8 +117,8 @@ Classification — bot nima qiladi. Schema — bot qanday formatda javob beradi.
 - **Classification** — *Tasniflash · so'rovni toifaga ajratish*
   Bankir tilida: "**kelgan xatni 5 turdan biriga yo'naltirish**". 1000 ta mijoz xati keldi — bot har birini avtomatik kredit / karta / depozit / shikoyat / info dan biriga ajratadi. Operator faqat o'zining toifasini ko'radi.
 
-- **Schema** — *Sxema · qat'iy tuzilgan javob*
-  Bankir tilida: "**AI faqat aniq maydonlarni to'ldiradi**". Erkin matn yozmaydi — har javobda aynan shu 4 ta katak: `category, subject, details, urgency`. Sheets'ning ustun nomlari shu, mos kelishi avtomatik.
+- **Schema** — *Sxema · javob uchun qat'iy shakl*
+  Bankir tilida: "**AI erkin matn yozmaydi, faqat kelishilgan kataklarni to'ldiradi**" — toifa, mavzu, tafsilot, shoshilinchlik. Shu sabab Sheets ustunlari adashmaydi va operator avtomatik topiladi. Maydonlar: `category, subject, details, urgency`.
 
 **Speaker notes:**
 2 atama, 2 daqiqa. **Classification** — eski biznes atamasi. Bank ham allaqachon shikoyatlarni "kredit / karta / boshqa" deb ajratadi — qo'lda. Bot shu ishni avtomatik qiladi. **Schema** — yangi atama. AIga "ixtiyoriy javob berma — aynan shu maydonlarni to'ldir" deyishning rasmiy nomi. n8n'da Output Parser qatlami nazorat qiladi — sxemaga mos kelmasa, AI qayta so'raydi. 18-slaydda jamoa bilan birga takrorlaymiz.
@@ -131,7 +131,7 @@ Classification — bot nima qiladi. Schema — bot qanday formatda javob beradi.
 **Schema** misoli — mijoz xati JSONga aylanadi.
 
 **Lead:**
-Mijoz qanday yozsa — bot bir xil 4 ta maydonni to'ldiradi. Erkin matn yo'q · faqat tuzilgan ma'lumot.
+Mijoz qanday yozsa — bot bir xil 4 ta maydonni to'ldiradi. Erkin matn yo'q · faqat strukturali ma'lumot.
 
 **3 ta misol qator:**
 
@@ -155,7 +155,7 @@ Mijoz qanday yozsa — bot bir xil 4 ta maydonni to'ldiradi. Erkin matn yo'q · 
 BankYordamchi — **7 ta node**, bitta yo'nalish.
 
 **Lead:**
-Telegram → AI tasniflaydi → Sheets'dan operator topadi → ariza saqlanadi → mijozga javob. Markazda Gemini turadi; har node n8n'da 1–2 daqiqada sozlanadi, kod yo'q.
+Telegram → AI tasniflaydi → Sheets'dan operator topadi → ariza saqlanadi → mijozga javob. Markazda Gemini turadi; har node n8n'da 1–2 daqiqada sozlanadi, murakkab dasturlash yo'q (faqat bitta tayyor skript copy-paste).
 
 **Flow (4 ta blokda 7 node):**
 
@@ -233,13 +233,13 @@ Bu — botning yuragi. **Basic LLM Chain** — n8n'ning oddiy LLM node'i. Unga u
 Toifaga mos **operatorni** Sheets'dan olamiz.
 
 **Lead:**
-Gemini "kredit" deb ajratdi — endi Operators jadvalidan kredit toifasidagi faol operatorni topish kerak. Filter ikki shart bilan ishlaydi: kategoriya + active=TRUE.
+Gemini "kredit" deb ajratdi — endi Operators jadvalidan kredit toifasidagi faol operatorni topish kerak. Filter ikki shart bilan ishlaydi: toifa (category) + active=TRUE.
 
 **Flow (3 step):**
 
 1. 📋 **Read Operators** — Sheets node · Operators jadvalini o'qiydi
-2. → 🔍 **Filter** — `category={{$json.category}} VA active=TRUE` (markazda · brain)
-3. → 👤 **Pick Operator** — Code node · birinchi qatorni oladi · bo'sh bo'lsa "Tayinlanmagan"
+2. → 🔍 **Filter** — `category={{$json.category}} AND active=TRUE` (markazda · brain)
+3. → 👤 **Code (Pick Operator)** — Code node · tayyor 8 qatorli skript copy-paste · birinchi qatorni oladi · bo'sh bo'lsa "Tayinlanmagan"
 
 **Tagline:**
 → Operators jadvalini siz to'ldirasiz — bo'limga yangi xodim qo'shilsa satr qo'shasiz, ketsa active=FALSE qilasiz. Bot sizning sozlamangizni quvib boradi.
@@ -262,7 +262,7 @@ Operator topildi — endi 3 ta yakuniy node. Applications jadvaliga to'liq satr 
 **Flow (3 step):**
 
 1. 📥 **Append Application** — Sheets'ga to'liq satr: vaqt, mijoz, toifa, mavzu, operator
-2. → ✍️ **Format Reply** — Set node · Uzbek matn shabloni: "Salom! Operatoringiz: ..."
+2. → ✍️ **Format Reply** — Edit Fields (sobiq Set) node · Uzbek matn shabloni: "Salom! Operatoringiz: ..."
 3. → 📤 **Telegram Send** — mijozga javob jo'natiladi · operator nomi va kontakti bilan (markazda · brain)
 
 **Tagline:**
@@ -279,7 +279,7 @@ Yakuniy 3 node — eng oddiy. **Append Application** Sheets'ning ustun nomlarini
 Botning butun "xotirasi" — **2 ta varaq**.
 
 **Lead:**
-Bitta Google Sheets fayli, ikki tab. Birinchisini siz to'ldirasiz (operatorlar bo'limga ko'ra), ikkinchisini bot to'ldiradi (har mijoz xati). Database yo'q · Drive yo'q · ortiqcha integratsiya yo'q.
+Bitta Google Sheets fayli, ikki varaq. Birinchisini siz to'ldirasiz (operatorlar ro'yxati bo'limga ko'ra), ikkinchisini bot to'ldiradi (har mijoz xati). Database yo'q · Drive yo'q · ortiqcha integratsiya yo'q.
 
 **3 ta sec kartochka:**
 
@@ -296,7 +296,7 @@ Bitta Google Sheets fayli, ikki tab. Birinchisini siz to'ldirasiz (operatorlar b
   Misol: yangi toifa qo'shsangiz — Operators'ga satr qo'shing, system prompt'ga bandni qo'shing — kod tegmaydi.
 
 **Speaker notes:**
-Bank uchun bu eng muhim slayd: **bot ma'lumotlari qaerda**. Javob — bitta Google Sheets fayl. Maxfiylikka mos: bank o'z hisobida, kirish huquqi bo'limning admin xodimida. Mijoz ma'lumoti tashqi serverga chiqmaydi (faqat Gemini API'ga xatning matni jo'natiladi — uni production'da PII strip bilan tozalash mumkin). Operators jadvalini to'ldirish — administrator ishi, kod o'zgartirish kerak emas.
+Bank uchun bu eng muhim slayd: **bot ma'lumotlari qaerda**. Javob — bitta Google Sheets fayl, bank boshqaradi (kirish huquqi bo'limning admin xodimida). Demo rejimida mijoz xati Gemini API'ga tasniflash uchun yuboriladi, natija bank Sheets'iga yoziladi. **Production uchun alohida qaror kerak:** PII masking, token va Sheets huquqlari, audit log, ma'lumot saqlash muddati va komplaens roziligi. Operators jadvalini to'ldirish — administrator ishi, kod o'zgartirish kerak emas.
 
 ---
 
@@ -308,7 +308,7 @@ Bank uchun bu eng muhim slayd: **bot ma'lumotlari qaerda**. Javob — bitta Goog
 Bot xatni **qanday qayta ishlaydi**?
 
 **Lead:**
-Mijoz Telegramga xat yozadi. Bot to'rt qadam — AI tasniflaydi · operator topiladi · ariza saqlanadi · javob qaytadi. Hech qaysi qadamda kod yozilmaydi.
+Mijoz Telegramga xat yozadi. Bot to'rt qadamda ishlaydi — AI tasniflaydi · operator topiladi · ariza saqlanadi · javob qaytadi. Murakkab dasturlash yo'q.
 
 **4 qadam (journey pattern):**
 
@@ -360,12 +360,12 @@ Tasniflagich — bitta aniq vazifaga mo'ljallangan vosita. Kuchli va zaif tomonn
 ✗ **Yomon ishlaydi:**
 - Bir xatda 2–3 niyat ("kredit + karta + shikoyat")
 - Toifalar chegarasi noaniq (kredit/lizing farqi)
-- Mijozga aniq javob kerak — manba bilan (RAG kerak)
+- Mijozga aniq javob kerak — hujjatdan (11-modul mavzusi)
 - Hisob-kitob, taqqoslash, ko'p qadamli savol
 - 50+ toifa · "agent" yondashuvi to'g'riroq (10-modul)
 
 **Speaker notes:**
-Bu — bot xaritasini to'g'ri belgilash uchun slayd. **Classifier — triage vositasi**, javob mashinasi emas. Mijoz "kreditim haqida" deb yozsa — bot kredit operatoriga uzatadi, ammo o'zi javob bermaydi. Agar mijoz aniq javob istasa (foiz, shartlar) — RAG kerak (11-modul). Agar mijoz bir nechta savol bersa — agent kerak (10-modul). Bu modul — eng oddiy holat: **bitta xat → bitta toifa → bitta operator**. Bank xizmati uchun bu hali ham juda foydali — chunki 80% xatlar shu shaklda.
+Bu — bot xaritasini to'g'ri belgilash uchun slayd. **Classifier — triage vositasi**, javob mashinasi emas. Mijoz "kreditim haqida" deb yozsa — bot kredit operatoriga uzatadi, ammo o'zi javob bermaydi. Agar mijoz aniq javob istasa (foiz, shartlar) — hujjatdan javob beradigan botni 11-modulda ko'ramiz. Agar mijoz bir nechta savol bersa — agent kerak (10-modul). Bu modul — eng oddiy holat: **bitta xat → bitta toifa → bitta operator**. Bank xizmati uchun bu hali ham juda foydali — chunki 80% xatlar shu shaklda.
 
 ---
 
@@ -378,12 +378,12 @@ Endi navbat **sizga** — har stol o'z BankYordamchi'sini yig'adi.
 
 **3 ta savol (s-brain pattern):**
 
-- **01** — n8n'da **7 ta node** ulang: Telegram trigger → LLM Chain → Sheets read → Code → Sheets append → Set → Telegram send.
+- **01** — n8n'da **7 ta node** ulang: Telegram trigger → LLM Chain → Sheets read → **Code** (Pick Operator) → Sheets append → **Edit Fields** → Telegram send.
 - **02** — Operators sheet'iga **5 ta operatorni** kiriting — har toifaga bittadan (kredit, karta, depozit, shikoyat, info).
 - **03** — Telegram'dan **3 ta xat** yuboring (kredit · karta yo'qoldi · omonat). Sheets'ga to'g'ri toifa va to'g'ri operator yozilishini tekshiring.
 
 **Tagline:**
-→ 15 daq qurish · 10 daq test va sozlash · 5 daq stollararo hisobot.
+→ Instructor shablonidan boshlaymiz · har stolga tayyor Sheets template · 15 daq qurish · 10 daq test · 5 daq stollararo hisobot.
 
 **Speaker notes:**
 Modulning amaliy yuragi. 30 daqiqa, har stolda 4–5 kishi. Vazifa: bot 01 shabloni klonlangan n8n'da 7 node'ni ulash, Operators sheet'ini to'ldirish, 3 ta test xat yuborish. Yordamchilar (1–2 nafar) stol bo'yicha yuradi. Hisobot bosqichida har stol qisqacha aytadi: qaysi xat eng yaxshi tasniflandi, qaysi xat — chalkashlik kelirdi.
@@ -397,7 +397,7 @@ Modulning amaliy yuragi. 30 daqiqa, har stolda 4–5 kishi. Vazifa: bot 01 shabl
 
 **4 ta myth qator (xato ↔ tuzatish):**
 
-- ✗ **Xato:** Gemini JSON o'rniga erkin matn qaytaradi · markdown bilan ```json o'raydi
+- ✗ **Xato:** Gemini JSON o'rniga erkin matn qaytaradi · markdown bilan (` ```json ... ``` `) o'raydi
   ✓ **Tuzatish:** System prompt'ga aniq: "faqat sof JSON, markdown belgilari yo'q". Output Parser'ni yoqing — sxemaga mos kelmasa qayta so'raydi.
 
 - ✗ **Xato:** Toifa Sheets'dagidan boshqa nom bilan chiqadi — "Kredit" yoki "credit" (Operators'da kredit)
@@ -447,8 +447,8 @@ Bugungi mashg'ulotdan **3 ta asosiy** xulosa.
 **3 ta xulosa (close-row, blue accent border-left):**
 
 - 💡 **Classification + Schema = birinchi ish tizimingiz.** Mijoz erkin yozadi · AI sof JSON chiqaradi · tizim avtomatik triage qiladi.
-- 💡 **7 ta node, kod yo'q.** Telegram + Gemini + Sheets · 15–30 daqiqada quriladi · har bo'lim o'z toifa va operator ro'yxatini kiritadi.
-- 💡 **Bugungi yakun — ishlagan bot va qaror varaqasi.** Har stol topshiradi: bo'lim, toifalar, test xatlari natijasi, xavflar, keyingi qaror.
+- 💡 **7 ta node, murakkab dasturlash yo'q.** Telegram + Gemini + Sheets · bitta tayyor skript copy-paste · 15–30 daqiqada quriladi · har bo'lim o'z toifa va operator ro'yxatini kiritadi.
+- 💡 **Mashg'ulot yakuni — pilot qaror varaqasi.** Har stol topshiradi: bo'lim, toifalar, 10 ta test xat natijasi, asosiy xavflar va qaror — pilotga ruxsat / qayta ishlash / rad etish.
 
 **Classifier pilot qaror varaqasi (5 mezon, har stol):**
 1. **Bo'lim** — qaysi bo'lim · mijoz oqimi qancha?

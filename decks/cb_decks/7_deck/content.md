@@ -13,7 +13,7 @@
 **Audience:** Markaziy Bank xodimlari (operatsiyalar, muvofiqlik, boshqaruv)
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev
 **Brand:** crea7iveai
-**Atamalar:** **Token** · **Context Window** — slide 5 da kiritiladi, slide 17 da interaktiv recap.
+**Atamalar:** **Token** · **Context Window** — slide 5 da kiritiladi; **Rules · Skills · MCP** — slide 14 da kiritiladi (Agent — 10-modul cross-ref); slide 18 da 5 atamalik interaktiv recap.
 
 > **Asosiy g'oya:** Bankir bitta platforma ishqibozi bo'lib qolmasligi kerak. "Eng zo'r AI" yo'q — vazifaga qarab to'g'ri qurolni tanlay oladigan muhandislik qarori bor. Brauzerdagi tekin chatdan korporativ API'gacha bo'lgan farqni tushunish.
 
@@ -36,11 +36,12 @@
 | 11 | Bank uchun tanlash mezoni | HA / YO'Q | ~4 daq | 03 Imkoniyat |
 | 12 | Narx — 3 ta darajada | Pricing 3-card | ~3 daq | 03 Imkoniyat |
 | 13 | Brauzerda yozish vs API orqali avtomat | Compare | ~3 daq | 03 Imkoniyat |
-| 14 | Xavfsizlik — 3 ta savol bilan tekshir | Sec 3-card | ~4 daq | 03 Imkoniyat |
-| 15 | Eng ko'p uchraydigan 3 xato | Myth/Reality | ~3 daq | 03 Imkoniyat |
-| 16 | 3 stol — 1 savol — 2 platforma | Brainstorm | ~6 daq | 04 Mashq |
-| 17 | Bugundan qaytib ketadigan 3 xulosa | Closing | ~3 daq | 04 Mashq |
-| 18 | Sizning savollaringiz | Q&A | ~5 daq | 04 Mashq |
+| 14 | Brauzerdan tashqari — yangi to'rt xususiyat | Rules · Skills · MCP + Agent (cross-ref) | ~5 daq | 02 Atamalar (ikkinchi qism) |
+| 15 | Xavfsizlik — 3 ta nazorat | Sec 3-card | ~4 daq | 03 Imkoniyat |
+| 16 | Eng ko'p uchraydigan 3 xato | Myth/Reality | ~3 daq | 03 Imkoniyat |
+| 17 | 3 stol — 1 keys — 2 platforma | Brainstorm | ~6 daq | 04 Mashq |
+| 18 | Bugundan qaytib ketadigan 3 xulosa | Closing + 5 atama recap | ~3 daq | 04 Mashq |
+| 19 | Sizning savollaringiz | Q&A | ~5 daq | 04 Mashq |
 
 ---
 

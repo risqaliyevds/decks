@@ -647,20 +647,20 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="col">
         <h4>Yomon promt</h4>
         <span class="pr-label">Promt</span>
-        <div class="pr">"Mijozga javob yoz."</div>
+        <div class="pr">"Hisobotni tahlil qil."</div>
         <span class="out-label">AI natijasi</span>
-        <div class="out">"Hurmatli mijoz, salom. Sizning savolingizni qabul qildik. Tez orada javob beramiz."</div>
+        <div class="out">"Hisobot ko'rib chiqildi. Bir nechta ko'rsatkichlar belgilanishi mumkin. Qo'shimcha ma'lumot kerak."</div>
         <div class="verdict">✗ Bo'sh · foydasiz · nol ma'lumot</div>
       </div>
       <div class="vs-arrow">→</div>
       <div class="col win">
         <h4>To'liq promt</h4>
         <span class="pr-label">Promt</span>
-        <div class="pr">Sen — tijorat banki mijoz xizmati operatorisan.
-Mijoz 80 mln so'm avtokredit so'rayapti, daromadi 12 mln.
-Skoringni tekshir va 3 ta abzasli javob yoz.</div>
+        <div class="pr">Sen — bank nazorati bo'limi tahlilchisan.
+Quyidagi prudensial hisobotda 3 ta ko'rsatkich talabga mos kelmasa, rahbariyat uchun 1 betlik xulosa tayyorla:
+faktlar · qaysi normaga zid · risk · keyingi qadam.</div>
         <span class="out-label">AI natijasi</span>
-        <div class="out">"Arizangiz qabul qilindi. Oylik to'lov ~3.7 mln so'm. DTI = 31% (norma ≤45%). Keyingi qadam: pasport va ma'lumotnoma olib keling."</div>
+        <div class="out">"1) Kapital yetarliligi 11.2% (norma ≥13%). 2) Likvidlik 18% (norma ≥25%). 3) Risk: o'rta-yuqori. Tavsiya: 3 kun ichida tushuntirish xati so'rash."</div>
         <div class="verdict">✓ Aniq raqam · mantiq · keyingi qadam</div>
       </div>
     </div>
@@ -687,12 +687,12 @@ Skoringni tekshir va 3 ta abzasli javob yoz.</div>
       <div class="benefit fragment">
         <div class="stat">02</div>
         <h3>Kontekst</h3>
-        <p>Vaziyat nima? Mijoz kim? Qaysi qoidaga tayanyapmiz? Kontekstsiz AI — ko'zi bog'liq haydovchi.</p>
+        <p>Vaziyat nima? Mijoz kim? Qaysi qoidaga tayanyapmiz? Kontekstsiz AI — ko'zi bog'langan haydovchi.</p>
       </div>
       <div class="benefit fragment">
         <div class="stat">03</div>
         <h3>Vazifa</h3>
-        <p>Bitta aniq fe'l. "Tahlil qil", "Solishtir". Mavhum gaplar o'tmaydi.</p>
+        <p>Bitta aniq fe'l ishlating. "Tahlil qil", "Solishtir". Mavhum gaplar o'tmaydi.</p>
       </div>
       <div class="benefit fragment">
         <div class="stat">04</div>
@@ -723,14 +723,14 @@ Skoringni tekshir va 3 ta abzasli javob yoz.</div>
       <div class="dict-card fragment">
         <span class="dict-tag">Few-shot</span>
         <h3>Namuna bilan o'rgatish</h3>
-        <p>AI'ga quruq qoida tushuntirgandan ko'ra, 3 ta tayyor hujjat berasiz. AI <strong>uslubni</strong> aynan sizning bank ovozingizdan oladi.</p>
-        <p style="margin-top:0.45rem;color:rgba(255,255,255,0.6);font-size:clamp(0.78rem,1vw,0.95rem)">Misol: 3 ta tasdiqlangan kredit memo namunasi → AI 4-chisini xuddi shunday ovoz va formatda yozadi.</p>
+        <p>AI'ga quruq qoida tushuntirgandan ko'ra, <strong>2–3 ta tasdiqlangan hujjat namunasi</strong> beriladi. AI shu namunalardan format va ohangni nusxalaydi.</p>
+        <p style="margin-top:0.45rem;color:rgba(255,255,255,0.6);font-size:clamp(0.78rem,1vw,0.95rem)">Misol: 3 ta tasdiqlangan nazorat xulosasi namunasi → AI 4-chisini xuddi shu strukturada tayyorlaydi.</p>
       </div>
       <div class="dict-card fragment">
         <span class="dict-tag">Chain-of-Thought</span>
-        <h3>Fikr zanjiri · Ovoz chiqarib hisoblash</h3>
-        <p>Biz AI'ga "Shu kreditni beraylikmi?" demaymiz. Biz unga <strong>"Qadamma-qadam o'ylab, hisoblab ber"</strong> deymiz.</p>
-        <p style="margin-top:0.45rem;color:rgba(255,255,255,0.6);font-size:clamp(0.78rem,1vw,0.95rem)">Misol: "Avval daromadni hisobla → DTI ni top → tasdiqla yoki rad et." Audit izi tayyor.</p>
+        <h3>Asoslangan javob · Audit izi</h3>
+        <p>AI'dan quruq "Ha/Yo'q" emas, <strong>asos · mezon · hisob-kitob · tekshiruv bandlari</strong> bilan javob so'raymiz — formatni biz belgilab beramiz.</p>
+        <p style="margin-top:0.45rem;color:rgba(255,255,255,0.6);font-size:clamp(0.78rem,1vw,0.95rem)">Misol: "Javobni 5 qismda ber: faktlar · qo'llangan mezon · hisob · nomuvofiqlik · inson tekshiruvi kerak bandlar." Audit izi tayyor.</p>
       </div>
     </div>
   </div>
@@ -764,11 +764,11 @@ Skoringni tekshir va 3 ta abzasli javob yoz.</div>
       <div class="step brain">
         <div class="ico">③</div>
         <h4>Few-shot</h4>
-        <p><b>Promt:</b> "Quyidagi 3 ta namuna kabi yoz."</p>
-        <p style="margin-top:0.4rem;font-style:italic">Natija: bank ovozi, xuddi 5 yil ishlagan mutaxassisdek.</p>
+        <p><b>Promt:</b> "Quyidagi 3 ta tasdiqlangan namuna kabi yoz."</p>
+        <p style="margin-top:0.4rem;font-style:italic">Natija: muassasa formati va ohangiga mos javob.</p>
       </div>
     </div>
-    <p class="lead no-bar reveal r4" style="margin-top:clamp(0.85rem,1.5vw,1.25rem);font-style:italic;color:var(--mute);text-align:center">→ Production promtlarda 2–3 misol — oltin standart.</p>
+    <p class="lead no-bar reveal r4" style="margin-top:clamp(0.85rem,1.5vw,1.25rem);font-style:italic;color:var(--mute);text-align:center">→ Amaliy promtlarda 2–3 ta tasdiqlangan namuna — sifatni keskin oshiradi.</p>
   </div>
 </section>
 
@@ -780,28 +780,28 @@ Skoringni tekshir va 3 ta abzasli javob yoz.</div>
   </div>
   <div class="head"></div>
   <div class="main">
-    <h2 class="h2 reveal r2"><span class="hl">Chain-of-Thought</span> — to'g'ridan-to'g'ri vs qadamma-qadam.</h2>
-    <p class="lead reveal r2" style="margin-top:0.4rem">AI'ni "fikrla, keyin javob ber" deb yo'naltirsangiz, murakkab vazifada xato keskin kamayadi.</p>
+    <h2 class="h2 reveal r2"><span class="hl">Chain-of-Thought</span> — quruq javob vs asoslangan javob.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">Bu AI'ning ichki fikrini chiqarish emas. Maqsad — javob formatini o'zimiz boshqarish: faktlar, mezon, hisob va tekshiruv bandlarini alohida ko'rsatish.</p>
     <div class="compare-rich reveal r3">
       <div class="col">
-        <h4>To'g'ridan-to'g'ri</h4>
+        <h4>Quruq so'rov</h4>
         <span class="pr-label">Promt</span>
-        <div class="pr">"Mijoz daromadi 12 mln, kredit 80 mln. Kredit tasdiqlanadimi yoki yo'qmi?"</div>
+        <div class="pr">"AML hisobotida shubhali operatsiya bormi? Risk yuqorimi?"</div>
         <span class="out-label">AI natijasi</span>
-        <div class="out">"Tasdiqlanadi."</div>
-        <div class="verdict">✗ Audit izi yo'q</div>
+        <div class="out">"Ha, risk yuqori."</div>
+        <div class="verdict">✗ Asos yo'q · tekshirib bo'lmaydi</div>
       </div>
       <div class="vs-arrow">→</div>
       <div class="col win">
-        <h4>CoT (qadamma-qadam)</h4>
+        <h4>CoT · Asoslangan format</h4>
         <span class="pr-label">Promt</span>
-        <div class="pr">"Avval oylik to'lovni hisobla. So'ng DTI ni top. Agar DTI &lt; 45% bo'lsa, tasdiqla. Hisobni ko'rsatib ber."</div>
+        <div class="pr">"Quyidagi hisobotni tahlil qil. Javob formatini saqla: 1) faktlar, 2) qo'llangan mezon, 3) hisob-kitob, 4) nomuvofiqlik yoki risk, 5) inson tekshiruvi kerak bandlar. Yetishmagan ma'lumotni taxmin qilma."</div>
         <span class="out-label">AI natijasi</span>
-        <div class="out">"1) To'lov 3.7 mln. 2) DTI 31%. 3) 31% &lt; 45% → Tasdiqlanadi."</div>
-        <div class="verdict">✓ Audit izi tayyor</div>
+        <div class="out">"1) 3 ta tranzaksiya 200 mln dan oshgan. 2) Mezon: 100 mln ostonasi. 3) Hisob: 3/3 oshib ketgan. 4) Manba hujjati yo'q. 5) Compliance xodimi tasdig'i kerak."</div>
+        <div class="verdict">✓ Asos · mezon · audit izi tayyor</div>
       </div>
     </div>
-    <p class="reveal r4" style="margin-top:clamp(0.7rem,1.3vw,1.1rem);font-family:var(--display);font-size:clamp(0.8rem,1.1vw,1.05rem);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);text-align:center">→ Sababini ko'rsatgan AI — auditga tushuntirib beradigan AI.</p>
+    <p class="reveal r4" style="margin-top:clamp(0.7rem,1.3vw,1.1rem);font-family:var(--display);font-size:clamp(0.8rem,1.1vw,1.05rem);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);text-align:center">→ Asosini ko'rsatgan AI javobini xodim tekshirishi va himoyalashi oson.</p>
   </div>
 </section>
 
@@ -835,9 +835,9 @@ Ohang: rasmiy, hamdard, aniq.</div>
       <div class="dict-card fragment">
         <span class="dict-tag">KYC xulosa</span>
         <h3>Muvofiqlik shabloni</h3>
-        <div class="pr-mini"><b>Sen — muvofiqlik xodimisan.</b>
+        <div class="pr-mini"><b>Sen — komplayens (muvofiqlik) xodimisan.</b>
 Mijoz hujjatlari: [...]
-Risk: low / med / high.
+Risk darajasi: past / o'rta / yuqori.
 <b>Vazifa:</b> 200 so'zda xulosa: shaxs · faoliyat manbai · anomaliyalar.</div>
       </div>
     </div>
@@ -857,11 +857,11 @@ Risk: low / med / high.
     <h2 class="h2 reveal r2" style="margin-top:clamp(0.6rem,1.2vw,1rem)">Sizning bo'limingiz uchun <span class="hl">promt yozaylik</span>.</h2>
     <p class="lead reveal r2">Beshta blokni jamoa bilan birga to'ldiramiz. Yozish — ekranda. Tasdiq — sizning ovozingizdan.</p>
     <pre class="prompt-box reveal r3"><span class="com"># Sizning bo'limingiz uchun shablon — birga to'ldiramiz</span>
-<span class="key">sen      —</span> <span class="ph">[ROL? — masalan: muvofiqlik tahlilchisi]</span>
-<span class="key">kontekst —</span> <span class="ph">[VAZIYAT? — hujjat, hisobot, qoida]</span>
-<span class="key">vazifa   —</span> <span class="ph">[NIMA QILISH KERAK? — bitta fe'l]</span>
-<span class="key">format   —</span> <span class="ph">[QANDAY KO'RINISHDA? — abzas, jadval, so'z soni]</span>
-<span class="key">misol    —</span> <span class="ph">[TASDIQLANGAN NAMUNA? — ixtiyoriy, kuchli]</span></pre>
+<span class="key">sen      :</span> <span class="ph">[ROL? — masalan: muvofiqlik tahlilchisi]</span>
+<span class="key">kontekst :</span> <span class="ph">[VAZIYAT? — hujjat, hisobot, qoida]</span>
+<span class="key">vazifa   :</span> <span class="ph">[NIMA QILISH KERAK? — bitta fe'l]</span>
+<span class="key">format   :</span> <span class="ph">[QANDAY KO'RINISHDA? — abzas, jadval, so'z soni]</span>
+<span class="key">misol    :</span> <span class="ph">[TASDIQLANGAN NAMUNA? — ixtiyoriy, kuchli]</span></pre>
     <p class="lead no-bar reveal r4" style="margin-top:clamp(0.7rem,1.3vw,1.1rem);text-align:center;font-family:var(--display);font-size:clamp(0.8rem,1.1vw,1.05rem);letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-2)">→ 10 daqiqada — ish joyingizga olib ketadigan birinchi promtingiz tayyor.</p>
   </div>
 </section>
@@ -877,10 +877,10 @@ Risk: low / med / high.
     <h2 class="h2 reveal r2">Yo'l qo'yiladigan <span class="hl">3 ta xato</span>.</h2>
     <p class="lead reveal r2" style="margin-top:0.4rem">Afsona va Haqiqat.</p>
     <div class="myth myth-tight reveal r3">
-      <div class="row fragment"><div class="tag">✗ Afsona</div><p><strong>Qancha uzun yozsam</strong>, shuncha aqlli tushunadi.</p></div>
+      <div class="row fragment"><div class="tag">✗ Afsona</div><p><strong>Qancha uzun yozsam</strong>, shuncha yaxshi tushunadi.</p></div>
       <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p><strong>Aniq promt</strong> uzun promtdan kuchli. Ortiqcha so'zlar chalg'itadi. 5 element yetarli.</p></div>
       <div class="row fragment"><div class="tag">✗ Afsona</div><p>Real mijoz hujjatini AI'ga <strong>kiritib bersam</strong>, tezroq xulosa qiladi.</p></div>
-      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p><strong>F.I.Sh., STIR, JShShIR, hisob raqami, bank siri — yubormang.</strong> Identifikatorlarni olib tashlang, raqamlarni umumlashtiring ("~100 mln"). Yakuniy javobni xodim tekshiradi.</p></div>
+      <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p><strong>Ommaviy AI'ga (ChatGPT, Claude): F.I.Sh. · STIR/JShShIR · hisob raqami · tranzaksiya ID · ichki tekshiruv · bank siri yubormang.</strong> Faqat tasdiqlangan korporativ muhitda · minimal kontekst · identifikatorlar olib tashlangan · raqamlar agregatsiya qilingan holatda. Yakuniy javobni mas'ul xodim tekshiradi.</p></div>
       <div class="row fragment"><div class="tag">✗ Afsona</div><p>Bitta zo'r promt yozib olib, <strong>hamma ishga ishlatsa bo'ladi</strong>.</p></div>
       <div class="row real fragment"><div class="tag">✓ Haqiqat</div><p>Har vazifa uchun <strong>alohida shablon</strong> bo'lishi shart.</p></div>
     </div>
@@ -905,7 +905,7 @@ Risk: low / med / high.
           <li>Kontekst yetarli (vaziyat, hujjat, qoida)</li>
           <li>Bitta aniq vazifa (bitta fe'l)</li>
           <li>Format ko'rsatilgan (3 abzas, jadval, 100 so'z)</li>
-          <li>Manba va noaniqliklarni ko'rsatish so'ralgan</li>
+          <li>Asos, mezon, tekshiruv bandlari so'ralgan (CoT)</li>
         </ul>
       </div>
       <div class="cando-col cant">
@@ -914,7 +914,7 @@ Risk: low / med / high.
           <li>"Yoz", "Tahlil qil" — kontekstsiz buyruq</li>
           <li>Bir necha vazifa aralash (yoz + solishtir)</li>
           <li>Format yo'q — "qisqa", "uzun" kabi mavhum so'zlar</li>
-          <li>Manba so'ralmagan — AI to'qib chiqaradi</li>
+          <li>Asos so'ralmagan — AI taxmin qilib to'qiydi</li>
           <li>Yakuniy tekshiruv ko'zda tutilmagan</li>
         </ul>
       </div>
@@ -935,13 +935,13 @@ Risk: low / med / high.
     <div class="close-list reveal r3">
       <div class="close-row"><span class="arrow"><img src="images/auto/slide-12-icon-row-1-key.svg" alt="" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1)"></span><p><strong>Promt — kalit ko'nikma.</strong> AI texnologiyasi qanchalik zo'r bo'lmasin, fikringiz aniq bo'lmasa, u foydasiz.</p></div>
       <div class="close-row"><span class="arrow"><img src="images/auto/slide-12-icon-row-2-layout-list.svg" alt="" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1)"></span><p><strong>5 element shabloni</strong> (Rol · Kontekst · Vazifa · Format · Misol) — bo'limingizdan qat'iy nazar ishlaydi.</p></div>
-      <div class="close-row"><span class="arrow"><img src="images/auto/slide-12-icon-row-3-library.svg" alt="" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1)"></span><p><strong>Shablon kutubxonasi — vaqtni tejaydi.</strong> Tayyor shablon vazifaga moslanadi: noldan yozish o'rniga eng yaxshi versiyadan boshlanadi.</p></div>
+      <div class="close-row"><span class="arrow"><img src="images/auto/slide-12-icon-row-3-library.svg" alt="" style="width:1.4em;height:1.4em;vertical-align:middle;filter:brightness(0) invert(1)"></span><p><strong>Javobgarlik xodimda qoladi.</strong> Yaxshi promt xatoni kamaytiradi, lekin yo'q qilmaydi. Yakuniy qaror — mas'ul xodimda, AI'da emas.</p></div>
     </div>
     <div class="recap reveal r3">
       <div class="recap-tag">Lug'at recap · birga aytamiz</div>
       <div class="recap-terms">
-        <div class="recap-term"><strong>Few-shot Prompting</strong> <span class="ans">namuna bilan o'rgatish — 2–3 misol</span></div>
-        <div class="recap-term"><strong>Chain-of-Thought</strong> <span class="ans">fikr zanjiri — qadamma-qadam o'yla</span></div>
+        <div class="recap-term"><strong>Few-shot Prompting</strong> <span class="ans">2–3 ta namuna ko'rsatib, format va ohangni o'rgatish</span></div>
+        <div class="recap-term"><strong>Chain-of-Thought</strong> <span class="ans">asos · mezon · hisob · tekshiruv bandlarini ko'rsat</span></div>
       </div>
     </div>
   </div>
@@ -986,7 +986,7 @@ const TITLES = [
   "Promtning 5 ta elementi",
   "Lug'at · Few-shot + Chain-of-Thought",
   'Few-shot · namuna bilan o\'rgatish',
-  'Chain-of-Thought · to\'g\'ridan vs qadamma-qadam',
+  'Chain-of-Thought · quruq vs asoslangan javob',
   'Markaziy Bank xodimi uchun 3 ta tayyor shablon',
   'Sizning bo\'limingiz uchun promt yozaylik',
   "Yo'l qo'yiladigan 3 ta xato",

@@ -15,7 +15,7 @@
 **Brand:** crea7iveai
 **Stack:** Gemini (miya) + RAG (xotira) + n8n (ishchi) — mutlaqo kodsiz
 **Slaydlar soni:** 20 ta · 4 ta faza
-**Atamalar:** LLM, Promt, API (Slayd 7 da kiritiladi, slayd 18 da auditoriya bilan birga qaytariladi). RAG va Embedding — 9-modulning atamalari, bu yerda demo botning ishlash printsipi sifatida tilga olinadi xolos.
+**Atamalar:** LLM, Promt, API (Slayd 8 da kiritiladi, slayd 19 da auditoriya bilan birga qaytariladi + AI qaror kartasi ko'prigi). RAG va Embedding — 9 va 11-modulning atamalari, bu yerda demo botning ishlash printsipi sifatida tilga olinadi xolos.
 
 ## Asosiy g'oya
 
@@ -174,9 +174,9 @@ Katta QR kod va `t.me/bankragbot` ssilkasi. O'ng tomonda chat vizualizatsiyasi: 
 **Speaker notes:**
 Quruq gapdan ko'ra, keling amalda ko'ramiz. Telefonlarni olinglar. Shu QR kodni skaner qiling yoki Telegramdan botni toping. Unga bank xizmatlari, masalan avtokredit haqida ixtiyoriy savol yozing.
 *(10-15 soniya pauza, zal botga kirishini kuting)*
-Javob keldimi? E'tibor bering — bot Google'dan qidirib, taxmin qilib yozgani yo'q. U orqa fonda biz yuklagan bank PDF hujjatini ochdi, o'qidi va faqat o'sha qoidaga asoslanib javob berdi. Manba ham ko'rsatildi: `kredit_siyosati.pdf, 4.2-band`. Yakuniy qaror baribir mas'ul xodimda qoladi. Mana shu narsa real qiymat deyiladi.
+Javob keldimi? E'tibor bering — bot Google'dan qidirib, taxmin qilib yozgani yo'q. U orqa fonda biz yuklagan test PDF hujjatini ochdi, o'qidi va faqat o'sha qoidaga asoslanib javob berdi. Manba ham ko'rsatildi: `kredit_siyosati.pdf, 4.2-band`. Yakuniy qaror baribir mas'ul xodimda qoladi. Real joriy etish faqat ma'lumot xavfsizligi, vakolat va inson tasdig'i belgilangandan keyin ko'rib chiqiladi.
 
-**Demo qoidasi (auditoriyaga aytib o'ting):** bot faqat oldindan yuklangan test PDF korpusidan javob beradi · real mijoz ma'lumoti ishlatilmagan · hujjatda javob bo'lmasa, bot "ma'lumot topilmadi" deydi.
+**Demo qoidasi (slaydda yozilgan + auditoriyaga aytib o'ting):** bot faqat oldindan yuklangan test PDF korpusidan javob beradi · real mijoz ma'lumoti ishlatilmagan · hujjatda javob bo'lmasa, bot "ma'lumot topilmadi" deydi.
 
 **Tayyorgarlik:**
 Bot uzilishsiz ishlab turganiga ishonch hosil qiling. Agar kimdadir internet ishlamasa, ekrandagi chat animatsiyasiga ishora qiling.
@@ -218,7 +218,7 @@ Keyingi 15 modulda bu uchta atama qaytib-qaytib chiqadi. Hozir bir marta tushuns
 IT jargonlarini yomon ko'raman, lekin shu uchta so'zni bugun kelishib olishimiz shart. Kurs davomida bularni ko'p eshitasiz.
 Birinchisi — **LLM**. Bu kompyuterning til miyasi. Masalan, ChatGPT yoki biz ishlatadigan Gemini.
 Ikkinchisi — **Promt**. Bu sizning AI'ga beradigan buyrug'ingiz. "Qisqa qilib yoz" yoki "Jadval qilib ber" — bular promt.
-Uchinchisi — **API**. Brauzerdan ChatGPTga qo'l bilan yozish — bir xil ish. Lekin bank ichida AI'ni har gal qo'l bilan ishlatib bo'lmaydi: 1000 ta xat keldi — 1000 marta yozasizmi? API — bu AI'ni Telegram bot, CRM, ichki sayt bilan avtomat ulash usuli. Bir marta sozlanadi, har xat o'zi ishlanadi. Boyagi Telegram botimiz aynan shu printsipda — AI bilan tizim API orqali bog'langan.
+Uchinchisi — **API**. Brauzerdan ChatGPTga qo'l bilan yozish — bir xil ish. Lekin bank ichida AI'ni har gal qo'l bilan ishlatib bo'lmaydi: 1000 ta so'rov keldi — 1000 marta yozasizmi? API — bu AI'ni Telegram bot, CRM, ichki sayt bilan avtomat ulash usuli. Bir marta sozlanadi, har bir so'rov avtomatik ishlanadi. Boyagi Telegram botimiz aynan shu printsipda — AI bilan tizim API orqali bog'langan.
 
 ---
 
@@ -309,8 +309,8 @@ Mintaqaviy o'sish · 2024–2033
 4 ta mintaqa ko'rsatilgan progress barlar. Shimoliy Amerika eng katta, lekin Osiyo-Tinch okeani ko'k rangda yonib turibdi (eng tez o'sish).
 
 **Speaker notes:**
-Eng qizig'i shundaki, bu o'sish faqatgina Amerikada bo'layotgani yo'q. Ha, eng katta bozor hozircha ularda. Lekin eng tez o'sayotgan mintaqa — bu Osiyo-Tinch okeani. Biz o'zimiz joylashgan mintaqa.
-Bugun siz o'rganayotgan narsalar ertaga O'zbekiston bank sektorida standartga aylanadi. Bugungi qadam — ertangi ustunlik.
+Eng qizig'i shundaki, bu o'sish faqatgina Amerikada bo'layotgani yo'q. Ha, eng katta bozor hozircha ularda. Lekin eng tez o'sayotgan mintaqa — bu Osiyo-Tinch okeani.
+Eslatma: bu O'zbekiston bo'yicha alohida prognoz emas — bu global signal. Lekin xulosa aniq: bank sektorida AI tezlashayapti, biz uchun muhim xulosa shu — texnologiyani shoshilmasdan, nazorat va pilot mezonlari bilan sinash kerak.
 
 ---
 
@@ -418,7 +418,7 @@ Ajoyib. Mana shu aytgan muammolaringizning eng ko'p takrorlanganini olamiz va er
 Siz AI haqida shunchaki eshitgan odam emas, AI bilan ishlaydigan bankirga aylanasiz.
 
 **Vizual elementlar:**
-Markazda katta xulosa matni. Pastda interaktiv lug'at recap: LLM = miya, Promt = buyruq, API = avtomat ulash.
+Markazda katta xulosa matni. Pastda interaktiv lug'at recap: LLM = miya, Promt = buyruq, API = avtomat ulash. Eng pastda — "AI qaror kartasi" ko'prik bloki (3 ta savol): 1) Qaysi takroriy jarayon? 2) Qaysi tasdiqlangan hujjat? 3) Qaysi joyda inson tasdig'i?
 
 **Speaker notes:**
 Xulosa qilamiz. AI ishingizni olmaydi, u ishingizni tezlashtiradi.
@@ -426,7 +426,7 @@ Keling, bugun o'rgangan uchta asosiy so'zimizni birga qaytaramiz. Men boshini ay
 LLM nima edi? *(Zal: Kompyuter miyasi / Gemini)*
 Promt nima edi? *(Zal: AI'ga beriladigan buyruq / savol)*
 Va uchinchisi, API nima edi? *(Zal: AI'ni boshqa tizim bilan avtomat ulash / CRM, Telegram botga ulash)*
-Ajoyib. Ikki kundan keyin siz AI haqida shunchaki yangiliklarda o'qigan emas, uni real ishlatadigan bankirga aylanasiz.
+Ajoyib. Endi 2-modulga ko'prik. Har bir guruh 1 betlik "AI qaror kartasi"ni to'ldiradi: qaysi takroriy jarayon? qaysi tasdiqlangan hujjat? qaysi joyda inson tasdig'i shart? Shu karta 2-moduldagi use-case tanlovimizga kirish nuqtasi bo'ladi.
 
 ---
 

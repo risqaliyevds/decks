@@ -33,9 +33,9 @@
 | 6 | Kutubxona — 5 ta yo'nalish, 50+ shablon | Library overview · 5-grid | ~5 daq | 02 Kategoriyalar |
 | 7 | 1 betlik kredit memo tuzish | Shablon #KR-04 | ~6 daq | 02 Kategoriyalar |
 | 8 | Shikoyatga rasmiy javob tayyorlash | Shablon #MX-07 | ~6 daq | 02 Kategoriyalar |
-| 9 | Shartnoma muvofiqlik tekshiruvi | Shablon #KP-02 | ~5 daq | 02 Kategoriyalar |
+| 9 | Tijorat banki hisobotini tahlil qilish | Shablon #KP-02 | ~5 daq | 02 Kategoriyalar |
 | 10 | Shablonni o'z bo'limingizga — 4 qadamda moslang | Sozlash · 4 qadam | ~5 daq | 03 Sozlash |
-| 11 | Birgalikda qayta yozamiz — Kredit memo → Garov tahlili | Live workshop | ~9 daq | 03 Sozlash |
+| 11 | Birgalikda qayta yozamiz — Kredit memo → Tijorat bankiga normativni tushuntirish | Live workshop | ~9 daq | 03 Sozlash |
 | 12 | Yuborishdan oldin — sifat tekshiruvi | Cando · 5+5 belgi | ~3 daq | 04 Sifat tekshiruvi |
 | 13 | Bugundan qaytib ketadigan 3 xulosa | Closing | ~2 daq | 04 Sifat tekshiruvi |
 | 14 | Sizning savollaringiz | Q&A | ~5 daq | 04 Sifat tekshiruvi |
@@ -48,7 +48,7 @@
 Bank uchun **tayyor promt** kutubxonasi.
 
 **Lead matn:**
-Noldan yozma — kutubxonadan ol. Ertangi smenadayoq ishlatadigan promtlar to'plami.
+Noldan yozma — kutubxonadan ol. Ertangi ish kunidanoq ishlatiladigan promtlar to'plami.
 
 **Vizual elementlar:**
 To'q ko'k fon, gridli yuza. "tayyor promt" yozuvi yorqin ko'k fonda ajratilgan. Yuqorida vazirlik logotiplari.
@@ -60,7 +60,7 @@ Oldingi modulda biz promt qanday ishlashini "ichidan" ko'rdik. Lekin keling, ros
 
 Sizga tayyor asbob kerak. 
 
-Shu sababli, biz Markaziy Bank va tijorat banklari ehtiyojlariga moslangan 50 dan ortiq tayyor shablonlar kutubxonasini yig'dik. Bu darslik emas — bu ertaga smenaga chiqqaningizda ishlatishingiz uchun tayyor instruktsiyalar to'plami. Bugungi moduldan bitta asosiy qoida bilan chiqib ketamiz: "Noldan yozma — kutubxonadan ol."
+Shu sababli, biz Markaziy Bank va tijorat banklari ehtiyojlariga moslangan 50 dan ortiq tayyor shablonlar kutubxonasini yig'dik. Bu darslik emas — bu ertaga ish kuni boshlanganida ishlatishingiz uchun tayyor yo'riqnomalar to'plami. Bugungi moduldan bitta asosiy qoida bilan chiqib ketamiz: "Noldan yozma — kutubxonadan ol."
 
 ---
 
@@ -83,7 +83,7 @@ Avvaliga, nega "bo'sh varaqqa qarab o'tirish" odatini unutishimiz kerakligini ko
 
 Keyin — asosiy qism. 5 ta yo'nalish bo'yicha shablonlar "tokchasi"ni ochamiz. Kredit, Muvofiqlik, Mijozlarga xizmat ko'rsatish — ichiga kirib, 3 ta haqiqiy promtni o'qiymiz.
 
-Uchinchi blokda qollarni shimarib, bitta shablonni sizning bo'limingiz uchun birgalikda, jonli efirda qayta yozib chiqamiz. Bu eng qiziq joyi bo'ladi.
+Uchinchi blokda qo'llarni shimarib, bitta shablonni sizning bo'limingiz uchun birgalikda, jonli efirda qayta yozib chiqamiz. Bu eng qiziq joyi bo'ladi.
 
 Oxirida esa — xavfsizlik. AI yozgan narsani ko'r-ko'rona imzolab yubormaslik uchun 30 soniyalik tekshiruv qoidasini o'rganamiz. Qani, ketdik.
 
@@ -248,11 +248,11 @@ Qora kod blokida audit shabloni. `[NAZORAT NUQTALARI]` ro'yxati (likvidlik koeff
 **Speaker notes:**
 Uchinchisi — Markaziy Bank uchun eng "og'ir" va mas'uliyatli shablon. Bank nazorati bo'limining KP-02 nomerli shabloni — tijorat banki choraklik hisobotidagi anomaliyalarni topish uchun.
 
-Bu yerda hazil ketmaydi. Xulosa to'g'ridan-to'g'ri Boshqaruv yig'ilishiga taqdim etiladi. Shuning uchun `[ROL]` qismiga qarang: "Sen Markaziy Bank Bank nazorati bo'limi tahlilchisisan. Hech qanday taxmin qilmaysan. Markaziy Bank reglamentiga ishora qila olmasang, 'reglament topilmadi' deb yoz."
+Bu yerda hazil ketmaydi. Xulosa to'g'ridan-to'g'ri Boshqaruv yig'ilishiga taqdim etiladi. Shuning uchun `[ROL]` qismiga qarang: "Sen Markaziy Bankning Bank nazorati bo'limi tahlilchisisan. Hech qanday taxmin qilmaysan. Markaziy Bank reglamentiga ishora qila olmasang, 'reglament topilmadi' deb yoz."
 
 3-modulda **gallyutsinatsiya** haqida gaplashgan edik — AI bilmasa ham to'qib yozishga moyil. Biz mana shu bitta jumla bilan uni jilovlaymiz. Bank nazoratida noto'g'ri xulosa — tartibga solish qarori xato chiqishi degani.
 
-Va yana bir muhim himoya: eng pastda `// Diqqat: tijorat banki nomi yoki shaxsiy ma'lumotni xulosaga ko'chirma — faqat hisobot raqami va koeffitsient`. Bu **Data Masking**. Biz faqat raqamlar orqali ishlaymiz, ism orqali emas.
+Va yana bir muhim himoya: eng pastda `// Diqqat: tijorat banki nomi yoki shaxsiy ma'lumotni xulosaga ko'chirma — faqat hisobot raqami va koeffitsiyent`. Bu **Data Masking**. Biz faqat raqamlar orqali ishlaymiz, ism orqali emas.
 
 Bu shablon bilan nazoratchi xodim bitta hisobotni 2 soat o'rniga 15 daqiqada tahlil qiladi — qolgan vaqt o'sha tahlilni tekshirishga ketadi.
 

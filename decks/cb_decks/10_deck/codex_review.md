@@ -1,59 +1,58 @@
-# Verdict: NEEDS FIXES · Score 6/10
+# Verdict: SHIP WITH LIGHT FIXES · Score 8/10
 
-Deck Agent + Tool Use mavzusini alohida kiritadi va 16-slaydda recap qiladi, bu series qoidasiga mos. Lekin Markaziy Bank auditoriyasi uchun ohang hali haddan tashqari "agent o'zi bajaradi" tomonga ketgan: qaror huquqi, read/write tool chegarasi, inson tasdig'i, audit izi, owner va pilot mezoni boshidan ramkalanmagan. Shaky raqamlar (`1,243,500`, `856,000`, `100+`, `8 soat`, `5-10 sent`, `1%`) real benchmarkdek eshitiladi. Yakun ham bank qaror artefakti bilan emas, Q&A bilan tugaydi.
+Deck 10 now fits the seminar arc: **Agent** and **Tool Use** are introduced on slide 5, recapped on slide 16, and converted into a bank decision artifact on slide 17. Governance posture is much stronger than the earlier version: Agent is framed as a controlled helper, read/write tool split is explicit, and pilot readiness depends on owner, limits, approval and audit.
 
-Punch-list:
+Still, for Markaziy Bank staff, several speaker-note phrases remain too autonomous or too absolute. The live slides are mostly safe; the notes need tightening so the presenter does not accidentally imply that agent mode can independently decide, disclose account data, send messages, or replace compliance judgment.
 
-- **Content accuracy:** "agent fikrlaydi", "agent o'zi o'ylab topadi", "agent matn ishlab chiqarmaydi - ish bajaradi" kabi jumlalar antropomorfik va nazoratsiz avtonomiya taassurotini beradi. Agentni "ruxsat berilgan asboblar bilan bosqich tanlaydigan tizim" deb berish kerak.
-- **Governance fit:** Markaziy Bank kontekstida mijoz balansini ko'rsatishdan ko'ra nazorat savollari oldin turishi kerak: data class, ruxsat, read/write ajratish, audit log, eskalatsiya, risk owner, limit, rollback.
-- **Atamalar coverage:** Agent + Tool Use slayd 5 da bor, recap slayd 16 da bor. Lekin Tool Use kiritilishida read tool / write tool farqi darhol aytilsin; screenshotda slayd 16 recap past kontrast va kichik, uni ko'rinarliroq qilish kerak.
-- **Uzbek language quality:** "Hisobimda nechta pul?" -> "Hisobimda qancha mablag' bor?"; "qaerda" -> "qayerda"; "engil" -> "yengil"; "komplaens" yoki "muvofiqlik"dan bittasini tanlash; "bilolmaydi", "halok bo'ladi", "foydasiz" kabi og'zaki/qat'iy iboralarni yumshatish.
-- **Vendor absolutism:** `Gemini, GPT, Claude` slaydda markaziy komponent sifatida turibdi. Vendor nomlari ikkinchi planga tushsin; tanlov mezonlari: data residency, auditability, access control, narx, integratsiya.
-- **Numeric precision:** Demo raqamlar real bank ko'rsatkichi kabi ko'rinmasin. `DEMO_BALANCE`, "pilotda o'lchanadi", "taxminiy diapazon" va "manbaga qarab" formulalari bilan almashtirish kerak.
-- **Decision artifact:** 15-slayddagi muhokama natijasi 1 sahifalik "Agent pilot qaror varaqasi"ga aylansin. Q&A shu artefaktdan keyin kelsin.
+## Punch-list
 
-## Top 5 rewrites in Uzbek
+- **Content accuracy:** Replace anthropomorphic wording like "agent fikrlaydi", "o'zi o'ylab topadi", "agent ish bajaradi", and "LLMning nutqi" with operational language: "model keyingi qadamni tanlaydi", "orchestrator ruxsatli tool chaqiradi", "natija foydalanuvchiga mos matnga aylantiriladi". ReAct is useful, but do not imply transparent human-like reasoning; in regulated systems the observable evidence is tool call, input/output, policy check and audit record.
+- **Governance fit (Agent rejimi for banks):** Slide 5 and 17 are good, but slide 3, 7, 10 and speaker notes should put authentication, authorization, data class, channel safety, limit, approval and audit before "ish bajarish". "Mijoz balansi" examples are sensitive; every such example should say demo/sandbox and "faqat ruxsat tekshirilgandan keyin".
+- **Atamalar:** Agent + Tool Use satisfy the deck rule. Intro is strong on slide 5, recap exists on slide 16, and slide 17 makes them actionable. Minor issue: notes reuse adjacent terms (`ReAct`, `function calling`, `schema`, `RAG`, `LLM`) quite heavily. Keep them as cross-references, not new definitions, to avoid glossary drift.
+- **Uzbek quality:** The deck is understandable, but notes still contain rough or unnatural phrases: "Hisobimda nechta pul?", "qaerda", "engil", "bilolmaydi", "halok bo'ladi", "ulashlarini to'la", "ayttsa", "ikkalovchi qaror". Replace with standard Uzbek: "qancha mablag'", "qayerda", "yengil", "qamrab ololmaydi", "ishonchliligi pasayadi", "postlarga to'la", "aytsa", "ikki tomonlama qaror".
+- **Vendor absolutism:** Slide 6 visual text is fixed well: vendor is chosen later based on data residency, audit, access control, price and integration. But speaker notes still say "Bu LLM (Gemini, GPT, Claude)". Remove named vendors from the spoken explanation or make them parenthetical and secondary.
+- **Numeric claims:** "100+ savol", "8 soat", "30 daq -> 5 daq", "24/7 bajara oladi", "production-grade" sound like verified benchmarks. Use "pilotda o'lchanadi", "taxminiy misol", and "productionga yaqin dizayn" unless there is a cited internal measurement.
+- **Risk framing:** "Calculator tool = read tool" is debatable: calculation is non-mutating, but not "read" in the same sense as DB/API/file reads. Call it "non-write tool" or "hisob-kitob tooli" to avoid category confusion.
+- **Visual/screenshots:** Screenshots are generally clean. Slide 16 recap is present but visually low-priority; acceptable for closing, though increasing contrast would help retention. Slide 13 uses a ghost icon for hallucinated tool call; fine visually, but for an institutional bank audience a neutral warning/tool icon would feel less playful.
 
-1. **Agent ta'rifi: avtonomiya emas, nazoratli tizim**
+## Top 5 Uzbek rewrites
 
-   Almashtirish uchun:
+1. **Slide 3 title and hook**
 
-   > **Agent** - LLM asosidagi yordamchi tizim. U vazifani bosqichlarga ajratadi, faqat ruxsat berilgan asboblar ro'yxatidan foydalanadi, natijani izohlaydi va belgilangan chegaradan chiqsa inson xodimiga uzatadi. Agent mustaqil qaror egasi emas; qaror huquqi, limit va javobgarlik bank siyosati bilan belgilanadi.
+   Replace:
+   > "Hisobimda nechta pul?" — bot va agent bir xil emas.
 
-2. **Tool Use: read/write farqini darhol kiriting**
+   With:
+   > "Hisobimda qancha mablag' bor?" — bot va agent bir xil ishlamaydi.
 
-   Almashtirish uchun:
+   Speaker line:
+   > Agent javobni o'zi "taxmin qilmaydi"; avval foydalanuvchi ruxsatini tekshiradi, keyin faqat ruxsat berilgan `balance_check` read tool orqali demo ma'lumotni oladi.
 
-   > **Tool Use - asbobdan foydalanish.** AI tizimga ulangan ruxsatli asbobni chaqiradi: ma'lumot o'qish, hisob-kitob qilish, hujjatdan qidirish yoki xabar loyihasini tayyorlash. Bankda tool'lar ikki guruh: **read tool** - faqat o'qiydi; **write tool** - tizimga ta'sir qiladi va odatda inson tasdig'ini talab qiladi.
+2. **Agent behavior, without over-autonomy**
 
-3. **Demo misol: aniq balans raqamlarini xavfsizroq qiling**
+   Replace:
+   > Agent o'zi o'ylab topadi.
 
-   Almashtirish uchun:
+   With:
+   > Agent orkestratori vazifani tahlil qiladi va ruxsat berilgan tool ro'yxatidan keyingi qadamni tanlaydi. Qadam siyosatga mos kelmasa, jarayon to'xtaydi yoki insonga uzatiladi.
 
-   > Mijoz: "Hisobimda qancha mablag' bor?"  
-   > Agent: "Bu savolga jonli ma'lumot kerak. Avval foydalanuvchi autentifikatsiyasi va ruxsatini tekshiraman, keyin `balance_check` read tool'ini chaqiraman."  
-   > Javob: "Demo hisob bo'yicha qoldiq topildi. Real tizimda bu raqam faqat ruxsat, audit log va kanal xavfsizligi tasdiqlangandan keyin ko'rsatiladi."
+3. **Bank governance frame**
 
-4. **Vendor nomlari o'rniga bank tanlov mezonlari**
+   Add early in slide 3 or 7 notes:
+   > Bankda agent rejimi "avtonom qaror" degani emas. Har bir tool chaqiruvi oldidan uch savol tekshiriladi: foydalanuvchi kim, bu ma'lumotni ko'rishga huquqi bormi, natija audit log'da qoladimi?
 
-   Almashtirish uchun:
+4. **Vendor-neutral LLM explanation**
 
-   > **Miya · LLM** - vazifani tushunadigan va keyingi qadamni tanlashga yordam beradigan til modeli. Muayyan vendor keyin tanlanadi: ma'lumot qayerda saqlanishi, audit imkoniyati, ruxsat nazorati, narx va bank tizimlari bilan integratsiyaga qarab.
+   Replace:
+   > Bu LLM (Gemini, GPT, Claude).
 
-5. **Yakun: bank qaror artefakti bilan tugating**
+   With:
+   > Bu til modeli. Qaysi vendor ishlatilishi keyin tanlanadi: ma'lumot qayerda saqlanishi, audit izi, ruxsat nazorati, narx va bank tizimlariga ulanish talablari bo'yicha.
 
-   Q&A oldidan yangi closing artefakt:
+5. **Multi-agent caution, less absolute**
 
-   > **Agent pilot qaror varaqasi**  
-   > 1. Vazifa: qaysi takrorlanadigan ish agentga beriladi?  
-   > 2. Owner: qaysi bo'lim javobgar?  
-   > 3. Tool'lar: qaysilari read, qaysilari write?  
-   > 4. Chegara: agent nimalarni qila olmaydi?  
-   > 5. Tasdiq: qaysi qadamda inson tasdig'i shart?  
-   > 6. Audit: qaysi loglar saqlanadi va kim ko'radi?  
-   > 7. Pilot metrikasi: vaqt, xato, eskalatsiya va kutish vaqti qanday o'lchanadi?  
-   > 8. Qaror: RAG yetarlimi, agent pilotga tayyormi yoki jarayon avval tartibga keltiriladimi?
+   Replace:
+   > Tool 15+ bo'lsa — agent qaysi toolni qachon ishlatishni unutadi va xato ko'paya boshlaydi.
 
-Closing line:
-
-> Bugungi natija: har bir stol bitta agent nomzodini shu qaror varaqasiga joylaydi. Agar owner, tool, tasdiq va audit aniq bo'lmasa - bu agent pilotga tayyor emas.
+   With:
+   > Tool soni juda ko'paysa, agentning qadam tanlashi murakkablashadi: noto'g'ri tool tanlash, ortiqcha chaqiruv va auditni tushuntirish qiyinlashadi. Shuning uchun birinchi pilot tor doirada boshlanadi.
