@@ -1,14 +1,20 @@
-# Kirish
+# Deck 8 — No-code avtomatlashtirish
+
+## Slide 1 — Modul ochilishi
 
 Salom. Day 1'ning oxirgi mavzusiga keldik. Tongdan beri promt, AI lug'at, platformalar bilan ishladik. Endi savol: bularning hammasi qanday bir-biriga ulanadi? Telegram, Gemini, sizning bank tizimingiz, Sheets — bu xizmatlar bir-biri bilan o'zicha gaplashmaydi. Kimdir bog'lab qo'yishi kerak.
 
 An'anaviy javob: dasturchi yozadi. Yangi javob: bo'lim xodimi sichqoncha bilan yig'adi, 30 daqiqada. Bu shu modulning mavzusi — no-code avtomatlashtirish. Aniq aytsam, kod yozmasdan, lekin haqiqiy ish jarayonini avtomatlashtiradigan vositalar. Zapier, Make va eng asosiysi — n8n. Nima uchun n8n? Chunki u sizning bank serveringizda turishi mumkin. Hech qanday ma'lumot tashqariga chiqmaydi. Va ertaga 9-modulda shu n8n ustida birinchi botingizni qurishni boshlaymiz. Boshlaymiz.
 
+## Slide 2 — Mavzuning yo'l xaritasi
+
 Yo'l xaritamiz to'rt qismdan iborat. Birinchi qismda — nima uchun bu mavzu sizga, bo'lim xodimiga, kerakligini aniqlaymiz. Dasturchi va bo'lim xodimining ikki yo'lini taqqoslaymiz, no-code falsafasini ochib beramiz, va kursning sakkizinchi modulgacha kelgan ikki yangi atamani — Trigger va Webhook'ni — bankir tilida o'rganamiz. Ikkinchi qismda uch platformani solishtiramiz: Zapier, Make va n8n. n8n nega bizning tanlovimiz ekanini ko'rsatamiz. Workflow'ning anatomiyasini ko'ramiz — har qanday avtomatlashtirish besh qadamga bo'linadi. Uchinchi qism — eng konkret qism. Sizning bo'limingizdagi uch real misol: spravka avtomatlashtirish, email shikoyatlarni AI orqali bo'limga yo'naltirish, va muvofiqlik hisobotini har juma avtomatik tuzish. To'rtinchi qism — eng qiziqarlisi. Ekranda men sizning ko'zingiz oldida besh-nodeli mini-workflow yig'aman. Siz savol berasiz, bot javob beradi.
+
+## Slide 3 — Slack'ga avtomatik xabar — qaysi yo'l?
 
 Boshlashdan oldin tezkor savol — 30 soniyada. Tasavvur qiling: har juma Compliance bo'limi Slack'ga avtomatik xabar yuborilishini xohlaydi — yangi anomaliyalar haqida. Buni qanday hal qilasiz? Ekranda uchta variantni ko'rib turibsiz. Birinchi yo'l — dasturchi yollang. Ikki hafta, katta budjet, murakkab. Ikkinchi yo'l — Excel plus qo'l ishi. Ikki soat, lekin har hafta sinadi va charchatadi. Uchinchi yo'l — n8n flow. Besh daqiqa, drag and drop, ishonchli. Ko'pchilik bo'limlar birinchi yoki ikkinchi yo'lni tanlaydi — chunki uchinchi yo'l haqida hali bilmaydi. Bugungi modul aynan shu uchinchi yo'lni ko'rsatadi.
 
-# Bir misol — kim yig'adi?
+## Slide 4 — Spravka avtomatlashtirish — kim yig'adi?
 
 Har bankda uchraydigan vaziyat: mijoz sizdan spravka so'raydi — hisobida qancha aylanma bor edi o'tgan yilda. Bo'lim xodimi qo'l bilan tayyorlaydi, imzolaydi, mijozga yuboradi — o'n besh-yigirma daqiqa. Kuniga ellik marta. Yiliga o'n ikki ming marta. Avtomatlashtirish kerakligi aniq. Endi savol: kim qiladi?
 
@@ -18,13 +24,15 @@ Yangi yo'l: bo'lim xodimi o'zi yig'adi. n8n ochadi, Telegram trigger node tashla
 
 Bu — no-code inqilobi. "Avtomatlashtirish kim qila oladi?" degan savolga javob o'zgardi. Bu sizning kursingizdagi eng amaliy modul. Ertaga bormang, bugungi bilim bilan o'z bo'limingizdagi bitta jarayonni avtomatlashtirishingiz mumkin. Va eng zo'r qismi — IT bo'lim sizdan minnatdor bo'ladi, chunki ularning navbati bo'shaydi.
 
+## Slide 5 — No-code falsafasi · 3 ta yutuq
+
 No-code'ni texnologiya deb tushunish — yarim haqiqat. Asl mohiyati boshqa: ish madaniyati o'zgarishi. Uch yutuq bor. Birinchi — tezlik. Spravka misolida ko'rdik: ikki hafta o'rniga 30 daqiqa. Bu raqam haqiqiy. Sprint planning'siz, brief'siz, TZ'siz, deployment ceremoniya'siz. G'oya tug'ildi — bir kunda ishlaydi.
 
 Ikkinchi yutuq — IT bo'limining yuki. Bilingki, sizning IT bo'limingizning navbati doim to'liq. Kichik avtomatlashtirish so'rovlari kattalarni kechiktiradi. No-code platformalar bu kichik so'rovlarni bo'lim xodimiga qaytaradi. IT esa strategik, murakkab vazifalar bilan shug'ullanadi — kor banking tizimlari, xavfsizlik, integratsiya arxitekturasi. Hammasi yutadi.
 
 Uchinchi yutuq — eng ahamiyatlisi: shaffoflik. Workflow vizual ko'rinadi — node, ulanish, ma'lumot oqimi. Yangi xodim bir soatda tushunadi: "shu node bu yerga ulanadi, AI shu joyda ishlaydi". Eski qora quti tushunchasi yo'qoladi. Bu muvofiqlik va audit uchun katta yutuq. Auditor sizning workflow'ingizni ko'rib, kim qaerda nima qilayotganini bir qarashda tushunadi. Kodli yechimda buni isbotlash juda qiyin — yuzlab satr o'qib chiqish kerak edi.
 
-# Bankir tili — Trigger va Webhook
+## Slide 6 — Bankir tili: Trigger va Webhook
 
 Endi ikkita kalit so'zni o'rganib olaylik. Bularsiz keyingi 13 ta slayd tushunarsiz bo'ladi, va ertaga 9-modulda ham bu atamalar qaytib chiqadi.
 
@@ -36,7 +44,7 @@ Webhook — Trigger turining bir turi, eng kuchlisi, chunki har qanday boshqa ti
 
 Esda saqlang: Trigger nima edi? — workflow'ni boshlatuvchi hodisa. Webhook nima edi? — boshqa dasturdan xabar olish nuqtasi, URL.
 
-# Platformalarni taqqoslash
+## Slide 7 — Bozorda 3 ta yo'l
 
 Bozorda asosan uchta platforma bor. Hammasi bir narsani qiladi: turli xizmatlarni bir oqimga ulaydi. Lekin farq katta.
 
@@ -46,13 +54,15 @@ Ikkinchisi — Make. Avval Integromat deb atalardi. Vizual kuchli, murakkab oqim
 
 Uchinchisi — n8n. Bizning tanlovimiz. Open-source, ochiq kod. Eng asosiysi: o'z serveringizda turadi. Bank ma'lumoti chetga bir bayt ham chiqmaydi. Self-hosted versiyasi bepul, bulut variant oyiga 20 dollar atrofida. Bonus: kerak bo'lsa kod ham yozish mumkin — JavaScript node, shuning uchun cheklovlar yo'q. Va eng zo'ri — n8n hozir AI integratsiyasida yetakchi: Gemini, OpenAI, Anthropic — barcha LLM'lar bilan tayyor ulanishlar. Shuning uchun keyingi 11 slayd va ertangi 9-modulda biz n8n bilan ishlaymiz.
 
+## Slide 8 — Nima uchun n8n
+
 n8n nima uchun bizning tanlovimiz — uch aniq sabab bor. Birinchisi, eng muhimi — self-hosted. Bankning o'z serverida turadi. 3-modulda gaplashganimiz "Yopiq kontur" tamoyili shu yerda mukammal ishlaydi. Mijoz ma'lumoti, hujjat, hisob raqami — bularning hech biri n8n.io serveriga yoki AQSh ga chiqmaydi. Bank ichki tarmog'ida turadi, IT bo'limi to'liq nazorat qiladi.
 
 Ikkinchi sabab — open-source. Kodi ochiq. Bank xavfsizlik bo'limi har bir satrini ko'rib chiqishi mumkin. Vendor lock-in yo'q — agar ertaga n8n kompaniyasi yopilsa ham, sizning workflow'laringiz ishlaydi, kod sizda. Va litsenziya: jamoaviy foydalanish bepul.
 
 Uchinchi sabab — ekosistema. Besh yuzdan ortiq tayyor ulanish: Telegram, Email, Google Sheets, Postgres, MySQL, OpenAI, Gemini, Claude, va eng asosiysi — webhook orqali har qanday tizim. Yangi node 30 daqiqada yoziladi. Bu jamoaning kuchli tomoni.
 
-# Workflow anatomiyasi
+## Slide 9 — Workflow anatomiyasi · 5 qadam
 
 Workflow'ning anatomiyasini bilsangiz, har qanday avtomatlashtirish sizga tushunarli bo'ladi. Chunki bularning hammasi shu beshlikning kombinatsiyasi.
 
@@ -66,6 +76,8 @@ To'rtinchi qadam — Saqlash. Har bir savol va javob Google Sheets yoki bank Pos
 
 Beshinchi qadam — Bildirish. Mijozga Telegram orqali javob qaytaradi, va menejerga "yangi savolga javob bordi" deb xabar yuboradi. Hammasi besh ta n8n node — ekranda besh ta to'rtburchak, sichqoncha bilan ulanadi. Hech qanday kod. Boshqa har qanday murakkab workflow ham — shu beshlikning kengaytirilgan varianti.
 
+## Slide 10 — Trigger 5 turi
+
 Trigger turlari beshta. Bilingki, bank stsenariylarining 95% shu beshlikka tushadi. Birinchisi — Schedule. Vaqt belgilanadi. Har juma 17:00, har kuni 08:00, oyning birinchi kuni. Eng oddiy va eng ko'p ishlatiladigan turi. Misol: muvofiqlik hisoboti har juma 17:00 da avtomatik tuziladi va yuboriladi. Hech kim eslatmaydi.
 
 Ikkinchisi — Webhook. Hozirgina o'rgangan atama. Boshqa tizim bizga URL orqali xabar tashlaydi. Misol: CRM tizimida mijoz holati VIP ga o'zgardi — workflow boshlanadi, mijozga maxsus xat yuboradi.
@@ -78,17 +90,23 @@ Va beshinchisi — Form. Sayt formasi yoki Google Form. Misol: yangi mijoz onlay
 
 Endi men sizdan so'rayman: sizning bo'limingizdagi avtomatlashtirishlar qaysi trigger bilan boshlanadi? O'ylab ko'ring. Ko'pchiligi Schedule bo'lib chiqadi — har kun, har juma. Yoki Email — mijoz xabari. Aniqlab oling, bu workflow loyihalashning birinchi qadami.
 
+## Slide 11 — Webhook · eshik
+
 Webhook eng kuchli trigger turi, lekin u ham eng ko'p chalkashtiriladigan tushuncha. Ikki yo'nalishda ishlatiladi. Birinchi yo'nalish: tashqi xizmat bizga xabar tashlaydi. Misol: Telegram bot. Telegram serveri har gal mijoz botga xabar yozsa, bizga URL orqali xabar tashlaydi. Biz cheksiz polling qilib o'tirmaymiz — Telegram o'zi bizga ovoz beradi. Ikkinchi yo'nalish: ichki tizim bizga xabar tashlaydi. Bu yanada kuchli. Misol: bank CRM tizimida mijoz holati o'zgaradi. CRM bizning bank-ichi URL'ga xabar tashlaydi: "client_id 1023, status VIP". Bizning workflow uyg'onadi va kerakli ishni boshlaydi. Webhook bu siyosiy katta narsa: xizmatlar bir-biridan ajralib, lekin bog'lanib turadi.
 
-# Uch real bank misoli
+## Slide 12 — Mijoz spravka · 6 qadam
 
 Birinchi misol — boshda gapirgan spravka. Olti qadam. Trigger — Telegram. Mijoz /spravka deb yozadi yoki tugmani bosadi. Birinchi qadam, workflow boshlandi. Ikkinchi qadam — tasdiq. Mijoz JSHIR va telefon raqamini kiritadi, bot bank bazasidan tekshiradi: bu mijozmi? Agar yo'q bo'lsa — ariza to'xtaydi va xato xabari beriladi. Uchinchi qadam — bank API'siga so'rov. Mijoz hisobi, harakatlar tarixi, kerakli davr olinadi. Bu yerda HTTP Request node ishlatiladi. To'rtinchi qadam — PDF tuzish. AI ishlaydi: shablonni oladi, mijoz ma'lumotini joylaydi, balansni hisoblaydi, summani so'z bilan yozadi va PDF generatsiya qiladi. Beshinchi qadam — audit log. Sheets'ga yoziladi: kim, qachon, qanday spravka oldi. Bu muvofiqlik uchun kritik. Oltinchi qadam — yuborish. PDF Telegram'ga yuboriladi, mijoz darrov yuklab olishi mumkin. Yiliga 12 ming spravka so'rovi. Eski tartibda har biri 15 daqiqa — bu uch ming soat operator vaqti. Yangi tartibda — nol. Operator faqat istisno hollar bilan shug'ullanadi. Vaqt strategik vazifalarga ozod bo'ladi.
 
+## Slide 13 — Email shikoyat · AI yo'naltiradi
+
 Ikkinchi misol — har bankda kuniga 100-200 marta uchraydigan vaziyat. Mijoz shikoyat@bank.uz pochtaga email yozadi. Eski tartib: bo'sh xona kotibasi yoki call-center xodimi har birini o'qib chiqadi, qaysi bo'limga tegishli ekanligini aniqlaydi, qo'l bilan tegishli bo'limga yuboradi. Bu kuniga to'rt soat sof saralash ishi. Yangi tartib — AI bilan. Birinchi qadam — Email trigger. Yangi xat keldi — workflow boshlandi. Ikkinchi qadam, eng muhimi — toifalash. AI mavzuni va matnni o'qiydi, va aniq belgilangan toifalardan birini tanlaydi: Karta muammosi, Kredit, Mobile bank, yoki Boshqa. Bizning 5-modulda o'rgangan promt shabloni shu yerda ishlaydi. Few-shot misollari berilgan — har toifadan ikki-uch misol. Aniqlik 90% atrofida. Uchinchi qadam — yo'naltirish. Tegishli bo'lim emailiga: kartalar@bank.uz, kreditlar@bank.uz va hokazo. To'rtinchi qadam — CRM'da yangi tiket ochiladi. Beshinchi qadam — SLA timer. 24 soat ichida javob bo'lmasa, eskalatsiya, bo'lim raisiga avtomatik xabar boradi. Natija: operator vaqti kuniga to'rt soatdan o'ttiz daqiqaga qisqaradi.
+
+## Slide 14 — Har juma 17:00 · Schedule trigger
 
 Uchinchi misol — Schedule trigger uchun klassik. Muvofiqlik bo'limi har juma haftalik hisobot tayyorlaydi: katta tranzaksiyalar, anomaliyalar, qora ro'yxatdagi mijozlar harakatlari. Eski tartib: muvofiqlik xodim uch-to'rt soat ma'lumotni Postgres'dan, 1C'dan, Sheets'dan qo'l bilan yig'adi, Excel'da tayyorlaydi, xulosa yozadi, PDF qiladi, email qiladi. Yangi tartib — bot qiladi, har juma 17:00 da. Schedule trigger uyg'onadi. SQL so'rovlar Postgres'ga, API'lar 1C'ga, Sheets'dan ma'lumot olinadi. AI tahlili boshlanadi — bu eng qiziqarli qism. AI ma'lumotni ko'rib, anomaliyalarni topadi: "bu mijoz oxirgi haftada 50 ta yangi tranzaksiya qildi, oldingi haftalardan o'n marta ko'p". Va xulosa yozadi — ikki-uch paragrafda, audit komitetiga tushunarli tilda. PDF — tayyor shablonga jadval va xulosa joylanadi. Email — audit komiteti, bo'lim raisi, tegishli mas'ullarga yuboriladi, va arxivga saqlanadi. To'rt soat ish — besh daqiqaga qisqaradi. Muvofiqlik xodim endi tahlil qiladi, saralash bilan emas.
 
-# Live mini-build
+## Slide 15 — 5 ta node · Live build
 
 Endi eng qiziq qism. Hammasini chala-chala ko'rdik — endi men ekranda haqiqiy workflow yig'aman. Sizning ko'zingiz oldida. Vazifa: bot oladi sizdan savol, Gemini bilan javob beradi, va saqlaydi log'da.
 
@@ -106,7 +124,7 @@ Endi siz savol bering — Telegram bot username'i ekranda. Bittangiz savol yozin
 
 Bu — bizning oddiy demo. Ertaga shu skeletga PDF, RAG va xotira qo'shamiz.
 
-# Uch katta xato
+## Slide 16 — 3 ta katta xato
 
 Workflow'lar bilan ishlaganda eng ko'p uchraydigan uch xatoni aytib beraman.
 
@@ -116,7 +134,7 @@ Ikkinchi xato — silent crash. Workflow yarim tunda yiqildi, ertasi kuni bilib 
 
 Uchinchi xato — AI'ga juda ko'p ishonish. "AI hammasini hal qiladi" deb mijoz arizasini AI o'zi tasdiqlaydi, kredit beradi. Yo'q. AI tayyorlaydi, inson tasdiqlaydi. 4-modulning hand-off tamoyili shu yerda — mas'uliyat hech qachon AI'ga o'tmaydi.
 
-# Xavfsizlik — uch qizil chiziq
+## Slide 17 — Xavfsizlik · 3 qizil chiziq
 
 No-code qanchalik qulay bo'lsa, shunchalik xavfli — agar to'g'ri qoidalar bo'lmasa. Bo'lim xodimi har xil ma'lumotni har joyga yo'naltirib qo'yishi mumkin. Shuning uchun uch qoida — qizil chiziq, ulardan o'tib bo'lmaydi.
 
@@ -126,11 +144,7 @@ Ikkinchi qoida — audit log. Har n8n node ishlashi avtomatik log'lanadi: kim tr
 
 Uchinchi qoida — rolega kirish. Workflow yaratish — bo'lim xodimning huquqi. Lekin uni production'ga chiqarish — IT yoki Compliance tasdig'i shart. Sandbox'da sinab ko'rasiz, audit qilasiz, faqat undan keyin live bo'ladi. Bu 3-modulda gaplashganimiz xavf-xatar boshqaruvi tamoyillarining konkret amali.
 
-# Qaror varaqasi va yakun
-
-Yakuniy savol-javobdan oldin — bugun olib ketadigan bitta artefakt. Bank qaror varaqasi. Har bo'lim 9-modulgacha bo'lgan tanaffusda bitta workflow nomini yozsin. So'ng shu olti savolga "ha" yoki "yo'q" javob bering.
-
-Birinchi savol: Trigger aniqmi? Email yoki Schedule yoki Webhook — qaysi va nega. Ikkinchi: ma'lumot turi qanday — ochiq jamoatchilik bo'limi axboroti emas, mijoz hisob raqami yoki shaxsiy ma'lumot bo'lsa, alohida nazorat shart. Uchinchi: inson qayerda tasdiqlaydi? AI faqat tayyorlasin, yakuniy ha-yo'q javobi — bankir. To'rtinchi: audit log — har qadam yozilishi shart. Beshinchi: test mezoni — pilot oxirida nimani o'lchaysiz: vaqt, xato, SLA, xavfsizlik incidenti. Oltinchi: mas'ul shaxs — uchov: bo'lim rahbari, IT rahbari, komplayens rahbari. Faqat olti "ha" bo'lsa — workflow pilotdan production'ga chiqadi. Aks holda — sandbox'da qoladi. Bu varaqa ertaga 9-modulda RAG bot loyihalashda ham ishlaydi.
+## Slide 18 — Bugungi 3 ta xulosa
 
 Yakun. Bugundan uyga olib ketadigan uch fikr. Birinchisi: no-code — bo'lim xodimining yangi ish vositasi. Spravka misoli edi: ikki hafta sprintdan 30 daqiqali yig'ishga o'tdik. Dasturchi navbatini kutmaymiz — o'zimiz yig'amiz, IT auditdan o'tkazadi. Bu sizning ish kunlik amaliyotingizni o'zgartirishi mumkin bo'lgan eng amaliy bilim.
 
@@ -139,6 +153,14 @@ Ikkinchisi: trigger — workflow'ning yuragi. Schedule, Webhook, Email, Telegram
 Uchinchisi: ertaga 9-modulda biz aynan shu n8n ustida sizning bo'limingiz uchun ishlaydigan birinchi botni quramiz. Bu siz bilan birga qurish — auditoriyadagi har bir ishtirokchi o'z botiga ega bo'ladi.
 
 Endi lug'at recap. Birga aytamiz. Trigger nima edi? *(zal bilan birga: Workflow'ni boshlatuvchi hodisa!)* Webhook nima edi? *(zal bilan birga: Boshqa dasturdan xabar olish nuqtasi, URL!)* Yaxshi. Day 1 yakunlandi. Ertaga to'qqizda kun ikkinchi boshlanadi — kuchni saqlang, 9-modul amaliy va kuchli bo'ladi.
+
+## Slide 19 — 6 ta savol — qaror varaqasi
+
+Yakuniy savol-javobdan oldin — bugun olib ketadigan bitta artefakt. Bank qaror varaqasi. Har bo'lim 9-modulgacha bo'lgan tanaffusda bitta workflow nomini yozsin. So'ng shu olti savolga "ha" yoki "yo'q" javob bering.
+
+Birinchi savol: Trigger aniqmi? Email yoki Schedule yoki Webhook — qaysi va nega. Ikkinchi: ma'lumot turi qanday — ochiq jamoatchilik bo'limi axboroti emas, mijoz hisob raqami yoki shaxsiy ma'lumot bo'lsa, alohida nazorat shart. Uchinchi: inson qayerda tasdiqlaydi? AI faqat tayyorlasin, yakuniy ha-yo'q javobi — bankir. To'rtinchi: audit log — har qadam yozilishi shart. Beshinchi: test mezoni — pilot oxirida nimani o'lchaysiz: vaqt, xato, SLA, xavfsizlik incidenti. Oltinchi: mas'ul shaxs — uchov: bo'lim rahbari, IT rahbari, komplayens rahbari. Faqat olti "ha" bo'lsa — workflow pilotdan production'ga chiqadi. Aks holda — sandbox'da qoladi. Bu varaqa ertaga 9-modulda RAG bot loyihalashda ham ishlaydi.
+
+## Slide 20 — Savol va javob
 
 Endi savollar. Eng ko'p uchraydiganlarini eslatib qo'yaman, agar qiziqsangiz — so'rang. "n8n bizning serverimizda qanday joylashtiriladi?" — IT bo'lim bilan keyingi haftada o'tirish kerak, Docker yoki VM versiya tanlanadi. "Qaysi triggerdan boshlash kerak?" — bo'limingizda eng ko'p qaytariladigan jarayonni belgilang, Schedule yoki Email bo'lib chiqadi odatda. "AI'ga ishonchsizman" — AI faqat tayyorlaydi, yakuniy tasdiq bankir imzosi orqali. "Bizning bank bunga tayyormi?" — pilot loyiha, bitta bo'limda, to'rt hafta. 14-modulda MVP loyiha qilamiz.
 

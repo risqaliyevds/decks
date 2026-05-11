@@ -1,52 +1,72 @@
-# Kirish
+# Deck 4 — SI uchun jarayonlarni strukturalashtirish
+
+## Slide 1 — SI uchun jarayonlarni strukturalashtirish
 
 Tushlik yaxshi o'tdimi? Ajoyib. Endi yeng shimaradigan vaqt keldi.
 
 Shu paytgacha biz sun'iy intellekt nima ekanligi, uning xavflari haqida ko'p gaplashdik. Lekin hozirgi oltmish daqiqada biz gaplashishni to'xtatamiz va qo'limiz bilan ishlaymiz. Agar siz sun'iy intellektga shunchaki "menga hisobot yozib ber" desangiz — u sizga chiroyli, lekin mutlaqo yaroqsiz matn beradi. Nima uchun? Chunki ishning strukturasi yo'q. SI ishni to'g'ri bajarishi uchun avval siz o'sha ishni to'g'ri bo'laklarga bo'lishingiz kerak. Qani, ketdik.
 
+## Slide 2 — Mavzuning yo'l xaritasi
+
 Reja juda oddiy va amaliy. Avval nega buni qilyotganimizni tushunamiz — tartibsizlik qayerdan keladi. Keyin bankdagi istalgan ishni besh qadamga qanday joylashtirishni ko'ramiz. Eng muhimi — qanday qilib katta vazifani SI tushunadigan kichik bo'laklarga ajratishni o'rganamiz. Va oxirgi yigirma besh daqiqani stollarda o'tkazamiz: har biringiz o'z bo'limingizdagi bitta ishni qog'ozga tushirasiz va uni SI uchun tayyorlaysiz.
+
+## Slide 3 — Qaysi jarayon AI'ga tayyor?
 
 Boshlashdan oldin sizga bitta qisqa savol beraman — o'ttiz soniyalik mini-so'rovnoma. Ekranda uchta vazifa turibdi. Birinchisi: "Mijoz xat → biz javob". Ikkinchisi: "biror operator → biror javob — qisman aniq". Uchinchisi: "besh toifa → faol operator → standart javob". Mendan so'rasangiz, qaysi jarayon SIga tayyor? Qo'l ko'targanlar bormi? Birinchisi-chi? Ikkinchisi? Uchinchisi? Ko'pchilik uchinchisini tanladi — to'g'ri javob. Aniq qadamlar, aniq mas'ullar, aniq natija. Birinchisida hech narsa belgilanmagan — bu yerga SI qo'shsangiz, vahima ko'payadi, kamaymaydi. Ikkinchisida qisman aniqlik bor, lekin "biror" so'zi hammasini buzadi: kim mas'ul — noaniq, qaysi toifa — noma'lum, natija formati — bo'sh. Bu vaziyatda SI ham aynan shu kabi "biror" javob beradi: chiroyli, lekin haqiqatda kim oladi va qaysi bo'limga yuborilishi noma'lum bo'lib qoladi. Mana shu farqni ushlash — bugungi modulning markaziy savoli. Uchinchi variantni qanday qilib bizning ishimizga aylantirish — ana shuni keyingi yarim soatda chizib chiqamiz.
 
-# Nima uchun strukturalash kerak
+## Slide 4 — Tartibsiz ish yoki strukturalangan zanjir
 
 Zalda kim juma kuni soat o'n yettida birdaniga to'rt xil topshiriq olgan? Qo'l ko'taring. Hammamizda bo'lgan. O'sha paytda miyangiz qanday ishlaydi? Xuddi chap tomondagidek — hamma narsa aralashib ketgan. Sun'iy intellekt ham xuddi shunday. Agar siz unga qirq yetti betlik mijoz arizasini tashlab, "shu bo'yicha qaror chiqar, xat yoz va hisobotga tushir" desangiz — u adashadi. U sizga chiroyli yolg'onlarni to'qib berishni boshlaydi.
 
 Bizning maqsadimiz — chap tomondagi vahimani o'ng tomondagi aniq konveyerga aylantirish. SI bitta vaqtda bitta qadamni ko'rishi kerak: bitta kirish ma'lumoti, bitta vazifa, bitta aniq javob. Tartibsiz topshiriq — tartibsiz javob; aniq qadam — aniq javob.
 
+## Slide 5 — Nima uchun strukturalash kerak
+
 Bu yerda bitta noziklik bor. Konveyer degani — bir xil sifat. Avtomobil zavodida har bir mashina bir xil chiqadi, chunki har bir bosqich aniq belgilangan. Bizning ishimizda ham xuddi shunday: agar bugun siz hisobotni A usulda, ertaga B usulda, indinga C usulda tahlil qilsangiz — sifat har safar boshqa bo'ladi. Va eng yomoni — natija boshqa-boshqa bo'lsa, audit nima deydi? "Bu xulosa qaysi metodga asoslangan?" Javob yo'q. Tartibni esa qog'ozga tushirmasangiz, bot ham ishlatadi, biz ham yo'qotamiz.
 
 Endi nega shunchaki bitta katta promt yozib ketaversak bo'lmaydi? Uchta sababi bor. Birinchisi — kamroq qayta ishlash. SI sizga yozib bergan xulosa "sal g'alati" chiqsa, uni to'g'rilashga noldan yozgandan ko'proq vaqt ketadi. Kichik qadamlar bu muammoni yo'q qiladi: agar siz "faktlarni yig'" deb so'ragan bo'lsangiz va u faktlarda xato qildi, faqat o'sha qadamni qayta yurgizasiz. Boshqa qadamlarning chiqishi tegmaydi. Ikkinchisi — tekshirish osonligi. Bu Markaziy Bank. Bizga "qora quti" kerak emas. Agar SI xato qilsa, qaysi qadamda xato qilganini ko'ra olishimiz kerak. Audit so'rasa, ko'rsatib bera olishimiz shart. Bir betlik javob ichida xato qaysidir o'rtada ko'milgan bo'lsa, uni topish — o'n yetti yashik qog'oz ichida bitta varaqni qidirgandek. Lekin qadamlar alohida bo'lsa, har birining kirish-chiqishi yozib qo'yiladi. Va asosiysi — qayta ishlatish: zanjirni bir marta qurasiz, ertasi kuni faqat yangi hujjatni kiritasiz. Tizim avtomat ishlayveradi. Demak, struktura — bu shunchaki tartib emas, bu ishonchli ishlatishning shartidir.
 
-# Asosiy qism — Workflow va vazifani bo'lish
+## Slide 6 — Ikki atama: Workflow va Task Decomposition
 
 Biz kelishib olgan edik: kurs davomida SI lug'atimizni yig'ib boramiz. Bugun menyuda ikkita so'z bor. Birinchisi — **Workflow**, o'zbekchasiga "jarayon zanjiri". Bu ishning boshidan oxirigacha bo'lgan yo'li. Masalan: ariza kirdi, kimdir tekshirdi, xulosa yozildi, imzo qo'yildi. Bu sizning konveyeringiz. Workflow — bu shunchaki ish tartibi emas, balki kim qachon nima qiladi va qaysi hujjatlar qaysi qadamda paydo bo'ladi degan to'liq xarita. Bizning sohada workflow har doim allaqachon bor — faqat ko'pincha qog'ozga tushirilmagan, xodimning miyasida yashaydi. Bizning vazifamiz — uni qog'ozga, keyin esa SI tushunadigan formatga ko'chirish.
 
 Ikkinchisi — **Task Decomposition**, ya'ni vazifani bo'laklash: katta va mavhum vazifani olib, uni uchta kichik, oddiy vazifaga ajratish. "Menga xulosa yoz" deyish o'rniga — "bir: faktni yig'; ikki: riskni top; uch: yakun yoz" deyish. SI super-aqlli bo'lishi mumkin, lekin u diqqatni jamlashda yosh bolaga o'xshaydi — unga kichik, aniq luqmalar berish kerak. Va yana bir narsa: bo'laklash sizga ham foyda beradi. Vazifa kichkina bo'lsa, uni boshqa xodimga topshirish ham oson, sinab ko'rish ham oson, agar kerak bo'lsa avtomatlashtirish ham oson. Demak, ish bo'laklarga bo'linmasdan turib hech qachon avtomatlashmaydi.
 
+## Slide 7 — Workflow anatomiyasi: 5 qadam
+
 Endi Markaziy Bankdagi ishingizga qaraylik. Xoh tijorat banki hisobotini ko'ring, xoh fuqaro murojaatiga javob bering, xoh tekshiruv materialini tahlil qiling — ko'p hollarda ish besh qadamga tushadi. Kirish — hujjat keldi. Tekshiruv — maydonlar joyidami? Tahlil — mantiqni qidiramiz, raqamlarni solishtiramiz. Xulosa — ha yoki yo'q deymiz. Va oxirida yetkazish — javob xatini jo'natamiz. E'tibor bering, faqat bitta qadam yorqin ko'k rangda: tahlil. SI sizning o'rningizga tijorat banki vakili bilan gaplashmaydi, SI sizning o'rningizga hujjatga muhr bosmaydi. Lekin uzun hisobotni o'qib, ichidan tekshiruv talab qiladigan joylarni topib berish — mana buni SI sizdan oldin qila oladi. Yakuniy gap baribir sizniki.
+
+## Slide 8 — Bitta katta vazifa, uchta aniq qadam
 
 Boyagi ikkinchi atamamizni eslaysizmi? Task Decomposition. Keling uni amalda ko'ramiz. Tasavvur qiling, siz SIga "mijoz uchun kredit memo yoz" dedingiz. Bu bitta katta vazifa. SI nima qiladi? Shablon bo'yicha nimadir to'qiydi. Natija yuzaki bo'ladi. Endi buni uchga bo'lamiz. SIga aytamiz: "faqat faktlarni yig'" — daromadi qancha, qarzi qancha, boshqa narsa qo'shma. Keyin: "faqat risklarni top" — qayerda muammo bor? Va oxirida: "endi shu fakt va risklarga qarab, besh jumlali qaror loyihasini yoz". Siz bitta katta aralashma o'rniga, uchta sifatli, tekshirish mumkin bo'lgan qadam oldingiz. Aynan shu usul ishlarni tezlashtiradi.
 
+## Slide 9 — Bank misoli: 5 qadam, 2 tasida SI
+
 Endi bugungi kungi eng muhim slaydga keldik. Agar ertaga kimdir sizdan "SI Markaziy Bankda qanday ishlaydi?" deb so'rasa, shu rasmni ko'rsating. Bu — tijorat bankidan kelgan hisobotni ko'rib chiqish jarayoni. Ko'rib turibsizmi, SI hamma joyni egallab olgani yo'q. U faqat o'ziga tegishli ikkita joyda yordam beradi. Ikkinchi qadamda: u yuzlab betlik hisobot va ilovalardan asosiy raqamlar va jadvallarni ajratib chiqaryapti — bo'sh sahifadan boshlamaslik siz uchun katta yutuq. Statistika shuni ko'rsatadiki, xodimning ish vaqtining qariyb uchdan biri "bo'sh sahifa qarab o'tirish" va "shu hujjatda qaysi raqam qayerda ekanligini qidirish" ga ketadi. Aynan shu joyni biz SIga topshiramiz. To'rtinchi qadamda: u normativ talqinga moslikni baholab, savollar va potensial risklar ro'yxatini qoralama qiladi. Lekin uchinchi qadam — normativ tekshiruv — inson ko'zi. Beshinchi qadam, ya'ni yakuniy xulosa va rasmiy javob — mas'ul xodim imzosi. Mas'uliyat odamda qoladi, qora mehnat SIga o'tadi. Bu pattern hisobotda ham, murojaatga javobda ham, tekshiruv dalolatnomasida ham bir xil ishlaydi. Va shu yerga e'tibor bering — slaydda atigi besh qadam. Real hayotda sizning bo'limingizda yetti, sakkiz qadam bo'lishi mumkin. Lekin ulardan ikkitasi — eng zerikarli ikkitasi — har doim SIga mos.
+
+## Slide 10 — Topshirish nuqtalari: kim nimani qiladi
 
 Jarayonni quryapmiz. Endi kim nima qilishini aniq chizib olishimiz kerak. Buni biz "topshirish nuqtasi" deymiz: SI qayergacha boradi, qayerdan siz olasiz. Chap tomonga qarang — bularning hammasi vaqt o'g'irlaydigan ishlar: hujjatdan ma'lumot qidirish, jadvalni solishtirish, xatning qoralamasini yozish. Buni SIga beramiz. Lekin o'ng tomonga qarang — bu yerda uchta majburiy nazorat bor. Birinchi: qaysi ma'lumotni SIga umuman bermaymiz, ya'ni maxfiylik chegarasi. Bu yerda mijozning ismi, hisob raqami, pasport ma'lumoti hech qachon AI'ga yuborilmaydi — biz ularni avval "Mijoz X", "100 mln", "shahar A" deb umumlashtiramiz. Ikkinchi: SI bergan natijani normativga moslab tekshirish. AI sizga go'zal yozadi, lekin uning go'zal jumlasi qaysi qonun bandiga asoslangan — buni siz tekshirishingiz shart. Uchinchi: har bir SI qadami uchun aniq mas'ul shaxs va audit izi. Ya'ni "bu joyda SI yordam berdi va shu sababli men shu qarorni qabul qildim" degan yozuv qoldirilishi kerak. Eng pastki qator — istisno hollar. Markaziy Bankda har kuni shunday holat keladiki, qog'ozdagi qoida ishlamaydi: tijorat bankining holatini tushunish, regulyator sifatida qaror qabul qilish kerak. SI buni eplayolmaydi — uning uchun hammasi oq yoki qora. Kulrang zonani faqat siz hal qilasiz. Va aytib qo'yaman: kulrang zona aslida juda ko'p uchraydi. Shuning uchun "SI hamma ishni qiladi" degan vahima — bo'sh gap. Real ishimizning yarmidan ko'pi — bu nozik baholash, mas'uliyat olish, manfaatlarni muvozanatlash. Bularni faqat odam qila oladi.
 
-# Amaliy mashq
+## Slide 11 — Amaliy mashq: 5–7 qadamga bo'ling
 
 Bo'ldi. Men yetarlicha gapirdim. Endi navbat sizga. Stollaringizda katta plakatlar va markerlar bor. Hozir har bir stol o'z bo'limidan bitta ishni tanlaydi: hisobot ko'rib chiqish, murojaatga javob, tekshiruv materialini tahlil qilish yoki rahbariyat uchun ma'lumotnoma. Pilotga mos ishni oling — tez-tez takrorlanadi, vaqt oladi, natijasi tekshiriladi va yakuniy qaror insonda qoladi. Bu to'rtta mezon birdaniga uchrashi shart. Agar ish bir oyda bir marta bo'lsa, SIni o'rgatishga ketadigan vaqt o'zini oqlamaydi. Agar natijani tekshirib bo'lmasa — ya'ni norma yoki manba yo'q bo'lsa — SIning xatosi bilinmay qoladi. Va agar yakuniy qaror SIning o'zida qolsa, biz oxirida mas'uliyatdan qutulamiz, demak — boshqaruvni yo'qotamiz.
 
 O'n ikki daqiqada stolingiz bitta pilot xaritasini topshiradi. Shakl aniq. Birinchi — jarayon nomi, bitta qator. Ikkinchi — besh-yetti ta qadam. Uchinchi — har qadamda mas'ul: xodim, rahbar yoki SI yordamchi. To'rtinchi — SI yordam beradigan bir-ikki qadam. Beshinchi — SIga **berilmaydigan** ma'lumot yoki qaror, ya'ni maxfiylik chegarasi. Oltinchi — tekshiruv manbasi: natijani qaysi norma yoki hujjat bilan solishtirasiz. Yettinchi — natija mezoni: vaqt qisqarishi, qayta ishlash kamayishi yoki xato ulushi. Va oxirida eng yuqori ta'sirli bitta qadam — uni yulduzcha bilan belgilang. Bu shunchaki o'yin emas. Yulduzcha qo'ygan qadamingiz — bo'limingiz uchun pilotga eng yaqin nuqta. Sizda o'n ikki daqiqa bor. Vaqt ketdi! Men stollar orasida yuraman.
 
-# Yakun
+## Slide 12 — Tez-tez uchraydigan xatolar
 
 Ajoyib ish bo'ldi. Ba'zi jamoalar shunday jarayonlarni chizishdiki, ularni ertagayoq amaliyotga kiritish mumkin. Plakatlarni saqlab qo'ying.
 
 Endi, o'rganganlarimizni buzib qo'ymaslik uchun ikkita eng katta xatoni eslatib o'taman. Birinchisi — Excelda ikki ming satrni SIga berib, "menga hammasini qilib ber" deyish. SI adashadi, sizning asabingiz buziladi. Bitta promt — bitta natija. Katta vazifani qadamlarga bo'lib, SIdan bir nafasda kredit memo, javob xati va hisobotni so'ramaslik kerak. Ikkinchisi — huquqiy xato: SI javobini hujjatga aylantirib qo'yish. Hech qachon "SI aytdi, demak to'g'ri" degan gap Markaziy Bankda yangramasligi kerak. SI har doim faqat qoralama beradi. Qaror uchun manba, norma va mas'ul xodim tekshiruvi shart. Imzo — sizniki, javobgarlik — tashkilotniki.
 
+## Slide 13 — 3 ta asosiy xulosa va lug'at recap
+
 Yakunlaymiz. Agar bugungi oltmish daqiqadan faqat uchta narsani yodda saqlasangiz, shular bo'lsin. Birinchisi: strukturalanmagan jarayonni SI tuzatmaydi — u faqat tartibsiz natijani tezroq beradi. Bu jumlani men o'n marta takrorlashga tayyorman, chunki bu yerda eng katta xato boshlanadi: rahbar "SI olib keldik, endi ish tezlashadi" deb o'ylaydi, lekin tartibsiz jarayonga SI qo'shilsa, faqat tartibsiz xatolar ko'payadi. Ikkinchisi: jarayonlar vahimali emas, besh qadam, atigi ikkitasida SI yordam beradi. SI butun ishni egallab olmaydi — u uchta qadamga umuman tegmaydi va siz o'sha qadamlarda hammavaqt rahbar qolasiz. Uchinchisi: katta vazifani kichik, tekshiriladigan qadamlarga bo'ling — bo'laklash bo'lmasa, sifat har safar boshqa.
 
 Endi, an'anamizga ko'ra, bugungi lug'atimizni birga qaytaramiz. Men atamani aytaman, siz ma'nosini. Workflow nima edi? Zal bilan birga: "Jarayon zanjiri — kirish, tahlil, xulosa". Task Decomposition nima edi? Birga aytamiz: "Katta vazifani kichik, tekshiriladigan qadamlarga bo'lish". Ajoyib.
+
+## Slide 14 — Savol-javob
 
 Bizda yana bir necha daqiqa vaqt bor. Mashq davomida ba'zi stollarda qizg'in bahslar bo'lganini ko'rdim. Asosiy savolim shu: o'z bo'limingizda qaysi qadam SIga mos keladi, qaysi qadamda mas'uliyat insonda qolishi shart? "Bizda besh emas, o'n ikki qadam-ku" deydiganlar bormi? Marhamat, eshitaman.
 

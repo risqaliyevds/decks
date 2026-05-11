@@ -1,41 +1,63 @@
-# Kirish
+# Deck 3 — Sun'iy intellekt xavflari, muvofiqlik va boshqaruv
+
+## Slide 1 — Kirish · qizil chiziqdan xavfsiz koridorga
 
 Zalda muvofiqlik va ichki audit xodimlari bormi? Qo'lingizni ko'tarib qo'ying. *(pauza, jilmayib)* Ha, demak, bugun sizning eng sevimli — va IT bo'limi uchun eng asabiy — mavzuga keldik. Birinchi modulda men xavfsizlikni "qizil chiziq" deb atagan edim. Lekin aytmoqchimanki, muvofiqlik proyektni to'xtatadigan devor emas. Agar biz uni to'g'ri qursak, u xavfsiz koridorga aylanadi. Va men bugun shu fikrni isbotlab beraman. Bugun IT jargonlarini yig'ishtiramiz. Faqat bankir tilida gaplashamiz: Markaziy Bank tekshiruvida nima so'raladi va unga qanday texnik javob beramiz?
 
+## Slide 2 — Yo'l xaritasi · 4 ta bekat
+
 Roppa-rosa bir soat vaqtimiz bor. Yo'limiz 4 ta bekatdan iborat. Avval dushmanni taniymiz. AI qanday qilib yuzimizga qarab yolg'on gapirishini jonli ko'ramiz. Keyin shu yolg'onni — gallyutsinatsiyani — RAG yordamida qanday bo'g'ishni o'rganamiz. Uchinchi qadam eng noziki: mijoz ma'lumotlarini AI'dan qanday yashiramiz? Bu — Data Masking. Va oxirida, "bunga kim javob beradi?" degan abadiy savolga 4 ta aniq rol bilan nuqta qo'yamiz. Qani, ketdik.
+
+## Slide 3 — Mini-so'rovnoma · eng halokatli xavf
 
 Lekin asosiy mavzuga kirishdan oldin, men sizning ichki radar-instinktingizni tekshirmoqchiman. Ekranga qarang — bankda AI ishlatilganda yuz beradigan to'rtta xavf turibdi: PII leak — mijoz ma'lumoti chetga chiqib ketishi; Hallucination — AI ning ishonch bilan yolg'on gapirishi; Tarjima xatosi — atamaning noto'g'ri o'zbekchaga o'tishi; va Sekin javob — 2 daqiqa kechikkan reaksiya. Qo'l ko'taring: sizningcha qaysi xavf banklar uchun eng halokatli? *(har xavf uchun 5–10 soniya, ovozlarni hisoblang)*. PII'ga ko'p qo'l ko'tarildi. Demak siz Markaziy Bank xodimi sifatida to'g'ri ustuvorlikni egallaganingizni ko'rsatyapsiz — chunki bank siri buzilishi bizdagi eng katta yuridik mas'uliyat. Lekin bilasizmi, hallucination ham xuddi shunchalik xavfli — chunki u "noto'g'ri javob" emas, u "ishonch bilan aytilgan noto'g'ri javob". Buni hozir jonli ko'rasiz.
 
-# Xavflar va gallyutsinatsiya
+## Slide 4 — Live hallucination demo · ishonch bilan yolg'on
 
 Tasavvur qiling, kredit bo'limi xodimi chat-botdan shunday savol so'radi: "Markaziy Bank №427-sonli qarorida yuridik shaxslar uchun yangi rezerv koeffitsiyenti necha foiz?" Bot nima deydi? Ekranga qarab o'qiymiz: "Markaziy Bank №427-sonli qarori bo'yicha koeffitsiyent 14,5%ga oshirildi, 1-iyundan kuchga kiradi". Qanday jaranglayapti? Juda ishonarli. Hujjat raqami bor, sana bor, aniq foiz bor. Hatto byurokratik tilda chiroyli yozilgan. Zaldagilarga qarab aytaman — faqat bitta muammo bor. *(tugmani bosib xato bannerini chiqaring)*. Bunday qaror tabiatda yo'q. Uni AI hozirgina o'ylab topdi. Uyalmasdan. Agar shu ma'lumot mijozga ketsa yoki kredit xulosasiga kirib qolsa nima bo'ladi? Mana shu — bizning eng katta xavfimiz. Va bu yerda "AI yangi texnologiya, uni o'rganib oladi" degan o'zini yupatish ish bermaydi. Bu xavf bilan biz arxitektura darajasida kurashamiz.
 
+## Slide 5 — Xavflar xaritasi · 4 ta tahdid
+
 Xavfni yengish uchun avval uni nomlash kerak. AI bankka kelganda 4 xil bosh og'rig'i olib keladi. Birinchisi — ma'lumot oqishi. Mijoz ismini himoyalanmagan kanal orqali to'g'ridan-to'g'ri OpenAI'ga yuborsak nima bo'ladi? Bank siri buziladi. Ertasi kuni muammo. Ikkinchisi — gallyutsinatsiya, ya'ni boyagi ko'rganimiz: AI'ning qonun to'qib chiqarishi. Uchinchisi — bias, ya'ni noxolislik. Skoring modelimiz nega aynan shu mijozga "yo'q" dedi? Bilasizmi, Amerikada bir mashhur kompaniya o'zining kredit kartasi limitini hisoblash uchun AI ishlatgan. Ma'lum bo'lishicha, xotin-qizlarga erlariga qaraganda 10 baravar past limit bergan. Sabab tushuntirib berolmadi — AI o'zi bilmagan namunani o'rganib qolgan edi. To'rtinchisi — regulyator buzilishi. Markaziy Bank inspektori kelib qanday qaror qilganingizni so'rasa, "AI shunday dedi" deb qutulolmaysiz. Audit izi yo'qmi — jarima. Bugun asosan birinchi va ikkinchi xavfni texnik jihatdan qanday yopishni ko'ramiz.
+
+## Slide 6 — Lug'at · Hallucination + Data Masking
 
 Har modulda lug'atimizni boyitib boryapmiz. Bugun muvofiqlik uchun eng muhim ikkita so'zni qo'shamiz. Bularni yodlab oling, dars oxirida yana so'rayman. Birinchisi — **Hallucination**, ya'ni gallyutsinatsiya. Bu AI bilmagan narsasini "bilmayman" demay, ishonch bilan o'ylab topishi. Fakt yo'q, lekin u shunday yozadiki, sizga ishonarli ko'rinadi. Bank uchun bu eng qimmat xato — bir marta gallyutsinatsiya mijozga ketsa, sud ishi va reputatsiya yo'qotish bilan tugashi mumkin. Ikkinchisi — **Data Masking**. Bu bizning qalqonimiz. Ism, karta raqami, telefon, hisob, INN — AI'ga yetib borguncha yo'lda avtomatik tokenlarga, ya'ni [ISM], [KARTA] kabi belgilarga almashadi. AI hech qachon haqiqiy mijoz ma'lumotini ko'rmaydi. Lekin muhim eslatma — masking qoidalari muntazam test qilinadi, chunki noto'g'ri sozlash bank sirini ochib yuborishi mumkin. Shu ikki so'zni eslab qoling.
 
+## Slide 7 — Gallyutsinatsiya anatomiyasi · RAG yechim
+
 Xo'sh, gallyutsinatsiyani qanday davolaymiz? Agar AI'ni o'z holiga tashlab qo'ysak, u ochiq manbalardagi noto'liq, eskirgan yoki kontekstsiz ma'lumotlarga tayanib javob berishi mumkin. Markaziy Bank qarorlari uchun bu umuman to'g'ri kelmaydi. Biz o'rtaga **RAG** qo'yamiz. RAG nima? Biz AI'ga shunday aytamiz: "Sen aqlli emassan, sen shunchaki tez o'qiydigan xodimsan. Mana senga bankning tasdiqlangan PDF hujjati. Faqat shuning ichidan ko'chirasan, o'zingdan hech narsa qo'shma". Natija? Agar mijoz yo'q qarorni so'rasa, AI hujjatdan qidiradi, topolmaydi va "Uzr, menda bu haqida ma'lumot yo'q" deydi. Yolg'on gapirish o'rniga "bilmayman" deyishni o'rgatdik. Bu eng muhim qadam. RAG haqida 9-modulda chuqurroq, o'z qo'lingiz bilan amalda quramiz.
 
-# Ma'lumot himoyasi va arxitektura
+## Slide 8 — Data Masking · shaxsiy ma'lumotlar himoyasi
 
 Endi eng nozik masala — mijoz shaxsiy ma'lumotlari. Mijoz yozdi: "Men Akmal Karimovman, 8600 bilan boshlanuvchi kartam ushlanib qoldi". Agar shuni ochiq holda tashqi AI provayderga yuborsak, qonunni buzgan bo'lamiz — bank siri haqidagi qonun, shaxsiy ma'lumotlar qonuni va Markaziy Bank xavfsizlik talablari. Nima qilamiz? O'rtaga "gateway" — ya'ni darvoza — qo'yamiz. Bu darvoza xabarni oladi va barcha nozik joylarni tokenlarga almashtiradi. AI'ga nima boradi? Shu matn: "Salom, men [ISM], [KARTA_4] kartam ushlanib qoldi". AI'ga aslida mantiq kerak — u karta bloklanganini tushunadi va javob tayyorlaydi. Qaytayotganda darvoza yana ismni joyiga qo'yib mijozga beradi. Masking shaxsni aniqlovchi ma'lumotlarni AI'ga tushishidan saqlaydi — lekin yana eslataman, masking qoidalari muntazam test qilinishi shart. Notog'ri konfiguratsiya — bank sirini ochib yuborish bilan tengdir.
 
+## Slide 9 — Muvofiqlik · 3 qatlam
+
 Har qanday bot yoki model ishga tushishidan oldin uchta elakdan o'tishi kerak. Bu — muvofiqlikning 3 qatlami. Birinchisi — Markaziy Bank talablari. Bank siri qonuni, axborot xavfsizligi standartlari. Bu birinchi va eng muhim sahna. Ikkinchisi — o'zimizning ichki siyosat. Kengash tasdiqlagan qoidalar, javobgarlik matritsasi, vakolat darajalari. Uchinchisi — Xalqaro standartlar. "Bizga GDPR nima kerak" demang. Agar xalqaro kartalar — Visa, Mastercard — bilan ishlasangiz, chet el bankida vakillik hisobingiz bo'lsa yoki tashqi audit kelsa, hamkor talabi sifatida ko'tarilishi mumkin. Bittasidan o'tolmadikmi — proyekt to'xtaydi. Shuning uchun buni arxitektura bosqichida o'ylash kerak, sotuvga chiqargandan keyin emas.
+
+## Slide 10 — Yopiq kontur arxitekturasi
 
 Mana endi hammasini bitta rasmga yig'amiz. Buni "Yopiq kontur" deymiz. Xodim savol yozdi. U to'g'ridan-to'g'ri AI'ga bormaydi. Avval Masking Gateway'ga kiradi — ismlar, raqamlar yashiriladi. Keyin toza, anonim holatda AI'ga boradi. AI javob tayyorlaydi. Lekin oxirgi qadamga alohida e'tibor bering: **Audit Log**. Bu muvofiqlikning yuragi. Kim, qachon, nima deb so'radi va AI qanday javob berdi, qaysi PDF'dan ma'lumot oldi — hammasi yozib boriladi va o'chmaydi. Agar 6 oydan keyin inspektor kelib "Nega bu kredit rad etilgan?" desa, "AI shunday debdi" degan gap o'tmaydi. Audit logni ochib, aniq manbani, aniq sanani, aniq foydalanuvchini ko'rsatamiz. Va bu shunchaki qulaylik emas — bu yuridik talab.
 
-# Boshqaruv
+## Slide 11 — Boshqaruv · 4 rol (RACI-lite)
 
 Eng katta xato — "bu IT'ning ishi" deb tashlab qo'yish. Yo'q. Har bir AI vositasi uchun 4 ta aniq odam javobgar bo'lishi shart. Aks holda, "hammamiz" degani — hech kim degani. Birinchisi — **Biznes Egasi**. Bu kredit yoki chakana xizmatlar boshlig'i. U byudjet beradi va riskni bo'yniga oladi. Ikkinchisi — **Tasdiqlovchi**, ya'ni risk qo'mitasi. Ular "yashil chiroq" yoqmaguncha hech narsa mijozga chiqmaydi. Uchinchisi — **Ishlovchi**, mahsulot jamoasi. Ular promt yozadi, xatolarni to'g'rilaydi, kundalik ishni ko'taradi. To'rtinchisi — **Auditor**, ichki audit. Sizlar. Tizimni chetdan kuzatib, loglarni tekshirib, "bu yerda nimadir noto'g'ri" deb signal berasiz. Shu rollardan biri aniq belgilanmasa, loyiha bo'yicha javobgarlik, audit izi va qaror sifati zaiflashadi. Buni boshlanishida hujjatlashtiring.
 
+## Slide 12 — Risk-rating mashq · L/M/H
+
 Endi ozgina uyg'onamiz. Men senariyni o'qiyman, siz qo'l ko'tarib ovoz berasiz: yashil — past xavf, sariq — o'rta, qizil — yuqori. Tayyormisiz? Senariy 1: operator chat-botdan yangi kredit mahsuloti shartlari haqida so'radi, bot ichki PDF qoidasidan javob berdi, mijoz ismi maskalandi. Kim yashil deydi? *(qo'llarni ko'rib chiqing)*. To'g'ri, yashil. RAG bor, masking bor. Senariy 2: skoring modeli kreditni rad etdi. Lekin sababini tushuntirib bera olmadi — qora quti. Nima deysiz? *(pauza)*. Ha, bu sariq-qizil. Mijoz e'tiroz qilsa, asoslab berolmaysiz. Bu boyagi bias xavfi. Senariy 3: marketing bo'limi mijozlar bazasini ChatGPT'ga yukladi va "segmentatsiya qilib ber" dedi. Maskalashsiz, audit logsiz. Qani — qizillar qo'lini ko'tarsin. *(kuladi)*. Aynan! Bu to'liq qizil. Bank sirini ochiqchasiga buzish. Va bu xayoliy misol emas — banklarda bunday voqealar haftada bir necha marta sodir bo'ladi, faqat odamlar buni "yordamchi bilan tekshirib ko'rdim" deb tushunadi.
+
+## Slide 13 — Tuzoqlar · 3 afsona vs haqiqat
 
 Odamlar AI haqida ko'p afsonalarga ishonishadi. Keling, ularni tezda yo'q qilamiz. Birinchi afsona: "AI kompyuter, u hech qachon adashmaydi". Haqiqat — RAGsiz AI har kuni adashadi va yolg'on gapiradi. Ikkinchi afsona: "Mijoz ma'lumotini AI'ga bersak ham mayli, bu o'zimizning ichki ishimiz-ku". Haqiqat — yo'q, mijoz ma'lumotini tashqi provayderga maskingsiz berish bank siri qonunini buzish degani, hatto "ichki" deb qabul qilsangiz ham. Uchinchi afsona: "Botni hozir ishga tushirib turaylik, audit logni keyin qo'shib ketamiz". Haqiqat — "keyin" degan vaqt kelmaydi. Audit log birinchi kundan ishlashi shart. Bo'lmasa inspektorga nima ko'rsatasiz?
 
-# Yakun
+## Slide 14 — Yakun · 3 xulosa + lug'at recap
 
 Xulosa qilamiz. Muvofiqlik — texnologiyani bo'g'ish uchun emas, xavfsiz ishlatish uchun. Bizning 3 ta tayanchimiz bor. Birinchisi, gallyutsinatsiyaga qarshi — **RAG**: hujjatdan ko'chirish, o'zidan o'ylamaslik. Ikkinchisi, shaxsiy ma'lumot oqishiga qarshi — **Data Masking**: ism, karta, INN'ni yashirish va qoidalarni muntazam test qilish. Uchinchisi, boshboshdoqlikka qarshi — 4 rol, audit log va qaror kartasi: Go yoki No-Go hujjatlashtiriladi. Mana shu uch tayanch ustida har qanday AI yechim Markaziy Bank tekshiruvidan o'tib chiqishi kerak.
 
 Endi, odatimizga ko'ra, dars boshidagi lug'atni birga qaytaramiz. Qani, zal. **Hallucination** nima edi? *(zal bilan birga: AI ishonch bilan o'ylab topgan, mavjud bo'lmagan javob)*. **Data Masking** nima? *(zal bilan birga: shaxsiy va bank siri ma'lumotlarni AI'ga ketishidan oldin tokenlarga almashtirish)*. Ajoyib. Arxitekturani tushundik.
+
+## Slide 15 — Savol-Javob · Q&A
 
 Endi savollar. Bizda yana 5 daqiqa qoldi. Muvofiqlik, audit loglar yoki ma'lumotlarni maskalash bo'yicha kimda qanday savollar bor? Eng qiyin savollarni hozir bering, men keyinroq qochib qolmayman. *(pauza, zalni kuzating, bir-ikki savolga javob bering)*. Agar sizda "Markaziy Bank bunga qanday qaraydi?" degan savol bo'lsa — hozircha maxsus AI qoidasi yo'q, lekin standart axborot xavfsizligi bo'yicha tekshirishadi. Shuning uchun biz yopiq kontur qurdik. Rahmat! Kichik tanaffusdan so'ng 4-modulda ko'rishamiz.

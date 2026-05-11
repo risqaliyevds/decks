@@ -1,14 +1,18 @@
-# Kirish
+# Deck 12 — Murakkab sun'iy intellekt jarayonlari (Pipeline va Debug)
+
+## Slide 1 — Title · 12-modul
 
 Assalomu alaykum, hurmatli hamkasblar. Tushlikdan keyin biz to'qqizinchi modulda klassifikator botni o'z qo'limiz bilan qurgan edik — Telegram, Gemini, Sheets bilan, n8nda o'n uchta nodedan iborat. Endi savol: bu botni qanday qilib "doim ishlaydigan" tizimga aylantirish mumkin? Bugungi modulning markaziy mavzusi shu.
 
 O'n ikkinchi modulning o'ziga xosligi shu — birinchi modul bo'lib biz xato qilishni va xatoni topishni maxsus o'rganamiz. Bu modul "tayyor mahsulot" ko'rsatish uchun emas, "buzilgan tizim" tushunchasi uchun. Bankirlar uchun bu juda muhim, chunki real ish jarayonida xato yuz beradi, va biz uni topib, tuzata olishimiz kerak. Olmish daqiqa pipeline ham, debug ham — tayyormisiz?
 
+## Slide 2 — Yo'l xaritasi · Agenda
+
 Olmish daqiqani biz to'rt fazaga bo'lamiz. Birinchi qism, taxminan o'n uch daqiqa — pipeline tushunchasi: nima uchun bitta promt yetmaydi, bosqichlarga bo'lish nima beradi, va idempotent dizayn nima. Ikkinchi qism, to'qqiz daqiqa — to'qqizinchi modulda qurgan klassifikatorni production darajasiga olib chiqamiz, yetti bosqichni bittama-bitta tahlil qilamiz. Uchinchi qism, eng katta — o'n sakkiz daqiqa — debugging: logging, replay, narx optimizatsiyasi va branching. To'rtinchi qism, o'n yetti daqiqa — real bug-hunt mashqi, debug checklist, production tayyorligi, yakun va savol-javob.
 
 Bu modul boshqalardan biroz farq qiladi: nazariya kam, real misollar va debugging ko'p. Dasturchilar buni "ops" qismi deb atashadi — bizda esa bu bankirlar uchun ish jarayoni boshqaruvi. Tayyor bo'lsangiz, boshlaymiz.
 
-# Pipeline nima va nega kerak
+## Slide 3 — Hook · Bitta promt vs Pipeline
 
 Eng oddiy savoldan boshlaylik. Klassifikator botingizga "matnni o'qi, tasnifla, operator tanla, Sheetsga yoz, mijozga javob ber" deb bitta promt yozsangiz nima bo'ladi? Birinchi qarashda eng oson yo'lga o'xshaydi. Lekin debug qila olmaysiz. Xato qayerda ekanini bilmaysiz. Qayta ishga tushirsangiz mijozga ikkita xat yuboradi.
 
@@ -16,11 +20,15 @@ Birinchi yondashuvni qora quti deyish mumkin. Hammasi bir oynada: xabar kirdi, G
 
 Ikkinchi yondashuv — yetti bosqichli pipeline. Har bosqich alohida. Xabar, tasniflash, operatorlar ro'yxatini o'qish, operator tanlash, ariza yozish, javob shakllantirish, yuborish. Har bosqich log qoldiradi, alohida qayta ishga tushadi. Xato beshinchi bosqichda — faqat shu bosqichdan qaytadan ishlatamiz, oldingi natijalar saqlanib qoladi. Tekshiruvchan, idempotent. To'qqizinchi modulda biz qurgan bot allaqachon yetti nodedan iborat — bu tasodif emas. Endi tushuntiramiz nima uchun shunday qildik. Audit'oriyaga qarayman: kim "men ham bitta promtda yozardim" der ekan? Yo bo'lmasa, "yo'q, bo'laklash kerak"?
 
+## Slide 4 — Nima uchun pipeline · 3 sabab
+
 Endi pipelinening uchta amaliy sababini ko'raylik. Birinchisi — aniqroq. Har bosqich bitta vazifa qiladi. LLM faqat tasniflaydi, Code faqat operator tanlaydi. Promtlar qisqaradi, sifat ortadi. Beshinchi modulda prompt engineering darsida ko'rganmiz: promt qancha qisqa va aniq bo'lsa, LLM shuncha yaxshi javob beradi. LLMda xato bo'lsa — to'xtatamiz, Sheetsda xato bo'lsa — qayta urinib ko'ramiz, har biri uchun alohida strategiya.
 
 Ikkinchi sabab — tekshiruvchan. Har bosqichdan keyin natija saqlanadi. Buzilgan joyni logdan topish mumkin. Bu bankirlar uchun magic word: tekshiruvchan. Muvofiqlik, audit, "kim nima qildi" savollari ish jarayonining ajralmas qismi. Muvofiqlik auditori "qaysi qadamda toifa aniqlandi?" deb so'rasa, besh sekundda javob bo'ladi.
 
 Uchinchi sabab — takrorlansa ham xavfsiz. Bir mijoz xabari qayta kelsa ham Applicationsda bitta yozuv qoladi, mijozga ortiqcha xat ketmaydi. Misol: message_id orqali tekshiruv. Bu fazilatning rasmiy nomi bor, keyingi slaydda atalaymiz.
+
+## Slide 5 — Lug'at · Pipeline va Idempotent design
 
 Endi modulning markaziy ikki atamasiga keldik. Bu atamalar bugundan keyin qayta-qayta uchraydi.
 
@@ -28,17 +36,21 @@ Birinchi atama — Pipeline. Bankir tilida: ko'p bosqichli AI zanjiri. Bir vazif
 
 Ikkinchi atama — Idempotent design. Bankir tilida: qayta ishga tushirilsa ham xatosiz. Bir xil kirish — bir xil chiqish. Bir mijoz xabarini o'n marta yuborsangiz, Applicationsda bitta ariza yoziladi. Mijozga bitta xat ketadi. Mexanizm: har xabarga unique message_id beriladi, ishlangan IDlar saqlanadi. Sodda analogiya: idempotent so'zi lotinchadan keladi — "idem" bir xil, "potens" kuch. Ya'ni: bir marta bossangiz ham, o'n marta bossangiz ham — natija bir xil. Liftning o'n nechi tugmasini besh marta bossangiz, ellikinchi qavatga chiqmaysiz. Bitta marta tugma — bitta amal. Yodda tutib turing, oxirida birga aytamiz.
 
+## Slide 6 — Idempotency real misol · 2 marta xat
+
 Endi idempotency real misolda. Mijoz Telegramga "Avtokredit kerak" deb yubordi, tarmoq uzildi. Telegram "kelmadi" deb o'yladi va qayta yubordi. Idempotent emas tizimda: birinchi xabar keldi, ariza A-001 yozildi, operatorga bildirishnoma ketdi, mijozga "qabul qilindi" xati ketdi. O'sha daqiqa xabar yana keldi (retry) — ariza A-002 yozildi, ikkinchi operatorga bildirishnoma ketdi, mijozga yana "qabul qilindi" xati ketdi. Natija: ikkita ariza, ikkita xat, ishonch yo'qolishi.
 
 Idempotent dizaynda esa boshqacha. Birinchi xabar id=A4F2 keldi, tekshirildi: yangi, ariza yozildi, xat ketdi. O'sha id=A4F2 yana keldi, tekshirildi: allaqachon ishlangan, eski natija qaytariladi. Bitta ariza, bitta xat, ishonch saqlandi. Tasavvur qiling, mijoz "avtokredit" deb yozdi, internet shovqinli, Telegram klienti tugmani uch marta yubordi — idempotency yo'q bo'lsa Applicationsda uch ariza yoziladi, uch operator habardor qilinadi, mijozga uchta xat ketadi. Idempotent design — bu mas'uliyatli yechim, "ishlasa bo'ldi" emas. Ko'pchilik developerlar buni keyinroq qo'shaman deb o'ylashadi — keyin esa muammo paydo bo'lganda kech bo'ladi. Birinchi kundan idempotent.
 
-# Klassifikator bot pipeline tahlili
+## Slide 7 — Klassifikator bot · 7 bosqichli pipeline
 
 Endi to'qqizinchi modulda qurgan klassifikator botingizning ichini ochaylik. Foydalanuvchi uchun bitta amal — mijoz Telegramga xabar yozdi va javob oldi. Lekin ichida yetti bosqich bor.
 
 Birinchi bosqich — Telegram. Xabar trigger orqali keldi. Ikkinchisi — LLM Chain. Gemini chaqiriladi, toifa va JSON qaytadi. Bu yerda eslatib o'taman — Gemini chaqiruvi pul, vaqt sarflaydi, bu eng qimmat bosqich. Uchinchisi — Sheets Read. Operators jadval o'qiladi, faol filtr. To'rtinchisi — Pick Operator. Code orqali birinchi mos operator tanlanadi. Bu — qaror chiqaruvchi bosqich, biznes mantig'i shu yerda. Beshinchisi — Sheets Append. Applications jadvaliga ariza yoziladi. Oltinchisi — Format. Set node orqali o'zbek tilidagi matn shakllantiriladi. Yettinchisi — Send. Telegram javobi yuboriladi.
 
 Eng muhim narsa: ikkinchi va to'rtinchi bosqichlar — qaror chiqaruvchi. Ikkinchisi Gemini — pullik. To'rtinchisi Code — logika. Qolgan beshtasi — integratsiya va tezkor logika, arzon, tezkor. Bu farq nima uchun muhim? Chunki agar replay kerak bo'lsa, biz qimmat bosqichni qayta ishga tushirmaymiz. To'qqizinchi modulda siz aynan shu botni qurgansiz, biroq ehtimol bitta promtga yaqin yondashuv bilan. Bu yerda biz har bosqichni alohida ko'rib, har birida xato turini va yechimni belgilaymiz.
+
+## Slide 8 — 4 turdagi xato · har bosqichga maxsus
 
 Pipelinening qadri shu — biz xatoning turini aniq biladigan bo'lamiz. To'rt turdagi xato bor.
 
@@ -52,7 +64,7 @@ To'rtinchisi — Telegram timeout. Mijozga javob yuborishda tarmoq xatosi. Yechi
 
 Bu slayd auditoriyani "AI mukammal" tushunchasidan qutqaradi. AI xato qilmaydi degan eshikni yopamiz. AI xato qiladi, va biz xatoga tayyormiz. Har xato turi alohida yechim talab qiladi. Bu pedagogik jihatdan muhim: ishtirokchilar "xato yuz berdi, mahsulot ishlamaydi" emas, "xato yuz berdi, tegishli yechim bor" deb o'ylashlari kerak.
 
-# Debug strategiyalari
+## Slide 9 — Debug 1 · Logging · log misol
 
 Endi debug strategiyalariga o'tamiz. Birinchisi va eng muhimi — Logging. Har bosqich uchun uch narsani yozib qo'yish: kirish, oraliq natija, xato konteksti. n8nning "Sheets log" nodei yetarli boshlang'ich qadam.
 
@@ -60,11 +72,15 @@ Real log misolida nimani ko'ramiz? Tasavvur qiling, ekranda quyidagi qatorlar: v
 
 Logni o'qish bankirlar uchun ham qiyin emas. Har qator bitta narsani aytadi. Eng muhimi nima? Birinchidan, message_id va chat_id — har xabar uchun unique, debug uchun zarur. Ikkinchidan, step — har bosqich aniq raqam bilan. Uchinchidan, status — ok, warn, FAIL — rangli. To'rtinchidan, token va xarajat — auditga muhim. Auditor ikki daqiqada topadi: xato yettinchi bosqichda, sabab — Telegram rate-limit, ariza beshinchi bosqichda saqlanib qoldi. Bu — qora qutining oydinlashishi.
 
+## Slide 10 — Debug 2 · Replay vs Idempotency
+
 Ikkinchi debug strategiyasi — Replay. Pipeline beshinchi bosqichda buzildi. Boshidan boshlash kerakmi? Yo'q — agar har bosqich natijani saqlasak va idempotent bo'lsak, biz to'xtagan joydan davom etamiz.
 
 Replay strategiyasi yo'q tizimda xatolik yuz berganda barcha bosqichlar birinchidan boshlanadi. Telegram qayta o'qiladi, LLM qayta chaqiriladi. Gemini narxi ikki barobar, sekin. Idempotent plus replay tizimda esa beshinchi bosqichdan davom etamiz. message_id bo'yicha eski tasniflash o'qiladi, LLM qayta chaqirilmaydi. Arzon, tezkor, qaytarilmas. Texnik amaliyot: message_id bo'yicha kirish va chiqish juftligi Sheetsga yoziladi. Replay shu ID bo'yicha eski natijani topadi.
 
 Sodda hayotiy misol bilan ayting: Liftga kirdingiz, o'n ikki tugma bosdingiz, oxirgisi yopilmadi. Liftdan tushib yana o'n ikki marta bosish kerakmi? Yo'q — o'n ikkinchi tugmani bossangiz yetarli. Pipeline ham shunday — to'xtagan joydan davom. LLM chaqiruvi narx jihatidan eng qimmat. Agar replay yo'q bo'lsa, har crashda Geminiga ikki marta to'laymiz. Idempotent plus replay — bitta to'lov.
+
+## Slide 11 — Narx · 3 ta optimizatsiya qoidasi
 
 Endi narx haqida gaplashaylik. Bitta promtli botda har so'rov bir xil narx. Pipeline narxni besh-o'n baravar tushiradi, agar uchta sodda qoidaga rioya qilsak.
 
@@ -74,9 +90,13 @@ Ikkinchi qoida — jadvalni xotirada saqlash. Operatorlar jadvali har xabarda qa
 
 Uchinchi qoida — zaxira modelga o'tish. Agar Pro javob bermasa yoki kechiksa, Flashga avtomatik o'tish. Klassifikatsiya doim ishlaydi. n8nda "agar besh sekundda javob yo'q, Flashga o'tish" sharti — mijoz farqini sezmaydi. Bizning vazifa — bot doim ishlasin.
 
+## Slide 12 — Branching · VIP vs oddiy mijoz
+
 Endi branching. Pipeline har doim bir xil yo'l bilan ketmaydi. Klassifikator muhimlik darajasini, urgencyni allaqachon aniqlaydi — biz shu bo'yicha yo'lni ajratamiz. Telegram, LLM Chain Flash bilan toifa va urgency aniqlanadi. Agar urgency high bo'lsa, tez yo'l: birinchi faol operator, darhol bildirishnoma, besh daqiqada javob. Agar low yoki medium bo'lsa, standart yo'l: toifa bo'yicha operator, email, yigirma to'rt soat ichida.
 
 Misol: "Kartam yo'qoldi" — urgency high, Risk Officerga darhol SMS. "Filial soat nechagacha?" — urgency low, standart yo'l. Bu biznes mantig'i. AI o'zi qaror qilmaydi — biz qoida yozamiz, AI bajaradi. n8nda "If" nodeini eslating, sakkizinchi modulda ko'rgandik. Trigger, LLM, If, ikki branch — tanish struktura.
+
+## Slide 13 — Eng tipik xatolar · 4 juftlik
 
 Pipeline qurishda eng tipik xatolar haqida. To'rt afsona va to'rt haqiqat. Birinchi afsona: bitta promtga hammasini sig'dirsam, sodda bo'ladi. Haqiqat: sodda emas, qora quti. Aniq bosqichlar — debug, audit va xarajat uchun zarur.
 
@@ -86,7 +106,7 @@ Uchinchi afsona: idempotency keyinroq qo'shamiz, hozir ishlasa bo'ldi. Haqiqat: 
 
 To'rtinchi afsona: Pro modelni har joyda ishlatamiz — sifat muhim. Haqiqat: o'n baravar qimmat. Ko'p bosqich Flashda ham ishlaydi. Pro — faqat fikrlash kerak bo'lganda.
 
-# Amaliyot — bug-hunt va checklist
+## Slide 14 — Bug-hunt mashqi · log o'qib topamiz
 
 Endi modulning eng interaktiv qismi keldi. Bug-hunt mashqi. Real loglarni o'qib xato topamiz. Ekranda log: vaqt 14:47, message_id B7C9, chat_id, foydalanuvchi Sherzod. Birinchi bosqich Telegram qabul qildi, "Depozit ochmoqchiman" matni. Ikkinchi bosqich LLM tasniflash, ok, depozit toifasi. Uchinchisi Sheets read, ok, bitta operator. To'rtinchisi pick operator, ok, Dilfuza Nazarova. Beshinchisi Sheets append — FAIL, HTTP 500, retry bir, yana FAIL, retry ikki, oxirida ok, qator A-3318 yozildi. Oltinchisi format, ok. Yettinchisi Telegram send, ok, sent_count uch — bu joyda undov belgisi.
 
@@ -98,11 +118,15 @@ Kutilgan javoblar shunday. Birinchi savol: xato beshinchi bosqichda — Sheets a
 
 Real productionda shu xato — eng tipik. Endi siz tahlil qila olasiz.
 
+## Slide 15 — Debug checklist · 6 ta savol
+
 Endi debug checklist. Pipeline buzilganda boshqa savol bermang. Aynan shu olti savolni tartib bilan bering. Birinchi ikki daqiqada javobi topilmasa, undan keyin chuqurroq ketamiz.
 
 Birinchi savol: qaysi bosqich? Avval logni o'qing. Step raqami bilan FAIL qatorini toping. Boshqa bosqichlarda muammo izlamang. Ikkinchi savol: kirish to'g'rimi? Oldingi bosqichning chiqishi shu bosqichga to'g'ri keldimi? Format, ma'lumot tipi, til mosligi. Uchinchi savol: birinchi marta xatomi? Retry tarixi, ikkinchi urinishda o'tdimi? Vaqtinchalik yoki doimiy xato. To'rtinchi savol: idempotent bo'ldimi? Mijozga ortiqcha xat ketdimi? Applicationsda takroriy yozuv bormi? message_id tekshiruvi to'g'rimi? Beshinchi savol: promt o'zgardimi? Yaqinda yangilash bo'ldimi? Schema yangilandimi? Few-shot misollar to'g'rimi? Versiyani solishtirish. Oltinchi savol: replay imkoni bormi? Eski natijalarni yangidan ishlatib bo'ladimi? Yo'q bo'lsa — keyingi pipelineda bu imkonni qo'ying.
 
 Bu olti savol — auditoriya uydan olib ketadigan checklist. Aytib qo'yaman: bu olti savolni telefonga yozib oling yoki rasmga oling. Production buzilsa — birinchi ikki daqiqa shu ro'yxat bilan ishlang. Tartibi muhim: avval qayerda, keyin qaysi bosqich, keyin nima sababdan. Boshqacha ketma-ketlik — vaqt yo'qotish.
+
+## Slide 16 — Production tayyorligi · cando
 
 Endi production tayyorligi. Bu ro'yxatni to'qqizinchi modulda qurgan klassifikator botga, yoki har qanday boshqa botga tatbiq eting. Besh "Ha" bo'lmasa — pilot rejimida qoldiring.
 
@@ -112,7 +136,7 @@ Tayyor emas, pilotda qoling: bitta uzun promt, bosqichlar yo'q; log faqat errord
 
 Bu modulning yakuniy aksent. Bankirlar bu slayd bilan ish boshlovchilar bilan suhbatlashishi mumkin: loyihangiz pilotmi, productionmi? Besh nuqta, aniq ro'yxat. Ko'pchilik bot pilotda turishi normal — production talabi qattiq.
 
-# Yakun
+## Slide 17 — Yakun · 3 xulosa + lug'at recap
 
 Bugungi darsdan uchta asosiy xulosa.
 
@@ -123,6 +147,8 @@ Ikkinchisi — idempotency birinchi kundan. message_id orqali tekshiruv. Mijozga
 Uchinchisi — o'n uchinchi modulda shu checklist bilan keldik. Real bank keyslarini o'qiymiz: qayerda pipeline bor, qayerda log bor, retry idempotentmi, branch biznes qoidasiga bo'ysunadimi, xarajat nazoratdami? O'n to'rtinchi modulda — guruh loyihangiz, shu ro'yxatni qo'llaysiz.
 
 Endi lug'at recap, birga aytamiz. Pipeline — bu nima edi? Birga: "ko'p bosqichli AI ish zanjiri". Idempotent design — bu nima edi? Birga: "qayta ishga tushsa ham bitta natija". Bularni yodda tutib turing — o'n beshinchi modul yakuniy glossary reviewda Pipeline va Idempotent design qaytib chiqadi.
+
+## Slide 18 — Savol-Javob · Q&A
 
 Savol-javob uchun besh daqiqa qoldiraman. Eng ko'p kelishi mumkin bo'lgan savollar: Pipeline qancha bosqichdan iborat bo'lishi kerak? Javob: eng kam, vazifa talab qiladigan miqdor. Klassifikator yetti. RAG bot to'rt-besh. Lekin har bosqich bitta vazifa qilishi kerak. Idempotency bizning 1C tizimida qanday ishlaydi? 1C backend, biz n8n orqali ulansak, message_idni n8n yozadi. 1C tomonida ham unique constraint qo'shish kerak. Bu hammasi qancha vaqt oladi? Birinchi pilot — ikki hafta. Productionga to'rt-olti hafta, agar siz besh "Ha"ni qo'lga kiritsangiz.
 

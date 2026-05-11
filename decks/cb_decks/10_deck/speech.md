@@ -1,20 +1,28 @@
-# Kirish
+# Deck 10 — Sun'iy intellekt agentlari tushunchasi
+
+## Slide 1 — Title · 10-modul
 
 Assalomu alaykum, hurmatli hamkasblar. Bugun ertalab biz 9-modulda klassifikator bot qurdik — Telegram, Gemini va Google Sheets bilan, n8n da 13 ta nodedan iborat. Mijozning xabariga ko'ra toifani aniqlab, mos operatorga yo'naltiradigan bot. Lekin shu bot haligacha bir narsa qila olmaydi: "fikrlash" va "ish bajarish". Agar mijoz "Hisobimda bir million so'm qoldimi?" deb so'rasa — bot bilim bazasidan raqam topa olmaydi, chunki bu raqam jonli ma'lumotda, real bank tizimida. Shu joydan agent kiradi.
 
 Agent — bu LLMning ikki yangi qobiliyati birga jamlangan tizimi. Birinchisi — o'ylab qaror qabul qilish. Ikkinchisi — tashqi asboblardan foydalanish. Keyingi olmish daqiqa davomida biz shu farqni aniq ko'rib chiqamiz, agent qachon kerak va qachon kerak emasligini belgilab olamiz. Va eng muhimi — bo'limingizda qaysi vazifaga agent qo'yish samaraliroq ekanini birga aniqlaymiz. Maqsadim oddiy: bugun zaldan chiqqaningizda har biringiz "bizning bo'limga ana shunaqa agent kerak" deb ayta olishingiz kerak.
 
+## Slide 2 — Yo'l xaritasi · Agenda
+
 Olmish daqiqani biz to'rt qismga bo'lamiz. Birinchi o'n ikki daqiqa — bot bilan agent farqi. Lekin nazariya emas, bitta haqiqiy misol ustida. Ikkinchi qism, o'n olti daqiqa — agentning ichi nima va u qanday ishlaydi. Uchinchi qism, o'n yetti daqiqa — bank ichida ikki real agent misoli, har biringiz o'z bo'limingizdagi vazifa bilan solishtirasiz. To'rtinchi qism, o'n ikki daqiqa — flipchart bilan birga muhokama va savol-javob.
 
-# Bot va agent — haqiqiy farq
+## Slide 3 — Bot vs Agent · bittagina misol
 
 Eng oddiy misol bilan boshlaymiz. Tasavvur qiling, mijoz Telegramda yozyapti: "Hisobimda nechta pul?". Oddiy bot bu savolga matn bilan javob beradi. Agar bilim bazasida bunday ma'lumot bo'lmasa, eng yaxshi holatda foydalanuvchini boshqa joyga yuboradi: "Mobil-bank ilovasiga kiring, balansingizni o'zingiz ko'ring". Mana bu — bot. U faqat matn ishlab chiqaradi.
 
 Agent boshqacha ishlaydi. Agent avval o'ylab ko'radi: "Bu savolga javob berish uchun menga real raqam kerak, men buni qaerdan olaman? Mening qo'limda balance_check degan tool bor — uni ishlataman". So'ng tool ishga tushadi, raqam qaytadi, agent uni mijoz tushunadigan tilda javobga aylantiradi. E'tibor bering: agent matn ishlab chiqarmaydi — agent ish bajaradi. U yerda LLM hozirgina mantiq yuritdi, asbob chaqirdi, natijani sharhladi. Mana shu uchta narsa — fikrlash, asbob ishlatish, natijani matnga aylantirish — birgalikda agentni hosil qiladi. Botda esa faqat bittasi bor: matn ishlab chiqarish.
 
+## Slide 4 — Botdan agentga · 4 bosqichli evolyutsiya
+
 Bot va agent o'rtasidagi farq bir kechada paydo bo'lmagan. Bu to'rt bosqichdan o'tib kelgan evolyutsiya. Birinchi bosqich — eski usul, Static FAQ. Oldindan tayyorlangan ellik savol va ellik javob. Mijozning savoli ro'yxatda yo'q bo'lsa — bot "Tushunmadim" deydi. Ikkinchi bosqich — ertaga ko'rib chiqadigan RAG bot. Bilim bazasidan qidiradi, real javob yozadi. Lekin u faqat o'qiy oladi, hech narsa qila olmaydi. Uchinchi bosqich — bitta tool bilan ta'minlangan bot. "Bugungi dollar kursi qancha?" degan savolga API chaqirib javob beradi. Lekin bu hali bittagina mantiq qadami. To'rtinchi bosqich — chinakam agent. U bir nechta toolni ketma-ket chaqira oladi, har birining natijasiga qarab keyingisini tanlaydi: "Avval mijoz hisobini topay, keyin tarif jadvalini olib, ikkalasini taqqoslab javob berayin". Mana shu — agent.
 
 E'tibor bering: bizning kursimiz aynan shu zinapoyada ketmoqda. Birinchi modulda LLM bilan tanishdik, to'qqizinchi modulda klassifikator qurdik, bugun agentni o'rganamiz, ertaga RAG bot, undan keyin butun bir agent dizayni. Bu zinapoya, har qadamda chuqurroqqa tushib boramiz.
+
+## Slide 5 — Lug'at · Agent + Tool Use
 
 Endi modulning poydevoriga o'tamiz — ikkita atama. Bular bugundan keyin har modulda qaytadi: o'n birinchi modulda RAG bilan birga, o'n ikkinchi modulda pipeline ichida, o'n to'rtinchi modulda guruhli loyihada. Hozir bir marta to'g'ri tushunsak — qolgan kun yengil o'tadi.
 
@@ -22,7 +30,7 @@ Birinchi atama — Agent. Bu bitta dastur. Uning ichida uchta narsa bor: LLM man
 
 Ikkinchi atama — Tool Use, asbobdan foydalanish. Bu agent ichidagi eng muhim qobiliyat. Avvalgi LLM faqat matn yozardi. Tool use bilan u bank tizimiga so'rov yuboradi, valyuta kursini olishi, kalkulyatorda hisoblay olishi, faylga yozishi mumkin. AIning "qo'li" — mana shu. Bankda ikki guruh bor: read tool — faqat o'qiydi, balans, hujjat, kurs; write tool — tizimga ta'sir qiladi, xat, hisob, fayl o'zgartiradi va odatda inson tasdig'i, limit va audit talab qiladi. Birga aytamiz: Agent — fikrlovchi yordamchi. Tool Use — asbobdan foydalanish. Bularni yodda tutib qoling, bugun bir necha marta qaytadi.
 
-# Agent anatomiyasi va Tool Use
+## Slide 6 — Agent anatomiyasi · Miya · Xotira · Asboblar
 
 Agentni "qora quti" deb tushunmang. Uning ichi shaffof, uch bo'lakdan iborat. Birinchisi — Miya. Bu LLM: Gemini, GPT, yoki Claude. Vendor keyin tanlanadi: ma'lumot joylashuvi, audit imkoniyati, ruxsat nazorati, narx va integratsiya shartlariga qarab. Lekin u alohida emas, system prompti ichida belgilangan rolga ega: "Sen — bank operatorining yordamchisisan. Mijoz savoliga javob berish uchun shu asboblardan foydalanasan."
 
@@ -30,31 +38,41 @@ Ikkinchisi — Xotira. Bu ikki turli: qisqa muddat — joriy suhbat, kim bilan g
 
 Uchinchisi — Asboblar ro'yxati. Bu eng yangi qism. Sizning agentingizga qaysi toollar berilgan — shuni qila oladi. balance_check toolingiz bo'lmasa — agent balansni topa olmaydi, hech qancha aqlli bo'lsa ham. Shuning uchun agent dizaynida saksoniz vaqt — toolni to'g'ri tanlash va uning imzosini to'g'ri yozishga ketadi.
 
+## Slide 7 — Tool Use sikli · ReAct 4 bosqich
+
 Endi tool use qanday ishlashini qadam-baqadam ko'ramiz. Bu sikl agent ichida har savol uchun takrorlanadi. Texnik tilda ReAct deyiladi: Reason, Act, Observe — fikrla, harakat qil, kuzat. Birinchi qadam: mijoz savoli keladi. "Mening hisobimda pul bormi?". Ikkinchi qadam: agent o'ylaydi va o'z fikrini yozadi — bu LLMning ichki nutqi. Biz buni logda ko'ramiz: "Foydalanuvchiga balansni javob berish uchun balance_check toolini ishlatishim kerak, account_id parametri kerak, foydalanuvchining IDsi suhbat kontekstida". Uchinchi qadam: tool chaqiriladi. Bu kod yozilgan API funksiyasi — bank tizimiga so'rov yuboradi, javob qaytaradi. To'rtinchi qadam: agent natijani matnga aylantiradi, mijoz tushunadigan tilda.
 
 Sikl mana shu. Savolga ikki-uch marta tool ishlatish kerak bo'lsa, sikl ikki-uch marta takrorlanadi. Real misol: "Mening eng so'nggi besh o'tkazmamni ko'rsat va eng kattasini Telegram orqali yubor" — bu yerda ikkita tool: transactions_list va telegram_send. Agent ularni avtomatik ketma-ket bajaradi. Buni siz buyurtma qilmaysiz — agent o'zi o'ylab topadi.
 
+## Slide 8 — 5 turdagi tool · sizning agentingizga
+
 Bank ichida ko'pchilik agent besh xil tool atrofida quriladi. Birinchisi — API call, tashqi so'rov. Bu eng keng tarqalgan: Markaziy bank kursi, mijoz raqamiga xat, sanksiyalar bazasi — hammasi shu yerda. Ikkinchisi — Database query, baza so'rovi. Bank ichki bazasiga "SELECT" so'rovi. Mijoz balansi, oxirgi o'tkazmalar, kredit jadvali. Eslatib qo'yaman: agentga to'g'ri huquq bering — faqat o'qish, yozmaslik. Uchinchisi — File read, fayl o'qish. PDF shartnomadan kerakli xatboshini topadi. Bu RAG bilan birga ishlaydi. To'rtinchisi — Email yoki Telegram send. Agent o'zi xat yubora oladi: "Mijozga eslatma jo'nat" desangiz — yuboradi. Bu eng xavfli tool, keyinroq xavfsizlik haqida gaplashganda qaytamiz. Beshinchisi — Calculation, hisob-kitob. LLM matematikada zaif, shuning uchun kalkulyator toolini berish kerak. Agent o'zi hisoblamaydi — toolga buyuradi. Endi men sizdan so'rayman: sizning bo'limingizda qaysi uchta tool eng kerak? Bu savolga oxirida qaytamiz.
+
+## Slide 9 — Oddiy LLM vs ReAct agent
 
 Endi oddiy LLM bilan ReAct agent farqini bittagina misol orqali aniq ko'rib chiqaylik. Mijoz so'raydi: "Hisobimda qancha bor?". Oddiy LLM, ya'ni birinchi modulda gaplashgan stajyor — ko'p o'qigan, lekin ish bajara olmaydi va aniq raqamni bilmaydi. Eng yaxshi javob — gallyutsinatsiya: "taxminan ellik ming so'm bo'lsa kerak". Bu — eng katta xato turi, uchinchi modulda gaplashganmiz. ReAct agent boshqacha. Uning sikli aniq: avval Reasoning ("nima qilishim kerak?"), keyin Action (balance_check tool), keyin Observation ("bir million ikki yuz qirq uch ming so'm qaytdi"). Va bu sikl ko'p marta takrorlanishi mumkin: agar mijoz "yana karta limitini ko'rsat" desa — yana Reasoning, yana Action, yana Observation.
 
 Eng muhimi: agent har qadamni asoslab borishi mumkin. Muvofiqlikda bu juda qimmatli — auditor "Nega bunday qaror qildingiz?" desa, logda har qadamni ko'rsatib bering: avval qaysi qoidaga qaradim, keyin qaysi tarixni oldim, keyin xulosa qildim. Bu — bankir tilida tushunarli, audit izlanuvchan.
 
-# Bank ichidagi ikki real misol
+## Slide 10 — Bank misoli #1 · Operator yordamchi
 
 Endi bank ichidagi ikki real misolga o'tamiz. Birinchisi — operator yordamchi agent. Bizning bo'limlardan birida operator har kuni yuzdan ortiq savolga javob beradi va aksariyati shunday: "To'lovim qachon?", "Balansim qancha?", "Tarif qaysi?". Agent bu vazifani yigirma to'rt soat, etti kun bajara oladi. Sikl shunday: mijoz Telegramda yozadi, agent kontekstdan mijoz ID sini oladi avvalgi suhbatdan, customer_lookup toolini chaqiradi — bazadan to'liq ma'lumot keladi, keyin credit_schedule toolini chaqiradi — kelajakdagi to'lov rejasi keladi. Va eng muhimi — agent o'zi taklif qiladi: "Eslatma yuborayinmi?". Agar mijoz "ha" desa — agent eslatma rejalashtiradi va aniq vaqtda jo'natadi. Bizning misolda uchta tool — eng oddiy operator agent.
 
 Endi bir o'ylab ko'ring — bo'limingizda bunday agent qancha vaqt tejashi mumkin? Aytaylik, kuniga yuzta savol, har biriga besh daqiqa — bu sakkiz soat, bitta operatorning to'liq ish kuni. Agentning kuchi shu — operator vaqtini ozod qiladi va kechki kunlarda ham xizmat ko'rsatadi. Lekin diqqat: agentga aniqlikka qiyinlik tug'diradigan savollar — shikoyat, murakkab e'tiroz — operatorga qaytariladi. Bu agent dizaynining muhim qoidasi: bilmagan narsani sun'iy intellektga qildirmang.
 
+## Slide 11 — Bank misoli #2 · Muvofiqlik agent
+
 Ikkinchi misol — muvofiqlik agent. Bu yuqori riskli agent. Muvofiqlikda har qadam izlanadi va auditor tomonidan tekshiriladi. Shuning uchun agent dizayni boshqacha: har tool chaqiruvi logga yoziladi, har qadam asoslanadi, va eng muhimi — agent o'z-o'zi qaror qabul qilmaydi. Misolda to'rtta tool. Birinchisi — qoidalar bazasi: yangi mijoz qaysi tekshiruvlardan o'tishi kerak. Ikkinchisi — sanksiyalar ro'yxati: FATF, OFAC, Markaziy bank ro'yxati. Uchinchisi — bizning ichki tarix: mijoz avval kelganmi. To'rtinchisi — audit log: har qadamni saqlash.
 
 Bu yerda agent xulosa yozadi, lekin oxirgi qaror — muvofiqlik xodimida. Agent shunchaki ish hajmini kamaytiradi: avval bir mijozni o'ttiz daqiqa tekshirgan muvofiqlik xodimi, endi besh daqiqa vaqt sarflaydi — agent tekshirib qo'ygan, faqat tasdiqlash kerak. Auditor "Nega bu mijozga ruxsat berdingiz?" desa — agent logi to'liq tarix beradi: qaysi vaqtda, qaysi ro'yxat tekshirildi, natijasi qanday edi. Bu — production-grade muvofiqlik agent. Bunday agentni qurish o'n bir va o'n ikkinchi modullarda chuqurroq ko'rib chiqiladi, bugun shunchaki ko'z bilan ko'rib qoldik.
+
+## Slide 12 — Multi-agent · qachon HA, qachon YO'Q
 
 Endi muhim savol: multi-agent — moda, lekin qachon kerak, qachon kerak emas? Internet "yuz ta agent birga ishlaydi" ulashlarini to'la. Lekin bankda diqqat — aksariyat hollarda bitta sodda, aniq agent beshta multi-agentdan yaxshiroq. Agent qachon yaxshi ishlaydi? Vazifa aniq bo'lsa — operator yordamchisi, muvofiqlik preview; tool soni kichik bo'lsa, uch-oltita; sikl natijasini tekshirib turish oson bo'lsa; audit log bitta joyda yig'ilsa.
 
 Agent qachon halok bo'ladi? Ko'p bo'limga tarqalgan vazifa: "Kredit ber, sanksiyani tekshir, kassada belgila, xavfsizlikka jo'nat" — bu bitta agent uchun og'ir. Tool o'n beshdan ortiq bo'lsa — agent qaysi toolni qachon ishlatishni unutadi va xato ko'paya boshlaydi. Eng xavfli holat — bitta agentga ikki tomonlama qaror qildirilsa: "Mijoz uchun ham, bank uchun ham eng yaxshi taklifni ber". Bu mantiqsiz — agent o'zining ichki ziddiyatini hal qila olmaydi. Bizning maslahatim: birinchi agentni juda tor doirada qiling — bitta vazifa, uchta tool, bitta bo'lim. Keyinchalik kerak bo'lsa — kengaytiramiz. Bu MVP yondashuv, o'n to'rtinchi modulda chuqurroq.
 
-# Xavflar va xulosalar
+## Slide 13 — Xavf nuqtalari · 3 ta cheklov
 
 Agent kuchli, lekin xavfli vosita. Uchta eng katta xavfni biling. Birinchisi — hallucinated tool call, mavjud bo'lmagan asbobni chaqirish. Agent ko'p marta toolni xayoliga keltirib chaqiradi: "balance_get" deb yozadi, lekin bizda "balance_check" bor. Yoki parametrni xato beradi: account_id o'rniga ism yozadi. Bu bilan tizimda xato keladi. Yechim — schema validatsiyasi: har tool chaqiruvi oldin tekshiriladi, mos kelmasa bekor qilinadi. Buni o'n birinchi modulda function calling bilan o'rganamiz.
 
@@ -62,19 +80,27 @@ Ikkinchisi — cheksiz sikl, infinite loop. Agent o'z natijasini yoqtirmaydi va 
 
 Uchinchisi va eng xavflisi — security boundary, xavfsizlik chegarasi. Agentga email_send tool berdik — u bir xato qildi va ming mijozga noto'g'ri xat yubordi. Yechim: yozish toollariga albatta inson tasdig'i. O'qish toollar avtomatik bo'lishi mumkin, yozish — yo'q. Bu qoida. Muvofiqlikda esa har tool huquqi alohida loglanadi.
 
+## Slide 14 — Mini-recap · 3 darajada AI yordami
+
 Bugungi modul oxirida sizda uch darajadagi AI tasavvuri bo'lishi kerak. Birinchi daraja — chatbot, FAQ ro'yxati. Foydali, lekin cheklangan. Ikkinchi daraja — RAG bot. Hujjatlardan qidiradi, real javob beradi. Lekin u faqat o'qiy oladi. Uchinchi daraja — agent. Agent o'qiy oladi, fikrlay oladi va ish bajara oladi. Sizning bo'limingizdagi vazifa qaysi darajaga to'g'ri keladi — shu narsa qarorni belgilaydi. FAQ kifoyamasmi — chatbot bering. Hujjatlarni qidirish kerakmi — RAG bot. Real harakat kerakmi, xat yuborish, hisobni yangilash, hisobot tayyorlash — agent. Hammasiga agent kerak emas. Aksincha, agent eng qimmat va eng murakkab. Birinchi qadam: bo'limingizda eng oddiy chatbot, keyin RAG, keyin agent. Bu zinapoya.
+
+## Slide 15 — Muhokama · sizning bo'limingizda qanday agent
 
 Endi muhokama qismi — modulning eng amaliy nuqtasi. O'n ikki daqiqa beraman: uch-to'rtta stol, har biri uch savolga javob yozadi. Birinchi savol: sizning bo'limingizda qaysi takrorlanadigan vazifa uchun agent kerak? Eng yaxshi nomzod — kuniga o'ndan ortiq marta takrorlanadigan, oddiy mantiqli, va aniq natijasi bor vazifa. Operator yordamchi, KYC preview, kredit jadvali so'rovi, daily report — bularning hammasi yaxshi nomzodlar. Yomon nomzodlar — kreativ qaror talab qiluvchi, juda kam takrorlanadigan, yoki murakkab istisnoga to'la vazifalar.
 
 Ikkinchi savol — toollar. Stollar uchta tool tanlaydi besh turdan: API call, DB query, file read, email, calculation. Bu juda muhim — agent dizayni shu tanlovdan boshlanadi. Uchinchi savol — xavf. Eng kerakli: agar agent xato qilsa, eng yomoni nima bo'lishi mumkin? Misol: agar agent mijozga noto'g'ri balansni aytsa — kichik xavf, mijoz aniqlaydi. Lekin agar agent noto'g'ri xat yuborsa yoki noto'g'ri hisobga pul yuborsa — katta xavf. Bu javob agent dizaynida nima qadar tasdiqlash kerakligini hal qiladi. Stollardan ikki-uchta yaxshi javobni eshitamiz va flipchartda yozamiz.
 
-# Yakun
+## Slide 16 — Yakun · 3 xulosa + lug'at recap
 
 Bugun o'zingiz bilan olib ketadigan uchta xulosa. Birinchisi — agent va bot bir xil emas. Bu modulning markaziy farqi. Agent ruxsat berilgan toollardan foydalanib bosqich tanlaydi. Tool Use — bu farqning markazi. Ikkinchisi — agent loyihasini boshlaganda tor doirada qiling. Bizning birinchi maslahatim: bitta vazifa, uchta tool, bitta bo'lim. Multi-agent moda, lekin ko'p xato keltirib chiqaradi. Uchinchisi — xavfni avval bilib oling: schema validatsiyasi, qadam cheklovi, va eng muhimi — write toollar uchun inson tasdig'i, audit log. Bularsiz agent pilotga tayyor emas.
 
 Lug'at recapni birga aytamiz. Agent — bu nima edi? Birga: "fikrlovchi yordamchi". Tool Use — bu nima edi? Birga: "asbobdan foydalanish". Yodda tutib turing, ertaga RAG bilan birga qaytadi.
 
+## Slide 17 — Bank qaror artefakti · pilot varaqasi
+
 Oxirgi narsa — agent pilot qaror varaqasi. Har stol bitta agent nomzodini sakkizta maydonga joylaydi: vazifa, owner, toollar, chegara, tasdiq, audit, pilot metrikasi, va qaror. Maqsad — bo'limga qaytib borgan har bir ishtirokchi qo'lida bitta varaq bo'lsin: "agentimiz pilotga tayyor — yo'q". Eng katta gap: agar tool, owner, tasdiq va audit aniq bo'lmasa, bu agent hali pilotga emas. Bu Markaziy Bank governance qoidasi — nazoratsiz vazifa avtonomiya bilan bajarilmaydi.
+
+## Slide 18 — Savol-Javob · Q&A
 
 Savol-javob uchun sakkiz-o'n daqiqa qoldiraman. Eng ko'p uchraydigan savollar shular: bizning bo'limga agent kerakmi? Qaror varaqasiga qarang — agar tool, owner va tasdiq aniq bo'lmasa, hali emas. Aksariyat hollarda RAG yetarli. Agent qancha turadi? Narx modelga, tool chaqiruvlari soniga, token hajmiga, hostingga va inson nazoratiga bog'liq — aniq raqam pilot smetasidan keyin chiqadi. O'zimiz qura olamizmi? O'n bir va o'n to'rtinchi modullarda asboblar bor — pilotni bitta vazifa va uchta tool bilan boshlash mumkin.
 
