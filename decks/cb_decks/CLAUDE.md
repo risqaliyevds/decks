@@ -41,7 +41,7 @@ Day 2 closes with a certificate ceremony (17:15–17:45) — accommodate in deck
 
 ## Terminologiya qoidasi (≥2 ta AI atama / modul)
 
-Auditoriya texnik bo'lmagan bank xodimlari, lekin kurs davomida "LLM", "promt", "API", "RAG", "agent" kabi atamalar muqarrar uchraydi. Tasodifiy uchratib qoldirish yo'q — har modul **kamida 2 ta yangi AI atamasini** maqsadli o'rgatadi. 15 modul × ≥2 atama = ~30+ ta atamalik glossary.
+Auditoriya texnik bo'lmagan bank xodimlari, lekin kurs davomida "LLM", "promt", "system prompt", "RAG", "agent" kabi atamalar muqarrar uchraydi. Tasodifiy uchratib qoldirish yo'q — har modul **kamida 2 ta yangi AI atamasini** maqsadli o'rgatadi. 15 modul × ≥2 atama = ~28+ ta atamalik glossary.
 
 **Maqsad:** kurs oxirida har bir ishtirokchi AI tilini eshitganda yo'qolib qolmasligi kerak. Atama eshitildi → izoh yodda → o'z bo'limiga qo'llay olishi.
 
@@ -55,21 +55,21 @@ Auditoriya texnik bo'lmagan bank xodimlari, lekin kurs davomida "LLM", "promt", 
 
 | # | Modul | Atama 1 | Atama 2 | Atama 3 | Holat |
 |---|---|---|---|---|---|
-| 1 | AI asoslari | **LLM** (Katta Til Modeli) | **Promt** (To'g'ri Buyruq) | **API** (AI'ni avtomat ulash) | ✅ slide 5 dict-card · slide 18 closing pill recap |
+| 1 | AI asoslari | **LLM** (Katta Til Modeli) | **Promt** (To'g'ri Buyruq) | **System Prompt** (Oldindan ko'rsatma) | ✅ slide 9 dict-card · slide 20 closing pill recap · moved from deck 6 on 2026-05-11 (API dropped — non-AI atama) |
 | 2 | Use case discovery | **Use Case** (qo'llash holati) | **Pilot Loyiha** | — | ✅ slide 5 dict-card · closing recap |
 | 3 | Risks / muvofiqlik | **Hallucination** (gallyutsinatsiya) | **Data Masking** | — | ✅ slide 5 dict-card · slide 13 recap |
 | 4 | Process structuring | **Workflow** (jarayon zanjiri) | **Task Decomposition** | — | ✅ slide 5 dict-card · closing recap-term |
 | 5 | Prompt engineering | **Few-shot Prompting** | **Chain-of-Thought** (fikr zanjiri) | — | ✅ slide 5 dict-card · closing recap-term |
-| 6 | Prompt library | **System Prompt** | **Template Prompt** | — | ✅ slide 5 dict-card · closing recap-term |
+| 6 | Prompt library | **Template Prompt** | _(TBD — System Prompt moved to deck 1 on 2026-05-11; pick a new second atama: e.g. Guardrails, Prompt Variables, or Few-shot library)_ | — | ⚠ slide 5 dict-card needs update · closing recap-term needs update |
 | 7 | AI platforms | **Token** | **Context Window** (kontekst oynasi) | **+ Rules · Skills · MCP** (slide 14 · ikkinchi qism); Agent — cross-ref to deck 10 | ✅ slide 5 dict-card (Token + Context) · slide 14 dict-card (Rules + Skills + MCP) + Agent cross-ref-card · slide 18 closing recap (5 atamalar) |
 | 8 | No-code | **Trigger** | **Webhook** | — | ✅ slide 5 dict-card · closing recap-term |
-| 9 | First AI workflow | **Classification** (Tasniflash) | **Schema** (sxema-bo'yicha javob · structured output) | — | ✅ slide 5 dict-card · closing recap-term · paired with [`bots/01_classifier_bot/`](bots/01_classifier_bot/) — **demo bot** (simplest, 7 nodes, classifier + operator match) |
+| 9 | First AI workflow | **Classification** (Tasniflash) | **Schema** (sxema-bo'yicha javob · structured output) | — | ✅ slide 5 dict-card · closing recap-term · paired with [`bots/01_classifier_bot/`](bots/01_classifier_bot/) — **demo bot** (n8n flowgraph · 13 nodes: 8 main flow + /start greeting + 4 LLM sub-nodes · classifier + operator match · built live in class) |
 | 10 | Agents intro | **Agent** | **Tool Use** (asbobdan foydalanish) | — | ✅ slide 5 dict-card · closing recap-term |
 | 11 | Agent design (RAG chatbot) | **RAG** (Retrieval-Augmented Generation) | **Embedding** (vektor ko'rinishi) | — | ✅ slide 5 dict-card · closing recap-term · paired with [`bots/02_rag_chatbot/`](bots/02_rag_chatbot/) — **production-grade** RAG with admin commands |
 | 12 | Complex workflows | **Pipeline** (multi-step LLM) | **Idempotent design** | — | ✅ slide 5 dict-card · closing recap-term · uses the **classifier bot** (deck 9's build) as the pipeline analysis target — students reason about "how do I take MY bot to production?" |
 | 13 | Real cases | **AI Adoption** | **Production-grade** | — | ✅ slide 5 dict-card · closing recap-term |
 | 14 | Solution development | **MVP** (Minimum Mahsulot) | **Iteration** (takrorlash) | — | ✅ slide 5 dict-card · closing recap-term · paired with [`bots/03_complex_agent/`](bots/03_complex_agent/) |
-| 15 | Yakuniy | **Glossary review** — barcha asosiy atamalar (LLM/Promt/API … RAG/Embedding … MVP/Iteration) | Q&A | — | ✅ slide 5 to'liq glossary jadvali — **note:** atamalar list was updated 2026-05-10 (STT/Function Calling removed; Classification/Schema added for new deck 9 classifier bot) |
+| 15 | Yakuniy | **Glossary review** — barcha asosiy atamalar (LLM/Promt/System Prompt … RAG/Embedding … MVP/Iteration) | Q&A | — | ✅ slide 5 to'liq glossary jadvali — **note:** atamalar list updated 2026-05-10 (STT/Function Calling removed; Classification/Schema added for deck 9 classifier) + 2026-05-11 (API replaced with System Prompt in deck 1; total 28 atamas; deck 6 second atama TBD) |
 
 ### Atamalar uniqueness rule (qat'iy)
 
@@ -83,7 +83,7 @@ Har bir atama **faqat bitta deck'da rasmiy ravishda kiritiladi** (`<span class="
 ```powershell
 # Har bir atama uchun: necha deck dict-tag yoki recap-strong qiladi?
 # Natijada har atama uchun [DECK 15 + bitta sub-deck] ko'rinishi kerak.
-$terms = "LLM","Promt","API","Use Case","Pilot Loyiha","Hallucination","Data Masking","Workflow","Task Decomposition","Few-shot","Chain-of-Thought","System Prompt","Template Prompt","Token","Context Window","Trigger","Webhook","Classification","Schema","Agent","Tool Use","RAG","Embedding","Pipeline","Idempotent","AI Adoption","Production-grade","MVP","Iteration"
+$terms = "LLM","Promt","System Prompt","Use Case","Pilot Loyiha","Hallucination","Data Masking","Workflow","Task Decomposition","Few-shot","Chain-of-Thought","Template Prompt","Token","Context Window","Trigger","Webhook","Classification","Schema","Agent","Tool Use","RAG","Embedding","Pipeline","Idempotent","AI Adoption","Production-grade","MVP","Iteration"
 foreach ($t in $terms) {
   $hits = @()
   foreach ($n in 1..15) {

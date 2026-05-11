@@ -15,7 +15,7 @@
 **Brand:** crea7iveai
 **Stack:** Gemini (miya) + RAG (xotira) + n8n (ishchi) — mutlaqo kodsiz
 **Slaydlar soni:** 20 ta · 4 ta faza
-**Atamalar:** LLM, Promt, API (Slayd 8 da kiritiladi, slayd 19 da auditoriya bilan birga qaytariladi + AI qaror kartasi ko'prigi). RAG va Embedding — 9 va 11-modulning atamalari, bu yerda demo botning ishlash printsipi sifatida tilga olinadi xolos.
+**Atamalar:** LLM, Promt, System Prompt (Slayd 8 da kiritiladi, slayd 19 da auditoriya bilan birga qaytariladi + AI qaror kartasi ko'prigi). RAG va Embedding — 9 va 11-modulning atamalari, bu yerda demo botning ishlash printsipi sifatida tilga olinadi xolos.
 
 ## Asosiy g'oya
 
@@ -34,7 +34,7 @@ AI — qandaydir tushunarsiz sehr yoki sizning ishingizni tortib oladigan dushma
 | 5 | AI ko'pincha kontent o'yinchog'i bo'lib qolyapti | WOW hook — video (it) | ~1 daq | 01 |
 | 6 | Keling, kelajakni hozir sinab ko'ramiz | Live demo (QR + bot) | ~5 daq | 01 |
 | 7 | AI = super-aqlli ishchi | Metafora (17 tab vs AI) | ~3 daq | 01 |
-| 8 | Uchta so'z — kursning poydevori | Lug'at (LLM, Promt, API) | ~4 daq | 01 |
+| 8 | Uchta so'z — kursning poydevori | Lug'at (LLM, Promt, System Prompt) | ~4 daq | 01 |
 | 9 | AI ishimni olib qo'yadimi? — Yo'q | Dramatic answer | ~1 daq | 01 |
 | 10 | Miflarga qarshi zarba | Afsona ↔ Haqiqat (4 ta) | ~3 daq | 01 |
 | 11 | AI — bu vosita. Sehr emas. | Can / Cannot chegaralari | ~3 daq | 01 |
@@ -212,7 +212,7 @@ Keyingi 15 modulda bu uchta atama qaytib-qaytib chiqadi. Hozir bir marta tushuns
 3 ta karta:
 1. LLM (Katta Til Modeli) — Inson tilini tushunuvchi "Miya". (Gemini, ChatGPT)
 2. PROMT (To'g'ri Buyruq) — AI'dan narsa so'rash uchun yoziladigan savol.
-3. API (AI'ni avtomat ulash) — Brauzerdan qo'l bilan emas, AI ichki tizim bilan o'zi suhbat quradi: CRM, Telegram bot, sayt.
+3. SYSTEM PROMPT (Oldindan ko'rsatma) — AI'ga "kim sen, nimani gapirma, qaysi tilda" bir marta aytib qo'yiladi. Har savolda avtomat amal qiladi — bu AI'ning shaxsiyati.
 
 **Speaker notes:**
 IT jargonlarini yomon ko'raman, lekin shu uchta so'zni bugun kelishib olishimiz shart. Kurs davomida bularni ko'p eshitasiz.
@@ -418,7 +418,7 @@ Ajoyib. Mana shu aytgan muammolaringizning eng ko'p takrorlanganini olamiz va er
 Siz AI haqida shunchaki eshitgan odam emas, AI bilan ishlaydigan bankirga aylanasiz.
 
 **Vizual elementlar:**
-Markazda katta xulosa matni. Pastda interaktiv lug'at recap: LLM = miya, Promt = buyruq, API = avtomat ulash. Eng pastda — "AI qaror kartasi" ko'prik bloki (3 ta savol): 1) Qaysi takroriy jarayon? 2) Qaysi tasdiqlangan hujjat? 3) Qaysi joyda inson tasdig'i?
+Markazda katta xulosa matni. Pastda interaktiv lug'at recap: LLM = miya, Promt = buyruq, System Prompt = oldindan ko'rsatma. Eng pastda — "AI qaror kartasi" ko'prik bloki (3 ta savol): 1) Qaysi takroriy jarayon? 2) Qaysi tasdiqlangan hujjat? 3) Qaysi joyda inson tasdig'i?
 
 **Speaker notes:**
 Xulosa qilamiz. AI ishingizni olmaydi, u ishingizni tezlashtiradi.

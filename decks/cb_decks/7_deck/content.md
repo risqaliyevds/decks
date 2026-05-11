@@ -183,14 +183,14 @@ Kontekst oynasi — kim qancha sig'diradi?
 4 ta orientir. O'rtacha shartnoma hammasiga sig'adi. Lekin 100 sahifalik regulyator hujjati — boshqa hikoya.
 
 **Vizual elementlar:**
-4 ta vertikal ustun (bar chart). GPT-4o (128k), Claude (200k), Gemini (1M) va o'ng tomonda mitti ustun — o'rtacha shartnoma (5k). Pastida kichik mute izoh: *"Holat: 2026-05. Aniq raqam tarif, API/Web rejimi va regionga qarab o'zgaradi — xarid qarori uchun vendorning rasmiy hujjati va yuridik xulosa talab qilinadi."*
+4 ta vertikal ustun (bar chart). GPT-5.5 (1M), Claude Opus 4.7 (1M), Gemini 3 Pro (1M) — uch frontier ham 1M ga teng. O'ng tomonda mitti ustun — o'rtacha shartnoma (5k). Pastida kichik mute izoh: *"Holat: 2026-05. Frontier modellar kontekst muammosini hal qilgan — savol 'qaysi modelni tanlash' emas, 'qaysi vazifaga qaysi mos'. Mini/Flash variantlari hali 256k–400k."*
 
 **Speaker notes:**
 Endi Context Window (xotira) ni solishtiramiz.
 (ekranga ishora qiling)
 Eng o'ngdagi mitti ustunga qarang. Bu sizning 4-5 sahifalik odatiy bank shartnomangiz. Ko'rib turibsiz, uni har qanday platforma bemalol "yutib yuboradi".
 Lekin... agar siz yil yakunlari bo'yicha yirik hisobotni yoki AML bo'yicha regulyatorning katta talabnomasini yuklamoqchi bo'lsangiz-chi? ChatGPT (128k) to'lib qolishi mumkin. Claude (200k) buni eplaydi.
-Gemini 2.5 Pro esa... 1 million token! Bu degani 750 sahifalik materialni bir marta tashlab, "shu yerdan menga kerakli qoidani topib ber" deyishingiz mumkin. Aynan shuning uchun kursimiz amaliyotini Gemini'da quramiz.
+Gemini 3 Pro — 1 million token kontekst (Opus 4.7 va GPT-5.5 ham endi 1M ga teng). Bu degani 750 sahifalik materialni bir marta tashlab, "shu yerdan menga kerakli qoidani topib ber" deyishingiz mumkin. Demo amaliyotini Gemini'da quramiz — Workspace integratsiyasi va multimodal qulay.
 
 ---
 

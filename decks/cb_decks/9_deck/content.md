@@ -8,9 +8,9 @@
 **Stack:** Telegram + Gemini + Google Sheets + n8n
 **Slaydlar soni:** 19 ta · 4 ta faza
 **Atamalar (≥2/modul talabi):** **Classification (Tasniflash)**, **Schema (Sxema)** — slayd 5 da kiritiladi, slayd 18 da recap
-**Paired bot:** [`bots/01_classifier_bot/`](../bots/01_classifier_bot/) — BankYordamchi (7 node, no code)
+**Paired bot:** [`bots/01_classifier_bot/`](../bots/01_classifier_bot/) — BankYordamchi (n8n workflow · 13 nodes: 8 asosiy + /start greeting + 4 LLM sub-nodes · no code)
 
-> Asosiy g'oya: kechagi RAG bot kuchli edi, lekin murakkab. Bugun har bir ishtirokchi 7 ta node bilan o'z birinchi botini quradi — mijoz xatlarini avtomatik tasniflaydi va to'g'ri operatorga uzatadi.
+> Asosiy g'oya: kechagi RAG bot kuchli edi, lekin murakkab. Bugun har bir ishtirokchi o'z birinchi botini quradi (8 ta asosiy node + LLM sozlamalar) — mijoz xatlarini avtomatik tasniflaydi va to'g'ri operatorga uzatadi.
 
 ---
 
@@ -43,12 +43,12 @@ Mavzuning **yo'l xaritasi**.
    Bot nima qiladi: erkin javob emas — sof JSON. Tasniflash va Schema atamalari bankir tilida.
    *(slaydlar 3–6)*
 
-2. **02 — 7 ta node** · ~18 daq
-   Telegram → Gemini → Sheets. Har node nima qiladi — alohida ochib ko'ramiz.
+2. **02 — Arxitektura** · ~18 daq
+   Telegram + Gemini + Sheets · n8n flowgraph (13 node) · 4 bosqichni alohida ochamiz.
    *(slaydlar 7–13)*
 
 3. **03 — Live build** · ~20 daq
-   Har stol n8n'da o'z BankYordamchi'ni yig'adi — 15–30 daqiqa, kod yozmasdan.
+   Har stol n8n'da o'z BankYordamchi'ni yig'adi — ~30–45 daqiqa, kod yozmasdan, darsda birga.
    *(slaydlar 14–15)*
 
 4. **04 — Yakun** · ~10 daq
@@ -56,7 +56,7 @@ Mavzuning **yo'l xaritasi**.
    *(slaydlar 16–19)*
 
 **Speaker notes:**
-60 daqiqani 4 fazaga bo'lib ko'rsating. "Tushuncha"ni qisqa, "7 ta node"ni eng katta texnik blok, "Live build"ni amaliy yurak qilib aniqlang.
+60 daqiqani 4 fazaga bo'lib ko'rsating. "Tushuncha"ni qisqa, "Arxitektura"ni eng katta texnik blok, "Live build"ni amaliy yurak qilib aniqlang.
 
 ---
 
@@ -69,16 +69,16 @@ Kechagi RAG bot — kuchli, lekin **murakkab**.
 
 **Vizual elementlar:**
 - Chap tomonda QR-kod katakchasi (1-modul demosi · t.me/bankragbot · hali tirik).
-- O'ng tomonda — chat bubble: kechagi RAG (77 node, 2 soat) → bugungi classifier (7 node, 15–30 daq).
+- O'ng tomonda — chat bubble: kechagi RAG (77 node, 2 soat) → bugungi classifier (n8n workflow · 13 node · darsda birga quramiz).
 
 **Demo savol (italik):**
 > "Avtokredit foizi qancha?"
 
 **Tagline:**
-→ Kechagi RAG bot — qancha kuchli bo'lsa, shuncha murakkab. Bugun siz oddiyroq, ammo amaliy botni quryapsiz: 15–30 daqiqada.
+→ Kechagi RAG bot — qancha kuchli bo'lsa, shuncha murakkab. Bugun siz oddiyroq, ammo amaliy botni noldan quryapsiz — jonli darsda, birgalikda.
 
 **Speaker notes:**
-Auditoriyaga 1-modul demosini eslating. Bot bank PDFiga qarab javob bergan edi — lekin u 77 node, vector store, 2 soatlik qurish edi. Ko'pchiligimiz bunday bilan boshlay olmaymiz. Bugun **birinchi qadam** — 7 node, kod yo'q, 15 daqiqada ishlaydi. Mijoz xatlarini avtomatik tasniflash va to'g'ri operatorga uzatish — bank uchun konkret ish.
+Auditoriyaga 1-modul demosini eslating. Bot bank PDFiga qarab javob bergan edi — lekin u 77 node, vector store, 2 soatlik qurish edi. Ko'pchiligimiz bunday bilan boshlay olmaymiz. Bugun **birinchi qadam** — n8n workflow (8 ta asosiy node + LLM sozlamalar), kod yo'q, jonli darsda birga quramiz. Mijoz xatlarini avtomatik tasniflash va to'g'ri operatorga uzatish — bank uchun konkret ish.
 
 ---
 
@@ -149,23 +149,29 @@ Mijoz qanday yozsa — bot bir xil 4 ta maydonni to'ldiradi. Erkin matn yo'q · 
 
 ---
 
-## Slide 7 — Classifier arxitekturasi · 7 node
+## Slide 7 — Classifier arxitekturasi · n8n flowgraph (13 nodes)
+
+**Chip:** n8n workflow · jonli darsda quramiz
 
 **Sarlavha:**
-BankYordamchi — **7 ta node**, bitta yo'nalish.
+BankYordamchi — **to'liq arxitektura**.
 
-**Lead:**
-Telegram → AI tasniflaydi → Sheets'dan operator topadi → ariza saqlanadi → mijozga javob. Markazda Gemini turadi; har node n8n'da 1–2 daqiqada sozlanadi, murakkab dasturlash yo'q (faqat bitta tayyor skript copy-paste).
+**Lead (bottom note):**
+8 ta asosiy node + 1 ta `/start` javob + 4 ta LLM sozlama = **13 ta node**. Bugun jonli darsda noldan yig'amiz.
 
-**Flow (4 ta blokda 7 node):**
+**Flowgraph (3 ta qatlam):**
 
-1. 💬 **1 · Telegram** — mijoz xatini qabul qiladi
-2. → 🧠 **2 · Gemini** — xatni tasniflaydi · JSON chiqaradi (markazda · brain)
-3. → 📋 **3–4 · Operator** — Sheets'dan filter · birinchisini oladi
-4. → 📤 **5–7 · Saqla + javob** — ariza yoziladi · operator nomi bilan javob mijozga
+- **Asosiy oqim (8 node, gorizontal):**
+  Telegram Trigger → If (`/start`?) → LLM: Classify → Sheets: Read Operators → Aggregate → LLM: Dispatch+Reply → Sheets: Save Application → Telegram: Send Reply.
+- **Branch (yuqorida, 1 node):**
+  Telegram: Greeting (`/start` true branch — yordam matnini yuboradi).
+- **LLM sozlamalar (sub-node, 4 ta):**
+  LLM Classify ostida — Gemini Classifier + Output Parser Classify. LLM Dispatch+Reply ostida — Gemini Dispatcher + Output Parser Dispatch.
+
+**Vizual ranglar:** Telegram — ko'k · If — sariq · LLM — kulrang · Sheets — yashil · Aggregate — qizil. Sub-modellar: oq G dumaloq (Gemini) · binafsha ✓ dumaloq (Output Parser).
 
 **Speaker notes:**
-Bu slayd butun botning xaritasi. Keyingi 4 slaydda har blokni alohida ochamiz. Asosiy fikr: **bitta yo'nalish, hech qanday shartli o'tish yo'q**. Mijoz xat yozadi → 7 node ketma-ket ishlaydi → mijozga javob qaytadi. Bu — eng oddiy AI workflow shakli, "linear pipeline".
+Bu slayd butun botning xaritasi. Keyingi 4 slaydda har bosqichni alohida ochamiz. Asosiy fikr: **asosiy oqim chiziqli, lekin /start uchun kichik shartli ayri bor**. Mijoz xat yozadi → If tekshiradi → /start bo'lsa Greeting javob qaytaradi, aks holda LLM Classify boshlanadi → asosiy oqim oxirigacha boradi. Bu — eng oddiy AI workflow shakli, "linear pipeline + welcome branch".
 
 ---
 
@@ -225,51 +231,50 @@ Bu — botning yuragi. **Basic LLM Chain** — n8n'ning oddiy LLM node'i. Unga u
 
 ---
 
-## Slide 10 — Bosqich 3 · Operator topish · Sheets'dan o'qish
+## Slide 10 — Bosqich 3 · Operatorni topish va javob qoralash
 
-**Chip:** Bosqich 3 / 4 · Operatorni topish
+**Chip:** Bosqich 3 / 4 · Operatorni topish va javob qoralash
 
 **Sarlavha:**
-Toifaga mos **operatorni** Sheets'dan olamiz.
+Toifaga mos **operatorni** tanlaydi va javob yozadi.
 
 **Lead:**
-Gemini "kredit" deb ajratdi — endi Operators jadvalidan kredit toifasidagi faol operatorni topish kerak. Filter ikki shart bilan ishlaydi: toifa (category) + active=TRUE.
+Gemini "kredit" deb ajratdi — endi 3 ta node ketma-ket. Sheets'dan operatorlar ro'yxatini olamiz, Aggregate bitta ro'yxatga to'playdi, ikkinchi Gemini (Dispatcher) operatorni tanlaydi VA mijozga matnli javobni bir vaqtning o'zida yozadi.
 
-**Flow (3 step):**
+**Flow (3 node):**
 
-1. 📋 **Read Operators** — Sheets node · Operators jadvalini o'qiydi
-2. → 🔍 **Filter** — `category={{$json.category}} AND active=TRUE` (markazda · brain)
-3. → 👤 **Code (Pick Operator)** — Code node · tayyor 8 qatorli skript copy-paste · birinchi qatorni oladi · bo'sh bo'lsa "Tayinlanmagan"
+1. 📋 **Sheets: Read Operators** — filtr: `category={{$json.category}} AND active=TRUE` · mos satrlarni qaytaradi
+2. → ⌬ **Aggregate** — Sheets'dan kelgan satrlarni **bitta ro'yxatga** birlashtiradi · LLM uchun tanlov varianti tayyor
+3. → ⚙ **LLM: Dispatch+Reply** *(brain)* — ikkinchi Gemini chaqiruvi (+ Output Parser) · operatorni tanlaydi VA mijozga javob matnini bir vaqtning o'zida yozadi
 
 **Tagline:**
 → Operators jadvalini siz to'ldirasiz — bo'limga yangi xodim qo'shilsa satr qo'shasiz, ketsa active=FALSE qilasiz. Bot sizning sozlamangizni quvib boradi.
 
 **Speaker notes:**
-Bu — botning eng "amaliy" qismi. **Operators jadvali — siz boshqaradigan ma'lumot**. Hech qanday kod, hech qanday cron, hech qanday admin paneli kerak emas: Google Sheets ochilgan, satrni tahrirlaysiz, bot keyingi xatdayoq yangi qatorni ishlatadi. Code node'da fallback: agar sheet bo'sh bo'lsa yoki active=FALSE bo'lsa, "Tayinlanmagan" yoziladi va admin keyin qo'lda biriktiradi.
+Bu — botning eng "amaliy" qismi. **Operators jadvali — siz boshqaradigan ma'lumot**. Hech qanday kod, hech qanday cron, hech qanday admin paneli kerak emas: Google Sheets ochilgan, satrni tahrirlaysiz, bot keyingi xatdayoq yangi qatorni ishlatadi. Ikkinchi LLM (Dispatcher) bitta chaqiruvda ikki ish qiladi: **operatorni mos qoidaga ko'ra tanlaydi** (toifa + active=TRUE) **va mijozga yumshoq, bankir tilidagi javobni yozadi**. Fallback: agar ro'yxat bo'sh bo'lsa, LLM "Tayinlanmagan" deb belgilaydi va admin keyin qo'lda biriktiradi.
 
 ---
 
 ## Slide 11 — Bosqich 4 · Saqlash + javob yuborish
 
-**Chip:** Bosqich 4 / 4 · Saqlash + javob
+**Chip:** Bosqich 4 / 4 · Saqlash + javob jo'natish
 
 **Sarlavha:**
 Ariza **saqlanadi**, mijozga javob qaytadi.
 
 **Lead:**
-Operator topildi — endi 3 ta yakuniy node. Applications jadvaliga to'liq satr qo'shamiz, javob matnini tuzamiz va Telegram orqali mijozga jo'natamiz.
+Dispatcher operatorni tanlab javob matnini ham yozib qo'ydi — endi 2 ta yakuniy node. Applications jadvaliga to'liq satrni qo'shamiz va Telegram orqali mijozga LLM tayyorlagan javobni jo'natamiz.
 
-**Flow (3 step):**
+**Flow (2 node):**
 
-1. 📥 **Append Application** — Sheets'ga to'liq satr: vaqt, mijoz, toifa, mavzu, operator
-2. → ✍️ **Format Reply** — Edit Fields (sobiq Set) node · Uzbek matn shabloni: "Salom! Operatoringiz: ..."
-3. → 📤 **Telegram Send** — mijozga javob jo'natiladi · operator nomi va kontakti bilan (markazda · brain)
+1. 💾 **Sheets: Save Application** — Applications jadvaliga to'liq satr: vaqt, mijoz, toifa, mavzu, operator, tayyor javob matni
+2. → 📤 **Telegram: Send Reply** *(brain)* — LLM Dispatcher chiqargan javob matnini `chat_id`ga jo'natadi · operator nomi va kontakti bilan
 
 **Tagline:**
-→ Sheets ustun nomlari JSON kalitlariga to'liq mos · autoMapInputData avtomatik joylaydi · Code node yozish shart emas.
+→ Sheets ustun nomlari JSON kalitlariga to'liq mos · autoMapInputData avtomatik joylaydi · "Format Reply" alohida node kerak emas — LLM Dispatcher o'zi tuzgan.
 
 **Speaker notes:**
-Yakuniy 3 node — eng oddiy. **Append Application** Sheets'ning ustun nomlarini JSON kalitlariga avtomatik moslashtiradi — qo'lda bog'lanish yo'q. **Format Reply** — oddiy matn shabloni: `"Salom, {{user_name}}! Sizning operator: {{operator_name}}, kontakt: {{operator_contact}}. 24 soat ichida bog'lanamiz."`. **Telegram Send** — chatId Trigger'dan olinadi, text — Format Reply'dan. Ish tugadi.
+Yakuniy 2 node — eng oddiy. **Sheets Save Application** Sheets'ning ustun nomlarini JSON kalitlariga avtomatik moslashtiradi — qo'lda bog'lanish yo'q. **Telegram Send Reply** — chatId Trigger'dan olinadi, text — LLM Dispatcher chiqargan `reply_text` maydonidan. Ikkita Gemini chaqiruvi → ikki ishni bajardi (tasniflash + javob yozish) → Sheets'da to'liq audit izi qoldi → mijozga shaxsiy javob bordi. Ish tugadi.
 
 ---
 
@@ -333,10 +338,10 @@ Mijoz Telegramga xat yozadi. Bot to'rt qadamda ishlaydi — AI tasniflaydi · op
 - **Schema** = JSON shakli · category, subject, details, urgency
 
 **Production line:**
-Bu — birinchi ish tizimingiz. 7 ta node, kod yo'q, 15–30 daqiqada qurasiz. Stol mashqi: `../bots/01_classifier_bot`.
+Bu — birinchi ish tizimingiz. 8 ta asosiy node + LLM sozlamalar · kod yo'q · darsda birga quramiz. Stol mashqi: `../bots/01_classifier_bot`.
 
 **Speaker notes:**
-Slayd 7 node arxitekturasini "bankir tilida" yana bir bor takrorlaydi. Endi auditoriya texnik tafsilotlardan emas, **mijoz tajribasidan** qaraydi. Yo'qolgan karta misolida "high" urgency'ning mantiqini ko'rsating: shoshilinch shikoyat → operator ro'yxatining boshida ko'radi. Atama tag'lar — ko'rinib turgan ko'prik (5-slayd lug'ati shu yerda amalda).
+Slayd arxitekturani "bankir tilida" yana bir bor takrorlaydi. Endi auditoriya texnik tafsilotlardan emas, **mijoz tajribasidan** qaraydi. Yo'qolgan karta misolida "high" urgency'ning mantiqini ko'rsating: shoshilinch shikoyat → operator ro'yxatining boshida ko'radi. Atama tag'lar — ko'rinib turgan ko'prik (5-slayd lug'ati shu yerda amalda).
 
 ---
 
@@ -371,22 +376,22 @@ Bu — bot xaritasini to'g'ri belgilash uchun slayd. **Classifier — triage vos
 
 ## Slide 15 — Live build · stol mashqi
 
-**Chip:** Live build · Stollar bo'yicha · 15–30 daq
+**Chip:** Live build · Stollar bo'yicha · ~30–45 daq
 
 **Sarlavha:**
 Endi navbat **sizga** — har stol o'z BankYordamchi'sini yig'adi.
 
 **3 ta savol (s-brain pattern):**
 
-- **01** — n8n'da **7 ta node** ulang: Telegram trigger → LLM Chain → Sheets read → **Code** (Pick Operator) → Sheets append → **Edit Fields** → Telegram send.
+- **01** — n8n'da **workflow'ni quring**: Telegram Trigger → **If** (`/start`?) → **LLM Classify** (Gemini + Parser) → Sheets Read Operators → **Aggregate** → **LLM Dispatch+Reply** (Gemini + Parser) → Sheets Save Application → Telegram Send Reply. Plus: `/start` → Telegram Greeting branch.
 - **02** — Operators sheet'iga **5 ta operatorni** kiriting — har toifaga bittadan (kredit, karta, depozit, shikoyat, info).
 - **03** — Telegram'dan **3 ta xat** yuboring (kredit · karta yo'qoldi · omonat). Sheets'ga to'g'ri toifa va to'g'ri operator yozilishini tekshiring.
 
 **Tagline:**
-→ Instructor shablonidan boshlaymiz · har stolga tayyor Sheets template · 15 daq qurish · 10 daq test · 5 daq stollararo hisobot.
+→ Instructor shablonidan boshlaymiz · har stolga tayyor Sheets template · 30 daq qurish · 10 daq test · 5 daq stollararo hisobot.
 
 **Speaker notes:**
-Modulning amaliy yuragi. 30 daqiqa, har stolda 4–5 kishi. Vazifa: bot 01 shabloni klonlangan n8n'da 7 node'ni ulash, Operators sheet'ini to'ldirish, 3 ta test xat yuborish. Yordamchilar (1–2 nafar) stol bo'yicha yuradi. Hisobot bosqichida har stol qisqacha aytadi: qaysi xat eng yaxshi tasniflandi, qaysi xat — chalkashlik kelirdi.
+Modulning amaliy yuragi. ~45 daqiqa, har stolda 4–5 kishi. Vazifa: bot 01 shabloni klonlangan n8n'da workflow'ni (8 ta asosiy node + greeting branch + LLM sub-nodes) ulash, Operators sheet'ini to'ldirish, 3 ta test xat yuborish. Yordamchilar (1–2 nafar) stol bo'yicha yuradi. Hisobot bosqichida har stol qisqacha aytadi: qaysi xat eng yaxshi tasniflandi, qaysi xat — chalkashlik kelirdi.
 
 ---
 
@@ -404,7 +409,7 @@ Modulning amaliy yuragi. 30 daqiqa, har stolda 4–5 kishi. Vazifa: bot 01 shabl
   ✓ **Tuzatish:** 5 ta toifa nomini tek shaklda yozing — kichik harf, lotin: kredit/karta/depozit/shikoyat/info. Sheets ham xuddi shu format.
 
 - ✗ **Xato:** Toifaga mos operator yo'q — Operators sheet bo'sh yoki active=FALSE
-  ✓ **Tuzatish:** Code node'da fallback: bo'sh bo'lsa "Tayinlanmagan" yoziladi. Har toifaga kamida 1 ta faol operator. Ariza baribir saqlanadi — admin qo'lda biriktiradi.
+  ✓ **Tuzatish:** LLM Dispatcher prompt'ida fallback qoidasi: ro'yxat bo'sh bo'lsa "Tayinlanmagan" yoziladi. Har toifaga kamida 1 ta faol operator. Ariza baribir saqlanadi — admin qo'lda biriktiradi.
 
 - ✗ **Xato:** Sheets ustun nomlari JSON kalitlariga mos kelmaydi · qatorlar bo'sh tushadi
   ✓ **Tuzatish:** Ustun nomlari aynan: category, subject, details, urgency, operator_name... · autoMapInputData rejimi avtomatik joylaydi.
@@ -421,12 +426,12 @@ Bugun classifier —
 keyin **agent va RAG**.
 
 **Lead:**
-Bugungi BankYordamchi — siz qurgan birinchi to'liq SI ish tizimi. 7 ta node · sof JSON · operator triage. Tez ishlaydi va tez kengayadi.
+Bugungi BankYordamchi — siz qurgan birinchi to'liq SI ish tizimi. n8n workflow · sof JSON · operator triage. Tez ishlaydi va tez kengayadi.
 
 **3 ta recap-mini kartochka:**
 
 - 🟢 **Bugun · 9-modul · BankYordamchi classifier**
-  7 node · Telegram + Gemini + Sheets · 5 toifaga ajratadi · operator topadi · ariza saqlaydi · javob qaytaradi.
+  n8n workflow · Telegram + Gemini + Sheets · 5 toifaga ajratadi · operator topadi · ariza saqlaydi · javob qaytaradi.
 
 - 🔵 **Bo'lim uchun · Triage avtomatlashtiriladi**
   Mijoz xatlarining katta qismi takrorlanadi — bot ularni avtomatik toifaga ajratadi va to'g'ri operatorga uzatadi. Inson faqat murakkab keyslar bilan ishlaydi.
@@ -447,7 +452,7 @@ Bugungi mashg'ulotdan **3 ta asosiy** xulosa.
 **3 ta xulosa (close-row, blue accent border-left):**
 
 - 💡 **Classification + Schema = birinchi ish tizimingiz.** Mijoz erkin yozadi · AI sof JSON chiqaradi · tizim avtomatik triage qiladi.
-- 💡 **7 ta node, murakkab dasturlash yo'q.** Telegram + Gemini + Sheets · bitta tayyor skript copy-paste · 15–30 daqiqada quriladi · har bo'lim o'z toifa va operator ro'yxatini kiritadi.
+- 💡 **8 ta asosiy node + LLM sozlamalar, murakkab dasturlash yo'q.** Telegram + Gemini + Sheets · bitta tayyor JSON shabloni · darsda birga quriladi · har bo'lim o'z toifa va operator ro'yxatini kiritadi.
 - 💡 **Mashg'ulot yakuni — pilot qaror varaqasi.** Har stol topshiradi: bo'lim, toifalar, 10 ta test xat natijasi, asosiy xavflar va qaror — pilotga ruxsat / qayta ishlash / rad etish.
 
 **Classifier pilot qaror varaqasi (5 mezon, har stol):**
@@ -521,7 +526,7 @@ murod@mohir.dev
 |---|---|---|
 | Title + Agenda | 1–2 | ~3 daq |
 | 01 · Tushuncha (Hook → vs JSON → Lug'at → Schema misol) | 3–6 | ~12 daq |
-| 02 · 7 ta node (Arxitektura → 4 bosqich → Sheets → user journey) | 7–13 | ~18 daq |
+| 02 · Arxitektura (flowgraph → 4 bosqich → Sheets → user journey) | 7–13 | ~18 daq |
 | 03 · Live build (sifat tekshiruvi → stol mashqi) | 14–15 | ~20 daq |
 | 04 · Yakun (xato → recap → closing → Q&A) | 16–19 | ~10 daq |
 | **Jami** | **19** | **~60 daq** |
@@ -530,6 +535,8 @@ murod@mohir.dev
 
 ## Restructure tarixi
 
-**v2 (2026-05-10):** RAG bot complexity reset. Module 9 was "Build the BankRAGBoti" (77 nodes) — replaced with classifier bot (BankYordamchi, 7 nodes). RAG content relocates to deck 11. Atamalar swap: RAG/Embedding → Classification/Schema. Slides 4–17 rewritten; slides 1, 3, 19 keep shells (slide 3 reframed: "yesterday RAG, today classifier"). Paired bot path: `bots/01_classifier_bot/` (was `bots/01_rag_basics/`).
+**v2 (2026-05-10):** RAG bot complexity reset. Module 9 was "Build the BankRAGBoti" (77 nodes) — replaced with classifier bot (BankYordamchi, 13 nodes: 8 main flow + /start greeting + 4 LLM sub-nodes; originally drafted as 7 nodes, corrected after auditing real n8n workflow `LaEmx5Gwi8A6oxVb`). RAG content relocates to deck 11. Atamalar swap: RAG/Embedding → Classification/Schema. Slides 4–17 rewritten; slides 1, 3, 19 keep shells (slide 3 reframed: "yesterday RAG, today classifier"). Paired bot path: `bots/01_classifier_bot/` (was `bots/01_rag_basics/`).
+
+**v2.1 (2026-05-11):** Architecture audited against real n8n workflow `LaEmx5Gwi8A6oxVb`. Earlier "7 node" claim was wrong — actual workflow has 13 nodes: Telegram Trigger → If → LLM Classify → Sheets Read Operators → Aggregate → LLM Dispatch+Reply → Sheets Save → Telegram Send, plus `/start` → Telegram Greeting branch, plus 4 LLM sub-nodes (Gemini Classifier + Output Parser × 2 LLM steps). Bosqich 3 reflow: was "Read + Code (Pick Operator)" → now "Read + Aggregate + LLM Dispatch+Reply" (2 LLM calls, no Code node). Bosqich 4 simplified: was "Append + Edit Fields (Format Reply) + Telegram Send" → now "Sheets Save + Telegram Send" (LLM Dispatcher writes the reply text inline). Live-build timing bumped: 15–30 daq → ~30–45 daq.
 
 **v1 (2026-05-08):** initial RAG-focused version (now archived in git history).

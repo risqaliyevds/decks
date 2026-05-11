@@ -190,7 +190,7 @@ JSON markerlardan SO'NG hech narsa yozma. JSON dan OLDIN — mijozga javob.
 - Per-turn output: agent reply + JSON block ≈ 200–500 tokens
 - 1 ariza (10 turns avg) ≈ 50–80K tokens total
 
-At Gemini 2.5 Flash pricing (~$0.075 / 1M input, ~$0.30 / 1M output) → ~$0.01–0.02 per ariza. Negligible.
+At Gemini 3 Flash pricing (~$0.075 / 1M input, ~$0.30 / 1M output) → ~$0.01–0.02 per ariza. Negligible.
 
 ## Why inline JSON instead of structured output / tool calling?
 

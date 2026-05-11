@@ -38,7 +38,7 @@
 
 ## Asosiy g'oya
 
-9-modulda biz klassifikator botni o'z qo'limiz bilan qurdik (Telegram + Gemini + Sheets, 7 ta node). Endi 12-modulda — uni **production darajasiga ko'tarish** uchun nima kerakligini ko'rib chiqamiz. Bitta promt bilan emas, **7 ta aniq bosqich** bilan. Har bosqichda nimani kutamiz, nima sindi — log orqali ko'ramiz, qayta ishga tushirsak (`message_id` orqali) **mijozga 2-marta xat ketmaydi**.
+9-modulda biz klassifikator botni o'z qo'limiz bilan qurdik (Telegram + Gemini + Sheets, n8n workflow — 13 ta node: 8 asosiy + /start greeting + LLM sozlamalar). Endi 12-modulda — uni **production darajasiga ko'tarish** uchun nima kerakligini ko'rib chiqamiz. Bitta promt bilan emas, **7 ta aniq bosqich** bilan. Har bosqichda nimani kutamiz, nima sindi — log orqali ko'ramiz, qayta ishga tushirsak (`message_id` orqali) **mijozga 2-marta xat ketmaydi**.
 
 Bu modul auditoriyaga 2 ta savolga aniq javob beradi:
 

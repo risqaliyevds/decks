@@ -11,7 +11,7 @@
 **Slaydlar soni:** 18 ta · 4 ta faza
 **Atamalar (≥2/modul talabi):** **RAG**, **Embedding** — slide 5 da kiritiladi, slide 17 da recap
 
-> Asosiy g'oya (showcase): "9-modulda siz oddiy klassifikator (7 node) qurdingiz. Bu — uning chuqur, manba bilan ishlaydigan versiyasi (77 node). Bugun siz qurmaysiz — ichini ochib ko'rsatamiz, RAG'ning architectural daraja tushuntiriladi. Pilot canvas to'ldirib chiqasiz."
+> Asosiy g'oya (showcase): "9-modulda siz oddiy klassifikator (n8n workflow · 13 node) qurdingiz. Bu — uning chuqur, manba bilan ishlaydigan versiyasi (77 node, ~6x katta). Bugun siz qurmaysiz — ichini ochib ko'rsatamiz, RAG'ning architectural daraja tushuntiriladi. Pilot canvas to'ldirib chiqasiz."
 
 ---
 
@@ -22,7 +22,7 @@
 **Tagline:** RAG chatbot · ichki PDF'dan javob, manba ko'rsatib. Showcase modul.
 
 **Speaker notes:**
-Tushlikdan keyingi sessiya. Ayting: "Bugungi modul — showcase + dizayn. Siz qurmaysiz, lekin **architectural daraja**da tushunasiz. 9-modulda 7 nodeli klassifikator qurdingiz; bu — uning **77 nodeli kattaligi**. Botning ichini ochib ko'rsataman, lug'atni mustahkamlaymiz, va siz pilot canvas bilan chiqasiz."
+Tushlikdan keyingi sessiya. Ayting: "Bugungi modul — showcase + dizayn. Siz qurmaysiz, lekin **architectural daraja**da tushunasiz. 9-modulda 13 nodeli klassifikator (n8n workflow) qurdingiz; bu — uning **77 nodeli kattaligi**, ~6x kattaroq. Botning ichini ochib ko'rsataman, lug'atni mustahkamlaymiz, va siz pilot canvas bilan chiqasiz."
 
 ---
 
@@ -50,7 +50,7 @@ Tushlikdan keyingi sessiya. Ayting: "Bugungi modul — showcase + dizayn. Siz qu
 - (ai) "Ichki PDF'dan qidirilmoqda — vector_store_search..."
 - (ai) "Tarif №3, 4-band: **yillik 18%**. Manba: **kredit_siyosati.pdf**. Yakuniy qaror — bankir hamkasbim bilan kelishilgan holda bo'ladi."
 
-**Lead:** Showcase modul. Bugun siz qurmaysiz — ichini ko'rasiz. **9-modulda** 7 nodeli oddiy klassifikator quryapsiz; bu — uning **chuqur, manba bilan ishlaydigan** versiyasi. Stack: Telegram + Gemini + Sheets + Drive · 77 node · kod yo'q.
+**Lead:** Showcase modul. Bugun siz qurmaysiz — ichini ko'rasiz. **9-modulda** 13 nodeli klassifikator (n8n workflow) quryapsiz; bu — uning **chuqur, manba bilan ishlaydigan** versiyasi. Stack: Telegram + Gemini + Sheets + Drive · 77 node · kod yo'q.
 
 **Speaker notes:**
 Telefondan QR'ni skanlatuvchining ekraniga ko'rsating. Auditoriya botga kirib, bir nechta savol bersin. Real javob ko'rsating — manba bilan birga. "Bu — kechagi sehr; bugun mexanizmini tushunamiz." 9-modulga ko'prik: "Klassifikator botingiz kim qaysi operatorga tushishini hal qiladi. Bu bot — endi javobni o'zi qaytaradi, lekin **faqat bank PDF'idan**."
@@ -113,7 +113,7 @@ Bu modulda yangi 2 atama. Boshqa decklar bularni qayta ta'riflamaydi (uniqueness
 **Lead:** Ipak Yo'li Bank uchun yozilgan. Telegram + Gemini + Sheets + Drive + In-Memory vector store.
 
 **4 stat-cell:**
-- **77 Node** — 9-modul klassifikator: 7 node. Bu — 11x katta.
+- **77 Node** — 9-modul klassifikator: 13 node. Bu — ~6x katta.
 - **14 Marshrut** — Q&A + 7 admin (/help /list_docs /add_doc /delete_doc /reindex /stats /cancel) + 6 tasdiqlash/xato qadami.
 - **2 Eshik** — Front: Telegram (savol). Back: Manual Trigger (admin reload).
 - **5 Top-K** — Har savolga 5 ta eng yaqin chunk. 800 belgi, 120 overlap.
@@ -271,7 +271,7 @@ bots/02_rag_chatbot/
 
 **3 ta close-row:**
 - 💡 **RAG — manbasiz emas, manbaga tayangan AI**. Bank uchun yagona to'g'ri javob: ichki PDF + iqtibos. "Topilmadi" — javob, "balki" emas.
-- 💡 **Showcase — keyingi darajaga andoza**. 9-modulda 7 nodeli klassifikator qurdingiz; bu — uning chuqur, manba bilan ishlaydigan versiyasi (77 node). Bugun siz arxitekturani ko'rib, o'z pilotingizga talab yozasiz — qurish emas.
+- 💡 **Showcase — keyingi darajaga andoza**. 9-modulda 13 nodeli klassifikator (n8n workflow) qurdingiz; bu — uning chuqur, manba bilan ishlaydigan versiyasi (77 node, ~6x katta). Bugun siz arxitekturani ko'rib, o'z pilotingizga talab yozasiz — qurish emas.
 - 💡 **Pilot qarori bilan chiqamiz** — har stol 5 qatorli canvas: use case + manba + test + xavf + qaror. Tayyor template `bots/02_rag_chatbot` papkasida.
 
 **Lug'at recap (interaktiv, 30–60 sek):**

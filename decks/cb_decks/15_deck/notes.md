@@ -31,8 +31,8 @@ Tonlama: yumshoq, hurmat-li, "siz harakat qildingiz, biz bu yerdamiz" tarzida.
 3. **Sayohat retrospective** — `.flow` 4-step: Day 1 AM → Day 1 PM → Day 2 AM → Day 2 PM
 4. **15 modul ko'rinishida** — `.modules-grid` 5×3 (15 ta card, har biri modul nomi + bitta kalit so'z)
 5. **Lug'at challenge intro** — `.s-brain` "Eslay olasizmi?" — birgalikda aytamiz qoidasi
-6. **Lug'at quiz #1 (modullar 1–3)** — 7 atama: LLM · Promt · API · Use Case · Pilot Loyiha · Hallucination · Data Masking
-7. **Lug'at quiz #2 (modullar 4–6)** — Workflow · Task Decomposition · Few-shot · CoT · System Prompt · Template Prompt
+6. **Lug'at quiz #1 (modullar 1–3)** — 7 atama: LLM · Promt · System Prompt · Use Case · Pilot Loyiha · Hallucination · Data Masking
+7. **Lug'at quiz #2 (modullar 4–6)** — 5 atama: Workflow · Task Decomposition · Few-shot · CoT · Template Prompt _(deck 6 ikkinchi atama hozircha belgilanmagan — System Prompt 1-modulga ko'chgan)_
 8. **Lug'at quiz #3 (modullar 7–9)** — Token · Context Window · Trigger · Webhook · Classification · Schema
 9. **Lug'at quiz #4 (modullar 10–12)** — Agent · Tool Use · RAG · Embedding · Pipeline · Idempotent
 10. **Lug'at quiz #5 (modullar 13–14)** — AI Adoption · Production-grade · MVP · Iteration
@@ -62,12 +62,12 @@ Tonlama: yumshoq, hurmat-li, "siz harakat qildingiz, biz bu yerdamiz" tarzida.
 | # | Modul | Atama 1 | Atama 2 |
 |---|---|---|---|
 | 1 | AI asoslari | LLM | Promt |
-| 1 | (qo'shimcha) | API | — |
+| 1 | (qo'shimcha) | System Prompt | — |
 | 2 | Use case discovery | Use Case | Pilot Loyiha |
 | 3 | Risks / compliance | Hallucination | Data Masking |
 | 4 | Process structuring | Workflow | Task Decomposition |
 | 5 | Prompt engineering | Few-shot | Chain-of-Thought (CoT) |
-| 6 | Prompt library | System Prompt | Template Prompt |
+| 6 | Prompt library | Template Prompt | _(TBD — System Prompt 1-modulga ko'chgan)_ |
 | 7 | AI platforms | Token | Context Window |
 | 8 | No-code | Trigger | Webhook |
 | 9 | First AI workflow | Classification | Schema |
@@ -77,7 +77,7 @@ Tonlama: yumshoq, hurmat-li, "siz harakat qildingiz, biz bu yerdamiz" tarzida.
 | 13 | Real cases | AI Adoption | Production-grade |
 | 14 | Solution development | MVP | Iteration |
 
-**Jami:** 29 ta atama (1-modul ichida 3 ta — LLM, Promt, API; qolgan har modul — 2 ta).
+**Jami:** 28 ta atama (1-modul: LLM, Promt, System Prompt; 6-modul: Template Prompt (ikkinchisi belgilanmagan); qolgan har modul — 2 ta).
 
 ---
 

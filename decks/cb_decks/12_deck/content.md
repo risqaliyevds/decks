@@ -240,7 +240,7 @@ Har bosqich uchun 3 narsani yozib qo'yish: kirish, oraliq natija, xato konteksti
 ```
 [2026-05-08 14:02:11] message_id=A4F2  chat_id=123456789  user=Murad
 step=01  telegram_received    text="Avtokredit olmoqchiman, 50 mln, 5 yilga"
-step=02  llm_classify         ok     model=gemini-1.5-flash  temp=0.2  tokens_in=64  tokens_out=58
+step=02  llm_classify         ok     model=gemini-3-flash  temp=0.2  tokens_in=64  tokens_out=58
                                   json={category:"kredit", subject:"Avtokredit so'rovi", urgency:"medium"}
 step=03  sheets_read_ops      ok     filter=category=kredit,active=TRUE  rows=2
 step=04  pick_operator        ok     chosen="Aziza Karimova"  contact="+998 90 ..."

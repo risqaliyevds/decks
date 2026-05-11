@@ -504,6 +504,21 @@ body,p,li,.lead{letter-spacing:0.018em}
 
 /* COMBINED BENEFITS — proof block (defensive) */
 .benefit .proof{margin-top:clamp(0.75rem,1.4vw,1.15rem);padding-top:clamp(0.55rem,1vw,0.85rem);border-top:1px solid rgba(255,255,255,0.1);font-size:clamp(0.7rem,0.9vw,0.85rem);line-height:1.45;color:rgba(255,255,255,0.7)}
+
+/* SLIDE 3 — VOTE (interactive audience hook) */
+.s-vote .main{display:flex;flex-direction:column;justify-content:center}
+.vote-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(0.75rem,1.5vw,1.3rem);margin-top:clamp(0.85rem,1.6vw,1.4rem)}
+.vote-grid.vote-grid--3{grid-template-columns:repeat(3,1fr);max-width:82%;margin-inline:auto}
+.vote-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:var(--r);overflow:hidden;transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s;position:relative}
+.vote-card:hover{transform:translateY(-6px);border-color:var(--card-accent,var(--accent));box-shadow:0 10px 30px rgba(0,0,0,0.4)}
+.vote-img{aspect-ratio:1;width:100%;object-fit:cover;display:block;filter:saturate(0.9) brightness(0.95)}
+.vote-meta{padding:clamp(0.7rem,1.3vw,1.1rem) clamp(0.85rem,1.5vw,1.25rem) clamp(0.85rem,1.5vw,1.25rem);border-top:3px solid var(--card-accent,var(--accent));background:rgba(15,23,42,0.6)}
+.vote-lbl{font-family:var(--display);font-size:clamp(1rem,1.5vw,1.3rem);text-transform:uppercase;letter-spacing:0.02em;color:#fff;line-height:1.05;margin:0}
+.vote-sub{font-size:clamp(0.72rem,0.95vw,0.85rem);color:rgba(255,255,255,0.6);margin-top:0.4rem;line-height:1.35}
+.vote-card.vote-1{--card-accent:#60a5fa}
+.vote-card.vote-2{--card-accent:#a78bfa}
+.vote-card.vote-3{--card-accent:#fbbf24}
+.vote-card.vote-4{--card-accent:#34d399}
 </style>
 </head>
 <body>
@@ -600,7 +615,38 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
 </section>
 
-<!-- SLIDE 3 — HOOK · Live hallucination demo -->
+<!-- SLIDE 3 — VOTE (interactive audience hook · "Eng halokatli xavf") -->
+<section class="slide s-vote">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Mini-so'rovnoma · 30 soniya</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Banklar uchun qaysi xavf <span class="hl">eng halokatli</span>?</h2>
+    <div class="vote-grid reveal r3">
+      <div class="vote-card vote-1">
+        <img src="images/vote-pii.jpg" alt="PII leak" class="vote-img">
+        <div class="vote-meta"><h3 class="vote-lbl">PII leak</h3><p class="vote-sub">Mijoz ma'lumoti chetga chiqib ketdi</p></div>
+      </div>
+      <div class="vote-card vote-2">
+        <img src="images/vote-hallucination.jpg" alt="Hallucination" class="vote-img">
+        <div class="vote-meta"><h3 class="vote-lbl">Hallucination</h3><p class="vote-sub">AI ishonch bilan yolg'on aytdi</p></div>
+      </div>
+      <div class="vote-card vote-3">
+        <img src="images/vote-translation.jpg" alt="Tarjima xatosi" class="vote-img">
+        <div class="vote-meta"><h3 class="vote-lbl">Tarjima xatosi</h3><p class="vote-sub">Atama noto'g'ri tarjima qilindi</p></div>
+      </div>
+      <div class="vote-card vote-4">
+        <img src="images/vote-slow.jpg" alt="Sekin javob" class="vote-img">
+        <div class="vote-meta"><h3 class="vote-lbl">Sekin javob</h3><p class="vote-sub">2 daqiqa kechikkan javob</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 — HOOK · Live hallucination demo -->
 <section class="slide s-hook">
   <div class="brand-strip">
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">

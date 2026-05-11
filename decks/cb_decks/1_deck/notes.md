@@ -8,7 +8,7 @@
 **Framework:** Custom HTML (single-file `index.html`)
 **Stack o'rgatiladi:** Gemini (LLM) + RAG (xotira) + n8n (orkestratsiya) — kodsiz
 **Slaydlar soni:** 20 ta · 4 ta faza
-**Atamalar (≥2/modul talabi):** LLM, Promt, API — slayd 8 da kiritiladi, slayd 19 da interaktiv recap (auditoriya bilan birga aytamiz) + AI qaror kartasi ko'prigi
+**Atamalar (≥2/modul talabi):** LLM, Promt, System Prompt — slayd 8 da kiritiladi, slayd 19 da interaktiv recap (auditoriya bilan birga aytamiz) + AI qaror kartasi ko'prigi
 **To'liq kontent:** [`content.md`](./content.md)
 
 ## Outline (one bullet = one slide)
@@ -20,7 +20,7 @@
 5. **WOW hook · videoda** — kuchuk videosi, "bu — o'yin, endi — ish" tranzisi
 6. **Live demo · bank bot** — QR + chat bubble, audience telefonida bot bilan muloqot (demo qoidasi: tasdiqlangan PDF, real ma'lumot yo'q, javob topilmasa "ma'lumot yo'q")
 7. **Stajyor metafora** — 17 tab ochilgan vs AI'ning tartiblangan ish oqimi (Gemini panel)
-8. **Bankir uchun AI lug'ati** — LLM · Promt · API (3 ta dict-card)
+8. **Bankir uchun AI lug'ati** — LLM · Promt · System Prompt (3 ta dict-card)
 9. **AI ishimni olib qo'yadimi?** — qizil "YO'Q" stamp, dramatic answer
 10. **Miflarga qarshi zarba** — 4 ta afsona ↔ haqiqat juftligi (jobs · programming · know-it-all · ChatGPT=AI)
 11. **AI — bu vosita. Sehr emas** — Can/Cannot ikki ustun: real bank misollari ↔ AI'ga yolg'iz topshirilmaydigan ishlar
@@ -31,7 +31,7 @@
 16. **Demo bot ish oqimi** — Savol → Qidiruv → PDF'dan topish → Tahlil → Javob (5 ta pill + terminal)
 17. **Xavfsizlik** — Yopiq Kontur · O'qitilmaydi (zero-training) · Ma'lumot yashirish (3 ta item)
 18. **Wordcloud — eng zerikarli ish** — interaktiv brainstorm · 4 ta mezon-pill
-19. **Closing · 2 kundan keyin** — "AI bilan ishlaydigan bankirga aylanasiz" + lug'at recap (LLM = miya · Promt = buyruq · API = avtomat ulash) + AI qaror kartasi ko'prigi (jarayon · hujjat · inson tasdig'i)
+19. **Closing · 2 kundan keyin** — "AI bilan ishlaydigan bankirga aylanasiz" + lug'at recap (LLM = miya · Promt = buyruq · System Prompt = oldindan ko'rsatma) + AI qaror kartasi ko'prigi (jarayon · hujjat · inson tasdig'i)
 20. **Q&A** — katta `?` belgisi · `murod@mohir.dev` + Telegram @crea7iveai
 
 ## Asosiy g'oya (thesis)

@@ -129,7 +129,7 @@ Pauza qoidasini belgilang: har quiz card'da atama avval ochiladi (fragment 1), i
 |---|---|
 | **LLM** | Katta Til Modeli — bizning miya |
 | **Promt** | AI'ga aniq buyruq |
-| **API** | Ikki dastur o'rtasidagi ko'prik |
+| **System Prompt** | AI'ga oldindan berilgan ko'rsatma |
 | **Use Case** | AI'ni qo'yadigan aniq ish |
 | **Pilot Loyiha** | Kichik sinov, keyin kengaytiramiz |
 | **Hallucination** | AI o'ylab topgan yolg'on javob |
@@ -140,7 +140,7 @@ Birinchi quiz blok. Card'lar `.dict-card` style'da 3×2 grid. Har card avval ata
 Skript:
 - "LLM... eslay olasizmi? (pauza 2 sek) → biz aytamiz: **Katta Til Modeli — bizning miyamiz, AI'ning fikrlash qismi**."
 - "Promt... → **AI'ga beradigan aniq buyruq**. Yaxshi promt = yaxshi javob."
-- "API... → **ikki dastur orasidagi ko'prik**. Telegram bilan Gemini API orqali gaplashadi."
+- "System Prompt... → **AI'ga oldindan berilgan ko'rsatma**. Kim sen + nimani gapirma + qaysi tilda. Bir marta yoziladi, har savolda amal qiladi."
 - "Use Case... → **AI qo'yadigan aniq ish**. Mavhum 'AI bo'lsin' emas, aniq vazifa."
 - "Pilot Loyiha... → **kichik sinov**, ishlasa kengaytiramiz."
 - "Hallucination... → **AI o'ylab topgan yolg'on**. RAG bu xatoni kamaytiradi va tekshirishni osonlashtiradi."
@@ -163,7 +163,6 @@ Har atama ~20 sek. Jami ~2 daq. Tezroq harakat — tons baland tutib turing.
 | **Task Decomposition** | Katta vazifani kichkina bosqichlarga bo'lish |
 | **Few-shot** | "Mana 2-3 misol, endi xuddi shunday qil" |
 | **Chain-of-Thought** | "Bosqichma-bosqich o'yla, keyin javob ber" |
-| **System Prompt** | AI'ning rolini belgilash — har dialogda boshida |
 | **Template Prompt** | [Kvadrat qavs]'larli tayyor shablon |
 
 **Speaker notes:**
@@ -171,7 +170,7 @@ Workflow — 4-modulning markaziy g'oyasi. "Murakkab ishni 6 ta bosqichga bo'lis
 
 Few-shot va CoT — promt muhandisligining ikki kuchli vositasi. "Few-shot — bu o'rgatuvchining 2 ta misol bilan tushuntirishi. CoT — bu 'mantiqni ovoz chiqarib o'yla'."
 
-System Prompt va Template Prompt — bu ikkala atama 6-moduldan. "System — AI rolini bir martagina belgilaydi. Template — biz har kuni ishlatadigan to'ldirma shablon."
+Template Prompt — 6-moduldagi atama (System Prompt 1-modulda kiritilgan). "System — AI'ning shaxsiyatini bir marta belgilaydi. Template — biz har kuni ishlatadigan to'ldirma shablon."
 
 Har atama uchun bitta-ikkita misol kifoya. Quiz tonus saqlanadi.
 
@@ -356,7 +355,7 @@ Tonlama: "Biz yo'qolmaymiz. Bu kurs bittagina dars emas — boshlanish."
 
 **Atamalar (modul tartibida):**
 
-LLM · Promt · API · Use Case · Pilot Loyiha · Hallucination · Data Masking · Workflow · Task Decomposition · Few-shot · CoT (Chain-of-Thought) · System Prompt · Template Prompt · Token · Context Window · Trigger · Webhook · Classification · Schema · Agent · Tool Use · RAG · Embedding · Pipeline · Idempotent · AI Adoption · Production-grade · MVP · Iteration
+LLM · Promt · System Prompt · Use Case · Pilot Loyiha · Hallucination · Data Masking · Workflow · Task Decomposition · Few-shot · CoT (Chain-of-Thought) · Template Prompt · Token · Context Window · Trigger · Webhook · Classification · Schema · Agent · Tool Use · RAG · Embedding · Pipeline · Idempotent · AI Adoption · Production-grade · MVP · Iteration
 
 **Speaker notes:**
 Bu — **screenshot olib qo'yish** kerak bo'lgan slayd. Auditoriyaga ayting: "Telefoningizga saqlab qo'ying — bu 2 kunlik kursning qisqa lug'ati."

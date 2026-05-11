@@ -140,7 +140,8 @@ body,p,li,.lead{letter-spacing:0.018em}
 }
 
 /* SLIDE 2 — HOOK */
-.s-hook .main{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(1rem,2.5vw,3rem);align-items:center}
+.s-hook .main{display:grid;grid-template-columns:0.9fr 1.1fr;gap:clamp(1.25rem,3vw,3rem);align-items:center}
+.s-hook .h2{white-space:nowrap;font-size:clamp(1.3rem,2.55vw,2.2rem)}
 .qr-box{background:#fff;border-radius:var(--r);aspect-ratio:1;max-width:min(30vw,360px);width:100%;display:flex;align-items:center;justify-content:center;color:var(--ink);font-family:var(--display);font-size:clamp(0.7rem,1vw,0.95rem);text-align:center;padding:1rem;letter-spacing:0.15em;text-transform:uppercase;
   background-image:linear-gradient(45deg,#000 25%,transparent 25%),linear-gradient(-45deg,#000 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#000 75%),linear-gradient(-45deg,transparent 75%,#000 75%);
   background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0;
@@ -154,7 +155,7 @@ body,p,li,.lead{letter-spacing:0.018em}
 .demo-msg{margin-top:clamp(1rem,2vw,1.5rem);font-style:italic;color:rgba(255,255,255,0.8);font-size:var(--body);border-left:3px solid var(--accent);padding-left:clamp(0.75rem,1.5vw,1.25rem)}
 .chat{display:flex;flex-direction:column;gap:clamp(0.5rem,0.9vw,0.75rem);margin-top:clamp(0.85rem,1.6vw,1.4rem)}
 .bubble{max-width:82%;padding:clamp(0.6rem,1.1vw,0.9rem) clamp(0.75rem,1.3vw,1.1rem);border-radius:0.85rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);font-size:var(--body);line-height:1.45;color:#fff}
-.bubble.user{align-self:flex-start;margin-left:40%;background:linear-gradient(135deg,var(--accent),#1d4ed8);border-color:transparent}
+.bubble.user{align-self:flex-end;background:linear-gradient(135deg,var(--accent),#1d4ed8);border-color:transparent}
 .bubble.ai{align-self:flex-start}
 
 /* SLIDE 3 — DEFINITION */
@@ -221,6 +222,65 @@ body,p,li,.lead{letter-spacing:0.018em}
 .flow .step h4{font-family:var(--display);font-size:clamp(0.85rem,1.4vw,1.15rem);text-transform:uppercase;letter-spacing:0.05em;margin-top:0.4rem;color:#fff}
 .flow .step p{font-size:clamp(0.7rem,1vw,0.9rem);line-height:1.4;color:rgba(255,255,255,0.7);margin-top:0.4rem}
 .flow .arrow{color:var(--accent);font-family:var(--display);font-size:clamp(1.2rem,2.4vw,1.8rem);flex-shrink:0}
+
+/* SLIDE 7 — n8n ARCHITECTURE FLOWGRAPH (13 nodes) */
+.s-arch .main{display:flex;flex-direction:column;justify-content:center}
+.flowgraph{
+  display:grid;
+  grid-template-columns:1.05fr 0.32fr 0.78fr 0.32fr 1.05fr 0.32fr 1.1fr 0.32fr 1.1fr 0.32fr 1.15fr 0.32fr 1.1fr 0.32fr 1.05fr;
+  grid-template-rows:auto auto auto auto;
+  column-gap:0;
+  row-gap:0;
+  align-items:start;
+  justify-items:center;
+  width:100%;
+  margin-top:clamp(0.65rem,1.3vw,1.05rem);
+  position:relative;
+}
+/* Branch greeting (row 1) — positioned slightly right of "If", line curves down to it */
+.fg-greeting{grid-row:1;grid-column:3 / 5;justify-self:end;position:relative;padding-bottom:clamp(1.4rem,2.6vw,2.1rem);margin-right:-0.4rem}
+.fg-greeting::after{content:"";position:absolute;bottom:0;left:50%;width:1px;height:clamp(1.3rem,2.4vw,2rem);background:linear-gradient(180deg,rgba(255,255,255,0.45),rgba(255,255,255,0.18));z-index:1}
+.fg-greeting::before{content:"";position:absolute;bottom:clamp(0.6rem,1.1vw,0.9rem);left:50%;width:clamp(1.2rem,2.2vw,1.8rem);height:1px;background:rgba(255,255,255,0.3);transform:translateX(-100%);z-index:1}
+.fg-mainrow{grid-row:2;align-self:center}
+.fg-node{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:rgba(15,23,42,0.92);
+  border:1px solid rgba(255,255,255,0.14);
+  border-radius:0.55rem;
+  padding:clamp(0.5rem,0.95vw,0.78rem) clamp(0.32rem,0.6vw,0.55rem);
+  text-align:center;
+  gap:clamp(0.22rem,0.45vw,0.38rem);
+  width:96%;
+  min-height:clamp(3.4rem,5.8vw,4.8rem);
+  z-index:2;
+  position:relative;
+  box-shadow:0 1px 0 rgba(255,255,255,0.04) inset,0 4px 14px rgba(0,0,0,0.35);
+}
+.fg-small{min-height:auto;width:clamp(7rem,11vw,8.5rem)}
+.fg-ico{font-size:clamp(1.05rem,1.75vw,1.5rem);line-height:1}
+.fg-txt{font-family:var(--display);font-size:clamp(0.56rem,0.85vw,0.74rem);line-height:1.2;letter-spacing:0.02em;color:#fff;text-transform:uppercase}
+.fg-txt .sub{display:block;margin-top:0.2em;font-size:0.85em;color:rgba(255,255,255,0.62);font-family:var(--body);letter-spacing:0;text-transform:lowercase;font-weight:400}
+.fg-tg{border-color:rgba(59,130,246,0.65);background:linear-gradient(180deg,rgba(59,130,246,0.26),rgba(15,23,42,0.92))}
+.fg-if{border-color:rgba(250,204,21,0.6);background:linear-gradient(180deg,rgba(250,204,21,0.22),rgba(15,23,42,0.92))}
+.fg-llm{border-color:rgba(148,163,184,0.65);background:linear-gradient(180deg,rgba(148,163,184,0.22),rgba(15,23,42,0.92))}
+.fg-sheets{border-color:rgba(34,197,94,0.6);background:linear-gradient(180deg,rgba(34,197,94,0.22),rgba(15,23,42,0.92))}
+.fg-agg{border-color:rgba(239,68,68,0.6);background:linear-gradient(180deg,rgba(239,68,68,0.22),rgba(15,23,42,0.92))}
+/* Arrows between main flow nodes — extend a connecting line through */
+.fg-arrow{grid-row:2;font-family:var(--display);font-size:clamp(1.1rem,1.8vw,1.45rem);color:rgba(255,255,255,0.55);z-index:1;line-height:1;justify-self:center;align-self:center;position:relative}
+.fg-arrow::before,.fg-arrow::after{content:"";position:absolute;top:50%;height:1px;background:rgba(255,255,255,0.22);transform:translateY(-50%);z-index:0}
+.fg-arrow::before{right:calc(100% - 0.1rem);width:clamp(1rem,2vw,1.5rem)}
+.fg-arrow::after{left:calc(100% - 0.1rem);width:clamp(1rem,2vw,1.5rem)}
+/* Sub-node container rows */
+.fg-sub-classify,.fg-sub-dispatch{grid-row:3;display:flex;flex-direction:column;align-items:center;gap:clamp(0.65rem,1.3vw,1.1rem);position:relative;padding-top:clamp(1.1rem,2.1vw,1.7rem)}
+.fg-sub-classify{grid-column:5}
+.fg-sub-dispatch{grid-column:11}
+.fg-sub-classify::before,.fg-sub-dispatch::before{content:"";position:absolute;top:0;left:50%;width:1px;height:clamp(1rem,1.9vw,1.55rem);background:linear-gradient(180deg,rgba(255,255,255,0.4),rgba(255,255,255,0.18));z-index:1}
+.fg-sub{display:flex;flex-direction:column;align-items:center;gap:0.3rem;font-family:var(--body);font-size:clamp(0.52rem,0.74vw,0.66rem);color:rgba(255,255,255,0.75);text-align:center;z-index:2;line-height:1.22;position:relative}
+.fg-sub + .fg-sub::before{content:"";position:absolute;top:calc(-1 * clamp(0.65rem,1.3vw,1.1rem));left:50%;width:1px;height:clamp(0.6rem,1.2vw,1rem);background:rgba(255,255,255,0.22);z-index:0}
+.fg-g,.fg-check{width:clamp(1.7rem,2.6vw,2.05rem);height:clamp(1.7rem,2.6vw,2.05rem);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:clamp(0.78rem,1.2vw,1rem);font-weight:900;box-shadow:0 2px 6px rgba(0,0,0,0.35)}
+.fg-g{background:#fff;color:#1a73e8;border:1px solid rgba(0,0,0,0.1)}
+.fg-check{background:#9b59b6;color:#fff}
+.fg-sub-lbl{max-width:clamp(7rem,11vw,8.5rem);font-weight:600}
 
 /* SLIDE 9 — ROADMAP */
 .road{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
@@ -653,8 +713,8 @@ body,p,li,.lead{letter-spacing:0.018em}
           <span class="phase-num">02</span>
         </div>
         <div>
-          <h3 class="phase-title">7 ta node</h3>
-          <p class="phase-desc">Telegram → Gemini → Sheets. Har node nima qiladi — alohida ochib ko'ramiz.</p>
+          <h3 class="phase-title">Arxitektura</h3>
+          <p class="phase-desc">Telegram + Gemini + Sheets · n8n flowgraph · 4 bosqichni alohida ochamiz.</p>
         </div>
         <div class="phase-foot">
           <span class="phase-time">~18 daq</span>
@@ -699,20 +759,17 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main">
-    <div class="qr-stack reveal r2">
-      <div class="qr-box has-img"><img src="images/https_t_me_bankragbot.png" alt="QR · t.me/bankragbot"></div>
-      <a class="qr-url" href="https://t.me/bankragbot">t.me/bankragbot</a>
-    </div>
     <div class="reveal r3">
-      <span class="chip-out" style="background:transparent">Live recall · kechagi demo</span>
-      <h2 class="h2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Kechagi RAG bot — kuchli, lekin <span class="hl">murakkab</span>.</h2>
       <div class="chat">
         <div class="bubble user">Avtokredit foizi qancha?</div>
         <div class="bubble ai fragment is-visible">RAG bot — 77 node, vector store, PDF indekslash. 2 soatlik qurish.</div>
-        <div class="bubble ai fragment is-visible">Bugun esa <strong>7 ta node yordamida</strong> birinchi botingiz — mijoz xatlarini avtomatik tasniflaydi va operatorga yo'naltiradi.</div>
+        <div class="bubble ai fragment is-visible">Bugun esa <strong>bir nechta node yordamida</strong> birinchi botingiz — mijoz xatlarini avtomatik tasniflaydi va operatorga yo'naltiradi.</div>
       </div>
-      <p class="lead no-bar" style="margin-top:clamp(0.85rem,1.6vw,1.4rem)">Kechagi RAG bot — qanchalik kuchli bo'lsa, shunchalik murakkab. Bugun siz <strong>oddiyroq, ammo amaliy</strong> botni quryapsiz: 15–30 daqiqada.</p>
-      <p class="lead no-bar" style="margin-top:clamp(0.5rem,0.9vw,0.8rem);font-size:var(--small);color:rgba(255,255,255,0.55)">Stack: Telegram + Gemini + Google Sheets · 7 ta node · kod yo'q.</p>
+    </div>
+    <div class="reveal r2">
+      <span class="chip-out" style="background:transparent">Live recall · kechagi demo</span>
+      <h2 class="h2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Kechagi RAG bot — kuchli, lekin <span class="hl">murakkab</span>.</h2>
+      <p class="lead no-bar" style="margin-top:clamp(0.75rem,1.3vw,1.1rem);font-size:var(--small);color:rgba(255,255,255,0.62)">Stack: Telegram + Gemini + Google Sheets · kod yo'q · darsda birga quramiz.</p>
     </div>
   </div>
 </section>
@@ -807,26 +864,57 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
 </section>
 
-<!-- SLIDE 7 — CLASSIFIER 7-NODE ARCHITECTURE -->
-<section class="slide s-flow">
+<!-- SLIDE 7 — n8n ARCHITECTURE FLOWGRAPH (13 nodes) -->
+<section class="slide s-arch">
   <div class="brand-strip">
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
     <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
   </div>
   <div class="head"></div>
   <div class="main">
-    <h2 class="h2 reveal r2">BankYordamchi — <span class="hl">7 ta node</span>, bitta yo'nalish.</h2>
-    <p class="lead reveal r2">Telegram → AI tasniflaydi → Sheets'dan operator topadi → ariza saqlanadi → mijozga javob. Markazda Gemini turadi; har node n8n'da 1–2 daqiqada sozlanadi, murakkab dasturlash yo'q.</p>
-    <div class="flow reveal r3">
-      <div class="step"><div class="ico">💬</div><h4>1 · Telegram</h4><p>Mijoz xatini qabul qiladi</p></div>
-      <div class="arrow">→</div>
-      <div class="step brain"><div class="ico">🧠</div><h4>2 · Gemini</h4><p>Xatni tasniflaydi · JSON chiqaradi</p></div>
-      <div class="arrow">→</div>
-      <div class="step"><div class="ico">📋</div><h4>3–4 · Operator</h4><p>Sheets'dan filtrlaydi · birinchisini oladi</p></div>
-      <div class="arrow">→</div>
-      <div class="step"><div class="ico">📤</div><h4>5–7 · Saqla + javob</h4><p>Ariza yoziladi · operator nomi bilan javob mijozga</p></div>
+    <span class="chip-out reveal r1">n8n workflow · jonli darsda quramiz</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">BankYordamchi — <span class="hl">to'liq arxitektura</span>.</h2>
+
+    <div class="flowgraph reveal r3">
+      <!-- Branch up: /start greeting -->
+      <div class="fg-greeting">
+        <div class="fg-node fg-tg fg-small">
+          <span class="fg-ico">✈</span>
+          <div class="fg-txt"><strong>Greeting</strong><br><span class="sub">/start javob</span></div>
+        </div>
+      </div>
+
+      <!-- Main horizontal flow: 8 nodes + 7 arrows -->
+      <div class="fg-node fg-tg fg-mainrow"><span class="fg-ico">⚡</span><div class="fg-txt"><strong>Telegram</strong><br><span class="sub">Trigger</span></div></div>
+      <span class="fg-arrow">→</span>
+      <div class="fg-node fg-if fg-mainrow"><span class="fg-ico">⤧</span><div class="fg-txt"><strong>If</strong><br><span class="sub">/start?</span></div></div>
+      <span class="fg-arrow">→</span>
+      <div class="fg-node fg-llm fg-mainrow"><span class="fg-ico">⚙</span><div class="fg-txt"><strong>LLM</strong><br><span class="sub">Classify</span></div></div>
+      <span class="fg-arrow">→</span>
+      <div class="fg-node fg-sheets fg-mainrow"><span class="fg-ico">📋</span><div class="fg-txt"><strong>Sheets</strong><br><span class="sub">Read operators</span></div></div>
+      <span class="fg-arrow">→</span>
+      <div class="fg-node fg-agg fg-mainrow"><span class="fg-ico">⌬</span><div class="fg-txt"><strong>Aggregate</strong><br><span class="sub">combine list</span></div></div>
+      <span class="fg-arrow">→</span>
+      <div class="fg-node fg-llm fg-mainrow"><span class="fg-ico">⚙</span><div class="fg-txt"><strong>LLM</strong><br><span class="sub">Dispatch + Reply</span></div></div>
+      <span class="fg-arrow">→</span>
+      <div class="fg-node fg-sheets fg-mainrow"><span class="fg-ico">💾</span><div class="fg-txt"><strong>Sheets</strong><br><span class="sub">Save application</span></div></div>
+      <span class="fg-arrow">→</span>
+      <div class="fg-node fg-tg fg-mainrow"><span class="fg-ico">📤</span><div class="fg-txt"><strong>Telegram</strong><br><span class="sub">Send reply</span></div></div>
+
+      <!-- Sub-nodes under LLM: Classify (col 5) -->
+      <div class="fg-sub-classify">
+        <div class="fg-sub"><span class="fg-g">G</span><span class="fg-sub-lbl">Gemini · Classifier</span></div>
+        <div class="fg-sub"><span class="fg-check">✓</span><span class="fg-sub-lbl">Output Parser · Classify</span></div>
+      </div>
+
+      <!-- Sub-nodes under LLM: Dispatch (col 11) -->
+      <div class="fg-sub-dispatch">
+        <div class="fg-sub"><span class="fg-g">G</span><span class="fg-sub-lbl">Gemini · Dispatcher</span></div>
+        <div class="fg-sub"><span class="fg-check">✓</span><span class="fg-sub-lbl">Output Parser · Dispatch</span></div>
+      </div>
     </div>
-    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem);font-style:italic;color:var(--mute)">→ Keyingi 4 slaydda har bosqichni alohida ochamiz. Faqat <strong>bitta tayyor skript copy-paste</strong> — qolgan sozlamalar n8n oynasida tanlanadi.</p>
+
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.85rem,1.6vw,1.3rem);font-style:italic;color:var(--mute)">8 ta asosiy node + 1 ta <code>/start</code> javob + 4 ta LLM sozlama = <strong>13 ta node</strong>. Bugun jonli darsda noldan yig'amiz.</p>
   </div>
 </section>
 
@@ -900,13 +988,15 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main">
-    <span class="chip-out reveal r1">Bosqich 3 / 4 · Operatorni topish</span>
-    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Toifaga mos <span class="hl">operatorni</span> Sheets'dan olamiz.</h2>
-    <p class="lead reveal r2">Gemini "kredit" deb ajratdi — endi Operators jadvalidan kredit toifasidagi <strong>faol operatorni</strong> topish kerak. Filtr ikki shart bilan ishlaydi: toifa (category) + active=TRUE.</p>
+    <span class="chip-out reveal r1">Bosqich 3 / 4 · Operatorni topish va javob qoralash</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Toifaga mos <span class="hl">operatorni</span> tanlaydi va javob yozadi.</h2>
+    <p class="lead reveal r2">Gemini "kredit" deb ajratdi — endi 3 ta node ketma-ket. Sheets'dan operatorlar ro'yxatini olamiz, Aggregate bitta ro'yxatga to'playdi, ikkinchi Gemini (Dispatcher) operatorni tanlaydi VA mijozga matnli javobni bir vaqtning o'zida yozadi.</p>
     <div class="flow reveal r3">
-      <div class="step brain"><div class="ico">📋</div><h4>Node 3 · Read Operators</h4><p>Sheets node · ichida filtr: category={{$json.category}} <strong>AND</strong> active=TRUE</p></div>
+      <div class="step brain"><div class="ico">📋</div><h4>Read Operators</h4><p>Sheets node · filtr: category={{$json.category}} <strong>AND</strong> active=TRUE · mos satrlarni qaytaradi</p></div>
       <div class="arrow">→</div>
-      <div class="step brain"><div class="ico">👤</div><h4>Node 4 · Code (Pick Operator)</h4><p>Tayyor 8 qatorli skript copy-paste · birinchi qatorni oladi · bo'sh bo'lsa "Tayinlanmagan"</p></div>
+      <div class="step brain"><div class="ico">⌬</div><h4>Aggregate</h4><p>Sheets'dan kelgan satrlarni <strong>bitta ro'yxatga</strong> birlashtiradi — LLM uchun tanlov varianti tayyor</p></div>
+      <div class="arrow">→</div>
+      <div class="step brain"><div class="ico">⚙</div><h4>LLM: Dispatch+Reply</h4><p>Ikkinchi Gemini chaqiruvi (+ Output Parser) · operatorni tanlaydi <strong>VA</strong> mijozga javob matnini bir vaqtning o'zida yozadi</p></div>
     </div>
     <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem);font-style:italic;color:var(--mute)">→ Operators jadvalini siz to'ldirasiz — bo'limga yangi xodim qo'shilsa <strong>satr qo'shasiz</strong>, ketsa active=FALSE qilasiz. Bot sizning sozlamangizni quvib boradi.</p>
   </div>
@@ -920,17 +1010,15 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main">
-    <span class="chip-out reveal r1">Bosqich 4 / 4 · Saqlash + javob</span>
+    <span class="chip-out reveal r1">Bosqich 4 / 4 · Saqlash + javob jo'natish</span>
     <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Ariza <span class="hl">saqlanadi</span>, mijozga javob qaytadi.</h2>
-    <p class="lead reveal r2">Operator topildi — endi 3 ta yakuniy node. Applications jadvaliga to'liq satr qo'shamiz, javob matnini tuzamiz va Telegram orqali mijozga jo'natamiz.</p>
+    <p class="lead reveal r2">Dispatcher operatorni tanlab javob matnini ham yozib qo'ydi — endi 2 ta yakuniy node. Applications jadvaliga to'liq satrni qo'shamiz va Telegram orqali mijozga LLM tayyorlagan javobni jo'natamiz.</p>
     <div class="flow reveal r3">
-      <div class="step"><div class="ico">📥</div><h4>Append Application</h4><p>Sheets'ga to'liq satr: vaqt, mijoz, toifa, mavzu, operator</p></div>
+      <div class="step"><div class="ico">💾</div><h4>Sheets: Save Application</h4><p>Applications jadvaliga to'liq satr: vaqt, mijoz, toifa, mavzu, operator, tayyor javob matni</p></div>
       <div class="arrow">→</div>
-      <div class="step"><div class="ico">✍️</div><h4>Format Reply</h4><p><strong>Edit Fields</strong> (sobiq Set) node · O'zbekcha matn shabloni: "Salom! Operatoringiz: ..."</p></div>
-      <div class="arrow">→</div>
-      <div class="step brain"><div class="ico">📤</div><h4>Telegram Send</h4><p>Mijozga javob jo'natiladi · operator nomi va kontakti bilan</p></div>
+      <div class="step brain"><div class="ico">📤</div><h4>Telegram: Send Reply</h4><p>LLM Dispatcher chiqargan javob matnini <code>chat_id</code>ga jo'natadi — operator nomi va kontakti bilan</p></div>
     </div>
-    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem);font-style:italic;color:var(--mute)">→ Sheets ustun nomlari JSON kalitlariga to'liq mos · <strong>autoMapInputData</strong> avtomatik joylaydi · kod yozish shart emas.</p>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem);font-style:italic;color:var(--mute)">→ Sheets ustun nomlari JSON kalitlariga to'liq mos · <strong>autoMapInputData</strong> avtomatik joylaydi · "Format Reply" alohida node kerak emas — LLM o'zi tuzadi.</p>
   </div>
 </section>
 
@@ -1018,7 +1106,7 @@ body,p,li,.lead{letter-spacing:0.018em}
         <span class="atama-tag"><strong>Classification</strong> = 2-qadam · xatni 5 toifadan biriga ajratish</span>
         <span class="atama-tag"><strong>Schema</strong> = JSON shakli · category, subject, details, urgency</span>
       </div>
-      <p class="prod-line">Bu — birinchi ish tizimingiz. 7 ta node, kod yo'q, 15–30 daqiqada qurasiz. Stol mashqi: <code>../bots/01_classifier_bot</code>.</p>
+      <p class="prod-line">Bu — birinchi ish tizimingiz. 8 ta asosiy node + LLM sozlamalar · kod yo'q · darsda birga quramiz. Stol mashqi: <code>../bots/01_classifier_bot</code>.</p>
     </div>
   </div>
 </section>
@@ -1067,14 +1155,14 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main">
-    <span class="chip-out reveal r2">Live build · Stollar bo'yicha · 15–30 daq</span>
+    <span class="chip-out reveal r2">Live build · Stollar bo'yicha · ~30–45 daq</span>
     <h2 class="h2 reveal r2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Endi navbat <span class="hl">sizga</span> — har stol o'z BankYordamchisini yig'adi.</h2>
     <div class="questions reveal r3">
-      <div class="q fragment"><span class="n">01</span><span>n8n'da <span style="color:var(--accent-2)">7 ta node</span> ulang: Telegram trigger → LLM Chain → Sheets read → <strong>Code</strong> (Pick Operator) → Sheets append → <strong>Edit Fields</strong> → Telegram send.</span></div>
+      <div class="q fragment"><span class="n">01</span><span>n8n'da <span style="color:var(--accent-2)">workflow'ni quring</span>: Telegram Trigger → <strong>If</strong> (/start?) → <strong>LLM Classify</strong> (Gemini + Parser) → Sheets Read Operators → <strong>Aggregate</strong> → <strong>LLM Dispatch+Reply</strong> (Gemini + Parser) → Sheets Save → Telegram Send. Plus <code>/start</code> → Greeting branch.</span></div>
       <div class="q fragment"><span class="n">02</span><span>Operators sheet'iga <span style="color:var(--accent-2)">5 ta operatorni</span> kiriting — har toifaga bittadan (kredit, karta, depozit, shikoyat, info).</span></div>
       <div class="q fragment"><span class="n">03</span><span>Telegram'dan <span style="color:var(--accent-2)">3 ta xat</span> yuboring (kredit · karta yo'qoldi · omonat). Sheets'ga to'g'ri toifa va to'g'ri operator yozilishini tekshiring.</span></div>
     </div>
-    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem)">→ Instructor shablonidan boshlaymiz · har stolga tayyor Sheets template · <strong>15 daq</strong> qurish · <strong>10 daq</strong> test · <strong>5 daq</strong> stollararo hisobot.</p>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.75rem,1.4vw,1.15rem)">→ Instructor shablonidan boshlaymiz · har stolga tayyor Sheets template · <strong>30 daq</strong> qurish · <strong>10 daq</strong> test · <strong>5 daq</strong> stollararo hisobot.</p>
   </div>
 </section>
 
@@ -1093,7 +1181,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="row fragment"><div class="tag">✗ Xato</div><p>Toifa Sheets'dagidan boshqa nom bilan chiqadi — "Kredit" yoki "credit" (Operators'da <strong style="text-transform:none">kredit</strong>)</p></div>
       <div class="row real fragment"><div class="tag">✓ Tuzatish</div><p>5 ta toifa nomini bir xil shaklda yozing — kichik harf, lotin: <strong style="text-transform:none">kredit/karta/depozit/shikoyat/info</strong>. Sheets'da ham xuddi shu format.</p></div>
       <div class="row fragment"><div class="tag">✗ Xato</div><p>Toifaga mos <strong>operator yo'q</strong> — Operators sheet bo'sh yoki active=FALSE</p></div>
-      <div class="row real fragment"><div class="tag">✓ Tuzatish</div><p>Pick Operator skriptida zaxira holat: bo'sh bo'lsa "<strong style="text-transform:none">Tayinlanmagan</strong>" yoziladi. Har toifaga kamida 1 ta faol operator. Ariza baribir saqlanadi — admin qo'lda biriktiradi.</p></div>
+      <div class="row real fragment"><div class="tag">✓ Tuzatish</div><p>LLM Dispatcher prompt'ida zaxira qoida: ro'yxat bo'sh bo'lsa "<strong style="text-transform:none">Tayinlanmagan</strong>" yoziladi. Har toifaga kamida 1 ta faol operator. Ariza baribir saqlanadi — admin qo'lda biriktiradi.</p></div>
       <div class="row fragment"><div class="tag">✗ Xato</div><p>Sheets ustun nomlari JSON kalitlariga <strong>mos kelmaydi</strong> · qatorlar bo'sh tushadi</p></div>
       <div class="row real fragment"><div class="tag">✓ Tuzatish</div><p>Ustun nomlari aynan: <strong style="text-transform:none">category, subject, details, urgency, operator_name</strong>... · autoMapInputData rejimi avtomatik joylaydi.</p></div>
     </div>
@@ -1109,12 +1197,12 @@ body,p,li,.lead{letter-spacing:0.018em}
   <div class="head"></div>
   <div class="main">
     <h2 class="h2 reveal r2">Bugun classifier —<br>keyin <span class="hl">agent va RAG</span>.</h2>
-    <p class="lead reveal r2">Bugungi BankYordamchi — siz qurgan birinchi to'liq SI ish tizimi. 7 ta node · sof JSON · operator triage. Tez ishlaydi va tez kengayadi.</p>
+    <p class="lead reveal r2">Bugungi BankYordamchi — siz qurgan birinchi to'liq SI ish tizimi. n8n workflow · sof JSON · operator triage. Tez ishlaydi va tez kengayadi.</p>
     <div class="recap-mini reveal r3">
       <div class="card-mini now fragment">
         <span class="when">Bugun · 9-modul</span>
         <h3>BankYordamchi classifier</h3>
-        <p>7 node · Telegram + Gemini + Sheets · 5 toifaga ajratadi · operator topadi · ariza saqlaydi · javob qaytaradi.</p>
+        <p>n8n workflow · Telegram + Gemini + Sheets · 5 toifaga ajratadi · operator topadi · ariza saqlaydi · javob qaytaradi.</p>
       </div>
       <div class="card-mini dept fragment">
         <span class="when">Bo'lim uchun</span>
@@ -1141,7 +1229,7 @@ body,p,li,.lead{letter-spacing:0.018em}
     <h2 class="h2 reveal r2">Bugungi mashg'ulotdan <span class="hl">3 ta asosiy</span> xulosa.</h2>
     <div class="close-list reveal r3">
       <div class="close-row"><span class="arrow">💡</span><p><strong>Classification + Schema = birinchi ish tizimingiz.</strong> Mijoz erkin yozadi · AI sof JSON chiqaradi · tizim avtomatik triage qiladi.</p></div>
-      <div class="close-row"><span class="arrow">💡</span><p><strong>7 ta node, murakkab dasturlash yo'q.</strong> Telegram + Gemini + Sheets · bitta tayyor skript copy-paste · 15–30 daqiqada quriladi · har bo'lim o'z toifa va operator ro'yxatini kiritadi.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>8 ta asosiy node + LLM sozlamalar, kod yo'q.</strong> Telegram + Gemini + Sheets · bitta tayyor JSON shabloni · darsda birga quriladi · har bo'lim o'z toifa va operator ro'yxatini kiritadi.</p></div>
       <div class="close-row"><span class="arrow">💡</span><p><strong>Mashg'ulot yakuni — pilot qaror varaqasi.</strong> Har stol topshiradi: bo'lim, toifalar, 10 ta test xat natijasi, asosiy xavflar va qaror — pilotga ruxsat / qayta ishlash / rad etish.</p></div>
     </div>
     <div class="artifact reveal r3">
@@ -1203,7 +1291,7 @@ const TITLES = [
   "Erkin javob vs strukturali JSON",
   "Atama lug'ati · Classification + Schema",
   "Schema misoli · matn → JSON",
-  'Classifier arxitekturasi · 7 node',
+  'Classifier arxitekturasi · n8n flowgraph',
   "Bosqich 1 · Telegram trigger",
   "Bosqich 2 · LLM Chain · Gemini tasniflaydi",
   "Bosqich 3 · Operator topish · Sheets",

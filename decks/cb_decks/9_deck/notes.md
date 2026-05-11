@@ -8,30 +8,30 @@
 **Stack:** Telegram + Gemini + Google Sheets + n8n
 **Slaydlar soni:** 19 ta · 4 ta faza
 **Atamalar (≥2/modul talabi):** **Classification (Tasniflash)**, **Schema (Sxema)** — slayd 5 da kiritiladi, slayd 18 da recap
-**Paired bot:** [`bots/01_classifier_bot/`](../bots/01_classifier_bot/) — BankYordamchi, 7 node, no code
+**Paired bot:** [`bots/01_classifier_bot/`](../bots/01_classifier_bot/) — BankYordamchi · n8n workflow · 13 nodes (8 asosiy + /start greeting + 4 LLM sub-nodes) · no code
 **To'liq kontent:** [`content.md`](./content.md)
 
 ## Asosiy g'oya
 
-Kechagi RAG bot kuchli edi, lekin murakkab (77 node, 2 soat). Bugun har bir ishtirokchi 7 ta node bilan o'z birinchi botini quradi — mijoz xatlarini avtomatik tasniflaydi va to'g'ri operatorga uzatadi. **Konsept → amaliyot ko'prigi: 15–30 daqiqada ishlaydigan bot.** Modul oxirida har stolda ishlaydigan Telegram bot bo'ladi: mijoz xat yozadi, AI tasniflaydi, Sheets'ga ariza saqlanadi, javob qaytadi.
+Kechagi RAG bot kuchli edi, lekin murakkab (77 node, 2 soat). Bugun har bir ishtirokchi o'z birinchi botini quradi (8 ta asosiy node + greeting branch + LLM sozlamalar — jami 13 ta node) — mijoz xatlarini avtomatik tasniflaydi va to'g'ri operatorga uzatadi. **Konsept → amaliyot ko'prigi: ~30–45 daqiqada darsda birga quriladigan bot.** Modul oxirida har stolda ishlaydigan Telegram bot bo'ladi: mijoz xat yozadi, AI tasniflaydi, Sheets'ga ariza saqlanadi, javob qaytadi.
 
 ## Outline (one bullet = one slide)
 
 1. **Title** — "Oddiy SI ish tizimini yaratamiz"
-2. **Agenda** — 4 faza (Tushuncha · 7 ta node · Live build · Yakun)
+2. **Agenda** — 4 faza (Tushuncha · Arxitektura · Live build · Yakun)
 3. **Hook** — kechagi RAG (murakkab) → bugungi classifier (oddiy)
 4. **Erkin javob vs strukturali JSON** — odamga vs tizimga
 5. **Atama lug'ati** — Classification + Schema (`.dict.dict-2`)
 6. **Schema misoli** — matn → JSON 3 ta misolda
-7. **Classifier arxitekturasi** — 7 node umumiy oqim
+7. **Classifier arxitekturasi** — n8n flowgraph (13 node · 8 asosiy + greeting + LLM sozlamalar)
 8. **Bosqich 1 · Telegram trigger** — BotFather + updates + chiquvchi ma'lumot
 9. **Bosqich 2 · LLM Chain · Gemini** — botning miyasi · sof JSON
-10. **Bosqich 3 · Operator topish** — Sheets read + filter + pick
-11. **Bosqich 4 · Saqlash + javob** — append + format + send
+10. **Bosqich 3 · Operator topish va javob qoralash** — Sheets read + Aggregate + LLM Dispatch+Reply
+11. **Bosqich 4 · Saqlash + javob jo'natish** — Sheets Save + Telegram Send (LLM Dispatcher javob matnini ichida tuzgan)
 12. **Google Sheets schema** — Operators (siz to'ldirasiz) + Applications (bot to'ldiradi)
 13. **Bot xatni qanday qayta ishlaydi** — 4 qadam (s-journey)
 14. **Sifat tekshiruvi** — classifier yaxshi / yomon (.cando)
-15. **Live build · stol mashqi** — 7 ta node ulang, 5 operator, 3 test xat (s-brain)
+15. **Live build · stol mashqi** — workflow ulang (8 asosiy + greeting branch + LLM sub-nodes), 5 operator, 3 test xat (s-brain)
 16. **Tez-tez uchraydigan 4 xato** — JSON format, toifa nomi, operator yo'q, ustun nomi (.myth)
 17. **Mini-recap** — bugun → bo'lim → 10/11-modul (agent + RAG)
 18. **Closing** — 3 xulosa + lug'at recap (Classification, Schema)
@@ -68,9 +68,9 @@ Closing slaydda recap row jamoa bilan birga aytamiz (cb_decks/CLAUDE.md series q
 
 - **Hook (slide 3):** kechagi RAG demosini eslatib, "kuchli edi, lekin murakkab — bugun oddiyroq, ammo amaliy" deb pog'ona tushiring.
 - **Atama (slide 5–6):** **Classification** va **Schema** — har birini 1 ta misol bilan, sodda tilda. JSON ko'rib qo'rqitmang, "aniq maydonlar to'ldiriladi" deb tushuntiring.
-- **7 ta node (8–13):** har bosqichda *yutuq metrika* ayting (qancha vaqt tejaydi, qanday xatoni oldini oladi). Slaydlar texnik, lekin gapingiz natijaga yo'naltirilgan bo'lsin.
+- **Arxitektura (slaydlar 7–13):** har bosqichda *yutuq metrika* ayting (qancha vaqt tejaydi, qanday xatoni oldini oladi). Slaydlar texnik, lekin gapingiz natijaga yo'naltirilgan bo'lsin.
 - **Sifat tekshiruvi (14):** classifier'ning "qachon ishlaydi" ro'yxati — ishonch yaratish; "qachon ishlamaydi" — kutishlarni to'g'ri belgilash. RAG (11-modul) va agent (10-modul) ko'prigi.
-- **Live build (15):** 15 daqiqa quring, 10 daqiqa test, 5 daqiqa hisobot. Qo'shimcha: bot 01 README-ga link (`bots/01_classifier_bot/`).
+- **Live build (15):** ~30 daqiqa quring (13 node, n8n shabloni copy-paste'dan boshlanadi), 10 daqiqa test, 5 daqiqa hisobot. Qo'shimcha: bot 01 README-ga link (`bots/01_classifier_bot/`).
 - **Closing (18):** "Bugun siz oddiy AI ish tizimini qurdingiz. Keyin shu botga **agent** (10) va **RAG** (11) qo'shamiz" — keyingi 2 modulga ko'prik.
 
 ## Tayyorgarlik checklist
@@ -92,6 +92,8 @@ Closing slaydda recap row jamoa bilan birga aytamiz (cb_decks/CLAUDE.md series q
 
 ## Restructure tarixi
 
-**v2 (2026-05-10):** RAG bot complexity reset. Module 9 was "Build the BankRAGBoti" (77 nodes) — replaced with classifier bot (BankYordamchi, 7 nodes). RAG content relocates to deck 11. Atamalar swap: RAG/Embedding → Classification/Schema. Slides 4–17 rewritten; slides 1, 3, 19 keep shells (slide 3 reframed: "yesterday RAG, today classifier"). Paired bot path: `bots/01_classifier_bot/`.
+**v2 (2026-05-10):** RAG bot complexity reset. Module 9 was "Build the BankRAGBoti" (77 nodes) — replaced with classifier bot (BankYordamchi). RAG content relocates to deck 11. Atamalar swap: RAG/Embedding → Classification/Schema. Slides 4–17 rewritten; slides 1, 3, 19 keep shells (slide 3 reframed: "yesterday RAG, today classifier"). Paired bot path: `bots/01_classifier_bot/`.
+
+**v2.1 (2026-05-11):** Audited deck against the real n8n workflow `LaEmx5Gwi8A6oxVb`. Corrected node count from claimed 7 → actual 13 (Telegram Trigger → If → LLM Classify → Sheets Read Operators → Aggregate → LLM Dispatch+Reply → Sheets Save → Telegram Send, plus `/start` → Telegram Greeting branch, plus Gemini Classifier + Output Parser × 2 LLM steps). Slide 7 replaced "linear 7-node flow" diagram with full n8n flowgraph. Bosqich 3 (slide 10) reflowed: "Read + Code Pick Operator" → "Read + Aggregate + LLM Dispatch+Reply". Bosqich 4 (slide 11) simplified: dropped "Edit Fields (Format Reply)" — LLM Dispatcher writes reply text inline. Live-build timing: 15–30 daq → ~30–45 daq.
 
 **v1 (2026-05-08):** ilk versiya. 1–2 slaydlari stub'dan kelib chiqdi (Kun 2 chip, 4 fazali agenda); 3–19 slaydlari series-brief 9_deck spetsifikatsiyasiga qarab tuzildi. RAG arxitekturasini 1_deck slide 8 dagi `.s-flow` pattern'idan kengaytirib, 4 bosqichni alohida slaydlarga (8–11) chuqur ochib berdik.

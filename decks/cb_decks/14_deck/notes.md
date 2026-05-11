@@ -22,7 +22,7 @@ Bu — seminarning **eng katta amaliyoti**. 13 modul davomida olgan bilim shu ye
 4. **MVP falsafasi** — `.benefits` 3-card (Tor doiradagi muammo / Eng kichik ishlaydigan yechim / Real foydalanuvchi sinashi)
 5. **YANGI: Lug'at** — MVP + Iteration (`.dict.dict-2`)
 6. **MVP misoli #1: RAG bot** — `.flow` 3-step ramp (v1: FAQ → v2: + hujjat → v3: agent)
-7. **MVP misoli #2: Classifier bot** — `.flow` 3-step ramp (v1: 7 nodes hardcoded → v2: + chat_id/message_id dedup → v3: + multi-turn memory + per-bank categories + urgency routing + operator webhook)
+7. **MVP misoli #2: Classifier bot** — `.flow` 3-step ramp (v1: n8n workflow · 13 nodes → v2: + chat_id/message_id dedup → v3: + multi-turn memory + per-bank categories + urgency routing + operator webhook)
 8. **Iteration sikli** — `.flow` 4-step (Build → Test → Measure → Learn) — Plan/Do/Check/Act bankir uslubida
 9. **Loyiha brief shabloni** — `.template-box` (Muammo / MVP doirasi / Foydalanuvchi / Muvaffaqiyat mezoni / Vaqt)
 10. **Bo'lim ichidagi loyiha turlari** — `.benefits-4` 4-grid (Hujjat · Mijoz xizmati · Muvofiqlik · HR)

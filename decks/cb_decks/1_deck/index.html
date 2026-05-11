@@ -140,6 +140,7 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
 
 /* SLIDE 2 — HOOK */
 .s-hook .main{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(1rem,2.5vw,3rem);align-items:center}
+.s-hook .h2{white-space:nowrap;font-size:clamp(1.3rem,2.55vw,2.2rem)}
 .qr-box{background:#fff;border-radius:var(--r);aspect-ratio:1;width:clamp(180px,22vw,320px);display:flex;align-items:center;justify-content:center;color:var(--ink);font-family:var(--display);font-size:clamp(0.7rem,1vw,0.95rem);text-align:center;padding:1rem;letter-spacing:0.15em;text-transform:uppercase;
   background-image:linear-gradient(45deg,#000 25%,transparent 25%),linear-gradient(-45deg,#000 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#000 75%),linear-gradient(-45deg,transparent 75%,#000 75%);
   background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0;
@@ -155,7 +156,7 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
 .qr-url:hover{background:rgba(37,99,235,0.18);border-color:var(--accent)}
 .chat{display:flex;flex-direction:column;gap:clamp(0.5rem,0.9vw,0.75rem);margin-top:clamp(0.85rem,1.6vw,1.4rem)}
 .bubble{max-width:82%;padding:clamp(0.6rem,1.1vw,0.9rem) clamp(0.75rem,1.3vw,1.1rem);border-radius:0.85rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);font-size:var(--body);line-height:1.45;color:#fff}
-.bubble.user{align-self:flex-start;margin-left:40%;background:linear-gradient(135deg,var(--accent),#1d4ed8);border-color:transparent}
+.bubble.user{align-self:flex-end;background:linear-gradient(135deg,var(--accent),#1d4ed8);border-color:transparent}
 .bubble.ai{align-self:flex-start}
 .demo-msg{margin-top:clamp(1rem,2vw,1.5rem);font-style:italic;color:rgba(255,255,255,0.8);font-size:var(--body);border-left:3px solid var(--accent);padding-left:clamp(0.75rem,1.5vw,1.25rem)}
 
@@ -456,7 +457,7 @@ body,p,li,.lead{letter-spacing:0.018em}
 .phase-count{color:rgba(255,255,255,0.5)}
 .phase-time{color:var(--accent-2)}
 
-/* SLIDE — DICTIONARY (LLM / Promt / API) */
+/* SLIDE — DICTIONARY (LLM / Promt / System Prompt) */
 .dict{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
 .dict-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
 .dict-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
@@ -613,6 +614,86 @@ body,p,li,.lead{letter-spacing:0.018em}
 .proj-link{display:inline-flex;align-items:center;gap:0.5rem;padding:clamp(0.5rem,0.9vw,0.7rem) clamp(0.85rem,1.5vw,1.15rem);background:rgba(96,165,250,0.08);border:1px solid rgba(96,165,250,0.35);border-radius:99px;color:var(--accent-2);text-decoration:none;font-family:var(--display);font-size:clamp(0.72rem,0.92vw,0.85rem);letter-spacing:0.1em;align-self:flex-start;transition:background 0.2s,border-color 0.2s;text-transform:lowercase}
 .proj-link:hover{background:rgba(96,165,250,0.18);border-color:var(--accent-2)}
 .proj-link svg{flex-shrink:0}
+
+/* SLIDE 4 — VOTE (interactive audience hook · "AI which job?") */
+.s-vote .main{display:flex;flex-direction:column;justify-content:center}
+.vote-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:clamp(0.75rem,1.5vw,1.3rem);
+  margin-top:clamp(0.85rem,1.6vw,1.4rem);
+}
+.vote-card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:var(--r);
+  overflow:hidden;
+  transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s;
+  position:relative;
+}
+.vote-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--card-accent,var(--accent));
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+.vote-img{
+  aspect-ratio:1;
+  width:100%;
+  object-fit:cover;
+  display:block;
+  filter:saturate(0.9) brightness(0.95);
+}
+.vote-meta{
+  padding:clamp(0.7rem,1.3vw,1.1rem) clamp(0.85rem,1.5vw,1.25rem) clamp(0.85rem,1.5vw,1.25rem);
+  border-top:3px solid var(--card-accent,var(--accent));
+  background:rgba(15,23,42,0.6);
+}
+.vote-lbl{
+  font-family:var(--display);
+  font-size:clamp(1rem,1.5vw,1.3rem);
+  text-transform:uppercase;
+  letter-spacing:0.02em;
+  color:#fff;
+  line-height:1.05;
+  margin:0;
+}
+.vote-sub{
+  font-size:clamp(0.72rem,0.95vw,0.85rem);
+  color:rgba(255,255,255,0.6);
+  margin-top:0.4rem;
+  line-height:1.35;
+}
+.vote-card.vote-1{--card-accent:#60a5fa}
+.vote-card.vote-2{--card-accent:#a78bfa}
+.vote-card.vote-3{--card-accent:#fbbf24}
+.vote-card.vote-4{--card-accent:#34d399}
+.vote-twist{
+  margin-top:clamp(1rem,1.8vw,1.5rem);
+  background:linear-gradient(135deg,rgba(59,130,246,0.18),rgba(29,78,216,0.06));
+  border:1px solid var(--accent);
+  border-radius:var(--r);
+  padding:clamp(0.95rem,1.7vw,1.4rem) clamp(1.1rem,2.2vw,1.75rem);
+  display:flex;
+  gap:clamp(0.9rem,1.7vw,1.45rem);
+  align-items:flex-start;
+}
+.vote-twist-tag{
+  font-family:var(--display);
+  font-size:clamp(0.72rem,1vw,0.92rem);
+  letter-spacing:0.18em;
+  color:var(--accent-2);
+  white-space:nowrap;
+  padding-top:0.2em;
+  flex-shrink:0;
+}
+.vote-twist-body{
+  font-size:var(--body);
+  line-height:1.5;
+  color:#fff;
+  margin:0;
+}
+.vote-twist-body strong{color:var(--accent-2);font-weight:600}
+.vote-twist-body em{font-style:italic;color:rgba(255,255,255,0.85)}
 </style>
 </head>
 <body>
@@ -640,7 +721,67 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
 </section>
 
-<!-- SLIDE 2 — AGENDA -->
+<!-- SLIDE 2 — WHO I AM (speaker introduction · moved before agenda) -->
+<section class="slide s-whoami">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r1">Sizga <span class="hl">2 kun</span> davomida kim gapiradi?</h2>
+    <div class="bio-header reveal r2" style="margin-top:clamp(0.5rem,1vw,0.9rem)">
+      <div class="bio-name">Riskaliev Murad</div>
+      <span class="bio-sep">|</span>
+      <img src="../_shared/logo-mohirdev-iconmark-white.png" alt="Mohirdev" class="mohirdev-mark-big">
+    </div>
+
+    <div class="whoami reveal r3">
+      <div class="whoami-bio">
+        <p class="bio-line">3+ yildan beri AI va NLP loyihalari ustida ishlayman. Fokus — <strong>O'zbek tilida ishlaydigan amaliy AI tizimlari</strong>: bank, ta'lim va onlayn savdo sohalarida.</p>
+
+        <div class="bio-strengths">
+          <div class="strength-item">
+            <span class="strength-num">10+</span>
+            <span class="strength-text">AI loyiha va prototip</span>
+          </div>
+          <div class="strength-item">
+            <span class="strength-num">5+</span>
+            <span class="strength-text">startap va MVP tajribasi</span>
+          </div>
+          <div class="strength-item">
+            <span class="strength-num">2 kun</span>
+            <span class="strength-text">real loyihalardan olingan darslar</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="whoami-projects">
+        <div class="projects-tag">↗ Loyihalar va startaplar</div>
+        <div class="projects-grid">
+          <div class="proj fragment">
+            <div class="proj-name">dialix</div>
+            <div class="proj-tag">AI suhbat tizimi loyihasi</div>
+          </div>
+          <div class="proj fragment">
+            <div class="proj-name">labelcraft</div>
+            <div class="proj-tag">data labeling vositasi</div>
+          </div>
+          <div class="proj fragment">
+            <div class="proj-name">manakartabot</div>
+            <div class="proj-tag">Telegram AI yordamchi</div>
+          </div>
+          <div class="proj fragment">
+            <div class="proj-name">saytoai</div>
+            <div class="proj-tag">sayt uchun AI suhbatdosh</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3 — AGENDA (moved after speaker intro) -->
 <section class="slide s-agenda">
   <div class="brand-strip">
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
@@ -709,67 +850,52 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
 </section>
 
-<!-- SLIDE 3 — WHO I AM (speaker introduction) -->
-<section class="slide s-whoami">
+<!-- SLIDE 4 — VOTE (interactive audience hook · "AI almashtirishi kim?") -->
+<section class="slide s-vote">
   <div class="brand-strip">
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
     <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
   </div>
   <div class="head"></div>
   <div class="main">
-    <h2 class="h2 reveal r1">Sizga <span class="hl">2 kun</span> davomida kim gapiradi?</h2>
-    <div class="bio-header reveal r2" style="margin-top:clamp(0.5rem,1vw,0.9rem)">
-      <div class="bio-name">Riskaliev Murad</div>
-      <span class="bio-sep">|</span>
-      <img src="../_shared/logo-mohirdev-iconmark-white.png" alt="Mohirdev" class="mohirdev-mark-big">
-    </div>
+    <span class="chip-out reveal r1">Mini-so'rovnoma · 30 soniya</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Bu 4 kasbdan qaysi birini <span class="hl">AI almashtiradi</span>?</h2>
 
-    <div class="whoami reveal r3">
-      <div class="whoami-bio">
-        <p class="bio-line">3+ yildan beri AI va NLP loyihalari ustida ishlayman. Fokus — <strong>O'zbek tilida ishlaydigan amaliy AI tizimlari</strong>: bank, ta'lim va onlayn savdo sohalarida.</p>
-
-        <div class="bio-strengths">
-          <div class="strength-item">
-            <span class="strength-num">10+</span>
-            <span class="strength-text">AI loyiha va prototip</span>
-          </div>
-          <div class="strength-item">
-            <span class="strength-num">5+</span>
-            <span class="strength-text">startap va MVP tajribasi</span>
-          </div>
-          <div class="strength-item">
-            <span class="strength-num">2 kun</span>
-            <span class="strength-text">real loyihalardan olingan darslar</span>
-          </div>
+    <div class="vote-grid reveal r3">
+      <div class="vote-card vote-1">
+        <img src="images/vote-biznesmen.jpg" alt="Biznesmen" class="vote-img">
+        <div class="vote-meta">
+          <h3 class="vote-lbl">Biznesmen</h3>
+          <p class="vote-sub">Boshqaruv · qaror · strategiya</p>
         </div>
       </div>
-
-      <div class="whoami-projects">
-        <div class="projects-tag">↗ Loyihalar va startaplar</div>
-        <div class="projects-grid">
-          <div class="proj fragment">
-            <div class="proj-name">dialix</div>
-            <div class="proj-tag">AI suhbat tizimi loyihasi</div>
-          </div>
-          <div class="proj fragment">
-            <div class="proj-name">labelcraft</div>
-            <div class="proj-tag">data labeling vositasi</div>
-          </div>
-          <div class="proj fragment">
-            <div class="proj-name">manakartabot</div>
-            <div class="proj-tag">Telegram AI yordamchi</div>
-          </div>
-          <div class="proj fragment">
-            <div class="proj-name">saytoai</div>
-            <div class="proj-tag">sayt uchun AI suhbatdosh</div>
-          </div>
+      <div class="vote-card vote-2">
+        <img src="images/vote-dasturchi.jpg" alt="Dasturchi" class="vote-img">
+        <div class="vote-meta">
+          <h3 class="vote-lbl">Dasturchi</h3>
+          <p class="vote-sub">Kod yozadi · masala yechadi</p>
+        </div>
+      </div>
+      <div class="vote-card vote-3">
+        <img src="images/vote-haydovchi.jpg" alt="Haydovchi" class="vote-img">
+        <div class="vote-meta">
+          <h3 class="vote-lbl">Haydovchi</h3>
+          <p class="vote-sub">Yuk tashish · uzoq yo'l</p>
+        </div>
+      </div>
+      <div class="vote-card vote-4">
+        <img src="images/vote-farrosh.jpg" alt="Farrosh" class="vote-img">
+        <div class="vote-meta">
+          <h3 class="vote-lbl">Farrosh</h3>
+          <p class="vote-sub">Tozalash · xizmat ko'rsatish</p>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
-<!-- SLIDE 4 — WOW (image edit as a grounded AI example) -->
+<!-- SLIDE 5 — WOW (image edit as a grounded AI example) -->
 <section class="slide s-wow">
   <div class="brand-strip">
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
@@ -903,9 +1029,9 @@ body,p,li,.lead{letter-spacing:0.018em}
         <p>AI'dan biror narsa so'rash uchun yoziladigan aniq <strong>savol</strong> yoki <strong>topshiriq</strong>.</p>
       </div>
       <div class="dict-card fragment">
-        <span class="dict-tag">API</span>
-        <h3>AI'ni avtomat ulash</h3>
-        <p>Brauzerdan AI'ga yozish — qo'lda ish. <strong>API</strong> orqali AI <strong>ichki tizim bilan</strong> avtomat suhbat quradi: CRM, Telegram bot, sayt — bir marta sozlanadi, har bir so'rov avtomatik ishlanadi.</p>
+        <span class="dict-tag">System prompt</span>
+        <h3>AI'ga oldindan berilgan ko'rsatma</h3>
+        <p>Mijoz savol berishidan oldin AI'ga uchta narsani aytib qo'yamiz: <strong>kim sen</strong> (bank operatori), <strong>nimani gapirma</strong> (sir bo'lgan ma'lumotlar), <strong>qaysi tilda</strong> (o'zbek). Bir marta yoziladi — har savolda avtomat amal qiladi. Bu — AI'ning <em>shaxsiyati</em>.</p>
       </div>
     </div>
   </div>
@@ -1208,7 +1334,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="flowline" style="justify-content:center;margin-top:0">
         <span class="pill"><strong>LLM</strong><span class="fragment is-visible"> = miya</span></span>
         <span class="pill"><strong>Promt</strong><span class="fragment is-visible"> = buyruq</span></span>
-        <span class="pill"><strong>API</strong><span class="fragment is-visible"> = avtomat ulash</span></span>
+        <span class="pill"><strong>System prompt</strong><span class="fragment is-visible"> = oldindan ko'rsatma</span></span>
       </div>
     </div>
     <div class="reveal r4" style="display:flex;flex-direction:column;align-items:center;gap:clamp(0.4rem,0.7vw,0.6rem);margin-top:clamp(0.8rem,1.5vw,1.2rem);padding:clamp(0.7rem,1.3vw,1rem) clamp(1rem,2vw,1.6rem);border:1px solid rgba(96,165,250,0.32);border-radius:var(--r);background:rgba(96,165,250,0.06);max-width:64ch">
@@ -1259,7 +1385,7 @@ const TITLES = [
   "AI noto'g'ri fokusda · kontent",
   'Live demo · bank botiga savol',
   "AI = super-aqlli ishchi · metafora",
-  "Bankir uchun AI lug'ati · LLM / Promt / API",
+  "Bankir uchun AI lug'ati · LLM / Promt / System Prompt",
   "AI ishimni olib qo'yadimi? · Yo'q",
   'Miflarga qarshi zarba',
   "AI nima qila oladi va nima qila olmaydi",

@@ -262,7 +262,7 @@ Mas'uliyat: bot — yordamchi, sehr emas. Yakuniy qaror bankir zimmasida.
 
 Per question: ~2.5K tokens in, ~300 tokens out.
 
-At Gemini 2.5 Flash pricing: ~$0.0002 per Q&A. 10,000 questions/month → $2/month. Negligible.
+At Gemini 3 Flash pricing: ~$0.0002 per Q&A. 10,000 questions/month → $2/month. Negligible.
 
 Embeddings (admin /add_doc): negligible (free tier handles 1500 RPM, plenty for daily admin use).
 

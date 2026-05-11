@@ -8,11 +8,11 @@ Working bots and bot-blueprints for the Central Bank seminar series. **Three bot
 
 | # | Folder | Bot | Mental model | Built by | Used in module(s) | Complexity |
 |---|---|---|---|---|---|---|
-| 1 | `01_classifier_bot/` | **BankYordamchi** — message classifier + operator matcher | *AI tushunadi va to'g'ri operatorga yo'naltiradi* | Students (in module 9) — **demo bot** | 9-deck (student build, primary demo) | **7 nodes** — easiest |
+| 1 | `01_classifier_bot/` | **BankYordamchi** — message classifier + operator matcher | *AI tushunadi va to'g'ri operatorga yo'naltiradi* | Students (in module 9) — **demo bot** | 9-deck (student build, primary demo) | **13 nodes** (8 main + /start greeting + 4 LLM sub-nodes) — easiest |
 | 2 | `02_rag_chatbot/` | **BankRAGBoti** — multi-document Q&A with admin commands | *AI o'qiydi va manbasi bilan javob beradi* | Instructor (live demo) **and** students (in module 11) | 1-deck slide 5 (Live demo) · 11-deck (RAG chatbot deep dive) | **77 nodes** — production grade |
 | 3 | `03_complex_agent/` | **Murakkab agent** — multi-turn data + document collector with handoff | *AI suhbat o'tkazadi va ish bajaradi* | Students (group project) | 14-deck (Guruhli loyiha) | Production-plus |
 
-**Progression:** classifier (7 nodes, 1 day) → RAG (77 nodes, 2 days guided) → complex agent (group project).
+**Progression:** classifier (13 nodes, built live in class) → RAG (77 nodes, 2 days guided) → complex agent (group project).
 
 ## Renaming history (2026-05-10)
 
@@ -22,14 +22,14 @@ The folder layout was reorganized to match the seminar's pedagogical progression
 |---|---|---|
 | `01_rag_basics/` | `02_rag_chatbot/` | Originally pair for module 9; moved to module 11 since the simpler classifier replaces it as module 9's demo |
 | `02_voice_memo/` | (deleted) | The voice-memo bot was too complex to demo cleanly. Module 11 now teaches RAG instead of voice. |
-| (new) | `01_classifier_bot/` | Brand-new bot designed for module 9 — the simplest possible AI agent (3 services, 7 nodes, no code) |
+| (new) | `01_classifier_bot/` | Brand-new bot designed for module 9 — the simplest possible AI agent (3 services, 13 nodes: 8 main flow + /start greeting + 4 LLM sub-nodes, no code) |
 | `03_complex_agent/` | unchanged | Still pairs with module 14 |
 
 ## Live n8n workflows (in user's cloud)
 
 | Workflow | ID | Purpose | Status |
 |---|---|---|---|
-| `BankYordamchi` | (TBD — to be created) | Bot 01 — **7 nodes**, classifier + operator matcher. Uses Gemini + Telegram + Google Sheets. | Not yet built |
+| `BankYordamchi` | `LaEmx5Gwi8A6oxVb` | Bot 01 — **13 nodes** (8 main flow: Telegram Trigger → If → LLM Classify → Sheets Read Operators → Aggregate → LLM Dispatch+Reply → Sheets Save → Telegram Send · plus `/start` → Greeting branch · plus Gemini + Output Parser × 2 LLM sub-nodes). Uses Gemini + Telegram + Google Sheets. | Active |
 | `BankRAGBoti` | `kLcPx1CZX9RwH1z8` | Bot 02 — **77 nodes, 75 connections.** Telegram trigger drives Q&A + admin paths; Manual Trigger handles ingestion. | Active |
 | `BankAgentBoti` | `LgTS2iOkARv4B1cL` | Bot 03 — multi-turn agent | Not active |
 | ~~`BankVoiceBoti`~~ | ~~`qVHTRhFThYa8F8cV`~~ | (deprecated 2026-05-10 — voice bot dropped from curriculum) | Archive only |
@@ -60,7 +60,7 @@ NN_botname/
     [01..NN]-chain-*.md      ← per-chain spec (only for complex bots)
 ```
 
-The classifier (Bot 01, 7 nodes) keeps a tiny `prompt/` (just README + master). The RAG bot (Bot 02, 77 nodes) has 14 files in `prompt/` because the complexity warrants chunking.
+The classifier (Bot 01, 13 nodes) keeps a tiny `prompt/` (just README + master). The RAG bot (Bot 02, 77 nodes) has 14 files in `prompt/` because the complexity warrants chunking.
 
 ## Secrets handling
 

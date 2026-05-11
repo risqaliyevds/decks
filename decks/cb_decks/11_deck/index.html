@@ -141,6 +141,7 @@ body,p,li,.lead{letter-spacing:0.018em}
 
 /* SLIDE 3 — HOOK · QR + chat preview (centered, deck-1 slide-5 pattern) */
 .s-hook .main{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(1rem,2.5vw,3rem);align-items:center}
+.s-hook .h2{white-space:nowrap;font-size:clamp(1.3rem,2.55vw,2.2rem)}
 .qr-stack{display:flex;flex-direction:column;align-items:center;gap:clamp(0.55rem,1vw,0.9rem)}
 .qr-box{background:#fff;border-radius:var(--r);aspect-ratio:1;width:clamp(180px,22vw,320px);display:flex;align-items:center;justify-content:center;color:var(--ink);font-family:var(--display);font-size:clamp(0.7rem,1vw,0.95rem);text-align:center;padding:1rem;letter-spacing:0.15em;text-transform:uppercase;
   background-image:linear-gradient(45deg,#000 25%,transparent 25%),linear-gradient(-45deg,#000 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#000 75%),linear-gradient(-45deg,transparent 75%,#000 75%);
@@ -153,7 +154,7 @@ body,p,li,.lead{letter-spacing:0.018em}
 .qr-url:hover{background:rgba(37,99,235,0.18);border-color:var(--accent)}
 .chat{display:flex;flex-direction:column;gap:clamp(0.5rem,0.9vw,0.75rem);margin-top:clamp(0.85rem,1.6vw,1.4rem)}
 .bubble{max-width:82%;padding:clamp(0.6rem,1.1vw,0.9rem) clamp(0.75rem,1.3vw,1.1rem);border-radius:0.85rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);font-size:var(--body);line-height:1.45;color:#fff}
-.bubble.user{align-self:flex-start;margin-left:40%;background:linear-gradient(135deg,var(--accent),#1d4ed8);border-color:transparent}
+.bubble.user{align-self:flex-end;background:linear-gradient(135deg,var(--accent),#1d4ed8);border-color:transparent}
 .bubble.ai{align-self:flex-start}
 
 /* SLIDE 4 — VS / compare-rich (Pure LLM vs RAG) */
@@ -631,7 +632,7 @@ body,p,li,.lead{letter-spacing:0.018em}
         <div class="bubble ai fragment is-visible">Ichki PDF'dan qidirilmoqda — vector_store_search...</div>
         <div class="bubble ai fragment is-visible">Tarif №3, 4-band: <strong>yillik 18%</strong>. Manba: <strong>kredit_siyosati.pdf</strong>. Yakuniy qaror — bankir hamkasbim bilan kelishilgan holda bo'ladi.</div>
       </div>
-      <p class="lead no-bar" style="margin-top:clamp(0.85rem,1.6vw,1.4rem)">Showcase modul. Bugun siz qurmaysiz — ichini ko'rasiz. <strong>9-modulda</strong> 7 nodeli oddiy klassifikator qurdingiz; bu — uning <strong>chuqur, manba bilan ishlaydigan</strong> versiyasi.</p>
+      <p class="lead no-bar" style="margin-top:clamp(0.85rem,1.6vw,1.4rem)">Showcase modul. Bugun siz qurmaysiz — ichini ko'rasiz. <strong>9-modulda</strong> n8n workflow (8 asosiy node + LLM sozlamalar) qurdingiz; bu — uning <strong>chuqur, manba bilan ishlaydigan</strong> versiyasi.</p>
       <p class="lead no-bar" style="margin-top:clamp(0.5rem,0.9vw,0.8rem);font-size:var(--small);color:rgba(255,255,255,0.55)">Stack: Telegram + Gemini + Google Sheets + Drive · 77 node · kod yo'q.</p>
     </div>
   </div>
@@ -726,7 +727,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="stat-cell fragment">
         <div class="stat-num">77</div>
         <div class="stat-lbl">Node</div>
-        <div class="stat-sub">9-modul klassifikator: 7 node. Bu — 11x katta.</div>
+        <div class="stat-sub">9-modul klassifikator: 13 node. Bu — ~6x katta.</div>
       </div>
       <div class="stat-cell fragment">
         <div class="stat-num">14</div>
@@ -1064,7 +1065,7 @@ body,p,li,.lead{letter-spacing:0.018em}
     <h2 class="h2 reveal r2">O'zimiz bilan <span class="hl">olib ketadigan</span> 3 xulosa.</h2>
     <div class="close-list reveal r3">
       <div class="close-row"><span class="arrow">💡</span><p><strong>RAG — manbasiz emas, manbaga tayangan AI</strong>. Bank uchun yagona to'g'ri javob: ichki PDF + iqtibos. "Topilmadi" — javob, "balki" emas.</p></div>
-      <div class="close-row"><span class="arrow">💡</span><p><strong>Showcase — keyingi darajaga andoza</strong>. 9-modulda 7 nodeli klassifikator qurdingiz; bu — uning chuqur, manba bilan ishlaydigan versiyasi (77 node). Bu modul sizga pilot rejasi yozish uchun arxitekturani ko'rsatadi — qurish emas.</p></div>
+      <div class="close-row"><span class="arrow">💡</span><p><strong>Showcase — keyingi darajaga andoza</strong>. 9-modulda 13 nodeli klassifikator (n8n workflow) qurdingiz; bu — uning chuqur, manba bilan ishlaydigan versiyasi (77 node, ~6x katta). Bu modul sizga pilot rejasi yozish uchun arxitekturani ko'rsatadi — qurish emas.</p></div>
       <div class="close-row"><span class="arrow">💡</span><p><strong>Pilot qarori bilan chiqamiz</strong> — har stol 5 qatorli canvas: use case + manba + test + xavf + qaror. Tayyor template <code style="font-family:'JetBrains Mono',monospace;color:var(--accent-2)">bots/02_rag_chatbot</code> papkasida.</p></div>
     </div>
     <div class="recap reveal r3">

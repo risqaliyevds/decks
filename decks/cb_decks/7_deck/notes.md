@@ -18,7 +18,7 @@
 4. **Bozor xaritasi** — 5 ta katta o'yinchi (ChatGPT, Claude, Gemini, Perplexity, Yandex GPT)
 5. **YANGI Lug'at** — **Token** + **Context Window** (.dict.dict-2)
 6. **Token vs so'z misoli** — 1 so'z ≈ 1.3 token, A4 ≈ 650 token (.compare)
-7. **Context window taqqoslash** — GPT-4o · Claude · Gemini · O'rtacha shartnoma (bar chart)
+7. **Context window taqqoslash** — GPT-5.5 · Claude Opus 4.7 · Gemini 3 Pro (uch frontier 1M ga teng) · O'rtacha shartnoma (bar chart)
 8. **ChatGPT chuqurlashish** — kuchli tomon, qachon ishlatish (.sec 3-card)
 9. **Claude chuqurlashish** — uzun matn, aniqlik (.sec 3-card)
 10. **Gemini chuqurlashish** — Workspace, multimodal — kursning tanlovi (.sec 3-card)

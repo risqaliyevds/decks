@@ -570,6 +570,21 @@ body,p,li,.lead{letter-spacing:0.018em}
 .reveal{opacity:0}
 .slide:not(.is-active) .reveal{opacity:0}
 .slide.is-active .reveal{opacity:1}
+
+/* SLIDE 3 — VOTE (interactive audience hook) */
+.s-vote .main{display:flex;flex-direction:column;justify-content:center}
+.vote-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(0.75rem,1.5vw,1.3rem);margin-top:clamp(0.85rem,1.6vw,1.4rem)}
+.vote-grid.vote-grid--3{grid-template-columns:repeat(3,1fr);max-width:82%;margin-inline:auto}
+.vote-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:var(--r);overflow:hidden;transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s;position:relative}
+.vote-card:hover{transform:translateY(-6px);border-color:var(--card-accent,var(--accent));box-shadow:0 10px 30px rgba(0,0,0,0.4)}
+.vote-img{aspect-ratio:1;width:100%;object-fit:cover;display:block;filter:saturate(0.9) brightness(0.95)}
+.vote-meta{padding:clamp(0.7rem,1.3vw,1.1rem) clamp(0.85rem,1.5vw,1.25rem) clamp(0.85rem,1.5vw,1.25rem);border-top:3px solid var(--card-accent,var(--accent));background:rgba(15,23,42,0.6)}
+.vote-lbl{font-family:var(--display);font-size:clamp(1rem,1.5vw,1.3rem);text-transform:uppercase;letter-spacing:0.02em;color:#fff;line-height:1.05;margin:0}
+.vote-sub{font-size:clamp(0.72rem,0.95vw,0.85rem);color:rgba(255,255,255,0.6);margin-top:0.4rem;line-height:1.35}
+.vote-card.vote-1{--card-accent:#60a5fa}
+.vote-card.vote-2{--card-accent:#a78bfa}
+.vote-card.vote-3{--card-accent:#fbbf24}
+.vote-card.vote-4{--card-accent:#34d399}
 </style>
 </head>
 <body>
@@ -666,7 +681,38 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
 </section>
 
-<!-- SLIDE 3 — HOOK · Bir savol, 3 ta platforma -->
+<!-- SLIDE 3 — VOTE (interactive audience hook · "Qaysi vazifaga qaysi AI?") -->
+<section class="slide s-vote">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Mini-so'rovnoma · 30 soniya</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Har vazifaga: <span class="hl">ChatGPT · Claude · Gemini · Perplexity</span> — qaysi?</h2>
+    <div class="vote-grid reveal r3">
+      <div class="vote-card vote-1">
+        <img src="images/vote-bulk.jpg" alt="Ko'p oqim" class="vote-img">
+        <div class="vote-meta"><h3 class="vote-lbl">Ko'p oqim</h3><p class="vote-sub">1000+ xatni tasniflash</p></div>
+      </div>
+      <div class="vote-card vote-2">
+        <img src="images/vote-legal.jpg" alt="Uzun hujjat" class="vote-img">
+        <div class="vote-meta"><h3 class="vote-lbl">Uzun hujjat</h3><p class="vote-sub">200 betlik huquqiy tahlil</p></div>
+      </div>
+      <div class="vote-card vote-3">
+        <img src="images/vote-creative.jpg" alt="Ijodiy ish" class="vote-img">
+        <div class="vote-meta"><h3 class="vote-lbl">Ijodiy ish</h3><p class="vote-sub">Slogan · brending · matn</p></div>
+      </div>
+      <div class="vote-card vote-4">
+        <img src="images/vote-search.jpg" alt="Jonli qidiruv" class="vote-img">
+        <div class="vote-meta"><h3 class="vote-lbl">Jonli qidiruv</h3><p class="vote-sub">Bugungi yangiliklar · web</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 — HOOK · Bir savol, 3 ta platforma -->
 <section class="slide s-hook-3">
   <div class="brand-strip">
     <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
@@ -714,32 +760,32 @@ body,p,li,.lead{letter-spacing:0.018em}
     <div class="benefits-5 reveal r3">
       <div class="benefit fragment">
         <div class="stat">OpenAI · ChatGPT</div>
-        <h3>GPT-4o · GPT-5</h3>
-        <p>Eng katta ekosistema, plugin va GPT marketplace. Brainstorm va oddiy memo uchun mos.</p>
+        <h3>GPT-5.5 · GPT-5</h3>
+        <p>Eng katta ekosistema, GPT marketplace va plugin'lar. Brainstorm, memo va oddiy kod uchun mos. April 2026 — gallyutsinatsiya 60% kamaygan.</p>
         <div class="price">Plus · $20/oy</div>
       </div>
       <div class="benefit fragment">
         <div class="stat">Anthropic · Claude</div>
-        <h3>Sonnet 4.5 · Opus 4.6</h3>
-        <p>Uzun matn ishida ko'pincha aniqroq. 200k tokenli kontekst (1M — Sonnet API beta), sitata bilan javob.</p>
+        <h3>Sonnet 4.6 · Opus 4.7</h3>
+        <p>Uzun matn va kod tahlilida yetakchi. 200k tokenli kontekst (Opus 4.7 — 1M tokenli, API'da), iqtibos bilan javob — bank uchun audit izi qulay.</p>
         <div class="price">Pro · $20/oy</div>
       </div>
       <div class="benefit fragment">
         <div class="stat">Google · Gemini</div>
-        <h3>Gemini 2.5 Pro</h3>
-        <p>1M tokenli oyna, Workspace integratsiyasi, multimodal — bugungi demo uchun qulay.</p>
+        <h3>Gemini 3 Pro · 3 Flash</h3>
+        <p>1M tokenli oyna, Workspace integratsiyasi, multimodal (matn · rasm · audio · video). GPQA Diamond'da yetakchi (94.3%) — ilmiy va huquqiy fikrlash.</p>
         <div class="price">Workspace · $30/foyd/oy</div>
       </div>
       <div class="benefit fragment">
         <div class="stat">Perplexity</div>
-        <h3>Search + AI</h3>
-        <p>Real-vaqt internet qidiruv + javob. Yangi ma'lumot kerak bo'lganda.</p>
+        <h3>Sonar Pro · Search</h3>
+        <p>Real-vaqt web qidiruv + iqtibos bilan javob. High/Medium/Low qidiruv rejimlari, hujjat yuklash (PDF · DOC · DOCX). Yangi ma'lumot kerak bo'lganda.</p>
         <div class="price">Pro · $20/oy</div>
       </div>
       <div class="benefit fragment">
         <div class="stat">YandexGPT / GigaChat</div>
-        <h3>Mintaqaviy hosting</h3>
-        <p>Rus tili yoki mintaqaviy data residency talabi bo'lganda — alohida baholanadigan tanlov.</p>
+        <h3>YandexGPT 5.1 Pro · GigaChat 2</h3>
+        <p>Rus tili yoki mintaqaviy data residency talabi bo'lganda. MoE arxitektura, Chain-of-Reasoning rejim — alohida baholanadigan tanlov.</p>
         <div class="price">API · shartnoma</div>
       </div>
     </div>
@@ -815,23 +861,23 @@ body,p,li,.lead{letter-spacing:0.018em}
   </div>
   <div class="head"></div>
   <div class="main" style="display:flex;flex-direction:column;min-height:0">
-    <h2 class="h2 reveal r2">Kontekst oynasi — <span class="hl">kim qancha sig'diradi</span>?</h2>
-    <p class="lead reveal r2" style="margin-top:0.4rem">4 ta orientir — xarid qarori emas. O'rtacha shartnoma hammasiga sig'adi; 100 sahifalik regulyator hujjati — boshqa hikoya.</p>
+    <h2 class="h2 reveal r2">Kontekst oynasi — endi <span class="hl">hammasi 1M tokenli</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.4rem">2024–2025 da farq sezilarli edi (128k vs 200k vs 1M). 2026 da uch frontier ham 1M ga teng. Amaliyot: ko'pchilik bank shartnomasi ~5k token — ya'ni <strong>200× kichik</strong>.</p>
     <div class="bars reveal r3">
       <div class="bar-col">
-        <div class="bar-label">GPT-4o</div>
-        <div class="bar-num">128k</div>
-        <div class="bar-pages">~95 sahifa</div>
-        <div class="bar-track"><div class="bar" style="height:18%;width:62%"></div></div>
+        <div class="bar-label">GPT-5.5</div>
+        <div class="bar-num">1,000k</div>
+        <div class="bar-pages">~750 sahifa</div>
+        <div class="bar-track"><div class="bar" style="height:90%;width:62%"></div></div>
       </div>
       <div class="bar-col">
-        <div class="bar-label">Claude Opus 4.6</div>
-        <div class="bar-num">200k</div>
-        <div class="bar-pages">~150 sahifa</div>
-        <div class="bar-track"><div class="bar" style="height:28%;width:62%"></div></div>
+        <div class="bar-label">Claude Opus 4.7</div>
+        <div class="bar-num">1,000k</div>
+        <div class="bar-pages">~750 sahifa</div>
+        <div class="bar-track"><div class="bar" style="height:90%;width:62%"></div></div>
       </div>
       <div class="bar-col featured">
-        <div class="bar-label">Gemini 2.5 Pro</div>
+        <div class="bar-label">Gemini 3 Pro</div>
         <div class="bar-num">1,000k</div>
         <div class="bar-pages">~750 sahifa</div>
         <div class="bar-track"><div class="bar" style="height:90%;width:62%"></div></div>
@@ -843,7 +889,7 @@ body,p,li,.lead{letter-spacing:0.018em}
         <div class="bar-track"><div class="bar" style="height:6%;width:62%"></div></div>
       </div>
     </div>
-    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.7rem,1.2vw,1rem);font-style:italic;color:rgba(255,255,255,0.65)">Holat: 2026-05. Aniq raqam tarif, API/Web rejimi va regionga qarab o'zgaradi — xarid qarori uchun vendorning rasmiy hujjati va yuridik xulosa talab qilinadi.</p>
+    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.7rem,1.2vw,1rem);font-style:italic;color:rgba(255,255,255,0.65)">Holat: 2026-05. Frontier modellar kontekst muammosini hal qilgan — endi savol "siz qaysi modelni tanlaysiz" emas, "qaysi vazifaga qaysi mos". Mini/Flash variantlari hali ham kichikroq (256k–400k).</p>
   </div>
 </section>
 
@@ -874,7 +920,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="item fragment">
         <span class="ico"><img src="images/auto/slide-08-icon-card-3-alert-triangle.svg" alt="alert-triangle" style="width:1.4em;height:1.4em;filter:brightness(0) invert(1);opacity:0.85"></span>
         <h3>Cheklov</h3>
-        <p>Kontekst 128k token (~95 sahifa) — Claude'dan kichikroq. O'zbek tilida ba'zan "tarjima" hidi.</p>
+        <p>Kontekst 1M token (~750 sahifa) — frontier'lar bilan teng. O'zbek tilida ba'zan "tarjima" hidi. Mini/Codex versiyalari hali 256k–400k.</p>
         <div class="ex"><strong>Diqqat</strong>Plus standart sozlamada ma'lumot o'qitishga (training) ketishi mumkin — sozlamadan o'chiring.</div>
       </div>
     </div>
@@ -896,7 +942,7 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="item fragment">
         <span class="ico"><img src="images/auto/slide-09-icon-card-1-rocket.svg" alt="rocket" style="width:1.4em;height:1.4em;filter:brightness(0) invert(1);opacity:0.85"></span>
         <h3>Kuchli tomon</h3>
-        <p>200k tokenli kontekst (~150 sahifa). Kamroq gallyutsinatsiya, har sitatani bandi bilan ko'rsatadi.</p>
+        <p>1M tokenli kontekst (~750 sahifa) — Opus 4.7 da. Kamroq gallyutsinatsiya, har sitatani bandi bilan ko'rsatadi. Prompt caching bilan 90% gacha tejash.</p>
         <div class="ex"><strong>Misol</strong>"4-bo'limning 3.2 paragrafida..." — Claude tipik javob formati.</div>
       </div>
       <div class="item fragment">
@@ -930,8 +976,8 @@ body,p,li,.lead{letter-spacing:0.018em}
       <div class="item fragment">
         <span class="ico"><img src="images/auto/slide-10-icon-card-1-rocket.svg" alt="rocket" style="width:1.4em;height:1.4em;filter:brightness(0) invert(1);opacity:0.85"></span>
         <h3>Kuchli tomon</h3>
-        <p>1M tokenli kontekst — eng keng. Workspace integratsiyasi, multimodal (PDF + jadval + rasm bir promtda).</p>
-        <div class="ex"><strong>Misol</strong>Skanerlangan PDF + Excel + mijoz suratidagi hujjat — birga tahlil.</div>
+        <p>1M tokenli kontekst — frontier'lar bilan teng. Multimodal kuchli (matn · rasm · audio · video bir promtda). GPQA Diamond yetakchi (94.3%).</p>
+        <div class="ex"><strong>Misol</strong>Skanerlangan PDF + Excel + mijoz suratidagi hujjat + audio yozuv — birga tahlil.</div>
       </div>
       <div class="item fragment">
         <span class="ico"><img src="images/auto/slide-10-icon-card-2-target.svg" alt="target" style="width:1.4em;height:1.4em;filter:brightness(0) invert(1);opacity:0.85"></span>
