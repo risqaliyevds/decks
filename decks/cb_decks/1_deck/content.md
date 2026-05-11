@@ -81,7 +81,51 @@ Oldimizda 60 daqiqa va 4 ta aniq bekat bor. Birinchi — vahimani yig'ishtirib, 
 
 ---
 
-## Slide 3 — Odamlar AI'dan hozir qanday foydalanyapti?
+## Slide 3 — Tanishuv · Kim sizga gapiradi?
+
+**Chip:** Tanishuv · 60 soniya
+
+**Sarlavha:**
+Sizga **2 kun** davomida kim gapiradi?
+
+**Bio (chap):**
+- Ism: Riskaliev Murad
+- Lavozim: NLP Engineer · Mohirdev
+- Brend: crea7iveai
+- Tajriba: 7+ yildan beri AI va NLP loyihalari. Asosiy yo'nalish — O'zbek tili uchun production-grade AI: bank, ta'lim, e-commerce.
+
+**3 ta kalit raqam:**
+- 10+ production AI mahsulotlar
+- 5+ o'z startaplari va MVP'lar
+- 2 kun — bugun sizga shu tajribani topshiraman
+
+**Loyihalar va startaplar (o'ng):**
+- **dialix** — AI suhbat platformasi
+- **labelcraft** — ML data labeling
+- **manakartabot** — Telegram AI bot
+- **saytoai** — Sayt → AI yordamchi
+- + va boshqa pet-projects va MVP'lar
+- Havola: linkedin.com/in/risqaliyevds
+
+**Speaker notes:**
+60 soniyalik tanishuv. Tezkor, ammo asoslangan. Bankir nima uchun aynan menga ishonishi kerakligini bilishi muhim — qog'oz emas, real loyihalar.
+
+Boshlang: ism, lavozim, brend. So'ng 1 jumla bilan tajriba doirasini bering: "7 yildan beri AI bilan ishlayman, asosiy fokus — O'zbek tilida ishlaydigan production tizimlar". Bu jumla auditoriya uchun signal: ona tilida AI yangiliklarini aytayotgan odam.
+
+Loyihalarni 1-2 ta misol bilan sharhlang (hammasini aytmang — slaydda bor):
+- **dialix** — AI suhbat platformasi, biznes yordamchi botlar quradi.
+- **saytoai** — har qanday sayt ustiga AI suhbatdosh qo'shadi.
+- Qolganlarini "qiziqsangiz LinkedIn'da to'liq ro'yxat" deb yopib qo'ying.
+
+3 raqam — qisqa va aniq. **2 kun** raqamiga urg'u bering: "Shu 7 yillik tajribani 2 kun ichida sizga topshiramoz; nazariya emas — bu loyihalardan olingan real darslar".
+
+LinkedIn havolasini eslatib qo'ying — auditoriyaga: "Slaydlardan keyin profiledan ham topishingiz mumkin".
+
+Vaqt: 60 soniya. Uzaytirmang.
+
+---
+
+## Slide 4 — Odamlar AI'dan hozir qanday foydalanyapti?
 
 **Sarlavha:**
 Odamlar AI'dan hozir **qanday** foydalanyapti?
