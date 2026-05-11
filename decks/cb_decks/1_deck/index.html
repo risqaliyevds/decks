@@ -605,6 +605,7 @@ body,p,li,.lead{letter-spacing:0.018em}
 .strength-num{font-family:var(--display);font-size:clamp(1.5rem,2.6vw,2.1rem);color:var(--accent-2);line-height:1;letter-spacing:-0.03em}
 .strength-text{font-size:clamp(0.7rem,0.92vw,0.85rem);color:rgba(255,255,255,0.65);line-height:1.35;max-width:18ch}
 .whoami-projects{display:flex;flex-direction:column;gap:clamp(0.6rem,1.1vw,0.95rem)}
+.projects-header{display:flex;justify-content:space-between;align-items:center;gap:clamp(0.75rem,1.4vw,1.2rem);flex-wrap:wrap}
 .projects-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.22em;text-transform:uppercase;color:var(--accent-2)}
 .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(0.55rem,1.1vw,0.95rem)}
 .proj{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:clamp(0.45rem,0.9vw,0.7rem);padding:clamp(0.75rem,1.4vw,1.1rem) clamp(0.85rem,1.6vw,1.25rem)}
@@ -723,13 +724,10 @@ body,p,li,.lead{letter-spacing:0.018em}
       <span class="bio-sep">|</span>
       <img src="../_shared/logo-mohirdev-iconmark-white.png" alt="Mohirdev" class="mohirdev-mark-big">
     </div>
-    <span class="chip-out reveal r2" style="margin-top:clamp(0.4rem,0.8vw,0.7rem)">Tanishuv · 60 soniya</span>
-    <h2 class="h2 reveal r2" style="margin-top:clamp(0.3rem,0.6vw,0.5rem)">Sizga <span class="hl">2 kun</span> davomida kim gapiradi?</h2>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.45rem,0.9vw,0.75rem)">Sizga <span class="hl">2 kun</span> davomida kim gapiradi?</h2>
 
     <div class="whoami reveal r3">
       <div class="whoami-bio">
-        <div class="bio-brand">Shaxsiy loyiha: <strong>crea7iveai</strong></div>
-
         <p class="bio-line">3+ yildan beri AI va NLP loyihalari ustida ishlayman. Fokus — <strong>O'zbek tilida ishlaydigan amaliy AI tizimlari</strong>: bank, ta'lim va onlayn savdo sohalarida.</p>
 
         <div class="bio-strengths">
@@ -749,7 +747,13 @@ body,p,li,.lead{letter-spacing:0.018em}
       </div>
 
       <div class="whoami-projects">
-        <div class="projects-tag">↗ Loyihalar va startaplar</div>
+        <div class="projects-header">
+          <div class="projects-tag">↗ Loyihalar va startaplar</div>
+          <a class="proj-link" href="https://www.linkedin.com/in/risqaliyevds/" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            linkedin.com/in/risqaliyevds
+          </a>
+        </div>
         <div class="projects-grid">
           <div class="proj fragment">
             <div class="proj-name">dialix</div>
@@ -768,15 +772,8 @@ body,p,li,.lead{letter-spacing:0.018em}
             <div class="proj-tag">sayt uchun AI suhbatdosh</div>
           </div>
         </div>
-        <p class="proj-more">+ boshqa tajriba loyihalari va MVPlar</p>
-        <a class="proj-link" href="https://www.linkedin.com/in/risqaliyevds/" target="_blank" rel="noopener">
-          <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          linkedin.com/in/risqaliyevds
-        </a>
       </div>
     </div>
-
-    <p class="lead no-bar reveal r3" style="margin-top:clamp(0.85rem,1.4vw,1.2rem);font-style:italic;color:rgba(255,255,255,0.65);font-size:clamp(0.78rem,1vw,0.92rem)">→ Bu kurs urg'usi: <strong>bank jarayonlarida vaqtni tejash, xatoni kamaytirish va xavfsiz qo'llash</strong>.</p>
   </div>
 </section>
 
