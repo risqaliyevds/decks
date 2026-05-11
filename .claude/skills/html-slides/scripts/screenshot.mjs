@@ -112,6 +112,14 @@ async function screenshotHtml(file) {
       await page.goto(`${url}#${n}`);
     }
     await page.waitForTimeout(400);
+    // Auto-reveal all fragments on the current slide so static screenshots
+    // include progressive-reveal content (the live deck still cycles on click).
+    await page.evaluate(() => {
+      const slides = document.querySelectorAll('.slide');
+      const active = [...slides].find(s => s.classList.contains('is-active')) || slides[0];
+      if (active) active.querySelectorAll('.fragment').forEach(f => f.classList.add('is-visible'));
+    });
+    await page.waitForTimeout(200);
     await snap(page, n);
   }
 

@@ -90,9 +90,10 @@ Sizga **2 kun** davomida kim gapiradi?
 
 **Bio (chap):**
 - Ism: Riskaliev Murad
-- Lavozim: NLP Engineer · Mohirdev
 - Brend: crea7iveai
-- Tajriba: 7+ yildan beri AI va NLP loyihalari. Asosiy yo'nalish — O'zbek tili uchun production-grade AI: bank, ta'lim, e-commerce.
+- Tajriba: 3+ yildan beri AI va NLP loyihalari. Asosiy yo'nalish — O'zbek tili uchun production-grade AI: bank, ta'lim, e-commerce.
+
+(Lavozim "NLP Engineer · Mohirdev" — pastdagi HUDda ko'rinib turibdi, takrorlamaymiz.)
 
 **3 ta kalit raqam:**
 - 10+ production AI mahsulotlar
