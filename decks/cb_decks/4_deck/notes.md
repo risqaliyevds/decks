@@ -1,6 +1,6 @@
 # 4-deck — Sun'iy intellekt uchun jarayonlarni strukturalashtirish
 
-**Module:** 4-modul · Kun 1 · 14:00–15:00 (60 daqiqa)
+**Module:** 4-modul · Kun 1 · 13:15–14:15 (60 daqiqa)
 **Format:** Amaliy mashq (practical exercise)
 **Audience:** Markaziy Bank xodimlari (non-technical)
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev

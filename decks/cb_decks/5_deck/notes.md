@@ -1,6 +1,6 @@
 # 5-deck — Promt muhandisligi · professional daraja
 
-**Module:** 5-modul · Kun 1 · 15:15–16:15 (60 daqiqa)
+**Module:** 5-modul · Kun 1 · 14:15–15:15 (60 daqiqa)
 **Format:** Namoyish + mashq (demo + exercise)
 **Audience:** Markaziy Bank xodimlari (non-technical)
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev

@@ -1,6 +1,6 @@
 # 7-deck — SI platformalar bilan ishlash (ChatGPT, Claude, Gemini)
 
-**Module:** 7-modul · Kun 1 · 17:45–18:45 (60 daqiqa)
+**Module:** 7-modul · Kun 1 · 16:15–17:15 (60 daqiqa)
 **Format:** Platforma taqqoslash + jonli demo
 **Audience:** Markaziy Bank xodimlari (non-technical)
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev
@@ -12,7 +12,7 @@
 
 ## Outline (one bullet = one slide)
 
-1. **Title** — "SI platformalar bilan ishlash" · Kun 1 · 17:45–18:45
+1. **Title** — "SI platformalar bilan ishlash" · Kun 1 · 16:15–17:15
 2. **Agenda** — 4 faza (Platformalar · Atamalar · Imkoniyat farqi · Live mashq)
 3. **Hook** — Bir savol, 3 ta platforma · 3 ustunli compare-rich
 4. **Bozor xaritasi** — 5 ta katta o'yinchi (ChatGPT, Claude, Gemini, Perplexity, Yandex GPT)

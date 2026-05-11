@@ -8,7 +8,7 @@
 -->
 # 4-modul · Sun'iy intellekt uchun jarayonlarni strukturalashtirish
 
-**Module:** 4-modul · Kun 1 · 14:00–15:00 (60 daqiqa)
+**Module:** 4-modul · Kun 1 · 13:15–14:15 (60 daqiqa)
 **Format:** Amaliy mashq (practical exercise)
 **Audience:** Markaziy Bank xodimlari (non-technical)
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev
@@ -26,7 +26,8 @@
 |---|---|---|---|---|
 | 1 | SI uchun jarayonlarni strukturalashtirish | Title | ~2 daq | — |
 | 2 | Mavzuning yo'l xaritasi | Agenda — 4 faza | ~1 daq | — |
-| 3 | Tartibsiz ish — yoki strukturalangan zanjir | Hook — `.compare` | ~4 daq | 01 Nima uchun |
+| 3 | Qaysi jarayon AI'ga tayyor? | Vote-hook — `.s-vote` · 3 karta | ~1 daq | 01 Nima uchun |
+| 4 | Tartibsiz ish — yoki strukturalangan zanjir | Hook — `.compare` | ~4 daq | 01 Nima uchun |
 | 4 | Nima uchun strukturalash kerak | 3 sabab + proof | ~6 daq | 01 Nima uchun |
 | 5 | Ikki atama — bugungi poydevor | `.dict` (2 cards) | ~5 daq | 02 Workflow |
 | 6 | Workflow anatomiyasi · 5 qadam | `.flow` | ~7 daq | 02 Workflow |
@@ -43,7 +44,7 @@
 ## Slide 1 — Title
 
 **Sarlavha / chip:**
-Kun 1 · 14:00 — 15:00 · Amaliy mashq
+Kun 1 · 13:15 — 14:15 · Amaliy mashq
 SI UCHUN JARAYONLARNI **STRUKTURALASHTIRISH.**
 
 **Lead matn:**
@@ -88,7 +89,13 @@ Birinchi savoldan boshlaymiz."
 
 ---
 
-## Slide 3 — Tartibsiz ish — yoki strukturalangan zanjir
+## Slide 3 — Vote-hook · Qaysi jarayon AI'ga tayyor?
+
+**Format:** 30 soniyalik mini-so'rovnoma. 3 ta vote-card (`.vote-grid--3`): "01 · Mavhum" (mijoz xat → biz javob), "02 · Yarim" (biror operator → biror javob), "03 · Strukturali" (5 toifa → faol operator → standart javob). Spiker qo'l ko'rsatish bilan tovush oladi va aniq qadamli javob (03) — bugungi modulning markaziy isboti ekanini aytadi.
+
+---
+
+## Slide 4 — Tartibsiz ish — yoki strukturalangan zanjir
 
 **Sarlavha / chip:**
 TARTIBSIZ ISH — YOKI **STRUKTURALANGAN ZANJIR**.

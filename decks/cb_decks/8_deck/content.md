@@ -1,6 +1,6 @@
 # 8-modul · No-code avtomatlashtirish (Zapier, n8n, Make) — to'liq kontent
 
-**Module:** 8-modul · Kun 1 · 17:30–18:15 (60 daqiqa, Day 1 closing slot)
+**Module:** 8-modul · Kun 1 · 17:15–18:15 (60 daqiqa, Day 1 closing slot)
 **Format:** Workflow building demos + audience exercise
 **Audience:** Markaziy Bank xodimlari (non-technical)
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev
@@ -16,7 +16,7 @@
 ## Slide 1 — Title
 
 **Sarlavha:** No-code avtomatlashtirish.
-**Chip:** Kun 1 · 17:30 — 18:15
+**Chip:** Kun 1 · 17:15 — 18:15
 **Tagline:** Zapier, Make, n8n — kodsiz workflow. Bo'lim xodimi o'zi yig'adi.
 
 **Speaker text (~140 so'z):**
@@ -40,7 +40,29 @@ Yo'l xaritamiz to'rt qismdan iborat. Birinchi qismda — nima uchun bu mavzu siz
 
 ---
 
-## Slide 3 — Hook · prototipni kim yig'adi
+## Slide 3 — Vote · Slack'ga avtomatik xabar — qaysi yo'lni tanlaysiz?
+
+**Chip:**
+Mini-so'rovnoma · 30 soniya.
+
+**Sarlavha:**
+Slack'ga avtomatik xabar — qaysi yo'lni tanlaysiz?
+
+**Vizual elementlar:**
+3 ta vote-card grid (vote-grid--3 layout). Har bir card:
+- 01 · Dasturchi — 2 hafta, katta budjet, murakkab
+- 02 · Excel + qo'l — 2 soat, har hafta sinadi, charchatadi
+- 03 · n8n flow — 5 daqiqa, drag & drop, ishonchli
+
+**Maqsad:**
+Hook'dan oldin auditoriyaga "ushbu vazifani siz qanday hal qilasiz?" degan tezkor savol. Har card real bank vaziyatini aks ettiradi. So'rovnoma 1-card yoki 2-card tarafida bo'ladi — bu yerda biz aynan 3-yo'lni (no-code) mashq qilamiz.
+
+**Speaker notes:**
+30 soniyalik savol. "Tasavvur qiling: har juma Compliance bo'limi Slack'ga avtomatik xabar yuborilishini xohlaydi — yangi anomaliyalar haqida. Buni qanday hal qilasiz?". 3 ta variant ko'rsataman. Auditoriya 1-yoki 2-card'ga qarab kuladi — chunki ko'pchilik shunday qiladi. 3-card — bizning bugungi mavzu. Bu vote auditoriyani jalb qiladi va tezkor "shu yerda muammo bor" degan kayfiyat yaratadi.
+
+---
+
+## Slide 4 — Hook · prototipni kim yig'adi
 
 **Sarlavha:** Spravka avtomatlashtirish — prototipni kim yig'adi?
 **Compare:** An'anaviy yo'l (haftalar + IT navbati) vs No-code prototip yo'li (sandbox prototipi soatlarda · prototip → IT audit → pilot → production)
@@ -50,7 +72,7 @@ Bir misol bilan boshlayman — har bankda uchraydigan vaziyat. Mijoz sizdan spra
 
 ---
 
-## Slide 4 — No-code falsafasi · 3 ta yutuq
+## Slide 5 — No-code falsafasi · 3 ta yutuq
 
 **Sarlavha:** No-code falsafasi · 3 ta yutuq.
 **Lead:** Bu texnologiya emas — bu ish madaniyati o'zgarishi. Bo'lim prototip qiladi, IT xavfsizlik bo'limi tekshiradi, komplayens tasdiqlaydi.
@@ -61,7 +83,7 @@ No-code'ni texnologiya deb tushunish — yarim haqiqat. Asl mohiyati boshqa: ish
 
 ---
 
-## Slide 5 — Atama lug'ati · Trigger + Webhook
+## Slide 6 — Atama lug'ati · Trigger + Webhook
 
 **Sarlavha:** Ikki so'z — workflow'ning poydevori.
 **Chip:** Bankir uchun AI lug'ati · 8-modul
@@ -73,7 +95,7 @@ Endi ikkita kalit so'zni o'rganib olaylik. Bularsiz keyingi 13 ta slayd tushunar
 
 ---
 
-## Slide 6 — 3 ta platforma taqqoslash
+## Slide 7 — 3 ta platforma taqqoslash
 
 **Sarlavha:** Bozorda 3 ta yo'l · har birining o'z o'rni bor.
 **3 platforma (.sec):**
@@ -86,7 +108,7 @@ Bozorda asosan uchta platforma bor. Hammasi bir narsani qiladi: turli xizmatlarn
 
 ---
 
-## Slide 7 — Nima uchun n8n · bank uchun
+## Slide 8 — Nima uchun n8n · bank uchun
 
 **Sarlavha:** Nima uchun n8n · bank uchun?
 **3 yutuq (.benefits):**
@@ -99,7 +121,7 @@ n8n nima uchun bizning tanlovimiz — uchta aniq sabab bor. Birinchisi — eng m
 
 ---
 
-## Slide 8 — Workflow anatomiyasi · 5 qadam
+## Slide 9 — Workflow anatomiyasi · 5 qadam
 
 **Sarlavha:** Workflow anatomiyasi · 5 qadam.
 **Lead:** Telegram'dan kelgan savol → AI'ga jo'natiladi → javobni Sheets'ga yozadi → menejerga xabar.
@@ -110,7 +132,7 @@ Workflow'ning anatomiyasini bilsangiz, har qanday avtomatlashtirish sizga tushun
 
 ---
 
-## Slide 9 — 5 turdagi Trigger
+## Slide 10 — 5 turdagi Trigger
 
 **Sarlavha:** Trigger 5 ta turdan birortasi bo'ladi.
 **5 trigger (.benefits-5, 2+3 grid):**
@@ -125,7 +147,7 @@ Trigger turlari beshta. Bilingki, bank stsenariylarining 95% shu beshlikka tusha
 
 ---
 
-## Slide 10 — Webhook chuqurroq · ikki yo'nalish
+## Slide 11 — Webhook chuqurroq · ikki yo'nalish
 
 **Sarlavha:** Webhook · eshik, ikki xil ishlatiladi.
 **Compare-rich:** Tashqi xizmat → bizga (Telegram bot webhook) vs Ichki tizim → bizga (CRM o'zgarish webhook)
@@ -136,7 +158,7 @@ Webhook eng kuchli trigger turi, lekin u ham eng ko'p chalkashtiriladigan tushun
 
 ---
 
-## Slide 11 — Bank misoli #1 · Spravka avtomatlashtirish
+## Slide 12 — Bank misoli #1 · Spravka avtomatlashtirish
 
 **Sarlavha:** Mijoz Telegram orqali spravka oladi · 6 qadam.
 **Lead:** Trigger = Telegram'dan kelgan ariza. Mijoz 5 daqiqada PDF spravkani Telegram'da oladi.
@@ -147,7 +169,7 @@ Birinchi real misol — boshda gapirgan spravka. Ko'rib chiqaylik, qadam-qadam. 
 
 ---
 
-## Slide 12 — Bank misoli #2 · Email shikoyat toifalash
+## Slide 13 — Bank misoli #2 · Email shikoyat toifalash
 
 **Sarlavha:** Email shikoyat — AI avtomatik yo'naltiradi.
 **Lead:** Trigger = shikoyat@bank.uz'ga kelgan email. AI mavzuni o'qib tegishli bo'limga yo'naltiradi.
@@ -158,7 +180,7 @@ Ikkinchi misol — har bankda kuniga 100-200 marta uchraydigan vaziyat. Mijoz sh
 
 ---
 
-## Slide 13 — Bank misoli #3 · Muvofiqlik hisobot · Schedule
+## Slide 14 — Bank misoli #3 · Muvofiqlik hisobot · Schedule
 
 **Sarlavha:** Har juma 17:00 — Schedule trigger.
 **Lead:** Muvofiqlik xodimi har juma 4 soatda hisobot to'plardi. Bot 5 daqiqada qiladi.
@@ -169,7 +191,7 @@ Uchinchi misol — Schedule trigger uchun klassik. Muvofiqlik bo'limi har juma h
 
 ---
 
-## Slide 14 — Live mini-build · 5 ta node
+## Slide 15 — Live mini-build · 5 ta node
 
 **Sarlavha:** 5 ta node · o'z ko'zingiz bilan.
 **Chip:** Live mini-build · 10 daq · ekranda
@@ -182,7 +204,7 @@ Endi eng qiziq qism. Hammasini chala-chala ko'rdik — endi men ekranda haqiqiy 
 
 ---
 
-## Slide 15 — 3 ta katta xato
+## Slide 16 — 3 ta katta xato
 
 **Sarlavha:** Workflow'da 3 ta katta xato · va to'g'risi.
 **3 myth/reality:**
@@ -195,7 +217,7 @@ Workflow'lar bilan ishlaganda eng ko'p uchraydigan uch xatoni aytib bera. Birinc
 
 ---
 
-## Slide 16 — Xavfsizlik · 3 qizil chiziq
+## Slide 17 — Xavfsizlik · 3 qizil chiziq
 
 **Sarlavha:** Xavfsizlik · 3 ta qizil chiziq.
 **Lead:** No-code qulay, lekin "xohlagan xodim xohlagan workflow yasashi" — xato.
@@ -209,7 +231,7 @@ No-code qanchalik qulay bo'lsa, shunchalik xavfli — agar to'g'ri qoidalar bo'l
 
 ---
 
-## Slide 17 — Closing + lug'at recap
+## Slide 18 — Closing + lug'at recap
 
 **Sarlavha:** Bugundan qaytib ketadigan 3 xulosa.
 **3 xulosa:**
@@ -220,7 +242,7 @@ No-code qanchalik qulay bo'lsa, shunchalik xavfli — agar to'g'ri qoidalar bo'l
 
 ---
 
-## Slide 18 — Bank qaror varaqasi · 6 ta savol (decision artifact)
+## Slide 19 — Bank qaror varaqasi · 6 ta savol (decision artifact)
 
 **Sarlavha:** 6 ta savol — production yoki sandbox?
 **Chip:** Bank qaror varaqasi · workflow pilotga chiqadimi?
@@ -242,7 +264,7 @@ Yakun. Bugundan uy ga olib ketadigan uch fikr. Birinchisi: no-code — bo'lim xo
 
 ---
 
-## Slide 19 — Q&A
+## Slide 20 — Q&A
 
 **Sarlavha:** Sizning savollaringiz.
 **Lead:** Workflow, trigger tanlash, n8n joylashtirish, xavfsizlik — marhamat.

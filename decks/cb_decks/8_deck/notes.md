@@ -1,6 +1,6 @@
 # 8-deck — No-code avtomatlashtirish (Zapier, n8n, Make)
 
-**Module:** 8-modul · Kun 1 · 17:30–18:15 — Day 1 closing slot (60 daqiqa)
+**Module:** 8-modul · Kun 1 · 17:15–18:15 — Day 1 closing slot (60 daqiqa)
 **Format:** Workflow building demos + audience exercise
 **Audience:** Markaziy Bank xodimlari (non-technical)
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev
@@ -17,7 +17,7 @@
 
 ## Outline (one bullet = one slide)
 
-1. **Title** — "No-code avtomatlashtirish" (Kun 1 · 17:30 — 18:15 chip)
+1. **Title** — "No-code avtomatlashtirish" (Kun 1 · 17:15 — 18:15 chip)
 2. **Agenda** — 4 faza (Nima uchun no-code · Platformalar · Bank misollari · Mini-build & mashq)
 3. **Hook** — Programmer 2 hafta vs Bo'lim xodimi 30 daqiqa (`.compare`)
 4. **No-code falsafasi** — 3-card benefits (Tezroq · IT yukini kamaytiradi · Tushunish oson)
@@ -105,7 +105,7 @@ Recap slaydda har ikkala atama auditoriya bilan birga aytiladi (~30 sek):
 - [x] Atama dictionary `.dict.dict-2` bilan (slide 5) — 2 ta atama
 - [x] `.s-brain` mashq (slide 14)
 - [x] `.flow` 3 marta — har biri turli trigger turi (Telegram · Email · Schedule)
-- [x] Title chipida `Kun 1 · 17:30 — 18:15`
+- [x] Title chipida `Kun 1 · 17:15 — 18:15`
 - [x] No accent line under titles
 - [x] No `r4` reveal class — eng uzog'i `r3` (screenshot bug oldi)
 - [x] Locked CSS tokens tegilmagan — qo'shilganlari `<style>` oxirida

@@ -8,7 +8,7 @@
 -->
 # 7-modul · SI platformalar bilan ishlash
 
-**Module:** 7-modul · Kun 1 · 17:45–18:45 (60 daqiqa)
+**Module:** 7-modul · Kun 1 · 16:15–17:15 (60 daqiqa)
 **Format:** Platforma taqqoslash + jonli demo
 **Audience:** Markaziy Bank xodimlari (operatsiyalar, muvofiqlik, boshqaruv)
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev
@@ -25,23 +25,24 @@
 |---|---|---|---|---|
 | 1 | SI platformalar bilan ishlash | Title | ~1 daq | — |
 | 2 | Mavzuning yo'l xaritasi | Agenda | ~2 daq | — |
-| 3 | Bir savol — uch xil javob | Hook 3-platforma | ~5 daq | 01 Platformalar |
-| 4 | Bozorda 5 ta katta o'yinchi bor | Bozor xaritasi | ~3 daq | 01 Platformalar |
-| 5 | Ikki so'z — narx va imkoniyat tili | YANGI lug'at | ~4 daq | 02 Atamalar |
-| 6 | 1 so'z, 1 sahifa — qancha token? | Token misol | ~3 daq | 02 Atamalar |
-| 7 | Kontekst oynasi — kim qancha sig'diradi? | Bar chart | ~3 daq | 02 Atamalar |
-| 8 | ChatGPT — eng katta ekosistema | Deep-dive #1 | ~4 daq | 01 Platformalar |
-| 9 | Claude — uzun matn ustasi | Deep-dive #2 | ~4 daq | 01 Platformalar |
-| 10 | Gemini — bizning kurs tanlovi | Deep-dive #3 | ~4 daq | 01 Platformalar |
-| 11 | Bank uchun tanlash mezoni | HA / YO'Q | ~4 daq | 03 Imkoniyat |
-| 12 | Narx — 3 ta darajada | Pricing 3-card | ~3 daq | 03 Imkoniyat |
-| 13 | Brauzerda yozish vs API orqali avtomat | Compare | ~3 daq | 03 Imkoniyat |
-| 14 | Brauzerdan tashqari — yangi to'rt xususiyat | Rules · Skills · MCP + Agent (cross-ref) | ~5 daq | 02 Atamalar (ikkinchi qism) |
-| 15 | Xavfsizlik — 3 ta nazorat | Sec 3-card | ~4 daq | 03 Imkoniyat |
-| 16 | Eng ko'p uchraydigan 3 xato | Myth/Reality | ~3 daq | 03 Imkoniyat |
-| 17 | 3 stol — 1 keys — 2 platforma | Brainstorm | ~6 daq | 04 Mashq |
-| 18 | Bugundan qaytib ketadigan 3 xulosa | Closing + 5 atama recap | ~3 daq | 04 Mashq |
-| 19 | Sizning savollaringiz | Q&A | ~5 daq | 04 Mashq |
+| 3 | Har vazifaga qaysi AI? | Vote (interaktiv hook) | ~2 daq | 01 Platformalar |
+| 4 | Bir savol — uch xil javob | Hook 3-platforma | ~5 daq | 01 Platformalar |
+| 5 | Bozorda 5 ta katta o'yinchi bor | Bozor xaritasi | ~3 daq | 01 Platformalar |
+| 6 | Ikki so'z — narx va imkoniyat tili | YANGI lug'at | ~4 daq | 02 Atamalar |
+| 7 | 1 so'z, 1 sahifa — qancha token? | Token misol | ~3 daq | 02 Atamalar |
+| 8 | Kontekst oynasi — kim qancha sig'diradi? | Bar chart | ~3 daq | 02 Atamalar |
+| 9 | ChatGPT — eng katta ekosistema | Deep-dive #1 | ~4 daq | 01 Platformalar |
+| 10 | Claude — uzun matn ustasi | Deep-dive #2 | ~4 daq | 01 Platformalar |
+| 11 | Gemini — bizning kurs tanlovi | Deep-dive #3 | ~4 daq | 01 Platformalar |
+| 12 | Bank uchun tanlash mezoni | HA / YO'Q | ~4 daq | 03 Imkoniyat |
+| 13 | Narx — 3 ta darajada | Pricing 3-card | ~3 daq | 03 Imkoniyat |
+| 14 | Brauzerda yozish vs API orqali avtomat | Compare | ~3 daq | 03 Imkoniyat |
+| 15 | Brauzerdan tashqari — yangi to'rt xususiyat | Rules · Skills · MCP + Agent (cross-ref) | ~5 daq | 02 Atamalar (ikkinchi qism) |
+| 16 | Xavfsizlik — 3 ta nazorat | Sec 3-card | ~4 daq | 03 Imkoniyat |
+| 17 | Eng ko'p uchraydigan 3 xato | Myth/Reality | ~3 daq | 03 Imkoniyat |
+| 18 | 3 stol — 1 keys — 2 platforma | Brainstorm | ~6 daq | 04 Mashq |
+| 19 | Bugundan qaytib ketadigan 3 xulosa | Closing + 5 atama recap | ~3 daq | 04 Mashq |
+| 20 | Sizning savollaringiz | Q&A | ~5 daq | 04 Mashq |
 
 ---
 
@@ -54,7 +55,7 @@ SI platformalari bilan ishlash.
 ChatGPT, Claude va Gemini — qaysi platforma qachon to'g'ri keladi.
 
 **Vizual elementlar:**
-Katta sarlavha, tepada "Kun 1 · 17:45 — 18:45" chipi.
+Katta sarlavha, tepada "Kun 1 · 16:15 — 17:15" chipi.
 
 **Speaker notes:**
 Xayrli kech. Soat 17:45 bo'ldi, bilaman, ko'pchilik charchadi. Lekin hozir eng qiziq qismiga keldik. 
@@ -83,7 +84,30 @@ Va oxirida — zaldagi stollarda o'tirib, o'zingiz jonli sinov o'tkazasiz.
 
 ---
 
-## Slide 3 — Hook · Bir savol, uch xil javob
+## Slide 3 — Vote · Har vazifaga qaysi AI?
+
+**Chip:**
+Mini-so'rovnoma · 30 soniya.
+
+**Sarlavha:**
+Har vazifaga: ChatGPT · Claude · Gemini · Perplexity — qaysi?
+
+**Vizual elementlar:**
+4 ta vote-card grid (4 ustun). Har biri katta rasm + label + sub-label:
+- 01 · Ko'p oqim — 1000+ xatni tasniflash
+- 02 · Uzun hujjat — 200 betlik huquqiy tahlil
+- 03 · Ijodiy ish — Slogan, brending, matn
+- 04 · Jonli qidiruv — Bugungi yangiliklar, web
+
+**Maqsad:**
+Hook'dan oldin auditoriyani "kim qachon nima ishlatadi" degan savol bilan jalb qilish. Har bir card real ish-vazifani aks ettiradi. Auditoriyaning kayfiyati o'lchanadi — keyingi slaydlar shu mantiq ustida quriladi.
+
+**Speaker notes:**
+30 soniyalik tezkor savol. Slaydni ko'rsataman va so'rayman: "Ko'p oqim — 1000 ta xatni tasniflash kerak bo'lsa, qaysi modelni tanlaysiz? Uzun huquqiy hujjat tahlilini-chi? Ijodiy yozuvga? Bugungi yangilikni qidirishga?". Qo'l ko'tarishini kutmang — bu rasmiy ovoz emas, bu "miyani uyg'otish" mashqi. Javoblar har xil bo'ladi — aniqlovchi javob yo'q. Shu noaniqlikning o'zi keyingi 17 slaydning poydevori: "qaysi vazifaga qaysi mos" degan ramka.
+
+---
+
+## Slide 4 — Hook · Bir savol, uch xil javob
 
 **Sarlavha:**
 Bir savol — uch xil javob.
@@ -113,7 +137,7 @@ Javob: hech qaysi. "Qaysi biri zo'r?" degan savolning o'zi xato. To'g'ri savol �
 
 ---
 
-## Slide 4 — Bozor xaritasi
+## Slide 5 — Bozor xaritasi
 
 **Sarlavha:**
 Bozorda 5 ta katta o'yinchi bor.
@@ -133,7 +157,7 @@ Bu uchtasi bizning asosiy qurollarimiz. Lekin yana ikkitasini bilib qo'yish kera
 
 ---
 
-## Slide 5 — Lug'at · Token + Context Window
+## Slide 6 — Lug'at · Token + Context Window
 
 **Sarlavha:**
 Ikki so'z — narx va imkoniyat tili.
@@ -152,7 +176,7 @@ Shu ikki so'zni eslab qoling: Token — bu siz to'laydigan pul. Context Window �
 
 ---
 
-## Slide 6 — Token vs so'z misoli
+## Slide 7 — Token vs so'z misoli
 
 **Sarlavha:**
 1 so'z, 1 sahifa — qancha token?
@@ -174,7 +198,7 @@ Xulosa nima? AI'ga "batafsil 5 bet qilib yozib ber" deyishdan oldin o'ylang. Qis
 
 ---
 
-## Slide 7 — Context Window taqqoslash
+## Slide 8 — Context Window taqqoslash
 
 **Sarlavha:**
 Kontekst oynasi — kim qancha sig'diradi?
@@ -189,12 +213,12 @@ Kontekst oynasi — kim qancha sig'diradi?
 Endi Context Window (xotira) ni solishtiramiz.
 (ekranga ishora qiling)
 Eng o'ngdagi mitti ustunga qarang. Bu sizning 4-5 sahifalik odatiy bank shartnomangiz. Ko'rib turibsiz, uni har qanday platforma bemalol "yutib yuboradi".
-Lekin... agar siz yil yakunlari bo'yicha yirik hisobotni yoki AML bo'yicha regulyatorning katta talabnomasini yuklamoqchi bo'lsangiz-chi? ChatGPT (128k) to'lib qolishi mumkin. Claude (200k) buni eplaydi.
-Gemini 3 Pro — 1 million token kontekst (Opus 4.7 va GPT-5.5 ham endi 1M ga teng). Bu degani 750 sahifalik materialni bir marta tashlab, "shu yerdan menga kerakli qoidani topib ber" deyishingiz mumkin. Demo amaliyotini Gemini'da quramiz — Workspace integratsiyasi va multimodal qulay.
+Lekin... agar siz yil yakunlari bo'yicha yirik hisobotni yoki AML bo'yicha regulyatorning katta talabnomasini yuklamoqchi bo'lsangiz-chi? 2026-yil holatida uchchala frontier model — GPT-5.5, Claude Opus 4.7 va Gemini 3 Pro — endi 1 million tokenli kontekstga ega. Ya'ni 750 sahifalik materialni bir marta tashlab, "shu yerdan menga kerakli qoidani topib ber" deyishingiz mumkin.
+Demo amaliyotini Gemini'da quramiz — Workspace integratsiyasi va multimodal qulay. Mini/Flash variantlari (arzonroq tariflar) hali 256k–400k, lekin asosiy frontier modellar bo'yicha kontekst muammosi yopilgan. Savol "qaysi modelni tanlash" emas — "qaysi vazifaga qaysi modelni mos qilib tanlash".
 
 ---
 
-## Slide 8 — ChatGPT chuqurlashish
+## Slide 9 — ChatGPT chuqurlashish
 
 **Sarlavha:**
 ChatGPT — eng katta ekosistema.
@@ -213,7 +237,7 @@ Lekin ehtiyot bo'ling: o'zbek tilida ba'zan "Google Translate" hidi kelib qoladi
 
 ---
 
-## Slide 9 — Claude chuqurlashish
+## Slide 10 — Claude chuqurlashish
 
 **Sarlavha:**
 Claude — uzun matn ustasi.
@@ -232,7 +256,7 @@ Cheklovi nimada? Internetga ulanmagan. "Bugungi dollar kursi qancha?" desangiz, 
 
 ---
 
-## Slide 10 — Gemini chuqurlashish
+## Slide 11 — Gemini chuqurlashish
 
 **Sarlavha:**
 Gemini — kurs amaliyoti uchun.
@@ -250,7 +274,7 @@ Eslatma: bizning labda Gemini ishlatilishi sizning IT-xaridingiz uchun tavsiya e
 
 ---
 
-## Slide 11 — Bank uchun tanlash mezoni
+## Slide 12 — Bank uchun tanlash mezoni
 
 **Sarlavha:**
 Tanlovni use-case xavfi bilan tekshiramiz.
@@ -288,7 +312,7 @@ Pastdagi qatorga e'tibor bering — bu jonli misol. Muvofiqlik FAQ ichki ro'yxat
 
 ---
 
-## Slide 12 — Narx va litsenziya
+## Slide 13 — Narx va litsenziya
 
 **Sarlavha:**
 Narx — 3 ta darajada.
@@ -307,7 +331,7 @@ Uchinchi qavat — Enterprise yoki API. Korporativ daraja. Narxini bank IT va xa
 
 ---
 
-## Slide 13 — Web vs API
+## Slide 14 — Web vs API
 
 **Sarlavha:**
 Brauzerda yozish vs API orqali avtomat.
@@ -328,7 +352,26 @@ Buning uchun dasturchi bo'lish kerakmi? Yo'q. Ertaga 8-modulda biz buni kod yozm
 
 ---
 
-## Slide 14 — Xavfsizlik mezoni
+## Slide 15 — Modern xususiyatlar · Rules · Skills · MCP
+
+**Chip:**
+Bankir uchun AI lug'ati · 7-modul · ikkinchi qism.
+
+**Sarlavha:**
+Brauzerdan tashqari — yangi imkoniyatlar.
+
+**Lead matn:**
+ChatGPT, Claude, Gemini — faqat chat oynasi emas. Rules, Skills va MCP bo'lim ishini standartlashtiradi; bankda faqat korporativ shartnoma, ruxsat chegarasi va audit log bilan ulanadi. Agent atamasi — alohida 10-modulda.
+
+**Vizual elementlar:**
+4 ta blokli grid: Rules + Skills + MCP (dict-card) + Agent (cross-ref card 10-modulga). Pastda mute izoh — bankda enterprise shartnomasi va audit log bilan ulanadi.
+
+**Speaker notes:**
+Brauzerda chat — bu 2024-yilning klassikasi. 2026-yil uchun siz uchta yangi atama bilim olib chiqishingiz kerak. Birinchi — Rules: platforma sizning bo'lim qoidasini "es"da tutadi. Masalan, "har javobda PII bo'lmasin, har shartnomada IFRS 9 chegarasini eslat". Ikkinchi — Skills: bir marta yozilgan vazifa kuyilib qoladi. Aytaylik, "kredit memosini formatla" deganda — har gal bir xil shaklda chiqaradi. Uchinchi — MCP (Model Context Protocol): platforma bank tizimingiz bilan standart eshik orqali gaplashadi. Bu yangi, sanoatda standartlashtirilmoqda. Lekin bankda bularning hammasi enterprise shartnoma, ruxsat chegarasi va audit log bilan keladi — aks holda yopiq kontur buziladi. Agent — bunday "harakatlanuvchi qolip" — alohida, 10-modulda ko'ramiz.
+
+---
+
+## Slide 16 — Xavfsizlik mezoni
 
 **Sarlavha:**
 Xavfsizlik — 3 ta savol emas, 3 ta nazorat.
@@ -352,7 +395,7 @@ Uchinchi nazorat: **inson tasdig'i**. AI javobi tashqariga ketishidan oldin yuri
 
 ---
 
-## Slide 15 — Eng ko'p uchraydigan 3 xato
+## Slide 17 — Eng ko'p uchraydigan 3 xato
 
 **Sarlavha:**
 Eng ko'p uchraydigan 3 xato.
@@ -371,7 +414,7 @@ Uchinchi xato: "Kecha yangi model chiqibdi, darhol shunga o'tamiz". Yangisi har 
 
 ---
 
-## Slide 16 — Live mashq · Stol bo'yicha
+## Slide 18 — Live mashq · Stol bo'yicha
 
 **Sarlavha:**
 3 stol — 1 case — 2 platforma — 5 mezonli rubric.
@@ -406,7 +449,7 @@ Va yana bir bor eslataman: savolga PII qo'shmang! "Mijoz Aliyev" emas, "Bir mijo
 
 ---
 
-## Slide 17 — Closing + recap
+## Slide 19 — Closing + recap
 
 **Sarlavha:**
 Bugundan qaytib ketadigan 3 xulosa.
@@ -438,7 +481,7 @@ Zo'r. Ertaga shu atamalar n8n ichida juda asqotadi.
 
 ---
 
-## Slide 18 — Q&A
+## Slide 20 — Q&A
 
 **Sarlavha:**
 Sizning savollaringiz.

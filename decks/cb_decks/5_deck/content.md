@@ -8,7 +8,7 @@
 -->
 # 5-modul · Promt muhandisligi — professional daraja
 
-**Module:** 5-modul · Kun 1 · 15:15–16:15 (60 daqiqa)  
+**Module:** 5-modul · Kun 1 · 14:15–15:15 (60 daqiqa)  
 **Format:** Namoyish + mashq (demo + exercise)  
 **Audience:** Markaziy Bank xodimlari (kredit, muvofiqlik, operatsion bo'lim, mijozlarga xizmat ko'rsatish)  
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev  
@@ -27,7 +27,8 @@
 |---|---|---|---|---|
 | 1 | Promt muhandisligi — professional daraja | Title | ~2 daq | — |
 | 2 | Mavzuning yo'l xaritasi | Agenda — 4 faza | ~1 daq | — |
-| 3 | Bir vazifa — ikki natija | Hook · BAD vs GOOD | ~7 daq | 01 Asoslar |
+| 3 | Qaysi promt eng aniq javob beradi? | Vote-hook — `.s-vote` · 3 karta | ~1 daq | 01 Asoslar |
+| 4 | Bir vazifa — ikki natija | Hook · BAD vs GOOD | ~7 daq | 01 Asoslar |
 | 4 | Sifatli promtning 5 ta elementi | 5 ta element grid | ~4 daq | 01 Asoslar |
 | 5 | Ikkita texnika — promtning kuchli qurollari | Few-shot + CoT lug'ati | ~3 daq | 01 Asoslar |
 | 6 | Few-shot — namuna bilan o'rgatish | 0-shot → 1-shot → Few-shot | ~6 daq | 02 Texnikalar |
@@ -47,7 +48,7 @@
 Promt **muhandisligi** — professional daraja.
 
 **Lead matn:**
-Kun 1 · 15:15 — 16:15
+Kun 1 · 14:15 — 15:15
 AI bilan to'g'ri gaplashish texnikasi va shablonlari.
 
 **Vizual elementlar:**
@@ -85,7 +86,13 @@ Va to'rtinchisi — eng kattasi. Mashq. Zal bilan birgalikda o'zimizning birinch
 
 ---
 
-## Slide 3 — Bir vazifa — ikki natija
+## Slide 3 — Vote-hook · Qaysi promt eng aniq javob beradi?
+
+**Format:** 30 soniyalik mini-so'rovnoma. 3 ta vote-card (`.vote-grid--3`): "01 · 'Javob yoz'" (mavhum buyruq), "02 · Xushmuomala" ("iltimos, professional ohangda..."), "03 · Strukturali" (rol · vazifa · qoidalar · misol). Spiker zaldan ovoz oladi va strukturali variant (03) — bu modulning markaziy texnikasi ekanini e'lon qiladi.
+
+---
+
+## Slide 4 — Bir vazifa — ikki natija
 
 **Sarlavha:**
 Bir vazifa — **ikki natija**.

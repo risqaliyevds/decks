@@ -1,6 +1,6 @@
 # 3-deck — Sun'iy intellekt xavflari, muvofiqlik va boshqaruv
 
-**Module:** 3-modul · Kun 1 · 11:45–12:45 (60 daqiqa)
+**Module:** 3-modul · Kun 1 · 11:15–12:15 (60 daqiqa)
 **Format:** Interaktiv muhokama
 **Audience:** Markaziy Bank xodimlari (muvofiqlik, ichki audit, operatsiya)
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev

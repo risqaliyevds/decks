@@ -9,7 +9,7 @@
 **Atamalar:** **Pipeline**, **Idempotent design** — slayd 5 da kiritiladi, slayd 17 da recap
 **Paired bot:** [`bots/01_classifier_bot/`](../bots/01_classifier_bot/) — 9-modulda qurilgan klassifikator bot
 
-> Asosiy g'oya: 9-modulda biz klassifikator botni qurdik (Telegram + Gemini + Sheets, 7 ta node). 12-modul shu botni **production darajasiga ko'tarish** uchun nima kerakligini ko'rsatadi — bitta promtga emas, ko'p bosqichli pipeline'ga aylantiramiz; har bosqichni log qiladigan, qayta ishga tushirilsa ham xato qilmaydigan tizim yaratamiz.
+> Asosiy g'oya: 9-modulda biz klassifikator botni qurdik (Telegram + Gemini + Sheets, n8n workflow — 13 ta node: 8 asosiy + /start greeting + 4 LLM sozlamalar). 12-modul shu botni **production darajasiga ko'tarish** uchun nima kerakligini ko'rsatadi — bitta promtga emas, ko'p bosqichli pipeline'ga aylantiramiz; har bosqichni log qiladigan, qayta ishga tushirilsa ham xato qilmaydigan tizim yaratamiz.
 
 ---
 

@@ -30,7 +30,8 @@ AI — qandaydir tushunarsiz sehr yoki sizning ishingizni tortib oladigan dushma
 | 1 | Bank sektori uchun sun'iy intellekt asoslari | Kirish | ~1 daq | — |
 | 2 | Mavzuning yo'l xaritasi | Agenda (4 bekat) | ~1 daq | — |
 | 3 | Tanishuv · Kim sizga gapiradi? | Speaker intro (60 soniya) | ~1 daq | — |
-| 4 | Odamlar AI'dan hozir qanday foydalanyapti? | WOW hook — rasm (kal/sochli) | ~1 daq | 01 |
+| 4 | Bu 4 kasbdan qaysi birini AI almashtiradi? | Vote hook — 4 ta kasb kartasi | ~1 daq | — |
+| 5 | Odamlar AI'dan hozir qanday foydalanyapti? | WOW hook — rasm (kal/sochli) | ~1 daq | 01 |
 | 5 | AI ko'pincha kontent o'yinchog'i bo'lib qolyapti | WOW hook — video (it) | ~1 daq | 01 |
 | 6 | Keling, kelajakni hozir sinab ko'ramiz | Live demo (QR + bot) | ~5 daq | 01 |
 | 7 | AI = super-aqlli ishchi | Metafora (17 tab vs AI) | ~3 daq | 01 |
@@ -127,7 +128,22 @@ Vaqt: 60 soniya. Uzaytirmang.
 
 ---
 
-## Slide 4 — Odamlar AI'dan hozir qanday foydalanyapti?
+## Slide 4 — Bu 4 kasbdan qaysi birini AI almashtiradi?
+
+**Chip:** Mini-so'rovnoma · 30 soniya
+
+**Sarlavha:**
+Bu 4 kasbdan qaysi birini **AI almashtiradi**?
+
+**Vizual elementlar:**
+4 ta vote-card grid: Biznesmen (boshqaruv · qaror · strategiya), Dasturchi (kod yozadi · masala yechadi), Haydovchi (yuk tashish · uzoq yo'l), Farrosh (tozalash · xizmat ko'rsatish).
+
+**Speaker notes:**
+Tanishuvdan keyin auditoriyani uyg'otadigan tez interaktiv hook. Zaldan qo'l ko'tartirib ovoz oling — biror kasb uchun 30 soniyada javobni yig'ing. To'g'ri javob yo'q: maqsad — auditoriyani "AI ishni olib qo'yadimi" tushunchasiga qo'shish. Slayd 9 dagi "YO'Q" muhriga ko'prik bo'ladi: AI har qaysi kasbni emas, takroriy ishlarini qisqartiradi.
+
+---
+
+## Slide 5 — Odamlar AI'dan hozir qanday foydalanyapti?
 
 **Sarlavha:**
 Odamlar AI'dan hozir **qanday** foydalanyapti?

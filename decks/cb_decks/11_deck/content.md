@@ -1,6 +1,6 @@
 # 11-modul · Bank uchun sun'iy intellekt agenti dizayni — RAG chatbot showcase
 
-**Module:** 11-modul · Kun 2 · 14:00–15:00 (60 daqiqa)
+**Module:** 11-modul · Kun 2 · 11:00–12:00 (60 daqiqa)
 **Format:** Showcase + dizayn seminar (instructor demos, students DESIGN)
 **Audience:** Markaziy Bank xodimlari (non-technical)
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev
@@ -18,7 +18,7 @@
 ## Slide 1 — Title
 
 **Sarlavha:** Bank uchun **AI agenti dizayni**.
-**Chip:** Kun 2 · 14:00 — 15:00
+**Chip:** Kun 2 · 11:00 — 12:00
 **Tagline:** RAG chatbot · ichki PDF'dan javob, manba ko'rsatib. Showcase modul.
 
 **Speaker notes:**

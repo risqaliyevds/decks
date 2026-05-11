@@ -1,6 +1,6 @@
 # 6-deck — Bank uchun tayyor promt kutubxonasi
 
-**Module:** 6-modul · Kun 1 · 16:30–17:30 (60 daqiqa)
+**Module:** 6-modul · Kun 1 · 15:15–16:15 (60 daqiqa)
 **Format:** Tayyor kutubxona walkthrough — namoyish + amaliy moslash
 **Audience:** Markaziy Bank xodimlari (non-technical)
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev

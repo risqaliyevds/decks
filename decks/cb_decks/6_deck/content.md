@@ -8,7 +8,7 @@
 -->
 # 6-modul · Bank uchun tayyor promt kutubxonasi
 
-**Module:** 6-modul · Kun 1 · 16:30–17:30 (60 daqiqa)
+**Module:** 6-modul · Kun 1 · 15:15–16:15 (60 daqiqa)
 **Format:** Tayyor kutubxona walkthrough — namoyish + amaliy moslash
 **Audience:** Markaziy Bank xodimlari (non-technical: operations, compliance, management)
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev
@@ -27,7 +27,8 @@
 |---|---|---|---|---|
 | 1 | Bank uchun tayyor promt kutubxonasi | Title | ~1.5 daq | — |
 | 2 | Mavzuning yo'l xaritasi | Agenda — 4 faza | ~1.5 daq | — |
-| 3 | Noldan yozma — kutubxonadan ol | Hook — Live demo | ~5 daq | 01 Kutubxona |
+| 3 | Ish haqi promti — qaysi yo'lni tanlaysiz? | Vote-hook — `.s-vote` · 3 karta | ~1 daq | 01 Kutubxona |
+| 4 | Noldan yozma — kutubxonadan ol | Hook — Live demo | ~5 daq | 01 Kutubxona |
 | 4 | Ikki xil promt — ikki xil ish | Compare: System vs Template | ~3 daq | 01 Kutubxona |
 | 5 | Ikki atama — kutubxonaning poydevori | System Prompt · Template Prompt | ~4 daq | 01 Kutubxona |
 | 6 | Kutubxona — 5 ta yo'nalish, 50+ shablon | Library overview · 5-grid | ~5 daq | 02 Kategoriyalar |
@@ -89,7 +90,13 @@ Oxirida esa — xavfsizlik. AI yozgan narsani ko'r-ko'rona imzolab yubormaslik u
 
 ---
 
-## Slide 3 — Hook (Live template demo)
+## Slide 3 — Vote-hook · Ish haqi promti — qaysi yo'lni tanlaysiz?
+
+**Format:** 30 soniyalik mini-so'rovnoma. 3 ta vote-card (`.vote-grid--3`): "01 · O'zim yozaman" (har safar noldan), "02 · Kutubxonadan" (sinalgan promt, edge case'lar tutilgan), "03 · Default ilova" (ChatGPT'ga ko'taraman). Spiker zaldan ovoz oladi — kutubxona varianti (02) bugungi modulning markaziy taklifi.
+
+---
+
+## Slide 4 — Hook (Live template demo)
 
 **Sarlavha:**
 Noldan yozma — **kutubxonadan** ol.

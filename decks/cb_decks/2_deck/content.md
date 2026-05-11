@@ -1,6 +1,6 @@
 # 2-modul · Bank jarayonlarida SI qo'llash imkoniyatlarini aniqlash
 
-**Module:** 2-modul · Kun 1 · 10:30–11:30 (60 daqiqa)
+**Module:** 2-modul · Kun 1 · 10:15–11:15 (60 daqiqa)
 **Format:** Guruhli tahlil (workshop)
 **Audience:** Markaziy Bank xodimlari (operatsion bo'limlar, muvofiqlik, nazorat, menejment) — kerak bo'lganda tijorat banki misollari ham keltiriladi
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev
@@ -18,7 +18,8 @@
 |---|---|---|---|---|
 | 1 | Bo'limingizdan 1 pilot kandidat | Title + outcome promise | ~1 daq | — |
 | 2 | Bugungi 4 ta qadam | Agenda — action-verb phases | ~2 daq | — |
-| 3 | Sizning bo'limingizdagi 3 xil og'riq | Hook — 3 operatsion savol | ~5 daq | 01 Og'riqni topamiz |
+| 3 | Qaysi bank ishini AI'ga birinchi beramiz? | Vote hook — 4 ta bank ishi | ~1 daq | — |
+| 4 | Sizning bo'limingizdagi 3 xil og'riq | Hook — 3 operatsion savol | ~5 daq | 01 Og'riqni topamiz |
 | 4 | Bankdagi AI loyihalarning 4 oilasi | Taksonomiya — bank misollari bilan | ~5 daq | 01 Og'riqni topamiz |
 | 5 | Bo'limlar kesimida — haqiqiy ish navbatlari | Markaziy Bank + tijorat misollar | ~7 daq | 02 Use case'ga aylantiramiz |
 | 6 | Use Case va Pilot — ikki asosiy tushuncha | Lug'at + o'lchov testi | ~5 daq | 02 Use case'ga aylantiramiz |
@@ -34,7 +35,7 @@
 ## Slide 1 — Title · Outcome promise
 
 **Sarlavha / chip:**
-Kun 1 · 10:30 — 11:30
+Kun 1 · 10:15 — 11:15
 BANK JARAYONLARIDA **SI QO'LLASH** IMKONIYATLARINI ANIQLASH.
 
 **Lead matn:**
@@ -80,7 +81,21 @@ Ketdik.
 
 ---
 
-## Slide 3 — Hook · 3 ta operatsion savol
+## Slide 3 — Vote · Qaysi bank ishini AI'ga birinchi beramiz?
+
+**Sarlavha / chip:**
+Mini-so'rovnoma · 30 soniya
+QAYSI BANK ISHINI **AI'GA BIRINCHI** BERAMIZ?
+
+**Vizual elementlar:**
+4 ta vote-card grid: Mijoz aloqasi (kuniga 1000+ savol), Hujjat tahlili (2 soatlik o'qish), Kredit qarori (murakkab tahlil · katta narx), Yig'ilish hisoboti (30 daq matn).
+
+**Speaker notes:**
+Agendadan keyin tezkor temperature check — zaldan qo'l ko'tarttirib eng ko'p ovoz olgan kartani belgilang. Maqsad: auditoriyani matritsa va Use Case canvasiga "qaysi ish bandimi" tahlili bilan kirishga tayyorlash. "Kredit qarori"ga ko'p ovoz tushsa — slayd 7 dagi qizil kvadrant uchun tabiiy ko'prik bo'ladi.
+
+---
+
+## Slide 4 — Hook · 3 ta operatsion savol
 
 **Sarlavha / chip:**
 BOSHLOVCHI SAVOL

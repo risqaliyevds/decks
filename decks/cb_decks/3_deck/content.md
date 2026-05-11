@@ -8,7 +8,7 @@
 -->
 # 3-modul · Sun'iy intellekt xavflari, muvofiqlik va boshqaruv — to'liq kontent
 
-**Module:** 3-modul · Kun 1 · 11:45–12:45 (60 daqiqa)
+**Module:** 3-modul · Kun 1 · 11:15–12:15 (60 daqiqa)
 **Format:** Interaktiv muhokama
 **Audience:** Markaziy Bank xodimlari (muvofiqlik, ichki audit, operatsiya)
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev
@@ -27,7 +27,8 @@
 |---|---|---|---|---|
 | 1 | AI xavflari, muvofiqlik va boshqaruv | Title | ~2 daq | — |
 | 2 | Mavzuning yo'l xaritasi | Agenda — 4 faza | ~2 daq | — |
-| 3 | AI ishonch bilan yolg'on gapiradi | Live hallucination demo | ~5 daq | 01 Xavflar |
+| 3 | Banklar uchun qaysi xavf eng halokatli? | Vote hook — 4 ta xavf turi | ~1 daq | — |
+| 4 | AI ishonch bilan yolg'on gapiradi | Live hallucination demo | ~5 daq | 01 Xavflar |
 | 4 | Bankda AI 4 ta xavf tug'diradi | Risk taxonomy | ~5 daq | 01 Xavflar |
 | 5 | Ikki so'z — muvofiqlikning poydevori | Atama dictionary | ~5 daq | 02 Gallyutsinatsiya |
 | 6 | Gallyutsinatsiyani RAG nolga tushiradi | Compare — Internet vs RAG | ~5 daq | 02 Gallyutsinatsiya |
@@ -45,7 +46,7 @@
 ## Slide 1 — Title
 
 **Sarlavha:** SI **XAVFLARI**, MUVOFIQLIK VA BOSHQARUV.
-**Chip:** Kun 1 · 11:45 — 12:45
+**Chip:** Kun 1 · 11:15 — 12:15
 **Lead matn:** Qizil chiziqdan xavfsiz koridorgacha — bankir tilida.
 
 **Vizual elementlar:**
@@ -80,7 +81,21 @@ Qani, ketdik.
 
 ---
 
-## Slide 3 — Hook (Live hallucination demo)
+## Slide 3 — Vote · Banklar uchun qaysi xavf eng halokatli?
+
+**Sarlavha / chip:**
+Mini-so'rovnoma · 30 soniya
+BANKLAR UCHUN QAYSI XAVF **ENG HALOKATLI**?
+
+**Vizual elementlar:**
+4 ta vote-card grid: PII leak (mijoz ma'lumoti chetga chiqdi), Hallucination (AI ishonch bilan yolg'on aytdi), Tarjima xatosi (atama noto'g'ri tarjima), Sekin javob (2 daqiqa kechikkan javob).
+
+**Speaker notes:**
+Tezkor mini-so'rovnoma — auditoriyani 4 ta xavf bilan tanishtirish va qaysisi ularning "ichki radarida" eng yuqori chiqishini ko'rish. PII va Hallucination odatda eng ko'p ovoz oladi — bu mantiqiy, chunki slayd 4 dagi taksonomiya va slayd 5 dagi atama lug'ati shuning ustiga quriladi. Tarjima xatosi/Sekin javobga ko'p ovoz tushsa — operatsion sifat boshqaruvini eslatib o'ting.
+
+---
+
+## Slide 4 — Hook (Live hallucination demo)
 
 **Sarlavha:** AI ISHONCH BILAN **YOLG'ON GAPIRADI**.
 **Chip:** LIVE DEMO · GALLYUTSINATSIYA

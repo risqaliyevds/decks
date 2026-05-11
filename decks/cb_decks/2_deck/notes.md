@@ -1,6 +1,6 @@
 # 2-deck — Bank jarayonlarida SI qo'llash imkoniyatlarini aniqlash
 
-**Module:** 2-modul · Kun 1 · 10:30–11:30 (60 daqiqa)
+**Module:** 2-modul · Kun 1 · 10:15–11:15 (60 daqiqa)
 **Format:** Guruhli tahlil (workshop-style)
 **Audience:** Markaziy Bank xodimlari (non-technical · operatsion · muvofiqlik · IT-coordination)
 **Speaker:** Riskaliev Murad — NLP Engineer · Mohirdev
