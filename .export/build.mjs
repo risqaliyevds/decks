@@ -55,12 +55,13 @@ async function ensureScreenshots(deckPath, skip) {
 }
 
 // Parse content.md for speaker notes per slide.
-// Looks for "## Slide N — title" sections, then captures everything under "**Speaker notes:**"
-// (or "Speaker notes:" without bold) until the next "**...**" label, "##" header, or "---".
+// Looks for "## Slide N — title" or "## N — title" sections (both accepted), then
+// captures everything under "**Speaker notes:**" (or "Speaker notes:" without bold)
+// until the next "**...**" label, "##" header, or "---".
 function extractSpeakerNotes(contentMd) {
   if (!contentMd) return new Map();
   const notes = new Map();
-  const slideHeaderRe = /^##\s+Slide\s+(\d+)\b[^\n]*$/gm;
+  const slideHeaderRe = /^##\s+(?:Slide\s+)?(\d+)\b[^\n]*$/gm;
   let lastIdx = 0, lastNum = null;
   const headers = [];
   let m;
@@ -74,14 +75,22 @@ function extractSpeakerNotes(contentMd) {
     // Find Speaker notes block — tolerate bold/non-bold + Uzbek "Spiker qaydlari" if used
     const labelRe = /(?:\*\*Speaker notes:\*\*|\*\*Spiker qaydlari:\*\*|Speaker notes:|Spiker qaydlari:)/i;
     const labelMatch = block.match(labelRe);
-    if (!labelMatch) continue;
-    const after = block.slice(labelMatch.index + labelMatch[0].length);
-    // Stop at next bold-label, next markdown horizontal rule, or another ## header
-    const stopRe = /\n\s*(?:\*\*[^*\n]+:\*\*|---+\s*\n|##\s+)/;
-    const stop = after.search(stopRe);
-    let raw = (stop === -1 ? after : after.slice(0, stop)).trim();
+    let raw;
+    if (labelMatch) {
+      // Labeled format (most decks) — capture from after the label to next bold-label/--- /next ##
+      const after = block.slice(labelMatch.index + labelMatch[0].length);
+      const stopRe = /\n\s*(?:\*\*[^*\n]+:\*\*|---+\s*\n|##\s+)/;
+      const stop = after.search(stopRe);
+      raw = stop === -1 ? after : after.slice(0, stop);
+    } else {
+      // Narrative format (deck 13 style) — no label, the entire section body IS the speaker text
+      // Stop at horizontal rule if present (so trailing --- doesn't get included)
+      const stopRe = /\n\s*---+\s*\n/;
+      const stop = block.search(stopRe);
+      raw = stop === -1 ? block : block.slice(0, stop);
+    }
     // Strip surrounding quotes "..." / «...» / leading >
-    raw = raw.replace(/^["«]+|["»]+$/g, '').replace(/^>\s+/gm, '').trim();
+    raw = raw.trim().replace(/^["«]+|["»]+$/g, '').replace(/^>\s+/gm, '').trim();
     if (raw) notes.set(headers[i].num, raw);
   }
   return notes;
