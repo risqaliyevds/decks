@@ -139,9 +139,7 @@ html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:
 }
 
 /* SLIDE 2 — HOOK */
-.s-hook .main{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:clamp(1rem,2vw,1.75rem);text-align:center}
-.s-hook .main > div:not(.qr-stack){max-width:64ch;width:100%}
-.s-hook .chat{margin:clamp(0.85rem,1.6vw,1.4rem) auto 0;max-width:560px;text-align:left}
+.s-hook .main{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(1rem,2.5vw,3rem);align-items:center}
 .qr-box{background:#fff;border-radius:var(--r);aspect-ratio:1;width:clamp(180px,22vw,320px);display:flex;align-items:center;justify-content:center;color:var(--ink);font-family:var(--display);font-size:clamp(0.7rem,1vw,0.95rem);text-align:center;padding:1rem;letter-spacing:0.15em;text-transform:uppercase;
   background-image:linear-gradient(45deg,#000 25%,transparent 25%),linear-gradient(-45deg,#000 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#000 75%),linear-gradient(-45deg,transparent 75%,#000 75%);
   background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0;
@@ -837,15 +835,15 @@ body,p,li,.lead{letter-spacing:0.018em}
       <a class="qr-url" href="https://t.me/bankragbot">t.me/bankragbot</a>
     </div>
     <div class="reveal r3">
-      <span class="chip-out" style="background:transparent">Live demo · bank bot</span>
-      <h2 class="h2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Keling, kelajakni <span class="hl">hozir</span> sinab ko'ramiz.</h2>
+      <span class="chip-out" style="background:transparent">Live recall · kechagi demo</span>
+      <h2 class="h2" style="margin-top:clamp(0.75rem,1.5vw,1.25rem)">Kechagi RAG bot — kuchli, lekin <span class="hl">murakkab</span>.</h2>
       <div class="chat">
-        <div class="bubble user">Avtokredit uchun boshlang'ich to'lov qancha?</div>
-        <div class="bubble ai fragment">AI tahlil qilmoqda... ichki PDF qidirilmoqda</div>
-        <div class="bubble ai fragment">Boshlang'ich to'lov <strong>25%</strong> etib belgilangan. <em>Manba: kredit_siyosati.pdf, 4.2-band.</em> Yakuniy qaror — mas'ul xodimda.</div>
+        <div class="bubble user">Avtokredit foizi qancha?</div>
+        <div class="bubble ai fragment is-visible">RAG bot — 77 node, vector store, PDF indekslash. 2 soatlik qurish.</div>
+        <div class="bubble ai fragment is-visible">Bugun esa <strong>7 ta node yordamida</strong> birinchi botingiz — mijoz xatlarini avtomatik tasniflaydi va operatorga yo'naltiradi.</div>
       </div>
-      <p class="lead no-bar" style="margin-top:clamp(0.85rem,1.6vw,1.4rem)">Bugun botning ishlash mantig'ini ko'ramiz: tasdiqlangan hujjatdan dalil — javob qoralamasi — inson tasdig'i.</p>
-      <p class="lead no-bar" style="margin-top:clamp(0.5rem,0.9vw,0.8rem);font-size:var(--small);color:rgba(255,255,255,0.78)">Demo qoidasi: faqat oldindan yuklangan test PDF · real mijoz ma'lumoti yo'q · javob topilmasa "ma'lumot yo'q" deydi.</p>
+      <p class="lead no-bar" style="margin-top:clamp(0.85rem,1.6vw,1.4rem)">Kechagi RAG bot — qanchalik kuchli bo'lsa, shunchalik murakkab. Bugun siz <strong>oddiyroq, ammo amaliy</strong> botni quryapsiz: 15–30 daqiqada.</p>
+      <p class="lead no-bar" style="margin-top:clamp(0.5rem,0.9vw,0.8rem);font-size:var(--small);color:rgba(255,255,255,0.55)">Stack: Telegram + Gemini + Google Sheets · 7 ta node · kod yo'q.</p>
     </div>
   </div>
 </section>
