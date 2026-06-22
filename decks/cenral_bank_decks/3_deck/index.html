@@ -1,0 +1,1093 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>3-modul · Markaziy Bank seminar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:'Space Grotesk',sans-serif}
+/* Series-wide font fix — disambiguate Space Grotesk's capital I from lowercase l on body text */
+body,p,li,.lead{letter-spacing:0.018em}
+.tok{letter-spacing:0.08em;font-weight:600}
+
+:root{
+  --bg:#020A24;--bg-2:#06173B;--bg-3:#0B2D79;
+  --accent:#2563eb;--accent-2:#60a5fa;--accent-glow:#1FF2F9;
+  --ink:#0a0f1f;--mute:#7a8aa3;--soft:rgba(255,255,255,0.08);
+  --pad:clamp(1.5rem,4vw,4rem);
+  --title:clamp(2rem,5.5vw,5rem);
+  --h2:clamp(1.5rem,3.2vw,2.75rem);
+  --h3:clamp(1.1rem,2vw,1.6rem);
+  --body:clamp(0.85rem,1.2vw,1.15rem);
+  --small:clamp(0.7rem,0.9vw,0.85rem);
+  --gap:clamp(1rem,2vw,2rem);
+  --r:clamp(0.75rem,1.5vw,1.5rem);
+  --display:'Archivo Black',sans-serif;
+}
+
+.deck{position:relative;width:100vw;height:100vh;height:100dvh;overflow:hidden}
+
+.slide{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 80%, rgba(11,45,121,0.55), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 15%, rgba(37,99,235,0.18), transparent 60%),
+    linear-gradient(180deg,#020A24 0%, #06173B 100%);
+  padding:clamp(0.85rem,1.8vw,1.5rem) var(--pad) var(--pad) var(--pad);
+  display:grid;grid-template-rows:auto auto 1fr auto;gap:clamp(0.75rem,1.5vw,1.25rem);
+  opacity:0;pointer-events:none;
+  transform:scale(0.965);filter:blur(2px);
+  transition:opacity 0.5s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1),filter 0.4s ease-out;
+  overflow:hidden;
+}
+.slide.is-active{opacity:1;pointer-events:auto;transform:scale(1);filter:blur(0)}
+
+.slide::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+}
+
+/* HEADER */
+.head{display:flex;justify-content:flex-end;align-items:flex-start;position:relative;z-index:1;gap:1rem}
+.num{font-family:var(--display);font-size:clamp(2rem,4vw,3.2rem);line-height:0.9;letter-spacing:-0.04em;color:var(--accent-2);text-align:right}
+.num small{display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--mute);margin-top:0.4rem}
+
+.crumbs{display:none}
+
+/* MAIN */
+.main{position:relative;z-index:1;align-self:stretch;display:flex;flex-direction:column;justify-content:center;min-height:0}
+
+/* FOOTER */
+.foot{display:flex;justify-content:flex-end;align-items:center;font-size:var(--small);color:var(--mute);letter-spacing:0.1em;text-transform:uppercase;position:relative;z-index:1;gap:1rem;flex-wrap:wrap}
+.foot .speaker{display:flex;align-items:center;gap:0.6rem;color:#fff}
+.foot .dot{width:0.55rem;height:0.55rem;border-radius:50%;background:var(--accent)}
+.foot .speaker strong{font-family:var(--display);letter-spacing:0.08em;font-size:var(--small)}
+.hud .speaker .mohirdev-mark{height:1.4em;width:auto;vertical-align:middle;display:inline-block;margin-left:0.15em;flex-shrink:0}
+.foot .brand .seven{color:var(--accent)}
+
+/* CARD primitives */
+.card{background:linear-gradient(135deg,var(--accent),#1d4ed8);color:#fff;padding:clamp(1.25rem,2.8vw,2.5rem);border-radius:var(--r);box-shadow:0 30px 80px -20px rgba(37,99,235,0.5),0 0 0 1px rgba(255,255,255,0.05) inset}
+.card-dark{background:var(--ink);color:#fff;padding:clamp(1.25rem,2.8vw,2.5rem);border-radius:var(--r);border:1px solid var(--soft)}
+
+/* BRAND STRIP — institutional logos, top of every slide */
+.brand-strip{
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  position:relative;z-index:1;
+  padding-bottom:clamp(0.5rem,1vw,0.85rem);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.brand-strip .logo{
+  height:clamp(3rem,4.5vw,4.5rem);width:auto;
+  filter:brightness(0) invert(1);
+  opacity:0.9;
+}
+
+/* TITLE typography */
+.title-display{font-family:var(--display);font-weight:900;font-size:var(--title);line-height:0.95;letter-spacing:-0.03em;text-transform:uppercase}
+.title-display .light{font-family:'Space Grotesk',sans-serif;font-weight:500;text-transform:none;letter-spacing:-0.01em;font-style:italic;font-size:0.55em;display:block;margin-top:0.5em;opacity:0.9}
+
+.h2{font-family:var(--display);font-size:clamp(1.75rem,3.6vw,3rem);line-height:1.05;letter-spacing:-0.025em;text-transform:uppercase;color:#fff}
+.h2 .accent,.h2 .ink,.h2 .hl{
+  background:linear-gradient(135deg,var(--accent),#1d4ed8);
+  color:#fff;padding:0.04em 0.22em;display:inline-block;
+  box-shadow:0 14px 38px -12px rgba(37,99,235,0.45),0 0 0 1px rgba(255,255,255,0.06) inset;
+  border-radius:clamp(0.2rem,0.35vw,0.35rem);
+}
+
+.lead{font-size:var(--body);line-height:1.55;color:rgba(255,255,255,0.78);max-width:60ch;margin-top:clamp(0.85rem,1.5vw,1.25rem);font-weight:400}
+.lead::before{
+  content:"";display:inline-block;
+  width:clamp(1.5rem,2.5vw,2rem);height:2px;
+  background:var(--accent-2);margin-right:0.7rem;vertical-align:middle;
+}
+.lead.no-bar::before{display:none}
+
+.chip{display:inline-block;background:var(--ink);color:var(--accent);font-family:var(--display);font-size:var(--small);letter-spacing:0.15em;text-transform:uppercase;padding:0.4rem 0.9rem;border-radius:99px}
+.chip-out{display:inline-block;border:1px solid var(--accent);color:var(--accent);font-family:var(--display);font-size:var(--small);letter-spacing:0.15em;text-transform:uppercase;padding:0.4rem 0.9rem;border-radius:99px}
+
+/* SLIDE 1 — TITLE */
+.s-title .main{align-items:flex-start;justify-content:center}
+.s-title .title-block{max-width:min(96vw,1750px)}
+.s-title .title-hero{
+  font-family:var(--display);font-weight:900;
+  font-size:clamp(2rem,6vw,5.75rem);
+  line-height:0.92;letter-spacing:-0.04em;
+  text-transform:uppercase;color:#fff;
+  margin-top:clamp(1rem,2vw,1.5rem);
+}
+.s-title .title-hero .hl{
+  background:linear-gradient(135deg,var(--accent),#1d4ed8);
+  color:#fff;padding:0.04em 0.22em;display:inline-block;
+  box-shadow:0 18px 50px -12px rgba(37,99,235,0.55),0 0 0 1px rgba(255,255,255,0.06) inset;
+  border-radius:clamp(0.25rem,0.4vw,0.4rem);white-space:nowrap;
+}
+.s-title .title-hero .light{
+  font-family:'Space Grotesk',sans-serif;font-weight:500;text-transform:none;
+  letter-spacing:-0.01em;font-style:italic;font-size:0.42em;display:block;
+  margin-top:0.45em;opacity:0.9;color:rgba(255,255,255,0.85);
+}
+.s-title .tagline{
+  margin-top:clamp(1.5rem,3vw,2.5rem);
+  font-family:'Space Grotesk',sans-serif;font-weight:500;
+  font-size:clamp(1.1rem,1.9vw,1.75rem);
+  color:rgba(255,255,255,0.78);letter-spacing:-0.005em;
+  max-width:48ch;line-height:1.45;
+}
+.s-title .tagline .accent-bar{
+  display:inline-block;width:clamp(2rem,4vw,3rem);height:2px;
+  background:var(--accent-2);margin-right:0.85rem;vertical-align:middle;
+}
+
+/* DEFINITION — left list + right card */
+.def{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(1rem,2.5vw,2.5rem);align-items:stretch;margin-top:clamp(0.85rem,1.6vw,1.4rem);flex:1;min-height:0}
+.def-list{display:flex;flex-direction:column;gap:clamp(0.7rem,1.3vw,1.1rem);justify-content:space-between}
+.def-row{flex:1;display:flex;flex-direction:column;justify-content:center}
+.def-row{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(0.9rem,1.7vw,1.4rem);border-left:4px solid var(--accent);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),border-color 0.3s,box-shadow 0.3s}
+.def-row:hover{transform:translateY(-3px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.5)}
+.def-row .ico{font-size:clamp(1.3rem,2.2vw,1.8rem);margin-bottom:0.35rem}
+.def-row h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff}
+.def-row p{font-size:clamp(0.78rem,1.05vw,0.98rem);line-height:1.45;color:rgba(255,255,255,0.7);margin-top:0.35rem}
+.def-card{background:linear-gradient(160deg,var(--accent),#1d4ed8);border-radius:var(--r);padding:clamp(1.3rem,2.6vw,2.2rem);box-shadow:0 30px 80px -20px rgba(37,99,235,0.5),0 0 0 1px rgba(255,255,255,0.05) inset;display:flex;flex-direction:column;justify-content:center}
+.def-card h4{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:0.85rem}
+.def-card ul{list-style:none;display:flex;flex-direction:column;gap:clamp(0.55rem,1.1vw,0.9rem)}
+.def-card li{font-size:clamp(0.85rem,1.2vw,1.15rem);line-height:1.4;color:#fff;display:flex;gap:0.6rem;align-items:flex-start}
+.def-card li::before{content:"▸";color:#fff;opacity:0.8;flex-shrink:0}
+
+/* DEMO layout — situation banner + cards + footer */
+.situation{background:rgba(37,99,235,0.12);border:1px solid rgba(96,165,250,0.3);border-left:4px solid var(--accent);border-radius:var(--r);padding:clamp(0.85rem,1.6vw,1.3rem) clamp(1rem,2vw,1.6rem);margin-top:clamp(0.7rem,1.3vw,1.1rem)}
+.situation .tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-2);display:block;margin-bottom:0.35rem}
+.situation p{font-size:clamp(0.85rem,1.2vw,1.15rem);line-height:1.45;color:rgba(255,255,255,0.9)}
+.demo-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(0.85rem,1.6vw,1.4rem);margin-top:clamp(0.85rem,1.6vw,1.4rem);flex:1;min-height:0}
+.demo-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1rem,2vw,1.6rem);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),border-color 0.3s,box-shadow 0.3s;display:flex;flex-direction:column;justify-content:center}
+.demo-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+.demo-card .ico{font-size:clamp(1.6rem,3vw,2.3rem);display:block;margin-bottom:0.55rem}
+.demo-card h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff}
+.demo-card p{font-size:clamp(0.78rem,1.05vw,0.98rem);line-height:1.45;color:rgba(255,255,255,0.72);margin-top:0.4rem}
+.demo-foot{margin-top:clamp(0.85rem,1.5vw,1.3rem);font-family:var(--display);font-size:clamp(0.9rem,1.5vw,1.3rem);letter-spacing:-0.01em;color:var(--accent-2);text-transform:uppercase;display:flex;align-items:center;gap:0.6rem}
+.demo-foot::before{content:"";display:inline-block;width:clamp(1.5rem,2.5vw,2rem);height:2px;background:var(--accent-2);flex-shrink:0}
+
+/* COMPARISON TABLE — slide 5 */
+.cmp-table{margin-top:clamp(0.85rem,1.6vw,1.4rem);border:1px solid var(--soft);border-radius:var(--r);overflow:hidden;flex:1;min-height:0;display:flex;flex-direction:column}
+.cmp-row{display:grid;grid-template-columns:1.2fr 1fr 1fr;flex:1}
+.cmp-row.head-row{background:rgba(37,99,235,0.18);flex:0 0 auto}
+.cmp-row.head-row .cmp-cell{font-family:var(--display);font-size:clamp(0.85rem,1.3vw,1.2rem);text-transform:uppercase;letter-spacing:0.04em;color:#fff}
+.cmp-cell{padding:clamp(0.7rem,1.4vw,1.15rem) clamp(0.9rem,1.7vw,1.5rem);border-bottom:1px solid var(--soft);font-size:clamp(0.85rem,1.2vw,1.15rem);color:rgba(255,255,255,0.85);display:flex;align-items:center}
+.cmp-row:last-child .cmp-cell{border-bottom:none}
+.cmp-cell.mezon{font-weight:600;color:#fff}
+.cmp-cell.col-b{background:rgba(37,99,235,0.14);border-left:1px solid rgba(96,165,250,0.25);color:var(--accent-2);font-weight:600}
+.cmp-row.head-row .cmp-cell.col-b{color:#fff;background:rgba(37,99,235,0.3)}
+
+/* QUESTIONS column (WOW) */
+.s-brain .brain-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:clamp(1.2rem,3vw,3rem);align-items:stretch;flex:1;min-height:0;margin-top:clamp(0.85rem,1.6vw,1.4rem)}
+.s-brain .questions{display:flex;flex-direction:column;gap:clamp(0.85rem,1.6vw,1.4rem);justify-content:center}
+.s-brain .live-panel{background:linear-gradient(160deg,var(--accent),#1d4ed8);border-radius:var(--r);padding:clamp(1.3rem,2.6vw,2.4rem);box-shadow:0 30px 80px -20px rgba(37,99,235,0.5),0 0 0 1px rgba(255,255,255,0.05) inset;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:clamp(0.8rem,1.6vw,1.4rem)}
+.s-brain .live-panel .pulse{width:clamp(4.5rem,9vw,7rem);height:clamp(4.5rem,9vw,7rem);border-radius:50%;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+.s-brain .live-panel .pulse::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid rgba(255,255,255,0.5);animation:livepulse 2s cubic-bezier(0.16,1,0.3,1) infinite}
+@keyframes livepulse{0%{transform:scale(1);opacity:0.7}100%{transform:scale(1.6);opacity:0}}
+.s-brain .live-panel .pulse svg{width:clamp(2rem,4vw,3.2rem);height:clamp(2rem,4vw,3.2rem);stroke:#fff}
+.s-brain .live-panel .live-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.85)}
+.s-brain .live-panel .live-h{font-family:var(--display);font-size:clamp(1.2rem,2.4vw,2rem);line-height:1.05;text-transform:uppercase;letter-spacing:-0.01em;color:#fff}
+.s-brain .live-panel .live-p{font-size:clamp(0.82rem,1.1vw,1.05rem);line-height:1.45;color:rgba(255,255,255,0.9)}
+.q{font-family:var(--display);font-size:clamp(1.1rem,2.2vw,1.85rem);line-height:1.2;letter-spacing:-0.01em;color:#fff;display:flex;gap:clamp(0.75rem,1.5vw,1.25rem);align-items:flex-start}
+.q .n{color:var(--accent);flex-shrink:0}
+.q .sub{display:block;font-family:'Space Grotesk',sans-serif;font-weight:400;font-size:clamp(0.8rem,1.1vw,1rem);color:rgba(255,255,255,0.8);margin-top:0.3rem;letter-spacing:0;text-transform:none}
+
+/* STACK (3 pillars) */
+.stack{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(0.85rem,1.6vw,1.4rem);flex:1;min-height:0;align-items:stretch}
+.stack .pillar{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.1rem,2.2vw,2rem);text-align:left;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),border-color 0.3s,box-shadow 0.3s;display:flex;flex-direction:column;justify-content:center}
+.stack .pillar:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+.stack .pillar.featured{background:linear-gradient(160deg,var(--accent),#1d4ed8);border-color:var(--accent)}
+.stack .pillar.featured h3,.stack .pillar.featured p,.stack .pillar.featured .tag,.stack .pillar.featured li{color:#fff}
+.stack .icon{font-size:clamp(2rem,4vw,3rem);margin-bottom:0.6rem;display:block}
+.stack .tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.2em;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:0.25rem}
+.stack h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff}
+.stack p{font-size:clamp(0.78rem,1.05vw,0.98rem);line-height:1.45;color:rgba(255,255,255,0.75);margin-top:0.5rem}
+.stack ul{list-style:none;margin-top:0.6rem;display:flex;flex-direction:column;gap:0.35rem}
+.stack li{font-size:clamp(0.78rem,1.05vw,0.98rem);line-height:1.35;color:rgba(255,255,255,0.78);display:flex;gap:0.5rem;align-items:flex-start}
+.stack li::before{content:"·";color:var(--accent-2);font-weight:700;flex-shrink:0}
+.stack .pillar.featured li::before{color:rgba(255,255,255,0.85)}
+.stack-foot{margin-top:clamp(0.85rem,1.5vw,1.3rem);font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.7)}
+.stack-foot strong{color:var(--accent-2);font-weight:500}
+
+/* DICT (single wide card) */
+.dict{display:grid;grid-template-columns:1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(0.7rem,1.3vw,1.1rem)}
+.dict-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.2rem,2.4vw,2rem);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
+.dict-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.dict-card .dict-tag{display:inline-block;font-family:var(--display);font-size:clamp(1.5rem,3vw,2.6rem);letter-spacing:0.02em;color:var(--accent-2);text-transform:uppercase;line-height:1;margin-bottom:0.6rem}
+.dict-card h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:0.5rem}
+.dict-card p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.78)}
+.dict-card p strong{color:var(--accent-2);font-weight:500}
+.dict-card:hover{transform:translateY(-3px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+
+/* BENEFITS 4-col (modalities) */
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(0.85rem,1.6vw,1.4rem);margin-top:clamp(0.85rem,1.6vw,1.4rem);flex:1;min-height:0}
+.benefit{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1rem,2vw,1.65rem);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),border-color 0.3s,box-shadow 0.3s;display:flex;flex-direction:column;justify-content:center}
+.benefit:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+.benefit .ico{font-size:clamp(1.8rem,3.4vw,2.6rem);display:block;margin-bottom:0.5rem}
+.benefit h3{font-family:var(--display);font-size:clamp(0.95rem,1.4vw,1.25rem);text-transform:uppercase;letter-spacing:-0.01em;color:#fff}
+.benefit p{font-size:clamp(0.78rem,1vw,0.95rem);line-height:1.45;color:rgba(255,255,255,0.7);margin-top:0.4rem}
+
+/* SEC 4-col (rules) */
+.sec{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(0.85rem,1.6vw,1.4rem);margin-top:clamp(0.85rem,1.6vw,1.4rem);flex:1;min-height:0}
+.sec .item{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1rem,2vw,1.65rem);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),border-color 0.3s,box-shadow 0.3s;display:flex;flex-direction:column;justify-content:center}
+.sec .item:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+.sec .item .ico{font-size:clamp(1.6rem,3vw,2.3rem);display:block;margin-bottom:0.5rem}
+.sec .item h3{font-family:var(--display);font-size:clamp(0.95rem,1.4vw,1.25rem);text-transform:uppercase;letter-spacing:-0.01em;color:#fff}
+.sec .item p{font-size:clamp(0.78rem,1vw,0.95rem);line-height:1.45;color:rgba(255,255,255,0.72);margin-top:0.4rem}
+.sec-foot{margin-top:clamp(0.85rem,1.5vw,1.3rem);font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.7)}
+.sec-foot strong{color:var(--accent-2);font-weight:500}
+
+/* FLOW (work pipeline) */
+.flow{display:flex;align-items:stretch;justify-content:center;gap:clamp(0.4rem,0.9vw,0.9rem);flex-wrap:nowrap;margin-top:clamp(0.85rem,1.6vw,1.4rem);overflow:hidden;flex:1;min-height:0}
+.flow .step{flex:1 1 0;background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(0.85rem,1.6vw,1.5rem);text-align:center;min-width:0;display:flex;flex-direction:column;justify-content:center}
+.flow .step.brain{background:linear-gradient(135deg,var(--accent),#1d4ed8);border-color:var(--accent)}
+.flow .step.brain .ico,.flow .step.brain h4,.flow .step.brain p,.flow .step.brain .tooltag{color:#fff}
+.flow .step .ico{font-size:clamp(1.6rem,3vw,2.3rem)}
+.flow .step h4{font-family:var(--display);font-size:clamp(0.85rem,1.4vw,1.15rem);text-transform:uppercase;letter-spacing:0.03em;margin-top:0.45rem;color:#fff}
+.flow .step p{font-size:clamp(0.7rem,1vw,0.9rem);line-height:1.4;color:rgba(255,255,255,0.72);margin-top:0.4rem;flex:1}
+.flow .step .tooltag{font-family:var(--display);font-size:clamp(0.65rem,0.9vw,0.8rem);letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-2);margin-top:0.6rem;padding-top:0.5rem;border-top:1px solid rgba(255,255,255,0.12)}
+.flow .arrow{color:var(--accent);font-family:var(--display);font-size:clamp(1.2rem,2.4vw,1.8rem);flex-shrink:0;align-self:center}
+
+/* CLOSING + recap */
+.close-list{display:flex;flex-direction:column;gap:clamp(0.6rem,1.1vw,1rem);margin-top:clamp(0.85rem,1.5vw,1.25rem);flex:1;min-height:0;justify-content:space-between}
+.close-row{display:flex;gap:clamp(0.75rem,1.5vw,1.25rem);align-items:center;padding:clamp(0.75rem,1.4vw,1.25rem);background:rgba(255,255,255,0.04);border-left:4px solid var(--accent);border-radius:0 var(--r) var(--r) 0;flex:1}
+.close-row .arrow{color:var(--accent);font-family:var(--display);font-size:clamp(1.2rem,2vw,1.5rem);flex-shrink:0}
+.close-row p{font-size:var(--body);line-height:1.5;color:#fff;font-weight:400}
+.close-row p strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.02em}
+.s-close .recap{margin-top:clamp(0.7rem,1.3vw,1.2rem);padding-top:clamp(0.6rem,1.1vw,0.95rem);border-top:1px solid var(--soft);display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.5rem);flex-wrap:wrap}
+.s-close .recap-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);flex-shrink:0}
+.s-close .recap-terms{display:flex;gap:clamp(1rem,2vw,2rem);flex-wrap:wrap;flex:1}
+.s-close .recap-term{font-size:var(--body);color:rgba(255,255,255,0.7);line-height:1.35}
+.s-close .recap-term strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-right:0.5em;font-weight:400}
+.s-close .recap-term .ans{color:var(--accent-2)}
+.s-close .quote{margin-top:clamp(0.7rem,1.3vw,1.1rem);font-style:italic;color:rgba(255,255,255,0.82);font-size:clamp(0.85rem,1.2vw,1.15rem);border-left:3px solid var(--accent);padding-left:clamp(0.75rem,1.5vw,1.25rem);line-height:1.5}
+
+/* THANKS slide (slide 14) */
+.s-thanks .main{justify-content:center}
+.s-thanks .thanks-grid{display:grid;grid-template-columns:1.25fr 0.75fr;gap:clamp(1.5rem,4vw,4rem);align-items:center;flex:1;min-height:0}
+.s-thanks .thanks-visual{display:flex;flex-direction:column;gap:clamp(0.8rem,1.6vw,1.3rem);align-self:stretch;justify-content:center}
+.s-thanks .tool-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-left:4px solid var(--accent);border-radius:var(--r);padding:clamp(0.85rem,1.7vw,1.4rem);display:flex;align-items:center;gap:clamp(0.7rem,1.4vw,1.1rem)}
+.s-thanks .tool-card svg{width:clamp(1.6rem,3vw,2.4rem);height:clamp(1.6rem,3vw,2.4rem);stroke:var(--accent-2);flex-shrink:0}
+.s-thanks .tool-card .tc-name{font-family:var(--display);font-size:clamp(0.95rem,1.5vw,1.3rem);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;line-height:1}
+.s-thanks .tool-card .tc-sub{font-size:clamp(0.72rem,1vw,0.95rem);color:rgba(255,255,255,0.7);margin-top:0.25rem;line-height:1.3}
+.thanks-flow{display:flex;align-items:center;gap:clamp(0.5rem,1.2vw,1.1rem);flex-wrap:wrap;margin-top:clamp(1.2rem,2.4vw,2rem)}
+.thanks-flow .pill{background:rgba(255,255,255,0.05);border:1px solid var(--soft);border-radius:99px;padding:clamp(0.5rem,1vw,0.85rem) clamp(0.95rem,1.8vw,1.5rem);font-family:var(--display);font-size:clamp(0.8rem,1.2vw,1.1rem);text-transform:uppercase;letter-spacing:0.03em;color:#fff}
+.thanks-flow .sep{color:var(--accent);font-family:var(--display);font-size:clamp(1rem,1.8vw,1.5rem)}
+.s-thanks .quote{margin-top:clamp(1.2rem,2.4vw,2rem);font-style:italic;color:rgba(255,255,255,0.85);font-size:clamp(1rem,1.5vw,1.4rem);border-left:3px solid var(--accent);padding-left:clamp(0.85rem,1.6vw,1.4rem);line-height:1.5;max-width:50ch}
+
+/* Q&A */
+.s-qa .main{align-items:center;text-align:center}
+.qmark{font-family:var(--display);font-size:clamp(8rem,18vw,16rem);line-height:0.9;color:var(--accent);letter-spacing:-0.05em}
+
+/* HUD — clickable dot navigation */
+.hud{
+  position:fixed;left:var(--pad);right:var(--pad);
+  bottom:clamp(0.6rem,1vw,1rem);
+  display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.4rem);
+  z-index:100;
+}
+.hud .counter{
+  font-family:var(--display);
+  color:rgba(255,255,255,0.55);
+  letter-spacing:0.18em;font-size:var(--small);
+  flex-shrink:0;
+}
+.dots{display:flex;gap:clamp(0.3rem,0.5vw,0.5rem);align-items:center;flex:1}
+.nav-dot{
+  width:clamp(0.4rem,0.55vw,0.55rem);height:clamp(0.4rem,0.55vw,0.55rem);
+  border-radius:50%;border:none;
+  background:rgba(255,255,255,0.18);cursor:pointer;
+  padding:0;position:relative;
+  transition:background 0.3s,width 0.4s cubic-bezier(0.16,1,0.3,1),transform 0.2s,box-shadow 0.3s;
+}
+.nav-dot:hover{background:rgba(255,255,255,0.55);transform:scale(1.4)}
+.nav-dot.is-current{
+  background:var(--accent);
+  width:clamp(1.5rem,2.4vw,2rem);
+  border-radius:99px;
+  box-shadow:0 0 14px rgba(37,99,235,0.6);
+}
+.nav-dot::before{
+  content:attr(data-title);
+  position:absolute;bottom:200%;left:50%;
+  transform:translateX(-50%) translateY(4px);
+  background:#0a0f1f;color:#fff;
+  font-size:0.72rem;letter-spacing:0.04em;text-transform:none;
+  padding:0.45rem 0.75rem;border-radius:0.35rem;
+  white-space:nowrap;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.2s,transform 0.2s;
+  border:1px solid rgba(255,255,255,0.12);
+  font-family:'Space Grotesk',sans-serif;font-weight:500;
+}
+.nav-dot:hover::before{opacity:1;transform:translateX(-50%) translateY(0)}
+.brand-mini{
+  font-family:var(--display);
+  color:rgba(255,255,255,0.5);
+  letter-spacing:0.18em;font-size:var(--small);
+  flex-shrink:0;
+}
+
+/* HUD speaker (right side) */
+.hud .speaker{
+  display:flex;align-items:center;gap:0.5rem;
+  font-size:var(--small);
+  color:rgba(255,255,255,0.7);
+  letter-spacing:0.08em;text-transform:uppercase;
+  flex-shrink:0;font-family:'Space Grotesk',sans-serif;
+}
+.hud .speaker .dot{
+  width:0.45rem;height:0.45rem;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 8px rgba(37,99,235,0.6);
+}
+.hud .speaker strong{font-family:var(--display);letter-spacing:0.1em;color:#fff;font-weight:400}
+
+/* Fragments — start hidden, reveal sequentially via Next/Right */
+.fragment{
+  opacity:0;
+  transform:translateY(24px) scale(0.97);
+  transition:opacity 0.55s cubic-bezier(0.16,1,0.3,1),transform 0.55s cubic-bezier(0.16,1,0.3,1);
+  pointer-events:none;
+}
+.fragment.is-visible{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  pointer-events:auto;
+}
+
+/* Animations */
+@media (prefers-reduced-motion:no-preference){
+  .slide.is-active .reveal{animation:up 0.7s cubic-bezier(0.16,1,0.3,1) both}
+  .slide.is-active .r1{animation-delay:0.05s}
+  .slide.is-active .r2{animation-delay:0.2s}
+  .slide.is-active .r3{animation-delay:0.35s}
+  .slide.is-active .r4{animation-delay:0.5s}
+  @keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+}
+.reveal{opacity:0}
+.slide:not(.is-active) .reveal{opacity:0}
+.slide.is-active .reveal{opacity:1}
+</style>
+</head>
+<body>
+
+<main class="deck">
+
+<!-- SLIDE 1 — TITLE -->
+<section class="slide s-title is-active">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="title-block reveal r2">
+      <span class="chip">1-kun · 3-sessiya · 16:00 — 16:50</span>
+      <h1 class="title-hero">
+        Claude va <span class="hl">Gemini</span>
+        <span class="light">Boshqa kuchli SI yordamchilar</span>
+      </h1>
+      <p class="tagline"><span class="accent-bar"></span>Chuqur tahlil · WOW lahza · ovoz, rasm, video — <strong>ikki vosita, ikki kuchli tomon</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2 — KENGROQ QARASH · 3 pillar stack -->
+<section class="slide s-stack">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Kengroq qarash</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">SI dunyosi faqat <span class="hl">ChatGPT'dan</span> iborat emas.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">ChatGPT — ajoyib, lekin yagona emas. Har bir vositaning o'z kuchli tomoni bor. Yaxshi mutaxassis to'g'ri ish uchun to'g'ri vositani tanlaydi.</p>
+    <div class="stack reveal r3">
+      <div class="pillar">
+        <span class="icon">💬</span>
+        <span class="tag">Universal</span>
+        <h3>ChatGPT</h3>
+        <p>Kundalik ishlar, matn yozish, savol-javob. Eng birinchi tanlov.</p>
+      </div>
+      <div class="pillar featured">
+        <span class="icon">📑</span>
+        <span class="tag">Tahlil + matn</span>
+        <h3>Claude</h3>
+        <p>Uzun hujjatlar, sifatli yozish, puxta va chuqur mulohaza.</p>
+      </div>
+      <div class="pillar">
+        <span class="icon">🎛️</span>
+        <span class="tag">Multimodal</span>
+        <h3>Gemini</h3>
+        <p>Rasm, ovoz va video. Google xizmatlari bilan birga ishlaydi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3 — TANISHUV CLAUDE -->
+<section class="slide s-def">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div style="display:flex;align-items:center;gap:0.7rem;flex-wrap:wrap">
+      <span class="chip-out reveal r1">Tanishuv</span>
+      <span class="chip reveal r1">Claude Opus 4.7 · 1M token</span>
+    </div>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)"><span class="hl">Claude</span> — bu nima?</h2>
+    <div class="def reveal r3">
+      <div class="def-list">
+        <div class="def-row">
+          <span class="ico">🏢</span>
+          <h3>Anthropic kompaniyasi</h3>
+          <p>Xavfsizlikka alohida e'tibor beradigan SI laboratoriyasi — "Constitutional AI" tamoyillari asosida.</p>
+        </div>
+        <div class="def-row">
+          <span class="ico">📌</span>
+          <h3>Iqtibos beradi</h3>
+          <p>"Buni qayerdan olding?" desangiz: "Shartnomaning 4-bo'lim 3.2-paragrafidan" deb ko'rsatadi.</p>
+        </div>
+        <div class="def-row">
+          <span class="ico">🎯</span>
+          <h3>Kamroq "o'ylab topadi"</h3>
+          <p>Kam gallyutsinatsiya — bilmasa "topolmadim" deydi, to'qib tashlamaydi.</p>
+        </div>
+      </div>
+      <div class="def-card">
+        <h4>Nimada eng kuchli?</h4>
+        <ul>
+          <li>Uzun hujjatlar (yuzlab sahifa) · chuqur mulohaza</li>
+          <li>Sifatli, rasmiy va tabiiy matn yozish</li>
+          <li>Bank/yuridik/muvofiqlik uchun eng mos — IFRS hujjatlari, sindikat shartnomalari: aniqlik tezlikdan muhim joyda</li>
+          <li style="opacity:0.85"><strong style="color:#fff">Cheklov:</strong> internetga ulanmagan — "bugungi dollar kursi qancha?" kabi real-vaqt ma'lumotni bilmaydi.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 — CLAUDE DEMO 1 · uzun hujjat tahlili -->
+<section class="slide s-demo">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Claude · Demo 1</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Uzun hujjatni <span class="hl">chuqur tahlil</span> qilish.</h2>
+    <div class="situation reveal r2">
+      <span class="tag">Vaziyat</span>
+      <p>40 sahifalik murakkab hisobot yoki shartnoma keldi. To'liq o'qishga vaqt yo'q, lekin muhim joylarni o'tkazib yubormaslik kerak.</p>
+    </div>
+    <div class="demo-cards reveal r3">
+      <div class="demo-card">
+        <span class="ico">🎯</span>
+        <h3>Asosiy fikrlar</h3>
+        <p>Butun hujjat → qisqa va aniq xulosa.</p>
+      </div>
+      <div class="demo-card">
+        <span class="ico">⚠️</span>
+        <h3>Xavf va ziddiyatlar</h3>
+        <p>E'tibor talab qiladigan bandlarni ajratadi.</p>
+      </div>
+      <div class="demo-card">
+        <span class="ico">❓</span>
+        <h3>Savol berasiz</h3>
+        <p>"5-bandda nima yozilgan?" — topib javob beradi.</p>
+      </div>
+    </div>
+    <p class="demo-foot reveal r3">40 sahifa → bir necha daqiqada xulosa.</p>
+  </div>
+</section>
+
+<!-- SLIDE 5 — CLAUDE DEMO 2 · ikki hujjatni solishtirish (TABLE) -->
+<section class="slide s-demo">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Claude · Demo 2</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Ikki hujjatni <span class="hl">solishtirish</span>.</h2>
+    <div class="situation reveal r2">
+      <span class="tag">Vaziyat</span>
+      <p>Eski va yangi versiya, yoki ikkita taklif. Farqlarni qo'lda qidirish — uzoq va xato ehtimoli yuqori.</p>
+    </div>
+    <div class="cmp-table reveal r3">
+      <div class="cmp-row head-row">
+        <div class="cmp-cell">Mezon</div>
+        <div class="cmp-cell">Hujjat A</div>
+        <div class="cmp-cell col-b">Hujjat B</div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-cell mezon">To'lov muddati</div>
+        <div class="cmp-cell">30 kun</div>
+        <div class="cmp-cell col-b">45 kun</div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-cell mezon">Komissiya</div>
+        <div class="cmp-cell">1.5%</div>
+        <div class="cmp-cell col-b">1.2%</div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-cell mezon">Javobgarlik</div>
+        <div class="cmp-cell">Cheklangan</div>
+        <div class="cmp-cell col-b">To'liq</div>
+      </div>
+    </div>
+    <p class="demo-foot reveal r3">Farqlar bir qarashda ko'rinadi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 6 — WOW LAHZA · jonli vazifa -->
+<section class="slide s-brain">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">WOW lahza</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Zaldan <span class="hl">jonli vazifa</span>.</h2>
+    <div class="brain-grid reveal r3">
+      <div class="questions">
+        <div class="q"><span class="n">01</span><span>Hujjatingizni bering<span class="sub">Haqiqiy hisobot yoki maktub — birga tahlil qilamiz.</span></span></div>
+        <div class="q"><span class="n">02</span><span>Ikki matnni solishtiring<span class="sub">Farqlarni jonli, shu yerda ajratamiz.</span></span></div>
+        <div class="q"><span class="n">03</span><span>Murakkab atamani so'rang<span class="sub">Oddiy tilda, bir zumda tushuntiramiz.</span></span></div>
+      </div>
+      <div class="live-panel">
+        <div class="pulse">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+        </div>
+        <span class="live-tag">Jonli · hozir</span>
+        <div class="live-h">Sizning ishingiz — shu yerda</div>
+        <p class="live-p">Bitta misol bering — birga, ekranda tahlil qilamiz.</p>
+      </div>
+    </div>
+    <p class="demo-foot reveal r3">Eng ishonchli isbot — o'z ishingizda, o'z ko'zingiz bilan ko'rish.</p>
+  </div>
+</section>
+
+<!-- SLIDE 7 — TANISHUV GEMINI -->
+<section class="slide s-def">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div style="display:flex;align-items:center;gap:0.7rem;flex-wrap:wrap">
+      <span class="chip-out reveal r1">Tanishuv</span>
+      <span class="chip reveal r1">Gemini 3 Pro · 1M token · multimodal</span>
+    </div>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)"><span class="hl">Gemini</span> — bu nima?</h2>
+    <div class="def reveal r3">
+      <div class="def-list">
+        <div class="def-row">
+          <span class="ico">🌐</span>
+          <h3>Google · 900 mln+ foydalanuvchi</h3>
+          <p>Har oyda — Qidiruv, Gmail va Xaritalar ortidagi kompaniya.</p>
+        </div>
+        <div class="def-row">
+          <span class="ico">🔗</span>
+          <h3>Workspace integratsiyasi</h3>
+          <p>Drive, Gmail, Sheets bilan tug'ishgan — joyida ishlaydi.</p>
+        </div>
+        <div class="def-row">
+          <span class="ico">🎛️</span>
+          <h3>Multimodal</h3>
+          <p>Bitta promtga PDF, Excel va skaner qilingan hujjatni birga tashlasangiz — hammasini birga o'qiydi.</p>
+        </div>
+      </div>
+      <div class="def-card">
+        <h4>Nimada eng kuchli?</h4>
+        <ul>
+          <li>Rasm, ovoz va video — birga tushunadi (ayniqsa mobilda)</li>
+          <li>Google ilovalariga yaqin integratsiya</li>
+          <li>RAG (o'z hujjatingdan javob) arxitekturasi uchun qulay demo zamin</li>
+          <li style="opacity:0.85"><strong style="color:#fff">Eslatma:</strong> bu Markaziy Bank uchun yakuniy tanlov degani emas — bank tanlovi xavfsizlik, data residency, audit log va narx bo'yicha alohida baholanadi.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8 — DICT · Multimodal (TERMINOLOGY) -->
+<section class="slide s-dict">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Asosiy tushuncha · 3-modul</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">"<span class="hl">Multimodal</span>" — bu nima degani?</h2>
+    <div class="dict reveal r2">
+      <div class="dict-card">
+        <span class="dict-tag">Multimodal</span>
+        <h3>matn + rasm + ovoz + video — birga</h3>
+        <p>Ko'pchilik SI faqat <strong>matn</strong> bilan ishlaydi. Multimodal SI bir vaqtning o'zida <strong>turli ko'rinishdagi ma'lumotni</strong> tushunadi.</p>
+      </div>
+    </div>
+    <div class="benefits reveal r3">
+      <div class="benefit">
+        <span class="ico">📷</span>
+        <h3>Rasm</h3>
+        <p>Rasm yoki skanni ko'rsatasiz — o'qiydi va tushuntiradi.</p>
+      </div>
+      <div class="benefit">
+        <span class="ico">🎙️</span>
+        <h3>Ovoz</h3>
+        <p>Gapirasiz — eshitadi va ovozda javob beradi.</p>
+      </div>
+      <div class="benefit">
+        <span class="ico">🎬</span>
+        <h3>Video</h3>
+        <p>Qisqa videoni ko'rib, mazmunini tahlil qiladi.</p>
+      </div>
+      <div class="benefit">
+        <span class="ico">⌨️</span>
+        <h3>Matn</h3>
+        <p>Odatdagidek yozib ham so'rashingiz mumkin.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9 — GEMINI DEMO · telefonda -->
+<section class="slide s-demo">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Gemini · Demo</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Telefonda: <span class="hl">ovoz, rasm va video</span>.</h2>
+    <div class="situation reveal r2">
+      <span class="tag">Vaziyat</span>
+      <p>Yo'lda yoki uchrashuvda — kompyutersiz, faqat telefon bilan ishlash kerak.</p>
+    </div>
+    <div class="demo-cards reveal r3">
+      <div class="demo-card">
+        <span class="ico">📷</span>
+        <h3>Rasmga oling</h3>
+        <p>Hujjat yoki jadvalni suratga olib: "Bu nima haqida?"</p>
+      </div>
+      <div class="demo-card">
+        <span class="ico">🎙️</span>
+        <h3>Ovoz bilan so'rang</h3>
+        <p>Yozish shart emas — shunchaki gapirasiz.</p>
+      </div>
+      <div class="demo-card">
+        <span class="ico">📱</span>
+        <h3>Har joyda</h3>
+        <p>Telefon ilovasida, cho'ntakda — doim yoningizda.</p>
+      </div>
+    </div>
+    <p class="demo-foot reveal r3">SI endi cho'ntakda.</p>
+  </div>
+</section>
+
+<!-- SLIDE 10 — TANLOV · qaysi vosita -->
+<section class="slide s-stack">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Tanlov</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Qaysi ish uchun <span class="hl">qaysi vosita</span>?</h2>
+    <div class="stack reveal r3">
+      <div class="pillar">
+        <span class="icon">💬</span>
+        <span class="tag">Universal</span>
+        <h3>ChatGPT</h3>
+        <ul>
+          <li>Kundalik savollar</li>
+          <li>Tez matn va g'oyalar</li>
+          <li>Umumiy yordamchi</li>
+          <li>Birinchi tanlov</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <span class="icon">📑</span>
+        <span class="tag">Tahlil + matn</span>
+        <h3>Claude</h3>
+        <ul>
+          <li>Uzun hujjatlar</li>
+          <li>Sifatli rasmiy matn</li>
+          <li>Chuqur mulohaza</li>
+          <li>Solishtirish va tahlil</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <span class="icon">🎛️</span>
+        <span class="tag">Multimodal</span>
+        <h3>Gemini</h3>
+        <ul>
+          <li>Rasm va ovoz</li>
+          <li>Mobil (telefon) ish</li>
+          <li>Google xizmatlari</li>
+          <li>Video tahlili</li>
+        </ul>
+      </div>
+    </div>
+    <p class="stack-foot reveal r3">Aniq chegara yo'q — ko'pincha bir ishda <strong>bir nechtasini birga</strong> ishlatasiz.</p>
+    <p class="reveal r4" style="margin-top:clamp(0.4rem,0.8vw,0.7rem);font-size:var(--small);color:var(--mute);line-height:1.45;letter-spacing:0.01em">Yana: <strong style="color:var(--accent-2);font-weight:600">Perplexity</strong> — real-vaqt/internet ma'lumot uchun · <strong style="color:var(--accent-2);font-weight:600">Yandex GPT</strong> — data residency (ma'lumot RU/UZ'dan chiqmasin) talab qilinsa.</p>
+  </div>
+</section>
+
+<!-- SLIDE 11 — UCH GIGANT · Kuchli · Qachon · Cheklov (deep-dive compare) -->
+<section class="slide s-stack">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Chuqurroq</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Uch gigant — <span class="hl">kuchli · qachon · cheklov</span>.</h2>
+    <div class="stack reveal r3">
+      <div class="pillar">
+        <span class="icon">💬</span>
+        <span class="tag">ChatGPT</span>
+        <h3>Universal</h3>
+        <ul>
+          <li><strong>Kuchli:</strong> eng keng ekosistema, Excel/grafik, g'oyalar</li>
+          <li><strong>Qachon:</strong> brainstorm, qoralama, kundalik ish</li>
+          <li><strong>Cheklov:</strong> dalil so'rang — har gapni tekshiring</li>
+        </ul>
+      </div>
+      <div class="pillar featured">
+        <span class="icon">📑</span>
+        <span class="tag">Claude</span>
+        <h3>Tahlil</h3>
+        <ul>
+          <li><strong>Kuchli:</strong> uzun hujjat, iqtibos, kam gallyutsinatsiya</li>
+          <li><strong>Qachon:</strong> IFRS, shartnoma, muvofiqlik — aniqlik muhim</li>
+          <li><strong>Cheklov:</strong> internetga ulanmagan — real-vaqt yo'q</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <span class="icon">🎛️</span>
+        <span class="tag">Gemini</span>
+        <h3>Multimodal</h3>
+        <ul>
+          <li><strong>Kuchli:</strong> PDF+Excel+skan birga, Workspace, RAG zamin</li>
+          <li><strong>Qachon:</strong> rasm/ovoz/video, mobil, Google ishi</li>
+          <li><strong>Cheklov:</strong> bank tanlovi — alohida baholanadi</li>
+        </ul>
+      </div>
+    </div>
+    <p class="stack-foot reveal r3">Uchchala frontier model endi ~<strong>1M token</strong> kontekstga ega — savol "qaysi model" emas, <strong>"qaysi vazifaga qaysi mos"</strong>.</p>
+  </div>
+</section>
+
+<!-- SLIDE 12 — ISH OQIMI · flow -->
+<section class="slide s-flow">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Amaliyot</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Hammasini birga — <span class="hl">bitta ish oqimi</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">Real misol: bitta vazifada uchala vosita va inson birga ishlaydi.</p>
+    <div class="flow reveal r3">
+      <div class="step">
+        <span class="ico">📷</span>
+        <h4>1. Suratga oling</h4>
+        <p>Qog'oz hujjatni telefon bilan rasmga olib, matnga aylantirasiz.</p>
+        <span class="tooltag">Gemini</span>
+      </div>
+      <span class="arrow">→</span>
+      <div class="step">
+        <span class="ico">📑</span>
+        <h4>2. Chuqur tahlil</h4>
+        <p>Uzun matnni o'qib, asosiy fikr va xavflarni ajratadi.</p>
+        <span class="tooltag">Claude</span>
+      </div>
+      <span class="arrow">→</span>
+      <div class="step">
+        <span class="ico">✍️</span>
+        <h4>3. Rasmiy javob</h4>
+        <p>Tayyor xulosa asosida rasmiy xat yoki javob yozasiz.</p>
+        <span class="tooltag">ChatGPT</span>
+      </div>
+      <span class="arrow">→</span>
+      <div class="step brain">
+        <span class="ico">🧠</span>
+        <h4>4. Tekshiruv va qaror</h4>
+        <p>Hammasini siz tekshirasiz va yakuniy qarorni qabul qilasiz.</p>
+        <span class="tooltag">Inson</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12 — UMUMIY QOIDALAR · sec-4 -->
+<section class="slide s-sec">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Muhim</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Uchala vosita uchun <span class="hl">umumiy qoidalar</span>.</h2>
+    <div class="sec reveal r3">
+      <div class="item">
+        <span class="ico">🔒</span>
+        <h3>Maxfiy ma'lumot kiritilmaydi</h3>
+        <p>Bank siri va shaxsiy ma'lumot ommaviy SI vositalariga berilmaydi.</p>
+      </div>
+      <div class="item">
+        <span class="ico">✅</span>
+        <h3>Har doim tekshiring</h3>
+        <p>Raqam, fakt va huquqiy xulosa mustaqil tasdiqlanishi shart.</p>
+      </div>
+      <div class="item">
+        <span class="ico">🧑‍⚖️</span>
+        <h3>Yakuniy qaror insonniki</h3>
+        <p>SI yordamchi; javobgarlik va qaror sizda qoladi.</p>
+      </div>
+      <div class="item">
+        <span class="ico">🔀</span>
+        <h3>Bir vositaga bog'lanmang</h3>
+        <p>Ish uchun eng mosini tanlang; kerak bo'lsa solishtiring.</p>
+      </div>
+    </div>
+    <p class="sec-foot reveal r3">To'g'ri va ehtiyot ishlatilsa — <strong>uchchovi ham ishonchli yordamchi</strong>.</p>
+  </div>
+</section>
+
+<!-- SLIDE 13 — YAKUN + lug'at recap -->
+<section class="slide s-close">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Yakun</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">1-kundan <span class="hl">asosiy xulosalar</span>.</h2>
+    <div class="close-list reveal r3">
+      <div class="close-row"><span class="arrow">→</span><p><strong>SI — vosita, sehr emas</strong> — endi u gaplashadi, yozadi va yangi narsa yaratadi.</p></div>
+      <div class="close-row"><span class="arrow">→</span><p><strong>Uchta yordamchi</strong> — ChatGPT (universal) · Claude (tahlil) · Gemini (multimodal).</p></div>
+      <div class="close-row"><span class="arrow">→</span><p><strong>To'g'ri ish — to'g'ri vosita</strong> — har birining kuchli tomoni bor; ko'pincha birga ishlaydi.</p></div>
+      <div class="close-row"><span class="arrow">→</span><p><strong>Odam markazda</strong> — maxfiylik, tekshiruv va yakuniy qaror har doim insonniki.</p></div>
+    </div>
+    <div class="recap reveal r3">
+      <div class="recap-tag">Lug'at recap · birga aytamiz</div>
+      <div class="recap-terms">
+        <div class="recap-term"><strong>Multimodal</strong> <span class="ans fragment">matn + rasm + ovoz + video — birga</span></div>
+        <div class="recap-term"><strong>To'g'ri vosita</strong> <span class="ans fragment">har ishga mos vositani tanlash</span></div>
+      </div>
+    </div>
+    <p class="quote reveal r3">"SI bilan ish — hamkorlik: u tezlashtiradi, inson yo'naltiradi va qaror qiladi."</p>
+  </div>
+</section>
+
+<!-- SLIDE 14 — 1-KUN YAKUNI · Rahmat -->
+<section class="slide s-thanks">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="thanks-grid">
+      <div class="thanks-left">
+        <div class="title-block reveal r2">
+          <span class="chip">1-kun yakuni</span>
+          <h1 class="title-hero" style="font-size:clamp(2.5rem,7vw,6rem)">Rahmat!</h1>
+          <p class="lead reveal r2" style="margin-top:clamp(0.85rem,1.6vw,1.4rem)">Bugun SI dunyosi bilan tanishdik — endi navbat amaliyotda.</p>
+        </div>
+        <div class="thanks-flow reveal r3">
+          <span class="pill">SI landshafti</span>
+          <span class="sep">→</span>
+          <span class="pill">ChatGPT</span>
+          <span class="sep">→</span>
+          <span class="pill">Claude va Gemini</span>
+        </div>
+        <p class="quote reveal r3">Sinab ko'ring, savol bering, kashf qiling. Ko'rishguncha!</p>
+      </div>
+      <div class="thanks-visual reveal r3">
+        <div class="tool-card">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+          <div><span class="tc-name">ChatGPT</span><div class="tc-sub">Universal yordamchi</div></div>
+        </div>
+        <div class="tool-card">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/></svg>
+          <div><span class="tc-name">Claude</span><div class="tc-sub">Chuqur tahlil va matn</div></div>
+        </div>
+        <div class="tool-card">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          <div><span class="tc-name">Gemini</span><div class="tc-sub">Ovoz, rasm va video</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 15 — Q&A -->
+<section class="slide s-qa">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="qmark reveal r2">?</div>
+    <h2 class="h2 reveal r3" style="text-align:center"><span class="hl">Savol-javob</span>.</h2>
+    <p class="reveal r3" style="margin-top:clamp(1.5rem,3vw,2.5rem);font-family:var(--display);font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:0.1em;color:var(--accent-2);display:flex;justify-content:center;align-items:center;gap:clamp(1.25rem,3vw,2.5rem);flex-wrap:wrap">
+      <a href="mailto:murod@mohir.dev" style="color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:0.55em">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        murod@mohir.dev
+      </a>
+      <a href="https://t.me/crea7iveai" style="color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:0.55em">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+        @crea7iveai
+      </a>
+    </p>
+  </div>
+</section>
+
+</main>
+
+<div class="hud">
+  <span class="counter">01 / 16</span>
+  <div class="dots"></div>
+  <div class="speaker"><span class="dot"></span><strong>Riskaliev Murad</strong> · NLP Engineer · <img src="../_shared/logo-mohirdev-iconmark-white.png" alt="Mohirdev" class="mohirdev-mark"></div>
+</div>
+
+<script>
+const TITLES = [
+  'Title · 3-modul',
+  "Kengroq qarash · SI faqat ChatGPT emas",
+  "Claude — bu nima?",
+  'Claude Demo 1 · uzun hujjat tahlili',
+  'Claude Demo 2 · ikki hujjatni solishtirish',
+  'WOW lahza · zaldan jonli vazifa',
+  "Gemini — bu nima?",
+  "Multimodal — bu nima degani?",
+  'Gemini Demo · telefonda',
+  'Tanlov · qaysi ish, qaysi vosita',
+  'Uch gigant · kuchli · qachon · cheklov',
+  "Bitta ish oqimi · 4 qadam",
+  'Umumiy qoidalar · 4 ta',
+  "1-kundan asosiy xulosalar",
+  '1-kun yakuni · Rahmat!',
+  'Savol-javob'
+];
+
+const slides = [...document.querySelectorAll('.slide')];
+const counter = document.querySelector('.counter');
+const dotsContainer = document.querySelector('.dots');
+let cur = 0;
+
+(function buildDots(){
+  dotsContainer.innerHTML = '';
+  slides.forEach((slide, i) => {
+    const d = document.createElement('button');
+    d.className = 'nav-dot';
+    d.dataset.title = TITLES[i] || ('Slide ' + (i + 1));
+    d.setAttribute('aria-label', 'Go to slide ' + (i + 1) + ': ' + (TITLES[i] || ''));
+    d.addEventListener('click', e => { e.stopPropagation(); go(i); });
+    dotsContainer.appendChild(d);
+  });
+})();
+
+function apply() {
+  slides.forEach((s, n) => s.classList.toggle('is-active', n === cur));
+  counter.textContent = String(cur + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+  dotsContainer.querySelectorAll('.nav-dot').forEach((d, n) => d.classList.toggle('is-current', n === cur));
+  history.replaceState(null, '', '#' + (cur + 1));
+}
+
+function setFragments(slide, mode) {
+  const frags = slide.querySelectorAll('.fragment');
+  frags.forEach(f => mode === 'all' ? f.classList.add('is-visible') : f.classList.remove('is-visible'));
+}
+
+function go(i) {
+  cur = Math.max(0, Math.min(slides.length - 1, i));
+  const transition = () => { apply(); setFragments(slides[cur], 'all'); };
+  if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.startViewTransition(transition);
+  } else {
+    transition();
+  }
+}
+
+function next() {
+  const slide = slides[cur];
+  const frags = [...slide.querySelectorAll('.fragment')];
+  const hidden = frags.find(f => !f.classList.contains('is-visible'));
+  if (hidden) { hidden.classList.add('is-visible'); return; }
+  if (cur < slides.length - 1) {
+    cur += 1;
+    apply();
+    setFragments(slides[cur], 'none');
+  }
+}
+
+function prev() {
+  const slide = slides[cur];
+  const visible = slide.querySelectorAll('.fragment.is-visible');
+  if (visible.length > 0) {
+    visible[visible.length - 1].classList.remove('is-visible');
+    return;
+  }
+  if (cur > 0) {
+    cur -= 1;
+    apply();
+    setFragments(slides[cur], 'all');
+  }
+}
+
+addEventListener('keydown', e => {
+  if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); next(); }
+  if (['ArrowLeft', 'PageUp'].includes(e.key))         { e.preventDefault(); prev(); }
+  if (e.key === 'Home') go(0);
+  if (e.key === 'End') go(slides.length - 1);
+  if (e.key === 'a' || e.key === 'A') go(1);
+});
+
+addEventListener('click', e => {
+  if (e.target.closest('a, button, input, [data-no-advance], .hud')) return;
+  if (e.clientX > innerWidth / 2) next(); else prev();
+});
+
+document.querySelectorAll('.phase-card').forEach(c => {
+  c.addEventListener('click', e => { e.stopPropagation(); next(); });
+});
+
+addEventListener('hashchange', () => {
+  const n = parseInt(location.hash.slice(1), 10);
+  if (Number.isFinite(n)) go(n - 1);
+});
+
+const init = parseInt(location.hash.slice(1), 10);
+go(Number.isFinite(init) ? init - 1 : 0);
+</script>
+</body>
+</html>

@@ -1,0 +1,978 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>2-modul · ChatGPT — Jonli demo · Markaziy Bank seminar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:'Space Grotesk',sans-serif}
+/* Series-wide font fix — disambiguate Space Grotesk's capital I from lowercase l on body text */
+body,p,li,.lead{letter-spacing:0.018em}
+.tok{letter-spacing:0.08em;font-weight:600}
+
+:root{
+  --bg:#020A24;--bg-2:#06173B;--bg-3:#0B2D79;
+  --accent:#2563eb;--accent-2:#60a5fa;--accent-glow:#1FF2F9;
+  --ink:#0a0f1f;--mute:#7a8aa3;--soft:rgba(255,255,255,0.08);
+  --pad:clamp(1.5rem,4vw,4rem);
+  --title:clamp(2rem,5.5vw,5rem);
+  --h2:clamp(1.5rem,3.2vw,2.75rem);
+  --h3:clamp(1.1rem,2vw,1.6rem);
+  --body:clamp(0.85rem,1.2vw,1.15rem);
+  --small:clamp(0.7rem,0.9vw,0.85rem);
+  --gap:clamp(1rem,2vw,2rem);
+  --r:clamp(0.75rem,1.5vw,1.5rem);
+  --display:'Archivo Black',sans-serif;
+}
+
+.deck{position:relative;width:100vw;height:100vh;height:100dvh;overflow:hidden}
+
+.slide{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 80%, rgba(11,45,121,0.55), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 15%, rgba(37,99,235,0.18), transparent 60%),
+    linear-gradient(180deg,#020A24 0%, #06173B 100%);
+  padding:clamp(0.85rem,1.8vw,1.5rem) var(--pad) var(--pad) var(--pad);
+  display:grid;grid-template-rows:auto auto 1fr auto;gap:clamp(0.75rem,1.5vw,1.25rem);
+  opacity:0;pointer-events:none;
+  transform:scale(0.965);filter:blur(2px);
+  transition:opacity 0.5s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1),filter 0.4s ease-out;
+  overflow:hidden;
+}
+.slide.is-active{opacity:1;pointer-events:auto;transform:scale(1);filter:blur(0)}
+
+.slide::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+}
+
+/* HEADER */
+.head{display:flex;justify-content:flex-end;align-items:flex-start;position:relative;z-index:1;gap:1rem}
+.num{font-family:var(--display);font-size:clamp(2rem,4vw,3.2rem);line-height:0.9;letter-spacing:-0.04em;color:var(--accent-2);text-align:right}
+.num small{display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--mute);margin-top:0.4rem}
+
+.crumbs{display:none}
+
+/* MAIN */
+.main{position:relative;z-index:1;align-self:center;display:flex;flex-direction:column;justify-content:center;min-height:0}
+
+/* FOOTER */
+.foot{display:flex;justify-content:flex-end;align-items:center;font-size:var(--small);color:var(--mute);letter-spacing:0.1em;text-transform:uppercase;position:relative;z-index:1;gap:1rem;flex-wrap:wrap}
+.foot .speaker{display:flex;align-items:center;gap:0.6rem;color:#fff}
+.foot .dot{width:0.55rem;height:0.55rem;border-radius:50%;background:var(--accent)}
+.foot .speaker strong{font-family:var(--display);letter-spacing:0.08em;font-size:var(--small)}
+.hud .speaker .mohirdev-mark{height:1.4em;width:auto;vertical-align:middle;display:inline-block;margin-left:0.15em;flex-shrink:0}
+.foot .brand .seven{color:var(--accent)}
+
+/* CARD primitives */
+.card{background:linear-gradient(135deg,var(--accent),#1d4ed8);color:#fff;padding:clamp(1.25rem,2.8vw,2.5rem);border-radius:var(--r);box-shadow:0 30px 80px -20px rgba(37,99,235,0.5),0 0 0 1px rgba(255,255,255,0.05) inset}
+.card-dark{background:var(--ink);color:#fff;padding:clamp(1.25rem,2.8vw,2.5rem);border-radius:var(--r);border:1px solid var(--soft)}
+
+/* BRAND STRIP — institutional logos, top of every slide */
+.brand-strip{
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  position:relative;z-index:1;
+  padding-bottom:clamp(0.5rem,1vw,0.85rem);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.brand-strip .logo{
+  height:clamp(3rem,4.5vw,4.5rem);width:auto;
+  filter:brightness(0) invert(1);
+  opacity:0.9;
+}
+
+/* TITLE typography */
+.title-display{font-family:var(--display);font-weight:900;font-size:var(--title);line-height:0.95;letter-spacing:-0.03em;text-transform:uppercase}
+.title-display .light{font-family:'Space Grotesk',sans-serif;font-weight:500;text-transform:none;letter-spacing:-0.01em;font-style:italic;font-size:0.55em;display:block;margin-top:0.5em;opacity:0.9}
+
+.h2{font-family:var(--display);font-size:clamp(1.75rem,3.6vw,3rem);line-height:1.05;letter-spacing:-0.025em;text-transform:uppercase;color:#fff}
+.h2 .accent,.h2 .ink,.h2 .hl{
+  background:linear-gradient(135deg,var(--accent),#1d4ed8);
+  color:#fff;padding:0.04em 0.22em;display:inline-block;
+  box-shadow:0 14px 38px -12px rgba(37,99,235,0.45),0 0 0 1px rgba(255,255,255,0.06) inset;
+  border-radius:clamp(0.2rem,0.35vw,0.35rem);
+}
+
+.lead{font-size:var(--body);line-height:1.55;color:rgba(255,255,255,0.78);max-width:60ch;margin-top:clamp(0.85rem,1.5vw,1.25rem);font-weight:400}
+.lead::before{
+  content:"";display:inline-block;
+  width:clamp(1.5rem,2.5vw,2rem);height:2px;
+  background:var(--accent-2);margin-right:0.7rem;vertical-align:middle;
+}
+.lead.no-bar::before{display:none}
+
+.chip{display:inline-block;background:var(--ink);color:var(--accent);font-family:var(--display);font-size:var(--small);letter-spacing:0.15em;text-transform:uppercase;padding:0.4rem 0.9rem;border-radius:99px}
+.chip-out{display:inline-block;border:1px solid var(--accent);color:var(--accent);font-family:var(--display);font-size:var(--small);letter-spacing:0.15em;text-transform:uppercase;padding:0.4rem 0.9rem;border-radius:99px}
+
+/* SLIDE 1 — TITLE */
+.s-title .main{align-items:flex-start;justify-content:center}
+.s-title .title-block{max-width:min(96vw,1750px)}
+.s-title .title-hero{
+  font-family:var(--display);font-weight:900;
+  font-size:clamp(2rem,6vw,5.75rem);
+  line-height:0.92;letter-spacing:-0.04em;
+  text-transform:uppercase;color:#fff;
+  margin-top:clamp(1rem,2vw,1.5rem);
+}
+.s-title .title-hero .light{
+  font-family:'Space Grotesk',sans-serif;font-weight:500;text-transform:none;
+  letter-spacing:-0.01em;font-style:italic;font-size:0.42em;display:block;margin-top:0.35em;opacity:0.9;
+}
+.s-title .title-hero .hl{
+  background:linear-gradient(135deg,var(--accent),#1d4ed8);
+  color:#fff;padding:0.04em 0.22em;display:inline-block;
+  box-shadow:0 18px 50px -12px rgba(37,99,235,0.55),0 0 0 1px rgba(255,255,255,0.06) inset;
+  border-radius:clamp(0.25rem,0.4vw,0.4rem);white-space:nowrap;
+}
+.s-title .tagline{
+  margin-top:clamp(1.5rem,3vw,2.5rem);
+  font-family:'Space Grotesk',sans-serif;font-weight:500;
+  font-size:clamp(1.1rem,1.9vw,1.75rem);
+  color:rgba(255,255,255,0.78);letter-spacing:-0.005em;
+  max-width:48ch;line-height:1.45;
+}
+.s-title .tagline .accent-bar{
+  display:inline-block;width:clamp(2rem,4vw,3rem);height:2px;
+  background:var(--accent-2);margin-right:0.85rem;vertical-align:middle;
+}
+
+/* COMPARE (two/three cards) */
+.compare{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(1rem,2.5vw,2.5rem);align-items:stretch;margin-top:clamp(1rem,2vw,2rem)}
+.compare .col{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1rem,2vw,1.75rem);text-align:left}
+.compare .col h4{font-family:var(--display);text-transform:uppercase;letter-spacing:0.1em;font-size:var(--small);color:var(--mute);margin-bottom:0.75rem}
+.compare .vs{font-family:var(--display);font-size:clamp(1.2rem,2vw,1.75rem);color:var(--accent);letter-spacing:0.1em;align-self:center}
+
+/* BENEFITS */
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.benefit{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem)}
+.benefit .stat{font-family:var(--display);font-size:clamp(2rem,5vw,4rem);line-height:1;color:var(--accent);letter-spacing:-0.04em}
+.benefit h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;margin-top:0.5rem;color:#fff}
+.benefit p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.7);margin-top:0.5rem}
+
+/* STACK */
+.stack{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.stack .pillar{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);text-align:left}
+.stack .pillar.featured{background:linear-gradient(160deg,var(--accent),#1d4ed8);color:#fff;border-color:var(--accent)}
+.stack .pillar.featured h3,.stack .pillar.featured p,.stack .pillar.featured .tag{color:#fff}
+.stack .icon{font-size:clamp(2rem,4vw,3rem);margin-bottom:0.75rem}
+.stack .tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.2em;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:0.25rem}
+.stack h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff}
+.stack p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.75);margin-top:0.75rem}
+
+/* FLOW */
+.flow{display:flex;align-items:center;justify-content:center;gap:clamp(0.5rem,1vw,1rem);flex-wrap:nowrap;margin-top:clamp(1rem,2vw,2rem);overflow:hidden}
+.flow .step{flex:1;background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(0.85rem,1.6vw,1.4rem);text-align:center;min-width:0}
+.flow .step.brain{background:linear-gradient(135deg,var(--accent),#1d4ed8);color:#fff;border-color:var(--accent)}
+.flow .step.brain .ico,.flow .step.brain h4,.flow .step.brain p{color:#fff}
+.flow .step .ico{font-size:clamp(1.5rem,3vw,2.2rem)}
+.flow .step h4{font-family:var(--display);font-size:clamp(0.85rem,1.4vw,1.15rem);text-transform:uppercase;letter-spacing:0.05em;margin-top:0.4rem;color:#fff}
+.flow .step p{font-size:clamp(0.7rem,1vw,0.9rem);line-height:1.4;color:rgba(255,255,255,0.7);margin-top:0.4rem}
+.flow .step .stepnum{font-family:var(--display);font-size:clamp(1.1rem,2vw,1.6rem);color:var(--accent-2);line-height:1}
+.flow .step.brain .stepnum{color:#fff}
+.flow .arrow{color:var(--accent);font-family:var(--display);font-size:clamp(1.2rem,2.4vw,1.8rem);flex-shrink:0}
+
+/* SECURITY */
+.sec{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.sec .item{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem)}
+.sec .item .ico{font-size:clamp(1.75rem,3.5vw,2.5rem);color:var(--accent);margin-bottom:0.75rem;display:block}
+.sec .item h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff}
+.sec .item p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.75);margin-top:0.5rem}
+
+/* CLOSING + recap */
+.close-list{display:flex;flex-direction:column;gap:clamp(0.7rem,1.3vw,1.15rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)}
+.close-row{display:flex;gap:clamp(0.75rem,1.5vw,1.25rem);align-items:flex-start;padding:clamp(0.85rem,1.6vw,1.4rem);background:rgba(255,255,255,0.04);border-left:4px solid var(--accent);border-radius:0 var(--r) var(--r) 0}
+.close-row .arrow{color:var(--accent);font-family:var(--display);font-size:clamp(1.2rem,2vw,1.5rem)}
+.close-row p{font-size:var(--body);line-height:1.55;color:#fff;font-weight:400}
+.close-row p strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.02em}
+.s-close .recap{margin-top:clamp(0.85rem,1.5vw,1.4rem);padding-top:clamp(0.7rem,1.3vw,1.1rem);border-top:1px solid var(--soft);display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.5rem);flex-wrap:wrap}
+.s-close .recap-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);flex-shrink:0}
+.s-close .recap-terms{display:flex;gap:clamp(1rem,2vw,2rem);flex-wrap:wrap;flex:1}
+.s-close .recap-term{font-size:var(--body);color:rgba(255,255,255,0.7);line-height:1.4}
+.s-close .recap-term strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-right:0.5em;font-weight:400}
+.s-close .recap-term .ans{color:var(--accent-2)}
+.s-close .nextup{margin-top:clamp(0.7rem,1.3vw,1.1rem);font-size:var(--small);letter-spacing:0.1em;text-transform:uppercase;color:var(--mute)}
+.s-close .nextup strong{color:var(--accent-2);font-family:var(--display)}
+
+/* Q&A */
+.s-qa .main{align-items:center;text-align:center}
+.qmark{font-family:var(--display);font-size:clamp(8rem,18vw,16rem);line-height:0.9;color:var(--accent);letter-spacing:-0.05em}
+
+/* HUD — clickable dot navigation */
+.hud{
+  position:fixed;left:var(--pad);right:var(--pad);
+  bottom:clamp(0.6rem,1vw,1rem);
+  display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.4rem);
+  z-index:100;
+}
+.hud .counter{
+  font-family:var(--display);
+  color:rgba(255,255,255,0.55);
+  letter-spacing:0.18em;font-size:var(--small);
+  flex-shrink:0;
+}
+.dots{display:flex;gap:clamp(0.3rem,0.5vw,0.5rem);align-items:center;flex:1}
+.nav-dot{
+  width:clamp(0.4rem,0.55vw,0.55rem);height:clamp(0.4rem,0.55vw,0.55rem);
+  border-radius:50%;border:none;
+  background:rgba(255,255,255,0.18);cursor:pointer;
+  padding:0;position:relative;
+  transition:background 0.3s,width 0.4s cubic-bezier(0.16,1,0.3,1),transform 0.2s,box-shadow 0.3s;
+}
+.nav-dot:hover{background:rgba(255,255,255,0.55);transform:scale(1.4)}
+.nav-dot.is-current{
+  background:var(--accent);
+  width:clamp(1.5rem,2.4vw,2rem);
+  border-radius:99px;
+  box-shadow:0 0 14px rgba(37,99,235,0.6);
+}
+.nav-dot::before{
+  content:attr(data-title);
+  position:absolute;bottom:200%;left:50%;
+  transform:translateX(-50%) translateY(4px);
+  background:#0a0f1f;color:#fff;
+  font-size:0.72rem;letter-spacing:0.04em;text-transform:none;
+  padding:0.45rem 0.75rem;border-radius:0.35rem;
+  white-space:nowrap;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.2s,transform 0.2s;
+  border:1px solid rgba(255,255,255,0.12);
+  font-family:'Space Grotesk',sans-serif;font-weight:500;
+}
+.nav-dot:hover::before{opacity:1;transform:translateX(-50%) translateY(0)}
+.brand-mini{
+  font-family:var(--display);
+  color:rgba(255,255,255,0.5);
+  letter-spacing:0.18em;font-size:var(--small);
+  flex-shrink:0;
+}
+
+/* HUD speaker (right side) */
+.hud .speaker{
+  display:flex;align-items:center;gap:0.5rem;
+  font-size:var(--small);
+  color:rgba(255,255,255,0.7);
+  letter-spacing:0.08em;text-transform:uppercase;
+  flex-shrink:0;font-family:'Space Grotesk',sans-serif;
+}
+.hud .speaker .dot{
+  width:0.45rem;height:0.45rem;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 8px rgba(37,99,235,0.6);
+}
+.hud .speaker strong{font-family:var(--display);letter-spacing:0.1em;color:#fff;font-weight:400}
+
+/* AGENDA SLIDE — 4 phase cards in 2x2 grid */
+.s-agenda .main{align-self:stretch;justify-content:flex-start;padding-bottom:0;display:flex;flex-direction:column}
+.s-agenda .head .eyebrow{
+  display:flex;align-items:center;gap:clamp(0.6rem,1vw,0.85rem);
+  font-family:var(--display);
+  font-size:clamp(0.85rem,1.2vw,1.05rem);
+  letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--accent-2);
+}
+.s-agenda .head .eyebrow::before{
+  content:"";display:inline-block;
+  width:clamp(1.5rem,2.5vw,2rem);height:2px;
+  background:var(--accent-2);
+}
+.phase-grid{
+  flex:1;display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  gap:clamp(0.7rem,1.4vw,1.25rem);
+  margin-top:clamp(0.85rem,1.5vw,1.25rem);
+  width:100%;
+  min-height:0;
+}
+
+/* Fragments — start hidden, reveal sequentially via Next/Right */
+.fragment{
+  opacity:0;
+  transform:translateY(24px) scale(0.97);
+  transition:opacity 0.55s cubic-bezier(0.16,1,0.3,1),transform 0.55s cubic-bezier(0.16,1,0.3,1);
+  pointer-events:none;
+}
+.fragment.is-visible{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  pointer-events:auto;
+}
+.phase-card{
+  display:flex;flex-direction:column;justify-content:space-between;
+  background:linear-gradient(135deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02));
+  border:1px solid var(--soft);
+  border-radius:clamp(0.6rem,1.1vw,1.1rem);
+  padding:clamp(0.95rem,1.85vw,1.7rem) clamp(1.15rem,2.2vw,2rem);
+  color:#fff;cursor:pointer;text-align:left;
+  font-family:'Space Grotesk',sans-serif;
+  position:relative;overflow:hidden;
+  transition:background 0.4s cubic-bezier(0.16,1,0.3,1),border-color 0.3s,transform 0.45s cubic-bezier(0.16,1,0.3,1),box-shadow 0.4s;
+}
+.phase-card::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at top right,rgba(37,99,235,0.22),transparent 60%);
+  opacity:0;transition:opacity 0.5s ease;pointer-events:none;
+}
+.phase-card::after{
+  content:"";position:absolute;left:0;top:0;height:100%;width:3px;
+  background:linear-gradient(to bottom,var(--accent),var(--accent-2));
+  transform:scaleY(0);transform-origin:top;
+  transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.phase-card:hover::before{opacity:1}
+.phase-card:hover::after{transform:scaleY(1)}
+.phase-card:hover{
+  background:linear-gradient(135deg,rgba(37,99,235,0.12),rgba(37,99,235,0.04));
+  border-color:var(--accent);
+  transform:translateY(-6px);
+  box-shadow:0 22px 50px -18px rgba(37,99,235,0.5);
+}
+.phase-card:active{transform:translateY(-2px) scale(0.99)}
+.phase-top{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  position:relative;z-index:1;
+}
+.phase-num{
+  font-family:var(--display);
+  font-size:clamp(2rem,4.4vw,3.85rem);
+  line-height:0.9;letter-spacing:-0.05em;
+  color:var(--accent-2);
+}
+.phase-arrow{
+  font-family:var(--display);
+  font-size:clamp(1.25rem,2.2vw,2rem);
+  color:rgba(255,255,255,0.25);
+  transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),color 0.3s;
+  margin-top:clamp(0.45rem,0.9vw,0.85rem);
+}
+.phase-card:hover .phase-arrow{transform:translateX(6px);color:var(--accent-2)}
+.phase-title{
+  font-family:var(--display);
+  font-size:clamp(1.25rem,2.5vw,2.15rem);
+  text-transform:uppercase;
+  letter-spacing:-0.02em;
+  line-height:1;
+  margin-top:clamp(0.75rem,1.4vw,1.2rem);
+  position:relative;z-index:1;
+}
+.phase-desc{
+  font-size:clamp(0.78rem,1.05vw,0.98rem);
+  line-height:1.45;
+  color:rgba(255,255,255,0.68);
+  margin-top:clamp(0.45rem,0.8vw,0.7rem);
+  max-width:38ch;
+  position:relative;z-index:1;
+}
+.phase-foot{
+  display:flex;justify-content:flex-end;align-items:center;
+  margin-top:clamp(0.75rem,1.35vw,1.15rem);
+  padding-top:clamp(0.55rem,1vw,0.9rem);
+  border-top:1px solid rgba(255,255,255,0.08);
+  font-family:var(--display);
+  font-size:clamp(0.62rem,0.82vw,0.75rem);
+  letter-spacing:0.2em;text-transform:uppercase;
+  position:relative;z-index:1;
+}
+.phase-count{color:rgba(255,255,255,0.5)}
+.phase-time{color:var(--accent-2)}
+
+/* CARD HOVER STATES — interactive lift across content cards */
+.benefit,.stack .pillar,.sec .item,.flow .step,.compare .col{
+  transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s;
+}
+.benefit:hover,.stack .pillar:hover,.sec .item:hover,.flow .step:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);
+  border-color:rgba(96,165,250,0.4);
+}
+.compare .col:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 28px -12px rgba(37,99,235,0.3);
+}
+
+/* DICTIONARY */
+.dict{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.dict-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.4rem,2.8vw,2.5rem);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
+.dict-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.dict-card .dict-tag{display:inline-block;font-family:var(--display);font-size:clamp(1.5rem,3vw,2.6rem);letter-spacing:0.02em;color:var(--accent-2);text-transform:uppercase;line-height:1;margin-bottom:0.85rem}
+.dict-card h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:0.7rem}
+.dict-card p{font-size:var(--body);line-height:1.55;color:rgba(255,255,255,0.78)}
+.dict-card p strong{color:var(--accent-2);font-weight:500}
+.dict-card .ex{margin-top:clamp(0.75rem,1.4vw,1.15rem);padding-top:clamp(0.55rem,1vw,0.85rem);border-top:1px solid rgba(255,255,255,0.1);font-size:clamp(0.78rem,1vw,0.95rem);line-height:1.5;color:rgba(255,255,255,0.7);font-style:italic}
+.dict-card .ex strong{font-family:var(--display);font-style:normal;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-2);font-weight:400;margin-right:0.5em}
+.dict-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+
+/* 4-COL modifiers */
+.benefits.benefits-4{grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr}
+.sec.sec-4{grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr}
+.benefits-4 .benefit,.sec-4 .item{padding:clamp(1rem,2vw,1.65rem)}
+.benefits-4 .benefit h3,.sec-4 .item h3{font-size:clamp(0.95rem,1.4vw,1.25rem)}
+.benefits-4 .benefit p,.sec-4 .item p{font-size:clamp(0.78rem,1vw,0.95rem)}
+.benefits-4 .benefit .ico,.sec-4 .item .ico{font-size:clamp(1.4rem,2.6vw,2rem);margin-bottom:0.6rem;display:block}
+
+/* CHAT MOCK (slide 3) */
+.s-tanish .main{display:grid;grid-template-columns:1.05fr 0.95fr;gap:clamp(1.25rem,3vw,3rem);align-items:center}
+.chatwin{background:var(--ink);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1rem,2vw,1.6rem);box-shadow:0 30px 80px -28px rgba(37,99,235,0.45);display:flex;flex-direction:column;gap:clamp(0.6rem,1.2vw,1rem)}
+.chatwin .winbar{display:flex;align-items:center;gap:0.4rem;padding-bottom:clamp(0.5rem,1vw,0.8rem);border-bottom:1px solid var(--soft)}
+.chatwin .winbar i{width:0.6rem;height:0.6rem;border-radius:50%;background:rgba(255,255,255,0.25);display:inline-block}
+.chatwin .winbar i:first-child{background:#ff5f57}
+.chatwin .winbar i:nth-child(2){background:#febc2e}
+.chatwin .winbar i:nth-child(3){background:#28c840}
+.chatwin .winbar span{margin-left:auto;font-family:var(--display);font-size:var(--small);letter-spacing:0.12em;text-transform:uppercase;color:var(--mute)}
+.bubble{max-width:88%;padding:clamp(0.7rem,1.3vw,1rem) clamp(0.85rem,1.6vw,1.2rem);border-radius:1.1rem;font-size:clamp(0.8rem,1.05vw,1rem);line-height:1.45}
+.bubble.user{align-self:flex-end;background:linear-gradient(135deg,var(--accent),#1d4ed8);color:#fff;border-bottom-right-radius:0.3rem}
+.bubble.bot{align-self:flex-start;background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.9);border:1px solid var(--soft);border-bottom-left-radius:0.3rem}
+.bubble .who{display:block;font-family:var(--display);font-size:clamp(0.6rem,0.8vw,0.72rem);letter-spacing:0.14em;text-transform:uppercase;opacity:0.75;margin-bottom:0.3rem}
+.chatwin .inputbar{display:flex;align-items:center;gap:0.6rem;background:rgba(255,255,255,0.05);border:1px solid var(--soft);border-radius:99px;padding:clamp(0.6rem,1.1vw,0.85rem) clamp(0.9rem,1.6vw,1.25rem);color:var(--mute);font-size:clamp(0.78rem,1vw,0.95rem)}
+.chatwin .inputbar .send{margin-left:auto;color:var(--accent-2);font-family:var(--display)}
+
+/* DEMO slide cards (situations) */
+.s-demo .main{display:flex;flex-direction:column;justify-content:center}
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(0.85rem,1.6vw,1.3rem)}
+.vaziyat{background:var(--ink);border:1px solid var(--soft);border-left:4px solid var(--accent);border-radius:var(--r);padding:clamp(1rem,2vw,1.6rem);margin-top:clamp(0.85rem,1.6vw,1.3rem)}
+.vaziyat .vtag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);display:block;margin-bottom:0.5rem}
+.vaziyat p{font-size:var(--body);line-height:1.5;color:#fff;font-weight:400}
+.demo-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.1rem,2.2vw,1.9rem);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s}
+.demo-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+.demo-card.you{border-left:4px solid var(--accent-2)}
+.demo-card.bot{background:linear-gradient(135deg,rgba(37,99,235,0.14),rgba(37,99,235,0.04));border-color:var(--accent)}
+.demo-card .clabel{font-family:var(--display);font-size:var(--small);letter-spacing:0.14em;text-transform:uppercase;color:var(--accent-2);display:flex;align-items:center;gap:0.5rem;margin-bottom:0.6rem}
+.demo-card .clabel .ico{font-size:clamp(1.1rem,1.8vw,1.5rem)}
+.demo-card h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:0.4rem}
+.demo-card p{font-size:clamp(0.82rem,1.08vw,1.02rem);line-height:1.5;color:rgba(255,255,255,0.78)}
+.demo-card p.quote{font-style:italic;color:rgba(255,255,255,0.7)}
+.demo-foot{margin-top:clamp(0.85rem,1.5vw,1.3rem);display:flex;align-items:center;gap:0.7rem;font-family:var(--display);font-size:clamp(0.78rem,1.05vw,1rem);letter-spacing:0.04em;text-transform:uppercase;color:var(--accent-2)}
+.demo-foot .ar{color:var(--accent)}
+
+/* COMPARE two-column list cards (slide 11) */
+.twolist{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(0.85rem,1.6vw,1.3rem)}
+.listcard{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.1rem,2.2vw,1.9rem);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s}
+.listcard:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4)}
+.listcard.win{border-left:4px solid #22c55e}
+.listcard.warn{border-left:4px solid #ef4444}
+.listcard .lhead{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:0.02em;display:flex;align-items:center;gap:0.55rem;margin-bottom:0.8rem}
+.listcard.win .lhead{color:#34d399}
+.listcard.warn .lhead{color:#f87171}
+.listcard ul{list-style:none;display:flex;flex-direction:column;gap:clamp(0.45rem,0.9vw,0.7rem)}
+.listcard li{font-size:clamp(0.82rem,1.08vw,1.02rem);line-height:1.4;color:rgba(255,255,255,0.82);display:flex;gap:0.55rem;align-items:flex-start}
+.listcard li .mk{flex-shrink:0;font-weight:700}
+.listcard.win li .mk{color:#34d399}
+.listcard.warn li .mk{color:#f87171}
+
+/* Animations */
+@media (prefers-reduced-motion:no-preference){
+  .slide.is-active .reveal{animation:up 0.7s cubic-bezier(0.16,1,0.3,1) both}
+  .slide.is-active .r1{animation-delay:0.05s}
+  .slide.is-active .r2{animation-delay:0.2s}
+  .slide.is-active .r3{animation-delay:0.35s}
+  .slide.is-active .r4{animation-delay:0.5s}
+  @keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+}
+.reveal{opacity:0}
+.slide:not(.is-active) .reveal{opacity:0}
+.slide.is-active .reveal{opacity:1}
+
+/* QA: projector-distance legibility — lift card/sub-line body contrast (no :root changes) */
+.sec .item p,.benefit p,.stack .pillar p,.demo-card p,.dict-card p,
+.flow .step p,.listcard li,.close-row p,.compare .col p{
+  color:rgba(255,255,255,0.9);
+}
+.benefits-4 .benefit p,.sec-4 .item p{font-size:clamp(0.85rem,1.08vw,1.02rem)}
+.demo-card p.quote,.s-close .recap-term{color:rgba(255,255,255,0.82)}
+/* QA: lighten faint tags/eyebrows/captions off the dim --mute toward palette light-blue */
+.stack .tag,.sec .item .clabel,.demo-card .clabel,.vaziyat .vtag,
+.s-agenda .head .eyebrow,.demo-foot,.s-close .recap-tag,.s-close .nextup{
+  color:var(--accent-2);
+}
+.compare .col h4{color:rgba(255,255,255,0.78)}
+.flow .step p{color:rgba(255,255,255,0.85)}
+</style>
+</head>
+<body>
+
+<main class="deck">
+
+<!-- SLIDE 1 — TITLE -->
+<section class="slide s-title is-active">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="title-block reveal r2">
+      <span class="chip">1-kun · 2-sessiya · 15:30 — 16:00</span>
+      <h1 class="title-hero">
+        Chat<span class="hl">GPT</span>
+        <span class="light">Jonli demo</span>
+      </h1>
+      <p class="tagline"><span class="accent-bar"></span>Rasmiy xat · Tarjima · Murakkabni soddalashtirish — <strong>ko'ramiz, sinab ko'ramiz, birga ishlaymiz</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2 — AGENDA -->
+<section class="slide s-agenda">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head">
+    <div class="eyebrow reveal r1">Bugungi sessiya</div>
+  </div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Bugun nimani <span class="hl">birga qilamiz</span></h2>
+    <div class="phase-grid reveal r3">
+
+      <button class="phase-card fragment">
+        <div class="phase-top"><span class="phase-num">01</span><span class="phase-arrow">→</span></div>
+        <div>
+          <h3 class="phase-title">Yaxshi so'rov</h3>
+          <p class="phase-desc">"Promt" nima va uni qanday to'g'ri tuzamiz — javob sifatining kaliti.</p>
+        </div>
+        <div class="phase-foot"><span class="phase-time">Asos</span></div>
+      </button>
+
+      <button class="phase-card fragment">
+        <div class="phase-top"><span class="phase-num">02</span><span class="phase-arrow">→</span></div>
+        <div>
+          <h3 class="phase-title">Rasmiy xat</h3>
+          <p class="phase-desc">Oddiy g'oyadan tayyor, tuzilgan rasmiy xatga — bir necha soniyada.</p>
+        </div>
+        <div class="phase-foot"><span class="phase-time">Demo 1</span></div>
+      </button>
+
+      <button class="phase-card fragment">
+        <div class="phase-top"><span class="phase-num">03</span><span class="phase-arrow">→</span></div>
+        <div>
+          <h3 class="phase-title">Tarjima va qisqartirish</h3>
+          <p class="phase-desc">5 sahifalik hujjat → tushunarli tarjima va 5 ta asosiy fikr.</p>
+        </div>
+        <div class="phase-foot"><span class="phase-time">Demo 2</span></div>
+      </button>
+
+      <button class="phase-card fragment">
+        <div class="phase-top"><span class="phase-num">04</span><span class="phase-arrow">→</span></div>
+        <div>
+          <h3 class="phase-title">Soddalashtirish</h3>
+          <p class="phase-desc">Murakkab moliyaviy tushunchani oddiy tilda izohlash.</p>
+        </div>
+        <div class="phase-foot"><span class="phase-time">Demo 3</span></div>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3 — TANISHUV + chat mock -->
+<section class="slide s-tanish">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div>
+      <span class="chip-out reveal r1">Tanishuv</span>
+      <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">ChatGPT nima va <span class="hl" style="white-space:nowrap">kim yaratgan?</span></h2>
+      <div class="stack reveal r3" style="grid-template-columns:1fr;gap:clamp(0.6rem,1.1vw,0.9rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)">
+        <div class="pillar" style="padding:clamp(0.85rem,1.6vw,1.3rem)"><span class="tag">Kim · qachon</span><h3 style="font-size:clamp(1rem,1.5vw,1.3rem)">OpenAI · 2022 noyabr · bugungi model: GPT-5.5</h3></div>
+        <div class="pillar" style="padding:clamp(0.85rem,1.6vw,1.3rem)"><span class="tag">Miqyos</span><h3 style="font-size:clamp(1rem,1.5vw,1.3rem)">Eng mashhur SI suhbatdoshi · ~1 mlrd foydalanuvchi</h3></div>
+        <div class="pillar" style="padding:clamp(0.85rem,1.6vw,1.3rem)"><span class="tag">Nima qiladi</span><h3 style="font-size:clamp(1rem,1.5vw,1.3rem)">Oddiy tilda yozasiz — javob beradi, tarjima qiladi, tushuntiradi</h3></div>
+      </div>
+    </div>
+    <div class="chatwin reveal r3">
+      <div class="winbar"><i></i><i></i><i></i><span>ChatGPT</span></div>
+      <div class="bubble user"><span class="who">Siz</span>Menga hamkor bankka rasmiy xat kerak…</div>
+      <div class="bubble bot"><span class="who">ChatGPT</span>Albatta! Quyida rasmiy xat namunasi: "Hurmatli hamkorlar, …". Ohangni rasmiyroq qilaymi yoki qisqartiraymi?</div>
+      <div class="inputbar">Xabar yozing… <span class="send">➤</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 — CHUQURLASHISH · ChatGPT ekosistema -->
+<section class="slide s-deep">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Chuqurlashish</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">ChatGPT — eng katta <span class="hl">ekosistema</span>.</h2>
+    <p class="lead no-bar reveal r2" style="margin-top:0.5rem">Eng tanish va eng keng tarqalgan. Custom GPT'lar, plaginlar, kod interpretatori — hammasi shu yerda.</p>
+    <div class="sec reveal r3">
+      <div class="item"><span class="ico">🚀</span><h3>Kuchli tomon</h3><p>Bozorining kattaligi · Excel faylni tashlaysiz — 2000 qatorni o'zi tahlil qilib, grafik chizib beradi · "Custom GPT" — bo'limingiz uchun kichik yordamchi bot yasaysiz.</p></div>
+      <div class="item"><span class="ico">💡</span><h3>Qachon ishlatamiz</h3><p>G'oya kerak bo'lganda — brainstorm, xat qoralash, kreativ ishlar. Birinchi raqamli tanlov.</p></div>
+      <div class="item"><span class="ico">⚠️</span><h3>Cheklov</h3><p>O'zbek tilida ba'zan "Google Translate hidi" keladi · Tekin versiyaga mijoz ma'lumotini (PII) yozsangiz — modelni o'qitishga ishlatib yuborishi mumkin.</p></div>
+    </div>
+    <p class="reveal r3" style="margin-top:clamp(0.85rem,1.5vw,1.2rem)"><span class="chip">2026 holati: GPT-5.5 · 1M tokenli kontekst oynasi</span></p>
+  </div>
+</section>
+
+<!-- SLIDE 5 — AMALIYOT · qanday foydalanish -->
+<section class="slide s-amaliyot">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Amaliyot</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Qanday <span class="hl">foydalanish</span> mumkin?</h2>
+    <div class="sec sec-4 reveal r3">
+      <div class="item"><span class="ico">🌐</span><h3>Brauzer</h3><p>chatgpt.com — kompyuter yoki telefon orqali.</p></div>
+      <div class="item"><span class="ico">📱</span><h3>Ilova</h3><p>App Store yoki Google Play'dan "ChatGPT".</p></div>
+      <div class="item"><span class="ico">✉️</span><h3>Ro'yxatdan o'tish</h3><p>Email yoki Google akkaunt — bir necha soniya.</p></div>
+      <div class="item"><span class="ico">🗣️</span><h3>Til</h3><p>O'zbekcha, ruscha, inglizcha — bemalol yozaverasiz.</p></div>
+      <div class="item"><span class="ico">💳</span><h3>Bepul va pullik</h3><p>Bepul versiya bor; Plus — kuchliroq imkoniyatlar.</p></div>
+      <div class="item"><span class="ico">⚡</span><h3>Tezda boshlanadi</h3><p>O'rnatish shart emas — kirib, savol yozasiz.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 — DICTIONARY · Promt + 4 qism -->
+<section class="slide s-dict">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Asosiy ko'nikma · SI lug'ati</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Yaxshi so'rov (<span class="hl">promt</span>) qanday tuziladi?</h2>
+    <p class="lead no-bar reveal r2" style="margin-top:0.5rem">Qanchalik aniq so'rasangiz, javob shunchalik yaxshi bo'ladi.</p>
+    <div class="reveal r3" style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:clamp(1rem,2vw,2rem);margin-top:clamp(0.85rem,1.5vw,1.25rem);align-items:start">
+      <div class="dict-card" style="margin:0">
+        <span class="dict-tag">Promt</span>
+        <h3>To'g'ri buyruq</h3>
+        <p>ChatGPT'ga beradigan <strong>aniq topshiriq</strong> — nima qilishini, kim uchun va qanday ko'rinishda kerakligini ayting.</p>
+        <div class="ex"><strong>4 qism</strong>Rol · Vazifa · Kontekst · Format</div>
+      </div>
+      <div>
+        <div class="flow" style="margin-top:0;flex-wrap:wrap;gap:clamp(0.5rem,1vw,0.85rem)">
+          <div class="step"><span class="stepnum">1</span><h4>Rol</h4><p>"Sen tajribali iqtisodchisan…"</p></div>
+          <div class="arrow">→</div>
+          <div class="step"><span class="stepnum">2</span><h4>Vazifa</h4><p>"Rasmiy xat yoz…"</p></div>
+          <div class="arrow">→</div>
+          <div class="step"><span class="stepnum">3</span><h4>Kontekst</h4><p>"Qabul qiluvchi — hamkor bank…"</p></div>
+          <div class="arrow">→</div>
+          <div class="step"><span class="stepnum">4</span><h4>Format</h4><p>"Yarim sahifa, 3 band…"</p></div>
+        </div>
+        <div class="card" style="margin-top:clamp(0.85rem,1.5vw,1.2rem);padding:clamp(0.95rem,1.8vw,1.5rem)">
+          <span style="font-family:var(--display);font-size:var(--small);letter-spacing:0.16em;text-transform:uppercase;opacity:0.85">To'liq misol</span>
+          <p style="margin-top:0.5rem;font-size:clamp(0.82rem,1.08vw,1.02rem);line-height:1.5">"Sen tajribali bank xodimisan. Hamkor bankka hisobot so'rab rasmiy xat yoz. Ohang rasmiy va xushmuomala bo'lsin. Uzunligi yarim sahifa, 3 banddan iborat bo'lsin."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — DEMO 1 · Rasmiy xat -->
+<section class="slide s-demo">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Demo 1</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Rasmiy xat <span class="hl">tayyorlash</span></h2>
+    <div class="vaziyat reveal r2"><span class="vtag">Vaziyat</span><p>Hamkor bankka rasmiy so'rov xati kerak — lekin uni noldan yozishga vaqt yo'q.</p></div>
+    <div class="demo-grid reveal r3">
+      <div class="demo-card you"><div class="clabel"><span class="ico">⌨️</span>Sizning so'rovingiz</div><p class="quote">"Hamkor bankka hisobot so'rab rasmiy xat yoz. Rasmiy ohang, yarim sahifa."</p></div>
+      <div class="demo-card bot"><div class="clabel"><span class="ico">🤖</span>ChatGPT javobi</div><p>Tayyor, rasmiy uslubdagi, tuzilgan xat — 30 soniyada. Keyin: "qisqartir", "rasmiyroq qil", "boshqa variant ber" deb sayqallaysiz.</p></div>
+    </div>
+    <div class="demo-foot reveal r3"><span class="ar">→</span>Oddiy g'oya → tayyor rasmiy xat, bir necha soniyada.</div>
+  </div>
+</section>
+
+<!-- SLIDE 7 — DEMO 2 · Tarjima va qisqartirish -->
+<section class="slide s-demo">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Demo 2</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Tarjima va <span class="hl">qisqartirish</span></h2>
+    <div class="vaziyat reveal r2"><span class="vtag">Vaziyat</span><p>5 sahifalik inglizcha hisobot keldi. Tezda mazmunini tushunish kerak.</p></div>
+    <div class="demo-grid reveal r3">
+      <div class="demo-card you"><div class="clabel"><span class="ico">🌐</span>A · To'liq tarjima</div><p class="quote">"Ushbu hujjatni o'zbek tiliga tarjima qil."</p><p style="margin-top:0.5rem">Butun matn bir zumda tushunarli tilda.</p></div>
+      <div class="demo-card you"><div class="clabel"><span class="ico">📑</span>B · Qisqartirish</div><p class="quote">"Asosiy 5 ta fikrni ajratib ber."</p><p style="margin-top:0.5rem">5 sahifa → 5 ta aniq band.</p></div>
+    </div>
+    <div class="demo-foot reveal r3"><span class="ar">→</span>5 sahifa → 5 ta fikr, taxminan 1 daqiqada.</div>
+  </div>
+</section>
+
+<!-- SLIDE 8 — DEMO 3 · Soddalashtirish -->
+<section class="slide s-demo">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Demo 3</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Murakkab tushunchani <span class="hl">soddalashtirish</span></h2>
+    <div class="vaziyat reveal r2"><span class="vtag">Vaziyat</span><p>Murakkab moliyaviy atamani hamkasbingizga yoki rahbaringizga oddiy tilda tushuntirish kerak.</p></div>
+    <div class="demo-grid reveal r3">
+      <div class="demo-card you"><div class="clabel"><span class="ico">🧒</span>Oddiy tilda tushuntir</div><p class="quote">"Inflyatsiya targetingini 12 yoshli bolaga tushuntirgandek izohla."</p></div>
+      <div class="demo-card you"><div class="clabel"><span class="ico">❓</span>Bu band nimani anglatadi?</div><p class="quote">Murakkab matnni joylab: "Bu band oddiy so'zlar bilan nimani bildiradi?"</p></div>
+    </div>
+    <div class="demo-foot reveal r3"><span class="ar">→</span>Murakkab → sodda. Istalgan darajada.</div>
+  </div>
+</section>
+
+<!-- SLIDE 9 — MASLAHATLAR -->
+<section class="slide s-tips">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Maslahatlar</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Yaxshiroq natija <span class="hl">olish uchun</span></h2>
+    <div class="benefits benefits-4 reveal r3">
+      <div class="benefit"><span class="ico">💬</span><h3>Suhbatni davom ettiring</h3><p>"qisqaroq qil", "rasmiyroq qil", "yana variant ber".</p></div>
+      <div class="benefit"><span class="ico">📎</span><h3>Namuna ulang</h3><p>O'zingiz xohlagan uslubdagi misolni ko'rsating.</p></div>
+      <div class="benefit"><span class="ico">🪜</span><h3>Bosqichma-bosqich so'rang</h3><p>Katta vazifani kichik qadamlarga bo'ling.</p></div>
+      <div class="benefit"><span class="ico">🗣️</span><h3>O'z tilingizda yozing</h3><p>O'zbekcha yoki ruscha — bemalol.</p></div>
+      <div class="benefit"><span class="ico">🔁</span><h3>Yoqmasa — qayta so'rang</h3><p>"bu qismni o'zgartir" deb tuzating.</p></div>
+      <div class="benefit"><span class="ico">💡</span><h3>G'oya so'rang</h3><p>"5 ta variant taklif qil" — tanlovni kengaytiring.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10 — EHTIYOT CHORALARI -->
+<section class="slide s-care">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Muhim</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Ehtiyot choralari — <span class="hl">ayniqsa bank uchun</span></h2>
+    <div class="sec sec-4 reveal r3" style="grid-template-columns:repeat(4,1fr)">
+      <div class="item"><span class="ico">🔒</span><h3>Maxfiy ma'lumotni kiritmang</h3><p>Bank siri, mijoz va shaxsiy ma'lumot — ommaviy ChatGPT'ga yozilmaydi.</p></div>
+      <div class="item"><span class="ico">✅</span><h3>Javoblarni tekshiring</h3><p>Raqamlar, faktlar, qonun bandlarida SI xato qilishi mumkin.</p></div>
+      <div class="item"><span class="ico">🧑‍⚖️</span><h3>Yakuniy qaror — insonniki</h3><p>SI yordamchi; mas'uliyat va qaror sizda qoladi.</p></div>
+      <div class="item"><span class="ico">🔎</span><h3>Manbani so'rang</h3><p>"Qaysi manbaga asoslanding?" deb tekshiring.</p></div>
+    </div>
+    <p class="lead reveal r3 no-bar" style="margin-top:clamp(0.85rem,1.5vw,1.2rem);text-align:center;max-width:none"><span class="hl" style="background:none;color:var(--accent-2);box-shadow:none;padding:0">To'g'ri ishlatilsa — kuchli va xavfsiz yordamchi.</span></p>
+  </div>
+</section>
+
+<!-- SLIDE 11 — ANIQLIK · kuchli vs ehtiyot -->
+<section class="slide s-clarity">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Aniqlik</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Qachon <span class="hl">kuchli</span>, qachon ehtiyot bo'lish kerak.</h2>
+    <div class="twolist reveal r3">
+      <div class="listcard win">
+        <div class="lhead">✓ Kuchli</div>
+        <ul>
+          <li><span class="mk">+</span>Matn yozish (xat, e'lon, qoralama)</li>
+          <li><span class="mk">+</span>Tarjima va qisqartirish</li>
+          <li><span class="mk">+</span>G'oyalar va variantlar topish</li>
+          <li><span class="mk">+</span>Murakkabni soddalashtirish</li>
+          <li><span class="mk">+</span>Tahrirlash va ohangni o'zgartirish</li>
+        </ul>
+      </div>
+      <div class="listcard warn">
+        <div class="lhead">! Ehtiyot bo'ling</div>
+        <ul>
+          <li><span class="mk">–</span>Aniq raqamlar va statistika</li>
+          <li><span class="mk">–</span>Eng so'nggi yangiliklar va sanalar</li>
+          <li><span class="mk">–</span>Huquqiy yakuniy xulosa</li>
+          <li><span class="mk">–</span>Maxfiy yoki shaxsiy ma'lumot</li>
+          <li><span class="mk">–</span>Tekshirilmagan faktlarga ishonish</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12 — NAVBAT SIZDA + recap -->
+<section class="slide s-close">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Endi navbat sizda</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">O'zingiz <span class="hl">sinab ko'ring</span></h2>
+    <div class="close-list reveal r3">
+      <div class="close-row"><span class="arrow">→</span><p><strong>Rasmiy xat yozdiring</strong> — hamkor yoki ichki bo'limga, o'z so'rovingizni bering.</p></div>
+      <div class="close-row"><span class="arrow">→</span><p><strong>Bir paragrafni soddalashtiring</strong> — murakkab bandni oddiy tilga aylantiring.</p></div>
+      <div class="close-row"><span class="arrow">→</span><p><strong>Bir matnni o'zbekchaga tarjima qiling</strong> — inglizcha yoki ruscha matndan.</p></div>
+    </div>
+    <div class="recap reveal r3">
+      <div class="recap-tag">Lug'at recap · birga aytamiz</div>
+      <div class="recap-terms">
+        <div class="recap-term"><strong>Promt</strong> <span class="ans fragment">aniq buyruq — Rol · Vazifa · Kontekst · Format</span></div>
+      </div>
+    </div>
+    <p class="nextup reveal r3">Keyingisi: <strong>Claude va Gemini</strong> · 3-sessiya · 16:00 — 16:50</p>
+  </div>
+</section>
+
+<!-- SLIDE 13 — Q&A -->
+<section class="slide s-qa">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="qmark reveal r2">?</div>
+    <h2 class="h2 reveal r3" style="text-align:center"><span class="hl">Savol-javob</span></h2>
+    <p class="reveal r3" style="margin-top:clamp(1.5rem,3vw,2.5rem);font-family:var(--display);font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:0.1em;color:var(--accent-2);display:flex;justify-content:center;align-items:center;gap:clamp(1.25rem,3vw,2.5rem);flex-wrap:wrap">
+      <a href="mailto:murod@mohir.dev" style="color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:0.55em">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        murod@mohir.dev
+      </a>
+      <a href="https://t.me/crea7iveai" style="color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:0.55em">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+        @crea7iveai
+      </a>
+    </p>
+  </div>
+</section>
+
+</main>
+
+<div class="hud">
+  <span class="counter">01 / 14</span>
+  <div class="dots"></div>
+  <div class="speaker"><span class="dot"></span><strong>Riskaliev Murad</strong> · NLP Engineer · <img src="../_shared/logo-mohirdev-iconmark-white.png" alt="Mohirdev" class="mohirdev-mark"></div>
+</div>
+
+<script>
+const TITLES = [
+  'Title · ChatGPT demo',
+  'Bugungi sessiya · 4 demo',
+  'Tanishuv · ChatGPT nima?',
+  'ChatGPT chuqurlashish · ekosistema',
+  'Qanday foydalanish mumkin?',
+  "Promt · 4 qism (Rol·Vazifa·Kontekst·Format)",
+  'Demo 1 · Rasmiy xat',
+  'Demo 2 · Tarjima va qisqartirish',
+  'Demo 3 · Soddalashtirish',
+  'Maslahatlar · yaxshiroq natija',
+  'Ehtiyot choralari · bank uchun',
+  'Aniqlik · kuchli vs ehtiyot',
+  'Navbat sizda · lug\'at recap',
+  'Savol-javob'
+];
+
+const slides = [...document.querySelectorAll('.slide')];
+const counter = document.querySelector('.counter');
+const dotsContainer = document.querySelector('.dots');
+let cur = 0;
+
+(function buildDots(){
+  dotsContainer.innerHTML = '';
+  slides.forEach((slide, i) => {
+    const d = document.createElement('button');
+    d.className = 'nav-dot';
+    d.dataset.title = TITLES[i] || ('Slide ' + (i + 1));
+    d.setAttribute('aria-label', 'Go to slide ' + (i + 1) + ': ' + (TITLES[i] || ''));
+    d.addEventListener('click', e => { e.stopPropagation(); go(i); });
+    dotsContainer.appendChild(d);
+  });
+})();
+
+function apply() {
+  slides.forEach((s, n) => s.classList.toggle('is-active', n === cur));
+  counter.textContent = String(cur + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+  dotsContainer.querySelectorAll('.nav-dot').forEach((d, n) => d.classList.toggle('is-current', n === cur));
+  history.replaceState(null, '', '#' + (cur + 1));
+}
+
+function setFragments(slide, mode) {
+  const frags = slide.querySelectorAll('.fragment');
+  frags.forEach(f => mode === 'all' ? f.classList.add('is-visible') : f.classList.remove('is-visible'));
+}
+
+function go(i) {
+  cur = Math.max(0, Math.min(slides.length - 1, i));
+  const transition = () => { apply(); setFragments(slides[cur], 'all'); };
+  if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.startViewTransition(transition);
+  } else {
+    transition();
+  }
+}
+
+function next() {
+  const slide = slides[cur];
+  const frags = [...slide.querySelectorAll('.fragment')];
+  const hidden = frags.find(f => !f.classList.contains('is-visible'));
+  if (hidden) { hidden.classList.add('is-visible'); return; }
+  if (cur < slides.length - 1) {
+    cur += 1;
+    apply();
+    setFragments(slides[cur], 'none');
+  }
+}
+
+function prev() {
+  const slide = slides[cur];
+  const visible = slide.querySelectorAll('.fragment.is-visible');
+  if (visible.length > 0) {
+    visible[visible.length - 1].classList.remove('is-visible');
+    return;
+  }
+  if (cur > 0) {
+    cur -= 1;
+    apply();
+    setFragments(slides[cur], 'all');
+  }
+}
+
+addEventListener('keydown', e => {
+  if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); next(); }
+  if (['ArrowLeft', 'PageUp'].includes(e.key))         { e.preventDefault(); prev(); }
+  if (e.key === 'Home') go(0);
+  if (e.key === 'End') go(slides.length - 1);
+  if (e.key === 'a' || e.key === 'A') go(1);
+});
+
+addEventListener('click', e => {
+  if (e.target.closest('a, button, input, [data-no-advance], .hud')) return;
+  if (e.clientX > innerWidth / 2) next(); else prev();
+});
+
+document.querySelectorAll('.phase-card').forEach(c => {
+  c.addEventListener('click', e => { e.stopPropagation(); next(); });
+});
+
+addEventListener('hashchange', () => {
+  const n = parseInt(location.hash.slice(1), 10);
+  if (Number.isFinite(n)) go(n - 1);
+});
+
+const init = parseInt(location.hash.slice(1), 10);
+go(Number.isFinite(init) ? init - 1 : 0);
+</script>
+</body>
+</html>

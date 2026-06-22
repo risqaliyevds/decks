@@ -1,0 +1,1072 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>1-modul · Markaziy Bank seminar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:#020A24;color:#fff;font-family:'Space Grotesk',sans-serif}
+/* Series-wide font fix — disambiguate Space Grotesk's capital I from lowercase l on body text */
+body,p,li,.lead{letter-spacing:0.018em}
+.tok{letter-spacing:0.08em;font-weight:600}
+
+:root{
+  --bg:#020A24;--bg-2:#06173B;--bg-3:#0B2D79;
+  --accent:#2563eb;--accent-2:#60a5fa;--accent-glow:#1FF2F9;
+  --ink:#0a0f1f;--mute:#aab6cc;--soft:rgba(255,255,255,0.08);
+  --pad:clamp(1.5rem,4vw,4rem);
+  --title:clamp(2rem,5.5vw,5rem);
+  --h2:clamp(1.5rem,3.2vw,2.75rem);
+  --h3:clamp(1.1rem,2vw,1.6rem);
+  --body:clamp(0.85rem,1.2vw,1.15rem);
+  --small:clamp(0.7rem,0.9vw,0.85rem);
+  --gap:clamp(1rem,2vw,2rem);
+  --r:clamp(0.75rem,1.5vw,1.5rem);
+  --display:'Archivo Black',sans-serif;
+}
+
+.deck{position:relative;width:100vw;height:100vh;height:100dvh;overflow:hidden}
+
+.slide{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 80%, rgba(11,45,121,0.55), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 15%, rgba(37,99,235,0.18), transparent 60%),
+    linear-gradient(180deg,#020A24 0%, #06173B 100%);
+  padding:clamp(0.85rem,1.8vw,1.5rem) var(--pad) var(--pad) var(--pad);
+  display:grid;grid-template-rows:auto auto 1fr auto;gap:clamp(0.75rem,1.5vw,1.25rem);
+  opacity:0;pointer-events:none;
+  transform:scale(0.965);filter:blur(2px);
+  transition:opacity 0.5s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1),filter 0.4s ease-out;
+  overflow:hidden;
+}
+.slide.is-active{opacity:1;pointer-events:auto;transform:scale(1);filter:blur(0)}
+
+.slide::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+}
+
+/* HEADER */
+.head{display:flex;justify-content:flex-end;align-items:flex-start;position:relative;z-index:1;gap:1rem}
+.num{font-family:var(--display);font-size:clamp(2rem,4vw,3.2rem);line-height:0.9;letter-spacing:-0.04em;color:var(--accent-2);text-align:right}
+.num small{display:block;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--mute);margin-top:0.4rem}
+
+.crumbs{display:none}
+
+/* MAIN */
+.main{position:relative;z-index:1;align-self:center;display:flex;flex-direction:column;justify-content:center;min-height:0}
+
+/* FOOTER */
+.foot{display:flex;justify-content:flex-end;align-items:center;font-size:var(--small);color:var(--mute);letter-spacing:0.1em;text-transform:uppercase;position:relative;z-index:1;gap:1rem;flex-wrap:wrap}
+.foot .speaker{display:flex;align-items:center;gap:0.6rem;color:#fff}
+.foot .dot{width:0.55rem;height:0.55rem;border-radius:50%;background:var(--accent)}
+.foot .speaker strong{font-family:var(--display);letter-spacing:0.08em;font-size:var(--small)}
+.hud .speaker .mohirdev-mark{height:1.4em;width:auto;vertical-align:middle;display:inline-block;margin-left:0.15em;flex-shrink:0}
+.foot .brand .seven{color:var(--accent)}
+
+/* CARD primitives */
+.card{background:linear-gradient(135deg,var(--accent),#1d4ed8);color:#fff;padding:clamp(1.25rem,2.8vw,2.5rem);border-radius:var(--r);box-shadow:0 30px 80px -20px rgba(37,99,235,0.5),0 0 0 1px rgba(255,255,255,0.05) inset}
+.card-dark{background:var(--ink);color:#fff;padding:clamp(1.25rem,2.8vw,2.5rem);border-radius:var(--r);border:1px solid var(--soft)}
+
+/* BRAND STRIP — institutional logos, top of every slide */
+.brand-strip{
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  position:relative;z-index:1;
+  padding-bottom:clamp(0.5rem,1vw,0.85rem);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.brand-strip .logo{
+  height:clamp(3rem,4.5vw,4.5rem);width:auto;
+  filter:brightness(0) invert(1);
+  opacity:0.9;
+}
+
+/* TITLE typography */
+.title-display{font-family:var(--display);font-weight:900;font-size:var(--title);line-height:0.95;letter-spacing:-0.03em;text-transform:uppercase}
+.title-display .light{font-family:'Space Grotesk',sans-serif;font-weight:500;text-transform:none;letter-spacing:-0.01em;font-style:italic;font-size:0.55em;display:block;margin-top:0.5em;opacity:0.9}
+
+.h2{font-family:var(--display);font-size:clamp(1.75rem,3.6vw,3rem);line-height:1.05;letter-spacing:-0.025em;text-transform:uppercase;color:#fff}
+.h2 .accent,.h2 .ink,.h2 .hl{
+  background:linear-gradient(135deg,var(--accent),#1d4ed8);
+  color:#fff;padding:0.04em 0.22em;display:inline-block;
+  box-shadow:0 14px 38px -12px rgba(37,99,235,0.45),0 0 0 1px rgba(255,255,255,0.06) inset;
+  border-radius:clamp(0.2rem,0.35vw,0.35rem);
+}
+
+.lead{font-size:var(--body);line-height:1.55;color:rgba(255,255,255,0.9);max-width:60ch;margin-top:clamp(0.85rem,1.5vw,1.25rem);font-weight:400}
+.lead::before{
+  content:"";display:inline-block;
+  width:clamp(1.5rem,2.5vw,2rem);height:2px;
+  background:var(--accent-2);margin-right:0.7rem;vertical-align:middle;
+}
+.lead.no-bar::before{display:none}
+
+.chip{display:inline-block;background:var(--ink);color:var(--accent);font-family:var(--display);font-size:var(--small);letter-spacing:0.15em;text-transform:uppercase;padding:0.4rem 0.9rem;border-radius:99px}
+.chip-out{display:inline-block;border:1px solid var(--accent);color:var(--accent);font-family:var(--display);font-size:var(--small);letter-spacing:0.15em;text-transform:uppercase;padding:0.4rem 0.9rem;border-radius:99px}
+
+/* SLIDE 1 — TITLE */
+.s-title .main{align-items:flex-start;justify-content:center}
+.s-title .title-block{max-width:min(96vw,1750px)}
+.s-title .title-hero{
+  font-family:var(--display);font-weight:900;
+  font-size:clamp(2rem,6vw,5.75rem);
+  line-height:0.92;letter-spacing:-0.04em;
+  text-transform:uppercase;color:#fff;
+  margin-top:clamp(1rem,2vw,1.5rem);
+}
+.s-title .title-hero .light{font-family:'Space Grotesk',sans-serif;font-weight:500;text-transform:none;letter-spacing:-0.01em;font-style:italic;font-size:0.4em;display:block;margin-top:0.35em;opacity:0.85}
+.s-title .title-hero .hl{
+  background:linear-gradient(135deg,var(--accent),#1d4ed8);
+  color:#fff;padding:0.04em 0.22em;display:inline-block;
+  box-shadow:0 18px 50px -12px rgba(37,99,235,0.55),0 0 0 1px rgba(255,255,255,0.06) inset;
+  border-radius:clamp(0.25rem,0.4vw,0.4rem);white-space:nowrap;
+}
+.s-title .tagline{
+  margin-top:clamp(1.5rem,3vw,2.5rem);
+  font-family:'Space Grotesk',sans-serif;font-weight:500;
+  font-size:clamp(1.1rem,1.9vw,1.75rem);
+  color:rgba(255,255,255,0.78);letter-spacing:-0.005em;
+  max-width:42ch;line-height:1.45;
+}
+.s-title .tagline .accent-bar{
+  display:inline-block;width:clamp(2rem,4vw,3rem);height:2px;
+  background:var(--accent-2);margin-right:0.85rem;vertical-align:middle;
+}
+.s-title .chip-row{display:flex;flex-wrap:wrap;gap:clamp(0.5rem,1vw,0.85rem);margin-top:clamp(1.25rem,2.5vw,2rem)}
+.s-title .chip-row span{display:inline-block;border:1px solid rgba(255,255,255,0.16);background:transparent;color:rgba(255,255,255,0.78);font-family:var(--display);font-size:var(--small);letter-spacing:0.12em;text-transform:uppercase;padding:0.4rem 0.85rem;border-radius:99px}
+.s-title .chip-row span.lead-chip{border-color:rgba(96,165,250,0.55);color:rgba(255,255,255,0.92)}
+
+/* DEFINITION compare */
+.compare{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(1rem,2.5vw,2.5rem);align-items:stretch;margin-top:clamp(1rem,2vw,1.75rem)}
+.compare .col{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.1rem,2vw,1.75rem);text-align:left}
+.compare .col h4{font-family:var(--display);text-transform:uppercase;letter-spacing:0.1em;font-size:var(--small);color:var(--mute);margin-bottom:0.75rem}
+.compare .col ul{list-style:none;display:flex;flex-direction:column;gap:clamp(0.4rem,0.8vw,0.7rem)}
+.compare .col li{font-size:clamp(0.82rem,1.1vw,1.05rem);line-height:1.4;color:rgba(255,255,255,0.92);padding-left:1.1rem;position:relative}
+.compare .col li::before{content:"–";position:absolute;left:0;color:var(--accent-2)}
+.compare .col.win{background:linear-gradient(135deg,var(--accent),#1d4ed8);color:#fff;border-color:var(--accent)}
+.compare .col.win h4{color:rgba(255,255,255,0.85)}
+.compare .col.win li{color:#fff}
+.compare .col.win li::before{content:"✓";color:#fff}
+.compare .vs{font-family:var(--display);font-size:clamp(1.2rem,2vw,1.75rem);color:var(--accent);letter-spacing:0.1em;align-self:center}
+
+/* MYTH grid */
+.myth{display:grid;grid-template-columns:1fr 1fr;gap:clamp(0.85rem,1.6vw,1.5rem);margin-top:clamp(1rem,2vw,1.5rem)}
+.myth .row{background:rgba(255,255,255,0.04);border-radius:var(--r);padding:clamp(0.95rem,1.8vw,1.5rem);border-left:4px solid #ff4040}
+.myth .row .tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:#ff6060;margin-bottom:0.55rem;display:flex;align-items:center;gap:0.4rem}
+.myth .row p{font-size:clamp(0.8rem,1.1vw,1.05rem);line-height:1.45;color:#fff;font-weight:400}
+.myth .row p strong{font-family:var(--display);font-weight:900;text-transform:none;letter-spacing:0.01em;color:#fff}
+.myth .row .fix{display:block;margin-top:0.55rem;color:rgba(255,255,255,0.92)}
+.myth .row .fix::before{content:"→ ";color:var(--accent-2);font-weight:700}
+
+/* BENEFITS */
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,2rem)}
+.benefit{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem)}
+.benefit .stat{font-family:var(--display);font-size:clamp(2rem,5vw,4rem);line-height:1;color:var(--accent-2);letter-spacing:-0.04em}
+.benefit h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;margin-top:0.5rem;color:#fff}
+.benefit p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.88);margin-top:0.5rem}
+.benefit .ico{font-size:clamp(1.6rem,3vw,2.4rem);display:block;margin-bottom:0.4rem}
+
+/* STACK / ROAD */
+.road{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,1.5rem)}
+.road .step{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem);position:relative}
+.road .step .ico{font-size:clamp(1.8rem,3.5vw,2.6rem);display:block;margin-bottom:0.5rem}
+.road .step h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;margin-top:0.25rem;color:#fff}
+.road .step p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.88);margin-top:0.5rem}
+
+/* SECURITY / SEC */
+.sec{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);margin-top:clamp(1rem,2vw,1.5rem)}
+.sec .item{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.25rem,2.5vw,2.25rem)}
+.sec .item .ico{font-size:clamp(1.75rem,3.5vw,2.5rem);margin-bottom:0.6rem;display:block}
+.sec .item h3{font-family:var(--display);font-size:var(--h3);text-transform:uppercase;letter-spacing:-0.01em;color:#fff}
+.sec .item p{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.88);margin-top:0.5rem}
+
+/* HUD — clickable dot navigation */
+.hud{
+  position:fixed;left:var(--pad);right:var(--pad);
+  bottom:clamp(0.6rem,1vw,1rem);
+  display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.4rem);
+  z-index:100;
+}
+.hud .counter{
+  font-family:var(--display);
+  color:rgba(255,255,255,0.55);
+  letter-spacing:0.18em;font-size:var(--small);
+  flex-shrink:0;
+}
+.dots{display:flex;gap:clamp(0.3rem,0.5vw,0.5rem);align-items:center;flex:1}
+.nav-dot{
+  width:clamp(0.4rem,0.55vw,0.55rem);height:clamp(0.4rem,0.55vw,0.55rem);
+  border-radius:50%;border:none;
+  background:rgba(255,255,255,0.18);cursor:pointer;
+  padding:0;position:relative;
+  transition:background 0.3s,width 0.4s cubic-bezier(0.16,1,0.3,1),transform 0.2s,box-shadow 0.3s;
+}
+.nav-dot:hover{background:rgba(255,255,255,0.55);transform:scale(1.4)}
+.nav-dot.is-current{
+  background:var(--accent);
+  width:clamp(1.5rem,2.4vw,2rem);
+  border-radius:99px;
+  box-shadow:0 0 14px rgba(37,99,235,0.6);
+}
+.nav-dot::before{
+  content:attr(data-title);
+  position:absolute;bottom:200%;left:50%;
+  transform:translateX(-50%) translateY(4px);
+  background:#0a0f1f;color:#fff;
+  font-size:0.72rem;letter-spacing:0.04em;text-transform:none;
+  padding:0.45rem 0.75rem;border-radius:0.35rem;
+  white-space:nowrap;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.2s,transform 0.2s;
+  border:1px solid rgba(255,255,255,0.12);
+  font-family:'Space Grotesk',sans-serif;font-weight:500;
+}
+.nav-dot:hover::before{opacity:1;transform:translateX(-50%) translateY(0)}
+.brand-mini{
+  font-family:var(--display);
+  color:rgba(255,255,255,0.5);
+  letter-spacing:0.18em;font-size:var(--small);
+  flex-shrink:0;
+}
+
+/* HUD speaker (right side) */
+.hud .speaker{
+  display:flex;align-items:center;gap:0.5rem;
+  font-size:var(--small);
+  color:rgba(255,255,255,0.7);
+  letter-spacing:0.08em;text-transform:uppercase;
+  flex-shrink:0;font-family:'Space Grotesk',sans-serif;
+}
+.hud .speaker .dot{
+  width:0.45rem;height:0.45rem;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 8px rgba(37,99,235,0.6);
+}
+.hud .speaker strong{font-family:var(--display);letter-spacing:0.1em;color:#fff;font-weight:400}
+
+/* AGENDA SLIDE — 4 phase cards in 2x2 grid */
+.s-agenda .main{align-self:stretch;justify-content:flex-start;padding-bottom:0;display:flex;flex-direction:column}
+.s-agenda .head .eyebrow{
+  display:flex;align-items:center;gap:clamp(0.6rem,1vw,0.85rem);
+  font-family:var(--display);
+  font-size:clamp(0.85rem,1.2vw,1.05rem);
+  letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--accent-2);
+}
+.s-agenda .head .eyebrow::before{
+  content:"";display:inline-block;
+  width:clamp(1.5rem,2.5vw,2rem);height:2px;
+  background:var(--accent-2);
+}
+.phase-grid{
+  flex:1;display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  gap:clamp(0.7rem,1.4vw,1.25rem);
+  margin-top:clamp(0.85rem,1.5vw,1.25rem);
+  width:100%;
+  min-height:0;
+}
+
+/* Fragments — start hidden, reveal sequentially via Next/Right */
+.fragment{
+  opacity:0;
+  transform:translateY(24px) scale(0.97);
+  transition:opacity 0.55s cubic-bezier(0.16,1,0.3,1),transform 0.55s cubic-bezier(0.16,1,0.3,1);
+  pointer-events:none;
+}
+.fragment.is-visible{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  pointer-events:auto;
+}
+.phase-card{
+  display:flex;flex-direction:column;justify-content:space-between;
+  background:linear-gradient(135deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02));
+  border:1px solid var(--soft);
+  border-radius:clamp(0.6rem,1.1vw,1.1rem);
+  padding:clamp(0.95rem,1.85vw,1.7rem) clamp(1.15rem,2.2vw,2rem);
+  color:#fff;cursor:pointer;text-align:left;
+  font-family:'Space Grotesk',sans-serif;
+  position:relative;overflow:hidden;
+  transition:background 0.4s cubic-bezier(0.16,1,0.3,1),border-color 0.3s,transform 0.45s cubic-bezier(0.16,1,0.3,1),box-shadow 0.4s;
+}
+.phase-card::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at top right,rgba(37,99,235,0.22),transparent 60%);
+  opacity:0;transition:opacity 0.5s ease;pointer-events:none;
+}
+.phase-card::after{
+  content:"";position:absolute;left:0;top:0;height:100%;width:3px;
+  background:linear-gradient(to bottom,var(--accent),var(--accent-2));
+  transform:scaleY(0);transform-origin:top;
+  transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.phase-card:hover::before{opacity:1}
+.phase-card:hover::after{transform:scaleY(1)}
+.phase-card:hover{
+  background:linear-gradient(135deg,rgba(37,99,235,0.12),rgba(37,99,235,0.04));
+  border-color:var(--accent);
+  transform:translateY(-6px);
+  box-shadow:0 22px 50px -18px rgba(37,99,235,0.5);
+}
+.phase-card:active{transform:translateY(-2px) scale(0.99)}
+.phase-top{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  position:relative;z-index:1;
+}
+.phase-num{
+  font-family:var(--display);
+  font-size:clamp(2rem,4.4vw,3.85rem);
+  line-height:0.9;letter-spacing:-0.05em;
+  color:var(--accent-2);
+}
+.phase-arrow{
+  font-family:var(--display);
+  font-size:clamp(1.25rem,2.2vw,2rem);
+  color:rgba(255,255,255,0.25);
+  transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),color 0.3s;
+  margin-top:clamp(0.45rem,0.9vw,0.85rem);
+}
+.phase-card:hover .phase-arrow{transform:translateX(6px);color:var(--accent-2)}
+.phase-title{
+  font-family:var(--display);
+  font-size:clamp(1.25rem,2.5vw,2.15rem);
+  text-transform:uppercase;
+  letter-spacing:-0.02em;
+  line-height:1;
+  margin-top:clamp(0.75rem,1.4vw,1.2rem);
+  position:relative;z-index:1;
+}
+.phase-desc{
+  font-size:clamp(0.78rem,1.05vw,0.98rem);
+  line-height:1.45;
+  color:rgba(255,255,255,0.86);
+  margin-top:clamp(0.45rem,0.8vw,0.7rem);
+  max-width:38ch;
+  position:relative;z-index:1;
+}
+.phase-foot{
+  display:flex;justify-content:flex-end;align-items:center;
+  margin-top:clamp(0.75rem,1.35vw,1.15rem);
+  padding-top:clamp(0.55rem,1vw,0.9rem);
+  border-top:1px solid rgba(255,255,255,0.08);
+  font-family:var(--display);
+  font-size:clamp(0.62rem,0.82vw,0.75rem);
+  letter-spacing:0.2em;text-transform:uppercase;
+  position:relative;z-index:1;
+}
+.phase-count{color:rgba(255,255,255,0.5)}
+.phase-time{color:var(--accent-2)}
+
+/* CARD HOVER STATES — interactive lift across content cards */
+.benefit,.stack .pillar,.road .step,.sec .item,.myth .row,.compare .col{
+  transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s;
+}
+.benefit:hover,.road .step:hover,.sec .item:hover,.myth .row:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);
+  border-color:rgba(96,165,250,0.4);
+}
+.compare .col:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 28px -12px rgba(37,99,235,0.3);
+}
+
+/* DICTIONARY — 3 cards inline */
+.dict{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(1rem,2vw,1.75rem);margin-top:clamp(1rem,2vw,1.5rem)}
+.dict-card{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:var(--r);padding:clamp(1.2rem,2.4vw,2rem);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.3s,border-color 0.3s,background 0.3s}
+.dict-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.dict-card .dict-tag{display:inline-block;font-family:var(--display);font-size:clamp(1.4rem,2.6vw,2.2rem);letter-spacing:0.02em;color:var(--accent-2);text-transform:uppercase;line-height:1;margin-bottom:0.7rem}
+.dict-card h3{font-family:var(--display);font-size:clamp(1rem,1.5vw,1.3rem);text-transform:uppercase;letter-spacing:-0.01em;color:#fff;margin-bottom:0.6rem}
+.dict-card p{font-size:clamp(0.8rem,1.05vw,1rem);line-height:1.5;color:rgba(255,255,255,0.9)}
+.dict-card p strong{color:var(--accent-2);font-weight:500}
+.dict-card .ex{margin-top:clamp(0.7rem,1.3vw,1rem);padding-top:clamp(0.5rem,0.95vw,0.8rem);border-top:1px solid rgba(255,255,255,0.14);font-size:clamp(0.75rem,0.98vw,0.92rem);line-height:1.45;color:rgba(255,255,255,0.85);font-style:italic}
+.dict-card .ex strong{font-family:var(--display);font-style:normal;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-2);font-weight:400;margin-right:0.5em}
+.dict-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px -12px rgba(37,99,235,0.4);border-color:rgba(96,165,250,0.4)}
+
+/* 4-COL modifiers */
+.sec.sec-4{grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr}
+.sec-4 .item{padding:clamp(1rem,2vw,1.65rem)}
+.sec-4 .item h3{font-size:clamp(0.95rem,1.4vw,1.25rem)}
+.sec-4 .item p{font-size:clamp(0.78rem,1vw,0.95rem)}
+.sec-4 .item .ico{font-size:clamp(1.4rem,2.6vw,2rem);margin-bottom:0.5rem;display:block}
+
+/* CALLOUT card */
+.callout{margin-top:clamp(1rem,2vw,1.5rem);background:linear-gradient(135deg,var(--accent),#1d4ed8);border-radius:var(--r);padding:clamp(1.1rem,2.2vw,1.85rem) clamp(1.25rem,2.6vw,2.25rem);box-shadow:0 24px 60px -22px rgba(37,99,235,0.5),0 0 0 1px rgba(255,255,255,0.05) inset}
+.callout .ct-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:0.4rem}
+.callout p{font-size:clamp(0.9rem,1.3vw,1.2rem);line-height:1.45;color:#fff;font-weight:500}
+.note-line{margin-top:clamp(0.7rem,1.3vw,1rem);font-size:var(--small);letter-spacing:0.05em;color:rgba(255,255,255,0.72);text-transform:uppercase;font-family:var(--display)}
+.footnote{margin-top:clamp(0.85rem,1.5vw,1.2rem);font-size:var(--small);color:rgba(255,255,255,0.66);letter-spacing:0.04em}
+
+/* CLOSING + recap */
+.close-list{display:flex;flex-direction:column;gap:clamp(0.7rem,1.3vw,1.15rem);margin-top:clamp(0.85rem,1.5vw,1.25rem)}
+.close-row{display:flex;gap:clamp(0.9rem,1.8vw,1.5rem);align-items:center;padding:clamp(0.85rem,1.6vw,1.4rem);background:rgba(255,255,255,0.04);border-left:4px solid var(--accent);border-radius:0 var(--r) var(--r) 0}
+.close-row .arrow{color:var(--accent);font-family:var(--display);font-size:clamp(1.2rem,2vw,1.5rem);flex-shrink:0}
+.close-row .keynum{
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  width:clamp(2.4rem,4vw,3.4rem);height:clamp(2.4rem,4vw,3.4rem);
+  border-radius:clamp(0.5rem,0.9vw,0.85rem);
+  background:linear-gradient(135deg,var(--accent),#1d4ed8);
+  font-family:var(--display);font-size:clamp(1.2rem,2.2vw,1.85rem);
+  line-height:1;color:#fff;letter-spacing:-0.03em;
+  box-shadow:0 12px 28px -12px rgba(37,99,235,0.6),0 0 0 1px rgba(255,255,255,0.08) inset;
+}
+.close-row p{font-size:var(--body);line-height:1.55;color:#fff;font-weight:400}
+.close-row p strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.02em}
+.s-close .recap{margin-top:clamp(0.85rem,1.5vw,1.4rem);padding-top:clamp(0.7rem,1.3vw,1.1rem);border-top:1px solid var(--soft);display:flex;align-items:center;gap:clamp(0.85rem,1.5vw,1.5rem);flex-wrap:wrap}
+.s-close .recap-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-2);flex-shrink:0}
+.s-close .recap-terms{display:flex;gap:clamp(1rem,2vw,2rem);flex-wrap:wrap;flex:1}
+.s-close .recap-term{font-size:var(--body);color:rgba(255,255,255,0.88);line-height:1.4}
+.s-close .recap-term strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.05em;color:#fff;margin-right:0.5em;font-weight:400}
+.s-close .recap-term .ans{color:var(--accent-2)}
+
+/* TRANSITION slide */
+.s-next .main{align-items:flex-start;justify-content:center}
+.next-card{margin-top:clamp(1.25rem,2.5vw,2rem);display:flex;align-items:center;gap:clamp(1.25rem,3vw,3rem);background:linear-gradient(135deg,var(--accent),#1d4ed8);border-radius:var(--r);padding:clamp(1.75rem,3.5vw,3.25rem) clamp(1.75rem,4vw,3.75rem);box-shadow:0 30px 80px -20px rgba(37,99,235,0.5),0 0 0 1px rgba(255,255,255,0.05) inset;max-width:min(96vw,1280px)}
+.next-card .big-ico{
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  width:clamp(4.5rem,9vw,7rem);height:clamp(4.5rem,9vw,7rem);
+  border-radius:clamp(1rem,1.8vw,1.6rem);
+  background:rgba(255,255,255,0.14);
+  box-shadow:0 0 0 1px rgba(255,255,255,0.18) inset;
+}
+.next-card .big-ico svg{width:55%;height:55%;display:block}
+.next-card .nt-body h3{font-family:var(--display);font-size:clamp(1.3rem,2.6vw,2.25rem);text-transform:uppercase;letter-spacing:-0.02em;color:#fff;line-height:1.05}
+.next-card .nt-body p{font-size:clamp(0.9rem,1.3vw,1.2rem);line-height:1.45;color:rgba(255,255,255,0.92);margin-top:0.6rem}
+.next-card .nt-time{display:inline-block;margin-top:0.85rem;font-family:var(--display);font-size:var(--small);letter-spacing:0.15em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,0.16);padding:0.35rem 0.85rem;border-radius:99px}
+.next-preview{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(0.85rem,1.8vw,1.5rem);
+  margin-top:clamp(1.25rem,2.5vw,2rem);max-width:min(96vw,1280px);
+}
+.next-preview .pv{
+  background:rgba(255,255,255,0.04);border:1px solid var(--soft);
+  border-radius:var(--r);padding:clamp(1rem,2vw,1.6rem);
+  display:flex;align-items:center;gap:clamp(0.7rem,1.3vw,1rem);
+}
+.next-preview .pv .pv-ico{
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  width:clamp(2.2rem,3.4vw,2.9rem);height:clamp(2.2rem,3.4vw,2.9rem);
+  border-radius:clamp(0.5rem,0.9vw,0.8rem);
+  background:rgba(96,165,250,0.14);color:var(--accent-2);
+}
+.next-preview .pv .pv-ico svg{width:55%;height:55%}
+.next-preview .pv span.pv-txt{font-size:clamp(0.85rem,1.15vw,1.05rem);line-height:1.35;color:rgba(255,255,255,0.9)}
+.next-preview .pv span.pv-txt strong{font-family:var(--display);text-transform:uppercase;letter-spacing:0.02em;color:#fff;font-weight:400;display:block;font-size:0.92em;margin-bottom:0.15em}
+
+/* SLIDE — Q&A */
+.s-qa .main{align-items:center;text-align:center}
+.qmark{font-family:var(--display);font-size:clamp(8rem,18vw,16rem);line-height:0.9;color:var(--accent);letter-spacing:-0.05em}
+
+/* SLIDE 2 — WHO I AM (speaker intro) */
+.s-whoami .main{display:flex;flex-direction:column;gap:clamp(0.4rem,0.8vw,0.7rem)}
+.whoami{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(1.25rem,2.8vw,2.75rem);margin-top:clamp(0.7rem,1.3vw,1.2rem)}
+.whoami-bio{display:flex;flex-direction:column;gap:clamp(0.45rem,0.9vw,0.75rem)}
+.bio-name{font-family:var(--display);font-size:clamp(2.5rem,4.6vw,4.2rem);line-height:0.95;letter-spacing:-0.035em;color:#fff;text-transform:uppercase}
+.bio-header{display:flex;align-items:center;gap:clamp(0.85rem,1.6vw,1.6rem);flex-wrap:wrap}
+.bio-header .mohirdev-mark-big{height:clamp(2.4rem,3.6vw,3.2rem);width:auto}
+.bio-sep{font-family:var(--display);font-size:clamp(2rem,3.6vw,3.4rem);color:rgba(255,255,255,0.25);line-height:0.9;font-weight:400;letter-spacing:0;user-select:none}
+.bio-brand{font-size:clamp(0.85rem,1.15vw,1.05rem);color:rgba(255,255,255,0.7);letter-spacing:0.04em;margin-top:clamp(0.25rem,0.5vw,0.4rem)}
+.bio-brand strong{color:var(--accent-2);font-weight:500}
+.bio-line{font-size:var(--body);line-height:1.5;color:rgba(255,255,255,0.85);margin-top:clamp(0.45rem,0.9vw,0.75rem)}
+.bio-line strong{color:var(--accent-2);font-weight:500}
+.bio-strengths{display:flex;gap:clamp(1rem,2vw,1.85rem);margin-top:clamp(0.75rem,1.4vw,1.2rem);padding-top:clamp(0.65rem,1.2vw,1rem);border-top:1px solid rgba(255,255,255,0.1)}
+.strength-item{display:flex;flex-direction:column;gap:0.15rem}
+.strength-num{font-family:var(--display);font-size:clamp(1.5rem,2.6vw,2.1rem);color:var(--accent-2);line-height:1;letter-spacing:-0.03em}
+.strength-text{font-size:clamp(0.7rem,0.92vw,0.85rem);color:rgba(255,255,255,0.65);line-height:1.35;max-width:18ch}
+.whoami-projects{display:flex;flex-direction:column;gap:clamp(0.6rem,1.1vw,0.95rem)}
+.projects-header{display:flex;justify-content:space-between;align-items:center;gap:clamp(0.75rem,1.4vw,1.2rem);flex-wrap:wrap}
+.projects-tag{font-family:var(--display);font-size:var(--small);letter-spacing:0.22em;text-transform:uppercase;color:var(--accent-2)}
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(0.55rem,1.1vw,0.95rem)}
+.proj{background:rgba(255,255,255,0.04);border:1px solid var(--soft);border-radius:clamp(0.45rem,0.9vw,0.7rem);padding:clamp(0.75rem,1.4vw,1.1rem) clamp(0.85rem,1.6vw,1.25rem)}
+.proj-name{font-family:var(--display);font-size:clamp(1rem,1.5vw,1.3rem);color:#fff;letter-spacing:-0.01em;line-height:1}
+.proj-tag{font-size:clamp(0.7rem,0.9vw,0.82rem);color:var(--accent-2);margin-top:0.4rem;line-height:1.35;font-family:var(--display);letter-spacing:0.04em}
+
+/* Animations */
+@media (prefers-reduced-motion:no-preference){
+  .slide.is-active .reveal{animation:up 0.7s cubic-bezier(0.16,1,0.3,1) both}
+  .slide.is-active .r1{animation-delay:0.05s}
+  .slide.is-active .r2{animation-delay:0.2s}
+  .slide.is-active .r3{animation-delay:0.35s}
+  .slide.is-active .r4{animation-delay:0.5s}
+  @keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+}
+.reveal{opacity:0}
+.slide:not(.is-active) .reveal{opacity:0}
+.slide.is-active .reveal{opacity:1}
+</style>
+</head>
+<body>
+
+<main class="deck">
+
+<!-- SLIDE 1 — TITLE -->
+<section class="slide s-title is-active">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="title-block reveal r2">
+      <span class="chip-out">1-kun · 1-sessiya · 15:05 — 15:30</span>
+      <h1 class="title-hero">
+        Sun'iy intellekt<br>
+        asoslari<br>
+        <span class="light">va nima uchun aynan</span>
+        <span class="hl">HOZIR</span>
+      </h1>
+      <p class="tagline"><span class="accent-bar"></span>Markaziy bank xodimlari uchun <strong>amaliy va sodda</strong> kirish.</p>
+      <div class="chip-row">
+        <span class="lead-chip">Kontseptsiya</span>
+        <span class="lead-chip">Jonli demo</span>
+        <span>ChatGPT</span>
+        <span>Claude</span>
+        <span>Gemini</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2 — TANISHUV · WHO I AM (speaker self-introduction) -->
+<section class="slide s-whoami">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r1">Sizga <span class="hl">bugun</span> kim gapiradi?</h2>
+    <div class="bio-header reveal r2" style="margin-top:clamp(0.5rem,1vw,0.9rem)">
+      <div class="bio-name">Riskaliev Murad</div>
+      <span class="bio-sep">|</span>
+      <img src="../_shared/logo-mohirdev-iconmark-white.png" alt="Mohirdev" class="mohirdev-mark-big">
+    </div>
+
+    <div class="whoami reveal r3">
+      <div class="whoami-bio">
+        <p class="bio-line">3+ yildan beri AI va NLP loyihalari ustida ishlayman. Fokus — <strong>O'zbek tilida ishlaydigan amaliy AI tizimlari</strong>: bank, ta'lim va onlayn savdo sohalarida. Brend — <strong>crea7iveai</strong>.</p>
+
+        <div class="bio-strengths">
+          <div class="strength-item">
+            <span class="strength-num">10+</span>
+            <span class="strength-text">AI loyiha va prototip</span>
+          </div>
+          <div class="strength-item">
+            <span class="strength-num">5+</span>
+            <span class="strength-text">startap va MVP tajribasi</span>
+          </div>
+          <div class="strength-item">
+            <span class="strength-num">3+ yil</span>
+            <span class="strength-text">real loyihalardan olingan darslar</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="whoami-projects">
+        <div class="projects-tag">↗ Loyihalar va startaplar</div>
+        <div class="projects-grid">
+          <div class="proj fragment">
+            <div class="proj-name">dialix</div>
+            <div class="proj-tag">AI suhbat tizimi</div>
+          </div>
+          <div class="proj fragment">
+            <div class="proj-name">labelcraft</div>
+            <div class="proj-tag">data labeling vositasi</div>
+          </div>
+          <div class="proj fragment">
+            <div class="proj-name">manakartabot</div>
+            <div class="proj-tag">Telegram AI yordamchi</div>
+          </div>
+          <div class="proj fragment">
+            <div class="proj-name">saytoai</div>
+            <div class="proj-tag">sayt uchun AI suhbatdosh</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3 — AGENDA -->
+<section class="slide s-agenda">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head">
+    <div class="eyebrow reveal r1">Reja · 25 daqiqa</div>
+  </div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Bu sessiyada nimani <span class="hl">ko'rib chiqamiz</span>.</h2>
+    <div class="phase-grid reveal r3">
+
+      <button class="phase-card fragment">
+        <div class="phase-top"><span class="phase-num">01</span><span class="phase-arrow">→</span></div>
+        <div>
+          <h3 class="phase-title">SI bugun qayerda turibdi</h3>
+          <p class="phase-desc">3 ta raqam bilan qisqa va aniq manzara.</p>
+        </div>
+        <div class="phase-foot"><span class="phase-time">Manzara</span></div>
+      </button>
+
+      <button class="phase-card fragment">
+        <div class="phase-top"><span class="phase-num">02</span><span class="phase-arrow">→</span></div>
+        <div>
+          <h3 class="phase-title">3 ta asosiy tushuncha</h3>
+          <p class="phase-desc">LLM, Generativ SI va Agent — sodda tilda.</p>
+        </div>
+        <div class="phase-foot"><span class="phase-time">Lug'at</span></div>
+      </button>
+
+      <button class="phase-card fragment">
+        <div class="phase-top"><span class="phase-num">03</span><span class="phase-arrow">→</span></div>
+        <div>
+          <h3 class="phase-title">Nima uchun aynan hozir</h3>
+          <p class="phase-desc">Nega 2022-yildan keyin hammasi o'zgardi.</p>
+        </div>
+        <div class="phase-foot"><span class="phase-time">Vaqt</span></div>
+      </button>
+
+      <button class="phase-card fragment">
+        <div class="phase-top"><span class="phase-num">04</span><span class="phase-arrow">→</span></div>
+        <div>
+          <h3 class="phase-title">Markaziy bank uchun</h3>
+          <p class="phase-desc">Bularning bari bizning ishimizga qanday tegishli.</p>
+        </div>
+        <div class="phase-foot"><span class="phase-time">Amaliyot</span></div>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3 — HOOK · siz allaqachon foydalanyapsiz -->
+<section class="slide s-hook">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Boshlash uchun</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Aslida siz SI'dan <span class="hl">allaqachon</span> foydalanyapsiz.</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">SI yangi yoki qo'rqinchli narsa emas — u yillar davomida atrofimizda. So'nggi 3 yilda o'zgargan narsa: endi u bizga gapira oladi va yangi narsalar yarata oladi.</p>
+    <div class="sec sec-4 reveal r3" style="grid-template-columns:repeat(3,1fr);margin-top:clamp(0.85rem,1.5vw,1.25rem)">
+      <div class="item"><span class="ico">🔓</span><h3>Telefon qulfi</h3><p>Yuzni tanish texnologiyasi.</p></div>
+      <div class="item"><span class="ico">🗺️</span><h3>Xaritada tirbandlik</h3><p>Yo'l holatini bashorat qilish.</p></div>
+      <div class="item"><span class="ico">💳</span><h3>Karta himoyasi</h3><p>Firibgar to'lovni aniqlash.</p></div>
+      <div class="item"><span class="ico">📧</span><h3>"Spam" filtri</h3><p>Keraksiz xatlarni ajratish.</p></div>
+      <div class="item"><span class="ico">🎬</span><h3>Kino va musiqa</h3><p>Sizga yoqadigan tavsiyalar.</p></div>
+      <div class="item"><span class="ico">🎙️</span><h3>Ovozli yordamchi</h3><p>Telefonga gapirib so'rash.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4 — STATS · 3 ta raqam -->
+<section class="slide s-stats">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">SI bugun</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Uchta raqam — nega bu <span class="hl">muhim</span>.</h2>
+    <div class="benefits reveal r3">
+      <div class="benefit">
+        <span class="stat">~1 mlrd</span>
+        <h3>ChatGPT foydalanuvchisi</h3>
+        <p>Tarixda eng tez 1 milliard foydalanuvchiga yetgan ilova.</p>
+      </div>
+      <div class="benefit">
+        <span class="stat">2.5 mlrd</span>
+        <h3>Har kunlik so'rov</h3>
+        <p>Dunyo bo'ylab har kuni shuncha savol beriladi.</p>
+      </div>
+      <div class="benefit">
+        <span class="stat">40–60 daq</span>
+        <h3>Kuniga vaqt tejash</h3>
+        <p>SI'dan foydalanadigan xodim o'rtacha shuncha vaqt yutadi.</p>
+      </div>
+    </div>
+    <p class="footnote reveal r3">Manba: OpenAI / Reuters (2026) · OpenAI korxona tadqiqoti.</p>
+  </div>
+</section>
+
+<!-- SLIDE 5 — DEFINITION · eski vs yangi -->
+<section class="slide s-def">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Asosiy savol</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Xo'sh, sun'iy intellekt <span class="hl">o'zi nima</span>?</h2>
+    <p class="lead reveal r2" style="margin-top:0.5rem">SI — bu kompyuterga inson kabi til, rasm va ovozni tushunish hamda misollardan o'rganish qobiliyatini beradigan texnologiya.</p>
+    <div class="compare reveal r3">
+      <div class="col">
+        <h4>Eski dasturlar</h4>
+        <ul>
+          <li>Qat'iy qoidalar bilan ishlaydi</li>
+          <li>"Agar X bo'lsa — Y qil"</li>
+          <li>Har bir holatni odam oldindan yozadi</li>
+          <li>Yangi vaziyatga o'zi moslasha olmaydi</li>
+        </ul>
+      </div>
+      <div class="vs">VS</div>
+      <div class="col win">
+        <h4>Yangi SI</h4>
+        <ul>
+          <li>Misollardan o'rganadi</li>
+          <li>Millionlab misoldan naqshlarni topadi</li>
+          <li>Xuddi bola tilni o'rgangani kabi</li>
+          <li>Yangi savol va vaziyatga ham javob beradi</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — DICTIONARY · LLM · Generativ · Agent -->
+<section class="slide s-dict">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Lug'at</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Hamma joyda eshitadigan <span class="hl">3 ta so'z</span>.</h2>
+    <div class="dict reveal r3">
+      <div class="dict-card">
+        <span class="dict-tag">LLM</span>
+        <h3>Katta til modeli</h3>
+        <p>Internetdagi millionlab matnlarni o'qib chiqqan va savolga inson kabi javob beradigan dastur.</p>
+        <div class="ex"><strong>Misol</strong>Juda ko'p kitob o'qigan, doim yoningizda turgan yordamchi.</div>
+      </div>
+      <div class="dict-card">
+        <span class="dict-tag">Generativ SI</span>
+        <h3>Yarata oladigan SI</h3>
+        <p>Mavjud narsani topib bermaydi — yangi narsa yaratadi: matn, rasm, jadval, kod.</p>
+        <div class="ex"><strong>Misol</strong>Kalkulyator emas — yozuvchi yoki rassom kabi.</div>
+      </div>
+      <div class="dict-card">
+        <span class="dict-tag">Agent</span>
+        <h3>Harakat qiladigan SI</h3>
+        <p>Faqat javob bermaydi — sizning nomingizdan qadamlarni bajaradi, vositalardan foydalanadi.</p>
+        <div class="ex"><strong>Misol</strong>Maslahatchi emas — ishni o'zi qiladigan yordamchi.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7 — MYTH · SI nima EMAS -->
+<section class="slide s-myth">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Tushunmovchiliklar</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">SI nima <span class="hl">EMAS</span>.</h2>
+    <div class="myth reveal r3">
+      <div class="row">
+        <div class="tag">Xato fikr</div>
+        <p><strong>"SI hamma narsani biladi va xato qilmaydi."</strong><span class="fix">Ba'zan ishonch bilan xato qiladi ("gallyutsinatsiya"). Javobni tekshirish shart.</span></p>
+      </div>
+      <div class="row">
+        <div class="tag">Xato fikr</div>
+        <p><strong>"SI mening ishimni tortib oladi."</strong><span class="fix">SI — vosita. Uni ishlatishni biladigan odam samaraliroq bo'ladi, xolos.</span></p>
+      </div>
+      <div class="row">
+        <div class="tag">Xato fikr</div>
+        <p><strong>"SI ongli, mustaqil fikrlaydi."</strong><span class="fix">Yo'q. U statistik naqshlar asosida eng mos matnni tuzadi — tushunmaydi.</span></p>
+      </div>
+      <div class="row">
+        <div class="tag">Xato fikr</div>
+        <p><strong>"Maxfiy ma'lumotni bemalol kiritsa bo'ladi."</strong><span class="fix">Yo'q! Ommaviy vositalarga maxfiy yoki shaxsiy ma'lumot kiritmang.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8 — NEGA HOZIR · 3 narsa yetildi -->
+<section class="slide s-why">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Vaqt</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Nega aynan hozir? <span class="hl">3 narsa</span> bir vaqtda yetildi.</h2>
+    <div class="road reveal r3">
+      <div class="step"><span class="ico">⚡</span><h3>Kuchli hisoblash</h3><p>Arzon va juda kuchli chiplar (GPU) paydo bo'ldi — ulkan hisob-kitoblar mumkin bo'ldi.</p></div>
+      <div class="step"><span class="ico">📚</span><h3>Ulkan ma'lumot</h3><p>Internet SI'ga o'rganish uchun cheksiz matn, rasm va material berdi.</p></div>
+      <div class="step"><span class="ico">💡</span><h3>Yangi kashfiyot</h3><p>2017-yilda "Transformer" texnologiyasi sifatni keskin oshirdi.</p></div>
+    </div>
+    <div class="callout reveal r3">
+      <div class="ct-tag">Natija</div>
+      <p>2022-yil oxirida ChatGPT chiqdi — SI birinchi marta oddiy odam uchun gaplashadigan va yaratadigan vositaga aylandi.</p>
+    </div>
+    <p class="note-line reveal r3">Texnologiya 70 yil rivojlandi — so'nggi 3 yilda hammaga ochiq bo'ldi.</p>
+  </div>
+</section>
+
+<!-- SLIDE 9 — MARKAZIY BANK UCHUN -->
+<section class="slide s-bank">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Markaziy bank uchun: SI <span class="hl">qayerda yordam beradi</span>.</h2>
+    <p class="lead reveal r2" style="margin-top:0.45rem">Dunyo markaziy banklari (BIS, ECB, AQSH Federal zaxira tizimi) SI'ni allaqachon quyidagi vazifalarda qo'llamoqda.</p>
+    <div class="sec sec-4 reveal r3" style="grid-template-columns:repeat(3,1fr)">
+      <div class="item"><span class="ico">📈</span><h3>Iqtisodiy tahlil</h3><p>Ko'rsatkichlarni bashorat qilish, tezkor baholash.</p></div>
+      <div class="item"><span class="ico">📊</span><h3>Statistik ma'lumotlar</h3><p>Ma'lumotlarni yig'ish, qidirish, tartibga solish.</p></div>
+      <div class="item"><span class="ico">🏦</span><h3>Bank nazorati</h3><p>Hisobot va hujjatlarni tez tahlil qilish.</p></div>
+      <div class="item"><span class="ico">💸</span><h3>To'lov tizimlari</h3><p>Operatsiyalarni kuzatish va monitoring.</p></div>
+      <div class="item"><span class="ico">🛡️</span><h3>Firibgarlik · AML</h3><p>Shubhali harakatlarni aniqlashga yordam.</p></div>
+      <div class="item"><span class="ico">📨</span><h3>Murojaatlar tahlili</h3><p>Shikoyat va so'rovlarni umumlashtirish.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10 — OLTIN QOIDA · odam markazda -->
+<section class="slide s-rule">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Oltin qoida</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Lekin: odam <span class="hl">har doim markazda</span> qoladi.</h2>
+    <div class="sec reveal r3">
+      <div class="item"><span class="ico">🤝</span><h3>SI — yordamchi</h3><p>Qaror qabul qiluvchi emas. Yakuniy qaror va javobgarlik har doim insonniki.</p></div>
+      <div class="item"><span class="ico">✅</span><h3>Har javob tekshiriladi</h3><p>Ayniqsa raqamlar, faktlar va qonun bandlari — mustaqil tasdiqlanishi shart.</p></div>
+      <div class="item"><span class="ico">🔒</span><h3>Maxfiylik birinchi</h3><p>Maxfiy va shaxsiy ma'lumot ommaviy vositalarga kiritilmaydi.</p></div>
+    </div>
+    <div class="callout reveal r3">
+      <div class="ct-tag">Esda tuting</div>
+      <p>Ma'lumotning ko'pligi — bu hali aql yoki to'g'ri qaror degani emas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11 — CLOSING + lug'at recap -->
+<section class="slide s-close">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <h2 class="h2 reveal r2">Esda qoladigan <span class="hl">3 ta asosiy fikr</span>.</h2>
+    <div class="close-list reveal r3">
+      <div class="close-row"><span class="keynum">1</span><p><strong>SI — sehr emas, vosita.</strong> U yangi narsa emas; endi u gaplashadi va yangi narsa yaratadi.</p></div>
+      <div class="close-row"><span class="keynum">2</span><p><strong>3 ta so'z.</strong> LLM (o'qigan) · Generativ (yaratadi) · Agent (harakat qiladi).</p></div>
+      <div class="close-row"><span class="keynum">3</span><p><strong>Markaziy bank uchun katta imkoniyat.</strong> Lekin odam nazorati va maxfiylik har doim markazda.</p></div>
+    </div>
+    <div class="recap reveal r3">
+      <div class="recap-tag">Lug'at recap · birga aytamiz</div>
+      <div class="recap-terms">
+        <div class="recap-term"><strong>LLM</strong> <span class="ans fragment">o'qigan yordamchi</span></div>
+        <div class="recap-term"><strong>Generativ SI</strong> <span class="ans fragment">yaratadi</span></div>
+        <div class="recap-term"><strong>Agent</strong> <span class="ans fragment">harakat qiladi</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12 — TRANSITION · keyingi sessiya -->
+<section class="slide s-next">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <span class="chip-out reveal r1">Keyingi sessiya</span>
+    <h2 class="h2 reveal r2" style="margin-top:clamp(0.5rem,1vw,0.85rem)">Endi nazariyadan <span class="hl">amaliyotga</span>.</h2>
+    <div class="next-card reveal r3">
+      <span class="big-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg></span>
+      <div class="nt-body">
+        <h3>Jonli demo</h3>
+        <p>ChatGPT bilan rasmiy xat, tarjima va matnni soddalashtirish — to'g'ridan-to'g'ri ekranda.</p>
+        <span class="nt-time">2-sessiya · 15:30 — 16:00</span>
+      </div>
+    </div>
+    <div class="next-preview reveal r3">
+      <div class="pv">
+        <span class="pv-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>
+        <span class="pv-txt"><strong>Rasmiy xat</strong>Tayyor matn — bir necha soniyada.</span>
+      </div>
+      <div class="pv">
+        <span class="pv-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg></span>
+        <span class="pv-txt"><strong>Tarjima</strong>Til to'siqlarini yengish.</span>
+      </div>
+      <div class="pv">
+        <span class="pv-ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+        <span class="pv-txt"><strong>Soddalashtirish</strong>Murakkab matnni tushunarli qilish.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13 — Q&A -->
+<section class="slide s-qa">
+  <div class="brand-strip">
+    <img src="../_shared/logo-ministry.png" alt="O'zbekiston Respublikasi Raqamli Texnologiyalar Vazirligi" class="logo">
+    <img src="../_shared/logo-digital-ed.png" alt="Raqamli Ta'limni Rivojlantirish Markazi" class="logo">
+  </div>
+  <div class="head"></div>
+  <div class="main">
+    <div class="qmark reveal r2">?</div>
+    <h2 class="h2 reveal r3" style="text-align:center"><span class="hl">Savol-javob</span>.</h2>
+    <p class="reveal r3" style="margin-top:clamp(1.5rem,3vw,2.5rem);font-family:var(--display);font-size:clamp(1rem,1.6vw,1.4rem);letter-spacing:0.1em;color:var(--accent-2);display:flex;justify-content:center;align-items:center;gap:clamp(1.25rem,3vw,2.5rem);flex-wrap:wrap">
+      <a href="mailto:murod@mohir.dev" style="color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:0.55em">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        murod@mohir.dev
+      </a>
+      <a href="https://t.me/crea7iveai" style="color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:0.55em">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.1em" height="1.1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+        @crea7iveai
+      </a>
+    </p>
+  </div>
+</section>
+
+</main>
+
+<div class="hud">
+  <span class="counter">01 / 14</span>
+  <div class="dots"></div>
+  <div class="speaker"><span class="dot"></span><strong>Riskaliev Murad</strong> · NLP Engineer · <img src="../_shared/logo-mohirdev-iconmark-white.png" alt="Mohirdev" class="mohirdev-mark"></div>
+</div>
+
+<script>
+const TITLES = [
+  'Title · 1-modul',
+  'Tanishuv · Kim sizga gapiradi?',
+  'Reja · 4 ta qadam',
+  "Siz allaqachon SI'dan foydalanyapsiz",
+  'Uchta raqam · nega muhim',
+  "SI o'zi nima? · eski vs yangi",
+  "Lug'at · LLM · Generativ · Agent",
+  'SI nima EMAS · 4 ta xato fikr',
+  'Nega hozir? · 3 narsa yetildi',
+  'Markaziy bank uchun · 6 soha',
+  'Oltin qoida · odam markazda',
+  "Yakun + Lug'at recap",
+  'Keyingi sessiya · jonli demo',
+  'Savol-javob'
+];
+
+const slides = [...document.querySelectorAll('.slide')];
+const counter = document.querySelector('.counter');
+const dotsContainer = document.querySelector('.dots');
+let cur = 0;
+
+(function buildDots(){
+  dotsContainer.innerHTML = '';
+  slides.forEach((slide, i) => {
+    const d = document.createElement('button');
+    d.className = 'nav-dot';
+    d.dataset.title = TITLES[i] || ('Slide ' + (i + 1));
+    d.setAttribute('aria-label', 'Go to slide ' + (i + 1) + ': ' + (TITLES[i] || ''));
+    d.addEventListener('click', e => { e.stopPropagation(); go(i); });
+    dotsContainer.appendChild(d);
+  });
+})();
+
+function apply() {
+  slides.forEach((s, n) => s.classList.toggle('is-active', n === cur));
+  counter.textContent = String(cur + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+  dotsContainer.querySelectorAll('.nav-dot').forEach((d, n) => d.classList.toggle('is-current', n === cur));
+  history.replaceState(null, '', '#' + (cur + 1));
+}
+
+function setFragments(slide, mode) {
+  const frags = slide.querySelectorAll('.fragment');
+  frags.forEach(f => mode === 'all' ? f.classList.add('is-visible') : f.classList.remove('is-visible'));
+}
+
+function go(i) {
+  cur = Math.max(0, Math.min(slides.length - 1, i));
+  const transition = () => { apply(); setFragments(slides[cur], 'all'); };
+  if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.startViewTransition(transition);
+  } else {
+    transition();
+  }
+}
+
+function next() {
+  const slide = slides[cur];
+  const frags = [...slide.querySelectorAll('.fragment')];
+  const hidden = frags.find(f => !f.classList.contains('is-visible'));
+  if (hidden) { hidden.classList.add('is-visible'); return; }
+  if (cur < slides.length - 1) {
+    cur += 1;
+    apply();
+    setFragments(slides[cur], 'none');
+  }
+}
+
+function prev() {
+  const slide = slides[cur];
+  const visible = slide.querySelectorAll('.fragment.is-visible');
+  if (visible.length > 0) {
+    visible[visible.length - 1].classList.remove('is-visible');
+    return;
+  }
+  if (cur > 0) {
+    cur -= 1;
+    apply();
+    setFragments(slides[cur], 'all');
+  }
+}
+
+addEventListener('keydown', e => {
+  if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); next(); }
+  if (['ArrowLeft', 'PageUp'].includes(e.key))         { e.preventDefault(); prev(); }
+  if (e.key === 'Home') go(0);
+  if (e.key === 'End') go(slides.length - 1);
+  if (e.key === 'a' || e.key === 'A') go(1);
+});
+
+addEventListener('click', e => {
+  if (e.target.closest('a, button, input, [data-no-advance], .hud')) return;
+  if (e.clientX > innerWidth / 2) next(); else prev();
+});
+
+document.querySelectorAll('.phase-card').forEach(c => {
+  c.addEventListener('click', e => { e.stopPropagation(); next(); });
+});
+
+addEventListener('hashchange', () => {
+  const n = parseInt(location.hash.slice(1), 10);
+  if (Number.isFinite(n)) go(n - 1);
+});
+
+const init = parseInt(location.hash.slice(1), 10);
+go(Number.isFinite(init) ? init - 1 : 0);
+</script>
+</body>
+</html>
