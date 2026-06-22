@@ -20,6 +20,14 @@ decks/**/dist/
 .tmp/
 .tmp-*
 bankrag-*.js
+.claude/wf-*.js
+
+# Local databases / ruflo artifacts — never commit
+*.db
+
+# Stray downloads / data exports accidentally dropped into deck folders
+*.exe
+decks/**/*.csv
 
 # Downloaded binaries / tools (ffmpeg, yt-dlp, chrome profile, cert bundles)
 .tools/
